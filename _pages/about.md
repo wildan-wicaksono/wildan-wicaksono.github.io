@@ -14,5 +14,5 @@ In general, I am interested in algebra, especially abstract algebra; analysis, e
 I am already interested in mathematics at junior high school. Geometry is the first place of my reason why I like mathematics. The real reason I don't know either, but to me it just seemed more interesting than algebra, number theory, and combinatorics. When I was junior high school, I was already interested books by Evan Chen, Euclidean Geometry in Mathematical Olympiad.
 
 In 2023 I became an assistant judge in the Olimpiade Sains Nasinoal (OSN), the most prestigious competition in Indonesia. This event is held by the Pusat Prestasi Nasional every year. In addition, I also became an assistant coach in training in preparation for the 2024 International Mathematical Olympiad (IMO).
-![OSN 2023, Bogor](/images/IMG_2165.JPG){:align-center width="1000px"}
+![OSN 2023, Bogor](/images/IMG_2165.JPG){: .align-center width="1000px"}
 
