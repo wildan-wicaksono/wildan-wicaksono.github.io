@@ -13,3 +13,5 @@ In general, I am interested in algebra, especially abstract algebra; analysis, e
 
 I am already interested in mathematics at junior high school. Geometry is the first place of my reason why I like mathematics. The real reason I don't know either, but to me it just seemed more interesting than algebra, number theory, and combinatorics. When I was junior high school, I was already interested books by Evan Chen, Euclidean Geometry in Mathematical Olympiad.
 
+!(/images/IMG_2165.JPG){:align-center width="300px"}
+
