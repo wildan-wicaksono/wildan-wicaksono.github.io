@@ -49,15 +49,15 @@ author:
 
   # Social media
   bluesky          : #"bsky.app" # Replace this with you Bluesky username
-  facebook         : "profile.php?id=100010965010343"
+  facebook         : # "profile.php?id=100010965010343"
   flickr           : # Username
   foursquare       : # Username
   goodreads        : # Username
   google_plus      : # Username
   keybase          : #
-  Instagram        : "https://www.instagram.com/wildan.wicaksono_32"
+  Instagram        : "wildan.wicaksono_32"
   lastfm           : # Username
-  linkedin         : "wildan-bagus-wicaksono-47116923a"
+  linkedin         : "wildan-bagus-wicaksono"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
