@@ -10,9 +10,9 @@ main:
     url: /teaching/    
     
   - title: "Olympiad and Exam"
-    url: /portofolio/
+    url: /portfolio/
         
-  - title: "Blog Posts"
+  - title: "Blog"
     url: /year-archive/
     
   - title: "CV"
