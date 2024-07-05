@@ -13,7 +13,7 @@ From September - November 2023, I became an assistant lecturer of Calculus I. I 
 Assistant Lecturer (2023)
 ======
 The assistance was carried out by two others, Yehezkiel Gibrael Dativa Garin and Zahra Nazila Annisa. Corina Karim, S.Si., M.Si., Ph.D. become the responsible lecturer as well as the Calculus I lecturer. We must assist students with additional problems and be ready to substitute for the lecturer if they are unable to attend.
-![End of assistance](/image/WhatsApp Image 2024-07-05 at 14.29.46.jpeg){: .align-center width="500px"}
+![End of assistance](/images/WhatsApp Image 2024-07-05 at 14.29.46.jpeg){: .align-center width="500px"}
 
 Mathematics IP 4.0 (2022-now)
 ======
