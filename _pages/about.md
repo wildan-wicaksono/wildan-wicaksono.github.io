@@ -16,4 +16,7 @@ redirect_from:
 ![OSN 2023, Bogor](/images/IMG_2165.JPG){: .align-center width="1000px"}
 
 \[x+y+z\]
+
 $$x+y+z$$
+
+$$\begin{align*}x + y &= 23\\ z+x+2 &= 23\end{align*}$$
