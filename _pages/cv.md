@@ -24,7 +24,8 @@ Awards
     * <p align="justify"> Silver medalist, <i>Mathematical Analysis and Geometry Day XIV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
   
 * <b>2022</b>
-    *  <p align="justify"> 3rd place, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students. </p>
+    *   <p align="justify"> 3rd place, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students. </p> 
+    * <p align="justify"> Awardee Beasiswa Indonesia Maju batch 1.
     *  <p align="justify"> 3rd place, <i>World Mathematics Tournament</i>, held by Mathematics for Life Foundation for senior high school. </p>
 
 * <b>2021</b>
