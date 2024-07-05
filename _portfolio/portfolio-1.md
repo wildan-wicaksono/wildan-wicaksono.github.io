@@ -1,7 +1,12 @@
 ---
-title: "Portfolio item number 1"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
-collection: portfolio
+title: "Math Olympiad Reading Material"
+collection: olympiad
+type: "Olympiad"
+permalink: /olympiad-exam/olympiad
 ---
 
-This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
+<p align="justify">Reading material about some topics in the mathematical olympiad. Average topic intended for senior high school olympiad. These PDF provided <b>bahasa</b> only.</p>
+
+* <b>Homothety</b>, updated January 10, 2024. <a href='http://wildan-wicaksono.github.io/files/Homothety.pdf'>Download PDF</a>
+* <b>Basic Inequality for Olympiad</b>, updated August 22, 2022. <a href='http://wildan-wicaksono.github.io/files/Ketaksamaan Dasar.pdf'>Download PDF</a>
+* <b>Order of Element</b>, updated May 18, 2022. <a href='http://wildan-wicaksono.github.io/files/Order dari sebuah Elemen.pdf'>Download PDF</a>
