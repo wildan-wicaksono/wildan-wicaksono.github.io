@@ -11,7 +11,7 @@ redirect_from:
 
 Education
 ======
-* B.S. in Mathematics, Universitas Brawijaya, 2026 (expected)
+* S.Si. in Mathematics, Universitas Brawijaya, 2026 (expected)
 
 Awards
 ======
