@@ -24,7 +24,7 @@ Awards
     * <p align="justify"> <b>Silver medalist</b>, <i>Mathematical Analysis and Geometry Day XIV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
   
 * <b>2022</b>
-    *   <p align="justify"> <b></b>3rd place</b>, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students. </p> 
+    *   <p align="justify"> <b>3rd place</b>, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students. </p> 
     * <p align="justify"> Beasiswa Indonesia Maju batch 1 awardee.
     *  <p align="justify"> <b>3rd place</b>, <i>World Mathematics Tournament</i>, held by Mathematics for Life Foundation for senior high school. </p>
 
@@ -33,7 +33,7 @@ Awards
   * <p align="justify"> <b>2nd place (team)</b>, <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students. </p>
   * <p align="justify"> <b>2nd place (individual)</b>, <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students. </p>
   * <p align="justify"> <b>1st place</b>, <i>Kompetisi Matematika Detik MSC 25</i>, held by Universitas Negeri Jember for senior high school students. </p>
-  * <p align="justify"> <b>Finalist</b>b, <i>Olimpiade Sains Nasional</i>, held by Pusat Prestasi Nasional for senior high school students. </p>
+  * <p align="justify"> <b>Finalist</b>, <i>Olimpiade Sains Nasional</i>, held by Pusat Prestasi Nasional for senior high school students. </p>
   * <p align="justify"> <b>1st place</b>, <i>Lomba dan Seminar Nasional Pendidikan mMatematika</i>, held by Universitas Negeri Yogyakarta for senior high school students. </p>
   * <p align="justify"> <b>Silver medalist</b>, <i>International Eduversal Mathematical Olympiad</i>, held by Eduversal for senior high school students. </p>
   * <p align="justify"> <b>3rd place</b>, <i>STEI Mathematics, Physics, and Informatics Competition</i>, held by STEI Institut Tekonologi Bandung for senior high school. </p>
@@ -41,12 +41,12 @@ Awards
   
 Experience
 ======
-*  (2023-now) General manager at <a href = "https://ktom-tomi.or.id/"> Kontes Terbuka Olimpiade Matematika</a>.
-*  (2023) Problem writer, setter, and quality control at <a href = "https://www.instagram.com/pemnasub2024/"> Pekan Matematika Nasional</a> for elementary, junior, and senior high school.
-*  (2023) Math jury at <a href = "https://www.instagram.com/dentoschope.fkgub/">Dentoschope FKG UB</a> for senior high school.
-* (2023) Assistant jury at Olimpiade Sains Nasional for senior high school.
-* (2021-2022) Problem writer at <a href = "https://www.instagram.com/thamrinolymcup/"> MaQC SMA Negeri Unggulan MH Thamrin Jakarta</a> for junior high school.
-* (2021-2023) Problem writer at Kontes Terbuka Olimpiade Matematika.
+*  <b>(2023-now).</b> General manager at <a href = "https://ktom-tomi.or.id/"> Kontes Terbuka Olimpiade Matematika</a>.
+*  <b>(2023).</b> Problem writer, setter, and quality control at <a href = "https://www.instagram.com/pemnasub2024/"> Pekan Matematika Nasional</a> for elementary, junior, and senior high school.
+*  <b>(2023).</b> Math jury at <a href = "https://www.instagram.com/dentoschope.fkgub/">Dentoschope FKG UB</a> for senior high school.
+* <b>(2023).</b> Assistant jury at Olimpiade Sains Nasional for senior high school.
+* <b>(2021-2022).</b> Problem writer at <a href = "https://www.instagram.com/thamrinolymcup/"> MaQC SMA Negeri Unggulan MH Thamrin Jakarta</a> for junior high school.
+* <b>(2021-2023).</b> Problem writer at Kontes Terbuka Olimpiade Matematika.
 
 Teaching
 ======
