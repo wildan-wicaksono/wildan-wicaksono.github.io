@@ -209,6 +209,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
+  olympiad-exam:
+    output: true
+    permalink: /:collection/:path/
   talks:
     output: true
     permalink: /:collection/:path/
@@ -256,6 +259,15 @@ defaults:
   - scope:
       path: ""
       type: portfolio
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comment: true
+  # _olympiad-exam
+  - scope:
+      path: ""
+      type: olympiad-exam
     values:
       layout: single
       author_profile: true
