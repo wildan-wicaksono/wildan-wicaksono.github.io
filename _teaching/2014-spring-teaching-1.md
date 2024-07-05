@@ -4,7 +4,7 @@ collection: teaching
 type: "Community Service"
 permalink: /teaching/2014-spring-teaching-1
 venue: "Yayasan Fatimah Az Zahra Lampung"
-date: 2022-23-11
+date: 2022-11-23
 location: "Lampung, Indonesia"
 ---
 
