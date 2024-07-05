@@ -16,27 +16,27 @@ Education
 Awards
 ======
 * <b>2024</b>
-    * <p align="justify"> Gold medalist (individual), <i>Mathematical Analysis and Geometry Day XV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
+    * <p align="justify"> <b>Gold medalist (individual)</b>, <i>Mathematical Analysis and Geometry Day XV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
     
 * <b>2023</b>
-    * <p align="justify"> 2nd place, <i>Mathematics ITS Calculus Competition 7.0</i>, held by HIMATIKA Institut Teknologi Sepuluh November for undergraduate students. </p>
-    * <p align="justify"> Gold medalist, <i>Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam</i>, held by Pusat Prestasi Nasional for undergraduate student. </p>
-    * <p align="justify"> Silver medalist, <i>Mathematical Analysis and Geometry Day XIV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
+    * <p align="justify"> <b>2nd place</b>, <i>Mathematics ITS Calculus Competition 7.0</i>, held by HIMATIKA Institut Teknologi Sepuluh November for undergraduate students. </p>
+    * <p align="justify"> <b>Gold medalist</b>, <i>Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam</i>, held by Pusat Prestasi Nasional for undergraduate student. </p>
+    * <p align="justify"> <b>Silver medalist</b>, <i>Mathematical Analysis and Geometry Day XIV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
   
 * <b>2022</b>
-    *   <p align="justify"> 3rd place, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students. </p> 
-    * <p align="justify"> Awardee Beasiswa Indonesia Maju batch 1.
-    *  <p align="justify"> 3rd place, <i>World Mathematics Tournament</i>, held by Mathematics for Life Foundation for senior high school. </p>
+    *   <p align="justify"> <b></b>3rd place</b>, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students. </p> 
+    * <p align="justify"> Beasiswa Indonesia Maju batch 1 awardee.
+    *  <p align="justify"> <b>3rd place</b>, <i>World Mathematics Tournament</i>, held by Mathematics for Life Foundation for senior high school. </p>
 
 * <b>2021</b>
-  * <p align="justify"> 1st place, <i>OPTIKA 21</i>, held by Universitas Islam Syarif Hidayatullah for senior high school students. </p>
-  * <p align="justify"> 2nd place (team), <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students. </p>
-  * <p align="justify"> 2nd place (individual), <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students. </p>
-  * <p align="justify"> 1st place, <i>Kompetisi Matematika Detik MSC 25</i>, held by Universitas Negeri Jember for senior high school students. </p>
-  * <p align="justify"> Finalist, <i>Olimpiade Sains Nasional</i>, held by Pusat Prestasi Nasional for senior high school students. </p>
-  * <p align="justify"> 1st place, <i>Lomba dan Seminar Nasional Pendidikan mMatematika</i>, held by Universitas Negeri Yogyakarta for senior high school students. </p>
-  * <p align="justify"> Silver medalist, <i>International Eduversal Mathematical Olympiad</i>, held by Eduversal for senior high school students. </p>
-  * <p align="justify"> 3rd place, <i>STEI Mathematics, Physics, and Informatics Competition</i>, held by STEI Institut Tekonologi Bandung for senior high school. </p>
+  * <p align="justify"> <b>1st place</b>, <i>OPTIKA 21</i>, held by Universitas Islam Syarif Hidayatullah for senior high school students. </p>
+  * <p align="justify"> <b>2nd place (team)</b>, <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students. </p>
+  * <p align="justify"> <b>2nd place (individual)</b>, <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students. </p>
+  * <p align="justify"> <b>1st place</b>, <i>Kompetisi Matematika Detik MSC 25</i>, held by Universitas Negeri Jember for senior high school students. </p>
+  * <p align="justify"> <b>Finalist</b>b, <i>Olimpiade Sains Nasional</i>, held by Pusat Prestasi Nasional for senior high school students. </p>
+  * <p align="justify"> <b>1st place</b>, <i>Lomba dan Seminar Nasional Pendidikan mMatematika</i>, held by Universitas Negeri Yogyakarta for senior high school students. </p>
+  * <p align="justify"> <b>Silver medalist</b>, <i>International Eduversal Mathematical Olympiad</i>, held by Eduversal for senior high school students. </p>
+  * <p align="justify"> <b>3rd place</b>, <i>STEI Mathematics, Physics, and Informatics Competition</i>, held by STEI Institut Tekonologi Bandung for senior high school. </p>
 
   
 Experience
