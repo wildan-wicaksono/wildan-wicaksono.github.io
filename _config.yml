@@ -267,7 +267,7 @@ defaults:
   # _olympiad-exam
   - scope:
       path: ""
-      type: olympiad-exam
+      type: olympiad
     values:
       layout: single
       author_profile: true
