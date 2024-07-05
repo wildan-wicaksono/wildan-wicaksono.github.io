@@ -1,7 +1,7 @@
 ---
 title: "Assistant Lecturer and Peer Tutor"
 collection: teaching
-type: "teaching"
+type: "Teaching"
 permalink: /teaching/assistant-peer-tutor
 venue: "Universitas Brawijaya, Mathematics Department"
 date: 2023-11-04
