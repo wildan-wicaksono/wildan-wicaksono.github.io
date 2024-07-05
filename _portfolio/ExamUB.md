@@ -36,11 +36,10 @@ All of these problems were taken from the exam at Brawijaya University. Provided
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus3_UTS2023.pdf'>2023</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus3_UAS2023.pdf'>2023</a>
   *  <b>Matematika Dasar I (Calculus I for actuarial students)</b>
-      * Midterm.
-      * Final.
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Matdas1_UAS2022.pdf'>2022</a>
   *  <b>Matematika Dasar II (Calculus II for actuarial students)</b>
-      * Midterm.
-      * Final.
+      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Matdas2_UTS2023.pdf'>2023</a>
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Matdas2_UAS2023.pdf'>2023</a>
   *  <b>Matematika Diskret (Discrete Mathematics)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Matdis_UTS2023.pdf'>2023</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Matdis_UAS2023.pdf'>2023</a>
