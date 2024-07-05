@@ -1,6 +1,8 @@
 ---
 title: "Math Olympiad Reading Material"
 collection: olympiad
+type: "Olympiad"
+permalink: /olympiad-exam/olympiad
 ---
 
 <p align="justify">Reading material about some topics in the mathematical olympiad. Average topic intended for senior high school olympiad. These PDF provided <b>bahasa</b> only.</p>
