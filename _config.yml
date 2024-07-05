@@ -11,7 +11,7 @@ locale                   : "Indonesia"
 title                    : "Wildan's Homepage"
 title_separator          : #"-"
 name                     : &name "Wildan Bagus Wicaksono"
-description              : &description "Currently studying at Brawijaya University. Also taught math olympiad at some moment."
+description              : &description <p align="justify"> Currently studying at Brawijaya University. Also taught math olympiad at some moment. </p>
 URL                      : "https://wildan-wicaksono.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "wildan-wicaksono.github.io"
