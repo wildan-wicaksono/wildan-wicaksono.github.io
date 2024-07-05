@@ -11,26 +11,34 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+# * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+# * M.S. in Jekyll, GitHub University, 2014
+* B.S. in Mathematics, Universitas Brawijaya, 2026 (expected)
 
-Work experience
+Awards
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* <b>2024</b>
+    * Gold medalist (individual), <i>Mathematical Analysis and Geometry Day XV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student.
+    
+* <b>2023</b>
+    * 2nd place, <i>Mathematics ITS Calculus Competition 7.0</i>, held by HIMATIKA Institut Teknologi Sepuluh November for undergraduate students.
+    * Gold medalist, <i>Olimpiade Nasinoal Matematika dan Ilmu Pengetahuan Alam</i>, held by Pusat Prestasi Nasional for undergraduate student.
+    * Silver medalist, <i>Mathematical Analysis and Geometry Day XIV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student.
+  
+* <b>2022</b>
+    *  3rd place, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students.
+    *  3rd place, <i>World Mathematics Tournament</i>, held by Mathematics for Life Foundation for senior high school.
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* <b>2021</b>
+  *  1st place, <i>OPTIKA 21</i>, held by Universitas Islam Syarif Hidayatullah for senior high school students.
+  * 2nd place (team), <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students.
+  * 2nd place (individual), <i>Kompetisi Matematika Vektor Nasional</i>, held by Universitas Negeri Malang for senior high school students.
+  * 1st place, <i>Kompetisi Matematika Detik MSC 25</i>, held by Universitas Negeri Jember for senior high school students.
+  * Finalist, <i>Olimpiade Sains Nasional</i>, held by Pusat Prestasi Nasional for senior high school students.
+  * 1st place, <i>Lomba dan Seminar Nasional Pendidikan mMatematika</i>, held by Universitas Negeri Yogyakarta for senior high school students.
+  * Silver medalist, <i>International Eduversal Mathematical Olympiad</i>, held by Eduversal for senior high school students.
+  * 3rd place, <i>STEI Mathematics, Physics, and Informatics Competition</i>, held by STEI Institut Tekonologi Bandung for senior high school.
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
   
 Skills
 ======
