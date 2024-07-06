@@ -20,5 +20,5 @@ Contains problems and solutions from several contests. Provided <b>bahasa</b> on
     * <i>KSN Matematika SMA 2021 (Hari Kedua)</i>. <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Kedua.pdf'>PDF Download</a>
     * <i>KSN Matematika SMA 2021 (Hari Pertama).</i> <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Pertama.pdf'>PDF Download</a>
 * <b>Undergraduate</b>
-    * <i>ONMIPA-PT 2024 (Nasional).</i> Collaboration with Refrain and Sheraz. <a href=</i> <a href='http://wildan-wicaksono.github.io/files/Olympiad/ONMIPA_Nas2024.pdf'>PDF Download</a>
-    * <i>ONMIPA-PT 2024 (Wilayah).</i> Collaboration with Fofo, Ipan, Hniv, Refrain, RM, and Wili. <a href=</i> <a href='http://wildan-wicaksono.github.io/files/Olympiad/ONMIPA_Wil2024.pdf'>PDF Download</a>
+    * <i>ONMIPA-PT 2024 (Nasional).</i> Collaboration with Refrain and Sheraz.</i> <a href='http://wildan-wicaksono.github.io/files/Olympiad/ONMIPA_Nas2024.pdf'>PDF Download</a>
+    * <i>ONMIPA-PT 2024 (Wilayah).</i> Collaboration with Fofo, Ipan, Hniv, Refrain, RM, and Wili.</i> <a href='http://wildan-wicaksono.github.io/files/Olympiad/ONMIPA_Wil2024.pdf'>PDF Download</a>
