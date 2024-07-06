@@ -13,7 +13,7 @@ collection: portfolio
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/AL_UTS2023.pdf'>2023</a>
   * <b>Analisis Real (Real Analysis)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril_UTS2023.pdf'>2023</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UTS2024.pdf'>2024</a>
-      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UAS2023.pdf'>2023</a>
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UAS2023.pdf'>2023</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UAS2024.pdf'>2024</a>
   * <b>Fungsi Khusus (Special Functions)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukhus_UTS2024.pdf'>2024</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukhus_UAS2024'>2024</a>
