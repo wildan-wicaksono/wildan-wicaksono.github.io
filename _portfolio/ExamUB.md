@@ -49,6 +49,7 @@ collection: portfolio
   * <b>Persamaan Differensial Parsial (Partial Differential Equation).
       * Midterm.  <a href='http://wildan-wicaksono.github.io/files/ExamUB/PDP_UTS2024.pdf' target="_blank">2024</a>
   * <b>Pengantar Peluang (Introduction to Probability)</b>
+      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/PP_UTS2023.pdf' target="_blank">2023</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/PP_UAS2023.pdf' target="_blank">2023</a>
   * <b>Statistika Matematika (Mathematical Statistics)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Statmath_UTS2024.pdf' target="_blank">2024</a>
