@@ -44,7 +44,7 @@ Experience
 *  <b>(2023-now).</b> General manager at <a href = "https://ktom-tomi.or.id/"> Kontes Terbuka Olimpiade Matematika</a>.
 *  <b>(2023).</b> Problem writer, setter, and quality control at <a href = "https://www.instagram.com/pemnasub2024/"> Pekan Matematika Nasional</a> for elementary, junior, and senior high school.
 *  <b>(2023).</b> Math jury at <a href = "https://www.instagram.com/dentoschope.fkgub/">Dentoschope FKG UB</a> for senior high school.
-* <b>(2023).</b> Assistant jury at Olimpiade Sains Nasional for senior high school.
+* <b>(2023).</b> Jury's assistant at Olimpiade Sains Nasional for senior high school.
 * <b>(2021-2022).</b> Problem writer at <a href = "https://www.instagram.com/thamrinolymcup/"> MaQC SMA Negeri Unggulan MH Thamrin Jakarta</a> for junior high school.
 * <b>(2021-2023).</b> Problem writer at Kontes Terbuka Olimpiade Matematika.
 
