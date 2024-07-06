@@ -1,5 +1,5 @@
 ---
-title: "Problem and Solution: Euclidean Geometry in Mathematical Olympiad by Evan Chen"
+title: "Euclidean Geometry in Mathematical Olympiad by Evan Chen"
 excerpt: 
 collection: portfolio
 ---
