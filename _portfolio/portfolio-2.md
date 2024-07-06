@@ -17,5 +17,8 @@ Contains problems and solutions from several contests. Provided <b>bahasa</b> on
     * <i>23rd UNDIP's Mathematics Competition (Final Round)</i>. <a href='http://wildan-wicaksono.github.io/files/Final Round_UNDIP 2022.pdf'>PDF Download</a>
     * <i>MIC Logika UI 2022 (Final Round)</i>. <a href='http://wildan-wicaksono.github.io/files/MIC 2022_Final Round Logika UI.pdf'>PDF Download</a>
     * <i>MIC Logika UI 2022 (Semifinal Round)</i>. <a href='http://wildan-wicaksono.github.io/files/MIC 2022_Semifinal Round Logika UI.pdf'>PDF Download</a>
-    * <i>KSN Matematika SMA 2021 (Hari Kedua)</i>. <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Kedua.pdf.pdf'>PDF Download</a>
-    * <i>KSN Matematika SMA 2021 (Hari Pertama).</i> <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Pertama.pdf.pdf'>PDF Download</a>
+    * <i>KSN Matematika SMA 2021 (Hari Kedua)</i>. <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Kedua.pdf'>PDF Download</a>
+    * <i>KSN Matematika SMA 2021 (Hari Pertama).</i> <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Pertama.pdf'>PDF Download</a>
+* <b>Undergraduate</b>
+    * <i>ONMIPA-PT 2024 (Nasional).</i> Collaboration with Refrain and Sheraz. <a href=</i> <a href='http://wildan-wicaksono.github.io/files/Olympiad/ONMIPA_Nas2024.pdf'>PDF Download</a>
+    * <i>ONMIPA-PT 2024 (Wilayah).</i> Collaboration with Fofo, Ipan, Hniv, Refrain, RM, and Wili. <a href=</i> <a href='http://wildan-wicaksono.github.io/files/Olympiad/ONMIPA_Wil2024.pdf'>PDF Download</a>
