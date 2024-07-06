@@ -16,12 +16,12 @@ Education
 Awards
 ======
 * <b>2024</b>
-    * <p align="justify"> <b>Gold medalist (individual)</b>, <i>Mathematical Analysis and Geometry Day XV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
+    * <p align="justify"> <b>Gold medalist (individual)</b>, <i>Mathematical Analysis and Geometry Day XV</i>, held by KKAG Institut Teknologi Bandung for undergraduate students. </p>
     
 * <b>2023</b>
     * <p align="justify"> <b>2nd place</b>, <i>Mathematics ITS Calculus Competition 7.0</i>, held by HIMATIKA Institut Teknologi Sepuluh November for undergraduate students. </p>
-    * <p align="justify"> <b>Gold medalist</b>, <i>Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam</i>, held by Pusat Prestasi Nasional for undergraduate student. </p>
-    * <p align="justify"> <b>Silver medalist</b>, <i>Mathematical Analysis and Geometry Day XIV</i>, held by KKAG Institut Teknologi Bandung for undergraduate student. </p>
+    * <p align="justify"> <b>Gold medalist</b>, <i>Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam</i>, held by Pusat Prestasi Nasional for undergraduate students. </p>
+    * <p align="justify"> <b>Silver medalist</b>, <i>Mathematical Analysis and Geometry Day XIV</i>, held by KKAG Institut Teknologi Bandung for undergraduate students. </p>
   
 * <b>2022</b>
     *   <p align="justify"> <b>3rd place</b>, <i>Sanata Dharma Calculus League</i>, held by Universitas Sanata Dharma for undergraduate students. </p> 
