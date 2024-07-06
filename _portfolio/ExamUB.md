@@ -1,5 +1,5 @@
 ---
-title: "Problems and Solutions: Midterm and Final Exam in Brawijaya University"
+title: "Midterm and Final Exam in Brawijaya University"
 excerpt: 
 collection: portfolio
 ---
