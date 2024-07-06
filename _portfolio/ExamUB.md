@@ -8,7 +8,7 @@ collection: portfolio
 
   * <b>Aljabar Linier Elementer (Elementary Linear Algebra)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/ALE_UTS2022.pdf'>2022</a>
-      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/ALE_UAS2022.pdf'>2022</a>
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/ALE_UAS2022.pdf' target="_blank">2022</a>
   * <b>Aljabar Linier (Linear Algebra)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/AL_UTS2023.pdf'>2023</a>
   * <b>Analisis Real (Real Analysis)</b>
