@@ -4,7 +4,7 @@ excerpt:
 collection: portfolio
 ---
 
-<p align="justify">All of these problems were taken from the exam at Universitas Brawijaya. Provided <b>bahasa</b> only. If you're on mobile it may not download, try using a PC or laptop.</p>
+<p align="justify">All of these problems were taken from the exam at Universitas Brawijaya. Provided <b>bahasa</b> only. If you're on mobile and it cannot be downloaded, then use a browser other than Chrome. If that still doesn't work, use a laptop or PC.</p>
 
   * <b>Aljabar Linier Elementer (Elementary Linear Algebra)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/ALE_UTS2022.pdf' target="_blank">2022</a>
