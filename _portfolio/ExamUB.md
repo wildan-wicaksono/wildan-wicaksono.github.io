@@ -59,7 +59,7 @@ collection: olympiad-exam
       * Midterm.  <a href='http://wildan-wicaksono.github.io/files/ExamUB/TGH_UTS2023.pdf' target="_blank">2023</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/TGH_UAS2023.pdf' target="_blank">2023</a>
   * <b>Struktur Aljabar I (Abstract Algebra I)</b>
-      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UTS2023.pdf' target="_blank">2023</a>
-      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UAS2023.pdf' target="_blank">2023</a>
+      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UTS2022.pdf' target="_blank">2022</a>  <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UTS2023.pdf' target="_blank">2023</a> 
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UAS2022.pdf' target="_blank">2022</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UAS2023.pdf' target="_blank">2023</a>
   * <b>Struktur Aljabar II (Abstract Algebra II)</b>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA2_UAS2023.pdf' target="_blank">2023</a>
