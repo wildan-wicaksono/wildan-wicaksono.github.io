@@ -42,6 +42,7 @@ Awards
 Experience
 ======
 *  <p align="justify"> <b>(2023-now).</b> General manager at <a href = "https://ktom-tomi.or.id/"> Kontes Terbuka Olimpiade Matematika</a>. </p>
+* <p align="justify"> <b>(2023).</b> Author and final editor of the KTOM-A book. </p>
 *  <p align="justify"> <b>(2023).</b> Problem writer, setter, and quality control at <a href = "https://www.instagram.com/pemnasub2024/"> Pekan Matematika Nasional</a> for elementary, junior, and senior high school. Held by HIMATIKA Universitas Brawijaya.</p>
 * <p align="justify"> <b>(2023).</b> Math jury at <a href = "https://www.instagram.com/dentoschope.fkgub/">Dentoschope FKG UB</a> for senior high school. Held by BEM FKG Universitas Brawijaya.</p>
 * <p align="justify"><b>(2023).</b> Jury's assistant at Olimpiade Sains Nasional for senior high school. Held by Pusat Prestasi Nasional.</p>
