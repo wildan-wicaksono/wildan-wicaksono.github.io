@@ -4,7 +4,7 @@ excerpt:
 collection: portfolio
 ---
 
-<p align="justify">Contains problems and solutions from several contests. Provided <b>bahasa</b> only. If you're on mobile it may not download, try using a PC or laptop.</p>
+<p align="justify">Contains problems and solutions from several contests. Provided <b>bahasa</b> only. If you're on mobile and it cannot be downloaded, then use a browser other than Chrome. If that still doesn't work, use a laptop or PC.</p>
 
 * <b>Junior</b>
     * <i>KSN Matematika SMP 2020</i>. Updated November 4, 2020. <a href='http://wildan-wicaksono.github.io/files/Kompetisi Sains Nasional 2020.pdf' target="_blank">PDF Download</a>
