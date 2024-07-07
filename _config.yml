@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "Indonesia"
 title                    : "Wildan's Homepage"
-title_separator          : #"-"
+title_separator          : "-"
 name                     : &name "Wildan Bagus Wicaksono"
 description              : &description "Currently studying at Universitas Brawijaya. Also taught math olympiad at some moment."
 URL                      : "https://wildan-wicaksono.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
