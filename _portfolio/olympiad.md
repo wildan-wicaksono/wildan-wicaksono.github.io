@@ -4,7 +4,7 @@ excerpt:
 collection: portfolio
 ---
 
-<p align="justify">All of these handouts intended for senior high school olympiad and will be updated if necessary. Provided <b>bahasa</b> only. If you're on mobile it may not download, try using a PC or laptop.</p>
+<p align="justify"> These handouts are intended for senior high school olympiads and will be updated if necessary. Provided <b>bahasa</b> only. If you're on mobile and it cannot be downloaded, then use a browser other than Chrome. If that still doesn't work, use a laptop or PC.</p>
 
   * <i>Homothety</i>. Updated January 10, 2024. <a href='http://wildan-wicaksono.github.io/files/Homothety.pdf' target="_blank">PDF Download</a>
   * <i>Ketaksamaan Dasar</i>. Updated August 22, 2022. <a href='http://wildan-wicaksono.github.io/files/Ketaksamaan Dasar.pdf' target="_blank">PDF Download</a>
