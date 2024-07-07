@@ -1,5 +1,5 @@
 ---
-title: "Introducing about Mathematical Olympiad to Teachers in Lampung"
+title: "Introducing About Mathematical Olympiad to Teachers in Lampung"
 collection: teaching
 type: "Community Service"
 permalink: /teaching/2022-teaching-1
