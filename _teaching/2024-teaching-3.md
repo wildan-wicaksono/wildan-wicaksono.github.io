@@ -1,5 +1,5 @@
 ---
-title: "Assistant Preparation to International Mathematical Olympiad 2024"
+title: "Teaching Assistant Preparation to International Mathematical Olympiad 2024"
 collection: teaching
 type: "Teaching"
 permalink: /teaching/IMO-2024-preparation
