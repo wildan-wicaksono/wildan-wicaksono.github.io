@@ -1,5 +1,5 @@
 ---
-title: "Assistant Lecturer and Peer Tutor"
+title: "Lecturer's Assistant and Peer Tutor"
 collection: teaching
 type: "Teaching"
 permalink: /teaching/assistant-peer-tutor
@@ -10,7 +10,7 @@ location: "Malang, Indonesia"
 
 <p align="justify"> From September - November 2023, I became an assistant lecturer of Calculus I. I also became a peer tutor for the preparation for the midterm and final exam from 2022 until now.</p>
 
-Assistant Lecturer (2023)
+Calculus I Lecturer's Assistant (2023)
 ======
 <p align="justify">The assistance was carried out by two others, Yehezkiel Gibrael Dativa Garin and Zahra Nazila Annisa. Corina Karim, S.Si., M.Si., Ph.D. become the responsible lecturer as well as the Calculus I lecturer. We must assist students with additional problems and be ready to substitute for the lecturer if they are unable to attend.</p>
 ![End of assistance](/images/WhatsApp Image 2024-07-05 at 14.29.46.jpeg){: .align-center width="500px"}
