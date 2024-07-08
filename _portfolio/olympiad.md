@@ -15,6 +15,6 @@ In my spare time, I sometimes write about math olympiad material. Provided <b>ba
 
 Books
 ========
-  * <i>9 Tahun OSN oleh Eddy Hermanto</i>. <a href='http://wildan-wicaksono.github.io/files/olympiad/9tahunOSN_Eddy.pdf' target="_blank">PDF Download</a>
-  * <i>Diktat Eddy Hermanto</i>. <a href='http://wildan-wicaksono.github.io/files/olympiad/Diktat_Eddy.pdf' target="_blank">PDF Download</a>
-  * <i>Modern Olympiad Number Theory</i>. <a href='http://wildan-wicaksono.github.io/files/olympiad/MONT_AdityaKhurmi.pdf' target="_blank">PDF Download</a>
+  * <i>9 Tahun OSN oleh Eddy Hermanto</i>. <a href='http://wildan-wicaksono.github.io/files/Olympiad/9tahunOSN_Eddy.pdf' target="_blank">PDF Download</a>
+  * <i>Diktat Eddy Hermanto</i>. <a href='http://wildan-wicaksono.github.io/files/Olympiad/Diktat_Eddy.pdf' target="_blank">PDF Download</a>
+  * <i>Modern Olympiad Number Theory</i>. <a href='http://wildan-wicaksono.github.io/files/Olympiad/MONT_AdityaKhurmi.pdf' target="_blank">PDF Download</a>
