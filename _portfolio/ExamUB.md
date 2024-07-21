@@ -53,6 +53,7 @@ collection: olympiad-exam
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/PP_UAS2023.pdf' target="_blank">2023</a>
   * <b>Statistika Matematika (Mathematical Statistics)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Statmath_UTS2024.pdf' target="_blank">2024</a>
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Statmath_UAS2024.pdf' target="_blank">2024</a>
   * <b>Teori Bilangan (Number Theory)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Teobil_UTS2023.pdf' target="_blank">2023</a>
   * <b>Teori Grup Hingga (Finite Group Theory)</b>
