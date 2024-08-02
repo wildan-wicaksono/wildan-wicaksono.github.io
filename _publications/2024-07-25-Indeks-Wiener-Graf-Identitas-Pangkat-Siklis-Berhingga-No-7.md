@@ -6,7 +6,7 @@ excerpt:
 date: 2024-07-25
 venue: 'Syntax Literate'
 slidesurl: 
-paperurl: 'http://wildan-wicaksono.github.io/files/paper/files/paper/16994-Article Text-59366-1-10-20240725.pdf'
+paperurl: 'http://wildan-wicaksono.github.io/files/paper/16994-Article Text-59366-1-10-20240725.pdf'
 citation: 'Darmajid, et al. (2024). &quot;Indeks Wiener dari Graf Identitas dan Graf Pangkat pada Grup Siklis Berhingga.&quot; <i>Syntax Literate</i>. 9(7).'
 ---
 
