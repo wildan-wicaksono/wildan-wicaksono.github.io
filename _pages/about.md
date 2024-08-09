@@ -15,7 +15,7 @@ redirect_from:
 <p align="justify"> In 2023 I became jury's assistant in the Olimpiade Sains Nasional (OSN), the most prestigious science olympiad in Indonesia. This event is held by the <a href = "https://www.instagram.com/puspresnas/">Pusat Prestasi Nasional</a> every year. In addition, I also became a teaching assistant in preparation for the 2024 International Mathematical Olympiad (IMO), the most prestigious mathematical olympiad in the world. </p>
 ![OSN 2023, Bogor](/images/IMG_2165.JPG){: .align-center width="1000px"}
 
-<p align="justify"> I also became a gold medalist at Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam Perguruan Tinggi (ONMIPA-PT), a mathematical olympiad for undergraduate students, held by the Pusat Prestasi Nasional. </p>
+<p align="justify"> I also became a gold medalist at Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam Perguruan Tinggi (ONMIPA-PT) 2023, a mathematical olympiad for undergraduate students, held by the Pusat Prestasi Nasional. </p>
 
 FAQ
 =========
@@ -23,7 +23,7 @@ FAQ
 Q: Is Muhammad Jilan Wicaksono your brother?
 </p>
 
-<p align="justify>
+<p align="justify">
   A: No.
   </p>
 
