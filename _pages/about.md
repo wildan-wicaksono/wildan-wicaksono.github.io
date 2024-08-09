@@ -19,7 +19,12 @@ redirect_from:
 
 FAQ
 =========
+<p align="justify">
 Q: Is Muhammad Jilan Wicaksono your brother?
-A: No.
+</p>
+
+<p align="justify>
+  A: No.
+  </p>
 
 
