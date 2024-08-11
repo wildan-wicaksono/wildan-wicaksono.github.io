@@ -19,7 +19,7 @@ redirect_from:
 
 FAQ
 =========
-<p align="justify">Q: Is Muhammad Jilan Wicaksono your brother?</p> </br>
+<p align="justify">Q: Is Muhammad Jilan Wicaksono your brother?</p>
 <p align="justify"> A: No.  </p>
 
 
