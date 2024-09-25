@@ -12,7 +12,7 @@ redirect_from:
 
 <p align="justify"> I am already interested in mathematics at junior high school. Geometry is the first place of my reason why I like mathematics. The real reason I don't know either, but to me, it just seemed more interesting than algebra, number theory, and combinatorics. When I was in junior high school, I was already interested in books by Evan Chen,  <a href = "https://www.amazon.com/Euclidean-Geometry-Mathematical-Olympiads-Problem/dp/0883858398">Euclidean Geometry in Mathematical Olympiad</a> and made me more interest to geometry. </p>
 
-<p align="justify"> In 2023 I became jury's assistant in the Olimpiade Sains Nasional (OSN), the most prestigious science olympiad in Indonesia. This event is held by the <a href = "https://www.instagram.com/puspresnas/">Pusat Prestasi Nasional</a> every year. In addition, I also became a teaching assistant in preparation for the 2024 International Mathematical Olympiad (IMO), the most prestigious mathematical olympiad in the world. </p>
+<p align="justify"> In 2023 and 2024 I became jury's assistant in the Olimpiade Sains Nasional (OSN), the most prestigious science olympiad in Indonesia. This event is held by the <a href = "https://www.instagram.com/puspresnas/">Pusat Prestasi Nasional</a> every year. In addition, I also became a teaching assistant in preparation for the 2024 International Mathematical Olympiad (IMO), the most prestigious mathematical olympiad in the world. </p>
 ![OSN 2023, Bogor](/images/IMG_2165.JPG){: .align-center width="1000px"}
 
 <p align="justify"> I also became a gold medalist at Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam Perguruan Tinggi (ONMIPA-PT) 2023, a mathematical olympiad for undergraduate students, held by the Pusat Prestasi Nasional. </p>
