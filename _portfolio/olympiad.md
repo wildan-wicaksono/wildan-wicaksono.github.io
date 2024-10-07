@@ -1,5 +1,6 @@
 ---
 title: "Olympiad Reading Material"
+date: 2024-07-05
 excerpt: 
 collection: portfolio
 ---
