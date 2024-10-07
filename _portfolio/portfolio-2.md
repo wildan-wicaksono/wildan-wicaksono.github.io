@@ -1,5 +1,6 @@
 ---
 title: "Contest Collections"
+date: 2024-07-04
 excerpt: 
 collection: portfolio
 ---
