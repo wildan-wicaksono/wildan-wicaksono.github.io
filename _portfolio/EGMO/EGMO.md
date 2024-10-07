@@ -1,5 +1,6 @@
 ---
 title: "Euclidean Geometry in Mathematical Olympiad by Evan Chen"
+date: 2024-07-04
 excerpt: 
 collection: portfolio
 ---
