@@ -18,7 +18,7 @@ collection: olympiad-exam
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukhus_UTS2024.pdf' target="_blank">2024</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukhus_UAS2024' target="_blank">2024</a>
   * <b>Analisis Kompleks I (Complex Analysis I)</b>
-      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukom1_UTS2023' target="_blank">2023</a>
+      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukom1_UTS2023.pdf' target="_blank">2023</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukom1_UAS2023.pdf' target="_blank">2023</a>
   * <b>Analisis Kompleks II (Complex Analysis II)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukom2_UTS2024.pdf' target="_blank">2024</a>
