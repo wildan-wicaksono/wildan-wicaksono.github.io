@@ -14,7 +14,9 @@ collection: olympiad-exam
   * <b>Analisis Real I (Real Analysis I)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UTS2017.pdf' target="_blank">2017</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UTS2022.pdf' target="_blank">2022</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UTS2023.pdf' target="_blank">2023</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UTS2024.pdf' target="_blank">2024</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UAS2023.pdf' target="_blank">2023</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril1_UAS2024.pdf' target="_blank">2024</a>
-  * <b>Fungsi Khusus (Special Functions)</b>
+  * <b>Analisis Real II (Real Analysis II)</b> 
+      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Anril2_UTS2024.pdf' target="_blank">2024</a>
+  *  <b>Fungsi Khusus (Special Functions)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukhus_UTS2024.pdf' target="_blank">2024</a>
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Fukhus_UAS2024.pdf' target="_blank">2024</a>
   * <b>Analisis Kompleks I (Complex Analysis I)</b>
