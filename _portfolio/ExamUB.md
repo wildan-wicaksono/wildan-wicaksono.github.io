@@ -37,7 +37,7 @@ collection: olympiad-exam
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus2_UAS2023.pdf' target="_blank">2023</a>
   * <b>Kalkulus III (Calculus III)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus3_UTS2023.pdf' target="_blank">2023</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus3_UTS2024.pdf' target="_blank">2024</a>
-      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus3_UAS2023.pdf' target="_blank">2023</a>
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus3_UAS2023.pdf' target="_blank">2023</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalkulus3_UAS2024.pdf' target="_blank">2024</a>
   * <b>Kalkulus Variasi (Calculus Variation)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/Kalvar_UTS2024.pdf' target="_blank">2024</a>
   * <b>Kombinatorika (Combinatoric)</b>
