@@ -68,6 +68,9 @@ collection: olympiad-exam
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/TGH_UAS2023.pdf' target="_blank">2023</a>
   *  <b>Teori Grup Fuzzy (Fuzzy Group Theory)</b>
       * Midterm.  <a href='http://wildan-wicaksono.github.io/files/ExamUB/TGF_UTS2024.pdf' target="_blank">2024</a>
+  *  <b>Teori Ukuran (Measure Theory) </b>
+      * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/TeoriUkur_UTS2024.pdf' target="_blank">2024</a>
+      * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/TeoriUkur_UAS2024.pdf' target="_blank">2024</a>
   *  <b>Struktur Aljabar I (Abstract Algebra I)</b>
       * Midterm. <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UTS2022.pdf' target="_blank">2022</a>  <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UTS2023.pdf' target="_blank">2023</a> 
       * Final. <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UAS2022.pdf' target="_blank">2022</a> <a href='http://wildan-wicaksono.github.io/files/ExamUB/SA1_UAS2023.pdf' target="_blank">2023</a>
