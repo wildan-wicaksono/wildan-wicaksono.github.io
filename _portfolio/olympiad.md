@@ -2,7 +2,7 @@
 title: "Olympiad Reading Material"
 date: 2024-07-05
 excerpt: 
-collection: portfolio
+collection: olympiad-exam
 ---
 
 <p align="justify"> These handouts are intended for senior high school olympiads and will be updated if necessary.  If you're on mobile and it cannot be downloaded, then use a browser other than Chrome. If that still doesn't work, use a laptop or PC.</p>
