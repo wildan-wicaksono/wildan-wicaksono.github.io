@@ -8,6 +8,7 @@ collection: portfolio
 <p align="justify">Contains problems and solutions from several contests. Provided <b>bahasa</b> only. If you're on mobile and it cannot be downloaded, then use a browser other than Chrome. If that still doesn't work, use a laptop or PC.</p>
 
 * <b>OSK/OSP/OSN (With Solution)</b>
+
 This collection contains a selection of problems from the Indonesian Mathematics Olympiad series, including OSK (district), OSP (provincial), and OSN (national) rounds.
   * <b>Junior</b>
       * <i>OSN</i>. <a href='http://wildan-wicaksono.github.io/files/Kompetisi Sains Nasional 2020 - SMP MTs.pdf' target="_blank">2020</a>
