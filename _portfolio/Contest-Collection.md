@@ -22,11 +22,13 @@ This collection contains a selection of problems from the Indonesian Mathematics
 A collection of mathematics competitions hosted by various university organizations in Indonesia.
 
    * <i>Pekan Matematika Nasional</i>, organized by HIMATIKA Universitas Brawijaya.
-      * Preliminaries. <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Prelim-Primary.pdf' target="_blank">Primary 2023</a> <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Prelim-Junior.pdf' target="_blank">Junior 2023</a> <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Prelim-Senior.pdf' target="_blank">Senior 2023</a>
-      * Semifinal.
+      * Preliminaries. <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Prelim-Primary.pdf' target="_blank">Primary 2023</a> <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Prelim-Junior.pdf' target="_blank">Junior 2023</a> <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Prelim-Senior.pdf' target="_blank">Senior 2023</a <a href='http://wildan-wicaksono.github.io/files/2024-PEMNAS-Prelim-Primary.pdf' target="_blank">Primary 2024</a> <a href='http://wildan-wicaksono.github.io/files/2024-PEMNAS-Prelim-Junior.pdf' target="_blank">Junior 2024</a> <a href='http://wildan-wicaksono.github.io/files/2024-PEMNAS-Prelim-Senior.pdf' target="_blank">Senior 2024</a>
+      * Semifinal. <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Semifinal-Primary.pdf' target="_blank">Primary 2023</a> <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Semifinal-Junior.pdf' target="_blank">Junior 2023</a> <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Semifinal-Senior.pdf' target="_blank">Senior 2023</a>
+        
    * <i>MIC Logika UI (with solution)</i>, organized by HIMATIKA Universitas Indonesia.
       * Semifinal. <a href='http://wildan-wicaksono.github.io/files/MIC 2022_Semifinal Round Logika UI.pdf' target="_blank">2022</a> 
       * Final. <a href='http://wildan-wicaksono.github.io/files/MIC 2022_Final Round Logika UI.pdf' target="_blank">2022</a>
+      
    *  <i>UNDIP's Mathematics Competition (with solution)<i/>, organized by HIMATIKA Universitas Diponegoro.
       * Final. <a href='http://wildan-wicaksono.github.io/files/Final Round_UNDIP 2022.pdf' target="_blank">2022</a>
       
