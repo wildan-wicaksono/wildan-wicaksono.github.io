@@ -28,7 +28,9 @@ Mathematics IP 4.0 (2022-now)
 ======
 <p align="justify"> This program was held by HIMATIKA Universitas Brawijaya to prepare the midterm and final exam. This preparation program is intended for mathematics and actuarial students. What I did usually discuss the previous exam with a little repetition of the material. All this time, I have been teaching the following courses: </p>
 *  <b>(2022, final).</b> Logic and sets.
-*  <b>(2023, midterm).</b> Calculus I.
+*  <b>(2023, midterm).</b> 
+    *  Calculus I.
+    *  Partial Differential Equations.
 *  <b>(2023, final).</b>
     *  Calculus I.
     *  Basic Mathematics I (Calculus I for actuarial).
@@ -36,7 +38,15 @@ Mathematics IP 4.0 (2022-now)
 *  <b>(2024, midterm)</b>.
     *  Calculus II.
     *  Basic Mathematics II (Calculus II for actuarial students).
+    *  Partial Differential Equations.
 *  <b>(2024, final).</b>
     *  Calculus II.
     *  Basic Mathematics II (Calculus II for actuarial students).
+    *  Real Analysis II.
+    *  Partial Differential Equations.
+*  <b>(2025, midterm).</b>
+    *  Real Analysis I.
+*  <b>(2025, final).</b>
+    *  Real Analysis I.
+    *  Real Analysis II.
 
