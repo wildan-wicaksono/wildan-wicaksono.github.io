@@ -8,7 +8,7 @@ date: 2023-11-04
 location: "Malang, Indonesia"
 ---
 
-<p align="justify"> From September - November 2023, I became an assistant lecturer of Calculus I. I also became a peer tutor for the preparation for the midterm and final exam from 2022 until now.</p>
+<p align="justify"> I have served as a Lecturer’s Assistant and Peer Tutor for undergraduate mathematics courses, including Calculus and Abstract Algebra, providing academic support through supplementary problem-solving sessions and guided discussions to strengthen students’ conceptual understanding.</p>
 
 Calculus I Lecturer's Assistant (2023)
 ======
