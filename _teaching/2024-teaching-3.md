@@ -1,5 +1,5 @@
 ---
-title: "Teaching Assistant Preparation to International Mathematical Olympiad 2024"
+title: "International Mathematical Olympiad Instructor (2024-Present)"
 collection: teaching
 type: "Teaching"
 permalink: /teaching/IMO-2024-preparation
@@ -8,7 +8,27 @@ date: 2024-03-02
 location: "Indonesia"
 ---
 
-<p align="justify">I became a teaching assistant in preparation for the International Mathematical Olympiad (IMO) 2024 (first stage). I teach about geometry: directed angle, Ceva Menelaus, and two other sessions are solving 10 problems (if they need a hint I will give it to them).</p>
+<p align="justify">I have been serving as a geometry instructor for the International Mathematical Olympiad (IMO) training program since 2024. I was specifically appointed to teach advanced geometry topics in an online format.</p>
 
-<p align="justify">The training is conducted online via Zoom meeting. I have been scheduled for 4 sessions to teach geometry, especially Euclidean geometry. Two sessions I used by explaining about directed angle and Ceva Menelaus, followed by exercise. Two other sessions are focused on them to solve 10 problems which are given by me. </p>
 ![Stage 1 Preparation to IMO 2024, Problem Solving Session](/images/Cuplikan layar 2024-03-03 201832.png){: .align-center width="500px"}
+
+**2024**
+
+Conducted four instructional sessions covering:
+* Directed Angles.
+* Ceva and Menelaus Theorems.
+The first two sessions focused on comprehensive theoretical explanations followed by guided practice problems. The remaining two sessions were dedicated to problem-solving, where students worked through a set of ten selected geometry problems designed to strengthen their Olympiad-level reasoning.
+
+**2025**
+
+Conducted two advanced sessions on:
+* Inversion.
+* Complex Coordinates.
+These sessions emphasized deeper theoretical development followed by challenging exercises within the remaining time. In addition, I served as a problem grader for several selection tests during the national training camp, contributing to the evaluation process for determining the country’s IMO delegation.
+
+**2026**
+
+Invited to teach at Stage II National Training Camp, delivering sessions on:
+* Inversion.
+* Projective Geometry.
+All sessions were devoted to structured explanations of these extensive topics, followed by advanced problem-solving exercises.
