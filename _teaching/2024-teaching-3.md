@@ -4,7 +4,7 @@ collection: teaching
 type: "Teaching"
 permalink: /teaching/IMO-2024-preparation
 venue: "Online"
-date: 2024-03-02
+date: 2026-02-19
 location: "Indonesia"
 ---
 
