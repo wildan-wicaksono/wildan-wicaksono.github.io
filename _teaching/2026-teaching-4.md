@@ -19,3 +19,4 @@ location: "Indonesia"
 * SMA Darma Yudha
 * SMA Pradita Dirgantara
 * SMAN 1 Sumenep
+* SMA Unggulan RUSHD
