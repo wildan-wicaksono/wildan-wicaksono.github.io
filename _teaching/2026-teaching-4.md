@@ -3,7 +3,7 @@ title: "Teaching Mathematics Olympiad at School"
 collection: teaching
 type: "Teaching"
 permalink: /teaching/teach-at-school
-venue: "Online"
+venue: "On-site"
 date: 2026-02-19
 location: "Indonesia"
 ---
