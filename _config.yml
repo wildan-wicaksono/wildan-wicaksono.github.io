@@ -21,10 +21,10 @@ repository               : "wildan-wicaksono.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Wildan Bagus Wicaksono_Matematika.jpg"
+  avatar           : "images/547956615_2615988232109985_8577676482135687179_n.jpg"
   name             : "Wildan Bagus Wicaksono"
   pronouns         : # example: "she/her"  
-  bio              : "Interest at mathematics, especially algebra, analysis, and euclidean geometry."
+  bio              : "Interest at number theory and euclidean geometry."
   location         : "East Java, Indonesia"
   employer         : "Universitas Brawijaya"
   uri              : # URL
@@ -57,7 +57,7 @@ author:
   keybase          : # Us
   instagram        : "wildan.wicaksono_32"
   lastfm           : # Username
-  linkedin         : "wildan-bagus-wicaksono-47116923a"
+  linkedin         : # "wildan-bagus-wicaksono-47116923a"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
