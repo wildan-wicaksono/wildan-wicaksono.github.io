@@ -1,5 +1,5 @@
 ---
-title: "International Mathematical Olympiad Instructor (2024-Present)"
+title: "International Mathematical Olympiad Instructor"
 collection: teaching
 type: "Teaching"
 permalink: /teaching/IMO-2024-preparation
