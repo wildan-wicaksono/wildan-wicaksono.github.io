@@ -6,7 +6,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
-<p align="justify"> I am <b>Wildan</b> (some call me Bagus), a third-year undergraduate math student at Universitas Brawijaya, East Java, <b>Indonesia</b>. I'm from Probolinggo, East Java, Indonesia.</p>
+<p align="justify"> I am <b>Wildan</b> (some call me Bagus), a fourth-year undergraduate math student at Universitas Brawijaya, East Java, <b>Indonesia</b>. I'm from Probolinggo, East Java, Indonesia.</p>
 ![It's me!](/images/354450554_1948210505554431_5233527299125040551_n.jpg){: .align-center width="500px"}
 <p align="justify"> In general, I am interested in algebra, especially abstract algebra; analysis, especially real analysis and complex analysis. On the mathematics olympiad (for senior high school) interested in geometry, especially Euclidean geometry. </p>
 
