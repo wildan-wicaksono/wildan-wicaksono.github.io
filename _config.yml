@@ -21,7 +21,7 @@ repository               : "wildan-wicaksono.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : #"images/547956615_2615988232109985_8577676482135687179_n.jpg"
+  avatar           : "547956615_2615988232109985_8577676482135687179_n.jpg"
   name             : "Wildan Bagus Wicaksono"
   pronouns         : # example: "she/her"  
   bio              : "Interest at number theory and euclidean geometry."
