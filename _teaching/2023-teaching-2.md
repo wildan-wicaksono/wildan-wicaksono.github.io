@@ -55,13 +55,12 @@ Mathematics IP 4.0 (2022-now)
     *  Basic Mathematics II (Calculus II for actuarial students).
     *  Partial Differential Equations.
 *  <b>(2024, final).</b>
-    *  Calculus II.
+    *  Calculus III. <a href='http://wildan-wicaksono.github.io/files/MIP/2024 UAS Kalkulus III.pdf' target="_blank">Material</a>
     *  Basic Mathematics II (Calculus II for actuarial students).
     *  Real Analysis II.
-    *  Partial Differential Equations.
+    *  Partial Differential Equations for Acturial Students. <a href='http://wildan-wicaksono.github.io/files/MIP/2024 UAS PPD.pdf' target="_blank">Material</a>
 *  <b>(2025, midterm).</b>
-    *  Real Analysis I.
+    *  Real Analysis I. <a href='http://wildan-wicaksono.github.io/files/MIP/2025 UTS - Analisis Real I.pdf' target="_blank">Material</a>
 *  <b>(2025, final).</b>
-    *  Real Analysis I.
-    *  Real Analysis II.
+    *  Real Analysis II. <a href='http://wildan-wicaksono.github.io/files/MIP/2025 UAS - Analisis Real.pdf' target="_blank">Material</a>
 
