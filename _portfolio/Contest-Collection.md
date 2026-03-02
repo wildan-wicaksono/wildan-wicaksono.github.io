@@ -32,12 +32,11 @@ A collection of mathematics competitions hosted by various university organizati
      * Preliminaries. <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Prelim-Senior.pdf' target="_blank">2023</a> <a href='http://wildan-wicaksono.github.io/files/2024-PEMNAS-Prelim-Senior.pdf' target="_blank">2024</a> <a href='http://wildan-wicaksono.github.io/files/2025-PEMNAS-Prelim-Senior.pdf' target="_blank">2025</a>
      * Semifinal. <a href='http://wildan-wicaksono.github.io/files/2023-PEMNAS-Semifinal-Senior.pdf' target="_blank">2023</a>  <a href='http://wildan-wicaksono.github.io/files/2024-PEMNAS-Semifinal-Senior.pdf' target="_blank">2024</a> <a href='http://wildan-wicaksono.github.io/files/2025-PEMNAS-Semifinal-Senior.pdf' target="_blank">2025</a>
 
-        
-   * <i>MIC Logika UI (with solution)</i>, organized by HIMATIKA Universitas Indonesia.
+<b>MIC Logika UI (with solution)</b>, organized by HIMATIKA Universitas Indonesia.
       * Semifinal. <a href='http://wildan-wicaksono.github.io/files/MIC 2022_Semifinal Round Logika UI.pdf' target="_blank">2022</a> 
       * Final. <a href='http://wildan-wicaksono.github.io/files/MIC 2022_Final Round Logika UI.pdf' target="_blank">2022</a>
       
-   *  <i>UNDIP's Mathematics Competition (with solution)<i/>, organized by HIMATIKA Universitas Diponegoro.
+<b>UNDIP's Mathematics Competition (with solution)<b/>, organized by HIMATIKA Universitas Diponegoro.
       * Final. <a href='http://wildan-wicaksono.github.io/files/Final Round_UNDIP 2022.pdf' target="_blank">2022</a>
       
 ### <b>Other Contests (With Solution)</b>
