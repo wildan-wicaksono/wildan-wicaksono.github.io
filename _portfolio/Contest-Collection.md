@@ -15,7 +15,7 @@ This collection contains a selection of problems from the Indonesian Mathematics
   * <b> Senior </b>
        * <i>OSN<i/>. <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Pertama.pdf' target="_blank">2021 D1</a> <a href='http://wildan-wicaksono.github.io/files/KSN 2021 Hari Kedua.pdf' target="_blank">2021 D2</a> <a href='http://wildan-wicaksono.github.io/files/Soal dan Solusi OSN SMA 2022 Hari Pertama.pdf' target="_blank">2022 D1</a> <a href='http://wildan-wicaksono.github.io/files/Soal dan Solusi OSN SMA 2022 Hari Kedua.pdf' target="_blank">2022 D2</a>
        * <i>OSP</i>.  <a href='http://wildan-wicaksono.github.io/files/OSP SMA 2024.pdf' target="_blank">2024</a> <a href='http://wildan-wicaksono.github.io/files/OSP SMA 2025.pdf' target="_blank">2025</a>
-       * <i>OSK</i>.  <a href='http://wildan-wicaksono.github.io/files/Soal dan Pembahasan OSK 2022.pdf' target="_blank">2022</a> <a href='http://wildan-wicaksono.github.io/files/OSK SMA 2023.pdf' target="_blank">2023</a> <a href='http://wildan-wicaksono.github.io/files/OSK SMA 2024.pdf' target="_blank">2024</a> <a href='http://wildan-wicaksono.github.io/files/OSK SMA 2025.pdf' target="_blank">2025</a> 
+       * <i>OSK</i>.  <a href='http://wildan-wicaksono.github.io/files/Soal dan Pembahasan OSK 2022.pdf' target="_blank">2022</a> <a href='http://wildan-wicaksono.github.io/files/OSK SMA 2023.pdf' target="_blank">2023</a> <a href='http://wildan-wicaksono.github.io/files/OSK SMA 2024.pdf' target="_blank">2024</a> <a href='http://wildan-wicaksono.github.io/files/OSK SMA 2025.pdf' target="_blank">2025</a> <a href='http://wildan-wicaksono.github.io/files/OSK SMA 2026.pdf' target="_blank">2026</a> 
 
 ### <b>College Hosted</b>
 
