@@ -430,7 +430,7 @@ header:
   }
 
   .book-form-note {
-    margin: 0.75rem 0 0;
+    margin: 1.25rem 0 0 !important;
     color: var(--book-muted);
     font-size: 0.78rem;
     line-height: 1.55;
@@ -787,7 +787,7 @@ header:
       <div><dt>Subjudul</dt><dd>Basic Level</dd></div>
       <div><dt>Penulis</dt><dd>Wildan Bagus Wicaksono</dd></div>
       <div><dt>Edisi</dt><dd>Pertama, 2026</dd></div>
-      <div><dt>Penyunting akhir</dt><dd>Abdul Muâ€™in, S.Pd., M.Si.</dd></div>
+      <div><dt>Penyunting akhir</dt><dd>Abdul Mu&rsquo;in, S.Pd., M.Si.</dd></div>
       <div><dt>Desain sampul</dt><dd>Hendra Ahmad Hardiyana, S.Pd.</dd></div>
       <div><dt>Bahasa</dt><dd>Indonesia</dd></div>
       <div><dt>Status</dt><dd>Siap cetak</dd></div>
