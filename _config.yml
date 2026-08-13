@@ -209,7 +209,7 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
-  olympiad-exam:
+  projects:
     output: true
     permalink: /:collection/:path/
   talks:
