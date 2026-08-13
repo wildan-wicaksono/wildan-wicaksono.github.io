@@ -974,7 +974,6 @@ header:
         <span class="book-button book-button--disabled" aria-disabled="true">Formulir segera tersedia</span>
       {% endif %}
     </div>
-    <p class="book-form-note">Setelah formulir dikirim, tautan akses bab gratis akan ditampilkan. Data yang diberikan membantu kami mengenal profil pembaca. Persetujuan untuk menerima kabar buku atau informasi promosi bersifat opsional.</p>
     <p class="book-note">Sampel bab dapat memiliki perbedaan kecil dengan edisi cetak final.</p>
     <p class="book-usage"><strong>Ketentuan penggunaan.</strong> Buku dapat digunakan sebagai bahan mengajar dan boleh diperbanyak, namun dilarang untuk diperjualbelikan.</p>
   </section>
