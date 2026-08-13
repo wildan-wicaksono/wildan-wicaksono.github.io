@@ -5,6 +5,9 @@ collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
 # Tautan formulir untuk akses Bab 1 dan Bab 6.
 free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
+author_profile: false
+share: false
+comments: false
 header:
   teaser: /images/the-art-of-olympiad-geometry-cover.png
 ---
