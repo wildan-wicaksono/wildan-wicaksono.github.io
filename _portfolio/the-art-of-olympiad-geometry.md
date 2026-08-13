@@ -5,11 +5,10 @@ collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
 # Tautan formulir untuk akses Bab 1 dan Bab 6.
 free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
-# Ubah menjadi true atau hapus baris ini saat halaman siap diterbitkan.
 published: true
 author_profile: true
 share: false
-comments: true
+comments: false
 header:
   teaser: /images/the-art-of-olympiad-geometry-cover.png
 ---
@@ -902,7 +901,7 @@ header:
   <section class="book-section book-problems" id="sampel-soal">
     <span class="book-section-label">Coba kemampuanmu</span>
     <h2>Sampel soal di luar bab gratis</h2>
-    <p class="book-lead">Ketujuh soal berikut diambil dari bagian buku di luar Bab 1 dan Bab 6 yang tersedia sebagai bab gratis. Sampel ini memberikan gambaran tentang variasi soal isian singkat dan pendekatan yang dibahas dalam buku.</p>
+    <p class="book-lead">Ketujuh soal berikut diambil dari bagian buku di luar Bab 1 dan Bab 6 yang tersedia sebagai bab gratis. Soal-soal tersebut berasal dari berbagai kompetisi, sedangkan beberapa lainnya merupakan kreasi penulis. Sampel ini memberikan gambaran tentang variasi soal isian singkat dan pendekatan yang dibahas dalam buku.</p>
     <div class="book-problem-list">
       <details class="book-problem">
         <summary><span class="book-problem-number">1</span><span>Segitiga dan lingkaran dalam</span></summary>
