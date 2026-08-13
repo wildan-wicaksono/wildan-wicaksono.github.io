@@ -5,8 +5,6 @@ collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
 # Tautan formulir untuk akses Bab 1 dan Bab 6.
 free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
-# Ubah menjadi true atau hapus baris ini saat halaman siap diterbitkan.
-published: true
 author_profile: true
 share: false
 comments: false
@@ -289,12 +287,12 @@ header:
   .book-chapter[open] > summary::after { content: "\2212"; }
 
   .book-toc-content {
-    padding: 0 1.2rem 1.2rem;
+    padding: 1.25rem 1.2rem 1.2rem;
     border-top: 1px solid var(--book-line);
   }
 
   .book-toc-note {
-    margin: 1rem 0;
+    margin: 0 0 1.25rem !important;
     color: var(--book-muted);
     font-size: 0.82rem;
   }
@@ -462,6 +460,10 @@ header:
   .book-errata-format p { margin: 0 0 0.65rem; }
   .book-errata-format ul { margin: 0; }
   .book-errata-format code { color: var(--book-navy); }
+
+  .book-errata .book-actions + .book-note {
+    margin-top: 1.25rem !important;
+  }
 
   .book-info {
     display: grid;
