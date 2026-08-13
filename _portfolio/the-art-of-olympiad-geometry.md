@@ -286,7 +286,7 @@ header:
   }
 
   .book-toc-disclosure[open] > summary::after,
-  .book-chapter[open] > summary::after { content: "âˆ’"; }
+  .book-chapter[open] > summary::after { content: "\2212"; }
 
   .book-toc-content {
     padding: 0 1.2rem 1.2rem;
@@ -370,7 +370,7 @@ header:
   }
 
   .book-feature::before {
-    content: "âœ“";
+    content: "\2713";
     position: absolute;
     left: 1rem;
     color: #007e8e;
