@@ -5,9 +5,11 @@ collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
 # Tautan formulir untuk akses Bab 1 dan Bab 6.
 free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
+# Ubah menjadi true atau hapus baris ini saat halaman siap diterbitkan.
+published: true
 author_profile: true
 share: false
-comments: false
+comments: true
 header:
   teaser: /images/the-art-of-olympiad-geometry-cover.png
 ---
@@ -253,6 +255,53 @@ header:
 
   .book-card li + li { margin-top: 0.35rem; }
 
+  .book-chapter-stats-heading {
+    margin: 1.75rem 0 0.85rem;
+    color: var(--book-navy);
+    font-size: 1rem;
+  }
+
+  .book-chapter-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .book-chapter-stat {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.25rem 0.75rem;
+    align-items: baseline;
+    padding: 0.85rem 1rem;
+    background: #f5fafc;
+    border: 1px solid var(--book-line);
+    border-radius: 9px;
+  }
+
+  .book-chapter-stat strong {
+    color: var(--book-navy);
+    font-size: 0.86rem;
+  }
+
+  .book-chapter-stat span {
+    color: #008da0;
+    font-size: 0.82rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .book-chapter-stat small {
+    grid-column: 1 / -1;
+    color: var(--book-muted);
+    font-size: 0.72rem;
+  }
+
+  .book-chapter-stats-note {
+    margin: 0.75rem 0 0 !important;
+    color: var(--book-muted);
+    font-size: 0.76rem;
+  }
+
   .book-toc-disclosure {
     margin-top: 1rem;
     background: #f5fafc;
@@ -373,6 +422,85 @@ header:
     left: 1rem;
     color: #007e8e;
     font-weight: 900;
+  }
+
+  .book-problems {
+    padding: clamp(1.3rem, 4vw, 2.2rem);
+    background: #fff;
+    border: 1px solid var(--book-line);
+    border-radius: 14px;
+  }
+
+  .book-problem-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
+  }
+
+  .book-problem {
+    background: #f5fafc;
+    border: 1px solid var(--book-line);
+    border-radius: 9px;
+    overflow: hidden;
+  }
+
+  .book-problem > summary {
+    position: relative;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.9rem 3rem 0.9rem 1rem;
+    color: var(--book-navy);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1.45;
+    list-style: none;
+  }
+
+  .book-problem > summary::-webkit-details-marker { display: none; }
+
+  .book-problem > summary::after {
+    content: "+";
+    position: absolute;
+    right: 1rem;
+    color: #008da0;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .book-problem[open] > summary::after { content: "\2212"; }
+
+  .book-problem-number {
+    display: inline-grid;
+    flex: 0 0 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    place-items: center;
+    color: var(--book-navy);
+    background: var(--book-cyan);
+    border-radius: 50%;
+    font-size: 0.78rem;
+  }
+
+  .book-problem-body {
+    padding: 1rem 1.15rem 1.15rem;
+    border-top: 1px solid var(--book-line);
+  }
+
+  .book-problem-body p {
+    margin: 0;
+    color: #435668;
+    line-height: 1.75;
+  }
+
+  .book-problem-body p + p { margin-top: 0.8rem; }
+
+  .book-problem-equation {
+    overflow-x: auto;
+    padding: 0.2rem 0;
+    color: var(--book-navy);
+    text-align: center;
   }
 
   .book-samples {
@@ -525,6 +653,7 @@ header:
     .book-cover { max-width: 250px; }
     .book-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .book-grid { grid-template-columns: 1fr; }
+    .book-chapter-stats { grid-template-columns: 1fr; }
     .book-chapter-list { grid-template-columns: 1fr; }
     .book-features { grid-template-columns: 1fr; }
     .book-sample-list { grid-template-columns: 1fr; }
@@ -619,6 +748,20 @@ header:
         </ul>
       </article>
     </div>
+
+    <h3 class="book-chapter-stats-heading">Jumlah halaman tiap bab</h3>
+    <div class="book-chapter-stats" aria-label="Jumlah halaman tiap bab">
+      <div class="book-chapter-stat"><strong>Bab 1</strong><span>26 halaman</span><small>Halaman 3-28</small></div>
+      <div class="book-chapter-stat"><strong>Bab 2</strong><span>38 halaman</span><small>Halaman 29-66</small></div>
+      <div class="book-chapter-stat"><strong>Bab 3</strong><span>30 halaman</span><small>Halaman 67-96</small></div>
+      <div class="book-chapter-stat"><strong>Bab 4</strong><span>36 halaman</span><small>Halaman 97-132</small></div>
+      <div class="book-chapter-stat"><strong>Bab 5</strong><span>42 halaman</span><small>Halaman 133-174</small></div>
+      <div class="book-chapter-stat"><strong>Bab 6</strong><span>34 halaman</span><small>Halaman 177-210</small></div>
+      <div class="book-chapter-stat"><strong>Bab 7</strong><span>42 halaman</span><small>Halaman 211-252</small></div>
+      <div class="book-chapter-stat"><strong>Bab 8</strong><span>48 halaman</span><small>Halaman 253-300</small></div>
+      <div class="book-chapter-stat"><strong>Bab 9</strong><span>48 halaman</span><small>Halaman 301-348</small></div>
+    </div>
+    <p class="book-chapter-stats-note">Rentang mengikuti penomoran halaman pada edisi pertama. Halaman pembuka bagian tidak dihitung sebagai halaman bab.</p>
 
     <details class="book-toc-disclosure">
       <summary>Lihat daftar subbab lengkap</summary>
@@ -739,6 +882,7 @@ header:
   <section class="book-section">
     <span class="book-section-label">Untuk pembaca</span>
     <h2>Siapa yang dapat menggunakan buku ini?</h2>
+    <p class="book-lead">Buku ini ditujukan bagi siswa yang ingin mempelajari cara menghadapi soal-soal isian singkat pada level OSK SMP hingga OSP SMA.</p>
     <div class="book-grid">
       <article class="book-card">
         <h3>Pelajar SMP dan SMA</h3>
@@ -753,6 +897,61 @@ header:
         <p>Pendamping belajar yang mencari bahan penjelasan, contoh, latihan, dan soal untuk pembinaan.</p>
       </article>
     </div>
+  </section>
+
+  <section class="book-section book-problems" id="sampel-soal">
+    <span class="book-section-label">Coba kemampuanmu</span>
+    <h2>Sampel soal di luar bab gratis</h2>
+    <p class="book-lead">Ketujuh soal berikut diambil dari bagian buku di luar Bab 1 dan Bab 6 yang tersedia sebagai bab gratis. Sampel ini memberikan gambaran tentang variasi soal isian singkat dan pendekatan yang dibahas dalam buku.</p>
+    <div class="book-problem-list">
+      <details class="book-problem">
+        <summary><span class="book-problem-number">1</span><span>Segitiga dan lingkaran dalam</span></summary>
+        <div class="book-problem-body">
+          <p>Diberikan \(\triangle ABC\) dengan \(AB=99\), \(BC=100\), dan \(CA=101\). \(D\) adalah titik pada \(\overline{BC}\). Jika lingkaran dalam \(\triangle ABD\) dan \(\triangle ACD\) menyinggung \(AD\) di satu titik \(E\), tentukan \(AE-ED\).</p>
+        </div>
+      </details>
+      <details class="book-problem">
+        <summary><span class="book-problem-number">2</span><span>India PRMO 2018</span></summary>
+        <div class="book-problem-body">
+          <p>Diberikan segitiga \(ABC\) dan \(DEF\) yang memenuhi</p>
+          <div class="book-problem-equation">\[\angle A=\angle D,\quad AB=DE=17,\quad BC=EF=10,\quad AC-DF=12.\]</div>
+          <p>Tentukan \(AC+DF\).</p>
+        </div>
+      </details>
+      <details class="book-problem">
+        <summary><span class="book-problem-number">3</span><span>Setengah lingkaran dan rasio panjang</span></summary>
+        <div class="book-problem-body">
+          <p>Diberikan setengah lingkaran berdiameter \(\overline{AP}\). Titik \(B\) dan \(C\) terletak pada busur \(AP\) dalam urutan \(A\), \(B\), \(C\), \(P\), sedangkan \(M\) terletak pada \(\overline{AP}\) dan memenuhi \(CM\perp AP\) serta \(\angle MCB=\angle CBA=2\angle BAM\). Tentukan rasio \(\frac{AB}{CM}\).</p>
+        </div>
+      </details>
+      <details class="book-problem">
+        <summary><span class="book-problem-number">4</span><span>PEMNAS SMA 2024</span></summary>
+        <div class="book-problem-body">
+          <p>Diberikan segitiga \(ABC\) dan titik \(M\) terletak pada \(\overline{AC}\). Titik \(N\) merupakan bayangan pencerminan titik \(M\) terhadap garis \(BC\), dan \(AN\) memotong \(\overline{BC}\) di \(O\). Selain itu, \(A\), \(B\), \(M\), dan \(O\) terletak pada lingkaran yang sama. Jika \(\angle ABN=56^\circ\), tentukan besar \(\angle CMN\).</p>
+        </div>
+      </details>
+      <details class="book-problem">
+        <summary><span class="book-problem-number">5</span><span>Turkey 2012</span></summary>
+        <div class="book-problem-body">
+          <p>Titik \(D\) terletak di dalam segitiga \(ABC\) dan memenuhi</p>
+          <div class="book-problem-equation">\[\angle BAD=20^\circ,\quad \angle DAC=80^\circ,\quad \angle ACD=20^\circ,\quad \angle DCB=20^\circ.\]</div>
+          <p>Tentukan besar \(\angle ABD\).</p>
+        </div>
+      </details>
+      <details class="book-problem">
+        <summary><span class="book-problem-number">6</span><span>AMC 12 2020</span></summary>
+        <div class="book-problem-body">
+          <p>Segiempat \(ABCD\) memenuhi \(\angle ABC=\angle ACD=90^\circ\). Diagonal \(\overline{AC}\) dan \(\overline{BD}\) berpotongan di \(E\). Jika \(AC=20\), \(CD=30\), dan \(AE=5\), tentukan luas segiempat \(ABCD\).</p>
+        </div>
+      </details>
+      <details class="book-problem">
+        <summary><span class="book-problem-number">7</span><span>Titik tinggi segitiga lancip</span></summary>
+        <div class="book-problem-body">
+          <p>Misalkan \(H\) titik tinggi dari suatu segitiga lancip \(ABC\). Jika \(AH=2\), \(BH=12\), dan \(CH=9\), tentukan luas segitiga \(ABC\).</p>
+        </div>
+      </details>
+    </div>
+    <p class="book-note">Sampel ditampilkan tanpa petunjuk dan solusi.</p>
   </section>
 
   <section class="book-section book-samples" id="bab-gratis">
@@ -799,9 +998,9 @@ header:
   <section class="book-section book-errata" id="errata">
     <span class="book-section-label">Koreksi pembaca</span>
     <h2>Koreksi dan Errata</h2>
-    <p class="book-lead">Walaupun buku ini telah melalui proses pemeriksaan, kekeliruan mungkin masih ditemukan. Jika menemukan kesalahan ketik, diagram, pernyataan, petunjuk, atau solusi, pembaca dapat mengirimkan laporan ke <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA%20TAOG%5D%20Bab%20...%20-%20Halaman%20...&amp;body=Jenis%20koreksi%3A%0ABab%3A%0AHalaman%3A%0ATeks%20atau%20bagian%20yang%20perlu%20dikoreksi%3A%0AUsulan%20perbaikan%3A%0APenjelasan%3A" target="_blank" rel="noopener noreferrer">wildan.b.wicaksono@gmail.com</a>.</p>
+    <p class="book-lead">Walaupun buku ini telah melalui proses pemeriksaan, kekeliruan mungkin masih ditemukan. Jika menemukan kesalahan ketik, diagram, pernyataan, petunjuk, atau solusi, pembaca dapat mengirimkan laporan ke <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA%20AOG%5D%20Bab%20...%20-%20Halaman%20...&amp;body=Jenis%20koreksi%3A%0ABab%3A%0AHalaman%3A%0ATeks%20atau%20bagian%20yang%20perlu%20dikoreksi%3A%0AUsulan%20perbaikan%3A%0APenjelasan%3A" target="_blank" rel="noopener noreferrer">wildan.b.wicaksono@gmail.com</a>.</p>
     <div class="book-errata-format">
-      <p><strong>Subjek email:</strong> <code>[ERRATA TAOG] Bab ... - Halaman ...</code></p>
+      <p><strong>Subjek email:</strong> <code>[ERRATA AOG] Bab ... - Halaman ...</code></p>
       <p><strong>Mohon sertakan:</strong></p>
       <ul>
         <li>Jenis koreksi</li>
@@ -812,7 +1011,7 @@ header:
       </ul>
     </div>
     <div class="book-actions">
-      <a class="book-button" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA%20TAOG%5D%20Bab%20...%20-%20Halaman%20...&amp;body=Jenis%20koreksi%3A%0ABab%3A%0AHalaman%3A%0ATeks%20atau%20bagian%20yang%20perlu%20dikoreksi%3A%0AUsulan%20perbaikan%3A%0APenjelasan%3A" target="_blank" rel="noopener noreferrer">Laporkan koreksi melalui Gmail</a>
+      <a class="book-button" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA%20AOG%5D%20Bab%20...%20-%20Halaman%20...&amp;body=Jenis%20koreksi%3A%0ABab%3A%0AHalaman%3A%0ATeks%20atau%20bagian%20yang%20perlu%20dikoreksi%3A%0AUsulan%20perbaikan%3A%0APenjelasan%3A" target="_blank" rel="noopener noreferrer">Laporkan koreksi melalui Gmail</a>
     </div>
     <p class="book-note">Setiap laporan akan diperiksa dan koreksi yang telah dikonfirmasi akan dicantumkan pada halaman ini.</p>
   </section>
