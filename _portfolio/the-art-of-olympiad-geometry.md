@@ -5,7 +5,9 @@ collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
 # Tautan formulir untuk akses Bab 1 dan Bab 6.
 free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
-author_profile: false
+# Ubah menjadi true atau hapus baris ini saat halaman siap diterbitkan.
+published: false
+author_profile: true
 share: false
 comments: false
 header:
@@ -18,6 +20,34 @@ header:
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    min-width: 0;
+  }
+
+  @media (min-width: 925px) {
+    #main {
+      display: grid;
+      grid-template-columns: minmax(185px, 225px) minmax(0, 1fr);
+      column-gap: clamp(1.5rem, 3vw, 2.5rem);
+      align-items: start;
+    }
+
+    #main > .sidebar {
+      position: sticky !important;
+      top: 70px;
+      float: none !important;
+      grid-column: 1;
+      width: 100% !important;
+      max-width: 225px;
+      height: calc(100vh - 70px);
+      margin: 0;
+      padding-top: 1rem !important;
+      overflow-y: auto;
+    }
+
+    #main > .page {
+      grid-column: 2;
+      min-width: 0;
+    }
   }
 
   .page__inner-wrap > header { display: none; }
@@ -159,7 +189,7 @@ header:
   }
 
   .book-lead {
-    max-width: 760px;
+    max-width: none;
     color: #435668;
     font-size: 1.02rem;
     line-height: 1.8;
@@ -256,7 +286,7 @@ header:
   }
 
   .book-toc-disclosure[open] > summary::after,
-  .book-chapter[open] > summary::after { content: "−"; }
+  .book-chapter[open] > summary::after { content: "âˆ’"; }
 
   .book-toc-content {
     padding: 0 1.2rem 1.2rem;
@@ -340,7 +370,7 @@ header:
   }
 
   .book-feature::before {
-    content: "✓";
+    content: "âœ“";
     position: absolute;
     left: 1rem;
     color: #007e8e;
@@ -757,7 +787,7 @@ header:
       <div><dt>Subjudul</dt><dd>Basic Level</dd></div>
       <div><dt>Penulis</dt><dd>Wildan Bagus Wicaksono</dd></div>
       <div><dt>Edisi</dt><dd>Pertama, 2026</dd></div>
-      <div><dt>Penyunting akhir</dt><dd>Abdul Mu’in, S.Pd., M.Si.</dd></div>
+      <div><dt>Penyunting akhir</dt><dd>Abdul Muâ€™in, S.Pd., M.Si.</dd></div>
       <div><dt>Desain sampul</dt><dd>Hendra Ahmad Hardiyana, S.Pd.</dd></div>
       <div><dt>Bahasa</dt><dd>Indonesia</dd></div>
       <div><dt>Status</dt><dd>Siap cetak</dd></div>
