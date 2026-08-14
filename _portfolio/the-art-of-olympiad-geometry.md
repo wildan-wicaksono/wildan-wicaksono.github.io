@@ -975,7 +975,7 @@ header:
       {% endif %}
     </div>
     <p class="book-note">Sampel bab dapat memiliki perbedaan kecil dengan edisi cetak final.</p>
-    <p class="book-usage"><strong>Ketentuan penggunaan.</strong> Buku dapat digunakan sebagai bahan mengajar dan boleh diperbanyak, namun dilarang untuk diperjualbelikan.</p>
+    <p class="book-usage"><strong>Ketentuan penggunaan.</strong> Sampel gratis ini dapat digunakan sebagai bahan mengajar dan boleh diperbanyak, namun dilarang untuk diperjualbelikan.</p>
   </section>
 
   <section class="book-section" id="informasi-buku">
