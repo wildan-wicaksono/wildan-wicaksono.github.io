@@ -1222,7 +1222,7 @@ header:
   </section>
 
   <section class="book-closing">
-    <h2>Pemesanan AOG telah dibuka</h2>
+    <h2>Pemesanan buku AOG telah dibuka</h2>
     <p>Lengkapi formulir pemesanan melalui NEC. Admin akan menghubungi Anda melalui WhatsApp untuk proses pembayaran dan pengiriman.</p>
     <div class="book-actions">
       <a class="book-button" href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">Pesan buku sekarang</a>
