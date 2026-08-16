@@ -5,6 +5,12 @@ collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
 # Tautan formulir untuk akses Bab 1 dan Bab 6.
 free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
+# Tautan pemesanan buku melalui NEC.
+order_url: "https://bit.ly/pesanbukuNEC"
+# Tautan formulir penilaian pembaca.
+rating_form_url: "https://docs.google.com/forms/d/e/1FAIpQLScFbnVA2ggSBfE6rx8Gs6uMcuDyvpYzDyaaAtsK9aA59U3lZA/viewform?usp=publish-editor"
+# Endpoint publik yang hanya mengembalikan rata-rata dan jumlah penilaian.
+rating_api_url: "https://script.google.com/macros/s/AKfycbxh_N2aBYahJVDlaH1irqZaOU0_M2MJXnCH-xlb0_LmtSnu0--IRF528c3lMVAOJDWa/exec"
 published: true
 author_profile: true
 share: false
@@ -592,6 +598,121 @@ header:
     margin-top: 1.25rem !important;
   }
 
+  .book-order,
+  .book-rating {
+    padding: clamp(1.3rem, 4vw, 2.2rem);
+    background: #fff;
+    border: 1px solid var(--book-line);
+    border-radius: 14px;
+  }
+
+  .book-order-steps {
+    display: grid;
+    gap: 0.8rem;
+    margin: 1.4rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: order-step;
+  }
+
+  .book-order-steps li {
+    position: relative;
+    min-height: 3.1rem;
+    padding: 0.85rem 1rem 0.85rem 3.75rem;
+    color: #435668;
+    background: #f5fafc;
+    border-radius: 9px;
+    line-height: 1.65;
+    counter-increment: order-step;
+  }
+
+  .book-order-steps li::before {
+    content: counter(order-step);
+    position: absolute;
+    top: 0.78rem;
+    left: 1rem;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    color: var(--book-navy);
+    background: var(--book-cyan);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .book-order-contact {
+    margin: 1.25rem 0 0;
+    padding: 0.9rem 1rem;
+    color: #435668;
+    background: var(--book-cyan-soft);
+    border-left: 4px solid #008da0;
+    border-radius: 7px;
+    line-height: 1.65;
+  }
+
+  .book-order .book-actions { margin-top: 1.25rem; }
+
+  .book-rating {
+    text-align: center;
+    background: #f5fafc;
+  }
+
+  .book-rating .book-lead {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .book-rating-stars {
+    margin: 1rem 0 1.25rem;
+    color: #e3aa20;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    letter-spacing: 0.18rem;
+    line-height: 1;
+  }
+
+  .book-rating-summary[hidden],
+  .book-rating-prompt[hidden] {
+    display: none;
+  }
+
+  .book-rating-summary {
+    margin: 1rem 0 1.25rem;
+  }
+
+  .book-rating-average-stars {
+    position: relative;
+    display: inline-block;
+    color: #d6dee3;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    letter-spacing: 0.18rem;
+    line-height: 1;
+  }
+
+  .book-rating-average-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    overflow: hidden;
+    color: #e3aa20;
+    white-space: nowrap;
+  }
+
+  .book-rating-score {
+    margin: 0.75rem 0 0;
+    color: var(--book-navy);
+    font-size: 1rem;
+  }
+
+  .book-rating-count {
+    margin: 0.2rem 0 0;
+    color: var(--book-muted);
+    font-size: 0.78rem;
+  }
+
+  .book-rating .book-actions { justify-content: center; }
+
   .book-info {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -647,6 +768,11 @@ header:
     line-height: 1.7;
   }
 
+  .book-closing .book-actions {
+    justify-content: center;
+    margin-top: 1.15rem;
+  }
+
   @media (max-width: 760px) {
     .book-hero { grid-template-columns: 1fr; }
     .book-cover { max-width: 250px; }
@@ -683,12 +809,13 @@ header:
       <p class="book-subtitle">Panduan tingkat dasar yang mengajak pembaca memahami konsep, pembuktian, dan cara berpikir di balik penyelesaian soal geometri olimpiade.</p>
       <div class="book-badges" aria-label="Informasi singkat buku">
         <span class="book-badge">Tingkat dasar</span>
-        <span class="book-badge">Siap cetak</span>
+        <span class="book-badge">Pemesanan dibuka</span>
         <span class="book-badge">Edisi pertama, 2026</span>
         <span class="book-badge">Bahasa Indonesia</span>
       </div>
       <div class="book-actions">
-        <a class="book-button" href="#cakupan-materi">Lihat cakupan materi</a>
+        <a class="book-button" href="#pemesanan">Pesan buku</a>
+        <a class="book-button book-button--secondary" href="#cakupan-materi">Lihat cakupan materi</a>
         <a class="book-button book-button--secondary" href="#bab-gratis">Bab gratis</a>
       </div>
     </div>
@@ -956,7 +1083,7 @@ header:
   <section class="book-section book-samples" id="bab-gratis">
     <span class="book-section-label">Baca sebelum memilih</span>
     <h2>Bab gratis</h2>
-    <p class="book-lead">Isi formulir singkat untuk memperoleh akses ke dua bab gratis mulai 14 Agustus 2026. Sampel ini membantu pembaca mengenal gaya penulisan dan penyajian buku sebelum masa pre-order dibuka.</p>
+    <p class="book-lead">Isi formulir singkat untuk memperoleh akses ke dua bab gratis mulai 14 Agustus 2026. Sampel ini membantu pembaca mengenal gaya penulisan dan penyajian buku sebelum melakukan pemesanan.</p>
     <div class="book-sample-list">
       <div class="book-sample">
         <strong>Bab 1 - Sudut di Poligon</strong>
@@ -975,7 +1102,23 @@ header:
       {% endif %}
     </div>
     <p class="book-note">Sampel bab dapat memiliki perbedaan kecil dengan edisi cetak final.</p>
-    <p class="book-usage"><strong>Ketentuan penggunaan.</strong> Sampel gratis ini dapat digunakan sebagai bahan mengajar dan boleh diperbanyak, namun dilarang untuk diperjualbelikan.</p>
+    <p class="book-usage"><strong>Ketentuan penggunaan.</strong> Buku dapat digunakan sebagai bahan mengajar dan boleh diperbanyak, namun dilarang untuk diperjualbelikan.</p>
+  </section>
+
+  <section class="book-section book-order" id="pemesanan">
+    <span class="book-section-label">Pemesanan telah dibuka</span>
+    <h2>Alur Pemesanan Buku NEC</h2>
+    <p class="book-lead">Ikuti langkah berikut untuk memesan <em>The Art of Olympiad Geometry</em>.</p>
+    <ol class="book-order-steps">
+      <li>Lengkapi data pemesanan melalui <a href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">bit.ly/pesanbukuNEC</a>.</li>
+      <li>Admin akan menghubungi Anda melalui WhatsApp untuk mengirimkan invoice (tagihan) dan detail rekening pembayaran.</li>
+      <li>Lakukan pembayaran dan kirimkan bukti transfer kepada admin.</li>
+      <li>Buku Anda akan diproses dan dikirim. Resi pengiriman akan diberikan maksimal H+2 setelah pembayaran.</li>
+    </ol>
+    <p class="book-order-contact"><strong>Informasi lebih lanjut:</strong> <a href="https://wa.me/6289682017731" target="_blank" rel="noopener noreferrer">Admin NEC - 089682017731 (Aulia)</a></p>
+    <div class="book-actions">
+      <a class="book-button" href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">Pesan buku melalui NEC</a>
+    </div>
   </section>
 
   <section class="book-section" id="informasi-buku">
@@ -992,6 +1135,70 @@ header:
       <div><dt>Status</dt><dd>Siap cetak</dd></div>
     </dl>
   </section>
+
+  <section class="book-section book-rating" id="penilaian">
+    <span class="book-section-label">Penilaian pembaca</span>
+    <h2>Sudah membaca bukunya? Yuk, berikan penilaianmu!</h2>
+    <p class="book-lead">Penilaianmu membantu penulis mengembangkan buku ini dan membantu calon pembaca mengenal AOG.</p>
+    <div class="book-rating-prompt" id="aog-rating-prompt">
+      <div class="book-rating-stars" aria-label="Belum ada penilaian buku cetak">&#9734;&#9734;&#9734;&#9734;&#9734;</div>
+    </div>
+    <div class="book-rating-summary" id="aog-rating-summary" hidden>
+      <div class="book-rating-average-stars" aria-hidden="true">
+        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="book-rating-average-fill" id="aog-rating-fill">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <p class="book-rating-score"><strong id="aog-rating-average">-</strong> dari 5</p>
+      <p class="book-rating-count">Berdasarkan <span id="aog-rating-count">0</span> penilaian pembaca</p>
+    </div>
+    <div class="book-actions">
+      {% if page.rating_form_url and page.rating_form_url != "" %}
+        <a class="book-button" href="{{ page.rating_form_url }}" target="_blank" rel="noopener noreferrer">Berikan penilaian</a>
+      {% else %}
+        <span class="book-button book-button--disabled" aria-disabled="true">Formulir penilaian segera tersedia</span>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if page.rating_api_url and page.rating_api_url != "" %}
+  <script>
+    (function () {
+      "use strict";
+
+      var summary = document.getElementById("aog-rating-summary");
+      var prompt = document.getElementById("aog-rating-prompt");
+      var fill = document.getElementById("aog-rating-fill");
+      var averageText = document.getElementById("aog-rating-average");
+      var countText = document.getElementById("aog-rating-count");
+      var request = document.createElement("script");
+      var apiUrl = {{ page.rating_api_url | jsonify }};
+
+      window.aogRatingCallback = function (data) {
+        var average = Number(data && data.average);
+        var count = Number(data && data.count);
+
+        if (!Number.isFinite(average) || !Number.isFinite(count) || count < 1) {
+          return;
+        }
+
+        average = Math.max(0, Math.min(5, average));
+        fill.style.width = ((average / 5) * 100) + "%";
+        averageText.textContent = average.toLocaleString("id-ID", {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1
+        });
+        countText.textContent = Math.round(count).toLocaleString("id-ID");
+        summary.setAttribute("aria-label", "Rating " + averageText.textContent + " dari 5 berdasarkan " + countText.textContent + " penilaian pembaca");
+        summary.hidden = false;
+        prompt.hidden = true;
+      };
+
+      request.src = apiUrl + (apiUrl.indexOf("?") === -1 ? "?" : "&") + "prefix=aogRatingCallback&_=" + Date.now();
+      request.async = true;
+      document.head.appendChild(request);
+    }());
+  </script>
+  {% endif %}
 
   <section class="book-section book-errata" id="errata">
     <span class="book-section-label">Koreksi pembaca</span>
@@ -1015,7 +1222,10 @@ header:
   </section>
 
   <section class="book-closing">
-    <h2>Pre-order dibuka 17 Agustus 2026</h2>
-    <p>Buku telah siap cetak. Informasi pemesanan akan ditambahkan di halaman ini saat masa pre-order dibuka.</p>
+    <h2>Pemesanan AOG telah dibuka</h2>
+    <p>Lengkapi formulir pemesanan melalui NEC. Admin akan menghubungi Anda melalui WhatsApp untuk proses pembayaran dan pengiriman.</p>
+    <div class="book-actions">
+      <a class="book-button" href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">Pesan buku sekarang</a>
+    </div>
   </section>
 </div>
