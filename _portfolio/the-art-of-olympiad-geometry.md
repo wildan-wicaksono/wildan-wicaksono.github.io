@@ -11,6 +11,7 @@ order_url: "https://bit.ly/pesanbukuNEC"
 rating_form_url: "https://docs.google.com/forms/d/e/1FAIpQLScFbnVA2ggSBfE6rx8Gs6uMcuDyvpYzDyaaAtsK9aA59U3lZA/viewform?usp=publish-editor"
 # Endpoint publik yang hanya mengembalikan rata-rata dan jumlah penilaian.
 rating_api_url: "https://script.google.com/macros/s/AKfycbxh_N2aBYahJVDlaH1irqZaOU0_M2MJXnCH-xlb0_LmtSnu0--IRF528c3lMVAOJDWa/exec"
+#
 published: true
 author_profile: true
 share: false
@@ -615,6 +616,60 @@ header:
     counter-reset: order-step;
   }
 
+  .book-price-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.4rem 0 0;
+    padding: clamp(1.1rem, 3vw, 1.5rem);
+    color: #fff;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(30, 223, 242, 0.18), transparent 38%),
+      var(--book-navy);
+    border-radius: 12px;
+  }
+
+  .book-price-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--book-cyan);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .book-price-promo {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .book-price-normal {
+    margin: 0.45rem 0 0;
+    color: #b9cad4;
+    font-size: 0.82rem;
+  }
+
+  .book-price-normal del {
+    color: #e1ebf0;
+    text-decoration-thickness: 2px;
+  }
+
+  .book-price-period {
+    max-width: none;
+    margin: 0;
+    color: #d4e4ec;
+    font-size: clamp(0.72rem, 2vw, 0.86rem);
+    line-height: 1.65;
+    white-space: nowrap;
+  }
+
+  .book-price-period strong { color: #fff; }
+
   .book-order-steps li {
     position: relative;
     min-height: 3.1rem;
@@ -782,6 +837,7 @@ header:
     .book-chapter-list { grid-template-columns: 1fr; }
     .book-features { grid-template-columns: 1fr; }
     .book-sample-list { grid-template-columns: 1fr; }
+    .book-price-card { align-items: flex-start; flex-direction: column; }
   }
 
   @media (max-width: 460px) {
@@ -810,6 +866,7 @@ header:
       <div class="book-badges" aria-label="Informasi singkat buku">
         <span class="book-badge">Tingkat dasar</span>
         <span class="book-badge">Pemesanan dibuka</span>
+        <span class="book-badge">Promo Rp200.000</span>
         <span class="book-badge">Edisi pertama, 2026</span>
         <span class="book-badge">Bahasa Indonesia</span>
       </div>
@@ -1109,6 +1166,14 @@ header:
     <span class="book-section-label">Pemesanan telah dibuka</span>
     <h2>Alur Pemesanan Buku NEC</h2>
     <p class="book-lead">Ikuti langkah berikut untuk memesan <em>The Art of Olympiad Geometry</em>.</p>
+    <div class="book-price-card">
+      <div>
+        <span class="book-price-label">Promo Kemerdekaan</span>
+        <p class="book-price-promo">Rp200.000,00</p>
+        <p class="book-price-normal">Harga normal <del>Rp250.000,00</del></p>
+      </div>
+      <p class="book-price-period">Berlaku untuk pemesanan <strong>17&ndash;31 Agustus 2026</strong>.</p>
+    </div>
     <ol class="book-order-steps">
       <li>Lengkapi data pemesanan melalui <a href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">bit.ly/pesanbukuNEC</a>.</li>
       <li>Admin akan menghubungi Anda melalui WhatsApp untuk mengirimkan invoice (tagihan) dan detail rekening pembayaran.</li>
@@ -1222,7 +1287,7 @@ header:
   </section>
 
   <section class="book-closing">
-    <h2>Pemesanan buku AOG telah dibuka</h2>
+    <h2>Pemesanan AOG telah dibuka</h2>
     <p>Lengkapi formulir pemesanan melalui NEC. Admin akan menghubungi Anda melalui WhatsApp untuk proses pembayaran dan pengiriman.</p>
     <div class="book-actions">
       <a class="book-button" href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">Pesan buku sekarang</a>
