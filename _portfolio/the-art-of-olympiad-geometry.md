@@ -11,7 +11,6 @@ order_url: "https://bit.ly/pesanbukuNEC"
 rating_form_url: "https://docs.google.com/forms/d/e/1FAIpQLScFbnVA2ggSBfE6rx8Gs6uMcuDyvpYzDyaaAtsK9aA59U3lZA/viewform?usp=publish-editor"
 # Endpoint publik yang hanya mengembalikan rata-rata dan jumlah penilaian.
 rating_api_url: "https://script.google.com/macros/s/AKfycbxh_N2aBYahJVDlaH1irqZaOU0_M2MJXnCH-xlb0_LmtSnu0--IRF528c3lMVAOJDWa/exec"
-#
 published: true
 author_profile: true
 share: false
@@ -640,7 +639,7 @@ header:
     text-transform: uppercase;
   }
 
-  .book-price-promo {
+  .book-price-card .book-price-promo {
     margin: 0;
     color: #fff;
     font-size: clamp(1.75rem, 5vw, 2.5rem);
@@ -648,19 +647,19 @@ header:
     line-height: 1.1;
   }
 
-  .book-price-normal {
+  .book-price-card .book-price-normal {
     margin: 0.45rem 0 0;
     color: #b9cad4;
     font-size: 0.82rem;
   }
 
-  .book-price-normal del {
+  .book-price-card .book-price-normal del {
     color: #e1ebf0;
     text-decoration-thickness: 2px;
   }
 
-  .book-price-period {
-    max-width: none;
+  .book-price-card .book-price-period {
+    max-width: 100%;
     margin: 0;
     color: #d4e4ec;
     font-size: clamp(0.72rem, 2vw, 0.86rem);
@@ -668,7 +667,7 @@ header:
     white-space: nowrap;
   }
 
-  .book-price-period strong { color: #fff; }
+  .book-price-card .book-price-period strong { color: #fff; }
 
   .book-order-steps li {
     position: relative;
@@ -838,6 +837,10 @@ header:
     .book-features { grid-template-columns: 1fr; }
     .book-sample-list { grid-template-columns: 1fr; }
     .book-price-card { align-items: flex-start; flex-direction: column; }
+    .book-price-card .book-price-period {
+      font-size: 0.68rem;
+      letter-spacing: -0.012em;
+    }
   }
 
   @media (max-width: 460px) {
@@ -1172,7 +1175,7 @@ header:
         <p class="book-price-promo">Rp200.000,00</p>
         <p class="book-price-normal">Harga normal <del>Rp250.000,00</del></p>
       </div>
-      <p class="book-price-period">Berlaku untuk pemesanan <strong>17-31 Agustus 2026</strong>.</p>
+      <p class="book-price-period">Berlaku untuk pemesanan <strong>17&ndash;31 Agustus 2026</strong>.</p>
     </div>
     <ol class="book-order-steps">
       <li>Lengkapi data pemesanan melalui <a href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">bit.ly/pesanbukuNEC</a>.</li>
