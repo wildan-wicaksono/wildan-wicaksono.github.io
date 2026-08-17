@@ -1175,7 +1175,7 @@ header:
         <p class="book-price-promo">Rp200.000,00</p>
         <p class="book-price-normal">Harga normal <del>Rp250.000,00</del></p>
       </div>
-      <p class="book-price-period">Berlaku untuk pemesanan <strong>17&ndash;31 Agustus 2026</strong>.</p>
+      <p class="book-price-period">Berlaku untuk pemesanan <strong>17-31 Agustus 2026</strong>.</p>
     </div>
     <ol class="book-order-steps">
       <li>Lengkapi data pemesanan melalui <a href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">bit.ly/pesanbukuNEC</a>.</li>
