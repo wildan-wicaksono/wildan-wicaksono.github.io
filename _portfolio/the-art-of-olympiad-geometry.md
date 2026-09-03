@@ -617,9 +617,7 @@ header:
 
   .book-price-card {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
-    justify-content: space-between;
     margin: 1.4rem 0 0;
     padding: clamp(1.1rem, 3vw, 1.5rem);
     color: #fff;
@@ -639,35 +637,13 @@ header:
     text-transform: uppercase;
   }
 
-  .book-price-card .book-price-promo {
+  .book-price-card .book-price-current {
     margin: 0;
     color: #fff;
     font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 900;
     line-height: 1.1;
   }
-
-  .book-price-card .book-price-normal {
-    margin: 0.45rem 0 0;
-    color: #b9cad4;
-    font-size: 0.82rem;
-  }
-
-  .book-price-card .book-price-normal del {
-    color: #e1ebf0;
-    text-decoration-thickness: 2px;
-  }
-
-  .book-price-card .book-price-period {
-    max-width: 100%;
-    margin: 0;
-    color: #d4e4ec;
-    font-size: clamp(0.72rem, 2vw, 0.86rem);
-    line-height: 1.65;
-    white-space: nowrap;
-  }
-
-  .book-price-card .book-price-period strong { color: #fff; }
 
   .book-order-steps li {
     position: relative;
@@ -836,11 +812,6 @@ header:
     .book-chapter-list { grid-template-columns: 1fr; }
     .book-features { grid-template-columns: 1fr; }
     .book-sample-list { grid-template-columns: 1fr; }
-    .book-price-card { align-items: flex-start; flex-direction: column; }
-    .book-price-card .book-price-period {
-      font-size: 0.68rem;
-      letter-spacing: -0.012em;
-    }
   }
 
   @media (max-width: 460px) {
@@ -869,7 +840,7 @@ header:
       <div class="book-badges" aria-label="Informasi singkat buku">
         <span class="book-badge">Tingkat dasar</span>
         <span class="book-badge">Pemesanan dibuka</span>
-        <span class="book-badge">Promo Rp200.000</span>
+        <span class="book-badge">Harga Rp250.000</span>
         <span class="book-badge">Edisi pertama, 2026</span>
         <span class="book-badge">Bahasa Indonesia</span>
       </div>
@@ -1171,11 +1142,9 @@ header:
     <p class="book-lead">Ikuti langkah berikut untuk memesan <em>The Art of Olympiad Geometry</em>.</p>
     <div class="book-price-card">
       <div>
-        <span class="book-price-label">Promo Kemerdekaan</span>
-        <p class="book-price-promo">Rp200.000,00</p>
-        <p class="book-price-normal">Harga normal <del>Rp250.000,00</del></p>
+        <span class="book-price-label">Harga buku</span>
+        <p class="book-price-current">Rp250.000,00</p>
       </div>
-      <p class="book-price-period">Berlaku untuk pemesanan <strong>17-31 Agustus 2026</strong>.</p>
     </div>
     <ol class="book-order-steps">
       <li>Lengkapi data pemesanan melalui <a href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">bit.ly/pesanbukuNEC</a>.</li>
