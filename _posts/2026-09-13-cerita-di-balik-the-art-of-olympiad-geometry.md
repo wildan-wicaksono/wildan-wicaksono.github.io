@@ -135,13 +135,11 @@ Alasan pertama saya memilih geometri sebagai topik buku pertama mungkin sudah te
 
 Namun, ada alasan lain yang lebih personal. Saya ingin membuat sebuah jembatan bagi pemula sebelum mereka melanjutkan ke EGMO sebagai bahan belajar tingkat lanjut. Saya masih mengingat betapa sulitnya memahami bab pertama EGMO ketika kemampuan saya belum cukup matang. AOG saya rancang agar pembaca tidak perlu melakukan lompatan sebesar yang dahulu harus saya lakukan.
 
-<!-- TODO: Tambahkan pengalaman khusus yang membuat geometri menjadi bidang utama, jika ingin diceritakan. -->
 
 ### Awal Penulisan dan Pemilihan Judul
 
 Ketika mulai menulis, saya sendiri belum mengetahui buku ini akan diberi judul apa. Saya memilih untuk memikirkannya sambil berjalan. Pada akhirnya, judul tersebut saya finalisasi menjadi *The Art of Olympiad Geometry*, yang mengambil inspirasi dari buku guru saya, *The Art of Number Theory*.
 
-<!-- TODO: Tambahkan waktu atau momen spesifik ketika halaman pertama AOG mulai ditulis. -->
 
 Sejak awal, saya menetapkan dua tujuan utama:
 
@@ -272,4 +270,3 @@ Mungkin itulah arti buku ini bagi saya: sebuah catatan dari seseorang yang perna
 
 Informasi lebih lanjut mengenai buku ini dapat dibaca pada halaman [*The Art of Olympiad Geometry*](https://wildan-wicaksono.github.io/portfolio/the-art-of-olympiad-geometry/).
 
-<!-- TODO: Tambahkan informasi mengenai arah buku tingkat intermediate apabila sudah siap diumumkan. -->
