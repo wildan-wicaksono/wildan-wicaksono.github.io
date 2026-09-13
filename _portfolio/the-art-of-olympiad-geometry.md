@@ -3,6 +3,7 @@ title: "The Art of Olympiad Geometry"
 excerpt: "Buku geometri olimpiade berbahasa Indonesia yang disusun bertahap dari konsep dasar menuju pemecahan masalah."
 collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
+date: 2026-08-17 00:00:00 +0700
 # Tautan formulir untuk akses Bab 1 dan Bab 6.
 free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
 # Tautan pemesanan buku melalui NEC.
