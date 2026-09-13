@@ -46,9 +46,24 @@ Saya juga tidak mempunyai pembimbing olimpiade khusus karena biayanya relatif ma
 
 ## Buku yang Mengubah Cara Belajar
 
-### *Euclidean Geometry in Mathematical Olympiad*
+### *Euclidean Geometry in Mathematical Olympiads*
 
-Saat kelas 9, saya mulai mempersiapkan diri untuk olimpiade tingkat SMA. Seorang teman memperkenalkan saya kepada sebuah buku yang khusus membahas geometri: [*Euclidean Geometry in Mathematical Olympiad*](https://web.evanchen.cc/geombook.html){: target="_blank" rel="noopener noreferrer"}, atau EGMO, karya Evan Chen.
+Saat kelas 9, saya mulai mempersiapkan diri untuk olimpiade tingkat SMA. Seorang teman memperkenalkan saya kepada sebuah buku yang khusus membahas geometri: [*Euclidean Geometry in Mathematical Olympiads*](https://web.evanchen.cc/geombook.html){: target="_blank" rel="noopener noreferrer"}, atau EGMO, karya Evan Chen.
+
+<figure style="max-width: 260px; margin: 1.75em auto; text-align: center;">
+  <img
+    src="{{ '/images/blog/egmo-cover.jpg' | relative_url }}"
+    alt="Sampul buku Euclidean Geometry in Mathematical Olympiads karya Evan Chen"
+    width="454"
+    height="648"
+    loading="lazy"
+    decoding="async"
+    style="display: block; width: 100%; height: auto; margin: 0 auto; border-radius: 4px;"
+  >
+  <figcaption style="margin-top: .55em; font-size: .85em; line-height: 1.45; opacity: .82;">
+    <em>Euclidean Geometry in Mathematical Olympiads</em> karya Evan Chen—buku yang pertama kali memperkenalkan saya pada penyajian geometri yang terasa intuitif.
+  </figcaption>
+</figure>
 
 Itu adalah pertama kalinya saya membaca buku matematika berbahasa Inggris, sehingga tentu saja pada awalnya terasa sulit. Meski begitu, cara penyajiannya sangat menarik. Berbeda dari buku-buku yang sebelumnya saya temui, EGMO terasa seolah-olah sedang berbicara langsung kepada saya. Contoh soalnya tidak hanya disertai solusi, tetapi juga intuisi di baliknya. Untuk pertama kalinya, saya mulai mendapat gambaran tentang proses berpikir yang membawa seseorang menuju sebuah solusi.
 
@@ -61,6 +76,21 @@ Mempelajari EGMO kemudian terasa lebih ringan setelah saya memperoleh pembinaan 
 ### *The Art and Craft of Problem Solving*
 
 Suatu hari, saya menemukan *The Art and Craft of Problem Solving* karya Paul Zeitz di laboratorium matematika. Bagian awal buku tersebut membahas bagaimana menghadapi soal olimpiade yang memang dirancang untuk menjadi sulit.
+
+<figure style="max-width: 260px; margin: 1.75em auto; text-align: center;">
+  <img
+    src="{{ '/images/blog/art-and-craft-of-problem-solving-cover.jpg' | relative_url }}"
+    alt="Sampul buku The Art and Craft of Problem Solving karya Paul Zeitz"
+    width="313"
+    height="400"
+    loading="lazy"
+    decoding="async"
+    style="display: block; width: 100%; height: auto; margin: 0 auto; border-radius: 4px;"
+  >
+  <figcaption style="margin-top: .55em; font-size: .85em; line-height: 1.45; opacity: .82;">
+    <em>The Art and Craft of Problem Solving</em> karya Paul Zeitz—buku yang mengajarkan saya untuk bertahan lebih lama bersama sebuah soal.
+  </figcaption>
+</figure>
 
 Buku ini menyadarkan saya bahwa menyelesaikan soal matematika yang menantang tidak selalu berawal dari satu ide cemerlang yang datang secara tiba-tiba. Sering kali, prosesnya justru panjang: mencoba berbagai kemungkinan, membuat eksperimen kecil, menemukan pola, gagal, lalu mencoba lagi. Ketika teknik-teknik tersebut mulai saya terapkan, saya merasakan perkembangan yang cukup signifikan.
 
@@ -109,6 +139,21 @@ Menurut saya, proses pemeriksaan justru lebih melelahkan daripada menulis. Namun
 ## *For Those Who Come After*
 
 ### Mengenal *Clair Obscur: Expedition 33*
+
+<figure style="margin: 1.75em auto 2em; text-align: center;">
+  <img
+    src="{{ '/images/blog/clair-obscur-expedition-33.jpg' | relative_url }}"
+    alt="Ilustrasi utama Clair Obscur: Expedition 33"
+    width="1280"
+    height="720"
+    loading="lazy"
+    decoding="async"
+    style="display: block; width: 100%; height: auto; margin: 0 auto; border-radius: 6px;"
+  >
+  <figcaption style="margin-top: .55em; font-size: .85em; line-height: 1.45; opacity: .82;">
+    <em>Clair Obscur: Expedition 33</em>—pengingat untuk meninggalkan sesuatu bagi mereka yang datang setelahnya.
+  </figcaption>
+</figure>
 
 Pada awal 2026, banyak video mengenai *Clair Obscur: Expedition 33*—atau E33—berseliweran di *Reels* saya setelah game tersebut meraih berbagai penghargaan pada 2025. Awalnya saya cuek saja karena memang kurang tertarik membeli game berbayar (hehe). Saat itu saya masih lebih sering memainkan game kompetitif seperti *Valorant*.
 
@@ -190,6 +235,21 @@ Pemisahan tersebut memang membuat pekerjaan saya bertambah. Namun, saya memperol
 ### Sistem *Reward Point*
 
 Inspirasi lain datang dari E33. Setelah menyelesaikan Bab 6, saya beristirahat sejenak dengan kembali memainkan game tersebut dan mencoba melawan Simon, salah satu *boss* tersulit. Saya sudah tidak tahu berapa kali kalah, tetapi kali itu akhirnya saya berhasil menang. Kepuasannya terasa sepadan dengan *reward* yang sangat *overpowered*.
+
+<figure style="max-width: 420px; margin: 1.75em auto; text-align: center;">
+  <img
+    src="{{ '/images/blog/simon-clair-obscur.webp' | relative_url }}"
+    alt="Simon dalam Clair Obscur: Expedition 33"
+    width="1000"
+    height="1585"
+    loading="lazy"
+    decoding="async"
+    style="display: block; width: 100%; height: auto; margin: 0 auto; border-radius: 6px;"
+  >
+  <figcaption style="margin-top: .55em; font-size: .85em; line-height: 1.45; opacity: .82;">
+    Simon, salah satu <em>boss</em> tersulit dalam <em>Clair Obscur: Expedition 33</em>—dan pemicu ide sistem <em>reward point</em> di AOG.
+  </figcaption>
+</figure>
 
 Saat itulah muncul pikiran: bagaimana jika latihan dalam buku juga mempunyai sistem *reward point*?
 
