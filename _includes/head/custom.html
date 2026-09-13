@@ -22,6 +22,117 @@
 <meta name="msapplication-TileImage" content="{{ base_path }}/images/mstile-144x144.png?v=M44lzPylqQ">
 <meta name="msapplication-config" content="{{ base_path }}/images/browserconfig.xml?v=M44lzPylqQ">
 <meta name="theme-color" content="#ffffff">
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "theme";
+  var DARK = "dark";
+  var LIGHT = "light";
+
+  function normalizeTheme(value) {
+    return value === DARK ? DARK : LIGHT;
+  }
+
+  function readStoredTheme() {
+    try {
+      return normalizeTheme(window.localStorage.getItem(STORAGE_KEY));
+    } catch (error) {
+      return LIGHT;
+    }
+  }
+
+  function currentTheme() {
+    return document.documentElement.getAttribute("data-theme") === DARK ? DARK : LIGHT;
+  }
+
+  function storeTheme(theme) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+    } catch (error) {
+      /* The toggle still works when browser storage is unavailable. */
+    }
+  }
+
+  function giscusTheme(theme) {
+    return theme === DARK ? "dark_dimmed" : LIGHT;
+  }
+
+  function syncThemeColor(theme) {
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", theme === DARK ? "#474747" : "#ffffff");
+  }
+
+  function syncToggle(theme) {
+    var toggle = document.getElementById("theme-toggle");
+    if (!toggle) return;
+
+    var isDark = theme === DARK;
+    var label = isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap";
+    toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+    toggle.setAttribute("aria-label", label);
+    toggle.setAttribute("title", label);
+  }
+
+  function syncGiscus(theme) {
+    var widgetTheme = giscusTheme(theme);
+    var loader = document.querySelector("script[data-giscus-loader]");
+    if (loader) loader.setAttribute("data-theme", widgetTheme);
+
+    var frame = document.querySelector("iframe.giscus-frame");
+    if (!frame || !frame.contentWindow) return false;
+
+    frame.contentWindow.postMessage({
+      giscus: { setConfig: { theme: widgetTheme } }
+    }, "https://giscus.app");
+    return true;
+  }
+
+  function applyTheme(theme, persist) {
+    theme = normalizeTheme(theme);
+
+    if (theme === DARK) {
+      document.documentElement.setAttribute("data-theme", DARK);
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+
+    document.documentElement.style.colorScheme = theme;
+    if (persist) storeTheme(theme);
+    syncThemeColor(theme);
+    syncToggle(theme);
+    syncGiscus(theme);
+  }
+
+  /* Default is light, as on Orlando's site. A saved choice is restored early. */
+  applyTheme(readStoredTheme(), false);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyTheme(currentTheme(), false);
+
+    var toggle = document.getElementById("theme-toggle");
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        applyTheme(currentTheme() === DARK ? LIGHT : DARK, true);
+      });
+    }
+
+    var giscusContainer = document.querySelector(".giscus");
+    if (giscusContainer && window.MutationObserver && !syncGiscus(currentTheme())) {
+      var observer = new MutationObserver(function () {
+        if (syncGiscus(currentTheme())) observer.disconnect();
+      });
+      observer.observe(giscusContainer, { childList: true, subtree: true });
+    }
+  });
+
+  window.addEventListener("storage", function (event) {
+    if (event.key === STORAGE_KEY) applyTheme(event.newValue, false);
+  });
+}());
+</script>
+
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
 

@@ -1,0 +1,645 @@
+/* ==========================================================================
+   DARK MODE
+
+   Compatibility layer for this site's older AcademicPages theme.
+   ========================================================================== */
+
+$theme-dark-bg: #474747;
+$theme-dark-masthead: #393939;
+$theme-dark-surface: #3d3d3d;
+$theme-dark-surface-raised: #515151;
+$theme-dark-text: #ffffff;
+$theme-dark-muted: #c8cdd1;
+$theme-dark-border: #707070;
+$theme-dark-border-soft: #5c5c5c;
+$theme-dark-link: #55c8e3;
+$theme-dark-link-hover: #94e1f2;
+$theme-dark-link-visited: #7ed4e8;
+
+/* Theme toggle ----------------------------------------------------------- */
+
+.masthead__menu {
+  position: relative;
+  padding-right: 2.75rem;
+}
+
+.masthead__menu > .greedy-nav {
+  min-width: 0;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  color: $masthead-link-color;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.theme-toggle:hover {
+  color: $masthead-link-color-hover;
+  background: $lighter-gray;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid $link-color;
+  outline-offset: 2px;
+}
+
+.theme-toggle__moon {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  color: $theme-dark-text;
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  color: $theme-dark-link-hover;
+  background: $theme-dark-surface-raised;
+}
+
+html[data-theme="dark"] .theme-toggle__sun {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle__moon {
+  display: inline-block;
+}
+
+/* Base ------------------------------------------------------------------- */
+
+html,
+body,
+.masthead,
+.greedy-nav,
+.page__footer {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  background-color: $theme-dark-bg;
+  scrollbar-color: $theme-dark-border $theme-dark-bg;
+}
+
+html[data-theme="dark"] body {
+  color: $theme-dark-text;
+  background-color: $theme-dark-bg;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] label,
+html[data-theme="dark"] legend {
+  color: $theme-dark-text;
+}
+
+html[data-theme="dark"] a {
+  color: $theme-dark-link;
+}
+
+html[data-theme="dark"] a:visited {
+  color: $theme-dark-link-visited;
+}
+
+html[data-theme="dark"] a:hover,
+html[data-theme="dark"] a:focus {
+  color: $theme-dark-link-hover;
+}
+
+html[data-theme="dark"] a:focus-visible,
+html[data-theme="dark"] button:focus-visible,
+html[data-theme="dark"] summary:focus-visible,
+html[data-theme="dark"] input:focus-visible,
+html[data-theme="dark"] select:focus-visible,
+html[data-theme="dark"] textarea:focus-visible {
+  outline: 2px solid $theme-dark-link-hover;
+  outline-offset: 3px;
+}
+
+html[data-theme="dark"] ::selection {
+  color: #0b1a29;
+  background: #7ee8f5;
+}
+
+html[data-theme="dark"] ::-moz-selection {
+  color: #0b1a29;
+  background: #7ee8f5;
+}
+
+html[data-theme="dark"] u,
+html[data-theme="dark"] ins,
+html[data-theme="dark"] abbr[title],
+html[data-theme="dark"] abbr[data-original-title] {
+  border-color: $theme-dark-muted;
+}
+
+html[data-theme="dark"] hr,
+html[data-theme="dark"] .page__content h2,
+html[data-theme="dark"] .archive__subtitle,
+html[data-theme="dark"] .feature__wrapper,
+html[data-theme="dark"] .page__share,
+html[data-theme="dark"] .page__comments-title,
+html[data-theme="dark"] .page__related,
+html[data-theme="dark"] .page__content + .pagination,
+html[data-theme="dark"] .page__meta + .pagination,
+html[data-theme="dark"] .page__share + .pagination,
+html[data-theme="dark"] .page__comments + .pagination {
+  border-color: $theme-dark-border-soft;
+}
+
+html[data-theme="dark"] blockquote {
+  color: #e7eaed;
+  border-left-color: #9ba1a6;
+}
+
+html[data-theme="dark"] figcaption,
+html[data-theme="dark"] .page__meta,
+html[data-theme="dark"] .archive__subtitle,
+html[data-theme="dark"] .footnote,
+html[data-theme="dark"] .footnotes,
+html[data-theme="dark"] a.reversefootnote {
+  color: $theme-dark-muted;
+}
+
+html[data-theme="dark"] figcaption a {
+  color: inherit;
+  border-bottom-color: $theme-dark-border;
+}
+
+/* Transparent black-line diagrams need a light canvas. */
+html[data-theme="dark"] .page__content img:not(.book-cover),
+html[data-theme="dark"] .archive__item-teaser img {
+  background-color: #fff;
+}
+
+/* Masthead and navigation ------------------------------------------------ */
+
+html[data-theme="dark"] .masthead,
+html[data-theme="dark"] .greedy-nav {
+  color: $theme-dark-text;
+  background: $theme-dark-masthead;
+}
+
+html[data-theme="dark"] .masthead {
+  border-bottom-color: $theme-dark-border-soft;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.22);
+}
+
+html[data-theme="dark"] .greedy-nav a,
+html[data-theme="dark"] .greedy-nav a:visited {
+  color: $theme-dark-text;
+}
+
+html[data-theme="dark"] .greedy-nav a:hover,
+html[data-theme="dark"] .greedy-nav a:focus {
+  color: #d8dde0;
+}
+
+html[data-theme="dark"] .greedy-nav .visible-links a::before {
+  background: #9ba1a6;
+}
+
+html[data-theme="dark"] .greedy-nav > button {
+  color: #fff;
+  background-color: #6c747a;
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links {
+  color: $theme-dark-text;
+  background: $theme-dark-surface;
+  border-color: $theme-dark-border;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links li {
+  border-bottom-color: $theme-dark-border-soft;
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links a:hover,
+html[data-theme="dark"] .greedy-nav .hidden-links a:focus {
+  color: #fff;
+  background: $theme-dark-surface-raised;
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links::before {
+  border-color: $theme-dark-border transparent;
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links::after {
+  border-color: $theme-dark-surface transparent;
+}
+
+html[data-theme="dark"] .nav__sub-title,
+html[data-theme="dark"] .page__taxonomy-item,
+html[data-theme="dark"] .pagination li a,
+html[data-theme="dark"] .pagination--pager {
+  border-color: $theme-dark-border;
+}
+
+html[data-theme="dark"] .pagination li a,
+html[data-theme="dark"] .pagination--pager {
+  color: $theme-dark-muted;
+  background: transparent;
+}
+
+html[data-theme="dark"] .pagination li a:hover,
+html[data-theme="dark"] .pagination--pager:hover {
+  color: $theme-dark-link-hover;
+  background: $theme-dark-surface;
+}
+
+html[data-theme="dark"] .toc {
+  color: $theme-dark-muted;
+  background: $theme-dark-surface;
+  border-color: $theme-dark-border;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .toc .nav__title,
+html[data-theme="dark"] .nav__list .active,
+html[data-theme="dark"] .pagination li a.current {
+  color: #fff;
+  background: #6c747a;
+}
+
+html[data-theme="dark"] .toc__menu a,
+html[data-theme="dark"] .toc__menu a:visited {
+  color: $theme-dark-muted;
+  border-bottom-color: $theme-dark-border-soft;
+}
+
+html[data-theme="dark"] .toc__menu a:hover,
+html[data-theme="dark"] .toc__menu a:focus {
+  color: #fff;
+  background: $theme-dark-surface-raised;
+}
+
+/* Sidebar, footer, and reusable surfaces -------------------------------- */
+
+html[data-theme="dark"] .author__avatar img {
+  border-color: $theme-dark-border;
+}
+
+html[data-theme="dark"] .author__urls {
+  color: $theme-dark-text;
+  background: $theme-dark-surface;
+  border-color: $theme-dark-border;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .author__urls::before {
+  border-color: $theme-dark-border transparent;
+}
+
+html[data-theme="dark"] .author__urls::after {
+  border-color: $theme-dark-surface transparent;
+}
+
+html[data-theme="dark"] .author__urls a,
+html[data-theme="dark"] .author__urls a:visited {
+  color: $theme-dark-text;
+}
+
+html[data-theme="dark"] .author__urls a:hover,
+html[data-theme="dark"] .author__urls a:focus {
+  color: $theme-dark-link-hover;
+}
+
+html[data-theme="dark"] .author__urls i,
+html[data-theme="dark"] .social-icons .fa-github,
+html[data-theme="dark"] .social-icons .fa-github-alt,
+html[data-theme="dark"] .social-icons .fa-github-square {
+  color: #edf1f3;
+}
+
+html[data-theme="dark"] .page__footer {
+  color: $theme-dark-muted;
+  background-color: $theme-dark-masthead;
+  border-top-color: $theme-dark-border-soft;
+}
+
+html[data-theme="dark"] .page__footer a,
+html[data-theme="dark"] .page__footer a:visited,
+html[data-theme="dark"] .page__footer .fas,
+html[data-theme="dark"] .page__footer .fab,
+html[data-theme="dark"] .page__footer .far,
+html[data-theme="dark"] .page__footer .fal {
+  color: $theme-dark-muted;
+}
+
+html[data-theme="dark"] .page__footer a:hover,
+html[data-theme="dark"] .page__footer a:focus {
+  color: #fff;
+}
+
+html[data-theme="dark"] .well,
+html[data-theme="dark"] .modal,
+html[data-theme="dark"] .page__comments-form,
+html[data-theme="dark"] .screen-reader-text:focus,
+html[data-theme="dark"] .screen-reader-shortcut:focus {
+  color: $theme-dark-text;
+  background: $theme-dark-surface;
+  border-color: $theme-dark-border;
+}
+
+html[data-theme="dark"] .modal__actions,
+html[data-theme="dark"] .comment:not(:last-child),
+html[data-theme="dark"] .comment__avatar {
+  border-color: $theme-dark-border-soft;
+}
+
+html[data-theme="dark"] .show-modal::before,
+html[data-theme="dark"] .form::before {
+  background-color: rgba(30, 30, 30, 0.82);
+}
+
+/* Forms and tables ------------------------------------------------------- */
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select,
+html[data-theme="dark"] #goog-wm-qt {
+  color: $theme-dark-text;
+  background-color: $theme-dark-surface;
+  border-color: $theme-dark-border;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #adb4b9;
+  opacity: 1;
+}
+
+html[data-theme="dark"] input:hover,
+html[data-theme="dark"] textarea:hover,
+html[data-theme="dark"] select:hover,
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] textarea:focus,
+html[data-theme="dark"] select:focus {
+  border-color: $theme-dark-link;
+}
+
+html[data-theme="dark"] table,
+html[data-theme="dark"] th,
+html[data-theme="dark"] td {
+  border-color: $theme-dark-border;
+}
+
+html[data-theme="dark"] thead {
+  color: $theme-dark-text;
+  background-color: $theme-dark-surface-raised;
+  border-bottom-color: $theme-dark-border;
+}
+
+html[data-theme="dark"] tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+/* Keep code blocks light so the existing Solarized-Light tokens remain readable. */
+html[data-theme="dark"] p > code,
+html[data-theme="dark"] a > code,
+html[data-theme="dark"] li > code,
+html[data-theme="dark"] figcaption > code,
+html[data-theme="dark"] td > code,
+html[data-theme="dark"] pre,
+html[data-theme="dark"] .highlight,
+html[data-theme="dark"] div.highlighter-rouge,
+html[data-theme="dark"] figure.highlight {
+  color: #34434b;
+  background-color: #f7f8f9;
+  border-color: #d7dde1;
+}
+
+html[data-theme="dark"] div.highlighter-rouge::before,
+html[data-theme="dark"] figure.highlight::before {
+  color: #4b5961;
+  background-color: #e7ebee;
+}
+
+/* Buttons and notices ---------------------------------------------------- */
+
+html[data-theme="dark"] .btn--inverse {
+  color: $theme-dark-text !important;
+  background-color: $theme-dark-surface;
+  border-color: $theme-dark-border !important;
+}
+
+html[data-theme="dark"] .btn--inverse:hover,
+html[data-theme="dark"] .btn--inverse:focus {
+  color: #fff !important;
+  background-color: $theme-dark-surface-raised;
+}
+
+html[data-theme="dark"] .notice,
+html[data-theme="dark"] .notice--primary,
+html[data-theme="dark"] .notice--info,
+html[data-theme="dark"] .notice--warning,
+html[data-theme="dark"] .notice--success,
+html[data-theme="dark"] .notice--danger {
+  color: $theme-dark-text;
+}
+
+html[data-theme="dark"] .notice { background-color: #565656; }
+html[data-theme="dark"] .notice--primary { background-color: #50585e; }
+html[data-theme="dark"] .notice--info { background-color: #174d5b; }
+html[data-theme="dark"] .notice--warning { background-color: #62471f; }
+html[data-theme="dark"] .notice--success { background-color: #285337; }
+html[data-theme="dark"] .notice--danger { background-color: #603333; }
+
+html[data-theme="dark"] .notice a,
+html[data-theme="dark"] .notice--primary a,
+html[data-theme="dark"] .notice--info a,
+html[data-theme="dark"] .notice--warning a,
+html[data-theme="dark"] .notice--success a,
+html[data-theme="dark"] .notice--danger a {
+  color: #9ce6f5;
+}
+
+html[data-theme="dark"] .notice code,
+html[data-theme="dark"] .notice--primary code,
+html[data-theme="dark"] .notice--info code,
+html[data-theme="dark"] .notice--warning code,
+html[data-theme="dark"] .notice--success code,
+html[data-theme="dark"] .notice--danger code {
+  color: #f4f7f8;
+  background: rgba(0, 0, 0, 0.22);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* The Art of Olympiad Geometry ------------------------------------------ */
+
+html[data-theme="dark"] .book-page {
+  --book-ink: #eef4f7;
+  --book-muted: #bac6cf;
+  --book-line: #62717b;
+  --book-cyan-soft: #173f47;
+  color: var(--book-ink);
+}
+
+html[data-theme="dark"] .book-section h2,
+html[data-theme="dark"] .book-card h3,
+html[data-theme="dark"] .book-stat strong,
+html[data-theme="dark"] .book-chapter-stats-heading,
+html[data-theme="dark"] .book-chapter-stat strong,
+html[data-theme="dark"] .book-toc-disclosure > summary,
+html[data-theme="dark"] .book-chapter > summary,
+html[data-theme="dark"] .book-problem > summary,
+html[data-theme="dark"] .book-problem-equation,
+html[data-theme="dark"] .book-sample strong,
+html[data-theme="dark"] .book-usage strong,
+html[data-theme="dark"] .book-rating-score,
+html[data-theme="dark"] .book-info dd {
+  color: #f3f8fb;
+}
+
+html[data-theme="dark"] .book-lead,
+html[data-theme="dark"] .book-card p,
+html[data-theme="dark"] .book-card li,
+html[data-theme="dark"] .book-chapter li,
+html[data-theme="dark"] .book-feature,
+html[data-theme="dark"] .book-problem-body p,
+html[data-theme="dark"] .book-sample,
+html[data-theme="dark"] .book-usage,
+html[data-theme="dark"] .book-errata-format,
+html[data-theme="dark"] .book-order-steps li,
+html[data-theme="dark"] .book-order-contact {
+  color: #d9e3e9;
+}
+
+html[data-theme="dark"] .book-stat span,
+html[data-theme="dark"] .book-chapter-stat small,
+html[data-theme="dark"] .book-chapter-stats-note,
+html[data-theme="dark"] .book-toc-note,
+html[data-theme="dark"] .book-note,
+html[data-theme="dark"] .book-form-note,
+html[data-theme="dark"] .book-rating-count,
+html[data-theme="dark"] .book-info dt {
+  color: var(--book-muted);
+}
+
+html[data-theme="dark"] .book-section-label,
+html[data-theme="dark"] .book-chapter-stat span,
+html[data-theme="dark"] .book-toc-disclosure > summary::after,
+html[data-theme="dark"] .book-chapter > summary::after,
+html[data-theme="dark"] .book-problem > summary::after,
+html[data-theme="dark"] .book-feature::before {
+  color: #56d9e8;
+}
+
+html[data-theme="dark"] .book-card,
+html[data-theme="dark"] .book-problems,
+html[data-theme="dark"] .book-chapter,
+html[data-theme="dark"] .book-sample,
+html[data-theme="dark"] .book-errata,
+html[data-theme="dark"] .book-order,
+html[data-theme="dark"] .book-info {
+  background: $theme-dark-surface;
+  border-color: var(--book-line);
+}
+
+html[data-theme="dark"] .book-stat,
+html[data-theme="dark"] .book-chapter-stat,
+html[data-theme="dark"] .book-toc-disclosure,
+html[data-theme="dark"] .book-problem,
+html[data-theme="dark"] .book-samples,
+html[data-theme="dark"] .book-rating,
+html[data-theme="dark"] .book-errata-format,
+html[data-theme="dark"] .book-order-steps li {
+  background: #3a444a;
+  border-color: var(--book-line);
+}
+
+html[data-theme="dark"] .book-feature,
+html[data-theme="dark"] .book-usage,
+html[data-theme="dark"] .book-order-contact {
+  color: #dff7fa;
+  background: var(--book-cyan-soft);
+  border-color: #36bdcf;
+}
+
+html[data-theme="dark"] .book-toc-content,
+html[data-theme="dark"] .book-problem-body,
+html[data-theme="dark"] .book-info,
+html[data-theme="dark"] .book-info div {
+  border-color: var(--book-line);
+}
+
+html[data-theme="dark"] .book-toc-disclosure > summary:hover,
+html[data-theme="dark"] .book-chapter > summary:hover,
+html[data-theme="dark"] .book-problem > summary:hover {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+html[data-theme="dark"] .book-sample {
+  border-color: #71808a;
+}
+
+html[data-theme="dark"] .book-button--disabled {
+  color: #bdc8ce !important;
+  background: #58656d;
+  border-color: #58656d;
+}
+
+html[data-theme="dark"] .book-rating-average-stars {
+  color: #737f87;
+}
+
+html[data-theme="dark"] .book-errata-format code {
+  color: #dffbff;
+  background: #27343b;
+  border-color: #596b75;
+}
+
+html[data-theme="dark"] .book-hero,
+html[data-theme="dark"] .book-price-card,
+html[data-theme="dark"] .book-closing {
+  border: 1px solid #40596c;
+}
+
+html[data-theme="dark"] .book-cover {
+  background: transparent;
+}
+
+/* The Giscus iframe is switched by JavaScript via setConfig. */
+html[data-theme="dark"] .giscus,
+html[data-theme="dark"] .giscus-frame {
+  color-scheme: dark;
+  background: transparent;
+}
+
+/* Printing should remain ink-friendly even when dark mode is active. */
+@media print {
+  html[data-theme="dark"],
+  html[data-theme="dark"] body {
+    color-scheme: light;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  html[data-theme="dark"] body *,
+  html[data-theme="dark"] body *::before,
+  html[data-theme="dark"] body *::after {
+    color: #000 !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
