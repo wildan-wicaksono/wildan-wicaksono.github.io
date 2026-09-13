@@ -302,6 +302,13 @@ html[data-theme="dark"] .author__urls {
   background: $theme-dark-surface;
   border-color: $theme-dark-border;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+
+  // On desktop this list is part of the sidebar, not a floating card.
+  @include breakpoint($large) {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
 }
 
 html[data-theme="dark"] .author__urls::before {
