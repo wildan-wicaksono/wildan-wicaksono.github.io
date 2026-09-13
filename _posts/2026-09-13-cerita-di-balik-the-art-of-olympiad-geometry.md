@@ -13,8 +13,8 @@ tags:
 
 Jika ditarik jauh ke belakang, cerita *The Art of Olympiad Geometry* tidak dimulai ketika saya membuka LaTeX dan mengetik halaman pertamanya. Cerita buku ini justru dimulai bertahun-tahun sebelumnya: ketika saya kebingungan menghadapi soal olimpiade, berkeliling mencari buku, dan belum tahu bagaimana seseorang seharusnya berpikir saat berhadapan dengan soal matematika yang sulit.
 
-Tulisan ini adalah cerita mengenai perjalanan tersebut--tentang buku-buku yang mengubah cara saya belajar, pengalaman mengajar yang mengubah cara saya menjelaskan, sebuah game yang mengingatkan kembali tujuan saya menulis, dan berbagai keputusan kecil yang akhirnya membentuk AOG seperti sekarang.
-
+Tulisan ini adalah cerita mengenai perjalanan tersebut—tentang buku-buku yang mengubah cara saya belajar, pengalaman mengajar yang mengubah cara saya menjelaskan, sebuah game yang mengingatkan kembali tujuan saya menulis, dan berbagai keputusan kecil yang akhirnya membentuk AOG seperti sekarang. 
+(Em dash ``—'' di sini bukan AI generated, tapi saya mencoba belajar menggunakannya :lol:)
 
 * TOC
 {:toc}
