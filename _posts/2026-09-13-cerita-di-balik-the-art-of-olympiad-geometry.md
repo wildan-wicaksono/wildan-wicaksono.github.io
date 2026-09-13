@@ -48,7 +48,7 @@ Saya juga tidak mempunyai pembimbing olimpiade khusus karena biayanya relatif ma
 
 ### *Euclidean Geometry in Mathematical Olympiad*
 
-Saat kelas 9, saya mulai mempersiapkan diri untuk olimpiade tingkat SMA. Seorang teman memperkenalkan saya kepada sebuah buku yang khusus membahas geometri: [*Euclidean Geometry in Mathematical Olympiad*](https://web.evanchen.cc/geombook.html), atau EGMO, karya Evan Chen.
+Saat kelas 9, saya mulai mempersiapkan diri untuk olimpiade tingkat SMA. Seorang teman memperkenalkan saya kepada sebuah buku yang khusus membahas geometri: [*Euclidean Geometry in Mathematical Olympiad*](https://web.evanchen.cc/geombook.html){: target="_blank" rel="noopener noreferrer"}, atau EGMO, karya Evan Chen.
 
 Itu adalah pertama kalinya saya membaca buku matematika berbahasa Inggris, sehingga tentu saja pada awalnya terasa sulit. Meski begitu, cara penyajiannya sangat menarik. Berbeda dari buku-buku yang sebelumnya saya temui, EGMO terasa seolah-olah sedang berbicara langsung kepada saya. Contoh soalnya tidak hanya disertai solusi, tetapi juga intuisi di baliknya. Untuk pertama kalinya, saya mulai mendapat gambaran tentang proses berpikir yang membawa seseorang menuju sebuah solusi.
 
@@ -112,7 +112,7 @@ Menurut saya, proses pemeriksaan justru lebih melelahkan daripada menulis. Namun
 
 Pada awal 2026, banyak video mengenai *Clair Obscur: Expedition 33*—atau E33—berseliweran di *Reels* saya setelah game tersebut meraih berbagai penghargaan pada 2025. Awalnya saya cuek saja karena memang kurang tertarik membeli game berbayar (hehe). Saat itu saya masih lebih sering memainkan game kompetitif seperti *Valorant*.
 
-Saya baru mulai penasaran ketika [Orlando](https://refrainfr.github.io/) menunjukkan *menu screen* E33 melalui WhatsApp. Beberapa hari kemudian, untuk pertama kalinya saya membeli game berbayar di Steam.
+Saya baru mulai penasaran ketika [Orlando](https://refrainfr.github.io/){: target="_blank" rel="noopener noreferrer"} menunjukkan *menu screen* E33 melalui WhatsApp. Beberapa hari kemudian, untuk pertama kalinya saya membeli game berbayar di Steam.
 
 Karena masih disibukkan kuliah dan mengajar, saya baru dapat memainkannya pada malam hari, biasanya setelah selesai mengajar sekitar pukul sepuluh. Ketika pertama kali membuka game dan masuk ke menu utama, saya hanya diam cukup lama untuk mendengarkan musiknya. Setelah mulai bermain, grafik dan musiknya membuat saya berpikir, “Oke, pengeluaran ini *worth it*.”
 
@@ -167,7 +167,7 @@ Petunjuk bertahap memberi pembaca kesempatan untuk kembali mencoba setelah mempe
 
 Dalam setiap bagian, saya hanya dapat memberikan sekitar empat sampai enam contoh soal, bergantung pada kebutuhan materi. Selebihnya, pembaca diberi kesempatan untuk mencoba sendiri. Beberapa latihan dengan ide yang sangat menarik saya pilih untuk disertai solusi lengkap.
 
-Mengapa tidak semua latihan diberikan solusi? Saya juga ingin pembaca tumbuh menjadi pembelajar yang mandiri: berani menelusuri sumber soal, mencari diskusi di internet, atau bertanya melalui [Art of Problem Solving](https://artofproblemsolving.com/). Karena sumber setiap soal dicantumkan, proses penelusuran tersebut tetap dapat dilakukan dengan jelas.
+Mengapa tidak semua latihan diberikan solusi? Saya juga ingin pembaca tumbuh menjadi pembelajar yang mandiri: berani menelusuri sumber soal, mencari diskusi di internet, atau bertanya melalui [Art of Problem Solving](https://artofproblemsolving.com/){: target="_blank" rel="noopener noreferrer"}. Karena sumber setiap soal dicantumkan, proses penelusuran tersebut tetap dapat dilakukan dengan jelas.
 
 ## Rancangan Buku yang Terus Berubah
 
@@ -193,7 +193,7 @@ Inspirasi lain datang dari E33. Setelah menyelesaikan Bab 6, saya beristirahat s
 
 Saat itulah muncul pikiran: bagaimana jika latihan dalam buku juga mempunyai sistem *reward point*?
 
-Gagasan tersebut sebenarnya bukan sesuatu yang sepenuhnya baru. Saya langsung teringat kepada [Olympiad Training for Individual Study](https://web.evanchen.cc/otis.html), atau OTIS, yang menerapkan sistem serupa. Namun, pengalaman mengalahkan Simon membuat ide tersebut terasa cocok untuk diterapkan dalam AOG.
+Gagasan tersebut sebenarnya bukan sesuatu yang sepenuhnya baru. Saya langsung teringat kepada [Olympiad Training for Individual Study](https://web.evanchen.cc/otis.html){: target="_blank" rel="noopener noreferrer"}, atau OTIS, yang menerapkan sistem serupa. Namun, pengalaman mengalahkan Simon membuat ide tersebut terasa cocok untuk diterapkan dalam AOG.
 
 Poin pada setiap soal tidak hanya menunjukkan tingkat tantangan, tetapi juga memberi pembaca sebuah bentuk progres kecil. Soal yang berhasil diselesaikan bukan sekadar soal yang dicoret dari daftar, melainkan pencapaian yang dikumpulkan sepanjang perjalanan belajar.
 
@@ -269,5 +269,5 @@ Mungkin itulah arti buku ini bagi saya: sebuah catatan dari seseorang yang perna
 
 > *For Those Who Come After.*
 
-Informasi lebih lanjut mengenai buku ini dapat dibaca pada halaman [*The Art of Olympiad Geometry*](https://wildan-wicaksono.github.io/portfolio/the-art-of-olympiad-geometry/).
+Informasi lebih lanjut mengenai buku ini dapat dibaca pada halaman [*The Art of Olympiad Geometry*](https://wildan-wicaksono.github.io/portfolio/the-art-of-olympiad-geometry/){: target="_blank" rel="noopener noreferrer"}.
 
