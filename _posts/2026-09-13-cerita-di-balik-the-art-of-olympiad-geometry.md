@@ -169,6 +169,21 @@ Secara singkat, E33 bercerita tentang penduduk Lumière yang terus berusaha meng
 
 Kalimat *For Those Who Come After* berulang kali terdengar dalam dialognya. Salah satu hal yang paling membekas bagi saya adalah kebiasaan Gustave menulis jurnal perjalanan setiap malam agar suatu hari dapat dibaca oleh murid-muridnya.
 
+<figure style="margin: 1.75em auto 2em; text-align: center;">
+  <img
+    src="{{ '/images/blog/gustave-journal.webp' | relative_url }}"
+    alt="Gustave menulis jurnal dalam Clair Obscur: Expedition 33"
+    width="2048"
+    height="1140"
+    loading="lazy"
+    decoding="async"
+    style="display: block; width: 100%; height: auto; margin: 0 auto; border-radius: 6px;"
+  >
+  <figcaption style="margin-top: .55em; font-size: .85em; line-height: 1.45; opacity: .82;">
+    Gustave meluangkan waktu untuk menulis jurnal—catatan perjalanan yang kelak dapat dibaca oleh murid-muridnya.
+  </figcaption>
+</figure>
+
 Setelah menyelesaikan game tersebut, saya kembali teringat kepada tujuan awal saya menulis. Saya mungkin tidak dapat menghilangkan seluruh kesulitan yang akan dihadapi pelajar berikutnya. Namun, saya dapat meninggalkan sesuatu yang membuat perjalanan mereka sedikit lebih mudah.
 
 Dari situlah keinginan untuk benar-benar mewujudkan sebuah buku muncul kembali.
