@@ -16,8 +16,8 @@ Jika ditarik jauh ke belakang, cerita *The Art of Olympiad Geometry* tidak dimul
 Tulisan ini adalah cerita mengenai perjalanan tersebut—tentang buku-buku yang mengubah cara saya belajar, pengalaman mengajar yang mengubah cara saya menjelaskan, sebuah game yang mengingatkan kembali tujuan saya menulis, dan berbagai keputusan kecil yang akhirnya membentuk AOG seperti sekarang. 
 (Em dash ``—'' di sini bukan AI generated, tapi saya mencoba belajar menggunakannya :lol:)
 
-* TOC
-{:toc}
+<!-- * TOC
+{:toc}-->
 
 ## Awal Mengenal Olimpiade
 
@@ -247,7 +247,7 @@ Berikut salah satu potongan kode TikZ yang digunakan dalam proses tersebut.
 
 ![Salah satu diagram geometri dalam AOG](/images/aog/diagram-tikz-aog.svg){: .align-center}
 
-*Dari baris-baris sintaks menjadi diagram yang siap dibaca.*
+<!-- *Dari baris-baris sintaks menjadi diagram yang siap dibaca.* -->
 
 ## Membuka Akses untuk Pembaca
 
