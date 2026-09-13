@@ -3,6 +3,7 @@ title: "Cerita di Balik The Art of Olympiad Geometry"
 date: 2026-09-13 00:00:00 +0700
 permalink: /posts/2026/09/cerita-di-balik-the-art-of-olympiad-geometry/
 excerpt: "Perjalanan dari kesulitan mencari referensi olimpiade hingga menulis The Art of Olympiad Geometry."
+read_time_minutes: 10
 tags:
   - olimpiade matematika
   - geometri
