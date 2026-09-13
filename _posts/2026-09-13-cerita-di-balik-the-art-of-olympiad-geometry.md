@@ -270,4 +270,3 @@ Mungkin itulah arti buku ini bagi saya: sebuah catatan dari seseorang yang perna
 > *For Those Who Come After.*
 
 Informasi lebih lanjut mengenai buku ini dapat dibaca pada halaman [*The Art of Olympiad Geometry*](https://wildan-wicaksono.github.io/portfolio/the-art-of-olympiad-geometry/){: target="_blank" rel="noopener noreferrer"}.
-
