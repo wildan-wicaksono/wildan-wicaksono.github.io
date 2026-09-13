@@ -112,7 +112,7 @@ Menurut saya, proses pemeriksaan justru lebih melelahkan daripada menulis. Namun
 
 Pada awal 2026, banyak video mengenai *Clair Obscur: Expedition 33*—atau E33—berseliweran di *Reels* saya setelah game tersebut meraih berbagai penghargaan pada 2025. Awalnya saya cuek saja karena memang kurang tertarik membeli game berbayar (hehe). Saat itu saya masih lebih sering memainkan game kompetitif seperti *Valorant*.
 
-Saya baru mulai penasaran ketika Orlando menunjukkan *menu screen* E33 melalui WhatsApp. Beberapa hari kemudian, untuk pertama kalinya saya membeli game berbayar di Steam.
+Saya baru mulai penasaran ketika [Orlando](https://refrainfr.github.io/) menunjukkan *menu screen* E33 melalui WhatsApp. Beberapa hari kemudian, untuk pertama kalinya saya membeli game berbayar di Steam.
 
 Karena masih disibukkan kuliah dan mengajar, saya baru dapat memainkannya pada malam hari, biasanya setelah selesai mengajar sekitar pukul sepuluh. Ketika pertama kali membuka game dan masuk ke menu utama, saya hanya diam cukup lama untuk mendengarkan musiknya. Setelah mulai bermain, grafik dan musiknya membuat saya berpikir, “Oke, pengeluaran ini *worth it*.”
 
