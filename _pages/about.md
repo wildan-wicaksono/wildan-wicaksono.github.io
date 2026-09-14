@@ -38,7 +38,7 @@ redirect_from:
       <div class="home-book-copy">
         <span class="home-card-label">Book · 2026</span>
         <h3>The Art of Olympiad Geometry</h3>
-        <p>An Indonesian-language book that develops olympiad geometry from foundational ideas to advanced Euclidean techniques. It is written for students who want to understand the reasoning behind a solution, not only its final steps.</p>
+        <p>An Indonesian-language book that builds a foundation in olympiad geometry and introduces a broad range of problem-solving methods and perspectives. It is written for students who want to understand the reasoning behind a solution, not merely its final steps.</p>
         <a class="home-text-link" href="{{ '/portfolio/the-art-of-olympiad-geometry/' | relative_url }}">Explore the book <span aria-hidden="true">→</span></a>
       </div>
     </article>
@@ -76,7 +76,7 @@ redirect_from:
       <article class="home-focus-card">
         <span class="home-focus-number">02</span>
         <h3>Algebraic counting</h3>
-        <p>I also study counting problems for integer matrices, including matrices in centralizers and their asymptotic behaviour.</p>
+        <p>I am also exploring questions in algebraic counting and matrix theory.</p>
       </article>
 
       <article class="home-focus-card">
