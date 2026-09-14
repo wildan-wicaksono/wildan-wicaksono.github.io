@@ -1,25 +1,134 @@
 ---
 permalink: /
-title: "Hello!"
+title: "Home"
 author_profile: true
-redirect_from: 
+share: false
+comments: false
+redirect_from:
   - /about/
   - /about.html
 ---
-<p align="justify"> I am <b>Wildan</b> (some call me Bagus), a fourth-year undergraduate math student at Universitas Brawijaya, East Java, <b>Indonesia</b>. I'm from Probolinggo, East Java, Indonesia.</p>
-![It's me!](/images/354450554_1948210505554431_5233527299125040551_n.jpg){: .align-center width="500px"}
-<p align="justify"> In general, I am interested number theory. On the mathematics olympiad (for senior high school) interested in geometry, especially Euclidean geometry. </p>
 
-<p align="justify"> I am already interested in mathematics at junior high school. Geometry is the first place of my reason why I like mathematics. The real reason I don't know either, but to me, it just seemed more interesting than algebra, number theory, and combinatorics. When I was in junior high school, I was already interested in books by Evan Chen,  <a href = "https://www.amazon.com/Euclidean-Geometry-Mathematical-Olympiads-Problem/dp/0883858398">Euclidean Geometry in Mathematical Olympiad</a> and made me more interest to geometry. </p>
+<link rel="stylesheet" href="{{ '/assets/css/homepage.css' | relative_url }}">
 
-<p align="justify"> In 2023 and 2024 I became jury's assistant in the Olimpiade Sains Nasional (OSN), the most prestigious science olympiad in Indonesia. This event is held by the <a href = "https://www.instagram.com/puspresnas/">Pusat Prestasi Nasional</a> every year. In addition, I also became a teaching assistant in preparation for the 2024 International Mathematical Olympiad (IMO), the most prestigious mathematical olympiad in the world. </p>
-![OSN 2023, Bogor](/images/IMG_2165.JPG){: .align-center width="1000px"}
+<div class="home-page">
+  <section class="home-hero" aria-labelledby="home-heading">
+    <span class="home-eyebrow">Mathematics · Olympiad Education</span>
+    <h1 id="home-heading">Wildan Bagus Wicaksono</h1>
+    <p class="home-role">Mathematics undergraduate, olympiad coach, and author.</p>
+    <p class="home-intro">My interests lie in number theory, Euclidean geometry, and mathematical olympiad education. I am currently completing my undergraduate thesis at Universitas Brawijaya, coaching olympiad students, and developing mathematical learning resources.</p>
+    <div class="home-actions" aria-label="Explore this website">
+      <a class="home-button" href="{{ '/publications/' | relative_url }}">View publications</a>
+      <a class="home-button home-button--secondary" href="{{ '/teaching/' | relative_url }}">Teaching &amp; coaching</a>
+      <a class="home-button home-button--secondary" href="{{ '/projects/' | relative_url }}">Explore projects</a>
+    </div>
+  </section>
 
-<p align="justify"> I also became a gold medalist at Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam Perguruan Tinggi (ONMIPA-PT) 2023, a mathematical olympiad for undergraduate students, held by the Pusat Prestasi Nasional. </p>
+  <section class="home-section" aria-labelledby="selected-work-heading">
+    <div class="home-section-heading">
+      <span class="home-section-label">Selected work</span>
+      <h2 id="selected-work-heading">Mathematics, writing, and education</h2>
+      <p>A selection of the work that best represents what I am currently building and contributing to.</p>
+    </div>
 
-FAQ
-=========
-<p align="justify">Q: Is Muhammad Jilan Wicaksono your brother?</p>
-<p align="justify"> A: No.  </p>
+    <article class="home-book-card">
+      <div class="home-book-visual">
+        <img src="{{ '/images/the-art-of-olympiad-geometry-cover.png' | relative_url }}" alt="Cover of The Art of Olympiad Geometry by Wildan Bagus Wicaksono">
+      </div>
+      <div class="home-book-copy">
+        <span class="home-card-label">Book · 2026</span>
+        <h3>The Art of Olympiad Geometry</h3>
+        <p>An Indonesian-language book that develops olympiad geometry from foundational ideas to advanced Euclidean techniques. It is written for students who want to understand the reasoning behind a solution, not only its final steps.</p>
+        <a class="home-text-link" href="{{ '/portfolio/the-art-of-olympiad-geometry/' | relative_url }}">Explore the book <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
 
+    <div class="home-work-grid">
+      <article class="home-card">
+        <span class="home-card-label">Teaching</span>
+        <h3>Olympiad coaching</h3>
+        <p>I teach olympiad mathematics across different school levels and have contributed to Indonesia's national International Mathematical Olympiad training program.</p>
+        <a class="home-text-link" href="{{ '/teaching/' | relative_url }}">View teaching experience <span aria-hidden="true">→</span></a>
+      </article>
 
+      <article class="home-card">
+        <span class="home-card-label">Resources</span>
+        <h3>Problems and collections</h3>
+        <p>Contest collections, past examinations, handouts, and reading materials created or curated for olympiad students and instructors.</p>
+        <a class="home-text-link" href="{{ '/projects/' | relative_url }}">Browse the resources <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="focus-heading">
+    <div class="home-section-heading">
+      <span class="home-section-label">Current focus</span>
+      <h2 id="focus-heading">What I am working on</h2>
+    </div>
+
+    <div class="home-focus-grid">
+      <article class="home-focus-card">
+        <span class="home-focus-number">01</span>
+        <h3>Set-valued analysis</h3>
+        <p>My undergraduate research compares algebraic and metric approaches to differentiability for set-valued functions.</p>
+      </article>
+
+      <article class="home-focus-card">
+        <span class="home-focus-number">02</span>
+        <h3>Algebraic counting</h3>
+        <p>I also study counting problems for integer matrices, including matrices in centralizers and their asymptotic behaviour.</p>
+      </article>
+
+      <article class="home-focus-card">
+        <span class="home-focus-number">03</span>
+        <h3>Olympiad geometry</h3>
+        <p>I continue to explore Euclidean methods, write problems, and develop materials for mathematical olympiad training.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="highlights-heading">
+    <div class="home-section-heading">
+      <span class="home-section-label">Selected highlights</span>
+      <h2 id="highlights-heading">A few milestones</h2>
+    </div>
+
+    <div class="home-highlights">
+      <div class="home-highlight">
+        <strong>Gold Medalist</strong>
+        <span>ONMIPA-PT · 2023</span>
+      </div>
+      <div class="home-highlight">
+        <strong>IMO Training Instructor</strong>
+        <span>National program · 2024–2026</span>
+      </div>
+      <div class="home-highlight">
+        <strong>Problem Writer</strong>
+        <span>OSN and PEMNAS · 2023–2025</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-story" aria-labelledby="story-heading">
+    <div class="home-story-copy">
+      <span class="home-section-label">A personal note</span>
+      <h2 id="story-heading">Why geometry?</h2>
+      <p>Geometry was the first area of mathematics that genuinely fascinated me. I discovered olympiad geometry in junior high school, and its combination of visual intuition, elegant transformations, and surprising structure has stayed with me ever since.</p>
+      <p>What began as curiosity eventually grew into years of learning, teaching, problem writing, and writing <em>The Art of Olympiad Geometry</em>.</p>
+    </div>
+    <figure class="home-story-figure">
+      <img src="{{ '/images/IMG_2165.JPG' | relative_url }}" alt="Participants and organizers at OSN 2023 in Bogor" loading="lazy">
+      <figcaption>OSN 2023 · Bogor, Indonesia</figcaption>
+    </figure>
+  </section>
+
+  <section class="home-closing" aria-labelledby="contact-heading">
+    <span class="home-eyebrow">Get in touch</span>
+    <h2 id="contact-heading">Let's talk mathematics.</h2>
+    <p>I am always happy to discuss mathematics, olympiad education, teaching opportunities, or possible collaborations.</p>
+    <div class="home-actions home-actions--centered">
+      <a class="home-button" href="mailto:wildan.b.wicaksono@gmail.com">Email me</a>
+      <a class="home-button home-button--secondary" href="{{ '/cv/' | relative_url }}">View my CV</a>
+    </div>
+  </section>
+</div>
