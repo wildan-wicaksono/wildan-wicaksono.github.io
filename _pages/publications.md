@@ -11,11 +11,19 @@ author_profile: true
 
 {% include base_path %}
 
-<p>This page brings together my books and research publications. It currently contains my olympiad geometry book; research papers will be added as they become available.</p>
+<p>This page brings together my undergraduate thesis, books, and research publications. Research papers will be added as they become available.</p>
 
 {% assign publications_by_date = site.publications | sort: "date" | reverse %}
+{% assign theses = publications_by_date | where: "publication_type", "thesis" %}
 {% assign books = publications_by_date | where: "publication_type", "book" %}
 {% assign papers = publications_by_date | where: "publication_type", "paper" %}
+
+{% if theses.size > 0 %}
+  <h2>Undergraduate thesis</h2>
+  {% for post in theses %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
 
 {% if books.size > 0 %}
   <h2>Books</h2>
