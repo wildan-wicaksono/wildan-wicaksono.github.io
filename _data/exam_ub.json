@@ -1,0 +1,684 @@
+[
+  {
+    "id": "algebra-discrete",
+    "kicker": "Core structures",
+    "title": "Algebra and discrete mathematics",
+    "description": "Linear algebra, algebraic structures, number theory, and discrete mathematics.",
+    "count": 16,
+    "courses": [
+      {
+        "title": "Aljabar Linier Elementer",
+        "subtitle": "Elementary Linear Algebra",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/ALE_UTS2022.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/ALE_UAS2022.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Aljabar Linier",
+        "subtitle": "Linear Algebra",
+        "count": 1,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/AL_UTS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Kombinatorika",
+        "subtitle": "Combinatorics",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Kombin_UTS2023.pdf"
+              },
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Kombin_UTS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Matematika Diskret",
+        "subtitle": "Discrete Mathematics",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Matdis_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Matdis_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Teori Bilangan",
+        "subtitle": "Number Theory",
+        "count": 1,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Teobil_UTS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Teori Grup Hingga",
+        "subtitle": "Finite Group Theory",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/TGH_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/TGH_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Teori Grup Fuzzy",
+        "subtitle": "Fuzzy Group Theory",
+        "count": 1,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/TGF_UTS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Struktur Aljabar I",
+        "subtitle": "Abstract Algebra I",
+        "count": 4,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/SA1_UTS2022.pdf"
+              },
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/SA1_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/SA1_UAS2022.pdf"
+              },
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/SA1_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Struktur Aljabar II",
+        "subtitle": "Abstract Algebra II",
+        "count": 1,
+        "exams": [
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/SA2_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "analysis-differential",
+    "kicker": "Analysis",
+    "title": "Analysis and differential equations",
+    "description": "Real and complex analysis, special functions, differential equations, and measure theory.",
+    "count": 25,
+    "courses": [
+      {
+        "title": "Analisis Real I",
+        "subtitle": "Real Analysis I",
+        "count": 8,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2017",
+                "path": "/files/ExamUB/Anril1_UTS2017.pdf"
+              },
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/Anril1_UTS2022.pdf"
+              },
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Anril1_UTS2023.pdf"
+              },
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Anril1_UTS2024.pdf"
+              },
+              {
+                "year": "2025",
+                "path": "/files/ExamUB/Anril1_UTS2025.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Anril1_UAS2023.pdf"
+              },
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Anril1_UAS2024.pdf"
+              },
+              {
+                "year": "2025",
+                "path": "/files/ExamUB/Anril1_UAS2025.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Analisis Real II",
+        "subtitle": "Real Analysis II",
+        "count": 5,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Anril2_UTS2024.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2021",
+                "path": "/files/ExamUB/Anril2_UAS2021.pdf"
+              },
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/Anril2_UAS2022.pdf"
+              },
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Anril2_UAS2023.pdf"
+              },
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Anril2_UAS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Fungsi Khusus",
+        "subtitle": "Special Functions",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Fukhus_UTS2024.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Fukhus_UAS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Analisis Kompleks I",
+        "subtitle": "Complex Analysis I",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Fukom1_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Fukom1_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Analisis Kompleks II",
+        "subtitle": "Complex Analysis II",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Fukom2_UTS2024.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Fukom2_UAS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Kalkulus Variasi",
+        "subtitle": "Calculus of Variations",
+        "count": 1,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Kalvar_UTS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Persamaan Diferensial Biasa",
+        "subtitle": "Ordinary Differential Equations",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/PDB_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/PDB_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Persamaan Diferensial Parsial",
+        "subtitle": "Partial Differential Equations",
+        "count": 1,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/PDP_UTS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Teori Ukuran",
+        "subtitle": "Measure Theory",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/TeoriUkur_UTS2024.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/TeoriUkur_UAS2024.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "calculus-geometry",
+    "kicker": "Foundations",
+    "title": "Calculus and geometry",
+    "description": "Calculus sequences, foundational mathematics, and analytic geometry.",
+    "count": 16,
+    "courses": [
+      {
+        "title": "Geometri Analitik",
+        "subtitle": "Analytic Geometry",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/GA_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/GA_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Kalkulus I",
+        "subtitle": "Calculus I",
+        "count": 5,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/Kalkulus1_UTS2022.pdf"
+              },
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Kalkulus1_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/Kalkulus1_UAS2022.pdf"
+              },
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Kalkulus1_UAS2023.pdf"
+              },
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Kalkulus1_UAS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Kalkulus II",
+        "subtitle": "Calculus II",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Kalkulus2_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Kalkulus2_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Kalkulus III",
+        "subtitle": "Calculus III",
+        "count": 4,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Kalkulus3_UTS2023.pdf"
+              },
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Kalkulus3_UTS2024.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Kalkulus3_UAS2023.pdf"
+              },
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Kalkulus3_UAS2024.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Matematika Dasar I",
+        "subtitle": "Calculus I for actuarial students",
+        "count": 1,
+        "exams": [
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2022",
+                "path": "/files/ExamUB/Matdas1_UAS2022.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Matematika Dasar II",
+        "subtitle": "Calculus II for actuarial students",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Matdas2_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/Matdas2_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "probability-statistics",
+    "kicker": "Probability",
+    "title": "Probability and statistics",
+    "description": "Introductory probability and mathematical statistics.",
+    "count": 4,
+    "courses": [
+      {
+        "title": "Pengantar Peluang",
+        "subtitle": "Introduction to Probability",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/PP_UTS2023.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2023",
+                "path": "/files/ExamUB/PP_UAS2023.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Statistika Matematika",
+        "subtitle": "Mathematical Statistics",
+        "count": 2,
+        "exams": [
+          {
+            "type": "Midterm",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Statmath_UTS2024.pdf"
+              }
+            ]
+          },
+          {
+            "type": "Final",
+            "files": [
+              {
+                "year": "2024",
+                "path": "/files/ExamUB/Statmath_UAS2024.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
