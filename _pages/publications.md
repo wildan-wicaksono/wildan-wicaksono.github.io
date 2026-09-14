@@ -11,6 +11,22 @@ author_profile: true
 
 {% include base_path %}
 
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+<p>This page brings together my books and research publications. It currently contains my olympiad geometry book; research papers will be added as they become available.</p>
+
+{% assign publications_by_date = site.publications | sort: "date" | reverse %}
+{% assign books = publications_by_date | where: "publication_type", "book" %}
+{% assign papers = publications_by_date | where: "publication_type", "paper" %}
+
+{% if books.size > 0 %}
+  <h2>Books</h2>
+  {% for post in books %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
+
+{% if papers.size > 0 %}
+  <h2>Research papers</h2>
+  {% for post in papers %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
