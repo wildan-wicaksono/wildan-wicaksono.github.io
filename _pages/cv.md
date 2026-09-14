@@ -24,7 +24,7 @@ comments: false
       <article class="cv-entry">
         <div class="cv-entry-period">Expected 2026</div>
         <div class="cv-entry-content">
-          <h3>Bachelor of Science in Mathematics (S.Si.)</h3>
+          <h3>Bachelor of Science in Mathematics (S.Mat.)</h3>
           <p class="cv-entry-meta">Universitas Brawijaya · Malang, Indonesia</p>
         </div>
       </article>
