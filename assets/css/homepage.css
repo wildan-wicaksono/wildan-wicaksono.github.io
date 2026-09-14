@@ -435,6 +435,83 @@
   justify-content: center;
 }
 
+/* Dark mode ------------------------------------------------------------ */
+
+html[data-theme="dark"] .home-page {
+  --home-ink: #eef4f7;
+  --home-muted: #bac6cf;
+  --home-line: #62717b;
+  --home-surface: #3a444a;
+  --home-accent-dark: #56d9e8;
+  color: var(--home-ink);
+}
+
+html[data-theme="dark"] .home-section-heading h2,
+html[data-theme="dark"] .home-story h2,
+html[data-theme="dark"] .home-book-copy h3,
+html[data-theme="dark"] .home-card h3,
+html[data-theme="dark"] .home-focus-card h3 {
+  color: #f3f8fb;
+}
+
+html[data-theme="dark"] .home-section-heading p,
+html[data-theme="dark"] .home-book-copy p,
+html[data-theme="dark"] .home-card p,
+html[data-theme="dark"] .home-focus-card p,
+html[data-theme="dark"] .home-story-copy p {
+  color: #d9e3e9;
+}
+
+html[data-theme="dark"] .home-section-label,
+html[data-theme="dark"] .home-card-label,
+html[data-theme="dark"] .home-focus-number {
+  color: #56d9e8;
+}
+
+html[data-theme="dark"] .home-book-card {
+  background:
+    radial-gradient(circle at 96% 8%, rgba(23, 199, 220, 0.13), transparent 30%),
+    #3a444a;
+  border-color: var(--home-line);
+}
+
+html[data-theme="dark"] .home-card,
+html[data-theme="dark"] .home-focus-card {
+  background: #3d3d3d;
+  border-color: var(--home-line);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+html[data-theme="dark"] .home-story {
+  background: #3a444a;
+  border-color: var(--home-line);
+}
+
+html[data-theme="dark"] .home-text-link,
+html[data-theme="dark"] .home-text-link:visited {
+  color: #63dbe9 !important;
+}
+
+html[data-theme="dark"] .home-text-link:hover,
+html[data-theme="dark"] .home-text-link:focus {
+  color: #b8f7ff !important;
+}
+
+html[data-theme="dark"] .home-story-figure figcaption {
+  color: var(--home-muted);
+}
+
+html[data-theme="dark"] .home-hero,
+html[data-theme="dark"] .home-highlights,
+html[data-theme="dark"] .home-closing {
+  border: 1px solid #40596c;
+}
+
+html[data-theme="dark"] .home-book-visual img,
+html[data-theme="dark"] .home-story-figure img {
+  background-color: transparent !important;
+}
+
 @media (max-width: 860px) {
   .home-focus-grid {
     grid-template-columns: 1fr;
