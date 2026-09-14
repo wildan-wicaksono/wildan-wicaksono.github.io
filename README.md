@@ -2,7 +2,7 @@
 
 Repositori sumber untuk situs pribadi **Wildan Bagus Wicaksono**—mahasiswa Matematika Universitas Brawijaya, pengajar olimpiade matematika, dan penulis *The Art of Olympiad Geometry*.
 
-🌐 **[Kunjungi wildan-wicaksono.github.io](https://wildan-wicaksono.github.io/)**
+**[Kunjungi wildan-wicaksono.github.io](https://wildan-wicaksono.github.io/)**
 
 ## Isi situs
 
