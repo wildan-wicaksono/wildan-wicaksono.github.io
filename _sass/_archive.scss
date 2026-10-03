@@ -105,6 +105,63 @@
   .page__meta {
     margin: 0 0 4px;
   }
+
+  .archive__item--with-teaser {
+    margin-top: 1.5em;
+
+    .archive__item-title {
+      margin-top: 0;
+    }
+  }
+
+  .archive__item-list-teaser {
+    margin: 0 0 1em;
+
+    > a {
+      display: block;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius;
+    }
+  }
+
+  .archive__item-list-caption {
+    margin-top: 0.5em;
+    font-size: $type-size-8;
+    line-height: 1.5;
+    opacity: 0.8;
+    overflow-wrap: anywhere;
+  }
+
+  .archive__item-list-credit {
+    display: block;
+    margin-top: 0.25em;
+  }
+
+  @include breakpoint(720px) {
+    .archive__item--with-teaser {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(180px, 32%);
+      column-gap: 1.25em;
+      align-items: start;
+    }
+
+    .archive__item-list-teaser {
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0;
+    }
+
+    .archive__item-body {
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+    }
+  }
 }
 
 

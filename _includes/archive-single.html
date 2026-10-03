@@ -12,8 +12,37 @@
   {% assign title = post.title %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+{% assign archive_type = include.type | default: "list" %}
+{% assign show_list_teaser = false %}
+{% if archive_type == "list" and post.header.teaser %}
+  {% assign show_list_teaser = true %}
+{% endif %}
+
+<div class="{{ archive_type }}__item">
+  <article class="archive__item{% if show_list_teaser %} archive__item--with-teaser{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if show_list_teaser %}
+      <figure class="archive__item-list-teaser">
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">
+          <img
+            src="{% if teaser contains '://' %}{{ teaser }}{% else %}{{ teaser | prepend: '/images/' | prepend: base_path }}{% endif %}"
+            alt="{{ post.header.teaser_alt | default: post.title | strip_html | escape }}"
+            {% if post.header.teaser_width and post.header.teaser_height %}width="{{ post.header.teaser_width }}" height="{{ post.header.teaser_height }}"{% endif %}
+            loading="lazy"
+            decoding="async">
+        </a>
+        {% if post.header.teaser_caption or post.header.teaser_credit %}
+          <figcaption class="archive__item-list-caption">
+            {% if post.header.teaser_source %}
+              <a href="{{ post.header.teaser_source | escape }}" target="_blank" rel="noopener noreferrer">{{ post.header.teaser_caption | default: 'Sumber gambar' | escape }}</a>
+            {% else %}
+              {{ post.header.teaser_caption | escape }}
+            {% endif %}
+            {% if post.header.teaser_credit %}<span class="archive__item-list-credit">{{ post.header.teaser_credit | escape }}</span>{% endif %}
+          </figcaption>
+        {% endif %}
+      </figure>
+      <div class="archive__item-body">
+    {% endif %}
     {% if include.type == "grid" and teaser %}
       <div class="archive__item-teaser">
         <img src=
@@ -22,7 +51,7 @@
           {% else %}
             "{{ teaser | prepend: "/images/" | prepend: base_path }}"
           {% endif %}
-          alt="">
+          alt="{{ post.header.teaser_alt | default: '' | escape }}">
       </div>
     {% endif %}
 
@@ -77,5 +106,6 @@
       <p>Download <a href="{{ post.slidesurl }}">Download Slides</a></p></p>
     {% endif %}
 
+    {% if show_list_teaser %}</div>{% endif %}
   </article>
 </div>
