@@ -5,10 +5,10 @@ permalink: /posts/2026/09/cerita-di-balik-the-art-of-olympiad-geometry/
 excerpt: "Perjalanan dari kesulitan mencari referensi olimpiade hingga menulis The Art of Olympiad Geometry."
 read_time_minutes: 10
 header:
-  teaser: blog/gustave-journal.webp
-  teaser_alt: "Gustave menulis jurnal dalam Clair Obscur: Expedition 33"
-  teaser_width: 2048
-  teaser_height: 1140
+  teaser: blog/expedition-33-team.webp
+  teaser_alt: "Gustave bersama tim dalam Clair Obscur: Expedition 33"
+  teaser_width: 1920
+  teaser_height: 1080
   teaser_caption: "For Those Who Come After"
   teaser_credit: "Clair Obscur: Expedition 33"
 tags:
