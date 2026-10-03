@@ -9,7 +9,7 @@ header:
   teaser_alt: "Gustave menulis jurnal dalam Clair Obscur: Expedition 33"
   teaser_width: 2048
   teaser_height: 1140
-  teaser_caption: "Saya memilih adegan Gustave menulis jurnal karena ia mewakili tujuan AOG: meninggalkan catatan yang membantu mereka yang datang setelahnya."
+  teaser_caption: "For Those Who Come After"
   teaser_credit: "Clair Obscur: Expedition 33"
 tags:
   - olimpiade matematika
