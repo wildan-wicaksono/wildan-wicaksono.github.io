@@ -490,6 +490,63 @@ html[data-theme="dark"] .notice--danger code {
   border-color: rgba(255, 255, 255, 0.16);
 }
 
+/* Contest Collections --------------------------------------------------- */
+
+html[data-theme="dark"] .contest-collection {
+  --cc-cyan-dark: #7ee8f5;
+  --cc-ink: #eef4f7;
+  --cc-muted: #bac6cf;
+  --cc-line: #62717b;
+  --cc-surface: #3a444a;
+  color: var(--cc-ink);
+}
+
+html[data-theme="dark"] .cc-section-heading h2,
+html[data-theme="dark"] .cc-card h3,
+html[data-theme="dark"] .cc-feature h3,
+html[data-theme="dark"] .cc-level-card h3 {
+  color: #f3f8fb;
+}
+
+html[data-theme="dark"] .cc-card,
+html[data-theme="dark"] .cc-feature {
+  background: $theme-dark-surface;
+  border-color: var(--cc-line);
+}
+
+html[data-theme="dark"] .cc-notice,
+html[data-theme="dark"] .cc-round {
+  color: #d9e3e9;
+}
+
+html[data-theme="dark"] .cc-badge {
+  color: var(--cc-muted);
+}
+
+html[data-theme="dark"] .cc-resource-row {
+  border-top-color: var(--cc-line);
+}
+
+html[data-theme="dark"] .cc-notice strong,
+html[data-theme="dark"] .cc-count,
+html[data-theme="dark"] .cc-file {
+  color: var(--cc-cyan-dark);
+  background: #173f47;
+  border-color: #36bdcf;
+}
+
+html[data-theme="dark"] .cc-file:hover,
+html[data-theme="dark"] .cc-file:focus-visible {
+  color: #f3f8fb !important;
+  background: #205761;
+  border-color: #7ee8f5;
+}
+
+html[data-theme="dark"] .cc-file:focus-visible,
+html[data-theme="dark"] .cc-jumps a:focus-visible {
+  outline-color: $theme-dark-link-hover;
+}
+
 /* The Art of Olympiad Geometry ------------------------------------------ */
 
 html[data-theme="dark"] .book-page {
