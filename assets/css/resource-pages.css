@@ -354,6 +354,75 @@
   margin-top: 1rem;
 }
 
+/* Dark mode ------------------------------------------------------------ */
+
+html[data-theme="dark"] .resource-page {
+  --rp-accent-dark: #7ee8f5;
+  --rp-accent-pale: #173f47;
+  --rp-ink: #eef4f7;
+  --rp-muted: #bac6cf;
+  --rp-line: #62717b;
+  --rp-surface: #3a444a;
+  color: var(--rp-ink);
+}
+
+html[data-theme="dark"] .rp-section-head h2,
+html[data-theme="dark"] .rp-card h3 {
+  color: #f3f8fb;
+}
+
+html[data-theme="dark"] .rp-card {
+  background: #3d3d3d;
+  border-color: var(--rp-line);
+}
+
+html[data-theme="dark"] .rp-notice,
+html[data-theme="dark"] .rp-card-copy,
+html[data-theme="dark"] .rp-row-label {
+  color: #d9e3e9;
+}
+
+html[data-theme="dark"] .rp-badge {
+  color: var(--rp-muted);
+}
+
+html[data-theme="dark"] .rp-row {
+  border-top-color: var(--rp-line);
+}
+
+html[data-theme="dark"] .rp-notice strong,
+html[data-theme="dark"] .rp-count,
+html[data-theme="dark"] .rp-file {
+  color: var(--rp-accent-dark);
+  background: var(--rp-accent-pale);
+  border-color: #36bdcf;
+}
+
+html[data-theme="dark"] .rp-file:hover,
+html[data-theme="dark"] .rp-file:focus-visible {
+  color: #f3f8fb !important;
+  background: #205761;
+  border-color: #7ee8f5;
+}
+
+html[data-theme="dark"] .rp-file--primary {
+  color: var(--rp-navy) !important;
+  background: var(--rp-accent);
+  border-color: var(--rp-accent);
+}
+
+html[data-theme="dark"] .rp-file--primary:hover,
+html[data-theme="dark"] .rp-file--primary:focus-visible {
+  color: var(--rp-navy) !important;
+  background: #8df4ff;
+  border-color: #8df4ff;
+}
+
+html[data-theme="dark"] .rp-file:focus-visible,
+html[data-theme="dark"] .rp-jumps a:focus-visible {
+  outline-color: #94e1f2;
+}
+
 @media (max-width: 820px) {
   .rp-grid,
   .rp-grid--three {
@@ -421,3 +490,4 @@
     min-height: 42px;
   }
 }
+

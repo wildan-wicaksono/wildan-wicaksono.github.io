@@ -12,7 +12,7 @@ $theme-dark-text: #ffffff;
 $theme-dark-muted: #c8cdd1;
 $theme-dark-border: #707070;
 $theme-dark-border-soft: #5c5c5c;
-$theme-dark-link: #55c8e3;
+$theme-dark-link: #63d4eb;
 $theme-dark-link-hover: #94e1f2;
 $theme-dark-link-visited: #7ed4e8;
 
@@ -441,6 +441,31 @@ html[data-theme="dark"] figure.highlight::before {
 }
 
 /* Buttons and notices ---------------------------------------------------- */
+
+html[data-theme="dark"] .btn:not([class*="btn--"]),
+html[data-theme="dark"] .btn--primary {
+  background-color: #53636e;
+}
+
+html[data-theme="dark"] .btn:not([class*="btn--"]):hover,
+html[data-theme="dark"] .btn:not([class*="btn--"]):focus,
+html[data-theme="dark"] .btn--primary:hover,
+html[data-theme="dark"] .btn--primary:focus {
+  background-color: #43535e;
+}
+
+html[data-theme="dark"] .btn--twitter {
+  background-color: #166f9b;
+}
+
+html[data-theme="dark"] .btn--twitter:hover,
+html[data-theme="dark"] .btn--twitter:focus {
+  background-color: #125775;
+}
+
+html[data-theme="dark"] .archive__item-list-caption {
+  opacity: 1;
+}
 
 html[data-theme="dark"] .btn--inverse {
   color: $theme-dark-text !important;
