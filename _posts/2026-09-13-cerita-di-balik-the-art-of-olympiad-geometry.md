@@ -5,13 +5,12 @@ permalink: /posts/2026/09/cerita-di-balik-the-art-of-olympiad-geometry/
 excerpt: "Perjalanan dari kesulitan mencari referensi olimpiade hingga menulis The Art of Olympiad Geometry."
 read_time_minutes: 10
 header:
-  teaser: blog/orb-knowledge.jpg
-  teaser_alt: "Seorang pemuda memegang naskah dalam anime Orb: On the Movements of the Earth"
-  teaser_width: 1600
-  teaser_height: 900
-  teaser_caption: "Orb: On the Movements of the Earth"
-  teaser_source: "https://anime-chi.jp/story/detail.php?id=7"
-  teaser_credit: "©魚豊／小学館／チ。 ー地球の運動についてー製作委員会"
+  teaser: blog/gustave-journal.webp
+  teaser_alt: "Gustave menulis jurnal dalam Clair Obscur: Expedition 33"
+  teaser_width: 2048
+  teaser_height: 1140
+  teaser_caption: "Saya memilih adegan Gustave menulis jurnal karena ia mewakili tujuan AOG: meninggalkan catatan yang membantu mereka yang datang setelahnya."
+  teaser_credit: "Clair Obscur: Expedition 33"
 tags:
   - olimpiade matematika
   - geometri
