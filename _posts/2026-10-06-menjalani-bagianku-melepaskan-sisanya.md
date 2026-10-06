@@ -86,7 +86,7 @@ Salah satunya adalah *Clair Obscur: Expedition 33*. Ada satu gagasan yang terus 
 
 <figure style="max-width: 680px; margin: 1.75em auto; text-align: center;">
   <img
-    src="{{ '/images/blog/clair-obscur-expedition-33.jpg' | relative_url }}"
+    src="https://raw.githubusercontent.com/wildan-wicaksono/wildan-wicaksono.github.io/master/images/blog/clair-obscur-expedition-33.jpg"
     alt="Key art Clair Obscur: Expedition 33"
     width="1280"
     height="720"
