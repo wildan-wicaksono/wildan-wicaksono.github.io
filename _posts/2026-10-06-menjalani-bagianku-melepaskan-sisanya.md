@@ -8,7 +8,7 @@ author_profile: true
 read_time: true
 read_time_minutes: 8
 # Ubah menjadi true ketika tulisan siap diterbitkan.
-published: false
+published: true
 header:
   teaser: "https://staticg.sportskeeda.com/editor/2022/12/9a757-16717176265483-1920.jpg"
   teaser_alt: "Mob tersenyum dalam Mob Psycho 100"
