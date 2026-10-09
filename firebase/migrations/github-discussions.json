@@ -2,26 +2,24 @@
   "schemaVersion": 1,
   "migrationId": "github-discussions-v1",
   "repository": "wildan-wicaksono/wildan-wicaksono.github.io",
-  "capturedAt": "2026-10-09T16:20:10Z",
+  "capturedAt": "2026-10-09T17:35:53.991Z",
   "source": {
-    "method": "public-github-html",
+    "method": "github-graphql",
     "discussionListURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions",
-    "discussionListHtmlSha256": "9df7c60cfe3311bd6e516c6c7a450639f94e59ecfa2d2cce29105a9f74b9e221",
     "completeness": {
       "allListedDiscussions": true,
       "allVisibleCommentBodies": true,
       "allVisibleReplies": true,
       "aggregateReactions": true,
       "voterIdentities": false,
-      "apiEditTimestamps": false,
-      "apiUpvoteCounts": false
+      "apiEditTimestamps": true,
+      "apiUpvoteCounts": true,
+      "consistentVerificationPass": true
     },
     "limitations": [
-      "Snapshot contains all two listed public discussions with no remaining list/comment/reply pagination.",
-      "GitHub public HTML exposes aggregate reactions and vote counts but not individual voter identities. Historical counts are immutable baselines, not attributed to Google accounts.",
-      "Original bodies are single plain-text paragraphs. Their text is preserved without markup loss.",
-      "No edited marker was displayed. API updatedAt/lastEditedAt values are unavailable; updatedAt equals createdAt and editedAt is null in this HTML snapshot. Refresh through the GraphQL exporter before cutover.",
-      "GitHub does not render an upvote control for the existing reply. Zero is its observed migration baseline, not a verified GraphQL count."
+      "Historical vote/reaction totals are preserved as immutable baselines. Individual voters are not imported or assigned to Google accounts.",
+      "Export fully paginates discussions, comments, and replies. A count change during pagination aborts instead of silently producing an incomplete file.",
+      "Two independent complete reads matched before writing. Check GitHub again at cutover for comments submitted after the final read."
     ],
     "capturedDiscussionNumbers": [
       1,
@@ -33,7 +31,6 @@
       "number": 1,
       "githubDatabaseId": "10804211",
       "sourceURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions/1",
-      "sourceHtmlSha256": "7c8bcfef7d969549452c5b0e0b003f77a383a2e0af0de34325aeef12f2fe2aeb",
       "sourceCounts": {
         "topLevelComments": 0,
         "replies": 0,
@@ -68,7 +65,6 @@
       "number": 2,
       "githubDatabaseId": "10961445",
       "sourceURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions/2",
-      "sourceHtmlSha256": "b6777dfed427de4285f86e99a8cdef5ff71be74df35ea6e072632723e90dc42c",
       "sourceCounts": {
         "topLevelComments": 1,
         "replies": 1,
@@ -77,7 +73,7 @@
       "thread": {
         "path": "/posts/2026/10/menjalani-bagianku-melepaskan-sisanya/",
         "createdAt": "2026-10-06T12:10:10Z",
-        "updatedAt": "2026-10-06T12:10:10Z",
+        "updatedAt": "2026-10-09T02:15:57Z",
         "reactionCounts": {
           "like": 0,
           "heart": 0,
@@ -102,7 +98,7 @@
           "id": "github-18776560",
           "authorUid": "",
           "authorName": "nurilahmady",
-          "authorPhotoURL": "https://avatars.githubusercontent.com/u/198015748?s=64&v=4",
+          "authorPhotoURL": "https://avatars.githubusercontent.com/u/198015748?v=4",
           "body": "Semangat dann, kamu keren dan menginspirasi😁",
           "parentId": null,
           "createdAt": "2026-10-06T12:10:33Z",
@@ -138,7 +134,7 @@
           "id": "github-18826963",
           "authorUid": "",
           "authorName": "wildan-wicaksono",
-          "authorPhotoURL": "https://avatars.githubusercontent.com/u/61347379?s=64&v=4",
+          "authorPhotoURL": "https://avatars.githubusercontent.com/u/61347379?u=d83ad903b2d9561a9b685a396b8f4c820ab14816&v=4",
           "body": "Salam interaksi mas nuril",
           "parentId": "github-18776560",
           "createdAt": "2026-10-09T02:15:57Z",
@@ -173,5 +169,5 @@
       ]
     }
   ],
-  "contentSha256": "7382be3ba6a525259d4525e4a426d68bf2da977d032a41422eefb7cf1134fcc1"
+  "contentSha256": "b196358bd455d40514dd12e699eefc562820fc706c188cd2b1a2bc1fde4f2b0a"
 }

@@ -5,7 +5,7 @@ ownerUid: ""
 ownerGithubId: "61347379"
 githubLinkEnabled: false
 migrationId: "github-discussions-v1"
-expectedSnapshotSHA256: "7382be3ba6a525259d4525e4a426d68bf2da977d032a41422eefb7cf1134fcc1"
+expectedSnapshotSHA256: "b196358bd455d40514dd12e699eefc562820fc706c188cd2b1a2bc1fde4f2b0a"
 firebase:
   apiKey: "AIzaSyAEAkXFfUyOF1L9idLOj3WSjyjHqnW9Bes"
   authDomain: "wildan-wicaksono-github.firebaseapp.com"
