@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "migrationId": "github-discussions-v1",
+  "repository": "wildan-wicaksono/wildan-wicaksono.github.io",
+  "capturedAt": "2026-10-09T16:20:10Z",
+  "source": {
+    "method": "public-github-html",
+    "discussionListURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions",
+    "discussionListHtmlSha256": "9df7c60cfe3311bd6e516c6c7a450639f94e59ecfa2d2cce29105a9f74b9e221",
+    "completeness": {
+      "allListedDiscussions": true,
+      "allVisibleCommentBodies": true,
+      "allVisibleReplies": true,
+      "aggregateReactions": true,
+      "voterIdentities": false,
+      "apiEditTimestamps": false,
+      "apiUpvoteCounts": false
+    },
+    "limitations": [
+      "Snapshot contains all two listed public discussions with no remaining list/comment/reply pagination.",
+      "GitHub public HTML exposes aggregate reactions and vote counts but not individual voter identities. Historical counts are immutable baselines, not attributed to Google accounts.",
+      "Original bodies are single plain-text paragraphs. Their text is preserved without markup loss.",
+      "No edited marker was displayed. API updatedAt/lastEditedAt values are unavailable; updatedAt equals createdAt and editedAt is null in this HTML snapshot. Refresh through the GraphQL exporter before cutover.",
+      "GitHub does not render an upvote control for the existing reply. Zero is its observed migration baseline, not a verified GraphQL count."
+    ],
+    "capturedDiscussionNumbers": [
+      1,
+      2
+    ]
+  },
+  "discussions": [
+    {
+      "number": 1,
+      "githubDatabaseId": "10804211",
+      "sourceURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions/1",
+      "sourceHtmlSha256": "7c8bcfef7d969549452c5b0e0b003f77a383a2e0af0de34325aeef12f2fe2aeb",
+      "sourceCounts": {
+        "topLevelComments": 0,
+        "replies": 0,
+        "postUpvotes": 0
+      },
+      "thread": {
+        "path": "/posts/2026/09/cerita-di-balik-the-art-of-olympiad-geometry/",
+        "createdAt": "2026-09-13T03:18:03Z",
+        "updatedAt": "2026-09-13T03:18:03Z",
+        "reactionCounts": {
+          "like": 0,
+          "heart": 0,
+          "laugh": 0,
+          "celebrate": 0,
+          "surprised": 0,
+          "clap": 0
+        },
+        "legacyReactionCounts": {
+          "like": 0,
+          "dislike": 0,
+          "laugh": 0,
+          "celebrate": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        }
+      },
+      "comments": []
+    },
+    {
+      "number": 2,
+      "githubDatabaseId": "10961445",
+      "sourceURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions/2",
+      "sourceHtmlSha256": "b6777dfed427de4285f86e99a8cdef5ff71be74df35ea6e072632723e90dc42c",
+      "sourceCounts": {
+        "topLevelComments": 1,
+        "replies": 1,
+        "postUpvotes": 0
+      },
+      "thread": {
+        "path": "/posts/2026/10/menjalani-bagianku-melepaskan-sisanya/",
+        "createdAt": "2026-10-06T12:10:10Z",
+        "updatedAt": "2026-10-06T12:10:10Z",
+        "reactionCounts": {
+          "like": 0,
+          "heart": 0,
+          "laugh": 0,
+          "celebrate": 0,
+          "surprised": 0,
+          "clap": 0
+        },
+        "legacyReactionCounts": {
+          "like": 0,
+          "dislike": 0,
+          "laugh": 0,
+          "celebrate": 0,
+          "confused": 1,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        }
+      },
+      "comments": [
+        {
+          "id": "github-18776560",
+          "authorUid": "",
+          "authorName": "nurilahmady",
+          "authorPhotoURL": "https://avatars.githubusercontent.com/u/198015748?s=64&v=4",
+          "body": "Semangat dann, kamu keren dan menginspirasi😁",
+          "parentId": null,
+          "createdAt": "2026-10-06T12:10:33Z",
+          "updatedAt": "2026-10-06T12:10:33Z",
+          "editedAt": null,
+          "status": "visible",
+          "upvoteCount": 1,
+          "reactionCounts": {
+            "like": 0,
+            "heart": 0,
+            "laugh": 1,
+            "celebrate": 0,
+            "surprised": 0,
+            "clap": 0
+          },
+          "legacyUpvoteCount": 1,
+          "legacyReactionCounts": {
+            "like": 0,
+            "dislike": 0,
+            "laugh": 1,
+            "celebrate": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+          },
+          "githubAuthorId": "198015748",
+          "githubLogin": "nurilahmady",
+          "sourceURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions/2#discussioncomment-18776560",
+          "source": "github"
+        },
+        {
+          "id": "github-18826963",
+          "authorUid": "",
+          "authorName": "wildan-wicaksono",
+          "authorPhotoURL": "https://avatars.githubusercontent.com/u/61347379?s=64&v=4",
+          "body": "Salam interaksi mas nuril",
+          "parentId": "github-18776560",
+          "createdAt": "2026-10-09T02:15:57Z",
+          "updatedAt": "2026-10-09T02:15:57Z",
+          "editedAt": null,
+          "status": "visible",
+          "upvoteCount": 0,
+          "reactionCounts": {
+            "like": 0,
+            "heart": 0,
+            "laugh": 0,
+            "celebrate": 0,
+            "surprised": 0,
+            "clap": 0
+          },
+          "legacyUpvoteCount": 0,
+          "legacyReactionCounts": {
+            "like": 0,
+            "dislike": 0,
+            "laugh": 0,
+            "celebrate": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+          },
+          "githubAuthorId": "61347379",
+          "githubLogin": "wildan-wicaksono",
+          "sourceURL": "https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions/2#discussioncomment-18826963",
+          "source": "github"
+        }
+      ]
+    }
+  ],
+  "contentSha256": "7382be3ba6a525259d4525e4a426d68bf2da977d032a41422eefb7cf1134fcc1"
+}

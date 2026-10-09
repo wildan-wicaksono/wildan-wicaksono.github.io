@@ -1,0 +1,41 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "comments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "parentId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "comments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "parentId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "comments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "parentId", "order": "ASCENDING" },
+        { "fieldPath": "upvoteCount", "order": "DESCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    { "collectionGroup": "comments", "fieldPath": "body", "indexes": [] },
+    { "collectionGroup": "comments", "fieldPath": "authorPhotoURL", "indexes": [] },
+    { "collectionGroup": "comments", "fieldPath": "sourceURL", "indexes": [] },
+    { "collectionGroup": "comments", "fieldPath": "reactionCounts", "indexes": [] },
+    { "collectionGroup": "comments", "fieldPath": "legacyReactionCounts", "indexes": [] },
+    { "collectionGroup": "commentThreads", "fieldPath": "reactionCounts", "indexes": [] },
+    { "collectionGroup": "commentThreads", "fieldPath": "legacyReactionCounts", "indexes": [] }
+  ]
+}

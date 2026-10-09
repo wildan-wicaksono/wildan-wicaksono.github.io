@@ -134,6 +134,12 @@
 </script>
 
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
+{% if page.comments and site.comments.provider == "custom" %}
+  {% include comments-providers/native-enabled.html %}
+  {% if native_comments_enabled %}
+<link rel="stylesheet" href="{{ base_path }}/assets/css/comments.css?v=1"/>
+  {% endif %}
+{% endif %}
 
 
 <!-- Support for MatJax -->

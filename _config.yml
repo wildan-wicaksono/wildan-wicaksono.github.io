@@ -82,7 +82,7 @@ future                   : false
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false #change to true to add link to talkmap on talks page
 comments:
-  provider               : "custom" # giscus
+  provider               : "custom" # Google comments when configured; giscus fallback
   disqus:
     shortname            :
   discourse:
@@ -162,9 +162,12 @@ exclude:
   - README
   - Rakefile
   - assets/js/_main.js
+  - assets/js/comments-entry.js
+  - assets/js/comments-ui.js
   - assets/js/plugins
   - assets/js/vendor
   - config
+  - firebase
   - gulpfile.js
   - log
   - node_modules

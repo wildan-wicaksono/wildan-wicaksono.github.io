@@ -1,0 +1,11 @@
+{%- assign native_comments_enabled = false -%}
+{%- assign native_comments = site.data.native_comments -%}
+{%- assign native_api_key = native_comments.firebase.apiKey | default: '' | strip -%}
+{%- assign native_auth_domain = native_comments.firebase.authDomain | default: '' | strip -%}
+{%- assign native_project_id = native_comments.firebase.projectId | default: '' | strip -%}
+{%- assign native_app_id = native_comments.firebase.appId | default: '' | strip -%}
+{%- if native_comments.enabled == true -%}
+  {%- if native_api_key != '' and native_auth_domain != '' and native_project_id != '' and native_app_id != '' -%}
+    {%- assign native_comments_enabled = true -%}
+  {%- endif -%}
+{%- endif -%}

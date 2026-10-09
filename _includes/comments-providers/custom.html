@@ -29,10 +29,61 @@
     container.appendChild(giscus);
   }
 
+  function initializeComments() {
+    var root = document.getElementById("native-comments");
+    var settings = document.getElementById("native-comments-settings");
+    if (!root || !settings) { loadGiscus(); return; }
+    var started = false;
+
+    function start() {
+      if (started) return;
+      started = true;
+      var abort = new AbortController();
+      var finished = false;
+      var timer;
+      function fallback(error) {
+        if (finished) return;
+        finished = true;
+        clearTimeout(timer);
+        abort.abort();
+        root.hidden = true;
+        loadGiscus();
+        if (error) console.warn("Could not load comments; using GitHub comments.", error.code || error.message);
+      }
+      timer = setTimeout(function () { fallback(); }, 15000);
+      try {
+        var configuration = JSON.parse(settings.textContent);
+        import({{ '/assets/js/comments/app.js?v=1' | relative_url | jsonify }})
+          .then(function (module) {
+            if (finished) return null;
+            return module.startComments(root, configuration, { signal: abort.signal });
+          })
+          .then(function (controller) {
+            if (!controller) return;
+            if (finished) { controller.destroy(); return; }
+            finished = true;
+            clearTimeout(timer);
+            document.querySelector(".giscus").hidden = true;
+          })
+          .catch(fallback);
+      } catch (error) { fallback(error); }
+    }
+
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        if (entries.some(function (entry) { return entry.isIntersecting; })) {
+          observer.disconnect();
+          start();
+        }
+      }, { rootMargin: "300px" });
+      observer.observe(root);
+    } else start();
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", loadGiscus);
+    document.addEventListener("DOMContentLoaded", initializeComments);
   } else {
-    loadGiscus();
+    initializeComments();
   }
 }());
 </script>

@@ -76,8 +76,16 @@
       {% endif %}
     </section>
   {% when "custom" %}
+    {% include comments-providers/native-enabled.html %}
     <section id="comments">
+      {% if native_comments_enabled %}
+      <div id="native-comments" class="native-comments" data-path="{{ page.url | escape }}" data-title="{{ page.title | escape }}">
+        <p role="status">Memuat reaksi dan komentar…</p>
+      </div>
+      <script id="native-comments-settings" type="application/json">{{ native_comments | jsonify | replace: '<', '\u003c' }}</script>
+      {% endif %}
       <div class="giscus"></div>
+      <noscript><p><a href="https://github.com/wildan-wicaksono/wildan-wicaksono.github.io/discussions">Baca komentar di GitHub</a>.</p></noscript>
     </section>
   {% endcase %}
 </div>

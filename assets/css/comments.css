@@ -1,0 +1,204 @@
+/* Native comments are deliberately scoped away from the theme's form styles. */
+.native-comments {
+  --nc-text: #263544;
+  --nc-muted: #667583;
+  --nc-border: #d8e2e8;
+  --nc-surface: #f5f9fb;
+  --nc-raised: #ffffff;
+  --nc-accent: #087f91;
+  --nc-accent-soft: #e5f7fa;
+  --nc-danger: #a92d31;
+  --nc-focus: #087f91;
+  margin-top: 2rem;
+  color: var(--nc-text);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+html[data-theme="dark"] .native-comments {
+  --nc-text: #f4f7f9;
+  --nc-muted: #c1cad0;
+  --nc-border: #70787d;
+  --nc-surface: #3d3d3d;
+  --nc-raised: #474747;
+  --nc-accent: #8ee2ee;
+  --nc-accent-soft: #244850;
+  --nc-danger: #ffb1b4;
+  --nc-focus: #9ce8f3;
+}
+
+.native-comments *, .native-comments *::before, .native-comments *::after { box-sizing: border-box; }
+.native-comments [hidden] { display: none !important; }
+.native-comments h3, .native-comments p, .native-comments form, .native-comments label { margin: 0; }
+.native-comments .nc-section-title {
+  padding: 0;
+  color: var(--nc-text);
+  border: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.native-comments .nc-muted, .native-comments .nc-form-help { color: var(--nc-muted); }
+.native-comments .nc-post {
+  padding: 1.15rem 1.2rem;
+  background: var(--nc-surface);
+  border: 1px solid var(--nc-border);
+  border-radius: 12px;
+}
+.native-comments .nc-post .nc-section-title { margin-bottom: 0.7rem; }
+.native-comments .nc-post-hint { margin-top: 0.65rem; font-size: 0.72rem; }
+.native-comments .nc-heading, .native-comments .nc-tools, .native-comments .nc-auth,
+.native-comments .nc-identity, .native-comments .nc-form-actions, .native-comments .nc-comment-actions,
+.native-comments .nc-comment-controls, .native-comments .nc-reactions { display: flex; flex-wrap: wrap; align-items: center; }
+.native-comments .nc-heading { justify-content: space-between; gap: 0.8rem; margin: 1.6rem 0 1rem; }
+.native-comments .nc-tools { gap: 0.5rem; }
+.native-comments .nc-sort-label { font-size: 0.7rem; color: var(--nc-muted); font-weight: 400; }
+.native-comments .nc-select {
+  display: inline-block;
+  width: auto;
+  min-height: 40px;
+  margin: 0;
+  padding: 0.35rem 1.8rem 0.35rem 0.6rem;
+  color: var(--nc-text);
+  background-color: var(--nc-raised);
+  border: 1px solid var(--nc-border);
+  border-radius: 7px;
+  font: inherit;
+  font-size: 0.75rem;
+}
+.native-comments .nc-button, .native-comments .nc-reaction, .native-comments .nc-vote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  margin: 0;
+  padding: 0.35rem 0.7rem;
+  color: var(--nc-text);
+  background: var(--nc-raised);
+  border: 1px solid var(--nc-border);
+  border-radius: 7px;
+  box-shadow: none;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.native-comments button:hover:not(:disabled) { background: var(--nc-accent-soft); border-color: var(--nc-accent); }
+.native-comments button:focus-visible, .native-comments select:focus-visible,
+.native-comments textarea:focus-visible, .native-comments input:focus-visible,
+.native-comments .nc-comment-header:focus-visible {
+  outline: 3px solid var(--nc-focus);
+  outline-offset: 3px;
+}
+.native-comments button:disabled { cursor: default; opacity: 0.58; }
+.native-comments .nc-button--primary {
+  color: #fff;
+  background: #087f91;
+  border-color: #087f91;
+}
+.native-comments .nc-button--primary:hover:not(:disabled) { color: #fff; background: #086a78; border-color: #086a78; }
+.native-comments .nc-button--google { min-height: 44px; font-weight: 700; }
+.native-comments .nc-button--quiet, .native-comments .nc-button--text { background: transparent; border-color: transparent; }
+.native-comments .nc-button--text { padding-right: 0.45rem; padding-left: 0.45rem; color: var(--nc-accent); }
+.native-comments .nc-button--danger { color: var(--nc-danger); border-color: var(--nc-danger); }
+.native-comments .nc-reactions { gap: 0.38rem; }
+.native-comments .nc-reactions--post > .nc-reactions { gap: 0.5rem; }
+.native-comments .nc-reaction { gap: 0.35rem; padding: 0.35rem 0.6rem; font-weight: 500; }
+.native-comments .nc-emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; font-size: 1.02rem; line-height: 1.2; }
+.native-comments .nc-reaction-count { min-width: 0.55rem; font-size: 0.7rem; font-variant-numeric: tabular-nums; }
+.native-comments .nc-reaction[aria-pressed="true"], .native-comments .nc-vote[aria-pressed="true"] { color: var(--nc-accent); background: var(--nc-accent-soft); border-color: var(--nc-accent); }
+.native-comments .nc-legacy-reaction { display: inline-flex; align-items: center; min-height: 40px; padding: 0.35rem 0.55rem; color: var(--nc-muted); font-size: 0.75rem; border: 1px dashed var(--nc-border); border-radius: 7px; }
+.native-comments .nc-auth { justify-content: space-between; gap: 0.75rem; margin-bottom: 0.9rem; }
+.native-comments .nc-auth > .nc-muted { flex: 1 1 240px; font-size: 0.76rem; }
+.native-comments .nc-identity { gap: 0.5rem; }
+.native-comments .nc-auth-name { font-size: 0.78rem; font-weight: 600; overflow-wrap: anywhere; }
+.native-comments .nc-link-account { flex: 1 0 100%; font-size: 0.7rem; }
+.native-comments .nc-avatar {
+  display: inline-block;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--nc-accent-soft) !important;
+}
+.native-comments .nc-avatar--initial { display: inline-flex; align-items: center; justify-content: center; color: var(--nc-accent); font-size: 0.85rem; font-weight: 700; }
+.native-comments .nc-checkbox-label { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; color: var(--nc-muted); font-size: 0.72rem; font-weight: 400; }
+.native-comments .nc-checkbox-label input { display: inline-block; width: auto; margin: 0; accent-color: var(--nc-accent); }
+.native-comments .nc-form { margin-bottom: 0.2rem; }
+.native-comments .nc-form-label { display: block; margin-bottom: 0.45rem; color: var(--nc-text); font-size: 0.78rem; font-weight: 600; }
+.native-comments .nc-textarea {
+  display: block;
+  width: 100%;
+  min-height: 96px;
+  margin: 0;
+  padding: 0.75rem;
+  color: var(--nc-text);
+  background: var(--nc-raised);
+  border: 1px solid var(--nc-border);
+  border-radius: 8px;
+  box-shadow: none;
+  font: inherit;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+.native-comments .nc-textarea::placeholder { color: var(--nc-muted); opacity: 1; }
+.native-comments .nc-form-help { margin: 0.45rem 0 0.6rem; font-size: 0.67rem; }
+.native-comments .nc-form-actions { gap: 0.45rem; }
+.native-comments .nc-cooldown { color: var(--nc-muted); font-size: 0.65rem; }
+.native-comments .nc-status { min-height: 1.1em; margin: 0.65rem 0; color: var(--nc-muted); font-size: 0.73rem; }
+.native-comments .nc-status--error { color: var(--nc-danger); }
+.native-comments .nc-empty { padding: 1.4rem 0; text-align: center; font-size: 0.8rem; }
+.native-comments .nc-thread { padding: 1.2rem 0; border-top: 1px solid var(--nc-border); }
+.native-comments .nc-comment-header { display: flex; align-items: flex-start; gap: 0.6rem; }
+.native-comments .nc-comment-identity { min-width: 0; }
+.native-comments .nc-comment-author { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; color: var(--nc-text); font-size: 0.82rem; font-weight: 700; overflow-wrap: anywhere; }
+.native-comments .nc-author-badge { padding: 0.06rem 0.35rem; color: var(--nc-accent); background: var(--nc-accent-soft); border-radius: 4px; font-size: 0.6rem; font-weight: 600; }
+.native-comments .nc-comment-meta { color: var(--nc-muted); font-size: 0.64rem; }
+.native-comments .nc-source-link, .native-comments .nc-source-link:visited { color: var(--nc-muted); text-decoration: none; }
+.native-comments .nc-source-link:hover { color: var(--nc-accent); text-decoration: underline; }
+.native-comments .nc-comment-body {
+  margin: 0.75rem 0;
+  color: var(--nc-text);
+  font-size: 0.83rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.native-comments .nc-placeholder { color: var(--nc-muted); font-style: italic; }
+.native-comments .nc-moderator-preview { padding: 0.7rem; background: var(--nc-surface); border: 1px dashed var(--nc-border); border-radius: 6px; }
+.native-comments .nc-comment-actions { gap: 0.5rem; }
+.native-comments .nc-comment-controls { gap: 0.15rem; margin-top: 0.2rem; }
+.native-comments .nc-comment > .nc-form { margin-top: 0.65rem; padding: 0.9rem; background: var(--nc-surface); border-radius: 8px; }
+.native-comments .nc-vote { min-width: 48px; padding: 0.35rem 0.5rem; color: var(--nc-muted); font-variant-numeric: tabular-nums; }
+.native-comments .nc-replies { margin: 1rem 0 0 1rem; padding-left: 1rem; border-left: 2px solid var(--nc-border); }
+.native-comments .nc-comment--reply + .nc-comment--reply { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--nc-border); }
+.native-comments .nc-button--replies { margin: 0.7rem 0 0 2.6rem; color: var(--nc-accent); background: transparent; border-color: transparent; font-weight: 500; }
+.native-comments .nc-reply-empty { margin: 0.65rem 0 0 2.6rem; font-size: 0.72rem; }
+.native-comments .nc-confirm { margin: 0.7rem 0; padding: 0.8rem; background: var(--nc-surface); border: 1px solid var(--nc-border); border-radius: 8px; }
+.native-comments .nc-confirm p { margin-bottom: 0.55rem; font-size: 0.76rem; }
+.native-comments .nc-confirm button + button { margin-left: 0.3rem; }
+.native-comments .nc-pagination { text-align: center; }
+.native-comments .nc-button--more { min-width: 180px; }
+
+@media (max-width: 480px) {
+  .native-comments .nc-post { padding: 0.95rem; }
+  .native-comments .nc-heading { align-items: flex-start; }
+  .native-comments .nc-tools { flex: 1 0 100%; }
+  .native-comments .nc-tools .nc-button--quiet { margin-left: auto; }
+  .native-comments .nc-auth > .nc-button--google { width: 100%; }
+  .native-comments .nc-reaction { min-height: 44px; padding: 0.35rem 0.52rem; }
+  .native-comments .nc-vote, .native-comments .nc-button { min-height: 44px; }
+  .native-comments .nc-replies { margin-left: 0.25rem; padding-left: 0.65rem; }
+  .native-comments .nc-comment > .nc-form { padding: 0.7rem; }
+  .native-comments .nc-cooldown { flex: 1 0 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .native-comments * { transition: none !important; }
+}

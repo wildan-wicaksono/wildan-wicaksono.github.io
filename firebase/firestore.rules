@@ -1,0 +1,281 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Roles are provisioned through the Admin SDK, never through this client API.
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/commentAdmins/$(request.auth.uid));
+    }
+
+    function hasGoogleAccount() {
+      return signedIn()
+        && request.auth.token.firebase.identities.keys().hasAny(['google.com'])
+        && request.auth.token.firebase.identities['google.com'].size() > 0;
+    }
+
+    function ownsComment(data) {
+      return signedIn() && (data.authorUid == request.auth.uid
+        || (data.source == 'github' && data.githubAuthorId != ''
+          && request.auth.token.firebase.identities.keys().hasAny(['github.com'])
+          && data.githubAuthorId in request.auth.token.firebase.identities['github.com']));
+    }
+
+    function countsValid(counts) {
+      return counts is map
+        && counts.keys().hasAll(['like', 'heart', 'laugh', 'celebrate', 'surprised', 'clap'])
+        && counts.keys().hasOnly(['like', 'heart', 'laugh', 'celebrate', 'surprised', 'clap'])
+        && counts.like is int && counts.like >= 0
+        && counts.heart is int && counts.heart >= 0
+        && counts.laugh is int && counts.laugh >= 0
+        && counts.celebrate is int && counts.celebrate >= 0
+        && counts.surprised is int && counts.surprised >= 0
+        && counts.clap is int && counts.clap >= 0;
+    }
+
+    function zeroCounts(counts) {
+      return countsValid(counts)
+        && counts.like == 0 && counts.heart == 0 && counts.laugh == 0
+        && counts.celebrate == 0 && counts.surprised == 0 && counts.clap == 0;
+    }
+
+    function zeroLegacyCounts(counts) {
+      return counts is map
+        && counts.keys().hasAll(['like', 'dislike', 'laugh', 'celebrate', 'confused', 'heart', 'rocket', 'eyes'])
+        && counts.keys().hasOnly(['like', 'dislike', 'laugh', 'celebrate', 'confused', 'heart', 'rocket', 'eyes'])
+        && counts.like is int && counts.dislike is int && counts.laugh is int
+        && counts.celebrate is int && counts.confused is int && counts.heart is int
+        && counts.rocket is int && counts.eyes is int
+        && counts.like == 0 && counts.dislike == 0 && counts.laugh == 0
+        && counts.celebrate == 0 && counts.confused == 0 && counts.heart == 0
+        && counts.rocket == 0 && counts.eyes == 0;
+    }
+
+    function emojiValid(emoji, post) {
+      return emoji == null
+        || emoji in ['heart', 'laugh', 'celebrate', 'surprised', 'clap']
+        || (post && emoji == 'like');
+    }
+
+    function interactionValid(data, post) {
+      return data.keys().hasAll(['emoji', 'upvoted', 'updatedAt'])
+        && data.keys().hasOnly(['emoji', 'upvoted', 'updatedAt'])
+        && emojiValid(data.emoji, post)
+        && data.upvoted is bool && (!post || !data.upvoted)
+        && data.updatedAt == request.time;
+    }
+
+    function oldInteraction(path) {
+      return exists(path) ? get(path).data : {'emoji': null, 'upvoted': false};
+    }
+
+    function changedInteraction(before, after) {
+      return before.emoji != after.emoji || before.upvoted != after.upvoted;
+    }
+
+    function emojiDelta(before, after, key) {
+      return (after.emoji == key ? 1 : 0) - (before.emoji == key ? 1 : 0);
+    }
+
+    function countChangesValid(beforeCounts, afterCounts, beforeInteraction, afterInteraction) {
+      return countsValid(afterCounts)
+        && afterCounts.like == beforeCounts.like + emojiDelta(beforeInteraction, afterInteraction, 'like')
+        && afterCounts.heart == beforeCounts.heart + emojiDelta(beforeInteraction, afterInteraction, 'heart')
+        && afterCounts.laugh == beforeCounts.laugh + emojiDelta(beforeInteraction, afterInteraction, 'laugh')
+        && afterCounts.celebrate == beforeCounts.celebrate + emojiDelta(beforeInteraction, afterInteraction, 'celebrate')
+        && afterCounts.surprised == beforeCounts.surprised + emojiDelta(beforeInteraction, afterInteraction, 'surprised')
+        && afterCounts.clap == beforeCounts.clap + emojiDelta(beforeInteraction, afterInteraction, 'clap');
+    }
+
+    function threadCountsChange(threadId) {
+      let interactionPath = /databases/$(database)/documents/commentThreads/$(threadId)/interactions/$(request.auth.uid);
+      let before = oldInteraction(interactionPath);
+      let after = getAfter(interactionPath).data;
+      return hasGoogleAccount()
+        && changedInteraction(before, after)
+        && interactionValid(after, true)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['reactionCounts', 'updatedAt'])
+        && request.resource.data.updatedAt == request.time
+        && countChangesValid(resource.data.reactionCounts, request.resource.data.reactionCounts, before, after);
+    }
+
+    function threadInteractionChange(threadId) {
+      let targetPath = /databases/$(database)/documents/commentThreads/$(threadId);
+      let before = resource == null ? {'emoji': null, 'upvoted': false} : resource.data;
+      let targetBefore = get(targetPath).data;
+      let targetAfter = getAfter(targetPath).data;
+      return hasGoogleAccount()
+        && interactionValid(request.resource.data, true)
+        && changedInteraction(before, request.resource.data)
+        && targetAfter.updatedAt == request.time
+        && targetAfter.diff(targetBefore).affectedKeys().hasOnly(['reactionCounts', 'updatedAt'])
+        && countChangesValid(targetBefore.reactionCounts, targetAfter.reactionCounts, before, request.resource.data);
+    }
+
+    function commentCountsChange(threadId, commentId) {
+      let interactionPath = /databases/$(database)/documents/commentThreads/$(threadId)/comments/$(commentId)/interactions/$(request.auth.uid);
+      let before = oldInteraction(interactionPath);
+      let after = getAfter(interactionPath).data;
+      return hasGoogleAccount()
+        && resource.data.status == 'visible'
+        && changedInteraction(before, after)
+        && interactionValid(after, false)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['reactionCounts', 'upvoteCount'])
+        && request.resource.data.upvoteCount is int
+        && request.resource.data.upvoteCount >= resource.data.legacyUpvoteCount
+        && request.resource.data.upvoteCount == resource.data.upvoteCount
+          + (after.upvoted ? 1 : 0) - (before.upvoted ? 1 : 0)
+        && countChangesValid(resource.data.reactionCounts, request.resource.data.reactionCounts, before, after);
+    }
+
+    function commentInteractionChange(threadId, commentId) {
+      let targetPath = /databases/$(database)/documents/commentThreads/$(threadId)/comments/$(commentId);
+      let before = resource == null ? {'emoji': null, 'upvoted': false} : resource.data;
+      let targetBefore = get(targetPath).data;
+      let targetAfter = getAfter(targetPath).data;
+      return hasGoogleAccount()
+        && targetBefore.status == 'visible'
+        && interactionValid(request.resource.data, false)
+        && changedInteraction(before, request.resource.data)
+        && targetAfter.diff(targetBefore).affectedKeys().hasOnly(['reactionCounts', 'upvoteCount'])
+        && targetAfter.upvoteCount is int
+        && targetAfter.upvoteCount >= targetBefore.legacyUpvoteCount
+        && targetAfter.upvoteCount == targetBefore.upvoteCount
+          + (request.resource.data.upvoted ? 1 : 0) - (before.upvoted ? 1 : 0)
+        && countChangesValid(targetBefore.reactionCounts, targetAfter.reactionCounts, before, request.resource.data);
+    }
+
+    function bodyValid(body) {
+      // Plain text only in the renderer. Empty bodies are reserved for tombstones.
+      return body is string && body.size() > 0 && body.size() <= 4000
+        && body.matches('[\\s\\S]*[^\\s][\\s\\S]*');
+    }
+
+    function authorValid(data) {
+      return data.authorUid == request.auth.uid
+        && data.authorName is string && data.authorName.size() <= 200
+        && data.authorName == request.auth.token.get('name', '')
+        && data.authorPhotoURL is string && data.authorPhotoURL.size() <= 2048
+        && data.authorPhotoURL == request.auth.token.get('picture', '');
+    }
+
+    function parentValid(threadId, commentId, parentId) {
+      return parentId == null || (parentId is string && parentId != commentId
+        && get(/databases/$(database)/documents/commentThreads/$(threadId)/comments/$(parentId)).data.status == 'visible'
+        && get(/databases/$(database)/documents/commentThreads/$(threadId)/comments/$(parentId)).data.parentId == null);
+    }
+
+    function commentCreateValid(threadId, commentId) {
+      let data = request.resource.data;
+      let activityPath = /databases/$(database)/documents/commentActivity/$(request.auth.uid);
+      let activity = getAfter(activityPath).data;
+      return hasGoogleAccount()
+        && exists(/databases/$(database)/documents/commentThreads/$(threadId))
+        && data.keys().hasAll(['authorUid', 'authorName', 'authorPhotoURL', 'body', 'parentId', 'createdAt', 'updatedAt', 'editedAt', 'status', 'upvoteCount', 'reactionCounts', 'legacyUpvoteCount', 'legacyReactionCounts', 'githubAuthorId', 'githubLogin', 'sourceURL', 'source'])
+        && data.keys().hasOnly(['authorUid', 'authorName', 'authorPhotoURL', 'body', 'parentId', 'createdAt', 'updatedAt', 'editedAt', 'status', 'upvoteCount', 'reactionCounts', 'legacyUpvoteCount', 'legacyReactionCounts', 'githubAuthorId', 'githubLogin', 'sourceURL', 'source'])
+        && authorValid(data) && bodyValid(data.body)
+        && parentValid(threadId, commentId, data.parentId)
+        && data.createdAt == request.time && data.updatedAt == request.time && data.editedAt == null
+        && data.status == 'visible' && data.source == 'native'
+        && data.githubAuthorId == '' && data.githubLogin == '' && data.sourceURL == ''
+        && data.upvoteCount is int && data.upvoteCount == 0
+        && data.legacyUpvoteCount is int && data.legacyUpvoteCount == 0
+        && zeroCounts(data.reactionCounts) && zeroLegacyCounts(data.legacyReactionCounts)
+        && (!exists(activityPath) || request.time >= get(activityPath).data.lastCommentAt + duration.value(30, 's'))
+        && activity.lastCommentAt == request.time && activity.threadId == threadId && activity.commentId == commentId;
+    }
+
+    function ownerEditValid() {
+      return hasGoogleAccount() && ownsComment(resource.data)
+        && resource.data.status == 'visible'
+        && request.resource.data.status == 'visible'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['body', 'updatedAt', 'editedAt'])
+        && bodyValid(request.resource.data.body)
+        && request.resource.data.body != resource.data.body
+        && request.resource.data.updatedAt == request.time && request.resource.data.editedAt == request.time;
+    }
+
+    function ownerDeleteValid() {
+      return hasGoogleAccount() && ownsComment(resource.data)
+        && resource.data.status in ['visible', 'hidden']
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['body', 'status', 'updatedAt'])
+        && request.resource.data.status == 'deleted' && request.resource.data.body == ''
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    // Admins can hide/show; they cannot forge a comment's author, history, or counts.
+    function moderationValid() {
+      return isAdmin()
+        && resource.data.status in ['visible', 'hidden']
+        && request.resource.data.status in ['visible', 'hidden']
+        && request.resource.data.status != resource.data.status
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    match /commentAdmins/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
+      allow list, write: if false;
+    }
+
+    // A public checksum marker gates cutover until the reviewed import completed.
+    match /commentMigrations/github-discussions-v1 {
+      allow get: if true;
+      allow list, write: if false;
+    }
+
+    match /commentActivity/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
+      allow list, delete: if false;
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && hasGoogleAccount()
+        && request.resource.data.keys().hasAll(['lastCommentAt', 'threadId', 'commentId'])
+        && request.resource.data.keys().hasOnly(['lastCommentAt', 'threadId', 'commentId'])
+        && request.resource.data.threadId is string && request.resource.data.commentId is string
+        && request.resource.data.lastCommentAt == request.time
+        && (resource == null || request.time >= resource.data.lastCommentAt + duration.value(30, 's'))
+        && getAfter(/databases/$(database)/documents/commentThreads/$(request.resource.data.threadId)/comments/$(request.resource.data.commentId)).data.authorUid == uid
+        && getAfter(/databases/$(database)/documents/commentThreads/$(request.resource.data.threadId)/comments/$(request.resource.data.commentId)).data.createdAt == request.time;
+    }
+
+    match /commentThreads/{threadId} {
+      allow get: if true;
+      allow list: if isAdmin() && request.query.limit <= 100;
+      allow create: if hasGoogleAccount()
+        && request.resource.data.keys().hasAll(['path', 'createdAt', 'updatedAt', 'reactionCounts', 'legacyReactionCounts'])
+        && request.resource.data.keys().hasOnly(['path', 'createdAt', 'updatedAt', 'reactionCounts', 'legacyReactionCounts'])
+        && request.resource.data.path is string && request.resource.data.path.size() <= 2048
+        && request.resource.data.path.matches('^/[^?#]*$')
+        && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time
+        && zeroCounts(request.resource.data.reactionCounts) && zeroLegacyCounts(request.resource.data.legacyReactionCounts);
+      allow update: if signedIn() && threadCountsChange(threadId);
+      allow delete: if false;
+
+      match /interactions/{uid} {
+        allow get: if signedIn() && request.auth.uid == uid;
+        allow list, delete: if false;
+        allow create, update: if signedIn() && request.auth.uid == uid && threadInteractionChange(threadId);
+      }
+
+      match /comments/{commentId} {
+        allow get: if resource.data.status in ['visible', 'deleted'] || isAdmin() || ownsComment(resource.data);
+        allow list: if request.query.limit <= 20
+          && (resource.data.status in ['visible', 'deleted'] || isAdmin());
+        allow create: if signedIn() && commentCreateValid(threadId, commentId);
+        allow update: if signedIn() && (ownerEditValid() || ownerDeleteValid()
+          || moderationValid() || commentCountsChange(threadId, commentId));
+        allow delete: if false;
+
+        match /interactions/{uid} {
+          allow get: if signedIn() && request.auth.uid == uid;
+          allow list, delete: if false;
+          allow create, update: if signedIn() && request.auth.uid == uid && commentInteractionChange(threadId, commentId);
+        }
+      }
+    }
+  }
+}
