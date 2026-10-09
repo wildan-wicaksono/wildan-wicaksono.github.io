@@ -1,6 +1,6 @@
 # Aktifkan hanya setelah Firebase siap dan impor komentar lama berhasil.
 # Panduan: firebase/README.md. Nilai web Firebase ini bersifat publik, bukan secret.
-enabled: false
+enabled: true
 ownerUid: ""
 ownerGithubId: "61347379"
 githubLinkEnabled: false
