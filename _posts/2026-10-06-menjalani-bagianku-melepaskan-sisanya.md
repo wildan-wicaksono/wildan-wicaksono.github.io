@@ -16,7 +16,7 @@ header:
   teaser_height: 563
   teaser_caption: "Masih mencoba. Belajar menerima."
   teaser_credit: "Mob Psycho 100 · ONE / Shogakukan / Bones"
-  <!-- teaser_source: "https://www.sportskeeda.com/anime/news-mob-psycho-100-anime-ends-season-3-finale" -->
+  teaser_source: "https://www.sportskeeda.com/anime/news-mob-psycho-100-anime-ends-season-3-finale"
 tags:
   - catatan personal
   - refleksi
