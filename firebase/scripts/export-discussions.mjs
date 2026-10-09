@@ -8,7 +8,7 @@ const REPOSITORY = 'wildan-wicaksono/wildan-wicaksono.github.io';
 const OWNER = 'wildan-wicaksono';
 const NAME = 'wildan-wicaksono.github.io';
 const PAGE_INFO = 'totalCount pageInfo { hasNextPage endCursor }';
-const REACTIONS = 'reactionGroups { content users { totalCount } }';
+const REACTIONS = 'reactionGroups { content users: reactors { totalCount } }';
 const COMMENT_FIELDS = `id databaseId body createdAt updatedAt lastEditedAt url upvoteCount isMinimized deletedAt
   author { login avatarUrl url ... on User { databaseId } }
   ${REACTIONS}`;

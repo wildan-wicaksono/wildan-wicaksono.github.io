@@ -21,7 +21,21 @@ Di [Firebase Console](https://console.firebase.google.com/):
 1. Buat/pilih proyek, lalu daftarkan aplikasi Web. Salin `apiKey`, `authDomain`, `projectId`, dan `appId` ke `_data/native_comments.yml`. Konfigurasi Web ini bersifat publik; keamanan data ditentukan Authentication dan Rules.
 2. Aktifkan **Authentication → Sign-in method → Google**. Tambahkan `wildan-wicaksono.github.io` di **Settings → Authorized domains**. Tambahkan `localhost` hanya untuk pengujian lokal bila diperlukan.
 3. Buat **Cloud Firestore**, database `(default)`, mode Standard. Pilih lokasi dengan sengaja karena datanya akan tinggal di sana.
-4. Pasang Node.js 22 dan Java 17 atau lebih baru untuk pengujian lokal. Jalankan dari direktori `firebase`:
+4. Buka **Cloud Shell** lewat ikon terminal di menu kanan Firebase Console. Cloud Shell memakai akun Google yang sedang masuk; klik **Authorize** jika diminta. Jalankan perintah berikut satu per satu:
+
+```bash
+gcloud config set project wildan-wicaksono-github
+nvm install 22
+nvm use 22
+git clone --depth 1 https://github.com/wildan-wicaksono/wildan-wicaksono.github.io.git blog-comments-activation
+cd blog-comments-activation/firebase
+npm ci
+npx firebase deploy --project wildan-wicaksono-github --only firestore:rules,firestore:indexes
+```
+
+Konfigurasi proyek sudah tersedia di repositori, sehingga tidak perlu `firebase init`. Cloud Shell menyediakan kredensial Google bawaan untuk CLI dan Admin SDK; jangan menjalankan `gcloud auth application-default login` di Cloud Shell. Lihat dokumentasi [Cloud Shell di Firebase](https://firebase.google.com/docs/cloud-shell) dan [ADC di lingkungan cloud](https://docs.cloud.google.com/docs/authentication/set-up-adc-cloud-dev-environment).
+
+Untuk pengujian di komputer lokal, gunakan Node.js 22 dan Java 17 atau lebih baru, lalu jalankan dari direktori `firebase`:
 
 ```bash
 npm ci
@@ -39,7 +53,9 @@ Bundle `assets/js/comments/app.js` sudah dikomit agar GitHub Pages tidak membutu
 
 Cadangan awal `migrations/github-discussions.json` berisi kedua Discussion yang ada: satu komentar dan satu balasan pada artikel *Menjalani Bagianku, Melepaskan Sisanya*. Cadangan HTML awal dipakai untuk validasi dan pengujian; impor produksi meminta ekspor GraphQL terbaru agar waktu edit dan jumlah upvote benar-benar terverifikasi.
 
-Ikuti [panduan migrasi](docs/migration.md). Ekspor memerlukan login `gh` atau token GitHub dengan akses baca Discussions. Impor memakai Firebase Admin SDK melalui **Application Default Credentials**; login Firebase CLI saja tidak menyediakan kredensial Admin SDK. Contoh pada komputer pemilik proyek dengan Google Cloud CLI:
+Ikuti [panduan migrasi](docs/migration.md). Workflow **Export legacy comments** dapat menghasilkan snapshot terverifikasi dengan token bawaan GitHub Actions yang hanya memiliki akses baca, sehingga pemilik blog tidak perlu membuat token GitHub. Setelah snapshot hasil workflow diperiksa dan dikomit, Cloud Shell cukup memperbarui salinan repositori, memvalidasi snapshot, dan menjalankan impor.
+
+Impor memakai Firebase Admin SDK melalui **Application Default Credentials**. Cloud Shell sudah menyediakannya. Untuk alternatif ekspor/impor pada komputer lokal, login `gh` atau token GitHub dengan akses baca Discussions dibutuhkan untuk ekspor; login Firebase CLI saja tidak menyediakan kredensial Admin SDK. Contoh pada komputer pemilik proyek dengan Google Cloud CLI:
 
 ```bash
 gcloud auth application-default login

@@ -21,7 +21,22 @@ GitHub numeric user IDs, rather than names or email addresses, determine ownersh
 
 ## Refresh and validate before the first cutover
 
-Run from the `firebase` directory with Node 22 or newer. An authenticated `gh` CLI login or a `GH_TOKEN`/`GITHUB_TOKEN` with Discussions read access is needed for export. Do not commit credentials or service account keys.
+### Export through GitHub Actions without a personal token
+
+The **Export legacy comments** workflow in `.github/workflows/export-comments.yml` uses GitHub's short-lived workflow token with only `contents: read` and `discussions: read` permissions. It requires no personal access token, repository secret, Firebase credential, or npm installation. It only reads Discussions and produces a verified public JSON snapshot; it never imports into Firebase or enables the site's new comments.
+
+1. Open the repository's **Actions → Export legacy comments → Run workflow** on `master`. The workflow also runs when its file or either export/validation script changes on `master`.
+2. Wait for a successful run. Its summary and **Report migration checksum and counts** logs show `snapshotSHA256`, discussion count, root comment count, and reply count.
+3. Download the `github-discussions-verified-RUN_ID-RUN_ATTEMPT` artifact from that run. Extract `github-discussions-verified.json`, review its public comment data, and replace `firebase/migrations/github-discussions.json` with it. Update `expectedSnapshotSHA256` in `_data/native_comments.yml` to the reported checksum, keeping `enabled: false` until import and checks finish.
+4. Validate the downloaded snapshot with the existing offline importer, then apply it from the project owner's authenticated environment as described below. Commit the reviewed snapshot as the migration record; artifacts expire after 30 days.
+
+If an export fails because Discussions changed during its two verification passes, use **Re-run jobs** or start a new workflow run. Re-running this job performs fresh API reads and produces an artifact named for that attempt; it does not reuse an earlier snapshot. For cutover, pause new comments on the existing Discussions and generate another fresh export immediately before import. A previously successful export does not establish that no later comments exist.
+
+Google Cloud Shell can perform the Firebase import without downloading a service-account key. Open it while signed into the project's owner account, clone this repository, use Node 22 (`nvm install 22`, then `nvm use 22`), and run `npm ci` from `firebase`. Cloud Shell manages the signed-in Google credentials and any authorization prompt; do not run `gcloud auth application-default login` there. The following ADC login instructions are for a local development environment. See [Cloud Shell in Firebase](https://firebase.google.com/docs/cloud-shell) and [ADC in a cloud-based development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-cloud-dev-environment).
+
+### Export locally as an alternative
+
+Run from the `firebase` directory with Node 22 or newer. For a local export, an authenticated `gh` CLI login or a `GH_TOKEN`/`GITHUB_TOKEN` with Discussions read access is needed. Do not commit credentials or service account keys. GitHub CLI's browser login requests its normal account scopes; adding `--scopes read:discussion` does not replace those scopes with read-only access. The Actions route above avoids that personal grant.
 
 ```bash
 npm ci
