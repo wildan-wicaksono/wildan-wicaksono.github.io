@@ -114,6 +114,19 @@ They keep `editedAt` and preserve child replies. Physical client deletion and
 restoring tombstones are forbidden. Moderation writes only `status` and
 `updatedAt`. Users can delete their own hidden comment; they cannot unhide it.
 
+Deleted records are never rendered publicly: no author, date, deleted message,
+or empty card remains. A deleted root is retained only as an internal routing key;
+its surviving replies load automatically and appear without the removed parent.
+The client skips reply pages containing only deleted records so later surviving
+replies remain reachable. This is content erasure with an internal tombstone,
+not physical removal of Firestore documents or their interaction subcollections.
+
+Comment text remains text content, with MathJax 3 rendering LaTeX only in comment
+bodies and optional composer previews. Inline `$...$` and `\\(...\\)` and display
+`$$...$$` and `\\[...\\]` delimiters are supported. The `ui/safe` extension filters
+unsafe TeX attributes; user HTML is never parsed. Typesetting is serialized and
+cleared whenever comment or preview DOM is replaced.
+
 ## Reads, sorting, and pagination
 
 Public comment queries must include `where('status', 'in', ['visible', 'deleted'])`

@@ -1,4 +1,5 @@
-/* Plain-text, accessible comment UI. Firebase access lives in the adapter. */
+/* Accessible text and LaTeX comment UI. Firebase access lives in the adapter. */
+import { createCommentMathRenderer } from './comments-math.js';
 const POST_REACTIONS = [
   ["like", "👍", "Suka"], ["heart", "❤️", "Suka sekali"],
   ["laugh", "😄", "Senang"], ["celebrate", "🎉", "Merayakan"],
@@ -90,6 +91,7 @@ export function mountNativeComments(root, adapter, config = {}) {
   let unsubscribe = () => {};
   let countdownTimer = null;
   let authTask = Promise.resolve();
+  const math = createCommentMathRenderer();
 
   root.classList.add("native-comments");
   root.setAttribute("aria-label", "Reaksi dan komentar");
@@ -291,16 +293,36 @@ export function mountNativeComments(root, adapter, config = {}) {
       placeholder: options.reply ? "Tulis balasanmu…" : "Bagikan tanggapanmu…", "data-focus-key": `${key}:input`
     });
     textarea.value = draft.body;
-    textarea.addEventListener("input", () => { draft.body = textarea.value; });
-    const help = node("p", "nc-form-help", "Teks biasa dan emoji didukung. Alamat emailmu tidak ditampilkan.", { id: `nc-help-${key}` });
+    const preview = node("div", "nc-preview");
+    preview.hidden = !draft.preview;
+    function renderPreview() {
+      math.clear(preview);
+      preview.replaceChildren(node("p", "nc-form-label", "Pratinjau"), node("div", "nc-comment-body", draft.body || "Belum ada tulisan untuk ditampilkan."));
+      if (draft.preview) math.render(preview);
+    }
+    textarea.addEventListener("input", () => {
+      draft.body = textarea.value;
+      if (draft.preview) renderPreview();
+    });
+    const help = node("p", "nc-form-help", "LaTeX: $x^2$ untuk rumus sebaris, $$\\frac{a}{b}$$ untuk rumus terpisah. Teks dan emoji didukung. Alamat emailmu tidak ditampilkan.", { id: `nc-help-${key}` });
     textarea.setAttribute("aria-describedby", `nc-help-${key}`);
     const actions = node("div", "nc-form-actions");
     const submit = node("button", "nc-button nc-button--primary", options.edit ? "Simpan perubahan" : options.reply ? "Kirim balasan" : "Kirim komentar", { type: "submit", "data-operation": `send:${key}`, "data-focus-key": `${key}:submit` });
     actions.append(submit);
+    const previewButton = button(draft.preview ? "Tutup pratinjau" : "Pratinjau", () => {
+      draft.preview = !draft.preview;
+      preview.hidden = !draft.preview;
+      previewButton.textContent = draft.preview ? "Tutup pratinjau" : "Pratinjau";
+      previewButton.setAttribute("aria-expanded", String(Boolean(draft.preview)));
+      renderPreview();
+    }, `${key}:preview`, "nc-button nc-button--quiet");
+    previewButton.setAttribute("aria-expanded", String(Boolean(draft.preview)));
+    actions.append(previewButton);
     if (options.cancel) actions.append(button("Batal", options.cancel, `${key}:cancel`, "nc-button nc-button--quiet"));
     const cooldown = node("span", "nc-cooldown", "", { "aria-live": "off" });
     actions.append(cooldown);
-    form.append(label, textarea, help, actions);
+    form.append(label, textarea, help, actions, preview);
+    renderPreview();
     if (!options.edit) form.dataset.newComment = "true";
     form.addEventListener("submit", event => {
       event.preventDefault();
@@ -333,6 +355,7 @@ export function mountNativeComments(root, adapter, config = {}) {
           state.lastSent = Date.now();
           draft.body = "";
           textarea.value = "";
+          if (draft.preview) renderPreview();
           if (options.reply) {
             state.forms.delete(key);
             const replies = state.replies.get(options.rootId) || { items: [], cursor: null, loaded: false, loading: false };
@@ -364,7 +387,9 @@ export function mountNativeComments(root, adapter, config = {}) {
   }
 
   function renderComposer() {
+    math.clear(composer);
     preserveFocus(() => composer.replaceChildren(makeComposer("root", { label: "Tulis komentar" })));
+    math.render(composer);
     tickCooldown();
   }
 
@@ -445,8 +470,8 @@ export function mountNativeComments(root, adapter, config = {}) {
         cancel: () => { state.forms.delete(editKey); renderComments(); focusControl(`${comment.id}:edit`); }
       }));
     } else {
-      const body = comment.deleted ? "Komentar ini telah dihapus." : comment.hidden ? "Komentar ini disembunyikan oleh moderator." : comment.body || "";
-      article.append(node("p", comment.deleted || comment.hidden ? "nc-comment-body nc-placeholder" : "nc-comment-body", body));
+      const body = comment.hidden ? "Komentar ini disembunyikan oleh moderator." : comment.body || "";
+      article.append(node("div", comment.hidden ? "nc-comment-body nc-placeholder" : "nc-comment-body", body));
       if (comment.hidden && comment.canModerate && comment.body) article.append(node("p", "nc-comment-body nc-moderator-preview", comment.body));
     }
     const actions = node("div", "nc-comment-actions");
@@ -490,13 +515,14 @@ export function mountNativeComments(root, adapter, config = {}) {
     article.append(textual);
     if (state.pendingDeletes.has(comment.id)) {
       const confirm = node("div", "nc-confirm");
-      confirm.append(node("p", "", "Hapus komentar ini? Balasannya tetap ada."));
+      confirm.append(node("p", "", "Hapus komentar ini dari percakapan? Balasan yang masih ada tetap ditampilkan."));
       const operation = `delete:${comment.id}`;
       const remove = button("Ya, hapus", () => act(operation, async () => {
         const updated = await adapter.deleteComment({ path, id: comment.id });
         state.pendingDeletes.delete(comment.id);
         updateComment(updated);
-        focusControl(`${comment.id}:header`);
+        if (!updated.parentId) await loadReplies(comment.id);
+        focusControl("root:input");
         setMessage("Komentarmu dihapus.");
       }), `${comment.id}:confirm-delete`, "nc-button nc-button--danger");
       remove.dataset.operation = operation;
@@ -516,6 +542,18 @@ export function mountNativeComments(root, adapter, config = {}) {
     return article;
   }
 
+  async function replyPage(rootId, cursor = null) {
+    let items = [];
+    let nextCursor = cursor;
+    do {
+      const result = await adapter.listReplies({ path, rootId, cursor: nextCursor, limit: pageSize, includeHidden: state.includeHidden });
+      items = mergeComments(items, result.items || []);
+      nextCursor = result.nextCursor || null;
+      // A page containing only removed replies must not conceal later replies.
+    } while (nextCursor && !items.some(item => !item.deleted) && !state.destroyed);
+    return { items, nextCursor };
+  }
+
   async function loadReplies(rootId, nextPage = false) {
     const version = state.refreshVersion;
     const initiatorKey = root.contains(document.activeElement) ? document.activeElement.dataset.focusKey : null;
@@ -525,7 +563,7 @@ export function mountNativeComments(root, adapter, config = {}) {
     state.replies.set(rootId, previous);
     renderComments();
     try {
-      const result = await adapter.listReplies({ path, rootId, cursor: nextPage ? previous.cursor : null, limit: pageSize, includeHidden: state.includeHidden });
+      const result = await replyPage(rootId, nextPage ? previous.cursor : null);
       if (state.destroyed || version !== state.refreshVersion) return;
       previous.items = mergeComments(mergeComments(nextPage ? previous.items : [], previous.locallyAdded || []), result.items || []).sort(oldestFirst);
       previous.cursor = result.nextCursor || null;
@@ -542,23 +580,26 @@ export function mountNativeComments(root, adapter, config = {}) {
   }
 
   function renderComments() {
+    math.clear(commentsList);
     preserveFocus(() => {
       commentsList.replaceChildren();
       if (!state.loaded) {
         commentsList.append(node("p", "nc-muted nc-empty", state.loading ? "Memuat percakapan…" : "Komentar belum dapat dimuat. Klik Segarkan untuk mencoba lagi."));
-      } else if (!state.roots.length) {
-        commentsList.append(node("p", "nc-muted nc-empty", "Belum ada komentar. Kamu bisa membuka percakapan pertama."));
       }
       [...state.roots].sort(rootOrder).forEach(comment => {
-        const thread = node("div", "nc-thread");
-        thread.append(commentArticle(comment, comment.id));
         const replies = state.replies.get(comment.id);
-        if (replies?.items.length) {
-          const replyList = node("div", "nc-replies", null, { "aria-label": `Balasan untuk ${comment.displayName}` });
-          replies.items.forEach(reply => replyList.append(commentArticle(reply, comment.id, true)));
+        const visibleReplies = (replies?.items || []).filter(reply => !reply.deleted);
+        // A deleted parent is only a routing key for surviving replies. Never
+        // render its author, date, placeholder, empty thread, or reply controls.
+        if (comment.deleted && !visibleReplies.length) return;
+        const thread = node("div", "nc-thread");
+        if (!comment.deleted) thread.append(commentArticle(comment, comment.id));
+        if (visibleReplies.length) {
+          const replyList = node("div", comment.deleted ? "nc-orphan-replies" : "nc-replies", null, { "aria-label": comment.deleted ? "Balasan" : `Balasan untuk ${comment.displayName}` });
+          visibleReplies.forEach(reply => replyList.append(commentArticle(reply, comment.id, !comment.deleted)));
           thread.append(replyList);
         }
-        if (replies?.loaded && !replies.items.length) thread.append(node("p", "nc-muted nc-reply-empty", "Belum ada balasan."));
+        if (!comment.deleted && replies?.loaded && !visibleReplies.length) thread.append(node("p", "nc-muted nc-reply-empty", "Belum ada balasan."));
         if (replies?.loading) thread.append(node("p", "nc-muted nc-reply-empty", "Memuat balasan…"));
         else if (!replies?.loaded && comment.replyCount !== 0) {
           thread.append(button(comment.replyCount ? `Lihat ${count(comment.replyCount)} balasan` : "Lihat balasan", () => loadReplies(comment.id), `${comment.id}:load-replies`, "nc-button nc-button--replies"));
@@ -567,6 +608,9 @@ export function mountNativeComments(root, adapter, config = {}) {
         }
         commentsList.append(thread);
       });
+      if (state.loaded && !commentsList.childNodes.length) {
+        commentsList.append(node("p", "nc-muted nc-empty", state.loading ? "Memuat percakapan…" : state.cursor ? "Belum ada komentar yang tampil pada halaman ini." : "Belum ada komentar. Kamu bisa membuka percakapan pertama."));
+      }
       pagination.replaceChildren();
       if (state.cursor) {
         const more = button("Muat komentar lainnya", () => act("more", async () => {
@@ -575,6 +619,8 @@ export function mountNativeComments(root, adapter, config = {}) {
           if (state.destroyed || version !== state.refreshVersion) return;
           state.roots = mergeComments(state.roots, result.items || []);
           state.cursor = result.nextCursor || null;
+          await Promise.all((result.items || []).filter(item => item.deleted || item.status === "deleted").map(item => loadReplies(item.id)));
+          if (state.destroyed || version !== state.refreshVersion) return;
           renderComments();
           renderAuth();
           if (!state.cursor && result.items?.[0] && document.activeElement === document.body) focusControl(`${result.items[0].id}:header`);
@@ -584,6 +630,7 @@ export function mountNativeComments(root, adapter, config = {}) {
         pagination.append(more);
       }
     });
+    math.render(commentsList);
     updateBusy();
     tickCooldown();
   }
@@ -615,8 +662,9 @@ export function mountNativeComments(root, adapter, config = {}) {
       state.loaded = true;
       state.loading = false;
       // Refresh only already opened conversations; no background live listener.
-      const replyResults = await Promise.allSettled(openReplyIds.filter(id => state.roots.some(item => item.id === id)).map(async id => {
-        const replyResult = await adapter.listReplies({ path, rootId: id, cursor: null, limit: pageSize, includeHidden: state.includeHidden });
+      const replyIds = [...new Set([...openReplyIds, ...state.roots.filter(item => item.deleted).map(item => item.id)])];
+      const replyResults = await Promise.allSettled(replyIds.filter(id => state.roots.some(item => item.id === id)).map(async id => {
+        const replyResult = await replyPage(id);
         if (version === state.refreshVersion) {
           const locallyAdded = state.replies.get(id)?.locallyAdded || [];
           state.replies.set(id, { items: mergeComments(locallyAdded, replyResult.items || []).sort(oldestFirst), cursor: replyResult.nextCursor || null, loaded: true, loading: false, locallyAdded });
@@ -671,6 +719,8 @@ export function mountNativeComments(root, adapter, config = {}) {
       unsubscribe();
       if (countdownTimer) window.clearTimeout(countdownTimer);
       state.forms.clear(); state.replies.clear();
+      math.clear(root);
+      math.destroy();
       root.replaceChildren();
     }
   };

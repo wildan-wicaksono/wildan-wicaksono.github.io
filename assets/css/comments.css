@@ -151,6 +151,11 @@ html[data-theme="dark"] .native-comments {
 .native-comments .nc-textarea::placeholder { color: var(--nc-muted); opacity: 1; }
 .native-comments .nc-form-help { margin: 0.45rem 0 0.6rem; font-size: 0.67rem; }
 .native-comments .nc-form-actions { gap: 0.45rem; }
+.native-comments .nc-preview { margin-top: 0.8rem; padding: 0.8rem; background: var(--nc-surface); border: 1px solid var(--nc-border); border-radius: 8px; }
+.native-comments .nc-preview .nc-comment-body { margin-bottom: 0; }
+.native-comments .nc-comment-body mjx-container { white-space: normal; }
+.native-comments .nc-comment-body mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 0.3rem; }
+.native-comments .nc-orphan-replies > .nc-comment + .nc-comment { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--nc-border); }
 .native-comments .nc-cooldown { color: var(--nc-muted); font-size: 0.65rem; }
 .native-comments .nc-status { min-height: 1.1em; margin: 0.65rem 0; color: var(--nc-muted); font-size: 0.73rem; }
 .native-comments .nc-status--error { color: var(--nc-danger); }

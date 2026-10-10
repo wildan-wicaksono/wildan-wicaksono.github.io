@@ -53,7 +53,7 @@
       timer = setTimeout(function () { fallback(); }, 15000);
       try {
         var configuration = JSON.parse(settings.textContent);
-        import({{ '/assets/js/comments/app.js?v=1' | relative_url | jsonify }})
+        import({{ '/assets/js/comments/app.js?v=2' | relative_url | jsonify }})
           .then(function (module) {
             if (finished) return null;
             return module.startComments(root, configuration, { signal: abort.signal });
