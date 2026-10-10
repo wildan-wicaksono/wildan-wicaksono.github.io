@@ -6,6 +6,10 @@
   {% assign teaser = site.teaser %}
 {% endif %}
 
+{% assign teaser_prefix = teaser | slice: 0, 1 %}
+{% assign teaser_protocol_prefix = teaser | slice: 0, 2 %}
+{% capture teaser_url %}{% if teaser contains '://' or teaser_protocol_prefix == '//' %}{{ teaser }}{% elsif teaser_prefix == '/' %}{{ teaser | prepend: base_path }}{% else %}{{ teaser | prepend: '/images/' | prepend: base_path }}{% endif %}{% endcapture %}
+
 {% if post.id %}
   {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
@@ -25,12 +29,7 @@
     {% endif %}
     {% if include.type == "grid" and teaser %}
       <div class="archive__item-teaser">
-        <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
+        <img src="{{ teaser_url | escape }}"
           alt="{{ post.header.teaser_alt | default: '' | escape }}">
       </div>
     {% endif %}
@@ -66,7 +65,7 @@
       <figure class="archive__item-list-teaser">
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">
           <img
-            src="{% if teaser contains '://' %}{{ teaser }}{% else %}{{ teaser | prepend: '/images/' | prepend: base_path }}{% endif %}"
+            src="{{ teaser_url | escape }}"
             alt="{{ post.header.teaser_alt | default: post.title | strip_html | escape }}"
             {% if post.header.teaser_width and post.header.teaser_height %}width="{{ post.header.teaser_width }}" height="{{ post.header.teaser_height }}"{% endif %}
             loading="lazy"
