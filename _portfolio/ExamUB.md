@@ -6,6 +6,11 @@ collection: portfolio
 author_profile: true
 share: false
 comments: false
+header:
+  teaser: projects/mathematics-exams.svg
+  teaser_alt: "Mathematics Exams at Universitas Brawijaya: lembar ujian matematika"
+  teaser_width: 256
+  teaser_height: 256
 ---
 
 <link rel="stylesheet" href="/assets/css/resource-pages.css">

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Euclidean Geometry</title>
+  <desc id="desc">An equilateral triangle with its circumcircle, incircle, and three altitudes.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#3ad9e8" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="256" height="256" rx="16" fill="#0b1a29"/>
+  <rect width="256" height="256" rx="16" fill="url(#grid)"/>
+  <rect x="13" y="13" width="230" height="230" rx="12" fill="none" stroke="#d8f4f7" stroke-opacity=".1"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="128" cy="123" r="80" stroke="#b5dce4" stroke-width="2.5"/>
+    <path d="M128 43L58.718 163L197.282 163Z" fill="#1edff2" fill-opacity=".06" stroke="#1edff2" stroke-width="3.5"/>
+    <path d="M128 43V163M58.718 163L162.641 103M197.282 163L93.359 103" stroke="#90b5c2" stroke-opacity=".65" stroke-width="2" stroke-dasharray="5 6"/>
+    <circle cx="128" cy="123" r="40" stroke="#1edff2" stroke-width="2.5"/>
+    <path d="M120 163V155H128" stroke="#d8f4f7" stroke-width="2"/>
+  </g>
+  <g fill="#d8f4f7"><circle cx="128" cy="43" r="4.5"/><circle cx="58.718" cy="163" r="4.5"/><circle cx="197.282" cy="163" r="4.5"/></g>
+  <circle cx="128" cy="123" r="4" fill="#1edff2"/>
+</svg>

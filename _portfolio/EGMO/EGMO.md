@@ -6,6 +6,11 @@ collection: portfolio
 author_profile: true
 share: false
 comments: false
+header:
+  teaser: projects/euclidean-geometry.svg
+  teaser_alt: "Euclidean Geometry: segitiga, lingkaran, dan garis bantu"
+  teaser_width: 256
+  teaser_height: 256
 ---
 
 <link rel="stylesheet" href="/assets/css/resource-pages.css">

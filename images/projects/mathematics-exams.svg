@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Mathematics Exams</title>
+  <desc id="desc">A mathematics examination sheet on a clipboard with a check mark.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#3ad9e8" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="256" height="256" rx="16" fill="#0b1a29"/>
+  <rect width="256" height="256" rx="16" fill="url(#grid)"/>
+  <rect x="13" y="13" width="230" height="230" rx="12" fill="none" stroke="#d8f4f7" stroke-opacity=".1"/>
+  <g stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="60" y="48" width="136" height="164" rx="9" fill="#123044" stroke="#d8f4f7"/>
+    <rect x="99" y="35" width="58" height="27" rx="6" fill="#0b1a29" stroke="#1edff2"/>
+    <path d="M119 48H137" stroke="#1edff2"/>
+    <rect x="81" y="85" width="17" height="17" rx="3" fill="none" stroke="#1edff2" stroke-width="2.5"/>
+    <path d="M112 88H174M112 99H151M81 121H174" stroke="#b5dce4" stroke-width="2.5"/>
+    <path d="M83 185V142M83 185H121M88 179C98 179 99 153 119 151" fill="none" stroke="#1edff2" stroke-width="2.5"/>
+    <path d="M169 143H138L154 159L138 175H169" fill="none" stroke="#d8f4f7"/>
+    <circle cx="191" cy="196" r="27" fill="#1edff2" stroke="#0b1a29" stroke-width="5"/>
+    <path d="M179 196L188 205L204 186" fill="none" stroke="#0b1a29" stroke-width="4"/>
+  </g>
+</svg>

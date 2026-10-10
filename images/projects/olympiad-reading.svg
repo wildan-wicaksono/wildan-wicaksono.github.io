@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Olympiad Reading Materials</title>
+  <desc id="desc">An open book with a geometry diagram and lines of mathematical notes.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#3ad9e8" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="256" height="256" rx="16" fill="#0b1a29"/>
+  <rect width="256" height="256" rx="16" fill="url(#grid)"/>
+  <rect x="13" y="13" width="230" height="230" rx="12" fill="none" stroke="#d8f4f7" stroke-opacity=".1"/>
+  <g stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M39 78V193C72 184 103 195 128 208C153 195 184 184 217 193V78" fill="none" stroke="#1edff2"/>
+    <path d="M128 79C109 65 78 60 48 68V181C80 174 106 184 128 197Z" fill="#163b50" stroke="#d8f4f7"/>
+    <path d="M128 79C147 65 178 60 208 68V181C176 174 150 184 128 197Z" fill="#123044" stroke="#d8f4f7"/>
+    <path d="M128 80V196" stroke="#1edff2"/>
+    <path d="M70 125L88 87L108 127Z" fill="#1edff2" fill-opacity=".1" stroke="#1edff2" stroke-width="2.5"/>
+    <path d="M69 147L108 153M69 160L96 164M147 96L189 85M147 116L189 106M147 136L189 128M147 155L175 150" stroke="#b5dce4" stroke-width="2.5"/>
+  </g>
+</svg>

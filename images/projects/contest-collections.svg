@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Contest Collections</title>
+  <desc id="desc">A stack of mathematics problem sheets with a competition medal.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#3ad9e8" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="256" height="256" rx="16" fill="#0b1a29"/>
+  <rect width="256" height="256" rx="16" fill="url(#grid)"/>
+  <rect x="13" y="13" width="230" height="230" rx="12" fill="none" stroke="#d8f4f7" stroke-opacity=".1"/>
+  <g stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="74" y="51" width="116" height="156" rx="8" fill="#123044" stroke="#348c9c"/>
+    <rect x="52" y="35" width="116" height="156" rx="8" fill="#102536" stroke="#d8f4f7"/>
+    <path d="M77 81L139 65L119 116Z" fill="#1edff2" fill-opacity=".1" stroke="#1edff2"/>
+    <path d="M77 142H142M77 159H123" stroke="#b5dce4"/>
+    <path d="M162 185L153 224L177 211L186 221L190 188M183 188L199 224L209 207L222 211L207 177" fill="#163b50" stroke="#1edff2"/>
+    <circle cx="185" cy="165" r="31" fill="#0b1a29" stroke="#1edff2"/>
+    <circle cx="185" cy="165" r="23" fill="#163b50" stroke="#1edff2" stroke-opacity=".45" stroke-width="2"/>
+    <path d="M185 149L190 159L201 161L193 169L195 180L185 175L175 180L177 169L169 161L180 159Z" fill="#d8f4f7" stroke="none"/>
+  </g>
+</svg>

@@ -6,6 +6,11 @@ collection: portfolio
 author_profile: true
 share: false
 comments: false
+header:
+  teaser: projects/contest-collections.svg
+  teaser_alt: "Contest Collections: lembar soal dan medali olimpiade"
+  teaser_width: 256
+  teaser_height: 256
 ---
 
 <style>
