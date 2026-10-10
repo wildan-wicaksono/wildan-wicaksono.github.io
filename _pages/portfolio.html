@@ -7,8 +7,33 @@ author_profile: true
 
 {% include base_path %}
 
-
+<div class="project-list">
 {% for post in site.portfolio %}
-  {% include archive-single.html %}
+  <article class="archive__item project-list__item{% if post.header.teaser %} project-list__item--with-cover{% endif %}" itemscope itemtype="https://schema.org/CreativeWork">
+    <div class="project-list__text">
+      <h2 class="archive__item-title" itemprop="headline">
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | escape }}</a>
+      </h2>
+      {% if post.date %}
+        <p class="page__date">
+          <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: 'Published:' }}</strong>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%B %d, %Y' }}</time>
+        </p>
+      {% endif %}
+      {% if post.excerpt %}
+        <div class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>
+      {% endif %}
+    </div>
+    {% if post.header.teaser %}
+      {% assign cover = post.header.teaser %}
+      {% assign cover_prefix = cover | slice: 0, 1 %}
+      {% assign cover_protocol_prefix = cover | slice: 0, 2 %}
+      {% capture cover_url %}{% if cover contains '://' or cover_protocol_prefix == '//' %}{{ cover }}{% elsif cover_prefix == '/' %}{{ cover | prepend: base_path }}{% else %}{{ cover | prepend: '/images/' | prepend: base_path }}{% endif %}{% endcapture %}
+      <a class="project-list__cover" href="{{ base_path }}{{ post.url }}" rel="permalink">
+        <img src="{{ cover_url | escape }}" alt="{{ post.header.teaser_alt | default: post.title | strip_html | escape }}" loading="lazy" decoding="async"{% if post.header.teaser_width and post.header.teaser_height %} width="{{ post.header.teaser_width }}" height="{{ post.header.teaser_height }}"{% endif %}>
+      </a>
+    {% endif %}
+  </article>
 {% endfor %}
+</div>
 

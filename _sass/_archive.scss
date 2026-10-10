@@ -172,6 +172,78 @@
 }
 
 
+/* Compact project summaries with small, uncropped covers. */
+.project-list {
+  .project-list__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid rgba($gray, 0.2);
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+
+  .project-list__item--with-cover {
+    grid-template-columns: minmax(0, 1fr) 76px;
+  }
+
+  .project-list__text {
+    min-width: 0;
+  }
+
+  .archive__item-title {
+    margin: 0 0 0.4rem;
+  }
+
+  .page__date {
+    margin: 0 0 0.65rem;
+    font-size: 0.78em;
+  }
+
+  .archive__item-excerpt {
+    margin: 0;
+    font-size: 0.85em;
+    line-height: 1.55;
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 0.5em;
+    }
+  }
+
+  .project-list__cover {
+    display: block;
+    width: 76px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius;
+    }
+  }
+
+  @include breakpoint(720px) {
+    .project-list__item--with-cover {
+      grid-template-columns: minmax(0, 1fr) 112px;
+      gap: 1.5rem;
+    }
+
+    .project-list__cover {
+      width: 112px;
+    }
+  }
+}
+
+
 /*
    Grid view
    ========================================================================== */
