@@ -30,7 +30,7 @@ Di sini, setiap contoh saya sertai cerita singkat tentang tahap yang sedang saya
 
 *Thumbnail* yang saya pilih diambil dari anime *Blue Period*. Ini sedikit mengingatkan saya dahulu yang juga menyukai bidang seni, khususnya menggambar dan melukis. Tapi, akhirnya saya memutuskan untuk memilih fokus di olimpiade matematika sejak SMA, mengingat banyak hal yang harus saya lakukan untuk mengejar mimpi saya. Anyway, kita kembali ke topik yang akan saya bahas.
 
-## 1. Awal Mula: Tim Soal saat SMP
+## Awal Mula: Tim Soal saat SMP
 
 Pengalaman pertama saya menjadi pembuat soal dimulai saat SMP, ketika sekolah saya mengadakan olimpiade matematika internal untuk siswa kelas 7 hingga kelas 9. Banyak soal yang saya susun berangkat dari soal yang pernah saya kerjakan, lalu saya adaptasi atau modifikasi. Sebagian mungkin saya buat sendiri, tetapi konsepnya masih sederhana.
 
@@ -40,7 +40,7 @@ Menjelang akhir kelas 9, sebelum berfokus menghadapi ujian nasional, saya juga i
 
 Ketika membaca ulang naskahnya sekarang, beberapa soal terlihat cukup umum bagi peserta yang berpengalaman. Ada pula yang tampak diambil langsung dari buku atau soal OSN. Ini menjadi gambaran kemampuan dan cara kerja saya saat itu. Kedua naskahnya masih dapat dibaca melalui [tautan pertama](https://drive.google.com/file/d/1YbwzZIarG-QLtwJA6W4YZqdXjk-l0QGR/view?usp=drive_link) dan [tautan kedua](https://drive.google.com/file/d/1JOEUglsICoAe0OVp02EJeVBs0qCc5lEc/view?usp=drive_link).
 
-## 2. Pentatic Mathematics Competition
+## Pentatic Mathematics Competition
 
 Pada masa pandemi, banyak institusi dan lembaga belajar mengadakan olimpiade daring. Saat itu juga ramai istilah “olimpiade PO Medali” wkwk. Meski begitu, ada pula lomba gratis dengan soal-soal yang berkualitas. Saya pun tertarik mencoba mengadakan kompetisi sendiri.
 
@@ -72,9 +72,9 @@ $$
 
 </div>
 
-## 3. Belajar Bersama Tim Soal
+## Belajar Bersama Tim Soal
 
-### 3.1. DeuX Math: Belajar Merevisi Soal
+### DeuX Math: Belajar Merevisi Soal
 
 Ketika SMA, seingat saya sekitar kelas 11, saya pernah terlibat di [DeuX Math](https://www.instagram.com/deux_math/). Saat ini, komunitas tersebut sudah tidak aktif. Sebagian besar kontribusi saya berupa penyuntingan LaTeX untuk postingan mereka, tetapi sesekali saya juga mengajukan soal simulasi OSK. Biasanya saya mengusulkan soal mudah, lalu menerima masukan untuk mengembangkannya. Berikut salah satu contohnya.
 
@@ -96,7 +96,7 @@ Tentukan banyaknya pasangan bilangan bulat $$(a,b)$$ dengan $$a\geqslant 1$$ dan
 
 Perubahan kecil pada bentuk pertanyaan dapat mengubah hal yang perlu diperhatikan peserta. Saat mencoba membuat soal yang lebih sulit, saya masih sering mengandalkan perhitungan panjang setelah satu gagasan utama ditemukan. Melihat soal teman-teman yang lain membuka lebih banyak contoh tentang gagasan dan keunikan yang masih ingin saya pelajari.
 
-### 3.2. MaQC: Belajar Menguji Soal Bersama
+### MaQC: Belajar Menguji Soal Bersama
 
 Pada 2021, seorang teman saya, Haidar, mengajak saya bergabung dengan tim soal untuk SMANU MH Thamrin. Di sini, saya berkolaborasi dengan teman-teman olimpiade dari berbagai sekolah. Kami terlibat secara sukarela karena memang tertarik membuat soal.
 
@@ -104,7 +104,7 @@ Saya banyak bertukar pikiran, terutama dengan Kenji Gunawan. Kami saling mencoba
 
 Untuk soal uraian, hasil pengujian juga membantu menyiapkan skema penilaian yang dapat mengakomodasi berbagai cara penyelesaian. Pada 2022, karena kesibukan lain, kontribusi saya lebih banyak berupa mencoba soal-soal yang dibuat anggota tim lainnya.
 
-### 3.3. KTOM: Dari Seleksi hingga Quality Control
+### KTOM: Dari Seleksi hingga Quality Control
 
 Pada pertengahan 2021, saya juga mendaftar sebagai anggota tim soal Kontes Terbuka Olimpiade Matematika (KTOM). Sayangnya, berkas seleksi yang saya kirimkan sudah tidak saya simpan. Saat itu, saya masih banyak mengubah sifat-sifat yang umum dikenal menjadi soal.
 
@@ -125,7 +125,7 @@ Diberikan $$AA_1$$, $$BB_1$$, dan $$CC_1$$ merupakan garis tinggi dari suatu seg
 
 Pada 2023, saya mulai ikut membantu bagian *quality control* (QC) di KTOM. Keterlibatan ini saya lakukan sebagai tambahan kontribusi. Saya kembali melihat pentingnya membandingkan berbagai pendapat dalam menilai soal. Tidak jarang, pembahasan bersama menghasilkan pengembangan yang lebih menarik dari usulan awal. Bersamaan dengan proses tersebut, kemampuan saya dalam membuat soal juga berkembang.
 
-### 3.4. Simulasi OSP: Mulai Mengembangkan Gagasan
+### Simulasi OSP: Mulai Mengembangkan Gagasan
 
 Jika menengok kembali simulasi OSP yang saya susun pada 2022, saya mulai melihat perbedaan dengan soal-soal awal saya. Saat itu, saya sudah tidak lagi mengikuti OSN sebagai peserta, sementara adik-adik kelas saya masih akan berkompetisi. Saya tetap terlibat dengan menyiapkan soal-soal simulasi. Beberapa contohnya juga menunjukkan bagaimana bacaan dan pengalaman mengerjakan soal memengaruhi karya saya saat itu.
 
@@ -208,7 +208,7 @@ Setelah konfigurasinya terbentuk, saya perlu memilih informasi panjang yang dibe
 
 Ketiga contoh ini menjadi gambaran singkat bagaimana saya mengembangkan soal saat itu: memulai dari fakta yang sudah dikenal, mengubah bentuk pertanyaannya, lalu mencoba mengerjakannya sendiri. Lebih banyak contoh beserta intuisi dan proses pengembangannya akan saya bahas dalam tulisan berikutnya.
 
-### 3.5. Soal-Soal Berikutnya: PEMNAS 2024–2025
+### Soal-Soal Berikutnya: PEMNAS 2024–2025
 
 Pada tahun-tahun berikutnya, saya juga menulis soal untuk PEMNAS. Dua contoh berikut menjadi bagian dari perjalanan tersebut. Yang pertama saya buat untuk jenjang SMP pada 2024.
 
@@ -240,7 +240,7 @@ $$
 
 Pada soal terakhir, saya sempat mencoba kasus-kasus kecil dengan bantuan Python, lalu meninggalkannya selama beberapa hari sebelum kembali mengerjakannya. Pengalaman ini juga menjadi pengingat bahwa sampai pada sebuah pernyataan soal belum tentu berarti seluruh prosesnya selesai. Intuisi dan pengembangan masing-masing contoh akan saya lanjutkan dalam tulisan berikutnya.
 
-## 4. Mewujudkan Seni dengan Soal
+## Mewujudkan Seni dengan Soal
 
 Hingga sekarang, menulis soal yang saya anggap orisinal dan menarik masih membutuhkan waktu. Dalam geometri, saya bisa menghabiskan 3-4 jam bereksplorasi dengan GeoGebra untuk menemukan sebuah soal. Menemukan suatu fakta pun baru menjadi awal: saya masih perlu melihat apakah fakta itu dapat dikembangkan dan bagaimana membuktikannya.
 
