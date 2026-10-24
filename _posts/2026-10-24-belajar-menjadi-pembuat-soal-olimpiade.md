@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Belajar Menjadi Pembuat Soal Olimpiade"
+title: "Membuat Soal: Sebuah Latihan Panjang"
 date: 2026-10-24 00:00:00 +0700
 permalink: /posts/2026/10/belajar-menjadi-pembuat-soal-olimpiade/
 excerpt: "Perjalanan belajar menyusun soal olimpiade matematika, dari lomba sekolah hingga bekerja bersama tim soal."
