@@ -26,7 +26,9 @@ tags:
 
 Tulisan ini menelusuri perkembangan soal-soal olimpiade matematika yang saya buat, mulai dari lomba sekolah hingga bekerja bersama tim soal. Melalui beberapa contoh dari masa yang berbeda, saya ingin melihat kembali bagaimana pengalaman dan masukan orang lain mengubah cara saya menilai soal.
 
-Di sini, setiap contoh saya sertai cerita singkat tentang tahap yang sedang saya jalani. Asal ide, intuisi di balik perubahan kondisi, dan pembahasan penyelesaiannya akan saya uraikan dalam tulisan kedua, “Menyusun Soal Olimpiade Matematika: Dari Ide hingga Paket Lomba”.
+Di sini, setiap contoh saya sertai cerita singkat tentang tahap yang sedang saya jalani. Beberapa contoh juga saya lengkapi dengan motivasi singkat di balik pembuatannya. Intuisi, perubahan kondisi, dan pembahasan yang lebih rinci akan saya uraikan dalam tulisan berikutnya.
+
+*Thumbnail* yang saya pilih diambil dari anime *Blue Period*. Ini sedikit mengingatkan saya dahulu yang juga menyukai bidang seni, khususnya menggambar dan melukis. Tapi, akhirnya saya memutuskan untuk memilih fokus di olimpiade matematika sejak SMA, mengingat banyak hal yang harus saya lakukan untuk mengejar mimpi saya. Anyway, kita kembali ke topik yang akan saya bahas.
 
 ## 1. Awal Mula: Tim Soal saat SMP
 
@@ -137,7 +139,7 @@ Diberikan persegi $$ABCD$$ dan titik $$E$$ di luar persegi sehingga $$\angle CED
 
 </div>
 
-Latihan yang menjadi salah satu latar belakangnya membahas persegi dan sebuah sudut siku-siku. Saya tertarik mengembangkan konfigurasi tersebut menjadi soal isian singkat. Berikut sifat dalam latihan yang saya maksud.
+Adanya garis bagi dan informasi panjang memang dapat mengarahkan peserta pada teorema rasio garis bagi. Namun, motivasi awal saya datang dari sebuah sifat pada latihan berikut: garis yang menghubungkan titik di luar persegi dengan pusat persegi ternyata membagi dua sudut siku-sikunya. Saya mencoba mengembangkannya menjadi pertanyaan tentang panjang.
 
 <div class="pw-box pw-box--acuan" markdown="1">
 
@@ -152,7 +154,9 @@ Diberikan persegi $$ABCD$$ dan titik $$E$$ di luarnya sehingga $$\angle DEC=90^\
 
 </div>
 
-Untuk soal teori bilangan, saya ingin menggunakan Teorema Legendre, yang juga dikenal sebagai formula de Polignac. Saya sudah cukup sering menjumpai soal tentang pangkat bilangan prima dalam sebuah faktorial. Saat itu, saya ingin mencoba bentuk pertanyaan yang masih memakai pengetahuan tersebut dan memberi peserta hal lain untuk diamati. Dari sana, saya membuat soal berikut.
+Meskipun berangkat dari latihan tersebut, saya tidak bisa menganggap peserta akan langsung mengenalinya. Saya pun mencoba mengerjakan soal yang saya buat dengan rasio garis bagi dan kesebangunan, seolah-olah belum mengetahui sifat acuannya. Saya perlu menguji jalur penyelesaian yang mungkin ditempuh peserta dan menilai kesulitannya dari sudut pandang mereka.
+
+Untuk teori bilangan pada paket yang sama, saya ingin memakai Teorema Legendre atau formula de Polignac. Bentuk yang sering saya jumpai adalah mencari pangkat terbesar dari suatu bilangan prima yang membagi sebuah faktorial, misalnya pangkat terbesar dari $$2$$ yang membagi $$100!$$. Bagi peserta yang sudah menguasai dasarnya, pertanyaan seperti ini bisa selesai dengan menerapkan rumus. Saya ingin menambahkan satu pengamatan lagi, sehingga saya mengganti satu faktorial dengan penjumlahan beberapa faktorial.
 
 <div class="pw-box pw-box--soal" markdown="1">
 
@@ -165,6 +169,8 @@ $$
 $$
 
 </div>
+
+Di sini, mengambil $$199!$$ sebagai faktor persekutuan belum menyelesaikan persoalan. Jika jumlah tersebut ditulis sebagai $$199!\cdot T$$, peserta masih perlu memeriksa faktor $$3$$ yang mungkin berasal dari $$T$$. Ternyata $$T$$ juga habis dibagi $$3$$, sehingga memakai Legendre hanya pada $$199!$$ akan melewatkan bagian penting. Menentukan seberapa besar pangkat $$3$$ yang membagi $$T$$ menjadi tantangan tambahannya.
 
 Pada simulasi ketiga, saya ingin menyiapkan soal geometri isian singkat yang lebih menantang. Salah satu latar belakangnya kembali datang dari bacaan EGMO, kali ini sebuah sifat yang melibatkan pusat lingkaran dalam dan lingkaran singgung luar.
 
@@ -181,7 +187,7 @@ Diberikan segitiga $$ABC$$ dan titik $$D$$ pada sisi $$BC$$ sehingga $$AD\perp B
 
 </div>
 
-Sifat acuan yang saya gunakan dibahas dalam EGMO, Bab 4. Saya mencoba mengolahnya menjadi konfigurasi soal di atas. Pada tahap ini, saya juga mulai lebih memikirkan informasi apa yang perlu diberikan kepada peserta. Intuisi dan proses pengembangannya akan saya ceritakan lebih rinci dalam tulisan berikutnya.
+Motivasi awal saya adalah sifat tentang pusat lingkaran dalam dan titik singgung lingkaran singgung luar berikut, yang dibahas dalam EGMO, Bab 4.
 
 <div class="pw-box pw-box--acuan" markdown="1">
 
@@ -196,7 +202,11 @@ Diberikan segitiga $$ABC$$ dengan pusat lingkaran dalam $$I$$. Misalkan $$D$$ ad
 
 </div>
 
-Melihat kembali soal-soal simulasi ini, saya merasa ada perkembangan dari soal-soal yang saya buat sebelumnya. Saya masih banyak belajar dari sifat yang sudah dikenal, tetapi mulai lebih terlatih mengolahnya menjadi pertanyaan yang saya inginkan. Pada tulisan ini, contoh-contohnya menjadi penanda perjalanan tersebut; pembahasan teknisnya saya lanjutkan dalam tulisan kedua.
+Dari sifat ini, saya mencoba kasus khusus ketika sudut $$B$$ siku-siku. Kaki garis tinggi dari $$A$$ lalu berhimpit dengan $$B$$, sehingga konfigurasinya menjadi lebih sederhana. Lalu saya membalik cara memandangnya: garis tinggi $$AD$$ pada segitiga $$ABC$$ justru menghasilkan dua segitiga siku-siku, $$ABD$$ dan $$ACD$$. Saya menerapkan sifat yang sama pada masing-masing segitiga, sehingga sifat acuannya tidak terlalu mudah dikenali dalam soal akhir.
+
+Setelah konfigurasinya terbentuk, saya perlu memilih informasi panjang yang diberikan. Jika semua sisi saya cantumkan, saya khawatir soalnya lebih banyak menuntut perhitungan. Karena itu, saya memisalkan dahulu panjang-panjang sisinya, lalu menyederhanakan hubungan yang muncul. Ternyata panjang yang ditanyakan dapat dinyatakan melalui keliling segitiga $$ABC$$ dan panjang $$AD$$ saja. Itulah alasan saya memilih dua informasi tersebut.
+
+Ketiga contoh ini menjadi gambaran singkat bagaimana saya mengembangkan soal saat itu: memulai dari fakta yang sudah dikenal, mengubah bentuk pertanyaannya, lalu mencoba mengerjakannya sendiri. Lebih banyak contoh beserta intuisi dan proses pengembangannya akan saya bahas dalam tulisan berikutnya.
 
 ### 3.5. Soal-Soal Berikutnya: PEMNAS 2024–2025
 
@@ -230,7 +240,7 @@ $$
 
 Pada soal terakhir, saya sempat mencoba kasus-kasus kecil dengan bantuan Python, lalu meninggalkannya selama beberapa hari sebelum kembali mengerjakannya. Pengalaman ini juga menjadi pengingat bahwa sampai pada sebuah pernyataan soal belum tentu berarti seluruh prosesnya selesai. Intuisi dan pengembangan masing-masing contoh akan saya lanjutkan dalam tulisan berikutnya.
 
-## 4. Proses yang Masih Saya Jalani
+## 4. Mewujudkan Seni dengan Soal
 
 Hingga sekarang, menulis soal yang saya anggap orisinal dan menarik masih membutuhkan waktu. Dalam geometri, saya bisa menghabiskan 3-4 jam bereksplorasi dengan GeoGebra untuk menemukan sebuah soal. Menemukan suatu fakta pun baru menjadi awal: saya masih perlu melihat apakah fakta itu dapat dikembangkan dan bagaimana membuktikannya.
 
@@ -238,12 +248,10 @@ Saya bahkan pernah membutuhkan sekitar empat jam untuk menyelesaikan soal yang s
 
 Apakah saya pernah jenuh? Tentu saja. Kalau setiap hari dihabiskan untuk membuat soal, terlebih ketika mengejar tenggat lomba, saya bisa merasa lelah. Pengalaman mengelola pekerjaan semacam ini akan saya ceritakan dalam tulisan lain. Namun, pada waktu senggang, saya masih sering tertarik menulis soal dan menyimpannya sebagai arsip untuk digunakan kemudian.
 
-## 5. Hal yang Mulai Saya Pahami
-
 Kalau saya melihat kembali perjalanan ini, perubahan yang paling terasa ada pada cara saya menilai sebuah soal. Dulu, saya sering berfokus pada cara membuat soal menjadi lebih sulit. Perlahan, saya mulai memperhatikan apa yang menarik dari soal itu, seberapa jelas idenya, dan apakah tingkat kesulitannya sesuai dengan peserta.
 
 Masukan orang lain punya peran besar dalam proses tersebut. Dari komentar tentang perhitungan, pengalaman saling mencoba soal, hingga sifat yang langsung dikenali teman, saya belajar bahwa penilaian saya sendiri masih perlu diuji. Membuat soal menjadi proses yang terus berlanjut melalui percobaan, pengujian, dan revisi.
 
-Saat sedang menulis cerita ini, saya baru membaca [On Problem Writing (Part I)](https://daltizio.wordpress.com/2017/08/01/on-problem-writing-part-i/) di blog daltizio. Banyak bagiannya terasa dekat dengan pengalaman saya, terutama cerita tentang soal-soal awal yang dibuat sulit dengan memperberat perhitungannya. Untuk pembaca yang tertarik menulis soal, saya merekomendasikan tulisan tersebut. Ada pula kelanjutannya, [On Problem Writing (Part 2)](https://daltizio.wordpress.com/2017/09/09/on-problem-writing-part-2/), yang membahas pencarian dan pengembangan ide.
+Salah satu sosok di AoPS yang sering membuat soal menarik adalah djmathman/David Altizio. Saat sedang menulis cerita ini, saya baru membaca [On Problem Writing (Part I)](https://daltizio.wordpress.com/2017/08/01/on-problem-writing-part-i/) di blog daltizio. Banyak bagiannya terasa dekat dengan pengalaman saya, terutama cerita tentang soal-soal awal yang dibuat sulit dengan memperberat perhitungannya. Untuk pembaca yang tertarik menulis soal, saya merekomendasikan tulisan tersebut. Ada pula kelanjutannya, [On Problem Writing (Part 2)](https://daltizio.wordpress.com/2017/09/09/on-problem-writing-part-2/), yang membahas pencarian dan pengembangan ide.
 
-Pada tulisan berikutnya, saya akan membahas pertimbangan umum dalam menyusun soal dan bekerja bersama tim, dengan berbagai studi kasus dari pengalaman saya di PEMNAS maupun kompetisi lain.
+Pada tulisan berikutnya, saya akan membahas pertimbangan umum dalam menyusun soal dan bekerja bersama tim, dengan berbagai studi kasus dari pengalaman saya di PEMNAS maupun kompetisi lain. Mungkin, ada hal khusus yang ingin saya jawab dalam tulisan berikutnya dapat dituliskan di kolom komentar.
