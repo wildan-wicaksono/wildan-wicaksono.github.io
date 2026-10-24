@@ -62,6 +62,36 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding: .2em 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pw-accent) var(--pw-bg);
+}
+.page__content .pw-math {
+  max-width: 100%;
+  margin: 1em 0;
+}
+.page__content .pw-math mjx-container[display="true"] {
+  margin: 0;
+}
+.page__content .pw-math--overflowing mjx-container[display="true"] {
+  text-align: left;
+}
+.page__content .pw-math mjx-container:focus-visible {
+  outline: 2px solid var(--pw-accent);
+  outline-offset: 3px;
+}
+.page__content .pw-math-hint {
+  display: none;
+  margin: .45em 0 0;
+  color: var(--pw-accent);
+  font-size: .75em;
+  line-height: 1.5;
+  text-align: center;
+}
+.page__content .pw-math--overflowing > .pw-math-hint {
+  display: block;
+}
+.page__content .pw-math-hint__icon {
+  margin-right: .3em;
 }
 html[data-theme="dark"] .page__content .pw-box {
   --pw-accent: #9bcdf6;
@@ -83,4 +113,5 @@ html[data-theme="dark"] .page__content .pw-box--revisi {
 }
 @media print {
   .page__content .pw-box { box-shadow: none; break-inside: avoid; }
+  .page__content .pw-math > .pw-math-hint { display: none; }
 }

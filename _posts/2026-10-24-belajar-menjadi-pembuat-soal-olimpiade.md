@@ -22,7 +22,8 @@ tags:
   - catatan pengalaman
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/problem-writing.css' | relative_url }}" />
+<link rel="stylesheet" href="{{ '/assets/css/problem-writing.css' | relative_url }}?v=2" />
+<script defer src="{{ '/assets/js/problem-writing.js' | relative_url }}"></script>
 
 Tulisan ini menelusuri perkembangan soal-soal olimpiade matematika yang saya buat, mulai dari lomba sekolah hingga bekerja bersama tim soal. Melalui beberapa contoh dari masa yang berbeda, saya ingin melihat kembali bagaimana pengalaman dan masukan orang lain mengubah cara saya menilai soal.
 
@@ -34,11 +35,11 @@ Di sini, setiap contoh saya sertai cerita singkat tentang tahap yang sedang saya
 
 Pengalaman pertama saya menjadi pembuat soal dimulai saat SMP, ketika sekolah saya mengadakan olimpiade matematika internal untuk siswa kelas 7 hingga kelas 9. Banyak soal yang saya susun berangkat dari soal yang pernah saya kerjakan, lalu saya adaptasi atau modifikasi. Sebagian mungkin saya buat sendiri, tetapi konsepnya masih sederhana.
 
-Saat itu, saya juga sedang tertarik mempelajari LaTeX dan menggunakannya untuk menyusun naskah soal. Saya mengerjakannya bersama beberapa teman. Ketika melihat kembali soal-soal tersebut sekarang, saya menyadari banyak gagasannya sudah umum dijumpai di buku-buku olimpiade. Naskah soal lomba internal tersebut masih bisa dibaca [di sini](https://drive.google.com/file/d/1XC4uNz7PdsOcpYzauVbWqTJ15O1nWaCh/view?usp=drive_link).
+Saat itu, saya juga sedang tertarik mempelajari LaTeX dan menggunakannya untuk menyusun naskah soal. Saya mengerjakannya bersama beberapa teman. Ketika melihat kembali soal-soal tersebut sekarang, saya menyadari banyak gagasannya sudah umum dijumpai di buku-buku olimpiade. Naskah soal lomba internal tersebut masih bisa dibaca [di sini]({{ '/files/Booklet%20Schematics%202018.pdf' | relative_url }}).
 
 Menjelang akhir kelas 9, sebelum berfokus menghadapi ujian nasional, saya juga ikut menyusun soal untuk lomba olimpiade SD/MI/sederajat tingkat kota/kabupaten yang rutin diadakan sekolah saya. Lomba ini punya arti tersendiri bagi saya. Ketika masih SD, di lomba inilah saya pernah meraih juara 2. Itulah satu-satunya lomba olimpiade tempat saya meraih juara saat SD, sekaligus menjadi titik balik setelah berbagai kegagalan yang saya alami. Beberapa tahun kemudian, saya mendapat kesempatan berkontribusi sebagai pembuat soalnya.
 
-Ketika membaca ulang naskahnya sekarang, beberapa soal terlihat cukup umum bagi peserta yang berpengalaman. Ada pula yang tampak diambil langsung dari buku atau soal OSN. Ini menjadi gambaran kemampuan dan cara kerja saya saat itu. Kedua naskahnya masih dapat dibaca melalui [tautan pertama](https://drive.google.com/file/d/1YbwzZIarG-QLtwJA6W4YZqdXjk-l0QGR/view?usp=drive_link) dan [tautan kedua](https://drive.google.com/file/d/1JOEUglsICoAe0OVp02EJeVBs0qCc5lEc/view?usp=drive_link).
+Ketika membaca ulang naskahnya sekarang, beberapa soal terlihat cukup umum bagi peserta yang berpengalaman. Ada pula yang tampak diambil langsung dari buku atau soal OSN. Ini menjadi gambaran kemampuan dan cara kerja saya saat itu. Kedua naskahnya masih dapat dibaca melalui [tautan pertama]({{ '/files/Penyisihan%20SD-SMPN%201.pdf' | relative_url }}) dan [tautan kedua]({{ '/files/Final%20SD-SMPN%201.pdf' | relative_url }}).
 
 ## Pentatic Mathematics Competition
 
