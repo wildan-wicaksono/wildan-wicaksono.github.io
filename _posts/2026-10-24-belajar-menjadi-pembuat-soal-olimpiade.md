@@ -7,7 +7,7 @@ excerpt: "Perjalanan belajar menyusun soal olimpiade matematika, dari lomba seko
 author_profile: true
 read_time: true
 # Ubah menjadi true ketika tulisan siap diterbitkan.
-published: false
+published: true
 header:
   teaser: "https://static.animecorner.me/2024/10/1730168216-c000d240858a76fc023f30941a3e42a6.png"
   teaser_alt: "Yatora Yaguchi sedang melukis di depan kanvas dalam Blue Period"
