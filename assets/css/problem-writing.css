@@ -1,0 +1,86 @@
+/* Scoped to the examples in the problem-writing post. */
+.page__content .pw-box {
+  --pw-accent: #2069a4;
+  --pw-bg: #f3f8fd;
+  --pw-border: #d1e1ed;
+  margin: 1.7em 0;
+  padding: 1.2em 1.35em;
+  color: inherit;
+  background: var(--pw-bg);
+  border: 1px solid var(--pw-border);
+  border-left: 4px solid var(--pw-accent);
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(20, 45, 65, .035);
+}
+.page__content .pw-box--acuan {
+  --pw-accent: #21734d;
+  --pw-bg: #f0f8f3;
+  --pw-border: #d1e6d9;
+}
+.page__content .pw-box--revisi {
+  --pw-accent: #7451a8;
+  --pw-bg: #f7f3fc;
+  --pw-border: #e1d6f0;
+}
+.page__content .pw-box > p:first-child {
+  margin-top: 0;
+  margin-bottom: .85em;
+  color: var(--pw-accent);
+  font-size: .94em;
+  line-height: 1.5;
+}
+.page__content .pw-box > p:first-child strong { font-weight: 700; }
+.page__content .pw-box > :last-child { margin-bottom: 0; }
+.page__content .pw-figure {
+  display: block;
+  width: 100%;
+  margin: 1.4em auto .35em;
+  text-align: center;
+}
+.page__content .pw-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 8px;
+  border: 1px solid var(--pw-border);
+  border-radius: 7px;
+  background: #fff;
+}
+.page__content .pw-figure figcaption {
+  margin: .65em 0 0;
+  color: inherit;
+  opacity: .78;
+  font-size: .8em;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+}
+.page__content .pw-box mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: .2em 0;
+}
+html[data-theme="dark"] .page__content .pw-box {
+  --pw-accent: #9bcdf6;
+  --pw-bg: #35434e;
+  --pw-border: #587082;
+}
+html[data-theme="dark"] .page__content .pw-box--acuan {
+  --pw-accent: #9fd7b8;
+  --pw-bg: #35473e;
+  --pw-border: #5b7c69;
+}
+html[data-theme="dark"] .page__content .pw-box--revisi {
+  --pw-accent: #d1b6f6;
+  --pw-bg: #443b50;
+  --pw-border: #78638f;
+}
+@media (max-width: 600px) {
+  .page__content .pw-box { padding: 1em; border-radius: 8px; }
+}
+@media print {
+  .page__content .pw-box { box-shadow: none; break-inside: avoid; }
+}
