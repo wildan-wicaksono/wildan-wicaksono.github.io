@@ -8,6 +8,14 @@ author_profile: true
 read_time: true
 # Ubah menjadi true ketika tulisan siap diterbitkan.
 published: false
+header:
+  teaser: "https://static.animecorner.me/2024/10/1730168216-c000d240858a76fc023f30941a3e42a6.png"
+  teaser_alt: "Yatora Yaguchi sedang melukis di depan kanvas dalam Blue Period"
+  teaser_width: 2559
+  teaser_height: 1439
+  teaser_caption: "Blue Period"
+  teaser_credit: "© Tsubasa Yamaguchi, Kodansha / Blue Period Production Committee"
+  teaser_source: "https://animecorner.me/interview-tsubasa-yamaguchi-author-of-blue-period/"
 tags:
   - olimpiade matematika
   - penulisan soal
