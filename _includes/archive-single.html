@@ -53,6 +53,8 @@
             <p>Book{% if post.edition %}, <i>{{ post.edition }}</i>{% endif %}, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% elsif post.publication_type == 'thesis' %}
             <p>Undergraduate thesis, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+          {% elsif post.publication_status == 'preprint' %}
+            <p>Preprint on <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% else %}
             <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% endif %}
