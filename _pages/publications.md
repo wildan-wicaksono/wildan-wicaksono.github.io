@@ -11,7 +11,7 @@ author_profile: true
 
 {% include base_path %}
 
-<p>This page brings together my undergraduate thesis, books, and research publications. Research papers will be added as they become available.</p>
+<p>This page brings together my undergraduate thesis, books, and research publications. Research papers and preprints are listed below.</p>
 
 {% assign publications_by_date = site.publications | sort: "date" | reverse %}
 {% assign theses = publications_by_date | where: "publication_type", "thesis" %}
