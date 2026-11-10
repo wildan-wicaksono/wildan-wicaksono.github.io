@@ -4,7 +4,7 @@ collection: publications
 publication_type: paper
 publication_status: preprint
 permalink: /publications/statistics-of-centralizers-of-integer-matrices/
-date: 2026-11-08 00:00:00 +0000
+date: 2026-11-10 00:00:00 +0000
 venue: "arXiv"
 link: https://arxiv.org/abs/2611.11287
 excerpt: "We study the statistics of centralizers of integer matrices, obtaining asymptotics and bounds for the number of integer matrices of bounded height that commute with a given matrix."
