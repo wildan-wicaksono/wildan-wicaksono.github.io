@@ -15,8 +15,8 @@ redirect_from:
   <section class="home-hero" aria-labelledby="home-heading">
     <span class="home-eyebrow">Mathematics · Olympiad Education</span>
     <h1 id="home-heading">Wildan Bagus Wicaksono</h1>
-    <p class="home-role">Mathematics graduate, olympiad instructor, and author.</p>
-    <p class="home-intro">I hold a bachelor's degree in Mathematics from Universitas Brawijaya. My current research interests lie in number theory, with recent work on counting problems involving integer matrices. Alongside my research, I teach olympiad mathematics to students from elementary through senior high school and develop problems and learning resources.</p>
+    <p class="home-role">Mathematics undergraduate, olympiad coach, and author.</p>
+    <p class="home-intro">My interests lie in number theory, Euclidean geometry, and mathematical olympiad education. I am currently completing my undergraduate thesis at Universitas Brawijaya, coaching olympiad students, and developing mathematical learning resources.</p>
     <div class="home-actions" aria-label="Explore this website">
       <a class="home-button" href="{{ '/publications/' | relative_url }}">View publications</a>
       <a class="home-button home-button--secondary" href="{{ '/teaching/' | relative_url }}">Teaching &amp; coaching</a>
@@ -30,15 +30,6 @@ redirect_from:
       <h2 id="selected-work-heading">Mathematics, writing, and education</h2>
       <p>A selection of the work that best represents what I am currently building and contributing to.</p>
     </div>
-
-    <article class="home-book-card" aria-labelledby="home-research-heading">
-      <div class="home-book-copy" style="grid-column: 1 / -1;">
-        <span class="home-card-label">Preprint · 2026</span>
-        <h3 id="home-research-heading">Statistics of centralizers of integer matrices</h3>
-        <p>Recent work on counting integer matrices of bounded height that commute with a given matrix.</p>
-        <a class="home-text-link" href="https://arxiv.org/abs/2611.11287" target="_blank" rel="noopener noreferrer">Read on arXiv <span aria-hidden="true">→</span></a>
-      </div>
-    </article>
 
     <article class="home-book-card">
       <div class="home-book-visual">
@@ -56,7 +47,7 @@ redirect_from:
       <article class="home-card">
         <span class="home-card-label">Teaching</span>
         <h3>Olympiad coaching</h3>
-        <p>I teach olympiad mathematics to students from elementary through senior high school and have contributed to Indonesia's national training program for the International Mathematical Olympiad.</p>
+        <p>I teach olympiad mathematics across different school levels and have contributed to Indonesia's national International Mathematical Olympiad training program.</p>
         <a class="home-text-link" href="{{ '/teaching/' | relative_url }}">View teaching experience <span aria-hidden="true">→</span></a>
       </article>
 
@@ -71,27 +62,27 @@ redirect_from:
 
   <section class="home-section" aria-labelledby="focus-heading">
     <div class="home-section-heading">
-      <span class="home-section-label">Current interests &amp; activities</span>
+      <span class="home-section-label">Current focus</span>
       <h2 id="focus-heading">What I am working on</h2>
     </div>
 
     <div class="home-focus-grid">
       <article class="home-focus-card">
         <span class="home-focus-number">01</span>
-        <h3>Number theory and counting</h3>
-        <p>I am exploring counting problems in number theory, with recent work on integer matrices and their centralizers.</p>
+        <h3>Set-valued analysis</h3>
+        <p>My undergraduate research compares algebraic and metric approaches to differentiability for set-valued functions.</p>
       </article>
 
       <article class="home-focus-card">
         <span class="home-focus-number">02</span>
-        <h3>Olympiad teaching</h3>
-        <p>I teach olympiad mathematics at elementary, junior high, and senior high school levels, helping students understand mathematical ideas and develop their problem-solving skills.</p>
+        <h3>Algebraic counting</h3>
+        <p>I am also exploring questions in algebraic counting and matrix theory.</p>
       </article>
 
       <article class="home-focus-card">
         <span class="home-focus-number">03</span>
-        <h3>Problems and learning resources</h3>
-        <p>I write olympiad problems and develop handouts, problem collections, and other learning resources for students and instructors.</p>
+        <h3>Olympiad geometry</h3>
+        <p>I continue to explore Euclidean methods, write problems, and develop materials for mathematical olympiad training.</p>
       </article>
     </div>
   </section>
@@ -121,9 +112,9 @@ redirect_from:
   <section class="home-story" aria-labelledby="story-heading">
     <div class="home-story-copy">
       <span class="home-section-label">A personal note</span>
-      <h2 id="story-heading">My path in mathematics</h2>
-      <p>My mathematical journey began with olympiad geometry and gradually grew into teaching, problem writing, and the book <em>The Art of Olympiad Geometry</em>.</p>
-      <p>Today, I am exploring research directions in number theory while continuing to teach and develop learning resources for olympiad students.</p>
+      <h2 id="story-heading">Why geometry?</h2>
+      <p>Geometry was the first area of mathematics that genuinely fascinated me. I discovered olympiad geometry in junior high school, and its combination of visual intuition, elegant transformations, and surprising structure has stayed with me ever since.</p>
+      <p>What began as curiosity eventually grew into years of learning, teaching, problem writing, and writing <em>The Art of Olympiad Geometry</em>.</p>
     </div>
     <figure class="home-story-figure">
       <img src="{{ '/images/IMG_2165.JPG' | relative_url }}" alt="Participants and organizers at OSN 2023 in Bogor" loading="lazy">

@@ -15,14 +15,14 @@ comments: false
   <header class="cv-hero">
     <span class="cv-eyebrow">Academic profile</span>
     <h1>Curriculum Vitae</h1>
-    <p>Mathematics graduate, olympiad instructor, and author.</p>
+    <p>Mathematics undergraduate, olympiad coach, and author.</p>
   </header>
 
   <section class="cv-section" aria-labelledby="cv-education">
     <h2 id="cv-education">Education</h2>
     <div class="cv-entry-list">
       <article class="cv-entry">
-        <div class="cv-entry-period">2026</div>
+        <div class="cv-entry-period">Expected 2026</div>
         <div class="cv-entry-content">
           <h3>Bachelor of Science in Mathematics (S.Mat.)</h3>
           <p class="cv-entry-meta">Universitas Brawijaya · Malang, Indonesia</p>
