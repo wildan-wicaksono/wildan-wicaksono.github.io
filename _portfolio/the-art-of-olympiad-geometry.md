@@ -744,6 +744,48 @@ header:
 
   .book-rating .book-actions { justify-content: center; }
 
+  .book-reader-review {
+    max-width: 44rem;
+    margin: 1.75rem auto;
+    text-align: left;
+  }
+
+  .book-reader-review > h3 {
+    margin: 0 0 0.75rem;
+    color: var(--book-navy);
+    font-size: 1.05rem;
+  }
+
+  .book-reader-review-card { margin: 0; }
+
+  .book-reader-review-card blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-style: normal;
+  }
+
+  .book-reader-review-card blockquote p {
+    margin: 0;
+    line-height: 1.8;
+  }
+
+  .book-reader-review-card figcaption {
+    margin-top: 1rem;
+    color: var(--book-muted);
+    font-size: 0.78rem;
+    font-style: normal;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .book-reader-review-card figcaption strong { display: block; }
+
+  .book-reader-review .book-note {
+    margin-top: 0.75rem;
+    line-height: 1.6;
+  }
+
   .book-info {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -963,6 +1005,7 @@ header:
               <li>Garis Singgung Persekutuan</li>
               <li>Lingkaran Bersinggungan</li>
               <li>Lingkaran Dalam dan Lingkaran Luar Segitiga</li>
+              <li>Teorema Lingkaran Singgung Luar Segitiga</li>
             </ol>
           </details>
           <details class="book-chapter">
@@ -1188,6 +1231,19 @@ header:
       </div>
       <p class="book-rating-score"><strong id="aog-rating-average">-</strong> dari 5</p>
       <p class="book-rating-count">Berdasarkan <span id="aog-rating-count">0</span> penilaian pembaca</p>
+    </div>
+    <div class="book-reader-review" id="ulasan-pembaca" role="region" aria-labelledby="aog-review-heading">
+      <h3 id="aog-review-heading">Ulasan pembaca</h3>
+      <figure class="book-card book-reader-review-card">
+        <blockquote>
+          <p>&ldquo;Sangat baik, penjelasan yang jelas, disertai dengan bukti rumus yang baik dan soal-soal banyak dan bervariasi. Mungkin untuk ke depannya bisa diterbitkan buku AOG baru, namun untuk level OSN Nasional&ndash;IMO.&rdquo;</p>
+        </blockquote>
+        <figcaption>
+          <strong>Pembaca anonim</strong>
+          <span>Telah membaca seluruh buku</span>
+        </figcaption>
+      </figure>
+      <p class="book-note">Ditampilkan dengan izin pembaca. Ejaan dan tanda baca dirapikan tanpa mengubah isi ulasan.</p>
     </div>
     <div class="book-actions">
       {% if page.rating_form_url and page.rating_form_url != "" %}
