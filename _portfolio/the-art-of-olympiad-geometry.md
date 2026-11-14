@@ -944,6 +944,7 @@ header:
           <li>Kunci dan Petunjuk</li>
           <li>Solusi Terpilih</li>
           <li>Daftar Kompetisi</li>
+          <li>Daftar Pustaka dan Indeks</li>
         </ul>
       </article>
     </div>
