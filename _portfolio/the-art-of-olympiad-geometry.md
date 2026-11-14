@@ -599,8 +599,7 @@ header:
     margin-top: 1.25rem !important;
   }
 
-  .book-order,
-  .book-rating {
+  .book-order {
     padding: clamp(1.3rem, 4vw, 2.2rem);
     background: #fff;
     border: 1px solid var(--book-line);
@@ -653,6 +652,7 @@ header:
     color: #435668;
     background: #f5fafc;
     border-radius: 9px;
+    font-size: 0.86rem;
     line-height: 1.65;
     counter-increment: order-step;
   }
@@ -684,107 +684,6 @@ header:
   }
 
   .book-order .book-actions { margin-top: 1.25rem; }
-
-  .book-rating {
-    text-align: center;
-    background: #f5fafc;
-  }
-
-  .book-rating .book-lead {
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  .book-rating-stars {
-    margin: 1rem 0 1.25rem;
-    color: #e3aa20;
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    letter-spacing: 0.18rem;
-    line-height: 1;
-  }
-
-  .book-rating-summary[hidden],
-  .book-rating-prompt[hidden] {
-    display: none;
-  }
-
-  .book-rating-summary {
-    margin: 1rem 0 1.25rem;
-  }
-
-  .book-rating-average-stars {
-    position: relative;
-    display: inline-block;
-    color: #d6dee3;
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    letter-spacing: 0.18rem;
-    line-height: 1;
-  }
-
-  .book-rating-average-fill {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 0;
-    overflow: hidden;
-    color: #e3aa20;
-    white-space: nowrap;
-  }
-
-  .book-rating-score {
-    margin: 0.75rem 0 0;
-    color: var(--book-navy);
-    font-size: 1rem;
-  }
-
-  .book-rating-count {
-    margin: 0.2rem 0 0;
-    color: var(--book-muted);
-    font-size: 0.78rem;
-  }
-
-  .book-rating .book-actions { justify-content: center; }
-
-  .book-reader-review {
-    max-width: 44rem;
-    margin: 1.75rem auto;
-    text-align: left;
-  }
-
-  .book-reader-review > h3 {
-    margin: 0 0 0.75rem;
-    color: var(--book-navy);
-    font-size: 1.05rem;
-  }
-
-  .book-reader-review-card { margin: 0; }
-
-  .book-reader-review-card blockquote {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-style: normal;
-  }
-
-  .book-reader-review-card blockquote p {
-    margin: 0;
-    line-height: 1.8;
-  }
-
-  .book-reader-review-card figcaption {
-    margin-top: 1rem;
-    color: var(--book-muted);
-    font-size: 0.78rem;
-    font-style: normal;
-    line-height: 1.6;
-    text-align: left;
-  }
-
-  .book-reader-review-card figcaption strong { display: block; }
-
-  .book-reader-review .book-note {
-    margin-top: 0.75rem;
-    line-height: 1.6;
-  }
 
   .book-info {
     display: grid;
@@ -1127,7 +1026,7 @@ header:
       <details class="book-problem">
         <summary><span class="book-problem-number">4</span><span>PEMNAS SMA 2024</span></summary>
         <div class="book-problem-body">
-          <p>Diberikan segitiga \(ABC\) dan titik \(M\) terletak pada \(\overline{AC}\). Titik \(N\) merupakan bayangan pencerminan titik \(M\) terhadap garis \(BC\), dan \(AN\) memotong \(\overline{BC}\) di \(O\). Selain itu, \(A\), \(B\), \(M\), dan \(O\) terletak pada lingkaran yang sama. Jika \(\angle ABN=56^\circ\), tentukan besar \(\angle CMN\).</p>
+          <p>Diberikan segitiga \(ABC\) dan titik \(M\) terletak pada \(\overline{AC}\). Titik \(N\) merupakan bayangan pencerminan titik \(M\) terhadap garis \(BC\), dan \(AN\) memotong \(BC\) di \(O\). Selain itu, \(A\), \(B\), \(M\), dan \(O\) terletak pada lingkaran yang sama. Jika \(\angle ABN=56^\circ\), tentukan besar \(\angle CMN\).</p>
         </div>
       </details>
       <details class="book-problem">
@@ -1216,82 +1115,7 @@ header:
     </dl>
   </section>
 
-  <section class="book-section book-rating" id="penilaian">
-    <span class="book-section-label">Penilaian pembaca</span>
-    <h2>Sudah membaca bukunya? Yuk, berikan penilaianmu!</h2>
-    <p class="book-lead">Penilaianmu membantu penulis mengembangkan buku ini dan membantu calon pembaca mengenal AOG.</p>
-    <div class="book-rating-prompt" id="aog-rating-prompt">
-      <div class="book-rating-stars" aria-label="Belum ada penilaian buku cetak">&#9734;&#9734;&#9734;&#9734;&#9734;</div>
-    </div>
-    <div class="book-rating-summary" id="aog-rating-summary" hidden>
-      <div class="book-rating-average-stars" aria-hidden="true">
-        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span class="book-rating-average-fill" id="aog-rating-fill">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      </div>
-      <p class="book-rating-score"><strong id="aog-rating-average">-</strong> dari 5</p>
-      <p class="book-rating-count">Berdasarkan <span id="aog-rating-count">0</span> penilaian pembaca</p>
-    </div>
-    <div class="book-reader-review" id="ulasan-pembaca" role="region" aria-labelledby="aog-review-heading">
-      <h3 id="aog-review-heading">Ulasan pembaca</h3>
-      <figure class="book-card book-reader-review-card">
-        <blockquote>
-          <p>&ldquo;Sangat baik, penjelasan yang jelas, disertai dengan bukti rumus yang baik dan soal-soal banyak dan bervariasi. Mungkin untuk ke depannya bisa diterbitkan buku AOG baru, namun untuk level OSN Nasional&ndash;IMO.&rdquo;</p>
-        </blockquote>
-        <figcaption>
-          <strong>Pembaca anonim</strong>
-          <span>Telah membaca seluruh buku</span>
-        </figcaption>
-      </figure>
-      <p class="book-note">Ditampilkan dengan izin pembaca. Ejaan dan tanda baca dirapikan tanpa mengubah isi ulasan.</p>
-    </div>
-    <div class="book-actions">
-      {% if page.rating_form_url and page.rating_form_url != "" %}
-        <a class="book-button" href="{{ page.rating_form_url }}" target="_blank" rel="noopener noreferrer">Berikan penilaian</a>
-      {% else %}
-        <span class="book-button book-button--disabled" aria-disabled="true">Formulir penilaian segera tersedia</span>
-      {% endif %}
-    </div>
-  </section>
-
-  {% if page.rating_api_url and page.rating_api_url != "" %}
-  <script>
-    (function () {
-      "use strict";
-
-      var summary = document.getElementById("aog-rating-summary");
-      var prompt = document.getElementById("aog-rating-prompt");
-      var fill = document.getElementById("aog-rating-fill");
-      var averageText = document.getElementById("aog-rating-average");
-      var countText = document.getElementById("aog-rating-count");
-      var request = document.createElement("script");
-      var apiUrl = {{ page.rating_api_url | jsonify }};
-
-      window.aogRatingCallback = function (data) {
-        var average = Number(data && data.average);
-        var count = Number(data && data.count);
-
-        if (!Number.isFinite(average) || !Number.isFinite(count) || count < 1) {
-          return;
-        }
-
-        average = Math.max(0, Math.min(5, average));
-        fill.style.width = ((average / 5) * 100) + "%";
-        averageText.textContent = average.toLocaleString("id-ID", {
-          minimumFractionDigits: 1,
-          maximumFractionDigits: 1
-        });
-        countText.textContent = Math.round(count).toLocaleString("id-ID");
-        summary.setAttribute("aria-label", "Rating " + averageText.textContent + " dari 5 berdasarkan " + countText.textContent + " penilaian pembaca");
-        summary.hidden = false;
-        prompt.hidden = true;
-      };
-
-      request.src = apiUrl + (apiUrl.indexOf("?") === -1 ? "?" : "&") + "prefix=aogRatingCallback&_=" + Date.now();
-      request.async = true;
-      document.head.appendChild(request);
-    }());
-  </script>
-  {% endif %}
+  {% include aog-reader-reviews.html %}
 
   <section class="book-section book-errata" id="errata">
     <span class="book-section-label">Koreksi pembaca</span>
