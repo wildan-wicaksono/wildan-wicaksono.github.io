@@ -1,0 +1,11 @@
+# Curated public reviews only. Order: featured review first, then supporting reviews.
+# Add entries only after checking publication consent. Never store emails or private names here.
+# For anonymous reviews keep anonymous: true and omit name and role.
+# published: true controls publication; the first three are visible initially.
+# Additional published entries appear under "Lihat semua". Aggregate ratings still use Apps Script.
+- published: true
+  anonymous: true
+  reading_note: "Telah membaca seluruh buku"
+  paragraphs:
+    - "Sangat baik, **penjelasan yang jelas**, disertai dengan bukti rumus yang baik dan **soal-soal banyak dan bervariasi**."
+    - "Mungkin untuk ke depannya bisa diterbitkan buku AOG baru, namun untuk level OSN Nasional–IMO."
