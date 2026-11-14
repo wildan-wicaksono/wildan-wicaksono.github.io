@@ -944,7 +944,6 @@ header:
           <li>Kunci dan Petunjuk</li>
           <li>Solusi Terpilih</li>
           <li>Daftar Kompetisi</li>
-          <li>Daftar Pustaka dan Indeks</li>
         </ul>
       </article>
     </div>
@@ -1005,7 +1004,6 @@ header:
               <li>Garis Singgung Persekutuan</li>
               <li>Lingkaran Bersinggungan</li>
               <li>Lingkaran Dalam dan Lingkaran Luar Segitiga</li>
-              <li>Teorema Lingkaran Singgung Luar Segitiga</li>
             </ol>
           </details>
           <details class="book-chapter">
