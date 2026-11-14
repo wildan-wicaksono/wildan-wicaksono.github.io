@@ -652,7 +652,6 @@ header:
     color: #435668;
     background: #f5fafc;
     border-radius: 9px;
-    font-size: 0.86rem;
     line-height: 1.65;
     counter-increment: order-step;
   }
@@ -1026,7 +1025,7 @@ header:
       <details class="book-problem">
         <summary><span class="book-problem-number">4</span><span>PEMNAS SMA 2024</span></summary>
         <div class="book-problem-body">
-          <p>Diberikan segitiga \(ABC\) dan titik \(M\) terletak pada \(\overline{AC}\). Titik \(N\) merupakan bayangan pencerminan titik \(M\) terhadap garis \(BC\), dan \(AN\) memotong \(BC\) di \(O\). Selain itu, \(A\), \(B\), \(M\), dan \(O\) terletak pada lingkaran yang sama. Jika \(\angle ABN=56^\circ\), tentukan besar \(\angle CMN\).</p>
+          <p>Diberikan segitiga \(ABC\) dan titik \(M\) terletak pada \(\overline{AC}\). Titik \(N\) merupakan bayangan pencerminan titik \(M\) terhadap garis \(BC\), dan \(AN\) memotong \(\overline{BC}\) di \(O\). Selain itu, \(A\), \(B\), \(M\), dan \(O\) terletak pada lingkaran yang sama. Jika \(\angle ABN=56^\circ\), tentukan besar \(\angle CMN\).</p>
         </div>
       </details>
       <details class="book-problem">
