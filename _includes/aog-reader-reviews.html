@@ -1,0 +1,249 @@
+{% assign aog_reviews = site.data.aog_reviews | where: 'published', true %}
+<style>
+  .aog-feedback {
+    --aog-surface: #edf7fc;
+    --aog-card: #ffffff;
+    --aog-text: #15334c;
+    --aog-muted: #536b7e;
+    --aog-border: #d8e7f0;
+    --aog-accent: #00798c;
+    scroll-margin-top: 5rem;
+  }
+  .aog-feedback [hidden] { display: none !important; }
+  .aog-feedback-header { margin-bottom: 1.5rem; text-align: center; }
+  .aog-feedback-header .book-section-label { color: var(--aog-accent); }
+  .aog-feedback-header h2 {
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    margin: 0; color: var(--aog-text); font-size: clamp(1.5rem, 3vw, 2.1rem);
+  }
+  .aog-feedback-header h2::before,
+  .aog-feedback-header h2::after {
+    content: ''; flex: 0 1 3rem; height: 3px; border-radius: 3px; background: #1edff2;
+  }
+  .aog-feedback-lead {
+    display: grid; grid-template-columns: minmax(180px, .72fr) minmax(0, 1.8fr);
+    gap: 1.25rem; align-items: stretch;
+  }
+  .aog-feedback-lead--empty { grid-template-columns: 1fr; }
+  .aog-rating-panel {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-width: 0; padding: 1.6rem 1rem;
+    background: var(--aog-surface); border: 1px solid var(--aog-border);
+    border-radius: 18px; text-align: center;
+  }
+  .aog-rating-stars {
+    position: relative; display: inline-block; color: #b7c8d2;
+    font-family: Arial, sans-serif; font-size: clamp(1.6rem, 2.5vw, 2rem);
+    line-height: 1; letter-spacing: .08em; white-space: nowrap;
+  }
+  .aog-rating-fill {
+    position: absolute; top: 0; left: 0; width: 0; overflow: hidden;
+    color: #eeac16; white-space: nowrap;
+  }
+  .aog-feedback .aog-rating-score {
+    margin: .9rem 0 .65rem; color: var(--aog-text); line-height: 1.1;
+  }
+  .aog-rating-score strong { display: block; font-size: clamp(2.8rem, 5vw, 4rem); font-weight: 800; }
+  .aog-rating-score span { display: block; margin-top: .3rem; font-size: 1rem; font-weight: 700; }
+  .aog-feedback .aog-rating-count,
+  .aog-feedback .aog-rating-status {
+    max-width: 16rem; margin: 0 auto; color: var(--aog-muted); font-size: .8rem; line-height: 1.6;
+  }
+  .aog-feedback .aog-rating-status { margin-top: .85rem; }
+  .aog-rating-book { width: 88px; height: 60px; margin-top: 1.25rem; color: #1689b2; }
+  .aog-feedback .aog-review {
+    position: relative; display: flex; flex-direction: column; min-width: 0;
+    margin: 0; padding: 1.5rem; background: var(--aog-card);
+    border: 1px solid var(--aog-border); border-radius: 18px; overflow: hidden;
+    color: var(--aog-text); text-align: left;
+  }
+  .aog-review .aog-review-quote {
+    display: block; height: 2.1rem; margin: 0 0 .8rem; color: var(--aog-accent);
+    font-family: Georgia, serif; font-size: 4.8rem; line-height: 1; font-weight: 700;
+  }
+  .aog-feedback .aog-review blockquote {
+    position: relative; z-index: 1; margin: 0; padding: 0; border: 0;
+    color: inherit; font-size: .92rem; font-style: normal;
+  }
+  .aog-feedback .aog-review blockquote p { margin: 0; color: inherit; font-size: inherit; line-height: 1.85; }
+  .aog-feedback .aog-review blockquote p + p { margin-top: 1rem; }
+  .aog-review blockquote strong { color: var(--aog-accent); font-weight: 750; }
+  .aog-feedback .aog-review figcaption {
+    position: relative; z-index: 1; margin: auto 0 0; padding-top: 1.4rem;
+    color: var(--aog-muted); font-size: .76rem; font-style: normal; line-height: 1.6; text-align: left;
+  }
+  .aog-review figcaption strong { display: block; margin-bottom: .25rem; color: var(--aog-text); font-size: .9rem; }
+  .aog-review figcaption > span { display: block; }
+  .aog-review figcaption .aog-review-reading { display: flex; align-items: center; gap: .45rem; }
+  .aog-review-reading svg { flex-shrink: 0; }
+  .aog-feedback .aog-review--featured {
+    padding: clamp(1.4rem, 3vw, 2.1rem); border-color: #143e67; color: #f4f8fd;
+    background: radial-gradient(ellipse at 100% 100%, #155280 0, transparent 58%), linear-gradient(135deg, #0c315b, #102c4c);
+  }
+  .aog-review--featured::after {
+    content: ''; position: absolute; right: -3rem; bottom: -6rem;
+    width: 19rem; height: 11rem; border: 1px solid rgba(80, 218, 244, .16);
+    border-radius: 50%; transform: rotate(-18deg); pointer-events: none;
+  }
+  .aog-feedback .aog-review--featured blockquote { font-size: clamp(.96rem, 1.4vw, 1.12rem); }
+  .aog-review--featured .aog-review-quote,
+  .aog-review--featured blockquote strong { color: #6becf5; }
+  .aog-feedback .aog-review--featured figcaption { color: #bdd5eb; }
+  .aog-review--featured figcaption strong { color: #ffffff; }
+  .aog-review-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: 1.25rem; }
+  .aog-review-grid > :only-child { grid-column: 1 / -1; }
+  .aog-review-more { margin-top: 1.25rem; }
+  .aog-review-more > summary {
+    display: flex; align-items: center; justify-content: center; gap: .65rem;
+    width: fit-content; min-height: 44px; max-width: 100%; margin: 0 auto; padding: .65rem 1.1rem;
+    color: var(--aog-text); background: var(--aog-surface); border: 1px solid var(--aog-border);
+    border-radius: 9px; font-size: .85rem; font-weight: 700; cursor: pointer; list-style: none;
+  }
+  .aog-review-more > summary::-webkit-details-marker { display: none; }
+  .aog-review-more > summary::after { content: '+'; color: var(--aog-accent); font-size: 1.2rem; }
+  .aog-review-more[open] > summary::after { content: '\2212'; }
+  .aog-review-close-label,
+  .aog-review-more[open] .aog-review-open-label { display: none; }
+  .aog-review-more[open] .aog-review-close-label { display: inline; }
+  .aog-feedback .aog-review-cta {
+    display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
+    margin-top: 1.25rem; padding: 1.25rem 1.4rem;
+    color: var(--aog-text); background: var(--aog-surface); border: 1px solid var(--aog-border); border-radius: 14px;
+  }
+  .aog-review-cta-copy { display: flex; align-items: center; gap: .9rem; min-width: 0; }
+  .aog-review-cta-copy > svg { flex: 0 0 28px; color: var(--aog-accent); }
+  .aog-feedback .aog-review-cta h3 { margin: 0 0 .25rem; color: var(--aog-text); font-size: 1rem; }
+  .aog-feedback .aog-review-cta p { margin: 0; color: var(--aog-muted); font-size: .8rem; line-height: 1.6; }
+  .aog-review-cta .book-button { flex-shrink: 0; gap: .8rem; white-space: normal; }
+  .aog-feedback .aog-review-disclaimer { margin: .85rem 0 0; color: var(--aog-muted); font-size: .72rem; line-height: 1.7; text-align: center; }
+  .aog-review-more > summary:focus-visible,
+  .aog-feedback .book-button:focus-visible { outline: 3px solid var(--aog-accent); outline-offset: 4px; }
+  html[data-theme='dark'] .aog-feedback {
+    --aog-surface: #192e40; --aog-card: #182836; --aog-text: #edf5ff;
+    --aog-muted: #bdd0de; --aog-border: #3b5367; --aog-accent: #6becf5;
+  }
+  @media (max-width: 760px) {
+    .aog-feedback-lead, .aog-review-grid { grid-template-columns: 1fr; }
+    .aog-rating-panel { padding: 1.25rem; }
+    .aog-rating-score strong { display: inline; font-size: 2.8rem; }
+    .aog-rating-score span { display: inline; margin-left: .4rem; }
+    .aog-rating-book { display: none; }
+    .aog-review-cta { flex-direction: column; align-items: stretch !important; }
+    .aog-review-cta .book-button { width: 100%; }
+    .aog-feedback-header h2 { gap: .65rem; }
+    .aog-feedback-header h2::before, .aog-feedback-header h2::after { flex-basis: 1.4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .aog-feedback .book-button { transition: none; }
+    .aog-feedback .book-button:hover { transform: none; }
+  }
+</style>
+<section class="book-section aog-feedback" id="penilaian" aria-labelledby="aog-feedback-heading">
+  <header class="aog-feedback-header">
+    <span class="book-section-label">Penilaian pembaca</span>
+    <h2 id="aog-feedback-heading">Apa kata pembaca?</h2>
+  </header>
+  <div class="aog-feedback-lead{% if aog_reviews.size == 0 %} aog-feedback-lead--empty{% endif %}" id="ulasan-pembaca">
+    <div class="aog-rating-panel" role="status" aria-live="polite" aria-atomic="true">
+      <div id="aog-rating-prompt">
+        <span class="aog-rating-stars" aria-hidden="true">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
+        <p class="aog-rating-status" id="aog-rating-status">Memuat penilaian pembaca&hellip;</p>
+        <noscript><p class="aog-rating-status">Aktifkan JavaScript untuk melihat rating terbaru.</p></noscript>
+      </div>
+      <div id="aog-rating-summary" hidden>
+        <div class="aog-rating-stars" aria-hidden="true">
+          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="aog-rating-fill" id="aog-rating-fill">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        </div>
+        <p class="aog-rating-score"><strong id="aog-rating-average">&mdash;</strong><span>dari 5</span></p>
+        <p class="aog-rating-count">Berdasarkan <span id="aog-rating-count">0</span> penilaian pembaca</p>
+      </div>
+      <svg class="aog-rating-book" viewBox="0 0 100 68" fill="none" aria-hidden="true" focusable="false">
+        <path d="M50 17C37 8 22 7 10 10L6 55c16-4 29-1 44 8 15-9 28-12 44-8l-4-45c-12-3-27-2-40 7Z" fill="currentColor" opacity=".1"/>
+        <path d="M50 17C37 8 22 7 10 10L6 55c16-4 29-1 44 8 15-9 28-12 44-8l-4-45c-12-3-27-2-40 7ZM50 17v46" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/>
+        <path d="M20 21c8 0 15 2 22 6M19 31c8 0 16 2 23 6M18 41c8 0 16 2 24 6M80 21c-8 0-15 2-22 6M81 31c-8 0-16 2-23 6M82 41c-8 0-16 2-24 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+      </svg>
+    </div>
+    {% for review in aog_reviews limit:1 %}
+      {% include aog-review-card.html review=review featured=true %}
+    {% endfor %}
+  </div>
+  {% if aog_reviews.size > 1 %}
+    <div class="aog-review-grid" aria-label="Ulasan pembaca lainnya">
+      {% for review in aog_reviews limit:2 offset:1 %}
+        {% include aog-review-card.html review=review %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if aog_reviews.size > 3 %}
+    <details class="aog-review-more">
+      <summary><span class="aog-review-open-label">Lihat semua {{ aog_reviews.size }} ulasan</span><span class="aog-review-close-label">Tampilkan lebih sedikit</span></summary>
+      <div class="aog-review-grid">
+        {% for review in aog_reviews offset:3 %}
+          {% include aog-review-card.html review=review %}
+        {% endfor %}
+      </div>
+    </details>
+  {% endif %}
+  <div class="aog-review-cta">
+    <div class="aog-review-cta-copy">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5 4 4M3 21l5-1L21 7a2.8 2.8 0 0 0-4-4L4 16l-1 5ZM4 16l4 4"/></svg>
+      <div><h3>Sudah membaca AOG?</h3><p>Bagikan pengalamanmu dengan memberikan penilaian.</p></div>
+    </div>
+    {% if page.rating_form_url and page.rating_form_url != '' %}
+      <a class="book-button" href="{{ page.rating_form_url | escape }}" target="_blank" rel="noopener noreferrer">Berikan penilaian <span aria-hidden="true">&rarr;</span></a>
+    {% endif %}
+  </div>
+  {% if aog_reviews.size > 0 %}
+    <p class="aog-review-disclaimer">Ulasan pilihan ditampilkan atas izin pembaca. Ejaan dan tanda baca dirapikan tanpa mengubah isi ulasan.</p>
+  {% endif %}
+</section>
+{% if page.rating_api_url and page.rating_api_url != '' %}
+<script>
+(function () {
+  'use strict';
+  var summary = document.getElementById('aog-rating-summary');
+  var prompt = document.getElementById('aog-rating-prompt');
+  var statusText = document.getElementById('aog-rating-status');
+  var fill = document.getElementById('aog-rating-fill');
+  var averageText = document.getElementById('aog-rating-average');
+  var countText = document.getElementById('aog-rating-count');
+  var request = document.createElement('script');
+  var apiUrl = {{ page.rating_api_url | jsonify }};
+  var timeout;
+  function showStatus(message) {
+    window.clearTimeout(timeout);
+    statusText.textContent = message;
+    prompt.hidden = false;
+    summary.hidden = true;
+  }
+  window.aogRatingCallback = function (data) {
+    window.clearTimeout(timeout);
+    if (!data || data.error) {
+      showStatus('Rating belum dapat dimuat. Silakan muat ulang halaman.');
+      return;
+    }
+    var average = Number(data.average);
+    var count = Number(data.count);
+    if (Number.isFinite(count) && count === 0) {
+      showStatus('Belum ada penilaian buku cetak.');
+      return;
+    }
+    if (!Number.isFinite(average) || average < 1 || average > 5 || !Number.isInteger(count) || count < 1) {
+      showStatus('Rating belum dapat dimuat. Silakan muat ulang halaman.');
+      return;
+    }
+    fill.style.width = ((average / 5) * 100) + '%';
+    averageText.textContent = average.toLocaleString('id-ID', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+    countText.textContent = count.toLocaleString('id-ID');
+    summary.hidden = false;
+    prompt.hidden = true;
+  };
+  request.onerror = function () { showStatus('Rating belum dapat dimuat. Silakan muat ulang halaman.'); };
+  timeout = window.setTimeout(request.onerror, 12000);
+  request.src = apiUrl + (apiUrl.indexOf('?') === -1 ? '?' : '&') + 'prefix=aogRatingCallback&_=' + Date.now();
+  request.async = true;
+  document.head.appendChild(request);
+}());
+</script>
+{% endif %}
