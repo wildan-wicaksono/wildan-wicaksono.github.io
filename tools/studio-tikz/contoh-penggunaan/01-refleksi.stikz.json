@@ -1,0 +1,286 @@
+{
+  "format": "studio-tikz",
+  "version": 1,
+  "title": "Refleksi dan dua segiempat siklis",
+  "steps": [
+    {
+      "id": "A",
+      "type": "point",
+      "refs": [],
+      "name": "A",
+      "labelOffset": {
+        "x": -0.36,
+        "y": -0.29
+      },
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "refs": [],
+      "name": "B",
+      "labelOffset": {
+        "x": -0.055,
+        "y": 0.32
+      },
+      "x": 1,
+      "y": 5
+    },
+    {
+      "id": "arc56",
+      "type": "circle2",
+      "refs": [
+        "B",
+        "A"
+      ],
+      "name": "Busur bantu 56°",
+      "arcMode": "angle",
+      "arcOpening": 56,
+      "arcClockwise": false,
+      "hidden": true
+    },
+    {
+      "id": "M",
+      "type": "on",
+      "refs": [
+        "arc56"
+      ],
+      "name": "M",
+      "labelOffset": {
+        "x": 0.025,
+        "y": -0.35
+      },
+      "t": -1.373400766945016,
+      "arcFraction": 0.4039261597864362
+    },
+    {
+      "id": "T",
+      "type": "on",
+      "refs": [
+        "arc56"
+      ],
+      "name": "T",
+      "t": -0.7908075055279529,
+      "arcFraction": 1,
+      "hidden": true
+    },
+    {
+      "id": "H",
+      "type": "mid",
+      "refs": [
+        "M",
+        "T"
+      ],
+      "name": "H",
+      "hidden": true
+    },
+    {
+      "id": "axis",
+      "type": "line",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "amLine",
+      "type": "line",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "C",
+      "type": "cut",
+      "refs": [
+        "amLine",
+        "axis"
+      ],
+      "name": "C",
+      "labelOffset": {
+        "x": 0.33,
+        "y": -0.25
+      },
+      "branch": 0
+    },
+    {
+      "id": "ABC",
+      "type": "triangle",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "lineWidth": "semithick"
+    },
+    {
+      "id": "AB",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "A",
+        "B"
+      ],
+      "index": 0
+    },
+    {
+      "id": "BC",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "B",
+        "C"
+      ],
+      "index": 1
+    },
+    {
+      "id": "CA",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "C",
+        "A"
+      ],
+      "index": 2
+    },
+    {
+      "id": "N",
+      "type": "imagePoint",
+      "refs": [
+        "M",
+        "BC"
+      ],
+      "name": "N",
+      "labelOffset": {
+        "x": 0.32,
+        "y": 0.05
+      },
+      "method": "reflectLine"
+    },
+    {
+      "id": "AN",
+      "type": "segment",
+      "refs": [
+        "A",
+        "N"
+      ],
+      "lineWidth": "thin"
+    },
+    {
+      "id": "O",
+      "type": "cut",
+      "refs": [
+        "AN",
+        "BC"
+      ],
+      "name": "O",
+      "labelOffset": {
+        "x": -0.37,
+        "y": 0.18
+      },
+      "bounded": true,
+      "branch": 0
+    },
+    {
+      "id": "mainCircle",
+      "type": "circle3",
+      "refs": [
+        "A",
+        "B",
+        "M"
+      ],
+      "name": "ABMO",
+      "lineWidth": "thin"
+    },
+    {
+      "id": "circumcircle",
+      "type": "circle3",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "name": "ABCN",
+      "lineWidth": "semithick",
+      "linePattern": "dotted",
+      "opacity": 80
+    },
+    {
+      "id": "BM",
+      "type": "segment",
+      "refs": [
+        "B",
+        "M"
+      ],
+      "lineWidth": "thin"
+    },
+    {
+      "id": "BN",
+      "type": "segment",
+      "refs": [
+        "B",
+        "N"
+      ],
+      "lineWidth": "thin"
+    },
+    {
+      "id": "NC",
+      "type": "segment",
+      "refs": [
+        "N",
+        "C"
+      ],
+      "lineWidth": "thin"
+    },
+    {
+      "id": "MN",
+      "type": "segment",
+      "refs": [
+        "M",
+        "N"
+      ],
+      "lineWidth": "thin",
+      "linePattern": "dashed"
+    },
+    {
+      "id": "MO",
+      "type": "segment",
+      "refs": [
+        "M",
+        "O"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "ABN",
+      "type": "angle",
+      "refs": [
+        "A",
+        "B",
+        "N"
+      ],
+      "angleMark": "single",
+      "angleLabelMode": "auto",
+      "color": "MidnightBlue",
+      "lineWidth": "thick",
+      "angleLabelOffset": {
+        "x": -0.699548,
+        "y": 0.012196
+      }
+    },
+    {
+      "id": "CMN",
+      "type": "angle",
+      "refs": [
+        "C",
+        "M",
+        "N"
+      ],
+      "angleMark": "single"
+    }
+  ]
+}

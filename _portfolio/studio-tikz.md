@@ -45,6 +45,12 @@ Bagian `at` menyatakan $D$ sebagai sepertiga $A$ ditambah dua pertiga $B$. Bagia
 
 <p><a href="{{ '/tools/studio-tikz/contoh-segitiga.stikz.json' | relative_url }}" download="contoh-segitiga.stikz.json">Unduh contoh segitiga</a>, lalu pilih <strong>Buka file</strong> di editor untuk menggeser titiknya sendiri.</p>
 
+## Tiga contoh dari diagram yang saya pakai
+
+Di modul, saya sering memerlukan lebih dari satu lingkaran atau beberapa garis yang bertemu dekat sebuah label. Saya menyiapkan tiga contoh dari diagram saya sendiri. Masing-masing memuat soal, urutan konstruksi, gambar hasil kompilasi, dan kode TikZ. Kamu juga bisa membuka gambarnya di Studio lalu menggeser titik acuannya.
+
+<p><a class="btn" href="{{ '/tools/studio-tikz/contoh-penggunaan.html' | relative_url }}">Lihat tiga contoh penggunaan</a></p>
+
 ## Belajar lewat animasi alat
 
 GIF di atas memperlihatkan satu diagram dari awal. Di dalam Studio, setiap alat memiliki animasi sendiri yang menunjukkan apa yang perlu diklik dan bagaimana hasilnya terbentuk. Saat membuat soal tentang segiempat siklis, misalnya, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/antiTriangle">animasi garis antiparalel</a> untuk melihat sisi mana yang dipilih lebih dulu. Untuk menggambar lingkaran yang melalui $P$ dan menyinggung dua lingkaran lain, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/circleConstraints">animasi lingkaran dari tiga syarat</a>.
@@ -65,10 +71,11 @@ Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar ani
 
 ## Memakai hasilnya di dokumen LaTeX
 
-Untuk dokumen baru, salin kerangka berikut ke berkas `.tex`. Jika modulmu sudah memiliki `\documentclass`, cukup pastikan `\usepackage{tikz}` tercantum satu kali di preamble, sebelum `\begin{document}`. Jika templatmu sudah memuat TikZ, kamu bisa langsung menempelkan gambar.
+Di panel **Kode TikZ**, bagian **Paket LaTeX** menampilkan preamble untuk gambar yang sedang dibuka. Klik **Salin preamble** dan tempel sebelum `\begin{document}`. Untuk modul baru, saya memakai kerangka berikut.
 
 ```latex
 \documentclass{article}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
 
 \begin{document}
@@ -76,10 +83,12 @@ Untuk dokumen baru, salin kerangka berikut ke berkas `.tex`. Jika modulmu sudah 
 \end{document}
 ```
 
-- **Gambar lengkap.** Klik **Salin TikZ**, lalu tempel seluruh hasilnya di badan dokumen. Studio sudah menyertakan `center` dan `tikzpicture`. Pertahankan baris `\usetikzlibrary{calc}` jika ada rumus koordinat vektor dan `\usetikzlibrary{angles}` jika penanda sudut memerlukannya.
+Opsi **`dvipsnames`** menyediakan nama warna seperti `PineGreen` dan `ForestGreen` di seluruh modul. Muat `xcolor` sebelum TikZ. Jika kelas atau templat sudah memuat `xcolor` tanpa opsi itu, tulis `\PassOptionsToPackage{dvipsnames}{xcolor}` sebelum `\documentclass` untuk mengaktifkan palet yang sama.
+
+- **Gambar lengkap.** Klik **Salin TikZ**, lalu tempel hasilnya setelah teks soal. Studio menyertakan `center` dan `tikzpicture`. Bagian **Paket LaTeX** juga menampilkan `\usetikzlibrary{angles}` ketika kode memakai `\pic` untuk busur sudut, dan `\usetikzlibrary{calc}` ketika kode memakai perhitungan koordinat vektor.
 - **Koordinat saja.** Klik **Salin koordinat**, lalu tempel di dalam `tikzpicture` milikmu. Kamu mendapatkan nama titik dan koordinat numerik, beserta opsi `label` pada titik berlabel. Setelahnya, kamu bisa menulis perintahmu sendiri, misalnya `\draw (A)--(B)--(C)--cycle;`.
 
-TikZ sudah memuat `xcolor`. Untuk warna seperti `PineGreen`, Studio menyertakan `\providecolor` jika diperlukan. Jika kamu menyunting hasil ekspor dan menambahkan makro label dari templatmu sendiri, sertakan juga definisi makro itu.
+Di beberapa diagram lama saya, label memakai `\contour{white}{...}` untuk memberi tepi putih pada huruf. Jika perintah itu dipakai dalam kode yang kamu sunting, tambahkan `\usepackage{contour}` di preamble.
 
 ## Kelebihan
 

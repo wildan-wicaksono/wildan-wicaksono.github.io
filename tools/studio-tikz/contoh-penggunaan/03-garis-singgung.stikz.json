@@ -1,0 +1,451 @@
+{
+  "format": "studio-tikz",
+  "version": 1,
+  "title": "Garis singgung dan dua median",
+  "exportScale": 0.8,
+  "steps": [
+    {
+      "id": "A",
+      "type": "point",
+      "refs": [],
+      "name": "A",
+      "labelOffset": {
+        "x": 0.09,
+        "y": -0.512
+      },
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "refs": [],
+      "name": "B",
+      "labelOffset": {
+        "x": 0.368,
+        "y": 0.368
+      },
+      "x": 0,
+      "y": 5.0
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "refs": [],
+      "name": "C",
+      "labelOffset": {
+        "x": -0.52,
+        "y": 0
+      },
+      "x": -6.0,
+      "y": 4.0
+    },
+    {
+      "id": "ABC",
+      "type": "triangle",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "AB",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "A",
+        "B"
+      ],
+      "index": 0
+    },
+    {
+      "id": "BC",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "B",
+        "C"
+      ],
+      "index": 1
+    },
+    {
+      "id": "CA",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "C",
+        "A"
+      ],
+      "index": 2
+    },
+    {
+      "id": "omega",
+      "type": "circle3",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "name": "ABC",
+      "lineWidth": "thick"
+    },
+    {
+      "id": "D",
+      "type": "mid",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "name": "D",
+      "labelOffset": {
+        "x": -0.373,
+        "y": -0.444
+      }
+    },
+    {
+      "id": "E",
+      "type": "mid",
+      "refs": [
+        "C",
+        "A"
+      ],
+      "name": "E",
+      "labelOffset": {
+        "x": 0.168,
+        "y": -0.628
+      }
+    },
+    {
+      "id": "medianA",
+      "type": "line",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "medianB",
+      "type": "line",
+      "refs": [
+        "B",
+        "E"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "tangentC",
+      "type": "tangent",
+      "refs": [
+        "C",
+        "omega"
+      ],
+      "tangentSide": 0,
+      "hidden": true
+    },
+    {
+      "id": "A1",
+      "type": "cut",
+      "refs": [
+        "medianA",
+        "tangentC"
+      ],
+      "name": "A_1",
+      "labelOffset": {
+        "x": -0.502,
+        "y": 0.135
+      }
+    },
+    {
+      "id": "B1",
+      "type": "cut",
+      "refs": [
+        "medianB",
+        "tangentC"
+      ],
+      "name": "B_1",
+      "labelOffset": {
+        "x": -0.52,
+        "y": 0
+      }
+    },
+    {
+      "id": "midline",
+      "type": "line",
+      "refs": [
+        "E",
+        "D"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "T",
+      "type": "cut",
+      "refs": [
+        "midline",
+        "tangentC"
+      ],
+      "name": "T",
+      "labelOffset": {
+        "x": 0,
+        "y": 0.52
+      }
+    },
+    {
+      "id": "P",
+      "type": "cut",
+      "refs": [
+        "medianA",
+        "omega"
+      ],
+      "name": "P",
+      "labelOffset": {
+        "x": -0.715,
+        "y": 0.04
+      },
+      "branch": 1
+    },
+    {
+      "id": "Q",
+      "type": "cut",
+      "refs": [
+        "medianB",
+        "omega"
+      ],
+      "name": "Q",
+      "labelOffset": {
+        "x": 0.051,
+        "y": -0.578
+      },
+      "branch": 1
+    },
+    {
+      "id": "secantA",
+      "type": "line",
+      "refs": [
+        "A",
+        "B1"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "secantB",
+      "type": "line",
+      "refs": [
+        "B",
+        "A1"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "O",
+      "type": "center",
+      "refs": [
+        "omega"
+      ],
+      "name": "O",
+      "hidden": true
+    },
+    {
+      "id": "H",
+      "type": "foot",
+      "refs": [
+        "O",
+        "secantA"
+      ],
+      "name": "H",
+      "hidden": true
+    },
+    {
+      "id": "K",
+      "type": "foot",
+      "refs": [
+        "O",
+        "secantB"
+      ],
+      "name": "K",
+      "hidden": true
+    },
+    {
+      "id": "X",
+      "type": "imagePoint",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "name": "X",
+      "labelOffset": {
+        "x": 0,
+        "y": -0.52
+      },
+      "method": "reflectPoint"
+    },
+    {
+      "id": "Y",
+      "type": "imagePoint",
+      "refs": [
+        "B",
+        "K"
+      ],
+      "name": "Y",
+      "labelOffset": {
+        "x": 0.368,
+        "y": 0.368
+      },
+      "method": "reflectPoint"
+    },
+    {
+      "id": "circleDEQP",
+      "type": "circle3",
+      "refs": [
+        "D",
+        "E",
+        "P"
+      ],
+      "name": "DEPQ",
+      "lineWidth": "thick",
+      "linePattern": "dotted"
+    },
+    {
+      "id": "circleCDE",
+      "type": "circle3",
+      "refs": [
+        "C",
+        "D",
+        "E"
+      ],
+      "name": "CDE",
+      "lineWidth": "thick"
+    },
+    {
+      "id": "circleXYDE",
+      "type": "circle3",
+      "refs": [
+        "D",
+        "E",
+        "X"
+      ],
+      "name": "XYDE",
+      "hidden": true
+    },
+    {
+      "id": "sAA1",
+      "type": "segment",
+      "refs": [
+        "A",
+        "A1"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "sBB1",
+      "type": "segment",
+      "refs": [
+        "B",
+        "B1"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "sB1T",
+      "type": "segment",
+      "refs": [
+        "B1",
+        "T"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "sXT",
+      "type": "segment",
+      "refs": [
+        "X",
+        "T"
+      ],
+      "linePattern": "dashed",
+      "lineWidth": "thin"
+    },
+    {
+      "id": "sTQ",
+      "type": "segment",
+      "refs": [
+        "T",
+        "Q"
+      ],
+      "linePattern": "dashed",
+      "lineWidth": "thin"
+    },
+    {
+      "id": "sET",
+      "type": "segment",
+      "refs": [
+        "E",
+        "T"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "sB1A",
+      "type": "segment",
+      "refs": [
+        "B1",
+        "A"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "sBA1",
+      "type": "segment",
+      "refs": [
+        "B",
+        "A1"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "sQP",
+      "type": "segment",
+      "refs": [
+        "Q",
+        "P"
+      ],
+      "lineWidth": "thin",
+      "opacity": 45
+    },
+    {
+      "id": "EQP",
+      "type": "angle",
+      "refs": [
+        "E",
+        "Q",
+        "P"
+      ],
+      "angleMark": "single",
+      "angleLabelMode": "none"
+    },
+    {
+      "id": "EDA",
+      "type": "angle",
+      "refs": [
+        "E",
+        "D",
+        "A"
+      ],
+      "angleMark": "single",
+      "angleLabelMode": "none"
+    },
+    {
+      "id": "BAD",
+      "type": "angle",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ],
+      "angleMark": "single",
+      "angleLabelMode": "none"
+    }
+  ]
+}

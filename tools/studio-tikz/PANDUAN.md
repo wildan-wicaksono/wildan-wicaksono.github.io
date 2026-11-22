@@ -19,6 +19,8 @@ Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot 
 
 Seret $A$, $B$, atau $C$ pada [diagram pembagian ruas interaktif](./contoh-vektor.html). Untuk menyunting konstruksinya di Studio, unduh proyek contoh, lalu pilih **Buka file**. <a href="./contoh-segitiga.stikz.json" download="contoh-segitiga.stikz.json">Contoh segitiga dengan $AD:DB=2:1$</a>.
 
+Untuk mengikuti satu soal dari awal sampai menjadi diagram modul, buka [tiga contoh penggunaan dari Wildan](./contoh-penggunaan.html). Setiap contoh dapat dibuka di Studio dan memiliki berkas TikZ yang bisa disalin.
+
 ## Membuat konstruksi yang mengikuti gambar
 
 | Yang ingin digambar | Urutan tindakan |
@@ -38,10 +40,11 @@ Misalnya, lihat [sisi acuan untuk antiparalel](./index.html#panduan/antiTriangle
 
 ## Menempelkan hasil ke LaTeX
 
-Untuk berkas `.tex` baru, pakai kerangka berikut. Jika modul sudah memiliki `\documentclass`, tambahkan `\usepackage{tikz}` satu kali sebelum `\begin{document}`. Bila templat sudah memuat TikZ, langsung lanjut ke panel **Kode TikZ**.
+Pada panel **Kode TikZ**, pilih mode ekspor, lalu klik **Salin preamble** di bagian **Paket LaTeX**. Tempel paket dan pustakanya satu kali sebelum `\begin{document}`. Untuk dokumen baru, mulailah dengan kerangka berikut.
 
 ```latex
 \documentclass{article}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
 
 \begin{document}
@@ -49,14 +52,24 @@ Untuk berkas `.tex` baru, pakai kerangka berikut. Jika modul sudah memiliki `\do
 \end{document}
 ```
 
+**Warna.** Opsi `dvipsnames` membuat nama seperti `ForestGreen` dan `BurntOrange` tersedia di seluruh dokumen. Muat `xcolor` sebelum TikZ. Jika kelas atau templat lebih dahulu memuat `xcolor`, letakkan `\PassOptionsToPackage{dvipsnames}{xcolor}` sebelum `\documentclass`. Ekspor juga menyertakan `\providecolor` untuk warna pilihan, sehingga satu gambar bisa disalin ke templat yang hanya memuat TikZ.
+
 | Mode | Tempat menempelkan hasil |
 | --- | --- |
-| **Gambar lengkap → Salin TikZ** | Tempel seluruh blok di badan dokumen, misalnya setelah teks soal. Studio sudah menyertakan lingkungan `center` dan `tikzpicture`. Jika ekspor menyertakan `\usetikzlibrary{calc}` untuk rumus vektor atau `\usetikzlibrary{angles}` untuk penanda sudut, salin baris itu juga. |
-| **Koordinat saja → Salin koordinat** | Tempel di dalam lingkungan `tikzpicture` milikmu. Bentuk dasarnya `\coordinate (A) at (0,0);`. Koordinat berupa angka, dan titik berlabel dapat muncul sebagai `\coordinate[label=below:$A$] (A) at (0,0);`. Tambahkan perintah gambarmu di bawahnya, misalnya `\draw (A)--(B)--(C)--cycle;`. |
+| **Gambar lengkap → Salin TikZ** | Tempel blok di badan dokumen, misalnya setelah teks soal. Studio menyertakan lingkungan `center` dan `tikzpicture`. |
+| **Koordinat saja → Salin koordinat** | Tempel di dalam `tikzpicture` milikmu. Koordinat berupa angka, misalnya `\coordinate[label=below:$A$] (A) at (0,0);`. Tambahkan perintah gambarmu di bawahnya, misalnya `\draw (A)--(B)--(C)--cycle;`. |
+
+| Jika kode gambar memakai… | Baris yang diperlukan |
+| --- | --- |
+| Busur sudut dengan `\pic` | `\usetikzlibrary{angles}` |
+| Koordinat vektor dengan hitungan TikZ, misalnya `($(A)!0.5!(B)$)` | `\usetikzlibrary{calc}` |
+| Tepi putih pada huruf dengan `\contour{white}{...}` yang ditambahkan sendiri | `\usepackage{contour}` |
+
+Studio menampilkan pustaka TikZ yang dipakai konstruksi pada **Paket LaTeX** dan menyertakannya dalam salinan **Gambar lengkap**. Untuk makro buatan sendiri, sertakan definisi makro atau paket asalnya di preamble modul.
 
 **Skala TikZ** mengatur ukuran gambar saat dicetak. Pada skala $2$, panjang ruas tercetak dua kali lebih besar. Kode menyesuaikan radius bulatan titik agar radius cetaknya tetap $1{,}5\,\mathrm{pt}$. Tombol **+** dan **−** di kanvas mengatur pembesaran tampilan kerja.
 
-Klik ruas untuk mengatur **Warna** atau **Opasitas**. Klik bagian dalam segitiga untuk mengatur **Warna isian**. TikZ memuat `xcolor`, dan Studio menyertakan `\providecolor` untuk warna palet yang memerlukannya, misalnya `ForestGreen`. Templat yang sudah memakai opsi `dvipsnames` dapat terus menggunakannya. Jika kamu menambahkan makro label buatan sendiri saat menyunting kode, muat definisinya di templat tersebut.
+Klik ruas untuk mengatur **Warna** atau **Opasitas**. Klik bagian dalam segitiga untuk mengatur **Warna isian**.
 
 ## Menyimpan beberapa diagram dan memakai Studio secara luring
 
