@@ -5,7 +5,7 @@ permalink: /tools/studio-tikz/panduan.html
 comments: false
 ---
 
-Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modul LaTeX. Kamu bisa mengambil gambar lengkap atau memakai koordinatnya saja jika sudah punya gaya TikZ sendiri. [Buka editor](./index.html).
+Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modul LaTeX. Kamu bisa mengambil gambar lengkap atau memakai koordinatnya saja jika sudah punya gaya TikZ sendiri. [Buka editor](./index.html) · [Pilih animasi dari katalog](#katalog-animasi).
 
 ## Gambar pertama dalam lima langkah
 
@@ -28,7 +28,11 @@ Untuk membandingkan hasilmu, unduh proyek contoh, lalu buka lewat **Buka file** 
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
 | Inversi titik P dengan kuasa OA × OB | Buat ruas OA dan OB. Pilih **Lingkaran → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat O, lalu P. Bayangan P′ memenuhi OP × OP′ = OA × OB. |
 
-**Panduan alat** di atas kanvas memuat 63 entri. Cari istilah seperti *singgung*, *siklis*, atau *inversi*. Tombol **?** di samping nama alat membuka langsung urutan klik dan ilustrasi alat aktif. Di menu **Lembar**, coba **Contoh antiparalel siklis** atau **Contoh inversi hasil kali**, lalu seret titik untuk melihat hubungan yang dipertahankan.
+### Mengikuti animasi sambil mencoba alat
+
+Buka **Panduan alat** di atas kanvas, lalu cari istilah seperti *singgung* atau *inversi*. Jika alatnya sudah dipilih, klik **?** di sebelah namanya. Tekan **Putar animasi** untuk melihat urutan pemilihan objek. Tekan **Jeda** untuk berhenti, gunakan tombol langkah sebelumnya atau berikutnya untuk memeriksa satu langkah, atau **Ulangi** untuk kembali ke awal. Tutup panduan untuk mencobanya di kanvas.
+
+Misalnya, lihat [sisi acuan untuk antiparalel](./index.html#panduan/antiTriangle) atau [pemilihan objek untuk lingkaran dari tiga syarat](./index.html#panduan/circleConstraints). Semua 44 alat dan 19 topik editor memiliki animasi yang tersimpan dalam HTML. Versi luring dapat memutarnya tanpa koneksi internet.
 
 ## Menempelkan hasil ke LaTeX
 
@@ -74,3 +78,93 @@ Klik kanvas sebelum memakai pintasan. Di Mac, gunakan **⌘** untuk kombinasi **
 - **Perpotongan berada pada perpanjangan ruas.** Alat **Titik potong** memperpanjang ruas menjadi garis penuh. Untuk mengambil perpotongan pada bagian ruas yang terlihat, gunakan **Titik** dan klik tanda silang di kanvas.
 - **Gambar tampak hilang.** Coba **Pas ke gambar** dan periksa **Lihat objek tersembunyi**. Sebagian konstruksi juga bisa hilang sementara, misalnya lingkaran melalui tiga titik yang menjadi segaris. Geser salah satu titik agar lingkarannya muncul kembali.
 - **Browser membatasi penyalinan.** Setelah menekan **Salin TikZ**, gunakan **Ctrl+C** atau **⌘C** jika editor membuka kotak kode yang sudah terseleksi.
+
+## Katalog animasi
+
+Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML luring, pilih alat di kanvas, klik **?** di sebelah namanya, atau cari judul yang sama melalui **Panduan alat**.
+
+### Titik dan garis
+
+| Animasi alat | Yang dicontohkan |
+| --- | --- |
+| [Titik](./index.html#panduan/point) | Membuat titik bebas atau mengikatnya pada garis, keliling, dan perpotongan. |
+| [Titik dari rumus vektor](./index.html#panduan/pointFormula) | Menempatkan D dari koordinat titik lain, misalnya D = (A + 2B)/3. |
+| [Titik pada objek](./index.html#panduan/on) | Menempatkan titik agar bisa digeser sepanjang satu objek. |
+| [Titik tengah](./index.html#panduan/mid) | Menentukan titik tengah dari dua titik ujung. |
+| [Titik potong](./index.html#panduan/cut) | Menandai perpotongan dua objek, termasuk kedua perpotongan dua lingkaran. |
+| [Kaki tegak lurus](./index.html#panduan/foot) | Memproyeksikan titik ke garis dan menggambar ruas tegak lurusnya. |
+| [Ruas](./index.html#panduan/segment) | Menghubungkan dua titik dengan ruas. |
+| [Garis melalui dua titik](./index.html#panduan/line) | Memperpanjang garis melalui dua titik ke kedua arah. |
+| [Sinar](./index.html#panduan/ray) | Membuat sinar dari pangkal melalui titik penentu arah. |
+| [Garis sejajar](./index.html#panduan/parallel) | Menggeser pratinjau garis sejajar hingga melalui titik pilihan. |
+| [Garis tegak lurus](./index.html#panduan/normal) | Menarik garis tegak lurus acuan melalui titik pilihan. |
+| [Garis antiparalel](./index.html#panduan/antiTriangle) | Membuat DE antiparalel terhadap BC dalam sudut BAC. |
+
+### Lingkaran
+
+| Animasi alat | Yang dicontohkan |
+| --- | --- |
+| [Lingkaran](./index.html#panduan/circle2) | Menggambar lingkaran dari pusat dan satu titik pada keliling. |
+| [Lingkaran lewat 3 titik](./index.html#panduan/circle3) | Menggambar lingkaran melalui tiga titik yang tidak segaris. |
+| [Lingkaran dengan jari-jari](./index.html#panduan/circleRadius) | Menetapkan panjang jari-jari, lalu memilih pusat. |
+| [Lingkaran dengan rumus jari-jari](./index.html#panduan/circleFormula) | Menentukan jari-jari dari panjang ruas, operasi hitung, atau kuasa. |
+| [Lingkaran berdiameter](./index.html#panduan/diameter) | Menggambar lingkaran dari kedua ujung diameter. |
+| [Pusat lingkaran](./index.html#panduan/center) | Membuat titik yang mengikuti pusat lingkaran atau busur. |
+| [Setengah lingkaran](./index.html#panduan/semicircle) | Menggambar busur 180° dari kedua ujung diameter. |
+| [Busur dengan sudut](./index.html#panduan/circleArc) | Menggambar busur dengan sudut pusat dan arah yang dipilih. |
+| [Juring lingkaran](./index.html#panduan/sector) | Membatasi juring dengan dua jari-jari dan sebuah busur. |
+| [Garis singgung pada keliling](./index.html#panduan/tangentAt) | Menggambar garis singgung di titik pilihan pada keliling. |
+| [Garis singgung dari titik](./index.html#panduan/tangent) | Menarik garis singgung ke lingkaran dari sebuah titik. |
+| [Garis singgung persekutuan](./index.html#panduan/commonTangent) | Menemukan garis yang menyinggung dua lingkaran. |
+| [Lingkaran dari 3 syarat](./index.html#panduan/circleConstraints) | Memadukan tiga syarat melalui titik atau menyinggung garis dan lingkaran. |
+| [Lingkaran singgung berjari-jari tetap](./index.html#panduan/circleFixedTangency) | Membuat lingkaran berjari-jari tertentu yang menyinggung dua lingkaran. |
+| [Titik kutub dari garis](./index.html#panduan/pole) | Menentukan kutub suatu garis terhadap lingkaran. |
+| [Garis polar dari titik](./index.html#panduan/polar) | Menggambar garis polar suatu titik terhadap lingkaran. |
+| [Inversi dengan jari-jari atau kuasa](./index.html#panduan/invertFormula) | Menginversi dengan pusat dan nilai jari-jari atau kuasa pilihan. |
+| [Inversi titik pada lingkaran](./index.html#panduan/invert) | Menemukan bayangan titik terhadap lingkaran inversi. |
+| [Inversi garis](./index.html#panduan/invertLine) | Menemukan bayangan garis terhadap lingkaran inversi. |
+| [Inversi lingkaran](./index.html#panduan/invertCircle) | Menemukan bayangan lingkaran terhadap lingkaran inversi. |
+
+### Bidang
+
+| Animasi alat | Yang dicontohkan |
+| --- | --- |
+| [Segitiga](./index.html#panduan/triangle) | Membuat segitiga yang daerah dan sisinya bisa dipilih. |
+| [Poligon beraturan](./index.html#panduan/regularPolygon) | Melengkapi poligon beraturan dari satu sisi dan jumlah sudut. |
+| [Poligon dari titik](./index.html#panduan/polygon) | Menutup daerah dengan mengeklik titik di sekeliling batasnya. |
+
+### Sudut dan label
+
+| Animasi alat | Yang dicontohkan |
+| --- | --- |
+| [Busur sudut](./index.html#panduan/angle) | Menandai sudut dari tiga titik dan menampilkan besar sudut atau label. |
+| [Tanda siku-siku](./index.html#panduan/right) | Menempatkan tanda siku-siku di antara dua kaki yang tegak lurus. |
+| [Label](./index.html#panduan/label) | Meletakkan teks atau rumus LaTeX di posisi pilihan. |
+
+### Transformasi
+
+| Animasi alat | Yang dicontohkan |
+| --- | --- |
+| [Translasi](./index.html#panduan/translate) | Menggeser objek mengikuti vektor dari satu titik ke titik lain. |
+| [Rotasi](./index.html#panduan/rotate) | Memutar objek terhadap pusat dengan sudut tertentu. |
+| [Refleksi terhadap garis](./index.html#panduan/reflectLine) | Mencerminkan objek terhadap sebuah garis. |
+| [Refleksi terhadap titik](./index.html#panduan/reflectPoint) | Mencerminkan objek terhadap sebuah titik pusat. |
+| [Dilatasi](./index.html#panduan/dilate) | Menskalakan objek terhadap titik pusat dengan faktor tertentu. |
+
+### Alat pemilihan di bilah utama
+
+| Animasi alat | Yang dicontohkan |
+| --- | --- |
+| [Pilih / geser](./index.html#panduan/move) | Memilih objek, menyeret titik, atau merapikan letak label. |
+
+### 19 animasi editor dan ekspor
+
+Gunakan bagian ini jika konstruksinya sudah jadi dan kamu ingin mengubah tampilan, menyimpan lembar, atau menyiapkan gambar untuk dicetak.
+
+| Kebutuhan | Pilih animasi |
+| --- | --- |
+| Memilih dan menjelajah | [Pilih beberapa objek dan hapus bersama](./index.html#panduan/editor-selection) · [Batalkan, hapus, dan urungkan](./index.html#panduan/editor-undo) · [Gulir dan geser tampilan kanvas](./index.html#panduan/editor-pan) · [Perbesar tampilan dan lekatkan titik ke kisi](./index.html#panduan/editor-view) · [Tema dan latar kanvas](./index.html#panduan/editor-theme) |
+| Merapikan warna dan garis | [Sembunyikan dan tampilkan objek](./index.html#panduan/editor-visibility) · [Warna dan opasitas objek](./index.html#panduan/editor-color) · [Ketebalan, pola garis, dan tanda ruas](./index.html#panduan/editor-stroke) · [Warnai bagian dalam bangun](./index.html#panduan/editor-fill) |
+| Menyunting label dan konstruksi | [Nama, koordinat, dan posisi label titik](./index.html#panduan/editor-point-label) · [Sunting atau pindahkan label bebas](./index.html#panduan/editor-annotation) · [Tanda dan label besar sudut](./index.html#panduan/editor-angle-style) · [Ubah lingkaran menjadi busur](./index.html#panduan/editor-arc) · [Sunting rumus titik atau jari-jari](./index.html#panduan/editor-formulas) |
+| Mengelola lembar dan proyek | [Mulai lembar baru atau coba contoh](./index.html#panduan/editor-sheets) · [Simpan dan buka kembali proyek](./index.html#panduan/editor-project) · [Buka gambar GeoGebra](./index.html#panduan/editor-import) |
+| Membawa gambar ke modul | [Salin gambar TikZ atau koordinat](./index.html#panduan/editor-export) · [Skala cetak gambar TikZ](./index.html#panduan/editor-scale) |

@@ -34,18 +34,31 @@ Bagian `at` menyatakan D sebagai sepertiga A ditambah dua pertiga B. Bagian `lab
 </figure>
 
 <details>
-  <summary>Lihat langkahnya dalam animasi</summary>
+  <summary>Putar GIF pembuatan segitiga dan titik D</summary>
   <p><img src="{{ '/assets/studio-tikz-demo.gif' | relative_url }}" alt="Animasi pembuatan segitiga ABC dan titik D dari rumus vektor, disertai perubahan pada gambar dan kode TikZ." width="800" loading="lazy"></p>
 </details>
 
-<p><a href="{{ '/tools/studio-tikz/contoh-segitiga.stikz.json' | relative_url }}" download="contoh-segitiga.stikz.json">Unduh contoh segitiga</a>, lalu pilih <strong>Buka file</strong> di editor untuk mencoba konstruksi yang sudah jadi. Untuk membuat gambar dari awal, ikuti <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}">panduan pengguna</a>. Tombol <strong>?</strong> di sebelah nama setiap alat juga menampilkan ilustrasi, urutan klik, dan hasilnya.</p>
+<p><a href="{{ '/tools/studio-tikz/contoh-segitiga.stikz.json' | relative_url }}" download="contoh-segitiga.stikz.json">Unduh contoh segitiga</a>, lalu pilih <strong>Buka file</strong> di editor untuk menggeser titiknya sendiri.</p>
+
+## Belajar lewat animasi alat
+
+GIF di atas memperlihatkan satu diagram dari awal. Di dalam Studio, setiap alat memiliki animasi sendiri yang menunjukkan apa yang perlu diklik dan bagaimana hasilnya terbentuk. Saat membuat soal tentang segiempat siklis, misalnya, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/antiTriangle">animasi garis antiparalel</a> untuk melihat sisi mana yang dipilih lebih dulu. Untuk menggambar lingkaran yang melalui P dan menyinggung dua lingkaran lain, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/circleConstraints">animasi lingkaran dari tiga syarat</a>.
+
+<details>
+  <summary>Lihat contoh animasi alat Garis antiparalel</summary>
+  <p><img src="{{ '/assets/studio-tikz-antiparalel.gif' | relative_url }}" alt="Empat langkah memilih BC, menempatkan garis melalui D, lalu menemukan E pada AC dan memeriksa lingkaran melalui B, C, D, dan E." width="800" loading="lazy"></p>
+</details>
+
+Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu memeriksa satu klik, dan **Ulangi** mengembalikan animasi ke awal. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Seluruh 44 animasi alat dan 19 animasi editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
+
+<p><a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#katalog-animasi">Lihat katalog semua animasi</a> · <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}">Baca panduan pengguna</a></p>
 
 ## Kelebihan
 
 - **Kode bisa dipelajari sambil menggambar.** Saya bisa menelusuri hubungan antara objek di kanvas dan perintah TikZ-nya, lalu menyunting kode tersebut langsung di dokumen saya.
 - **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama.
 - **Tampilan siap disesuaikan untuk modul.** Label mendukung LaTeX. Ketebalan garis, pola putus-putus, penanda sudut, warna, dan opasitas bisa diatur per objek. Saat skala ekspor diubah, radius cetak titik tetap 1,5 pt.
-- **Bisa dibawa mengajar.** Setelah satu file HTML diunduh, editor beserta seluruh panduan bergambarnya bisa dibuka tanpa koneksi internet.
+- **Bisa dibawa mengajar.** Saya bisa menyimpan editor dan proyek latihan di laptop sebelum kelas, lalu membuka keduanya saat mengajar.
 
 ## Keterbatasan
 
