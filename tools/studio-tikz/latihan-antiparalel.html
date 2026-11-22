@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Latihan garis antiparalel · Studio TikZ</title>
+<style>
+  :root {color-scheme:light dark;--paper:#faf9f4;--panel:#fffef9;--ink:#23382e;--muted:#4d6054;--rule:#cfdbcf;--base:#3c6a56;--accent:#9a4c1b;--halo:#f6dfc9;--circle:#526e78}
+  @media(prefers-color-scheme:dark){:root {--paper:#222d27;--panel:#26332b;--ink:#ebf0e7;--muted:#c2cfc3;--rule:#53655a;--base:#acdbba;--accent:#ffc087;--halo:#64432e;--circle:#a2c8d5}}
+  * {box-sizing:border-box} body {margin:0;background:var(--paper);color:var(--ink);font:15px/1.4 system-ui,sans-serif} main {max-width:660px;margin:auto;padding:14px 17px}
+  h1 {margin:0;font:600 24px/1.12 Georgia,serif} p {margin:5px 0 9px;color:var(--muted);min-height:2.8em} svg {display:block;width:100%;height:clamp(200px,45vh,226px);background:var(--panel);border:1px solid var(--rule);border-radius:9px;overflow:hidden}
+  svg line,svg path {fill:none;stroke-linecap:round;stroke-linejoin:round} svg text {font:italic 16px Georgia,serif;fill:var(--ink);stroke:var(--panel);stroke-width:2.4px;paint-order:stroke fill} .vertex{fill:var(--ink)} #drag-d {cursor:grab;touch-action:none} #drag-d.dragging {cursor:grabbing} #drag-d circle{touch-action:none}
+  .range {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-top:9px;min-height:32px} .range label {font-weight:600} .range {grid-template-columns:minmax(7.6em,auto) 1fr auto}.range+.range {margin-top:0} output {font-variant-numeric:tabular-nums;min-width:3.8ch;text-align:right;color:var(--muted)} input {accent-color:var(--base)} input[type=range] {width:100%;min-width:40px;min-height:28px;margin:0}
+  .actions {display:flex;justify-content:flex-start;align-items:center;gap:5px 12px;flex-wrap:wrap;margin-top:3px} .check {display:flex;gap:7px;align-items:center;min-height:35px;cursor:pointer} .check input {width:17px;height:17px;margin:0} button {min-height:34px;background:var(--panel);border:1px solid var(--rule);color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit;cursor:pointer} #check{font-weight:600;color:var(--panel);background:var(--ink);border-color:var(--ink)}#reset{margin-left:auto}button:hover{border-color:var(--base)}#guess-target{cursor:crosshair;touch-action:none} :focus-visible {outline:2px solid var(--accent);outline-offset:3px}
+  @media(min-width:510px){p {min-height:1.4em}} @media(max-width:345px){main{padding:11px}h1{font-size:22px}.range{gap:7px}.actions{font-size:14px}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Geser titik D</h1>
+  <p id="prompt" aria-live="polite">Geser D, lalu tebak letak E agar DE antiparalel terhadap BC. Klik AC atau geser penanda tebakan, lalu pilih Periksa.</p>
+  <svg id="diagram" viewBox="66 0 188 236" role="img" aria-labelledby="diagram-title diagram-desc">
+    <title id="diagram-title">DE antiparalel terhadap BC pada segitiga ABC</title>
+    <desc id="diagram-desc">D bergerak pada AB. Tanda tanya menunjukkan tebakan di AC. Kedua penggeser di bawah gambar dapat digunakan dengan tombol panah.</desc>
+    <circle id="circle" cx="160" cy="140" r="66" fill="none" stroke="var(--circle)" stroke-width="1.7" stroke-dasharray="5 4" visibility="hidden"/>
+    <path d="M94 142 L130 24 L226 142" stroke="var(--ink)" stroke-width="1.7"/>
+    <line x1="94" y1="142" x2="226" y2="142" stroke="var(--base)" stroke-width="2.7"/>
+    <line id="de" visibility="hidden" stroke="var(--accent)" stroke-width="3"/>
+    <g class="vertex"><circle cx="130" cy="24" r="3"/><circle cx="94" cy="142" r="3"/><circle cx="226" cy="142" r="3"/></g>
+    <text x="126" y="16">A</text><text x="79" y="152">B</text><text x="233" y="149">C</text>
+    <line id="guess-target" x1="130" y1="24" x2="226" y2="142" stroke="transparent" stroke-width="28" pointer-events="stroke"/>
+    <g id="guess-marker" pointer-events="none"><circle r="5" stroke="var(--circle)" fill="var(--panel)" stroke-width="2" stroke-dasharray="3 1"/><text x="0" y="19" text-anchor="end">?</text></g>
+    <g id="point-e" visibility="hidden" pointer-events="none"><circle r="3.3" fill="var(--accent)"/><text x="6" y="-5">E</text></g>
+    <g id="drag-d"><circle r="22" fill="transparent"/><circle r="7.5" fill="var(--halo)"/><circle r="4" fill="var(--accent)"/><text x="-10" y="-3" text-anchor="end">D</text></g>
+  </svg>
+  <div class="range"><label for="position">Posisi D pada AB</label><input id="position" type="range" min="22" max="86" step="1" value="60" aria-describedby="diagram-desc"><output for="position" id="percent" aria-hidden="true">60%</output></div>
+  <div class="range"><label for="guess">Tebakan E di AC</label><input id="guess" type="range" min="5" max="95" step="1" value="50"><output for="guess" id="guess-percent" aria-hidden="true">50%</output></div>
+  <div class="actions"><button id="check" type="button">Periksa</button><label class="check"><input id="show-circle" type="checkbox" disabled>Lingkaran BCD</label><button id="reset" type="button">Atur ulang</button></div>
+</main>
+<script>
+(() => {
+  'use strict';
+  const el = id => document.getElementById(id);
+  const A = {x:130,y:24}, B = {x:94,y:142}, C = {x:226,y:142};
+  const abX = B.x-A.x, abY = B.y-A.y, acX = C.x-A.x, acY = C.y-A.y;
+  const abSquared = abX*abX + abY*abY, acSquared = acX*acX + acY*acY;
+  const range = el('position'), circleBox = el('show-circle'), svg = el('diagram');
+  const dHandle = el('drag-d'), circle = el('circle'), de = el('de');
+  const initialPrompt = el('prompt').textContent;
+  const guess = el('guess'), marker = el('guess-marker'), check = el('check');
+  let mode = 'predict';
+  function draw() {
+    const t = Number(range.value)/100;
+    const dx = A.x+t*abX, dy = A.y+t*abY;
+    // AD × AB = AE × AC fixes the second intersection E on AC.
+    const s = t*abSquared/acSquared, ex = A.x+s*acX, ey = A.y+s*acY;
+    dHandle.setAttribute('transform',`translate(${dx} ${dy})`);
+    el('point-e').setAttribute('transform',`translate(${ex} ${ey})`);
+    for (const [name,value] of Object.entries({x1:dx,y1:dy,x2:ex,y2:ey})) de.setAttribute(name,value);
+    // BC is horizontal. Its perpendicular bisector has the same x for all D.
+    const cx = (B.x+C.x)/2;
+    const cy = (dy+B.y)/2 + (dx-B.x)*(dx+B.x-2*cx)/(2*(dy-B.y));
+    circle.setAttribute('cx',cx); circle.setAttribute('cy',cy);
+    circle.setAttribute('r',Math.hypot(cx-B.x,cy-B.y));
+    el('percent').value = range.value+'%';
+    range.setAttribute('aria-valuetext',`${range.value} persen dari A menuju B`);
+    const g = Number(guess.value)/100;
+    marker.setAttribute('transform',`translate(${A.x+g*acX} ${A.y+g*acY})`);
+    el('guess-percent').value = guess.value+'%';
+    guess.setAttribute('aria-valuetext',`${guess.value} persen dari A menuju C`);
+  }
+  function toggleCircle() {
+    circle.setAttribute('visibility',circleBox.checked?'visible':'hidden');
+  }
+  function changeMode(next) {
+    mode = next;
+    const reveal = mode !== 'predict';
+    for (const shape of [el('point-e'),de]) shape.setAttribute('visibility',reveal?'visible':'hidden');
+    marker.setAttribute('visibility',mode === 'explore'?'hidden':'visible');
+    el('guess-target').style.pointerEvents = reveal?'none':'stroke';
+    guess.disabled = reveal; circleBox.disabled = !reveal;
+    circleBox.checked = reveal;
+    toggleCircle();
+    check.textContent = reveal?'Tebak lagi':'Periksa';
+    if (!reveal) el('prompt').textContent = initialPrompt;
+    else {
+      const error = Number(guess.value)-Number(range.value)*abSquared/acSquared;
+      const verdict = Math.abs(error) <= 4 ? 'Tebakanmu dekat dengan E.' :
+        error > 0 ? 'E lebih dekat ke A daripada tebakanmu.' : 'E lebih dekat ke C daripada tebakanmu.';
+      el('prompt').textContent = verdict+' Lingkaran melalui B, C, dan D memperlihatkan letak E. Coba geser D lagi.';
+    }
+  }
+  function moveD() {
+    if (mode === 'checked') {
+      mode = 'explore';
+      marker.setAttribute('visibility','hidden');
+      el('prompt').textContent = 'E mengikuti D di sepanjang AC. Panjang ruasnya memenuhi AD × AB = AE × AC.';
+    }
+    draw();
+  }
+  let drag = null;
+  function positionAt(event, x, y) {
+    const matrix = svg.getScreenCTM();
+    if (!matrix) return null;
+    const p = new DOMPoint(event.clientX,event.clientY).matrixTransform(matrix.inverse());
+    return ((p.x-A.x)*x + (p.y-A.y)*y)/(x*x+y*y);
+  }
+  const guessTarget = el('guess-target');
+  for (const handle of [dHandle,guessTarget]) {
+    const movingD = handle === dHandle;
+    const input = movingD ? range : guess;
+    const x = movingD ? abX : acX, y = movingD ? abY : acY;
+    handle.addEventListener('pointerdown',event => {
+      if (drag || event.button !== 0 || input.disabled) return;
+      const t = positionAt(event,x,y);
+      if (t === null) return;
+      drag = {id:event.pointerId,handle,offset:movingD ? Number(input.value)/100-t : 0};
+      handle.setPointerCapture(event.pointerId); handle.classList.add('dragging');
+      if (!movingD) {input.value = Math.round(100*t); draw();}
+    });
+    handle.addEventListener('pointermove',event => {
+      if (drag?.id !== event.pointerId || drag.handle !== handle) return;
+      const t = positionAt(event,x,y);
+      if (t === null) return;
+      input.value = Math.round(100*(t+drag.offset));
+      if (movingD) moveD(); else draw();
+    });
+  }
+  function endDrag(event) {
+    if (drag?.id !== event.pointerId) return;
+    const handle = drag.handle;
+    drag = null; handle.classList.remove('dragging');
+    if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+  }
+  for (const handle of [dHandle,guessTarget]) {
+    for (const type of ['pointerup','pointercancel','lostpointercapture']) handle.addEventListener(type,endDrag);
+  }
+  check.addEventListener('click',() => changeMode(mode === 'predict'?'checked':'predict'));
+  range.addEventListener('input',moveD); guess.addEventListener('input',draw);
+  circleBox.addEventListener('change',toggleCircle);
+  el('reset').addEventListener('click',() => {range.value = range.defaultValue;guess.value = guess.defaultValue;draw();changeMode('predict');});
+  draw(); toggleCircle();
+})();
+</script>
+</body>
+</html>

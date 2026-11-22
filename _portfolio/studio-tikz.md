@@ -12,13 +12,13 @@ header:
 
 Kalau sedang menyiapkan diagram untuk modul olimpiade, saya biasanya membuka GeoGebra, mencoba beberapa posisi titik sampai gambarnya enak dibaca, lalu melihat koordinatnya. Setelah itu saya pindah ke dokumen LaTeX dan mengetik TikZ secara manual. GeoGebra sebenarnya sudah menyediakan ekspor TikZ. Saya tetap sering menulis ulang kodenya karena punya kebiasaan sendiri dalam memberi nama titik, menempatkan label, memilih warna, dan menandai sudut.
 
-Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas AB, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
+Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas $AB$, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
 
 <p><a class="btn btn--primary" href="{{ '/tools/studio-tikz/index.html' | relative_url }}">Buka Studio TikZ</a> <a class="btn" href="{{ '/tools/studio-tikz/index.html' | relative_url }}" download="Studio-TikZ.html">Unduh versi offline</a></p>
 
 ## Coba satu diagram
 
-Pada segitiga ABC, saya ingin menempatkan D pada AB sehingga AD dua kali DB. Di menu **Titik dan garis**, pilih **Titik dari rumus vektor**, ketik `D = (A + 2B) / 3`, lalu tekan **Enter**. Sekarang geser B. D akan ikut bergerak dan pembagian ruasnya tetap sama. Di panel **Kode TikZ**, pilih **Gambar lengkap** untuk melihat bagaimana D dinyatakan menggunakan A dan B, atau **Koordinat saja** untuk mengambil nilai koordinatnya.
+Pada segitiga $ABC$, saya ingin menempatkan $D$ pada $AB$ sehingga $AD=2\cdot DB$. Di menu **Titik dan garis**, pilih **Titik dari rumus vektor**, ketik `D = (A + 2B) / 3`, lalu tekan **Enter**. Sekarang geser $B$. $D$ akan ikut bergerak dan pembagian ruasnya tetap sama. Di panel **Kode TikZ**, pilih **Gambar lengkap** untuk melihat bagaimana $D$ dinyatakan menggunakan $A$ dan $B$, atau **Koordinat saja** untuk mengambil nilai koordinatnya.
 
 Di contoh yang bisa diunduh, salah satu baris hasil ekspornya berbunyi seperti ini.
 
@@ -26,15 +26,15 @@ Di contoh yang bisa diunduh, salah satu baris hasil ekspornya berbunyi seperti i
 \coordinate[label={[text=PineGreen]below:$D$}] (D) at (${1/3}*(A) + {2/3}*(B)$);
 ```
 
-Bagian `at` menyatakan D sebagai sepertiga A ditambah dua pertiga B. Bagian `label` menempatkan huruf D berwarna hijau di bawah titik. Coba ganti `below` menjadi `above` di LaTeX untuk memindahkan hurufnya.
+Bagian `at` menyatakan $D$ sebagai sepertiga $A$ ditambah dua pertiga $B$. Bagian `label` menempatkan huruf $D$ berwarna hijau di bawah titik. Coba ganti `below` menjadi `above` di LaTeX untuk memindahkan hurufnya.
 
 <figure>
   <img src="{{ '/assets/studio-tikz-demo.png' | relative_url }}" alt="Contoh segitiga ABC dengan D pada ruas AB, beserta cuplikan kode TikZ." width="800">
-  <figcaption>Titik D terletak dua pertiga jalan dari A ke B.</figcaption>
+  <figcaption>Titik $D$ terletak dua pertiga jalan dari $A$ ke $B$.</figcaption>
 </figure>
 
 <details>
-  <summary>Putar GIF pembuatan segitiga dan titik D</summary>
+  <summary>Putar GIF pembuatan segitiga dan titik $D$</summary>
   <p><img src="{{ '/assets/studio-tikz-demo.gif' | relative_url }}" alt="Animasi pembuatan segitiga ABC dan titik D dari rumus vektor, disertai perubahan pada gambar dan kode TikZ." width="800" loading="lazy"></p>
 </details>
 
@@ -42,11 +42,18 @@ Bagian `at` menyatakan D sebagai sepertiga A ditambah dua pertiga B. Bagian `lab
 
 ## Belajar lewat animasi alat
 
-GIF di atas memperlihatkan satu diagram dari awal. Di dalam Studio, setiap alat memiliki animasi sendiri yang menunjukkan apa yang perlu diklik dan bagaimana hasilnya terbentuk. Saat membuat soal tentang segiempat siklis, misalnya, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/antiTriangle">animasi garis antiparalel</a> untuk melihat sisi mana yang dipilih lebih dulu. Untuk menggambar lingkaran yang melalui P dan menyinggung dua lingkaran lain, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/circleConstraints">animasi lingkaran dari tiga syarat</a>.
+GIF di atas memperlihatkan satu diagram dari awal. Di dalam Studio, setiap alat memiliki animasi sendiri yang menunjukkan apa yang perlu diklik dan bagaimana hasilnya terbentuk. Saat membuat soal tentang segiempat siklis, misalnya, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/antiTriangle">animasi garis antiparalel</a> untuk melihat sisi mana yang dipilih lebih dulu. Untuk menggambar lingkaran yang melalui $P$ dan menyinggung dua lingkaran lain, buka <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/circleConstraints">animasi lingkaran dari tiga syarat</a>.
 
 <details>
   <summary>Lihat contoh animasi alat Garis antiparalel</summary>
   <p><img src="{{ '/assets/studio-tikz-antiparalel.gif' | relative_url }}" alt="Empat langkah memilih BC, menempatkan garis melalui D, lalu menemukan E pada AC dan memeriksa lingkaran melalui B, C, D, dan E." width="800" loading="lazy"></p>
+</details>
+
+<details>
+  <summary>Coba latihan interaktif garis antiparalel</summary>
+  <p>Seret $D$ sepanjang $AB$. Di mana letak $E$ pada $AC$ agar $B$, $C$, $D$, dan $E$ terletak pada satu lingkaran? Klik $AC$ untuk menandai tebakanmu, lalu pilih <strong>Periksa</strong> untuk melihat $E$ dan lingkaran yang melalui keempat titik itu. Kedua penggeser juga bisa digerakkan dengan tombol panah.</p>
+  <iframe src="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}" title="Latihan interaktif garis antiparalel pada segitiga" loading="lazy" width="800" height="465" style="display:block;width:100%;height:465px;border:0;"></iframe>
+  <p><a href="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}">Buka latihan di halaman tersendiri</a></p>
 </details>
 
 Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu memeriksa satu klik, dan **Ulangi** mengembalikan animasi ke awal. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Seluruh 44 animasi alat dan 19 animasi editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
@@ -57,13 +64,13 @@ Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar ani
 
 - **Kode bisa dipelajari sambil menggambar.** Saya bisa menelusuri hubungan antara objek di kanvas dan perintah TikZ-nya, lalu menyunting kode tersebut langsung di dokumen saya.
 - **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama.
-- **Tampilan siap disesuaikan untuk modul.** Label mendukung LaTeX. Ketebalan garis, pola putus-putus, penanda sudut, warna, dan opasitas bisa diatur per objek. Saat skala ekspor diubah, radius cetak titik tetap 1,5 pt.
+- **Tampilan siap disesuaikan untuk modul.** Label mendukung LaTeX. Ketebalan garis, pola putus-putus, penanda sudut, warna, dan opasitas bisa diatur per objek. Saat skala ekspor diubah, radius cetak titik tetap $1{,}5\,\mathrm{pt}$.
 - **Bisa dibawa mengajar.** Saya bisa menyimpan editor dan proyek latihan di laptop sebelum kelas, lalu membuka keduanya saat mengajar.
 
 ## Keterbatasan
 
 - **Belum ada daftar proyek di dalam editor.** Browser mengingat satu lembar aktif. Kamu tetap bisa menyimpan banyak gambar sebagai file terpisah. Klik **Simpan proyek**, beri nama yang mudah dikenali seperti `inversi.stikz.json` dan `menelaus.stikz.json`, lalu pilih **Buka file** saat ingin melanjutkan salah satunya. Kalau browser langsung mengunduh dengan nama bawaan, ubah nama file di folder unduhan.
-- **Cakupannya geometri olimpiade.** Saat ini belum ada plot fungsi seperti `y = x²`, atau alat umum untuk parabola, elips, dan hiperbola. Untuk kebutuhan menggambar grafik, saya masih memilih GeoGebra. Fokus Studio TikZ adalah konstruksi dan penyajian diagram geometri.
+- **Cakupannya geometri olimpiade.** Saat ini belum ada plot fungsi seperti $y=x^2$, atau alat umum untuk parabola, elips, dan hiperbola. Untuk kebutuhan menggambar grafik, saya masih memilih GeoGebra. Fokus Studio TikZ adalah konstruksi dan penyajian diagram geometri.
 - **Impor GeoGebra mendukung sebagian objek 2D.** Pada berkas `.ggb`, sebagian titik dibaca dari koordinat tersimpan. Hubungan konstruksi dari GeoGebra belum tentu ikut terbawa. Format `.stikz.json` menyimpan hubungan yang dibuat di Studio TikZ.
 - **Salinan offline perlu diperbarui manual.** Untuk memakai versi yang lebih baru, buka kembali halaman proyek ini, unduh HTML terbaru, lalu buka file proyekmu di sana. Menyimpan gambar dan memperbarui aplikasi menggunakan dua file yang berbeda.
 

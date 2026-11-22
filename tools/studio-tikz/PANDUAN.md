@@ -9,24 +9,26 @@ Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modu
 
 ## Gambar pertama dalam lima langkah
 
-Kita akan menggambar segitiga ABC dan titik D pada AB sehingga AD dua kali DB, lalu menghubungkan C ke D.
+Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot DB$, lalu menghubungkan $C$ ke $D$.
 
-1. Pilih **Lembar → Kanvas baru**, lalu **Segitiga**. Klik tiga tempat yang tidak segaris, urut A di kiri bawah, B di kanan bawah, dan C di atas.
-2. Pilih **Titik dan garis → Titik dari rumus vektor**, ketik `D = (A + 2B)/3`, lalu klik **Buat titik**. D muncul dua pertiga perjalanan dari A ke B.
-3. Klik **Ruas**, lalu klik C dan D. Pada **Pola garis**, pilih **Putus-putus** agar CD mudah dibedakan dari sisi segitiga.
-4. Pilih **Sudut dan label → Busur sudut**. Klik A, C, lalu B untuk menandai ∠ACB. Pada **Label sudut**, pilih **Besar sudut otomatis (°)**.
-5. Aktifkan **Pilih / geser** dan pindahkan bulatan B. D tetap membagi AB dengan perbandingan 2 ∶ 1, sedangkan besar ∠ACB berubah. Untuk merapikan posisi huruf B, seret hurufnya.
+1. Pilih **Lembar → Kanvas baru**, lalu **Segitiga**. Klik tiga tempat yang tidak segaris, urut $A$ di kiri bawah, $B$ di kanan bawah, dan $C$ di atas.
+2. Pilih **Titik dan garis → Titik dari rumus vektor**, ketik `D = (A + 2B)/3`, lalu klik **Buat titik**. $D$ muncul dua pertiga perjalanan dari $A$ ke $B$.
+3. Klik **Ruas**, lalu klik $C$ dan $D$. Pada **Pola garis**, pilih **Putus-putus** agar $CD$ mudah dibedakan dari sisi segitiga.
+4. Pilih **Sudut dan label → Busur sudut**. Klik $A$, $C$, lalu $B$ untuk menandai $\angle ACB$. Pada **Label sudut**, pilih **Besar sudut otomatis (°)**.
+5. Aktifkan **Pilih / geser** dan pindahkan bulatan $B$. $D$ tetap membagi $AB$ dengan perbandingan $2:1$, sedangkan besar $\angle ACB$ berubah. Untuk merapikan posisi huruf $B$, seret hurufnya.
 
-Untuk membandingkan hasilmu, unduh proyek contoh, lalu buka lewat **Buka file** di Studio. <a href="./contoh-segitiga.stikz.json" download="contoh-segitiga.stikz.json">Contoh segitiga dengan AD ∶ DB = 2 ∶ 1</a>.
+Untuk membandingkan hasilmu, unduh proyek contoh, lalu buka lewat **Buka file** di Studio. <a href="./contoh-segitiga.stikz.json" download="contoh-segitiga.stikz.json">Contoh segitiga dengan $AD:DB=2:1$</a>.
 
 ## Membuat konstruksi yang mengikuti gambar
 
 | Yang ingin digambar | Urutan tindakan |
 | --- | --- |
-| Titik P yang mengikuti lingkaran | Pilih **Titik** lalu klik keliling. Gunakan **Pilih / geser** untuk menggeser P sepanjang lingkaran. Klik ruang kosong dengan alat Titik untuk membuat titik bebas. |
-| Garis antiparalel | Dalam segitiga ABC, pilih **Titik dan garis → Garis antiparalel**, klik BC, lalu klik sebuah titik D pada AB. Perpotongan garis baru dengan AC adalah E. Jika titiknya berbeda, B, C, E, D terletak pada satu lingkaran. |
+| Titik $P$ yang mengikuti lingkaran | Pilih **Titik** lalu klik keliling. Gunakan **Pilih / geser** untuk menggeser $P$ sepanjang lingkaran. Klik ruang kosong dengan alat Titik untuk membuat titik bebas. |
+| Garis antiparalel | Dalam segitiga $ABC$, pilih **Titik dan garis → Garis antiparalel**, klik $BC$, lalu klik sebuah titik $D$ pada $AB$. Perpotongan garis baru dengan $AC$ adalah $E$. Jika titiknya berbeda, $B$, $C$, $E$, dan $D$ terletak pada satu lingkaran. |
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
-| Inversi titik P dengan kuasa OA × OB | Buat ruas OA dan OB. Pilih **Lingkaran → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat O, lalu P. Bayangan P′ memenuhi OP × OP′ = OA × OB. |
+| Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Lingkaran → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat $O$, lalu $P$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
+
+Untuk mencoba konstruksi antiparalel sendiri, seret $D$ pada $AB$, lalu klik $AC$ untuk menebak letak $E$. Pilih **Periksa** untuk membandingkan tebakanmu dengan letak $E$ dan melihat lingkaran yang melalui $B$, $C$, $D$, dan $E$. Latihan ini juga tersedia tepat di bawah animasi **Garis antiparalel** melalui **Coba sendiri**. [Buka latihan interaktif antiparalel](./latihan-antiparalel.html).
 
 ### Mengikuti animasi sambil mencoba alat
 
@@ -43,7 +45,7 @@ Tambahkan `\usepackage{tikz}` di preamble dokumen. Pilih mode di panel **Kode Ti
 | **Gambar lengkap → Salin TikZ** | Tempel di badan dokumen, misalnya setelah teks soal. Ekspor sudah membungkus gambar dalam `center` dan `tikzpicture`, beserta perintah pustaka TikZ yang diperlukan. |
 | **Koordinat saja → Salin koordinat** | Tempel di dalam lingkungan `tikzpicture` milikmu. Koordinat numerik dan label titik bisa langsung dipakai dengan perintah gambarmu sendiri, misalnya `\draw (A)--(B)--(C)--cycle;`. |
 
-**Skala TikZ** mengatur ukuran gambar saat dicetak. Pada skala 2, panjang ruas tercetak dua kali lebih besar. Kode menyesuaikan radius bulatan titik agar radius cetaknya tetap **1,5 pt**. Tombol **+** dan **−** di kanvas mengatur pembesaran tampilan kerja.
+**Skala TikZ** mengatur ukuran gambar saat dicetak. Pada skala $2$, panjang ruas tercetak dua kali lebih besar. Kode menyesuaikan radius bulatan titik agar radius cetaknya tetap $1{,}5\,\mathrm{pt}$. Tombol **+** dan **−** di kanvas mengatur pembesaran tampilan kerja.
 
 Klik ruas untuk mengatur **Warna** atau **Opasitas**. Klik bagian dalam segitiga untuk mengatur **Warna isian**. Nama palet mengikuti **xcolor**, misalnya `ForestGreen`. Studio menyertakan `\providecolor` untuk nama yang memerlukannya. Kamu juga bisa memakai opsi `dvipsnames` pada templat LaTeX milikmu.
 
@@ -88,7 +90,7 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | Animasi alat | Yang dicontohkan |
 | --- | --- |
 | [Titik](./index.html#panduan/point) | Membuat titik bebas atau mengikatnya pada garis, keliling, dan perpotongan. |
-| [Titik dari rumus vektor](./index.html#panduan/pointFormula) | Menempatkan D dari koordinat titik lain, misalnya D = (A + 2B)/3. |
+| [Titik dari rumus vektor](./index.html#panduan/pointFormula) | Menempatkan $D$ dari koordinat titik lain, misalnya $D=\frac{A+2B}{3}$. |
 | [Titik pada objek](./index.html#panduan/on) | Menempatkan titik agar bisa digeser sepanjang satu objek. |
 | [Titik tengah](./index.html#panduan/mid) | Menentukan titik tengah dari dua titik ujung. |
 | [Titik potong](./index.html#panduan/cut) | Menandai perpotongan dua objek, termasuk kedua perpotongan dua lingkaran. |
@@ -98,7 +100,7 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | [Sinar](./index.html#panduan/ray) | Membuat sinar dari pangkal melalui titik penentu arah. |
 | [Garis sejajar](./index.html#panduan/parallel) | Menggeser pratinjau garis sejajar hingga melalui titik pilihan. |
 | [Garis tegak lurus](./index.html#panduan/normal) | Menarik garis tegak lurus acuan melalui titik pilihan. |
-| [Garis antiparalel](./index.html#panduan/antiTriangle) | Membuat DE antiparalel terhadap BC dalam sudut BAC. |
+| [Garis antiparalel](./index.html#panduan/antiTriangle) | Membuat $DE$ antiparalel terhadap $BC$ dalam $\angle BAC$. |
 
 ### Lingkaran
 
@@ -110,7 +112,7 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | [Lingkaran dengan rumus jari-jari](./index.html#panduan/circleFormula) | Menentukan jari-jari dari panjang ruas, operasi hitung, atau kuasa. |
 | [Lingkaran berdiameter](./index.html#panduan/diameter) | Menggambar lingkaran dari kedua ujung diameter. |
 | [Pusat lingkaran](./index.html#panduan/center) | Membuat titik yang mengikuti pusat lingkaran atau busur. |
-| [Setengah lingkaran](./index.html#panduan/semicircle) | Menggambar busur 180° dari kedua ujung diameter. |
+| [Setengah lingkaran](./index.html#panduan/semicircle) | Menggambar busur $180^\circ$ dari kedua ujung diameter. |
 | [Busur dengan sudut](./index.html#panduan/circleArc) | Menggambar busur dengan sudut pusat dan arah yang dipilih. |
 | [Juring lingkaran](./index.html#panduan/sector) | Membatasi juring dengan dua jari-jari dan sebuah busur. |
 | [Garis singgung pada keliling](./index.html#panduan/tangentAt) | Menggambar garis singgung di titik pilihan pada keliling. |
