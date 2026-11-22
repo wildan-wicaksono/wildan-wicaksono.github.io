@@ -17,7 +17,7 @@ Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot 
 4. Pilih **Sudut dan label → Busur sudut**. Klik $A$, $C$, lalu $B$ untuk menandai $\angle ACB$. Pada **Label sudut**, pilih **Besar sudut otomatis (°)**.
 5. Aktifkan **Pilih / geser** dan pindahkan bulatan $B$. $D$ tetap membagi $AB$ dengan perbandingan $2:1$, sedangkan besar $\angle ACB$ berubah. Untuk merapikan posisi huruf $B$, seret hurufnya.
 
-Untuk membandingkan hasilmu, unduh proyek contoh, lalu buka lewat **Buka file** di Studio. <a href="./contoh-segitiga.stikz.json" download="contoh-segitiga.stikz.json">Contoh segitiga dengan $AD:DB=2:1$</a>.
+Seret $A$, $B$, atau $C$ pada [diagram pembagian ruas interaktif](./contoh-vektor.html). Untuk menyunting konstruksinya di Studio, unduh proyek contoh, lalu pilih **Buka file**. <a href="./contoh-segitiga.stikz.json" download="contoh-segitiga.stikz.json">Contoh segitiga dengan $AD:DB=2:1$</a>.
 
 ## Membuat konstruksi yang mengikuti gambar
 
@@ -28,26 +28,35 @@ Untuk membandingkan hasilmu, unduh proyek contoh, lalu buka lewat **Buka file** 
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
 | Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Lingkaran → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat $O$, lalu $P$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
 
-Untuk mencoba konstruksi antiparalel sendiri, seret $D$ pada $AB$, lalu klik $AC$ untuk menebak letak $E$. Pilih **Periksa** untuk membandingkan tebakanmu dengan letak $E$ dan melihat lingkaran yang melalui $B$, $C$, $D$, dan $E$. Latihan ini juga tersedia tepat di bawah animasi **Garis antiparalel** melalui **Coba sendiri**. [Buka latihan interaktif antiparalel](./latihan-antiparalel.html).
+Pada [diagram antiparalel interaktif](./latihan-antiparalel.html), geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Kamu juga bisa menggeser $D$ sepanjang $AB$ atau menyeret ruas $DE$. Saat segitiga berubah, $E$ mengikuti perpotongan garis antiparalel dengan $AC$. Perhatikan keempat titik $B$, $C$, $D$, dan $E$ pada satu lingkaran.
 
 ### Mengikuti animasi sambil mencoba alat
 
-Buka **Panduan alat** di atas kanvas, lalu cari istilah seperti *singgung* atau *inversi*. Jika alatnya sudah dipilih, klik **?** di sebelah namanya. Tekan **Putar animasi** untuk melihat urutan pemilihan objek. Tekan **Jeda** untuk berhenti, gunakan tombol langkah sebelumnya atau berikutnya untuk memeriksa satu langkah, atau **Ulangi** untuk kembali ke awal. Tutup panduan untuk mencobanya di kanvas.
+Buka **Panduan alat** di atas kanvas, lalu cari istilah seperti *singgung* atau *inversi*. Jika alatnya sudah dipilih, klik **?** di sebelah namanya. Tekan **Putar animasi** untuk melihat urutan pemilihan objek. Tekan **Jeda** untuk berhenti, gunakan tombol langkah sebelumnya atau berikutnya untuk mengikuti satu langkah, atau **Ulangi** untuk kembali ke awal. Setelah animasi alat gambar, pilih **Utak-atik contoh**. Seret titik acuan untuk melihat perubahan pada konstruksi. Contoh memakai kanvas tersendiri sehingga kamu bisa kembali ke gambar yang sedang dikerjakan.
 
 Misalnya, lihat [sisi acuan untuk antiparalel](./index.html#panduan/antiTriangle) atau [pemilihan objek untuk lingkaran dari tiga syarat](./index.html#panduan/circleConstraints). Semua 44 alat dan 19 topik editor memiliki animasi yang tersimpan dalam HTML. Versi luring dapat memutarnya tanpa koneksi internet.
 
 ## Menempelkan hasil ke LaTeX
 
-Tambahkan `\usepackage{tikz}` di preamble dokumen. Pilih mode di panel **Kode TikZ**.
+Untuk berkas `.tex` baru, pakai kerangka berikut. Jika modul sudah memiliki `\documentclass`, tambahkan `\usepackage{tikz}` satu kali sebelum `\begin{document}`. Bila templat sudah memuat TikZ, langsung lanjut ke panel **Kode TikZ**.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+% Tempel hasil Gambar lengkap di sini.
+\end{document}
+```
 
 | Mode | Tempat menempelkan hasil |
 | --- | --- |
-| **Gambar lengkap → Salin TikZ** | Tempel di badan dokumen, misalnya setelah teks soal. Ekspor sudah membungkus gambar dalam `center` dan `tikzpicture`, beserta perintah pustaka TikZ yang diperlukan. |
-| **Koordinat saja → Salin koordinat** | Tempel di dalam lingkungan `tikzpicture` milikmu. Koordinat numerik dan label titik bisa langsung dipakai dengan perintah gambarmu sendiri, misalnya `\draw (A)--(B)--(C)--cycle;`. |
+| **Gambar lengkap → Salin TikZ** | Tempel seluruh blok di badan dokumen, misalnya setelah teks soal. Studio sudah menyertakan lingkungan `center` dan `tikzpicture`. Jika ekspor menyertakan `\usetikzlibrary{calc}` untuk rumus vektor atau `\usetikzlibrary{angles}` untuk penanda sudut, salin baris itu juga. |
+| **Koordinat saja → Salin koordinat** | Tempel di dalam lingkungan `tikzpicture` milikmu. Bentuk dasarnya `\coordinate (A) at (0,0);`. Koordinat berupa angka, dan titik berlabel dapat muncul sebagai `\coordinate[label=below:$A$] (A) at (0,0);`. Tambahkan perintah gambarmu di bawahnya, misalnya `\draw (A)--(B)--(C)--cycle;`. |
 
 **Skala TikZ** mengatur ukuran gambar saat dicetak. Pada skala $2$, panjang ruas tercetak dua kali lebih besar. Kode menyesuaikan radius bulatan titik agar radius cetaknya tetap $1{,}5\,\mathrm{pt}$. Tombol **+** dan **−** di kanvas mengatur pembesaran tampilan kerja.
 
-Klik ruas untuk mengatur **Warna** atau **Opasitas**. Klik bagian dalam segitiga untuk mengatur **Warna isian**. Nama palet mengikuti **xcolor**, misalnya `ForestGreen`. Studio menyertakan `\providecolor` untuk nama yang memerlukannya. Kamu juga bisa memakai opsi `dvipsnames` pada templat LaTeX milikmu.
+Klik ruas untuk mengatur **Warna** atau **Opasitas**. Klik bagian dalam segitiga untuk mengatur **Warna isian**. TikZ memuat `xcolor`, dan Studio menyertakan `\providecolor` untuk warna palet yang memerlukannya, misalnya `ForestGreen`. Templat yang sudah memakai opsi `dvipsnames` dapat terus menggunakannya. Jika kamu menambahkan makro label buatan sendiri saat menyunting kode, muat definisinya di templat tersebut.
 
 ## Menyimpan beberapa diagram dan memakai Studio secara luring
 

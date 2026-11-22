@@ -38,6 +38,11 @@ Bagian `at` menyatakan $D$ sebagai sepertiga $A$ ditambah dua pertiga $B$. Bagia
   <p><img src="{{ '/assets/studio-tikz-demo.gif' | relative_url }}" alt="Animasi pembuatan segitiga ABC dan titik D dari rumus vektor, disertai perubahan pada gambar dan kode TikZ." width="800" loading="lazy"></p>
 </details>
 
+<figure>
+  <iframe src="{{ '/tools/studio-tikz/contoh-vektor.html' | relative_url }}" title="Diagram interaktif pembagian ruas AB dalam segitiga ABC" loading="lazy" width="800" height="365" style="display:block;width:100%;height:365px;border:0;"></iframe>
+  <figcaption>Seret $A$, $B$, atau $C$ langsung di gambar. Saat $A$ atau $B$ berpindah, $D$ tetap berada dua pertiga jalan dari $A$ ke $B$. Menggeser $C$ mengubah arah ruas $CD$. <a href="{{ '/tools/studio-tikz/contoh-vektor.html' | relative_url }}">Buka diagram pembagian ruas di halaman tersendiri.</a></figcaption>
+</figure>
+
 <p><a href="{{ '/tools/studio-tikz/contoh-segitiga.stikz.json' | relative_url }}" download="contoh-segitiga.stikz.json">Unduh contoh segitiga</a>, lalu pilih <strong>Buka file</strong> di editor untuk menggeser titiknya sendiri.</p>
 
 ## Belajar lewat animasi alat
@@ -46,26 +51,42 @@ GIF di atas memperlihatkan satu diagram dari awal. Di dalam Studio, setiap alat 
 
 <details>
   <summary>Lihat contoh animasi alat Garis antiparalel</summary>
-  <p><img src="{{ '/assets/studio-tikz-antiparalel.gif' | relative_url }}" alt="Empat langkah memilih BC, menempatkan garis melalui D, lalu menemukan E pada AC dan memeriksa lingkaran melalui B, C, D, dan E." width="800" loading="lazy"></p>
+  <p><img src="{{ '/assets/studio-tikz-antiparalel.gif' | relative_url }}" alt="Empat langkah memilih BC, menempatkan garis melalui D, lalu menemukan E pada AC dan lingkaran yang melalui B, C, D, dan E." width="800" loading="lazy"></p>
 </details>
 
-<details>
-  <summary>Coba latihan interaktif garis antiparalel</summary>
-  <p>Seret $D$ sepanjang $AB$. Di mana letak $E$ pada $AC$ agar $B$, $C$, $D$, dan $E$ terletak pada satu lingkaran? Klik $AC$ untuk menandai tebakanmu, lalu pilih <strong>Periksa</strong> untuk melihat $E$ dan lingkaran yang melalui keempat titik itu. Kedua penggeser juga bisa digerakkan dengan tombol panah.</p>
-  <iframe src="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}" title="Latihan interaktif garis antiparalel pada segitiga" loading="lazy" width="800" height="465" style="display:block;width:100%;height:465px;border:0;"></iframe>
-  <p><a href="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}">Buka latihan di halaman tersendiri</a></p>
-</details>
+<figure>
+  <iframe src="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}" title="Diagram interaktif garis antiparalel dalam segitiga ABC" loading="lazy" width="800" height="465" style="display:block;width:100%;height:465px;border:0;"></iframe>
+  <figcaption>Geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Geser $D$ sepanjang $AB$ atau seret langsung ruas $DE$. Amati letak $E$ pada $AC$ ketika $DE$ tetap antiparalel terhadap $BC$. <a href="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}">Buka diagram antiparalel di halaman tersendiri.</a></figcaption>
+</figure>
 
-Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu memeriksa satu klik, dan **Ulangi** mengembalikan animasi ke awal. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Seluruh 44 animasi alat dan 19 animasi editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
+Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu mengamati satu klik, dan **Ulangi** mengembalikan animasi ke awal. Di bawah setiap animasi alat gambar, buka **Utak-atik contoh** untuk menggeser titik pada konstruksi yang baru diperagakan. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Seluruh 44 animasi alat dan 19 animasi editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
 
 <p><a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#katalog-animasi">Lihat katalog semua animasi</a> · <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}">Baca panduan pengguna</a></p>
+
+## Memakai hasilnya di dokumen LaTeX
+
+Untuk dokumen baru, salin kerangka berikut ke berkas `.tex`. Jika modulmu sudah memiliki `\documentclass`, cukup pastikan `\usepackage{tikz}` tercantum satu kali di preamble, sebelum `\begin{document}`. Jika templatmu sudah memuat TikZ, kamu bisa langsung menempelkan gambar.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+% Tempel hasil Gambar lengkap di sini.
+\end{document}
+```
+
+- **Gambar lengkap.** Klik **Salin TikZ**, lalu tempel seluruh hasilnya di badan dokumen. Studio sudah menyertakan `center` dan `tikzpicture`. Pertahankan baris `\usetikzlibrary{calc}` jika ada rumus koordinat vektor dan `\usetikzlibrary{angles}` jika penanda sudut memerlukannya.
+- **Koordinat saja.** Klik **Salin koordinat**, lalu tempel di dalam `tikzpicture` milikmu. Kamu mendapatkan nama titik dan koordinat numerik, beserta opsi `label` pada titik berlabel. Setelahnya, kamu bisa menulis perintahmu sendiri, misalnya `\draw (A)--(B)--(C)--cycle;`.
+
+TikZ sudah memuat `xcolor`. Untuk warna seperti `PineGreen`, Studio menyertakan `\providecolor` jika diperlukan. Jika kamu menyunting hasil ekspor dan menambahkan makro label dari templatmu sendiri, sertakan juga definisi makro itu.
 
 ## Kelebihan
 
 - **Kode bisa dipelajari sambil menggambar.** Saya bisa menelusuri hubungan antara objek di kanvas dan perintah TikZ-nya, lalu menyunting kode tersebut langsung di dokumen saya.
 - **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama.
 - **Tampilan siap disesuaikan untuk modul.** Label mendukung LaTeX. Ketebalan garis, pola putus-putus, penanda sudut, warna, dan opasitas bisa diatur per objek. Saat skala ekspor diubah, radius cetak titik tetap $1{,}5\,\mathrm{pt}$.
-- **Bisa dibawa mengajar.** Saya bisa menyimpan editor dan proyek latihan di laptop sebelum kelas, lalu membuka keduanya saat mengajar.
+- **Bisa dibawa mengajar.** Saya bisa menyimpan editor dan contoh diagram di laptop sebelum kelas, lalu membuka keduanya saat mengajar.
 
 ## Keterbatasan
 
