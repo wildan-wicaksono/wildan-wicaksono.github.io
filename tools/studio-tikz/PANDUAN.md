@@ -31,7 +31,7 @@ Untuk mengikuti satu soal dari awal sampai menjadi diagram modul, buka [tiga con
 | Garis antiparalel | Dalam segitiga $ABC$, pilih **Titik dan garis → Garis antiparalel**, klik $BC$, lalu klik sebuah titik $D$ pada $AB$. Perpotongan garis baru dengan $AC$ adalah $E$. Jika titiknya berbeda, $B$, $C$, $E$, dan $D$ terletak pada satu lingkaran. |
 | Lingkaran lewat tiga titik | Pilih **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau muncul selama posisi kursor dan kedua titik tidak segaris. Klik titik $C$ atau tempat kosong untuk menetapkan titik ketiga. |
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
-| Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Lingkaran → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat $O$, lalu $P$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
+| Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Transformasi → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat $O$, lalu $P$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
 
 Pada [diagram antiparalel interaktif](./latihan-antiparalel.html), geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Kamu juga bisa menggeser $D$ sepanjang $AB$ atau menyeret ruas $DE$. Saat segitiga berubah, $E$ mengikuti perpotongan garis antiparalel dengan $AC$. Perhatikan keempat titik $B$, $C$, $D$, dan $E$ pada satu lingkaran.
 
@@ -42,7 +42,7 @@ Buka menu **Segitiga**, pilih alat yang diinginkan, lalu klik bagian dalam segit
 | Alat | Hasil pada segitiga $ABC$ |
 | --- | --- |
 | **Pusat lingkaran luar** | $O$, perpotongan garis sumbu sisi. Jarak $OA$, $OB$, dan $OC$ sama. |
-| **Titik tinggi (ortosenter)** | $H$, perpotongan ketiga garis tinggi. Pada segitiga tumpul, $H$ berada di luar segitiga. |
+| **Titik tinggi** | $H$, perpotongan ketiga garis tinggi. Pada segitiga tumpul, $H$ berada di luar segitiga. |
 | **Pusat lingkaran dalam** atau **Lingkaran dalam** | $I$, perpotongan garis bagi sudut dalam. Alat lingkaran juga menggambar lingkaran yang menyinggung ketiga sisi. |
 | **Pusat lingkaran singgung luar** atau **Lingkaran singgung luar** | Setelah mengeklik segitiga, klik $A$, $B$, atau $C$ untuk memilih pusat $I_A$, $I_B$, atau $I_C$. Dengan cara tiga titik, klik titik sudut yang dihadapi lingkaran terlebih dahulu. Misalnya, urutan $B,C,A$ menghasilkan $I_B$. |
 
@@ -162,17 +162,13 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | [Lingkaran singgung berjari-jari tetap](./index.html#panduan/circleFixedTangency) | Membuat lingkaran berjari-jari tertentu yang menyinggung dua lingkaran. |
 | [Titik kutub dari garis](./index.html#panduan/pole) | Menentukan kutub suatu garis terhadap lingkaran. |
 | [Garis polar dari titik](./index.html#panduan/polar) | Menggambar garis polar suatu titik terhadap lingkaran. |
-| [Inversi dengan jari-jari atau kuasa](./index.html#panduan/invertFormula) | Menginversi dengan pusat dan nilai jari-jari atau kuasa pilihan. |
-| [Inversi titik pada lingkaran](./index.html#panduan/invert) | Menemukan bayangan titik terhadap lingkaran inversi. |
-| [Inversi garis](./index.html#panduan/invertLine) | Menemukan bayangan garis terhadap lingkaran inversi. |
-| [Inversi lingkaran](./index.html#panduan/invertCircle) | Menemukan bayangan lingkaran terhadap lingkaran inversi. |
 
 ### Segitiga
 
 | Animasi alat | Yang dicontohkan |
 | --- | --- |
 | [Pusat lingkaran luar](./index.html#panduan/circumcenter) | Menandai $O$ yang berjarak sama dari ketiga titik sudut. |
-| [Titik tinggi (ortosenter)](./index.html#panduan/orthocenter) | Menemukan titik potong garis tinggi $H$. |
+| [Titik tinggi](./index.html#panduan/orthocenter) | Menemukan titik potong garis tinggi $H$. |
 | [Pusat lingkaran dalam](./index.html#panduan/incenter) | Menandai $I$ yang berjarak sama dari ketiga sisi. |
 | [Lingkaran dalam](./index.html#panduan/incircle) | Menggambar lingkaran berpusat di $I$ yang menyinggung ketiga sisi. |
 | [Pusat lingkaran singgung luar](./index.html#panduan/excenter) | Memilih titik sudut untuk menentukan $I_A$, $I_B$, atau $I_C$. |
@@ -205,6 +201,10 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | [Refleksi terhadap garis](./index.html#panduan/reflectLine) | Mencerminkan objek terhadap sebuah garis. |
 | [Refleksi terhadap titik](./index.html#panduan/reflectPoint) | Mencerminkan objek terhadap sebuah titik pusat. |
 | [Dilatasi](./index.html#panduan/dilate) | Menskalakan objek terhadap titik pusat dengan faktor tertentu. |
+| [Inversi dengan jari-jari atau kuasa](./index.html#panduan/invertFormula) | Menginversi dengan pusat dan nilai jari-jari atau kuasa pilihan. |
+| [Inversi titik pada lingkaran](./index.html#panduan/invert) | Menemukan bayangan titik terhadap lingkaran inversi. |
+| [Inversi garis](./index.html#panduan/invertLine) | Menemukan bayangan garis terhadap lingkaran inversi. |
+| [Inversi lingkaran](./index.html#panduan/invertCircle) | Menemukan bayangan lingkaran terhadap lingkaran inversi. |
 
 ### Alat pemilihan di bilah utama
 

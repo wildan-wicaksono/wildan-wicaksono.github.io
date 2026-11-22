@@ -2860,7 +2860,7 @@ registerStep("invert",{
   solve:(step,[point,circle])=>inverseInCircle(point,circle)
 });
 registerTool("invert",{
-  title:"Inversi titik pada lingkaran",category:"circle",refs:["p","c"],
+  title:"Inversi titik pada lingkaran",category:"transform",refs:["p","c"],
   hints:["Klik titik yang akan diinversi.","Klik lingkaran inversi."],
   finish({refs,objects,add,name}){
     if(!inverseInCircle(...objects))throw Error("Pusat lingkaran tidak mempunyai bayangan inversi hingga. Pilih titik lain.");
@@ -3131,7 +3131,7 @@ for(const [type,title,group,hint] of [
   // Both constructions use the same inversive map. A source that changes kind
   // under a preceding inversion still has an image under a second inversion.
   registerStep(type,{group:"g",refs:["g","c"],solve:(step,[source,mirror])=>inverseSupportingObject(source,mirror)});
-  registerTool(type,{title,category:"circle",refs:[group,"c"],hints:[hint,"Klik lingkaran inversi yang menentukan pusat dan jari-jari."],
+  registerTool(type,{title,category:"transform",refs:[group,"c"],hints:[hint,"Klik lingkaran inversi yang menentukan pusat dan jari-jari."],
     allowRepeat:type==="invertCircle",finish({refs,objects,add}){
       if(!inverseSupportingObject(...objects))throw Error("Bayangan inversi tidak terdefinisi pada posisi ini.");
       return add(type,refs);
@@ -3356,7 +3356,7 @@ function exportPolygonOutlines(m,style,xy,tab,put){
 
 "use strict";
 const triangleCenterTitles={
-  circumcenter:"Pusat lingkaran luar",orthocenter:"Titik tinggi (ortosenter)",
+  circumcenter:"Pusat lingkaran luar",orthocenter:"Titik tinggi",
   incenter:"Pusat lingkaran dalam",incircle:"Lingkaran dalam",
   excenter:"Pusat lingkaran singgung luar",excircle:"Lingkaran singgung luar"
 };
@@ -3994,7 +3994,7 @@ registerTool("circleFormula",{
   }
 });
 registerTool("invertFormula",{
-  title:"Inversi dengan jari-jari atau kuasa",category:"circle",refs:["p","p|l|c"],
+  title:"Inversi dengan jari-jari atau kuasa",category:"transform",refs:["p","p|l|c"],
   hints:["Isi jari-jari atau kuasa, lalu klik pusat inversi.","Klik titik, garis, atau lingkaran yang ingin diinversi."],
   preview({objects,S,u,frag,ghost}){
     if(objects.length===1&&objects[0]&&formulaDrafts.previewRadius){
@@ -4838,7 +4838,7 @@ const toolFamilies = [
   {key:"circle", name:"Lingkaran", sections:[
     {heading:"Lingkaran dan busur", tools:["circle2","circle3","circleRadius","circleFormula","diameter","center","semicircle","circleArc","sector"]},
     {heading:"Konstruksi singgung", tools:["tangentAt","tangent","commonTangent","circleConstraints","circleFixedTangency"]},
-    {heading:"Pole, polar, dan inversi", tools:["pole","polar","invertFormula","invert","invertLine","invertCircle"]}
+    {heading:"Pole dan polar", tools:["pole","polar"]}
   ]},
   {key:"triangle", name:"Segitiga", sections:[
     {heading:"Pusat segitiga", tools:["circumcenter","orthocenter","incenter","excenter"]},
@@ -4847,7 +4847,10 @@ const toolFamilies = [
   ]},
   {key:"region", name:"Bidang", sections:[{tools:["triangle","regularPolygon","sector"]}]},
   {key:"angle", name:"Sudut dan label", sections:[{tools:["angle","right","label","bisectInternal","bisectExternal"]}]},
-  {key:"transform", name:"Transformasi", sections:[{tools:["translate","rotate","reflectLine","reflectPoint","dilate"]}]}
+  {key:"transform", name:"Transformasi", sections:[
+    {tools:["translate","rotate","reflectLine","reflectPoint","dilate"]},
+    {heading:"Inversi", tools:["invertFormula","invert","invertLine","invertCircle"]}
+  ]}
 ];
 const familyOfTool=new Map();
 let expandedToolFamily=null;

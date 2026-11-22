@@ -29,7 +29,7 @@ Untuk menggambar lingkaran dalam $ABC$, pilih **Segitiga → Lingkaran dalam** l
   <figcaption>Di titik $B$, garis $BI$ membagi sudut dalam dan garis $BI_A$ membagi sudut luar. Untuk menggambar masing-masing garis, pilih alat garis bagi yang sesuai lalu klik $A$, $B$, dan $C$, dengan $B$ sebagai titik kedua.</figcaption>
 </figure>
 
-Menu **Segitiga** juga menyediakan **Pusat lingkaran luar** untuk membuat $O$ dan **Titik tinggi (ortosenter)** untuk membuat $H$, titik potong ketiga garis tinggi. Dengan **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau lingkaran melewati kedua titik dan mengikuti kursor sampai kamu mengeklik posisi $C$ yang tidak segaris. <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#pusat-dan-lingkaran-segitiga">Lihat panduan pusat dan lingkaran segitiga.</a>
+Menu **Segitiga** juga menyediakan **Pusat lingkaran luar** untuk membuat $O$ dan **Titik tinggi** untuk membuat $H$, titik potong ketiga garis tinggi. Dengan **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau lingkaran melewati kedua titik dan mengikuti kursor sampai kamu mengeklik posisi $C$ yang tidak segaris. <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#pusat-dan-lingkaran-segitiga">Lihat panduan pusat dan lingkaran segitiga.</a>
 
 ## Coba satu diagram
 
@@ -102,7 +102,7 @@ Di beberapa diagram lama saya, label memakai `\contour{white}{...}` untuk member
 ## Kelebihan
 
 - **Kode bisa dipelajari sambil menggambar.** Saya bisa menelusuri hubungan antara objek di kanvas dan perintah TikZ-nya, lalu menyunting kode tersebut langsung di dokumen saya.
-- **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama.
+- **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama. Alat inversi untuk titik, garis, dan lingkaran ada di menu **Transformasi**.
 - **Tampilan siap disesuaikan untuk modul.** Label mendukung LaTeX. Ketebalan garis, pola putus-putus, penanda sudut, warna, dan opasitas bisa diatur per objek. Saat skala ekspor diubah, radius cetak titik tetap $1{,}5\,\mathrm{pt}$.
 - **Bisa dibawa mengajar.** Saya bisa menyimpan editor dan contoh diagram di laptop sebelum kelas, lalu membuka keduanya saat mengajar.
 
