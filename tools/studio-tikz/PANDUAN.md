@@ -103,6 +103,20 @@ Klik **Buka file** atau seret satu berkas `.ggb` ke kanvas. Studio membaca konst
 
 Periksa pesan impor serta daftar **Objek**. Jika sebuah titik perlu terus mengikuti lingkaran atau garis, kamu dapat membuat titik terikat di Studio melalui alat **Titik**. Simpan hasil yang akan disunting sebagai proyek `.stikz.json`.
 
+## Menyalin diagram Asymptote dari AoPS
+
+1. [Buka konverter Asymptote](./index.html#asymptote) atau klik **Tempel Asymptote** di bilah atas editor. Tempel satu diagram, termasuk tag `[asy]` dan `[/asy]` jika ada, ke kolom **Kode Asymptote**. Kamu juga bisa memilih salah satu dari tiga **Contoh AoPS**.
+2. Klik **Konversi ke TikZ**, lalu periksa **Pratinjau**. Untuk menggeser titik pada gambar hasil konversi, ubah koordinatnya di sumber lalu konversi lagi. Alur ini menghasilkan potongan TikZ tersendiri. Konstruksi yang bisa diseret di kanvas dibuat dengan alat gambar Studio.
+3. Di bagian **Paket LaTeX**, pilih **Salin preamble** dan tempel paket yang diperlukan sebelum `\begin{document}`. Klik **Salin TikZ**, lalu tempel gambarnya di badan dokumen, misalnya setelah teks soal.
+
+| Contoh AoPS | Yang bisa dicoba |
+| --- | --- |
+| Setengah lingkaran dan tali busur | Ganti `palered` dengan `white` pada isian pertama. Perhatikan bagian yang berubah dan posisi label $16$ di atas tali busur. |
+| Persegi bersarang | Ganti `n = 25` menjadi `n = 5`. Perulangan menggambar dan mewarnai lima persegi bergantian. Perintah terakhir menambahkan satu persegi kecil lagi sebagai garis tepi. |
+| Empat lingkaran | Baris `draw(circle(O, 6/23));` menggambar lingkaran keempat. Ganti jari-jarinya menjadi `1` untuk membandingkannya dengan lingkaran berpusat di $A$. |
+
+Konverter menangani bentuk 2D seperti ruas, busur, lingkaran dan persegi panjang, beserta isian, titik, label, serta perhitungan pada contoh di atas. Variabel, perulangan `for` terbatas dan percabangan `if/else` bisa digunakan seperti pada contoh persegi. Jika kode memakai perintah di luar cakupan, misalnya `import three;` untuk gambar 3D, Studio menunjukkan baris dan kolomnya. Perbaiki bagian itu, lalu jalankan konversi lagi untuk mendapatkan gambar lengkap.
+
 ## Pintasan dan kendala umum
 
 Klik kanvas sebelum memakai pintasan. Di Mac, gunakan **⌘** untuk kombinasi **Ctrl**.

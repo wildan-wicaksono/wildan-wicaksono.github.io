@@ -99,6 +99,12 @@ Opsi **`dvipsnames`** menyediakan nama warna seperti `PineGreen` dan `ForestGree
 
 Di beberapa diagram lama saya, label memakai `\contour{white}{...}` untuk memberi tepi putih pada huruf. Jika perintah itu dipakai dalam kode yang kamu sunting, tambahkan `\usepackage{contour}` di preamble.
 
+## Diagram Asymptote dari AoPS
+
+Kalau soal di AoPS menyertakan diagram dalam blok `[asy]`, salin bloknya, <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#asymptote">buka konverter Asymptote</a>, tempel kodenya, lalu pilih **Konversi ke TikZ**. Di editor, konverter ini juga bisa dibuka lewat **Tempel Asymptote** di sebelah **Buka file**. Misalnya, pada contoh **Persegi bersarang**, ubah `n = 25` menjadi `n = 5` dan konversi lagi untuk melihat pengaruh jumlah persegi. Periksa pratinjau, lalu salin TikZ dan preamble ke dokumenmu.
+
+Konverter membaca sebagian Asymptote 2D. Hasilnya berupa kode TikZ yang bisa disunting di dokumen LaTeX. Jika ada perintah yang belum didukung, Studio menunjukkan letaknya agar kamu bisa memperbaiki sumber sebelum menyalin gambar. <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops">Lihat contoh dan langkah konversi.</a>
+
 ## Kelebihan
 
 - **Kode bisa dipelajari sambil menggambar.** Saya bisa menelusuri hubungan antara objek di kanvas dan perintah TikZ-nya, lalu menyunting kode tersebut langsung di dokumen saya.
