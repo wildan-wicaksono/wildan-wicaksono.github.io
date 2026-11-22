@@ -52,7 +52,7 @@ Pada panel **Kode TikZ**, pilih mode ekspor, lalu klik **Salin preamble** di bag
 \end{document}
 ```
 
-**Warna.** Opsi `dvipsnames` membuat nama seperti `ForestGreen` dan `BurntOrange` tersedia di seluruh dokumen. Muat `xcolor` sebelum TikZ. Jika kelas atau templat lebih dahulu memuat `xcolor`, letakkan `\PassOptionsToPackage{dvipsnames}{xcolor}` sebelum `\documentclass`. Ekspor juga menyertakan `\providecolor` untuk warna pilihan, sehingga satu gambar bisa disalin ke templat yang hanya memuat TikZ.
+**Warna.** Opsi `dvipsnames` membuat nama seperti `ForestGreen` dan `BurntOrange` tersedia di seluruh dokumen. Muat `xcolor` sebelum TikZ. Jika kelas atau templat lebih dahulu memuat `xcolor`, letakkan `\PassOptionsToPackage{dvipsnames}{xcolor}` sebelum `\documentclass`. Studio menulis nama warna langsung di perintah gambar, misalnya `\draw[PineGreen] (A)--(B);`. Aktifkan `dvipsnames` saat memakai nama dari palet tersebut.
 
 | Mode | Tempat menempelkan hasil |
 | --- | --- |

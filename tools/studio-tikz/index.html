@@ -1572,15 +1572,6 @@ function makeCode(m,style,mode,scale=1) {
     put("\\begin{tikzpicture}[scale="+scale+", font=\\small]");
   }
   const tab=mode==="full"?"    ":"";
-  const coloredItems=mode==="coords"?m.points.filter(p=>p.mark&&style(p).dir!=="none"):m.items;
-  const colors=new Set();
-  for(const obj of coloredItems){
-    const s=style(obj);colors.add(s.color);
-    if(mode==="full"&&s.fillColor&&regionHasInterior(obj))colors.add(s.fillColor);
-  }
-  for(const name of colors)if(Object.hasOwn(namedColors,name)){
-    put(tab+"\\providecolor{"+name+"}{cmyk}{"+inks[name].cmyk+"}");
-  }
   const xy=p=>"("+numberTeX(p.x)+", "+numberTeX(p.y)+")";
   if(mode==="full"&&typeof exportRegionFills==="function")exportRegionFills(m,style,xy,tab,put);
   for(const p of m.points){
@@ -7463,7 +7454,7 @@ function renderCode(){
   }
   if(!currentLines.length){const p=document.createElement("div");p.className="plain";p.textContent=fullBlocked?"Periksa skala untuk menampilkan kode TikZ.":has?"Gambar ini belum memiliki koordinat titik.":"Kode akan muncul setelah kamu meletakkan titik atau menyelesaikan konstruksi.";frag.append(p);}
   $("code").replaceChildren(frag);
-  const o=m.values.get(selected);$("code-info").textContent=groupSelection.size?groupSelection.size+" objek terpilih":active&&o?objectName(o,m)+" · baris "+active.querySelector(".lineno").textContent:mode==="full"?"Blok tikzpicture untuk modul yang memuat TikZ.":"Tempel koordinat di dalam tikzpicture.";
+  const o=m.values.get(selected);$("code-info").textContent=groupSelection.size?groupSelection.size+" objek terpilih":active&&o?objectName(o,m)+" · baris "+active.querySelector(".lineno").textContent:mode==="full"?"Tempel gambar di badan dokumen setelah menyiapkan preamble.":"Tempel koordinat di dalam tikzpicture.";
   if(active&&!drag&&!groupSelection.size){const b=$("codebox"),a=active.getBoundingClientRect(),br=b.getBoundingClientRect();if(a.top<br.top||a.bottom>br.bottom)b.scrollTop+=a.top-br.top-b.clientHeight*.42;}
 }
 function renderInspector(){

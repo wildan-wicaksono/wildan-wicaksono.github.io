@@ -16,6 +16,8 @@ Kalau sedang menyiapkan diagram untuk modul olimpiade, saya biasanya membuka Geo
 
 Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas $AB$, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
 
+{% include studio-tikz-contoh.html %}
+
 ## Coba satu diagram
 
 Pada segitiga $ABC$, saya ingin menempatkan $D$ pada $AB$ sehingga $AD=2\cdot DB$. Di menu **Titik dan garis**, pilih **Titik dari rumus vektor**, ketik `D = (A + 2B) / 3`, lalu tekan **Enter**. Sekarang geser $B$. $D$ akan ikut bergerak dan pembagian ruasnya tetap sama. Di panel **Kode TikZ**, pilih **Gambar lengkap** untuk melihat bagaimana $D$ dinyatakan menggunakan $A$ dan $B$, atau **Koordinat saja** untuk mengambil nilai koordinatnya.
@@ -44,8 +46,6 @@ Bagian `at` menyatakan $D$ sebagai sepertiga $A$ ditambah dua pertiga $B$. Bagia
 </figure>
 
 <p><a href="{{ '/tools/studio-tikz/contoh-segitiga.stikz.json' | relative_url }}" download="contoh-segitiga.stikz.json">Unduh contoh segitiga</a>, lalu pilih <strong>Buka file</strong> di editor untuk menggeser titiknya sendiri.</p>
-
-{% include studio-tikz-contoh.html %}
 
 ## Belajar lewat animasi alat
 
@@ -79,7 +79,7 @@ Di panel **Kode TikZ**, bagian **Paket LaTeX** menampilkan preamble untuk gambar
 \end{document}
 ```
 
-Opsi **`dvipsnames`** menyediakan nama warna seperti `PineGreen` dan `ForestGreen` di seluruh modul. Muat `xcolor` sebelum TikZ. Jika kelas atau templat sudah memuat `xcolor` tanpa opsi itu, tulis `\PassOptionsToPackage{dvipsnames}{xcolor}` sebelum `\documentclass` untuk mengaktifkan palet yang sama.
+Opsi **`dvipsnames`** menyediakan nama warna seperti `PineGreen` dan `ForestGreen` di seluruh modul. Studio bisa langsung menulis `\draw[PineGreen] (A)--(B);` dengan preamble tersebut. Muat `xcolor` sebelum TikZ. Jika kelas atau templat sudah memuat `xcolor` tanpa opsi itu, tulis `\PassOptionsToPackage{dvipsnames}{xcolor}` sebelum `\documentclass` untuk mengaktifkan palet yang sama.
 
 - **Gambar lengkap.** Klik **Salin TikZ**, lalu tempel hasilnya setelah teks soal. Studio menyertakan `center` dan `tikzpicture`. Bagian **Paket LaTeX** juga menampilkan `\usetikzlibrary{angles}` ketika kode memakai `\pic` untuk busur sudut, dan `\usetikzlibrary{calc}` ketika kode memakai perhitungan koordinat vektor.
 - **Koordinat saja.** Klik **Salin koordinat**, lalu tempel di dalam `tikzpicture` milikmu. Kamu mendapatkan nama titik dan koordinat numerik, beserta opsi `label` pada titik berlabel. Setelahnya, kamu bisa menulis perintahmu sendiri, misalnya `\draw (A)--(B)--(C)--cycle;`.

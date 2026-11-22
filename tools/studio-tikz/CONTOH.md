@@ -33,7 +33,6 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
 <pre><code class="language-latex">\usetikzlibrary{angles}
 \begin{center}
 \begin{tikzpicture}[scale=1, font=\small]
-    \providecolor{MidnightBlue}{cmyk}{0.98,0.13,0,0.43}
     \coordinate (A) at (0, 0);
     \path (A) ++(-0.36, -0.29) node[inner sep=0pt] {$A$};
     \coordinate (B) at (1, 5);
@@ -95,9 +94,6 @@ Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$
 <details><summary>Lihat kode TikZ</summary>
 <pre><code class="language-latex">\begin{center}
 \begin{tikzpicture}[scale=1, font=\small]
-    \providecolor{MidnightBlue}{cmyk}{0.98,0.13,0,0.43}
-    \providecolor{PineGreen}{cmyk}{0.92,0,0.59,0.25}
-    \providecolor{BrickRed}{cmyk}{0,0.89,0.94,0.28}
     \coordinate (A) at (0, 0);
     \path (A) ++(-0.008, -0.3) node[inner sep=0pt] {$A$};
     \coordinate (B) at (9, 0);
