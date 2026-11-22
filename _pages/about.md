@@ -21,6 +21,7 @@ redirect_from:
       <a class="home-button" href="{{ '/publications/' | relative_url }}">View publications</a>
       <a class="home-button home-button--secondary" href="{{ '/teaching/' | relative_url }}">Teaching &amp; coaching</a>
       <a class="home-button home-button--secondary" href="{{ '/projects/' | relative_url }}">Explore projects</a>
+      <a class="home-button home-button--secondary" href="#contoh-studio-tikz">Contoh Studio TikZ</a>
     </div>
   </section>
 
@@ -68,6 +69,8 @@ redirect_from:
       </article>
     </div>
   </section>
+
+  {% include studio-tikz-contoh.html %}
 
   <section class="home-section" aria-labelledby="focus-heading">
     <div class="home-section-heading">

@@ -1,0 +1,64 @@
+.studio-contoh {
+  margin-block: 2.5rem;
+  min-width: 0;
+  container-type: inline-size;
+}
+.studio-contoh h2 { scroll-margin-top: 5rem; }
+.studio-contoh .studio-contoh-paket {
+  border-inline-start: .22rem solid #719d87;
+  padding-inline-start: 1rem;
+}
+.studio-contoh .studio-contoh-paket h3 { margin-top: 1rem; }
+.studio-contoh .studio-contoh-paket p { margin-block: .65rem; }
+.studio-contoh .studio-contoh-item { margin-block: 2rem; }
+.studio-contoh .studio-contoh-pasangan {
+  display: grid;
+  gap: .75rem 1.25rem;
+  align-items: start;
+}
+.studio-contoh .studio-contoh-pasangan > * { min-width: 0; }
+.studio-contoh .studio-contoh-pasangan figure { display: block; margin: 0; }
+.studio-contoh .studio-contoh-pasangan img {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 24rem;
+  padding: .7rem;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #b8c6be;
+  border-radius: .3rem;
+}
+.studio-contoh .studio-contoh-pasangan figcaption { display: block; margin: .5rem 0; line-height: 1.45; }
+.studio-contoh .studio-contoh-sumber h4 { margin: 0 0 .4rem; }
+.studio-contoh .studio-contoh-item > p:last-child { margin-top: .7rem; }
+.studio-contoh pre {
+  box-sizing: border-box;
+  margin: .5rem 0;
+  padding: .85rem;
+  max-width: 100%;
+  overflow: auto;
+  background: #f0f4f1;
+  color: #21362a;
+  tab-size: 4;
+}
+.studio-contoh .studio-contoh-sumber pre { max-height: 18rem; }
+.studio-contoh pre:focus-visible { outline: 2px solid #487d65; outline-offset: 2px; }
+.studio-contoh pre code {
+  display: block;
+  padding: 0;
+  border: 0;
+  white-space: pre;
+  overflow-wrap: normal;
+  background: transparent;
+  color: inherit;
+  font: .82rem/1.52 ui-monospace, Consolas, monospace;
+}
+@container (min-width: 38rem) {
+  .studio-contoh .studio-contoh-pasangan { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+}
+@media print {
+  .studio-contoh .studio-contoh-sumber pre { max-height: none; overflow: visible; }
+  .studio-contoh pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+}

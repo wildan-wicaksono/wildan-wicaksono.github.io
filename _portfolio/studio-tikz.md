@@ -10,11 +10,11 @@ header:
   teaser_alt: "Contoh diagram geometri yang dibuat di Studio TikZ"
 ---
 
+<p><a class="btn btn--primary" href="{{ '/tools/studio-tikz/index.html' | relative_url }}">Buka Studio TikZ</a> <a class="btn" href="#contoh-studio-tikz">Contoh dan kode LaTeX</a> <a class="btn" href="{{ '/tools/studio-tikz/index.html' | relative_url }}" download="Studio-TikZ.html">Unduh versi offline</a></p>
+
 Kalau sedang menyiapkan diagram untuk modul olimpiade, saya biasanya membuka GeoGebra, mencoba beberapa posisi titik sampai gambarnya enak dibaca, lalu melihat koordinatnya. Setelah itu saya pindah ke dokumen LaTeX dan mengetik TikZ secara manual. GeoGebra sebenarnya sudah menyediakan ekspor TikZ. Saya tetap sering menulis ulang kodenya karena punya kebiasaan sendiri dalam memberi nama titik, menempatkan label, memilih warna, dan menandai sudut.
 
 Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas $AB$, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
-
-<p><a class="btn btn--primary" href="{{ '/tools/studio-tikz/index.html' | relative_url }}">Buka Studio TikZ</a> <a class="btn" href="{{ '/tools/studio-tikz/index.html' | relative_url }}" download="Studio-TikZ.html">Unduh versi offline</a></p>
 
 ## Coba satu diagram
 
@@ -45,11 +45,7 @@ Bagian `at` menyatakan $D$ sebagai sepertiga $A$ ditambah dua pertiga $B$. Bagia
 
 <p><a href="{{ '/tools/studio-tikz/contoh-segitiga.stikz.json' | relative_url }}" download="contoh-segitiga.stikz.json">Unduh contoh segitiga</a>, lalu pilih <strong>Buka file</strong> di editor untuk menggeser titiknya sendiri.</p>
 
-## Tiga contoh dari diagram yang saya pakai
-
-Di modul, saya sering memerlukan lebih dari satu lingkaran atau beberapa garis yang bertemu dekat sebuah label. Saya menyiapkan tiga contoh dari diagram saya sendiri. Masing-masing memuat soal, urutan konstruksi, gambar hasil kompilasi, dan kode TikZ. Kamu juga bisa membuka gambarnya di Studio lalu menggeser titik acuannya.
-
-<p><a class="btn" href="{{ '/tools/studio-tikz/contoh-penggunaan.html' | relative_url }}">Lihat tiga contoh penggunaan</a></p>
+{% include studio-tikz-contoh.html %}
 
 ## Belajar lewat animasi alat
 

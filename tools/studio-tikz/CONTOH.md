@@ -29,15 +29,6 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
 
 <p><a class="btn btn--primary" href="./index.html#contoh/01-refleksi" target="_blank" rel="noopener">Buka di Studio</a> · <a href="./contoh-penggunaan/01-refleksi.stikz.json" download="01-refleksi.stikz.json">Unduh proyek</a> · <a href="./contoh-penggunaan/01-refleksi.tex" download="01-refleksi.tex">Unduh TikZ</a></p>
 
-**Cara menggambar di Studio**
-
-1. Pilih dua titik bebas $A$ dan $B$. Pilih **Busur dengan sudut**, masukkan $56^\circ$ dan pilih arah berlawanan jarum jam. Klik $B$ sebagai pusat, lalu $A$ sebagai titik awal. Dengan **Titik pada objek**, tempatkan $T$ di ujung lain busur dan $M$ di bagian dalamnya.
-2. Buat titik tengah $H$ dari $MT$. Tarik garis $BH$ dan $AM$, lalu beri nama titik potongnya $C$. Buat **Segitiga** $ABC$. Karena $BM=BT$, garis $BC$ adalah sumbu tegak lurus $MT$.
-3. Pakai **Refleksi terhadap garis** untuk mencerminkan $M$ terhadap $BC$. Namai bayangannya $N$ (posisinya berimpit dengan $T$). Potong $AN$ dengan sisi $BC$ untuk mendapatkan $O$. Buat lingkaran melalui $A,B,M$ dan lingkaran bertitik melalui $A,B,C$.
-4. Hubungkan $B$ ke $M$ dan $N$, lalu $N$ ke $C$. Buat $MN$ putus-putus dan tebalkan $MO$. Dengan **Busur sudut**, klik $A,B,N$ lalu pilih **Besar sudut otomatis**. Untuk sudut yang ditanyakan, klik $C,M,N$ dan tampilkan busurnya saja. Sembunyikan objek bantu $T$, $H$, garis, dan busur awal.
-
-Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$, dan kedua lingkaran mengikuti konstruksi, sedangkan label sudut di $B$ tetap menunjukkan $56^\circ$.
-
 <details><summary>Lihat kode TikZ</summary>
 <pre><code class="language-latex">\usetikzlibrary{angles}
 \begin{center}
@@ -81,6 +72,15 @@ Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$
 </code></pre>
 </details>
 
+**Cara menggambar di Studio**
+
+1. Pilih dua titik bebas $A$ dan $B$. Pilih **Busur dengan sudut**, masukkan $56^\circ$ dan pilih arah berlawanan jarum jam. Klik $B$ sebagai pusat, lalu $A$ sebagai titik awal. Dengan **Titik pada objek**, tempatkan $T$ di ujung lain busur dan $M$ di bagian dalamnya.
+2. Buat titik tengah $H$ dari $MT$. Tarik garis $BH$ dan $AM$, lalu beri nama titik potongnya $C$. Buat **Segitiga** $ABC$. Karena $BM=BT$, garis $BC$ adalah sumbu tegak lurus $MT$.
+3. Pakai **Refleksi terhadap garis** untuk mencerminkan $M$ terhadap $BC$. Namai bayangannya $N$ (posisinya berimpit dengan $T$). Potong $AN$ dengan sisi $BC$ untuk mendapatkan $O$. Buat lingkaran melalui $A,B,M$ dan lingkaran bertitik melalui $A,B,C$.
+4. Hubungkan $B$ ke $M$ dan $N$, lalu $N$ ke $C$. Buat $MN$ putus-putus dan tebalkan $MO$. Dengan **Busur sudut**, klik $A,B,N$ lalu pilih **Besar sudut otomatis**. Untuk sudut yang ditanyakan, klik $C,M,N$ dan tampilkan busurnya saja. Sembunyikan objek bantu $T$, $H$, garis, dan busur awal.
+
+Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$, dan kedua lingkaran mengikuti konstruksi, sedangkan label sudut di $B$ tetap menunjukkan $56^\circ$.
+
 ## 2. Tiga lingkaran pada garis berat segitiga
 
 **Soal.** Diberikan segitiga $ABC$ dengan $G$ titik potong ketiga garis beratnya. Titik $D$, $E$, dan $F$ berturut-turut merupakan titik tengah $BC$, $CA$, dan $AB$. Titik $D_1$, $E_1$, dan $F_1$ berturut-turut merupakan titik tengah $AG$, $BG$, dan $CG$. Buktikan bahwa lingkaran luar segitiga $D_1EF$, $DE_1F$, dan $DEF_1$ berpotongan di satu titik.
@@ -91,15 +91,6 @@ Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$
 </figure>
 
 <p><a class="btn btn--primary" href="./index.html#contoh/02-garis-berat" target="_blank" rel="noopener">Buka di Studio</a> · <a href="./contoh-penggunaan/02-garis-berat.stikz.json" download="02-garis-berat.stikz.json">Unduh proyek</a> · <a href="./contoh-penggunaan/02-garis-berat.tex" download="02-garis-berat.tex">Unduh TikZ</a></p>
-
-**Cara menggambar di Studio**
-
-1. Buat **Segitiga** $ABC$. Gunakan **Titik tengah** pada $BC$, $CA$, dan $AB$ untuk memperoleh $D$, $E$, dan $F$. Buat ruas $AD$, $BE$, dan $CF$. Dengan **Titik potong**, klik $AD$ dan $BE$ untuk membuat $G$.
-2. Gunakan **Titik tengah** sekali lagi pada $AG$, $BG$, dan $CG$. Namai hasilnya $D_1$, $E_1$, dan $F_1$. Dengan **Lingkaran lewat 3 titik**, pilih berturut-turut $(D_1,E,F)$, $(D,E_1,F)$, dan $(D,E,F_1)$.
-3. Pada gambar awal, klik dua lingkaran pertama dengan **Titik potong**, lalu pilih perpotongan selain $F$ untuk memperoleh $H$. Dalam proyek yang dapat diunduh, $H$ dikonstruksi sebagai bayangan $F$ terhadap garis penghubung kedua pusat lingkaran. Cara ini menjaga pilihan $H$ saat bentuk segitiga berubah. Kedua pusat dan sumbu cerminnya disembunyikan.
-4. Tambahkan ruas $DE$, $EH$, $HD$, $D_1H$, dan $HF$ sesuai gambar. Pilih **Pilih / geser**, lalu seret huruf yang berdekatan dengan titik potong agar ada ruang antara label dan garis.
-
-Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$ pada lingkaran biru dan hijau, lalu amati kedudukannya terhadap lingkaran merah.
 
 <details><summary>Lihat kode TikZ</summary>
 <pre><code class="language-latex">\begin{center}
@@ -155,6 +146,15 @@ Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$
 </code></pre>
 </details>
 
+**Cara menggambar di Studio**
+
+1. Buat **Segitiga** $ABC$. Gunakan **Titik tengah** pada $BC$, $CA$, dan $AB$ untuk memperoleh $D$, $E$, dan $F$. Buat ruas $AD$, $BE$, dan $CF$. Dengan **Titik potong**, klik $AD$ dan $BE$ untuk membuat $G$.
+2. Gunakan **Titik tengah** sekali lagi pada $AG$, $BG$, dan $CG$. Namai hasilnya $D_1$, $E_1$, dan $F_1$. Dengan **Lingkaran lewat 3 titik**, pilih berturut-turut $(D_1,E,F)$, $(D,E_1,F)$, dan $(D,E,F_1)$.
+3. Pada gambar awal, klik dua lingkaran pertama dengan **Titik potong**, lalu pilih perpotongan selain $F$ untuk memperoleh $H$. Dalam proyek yang dapat diunduh, $H$ dikonstruksi sebagai bayangan $F$ terhadap garis penghubung kedua pusat lingkaran. Cara ini menjaga pilihan $H$ saat bentuk segitiga berubah. Kedua pusat dan sumbu cerminnya disembunyikan.
+4. Tambahkan ruas $DE$, $EH$, $HD$, $D_1H$, dan $HF$ sesuai gambar. Pilih **Pilih / geser**, lalu seret huruf yang berdekatan dengan titik potong agar ada ruang antara label dan garis.
+
+Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$ pada lingkaran biru dan hijau, lalu amati kedudukannya terhadap lingkaran merah.
+
 ## 3. Garis singgung dan dua garis berat
 
 **Soal.** Diberikan segitiga $ABC$ yang tidak sama kaki dan garis $\ell$ yang menyinggung lingkaran luar segitiga $ABC$ di $C$. Titik $D$ dan $E$ berturut-turut merupakan titik tengah $BC$ dan $CA$. Garis $AD$ dan $BE$ memotong $\ell$ berturut-turut di $A_1$ dan $B_1$. Garis $AB_1$ memotong kembali lingkaran luar di $X$ selain $A$, dan $BA_1$ memotongnya kembali di $Y$ selain $B$. Buktikan bahwa $X$, $Y$, $D$, dan $E$ terletak pada satu lingkaran.
@@ -165,15 +165,6 @@ Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$
 </figure>
 
 <p><a class="btn btn--primary" href="./index.html#contoh/03-garis-singgung" target="_blank" rel="noopener">Buka di Studio</a> · <a href="./contoh-penggunaan/03-garis-singgung.stikz.json" download="03-garis-singgung.stikz.json">Unduh proyek</a> · <a href="./contoh-penggunaan/03-garis-singgung.tex" download="03-garis-singgung.tex">Unduh TikZ</a></p>
-
-**Cara menggambar di Studio**
-
-1. Buat **Segitiga** $ABC$ dan lingkaran luar melalui ketiga titik sudutnya. Buat titik tengah $D$ pada $BC$ serta $E$ pada $CA$. Tarik garis $AD$ dan $BE$.
-2. Pilih **Garis singgung dari titik**, klik titik $C$, lalu klik lingkaran luar. Dengan **Titik potong**, buat $A_1=AD\cap\ell$, $B_1=BE\cap\ell$, dan $T=DE\cap\ell$. Untuk perpotongan di luar segitiga, gunakan garis penuh.
-3. Tarik $AB_1$ dan $BA_1$. Potong kembali keduanya dengan lingkaran luar untuk mendapatkan $X$ dan $Y$. Lakukan hal serupa pada $AD$ dan $BE$ untuk mendapatkan $P$ selain $A$ dan $Q$ selain $B$.
-4. Buat lingkaran bantu melalui $D,E,P$ dengan garis bertitik, dan lingkaran kecil melalui $C,D,E$. Gambar $XT$ dan $TQ$ putus-putus. Tarik $QP$ tipis, lalu gunakan satu busur untuk masing-masing sudut $\angle EQP$, $\angle EDA$, dan $\angle BAD$.
-
-Coba aktifkan **Lihat objek tersembunyi**, pilih lingkaran **XYDE** di daftar objek, lalu klik **Tampilkan**. Lingkaran ini dibangun melalui $D,E,X$. Geser salah satu titik sudut segitiga dan periksa letak $Y$ terhadap lingkaran itu. Klik **Pas ke gambar** untuk melihat seluruh keliling.
 
 <details><summary>Lihat kode TikZ</summary>
 <pre><code class="language-latex">\usetikzlibrary{angles}
@@ -232,5 +223,14 @@ Coba aktifkan **Lihat objek tersembunyi**, pilih lingkaran **XYDE** di daftar ob
 \end{center}
 </code></pre>
 </details>
+
+**Cara menggambar di Studio**
+
+1. Buat **Segitiga** $ABC$ dan lingkaran luar melalui ketiga titik sudutnya. Buat titik tengah $D$ pada $BC$ serta $E$ pada $CA$. Tarik garis $AD$ dan $BE$.
+2. Pilih **Garis singgung dari titik**, klik titik $C$, lalu klik lingkaran luar. Dengan **Titik potong**, buat $A_1=AD\cap\ell$, $B_1=BE\cap\ell$, dan $T=DE\cap\ell$. Untuk perpotongan di luar segitiga, gunakan garis penuh.
+3. Tarik $AB_1$ dan $BA_1$. Potong kembali keduanya dengan lingkaran luar untuk mendapatkan $X$ dan $Y$. Lakukan hal serupa pada $AD$ dan $BE$ untuk mendapatkan $P$ selain $A$ dan $Q$ selain $B$.
+4. Buat lingkaran bantu melalui $D,E,P$ dengan garis bertitik, dan lingkaran kecil melalui $C,D,E$. Gambar $XT$ dan $TQ$ putus-putus. Tarik $QP$ tipis, lalu gunakan satu busur untuk masing-masing sudut $\angle EQP$, $\angle EDA$, dan $\angle BAD$.
+
+Coba aktifkan **Lihat objek tersembunyi**, pilih lingkaran **XYDE** di daftar objek, lalu klik **Tampilkan**. Lingkaran ini dibangun melalui $D,E,X$. Geser salah satu titik sudut segitiga dan periksa letak $Y$ terhadap lingkaran itu. Klik **Pas ke gambar** untuk melihat seluruh keliling.
 
 [Kembali ke panduan pengguna](./panduan.html)
