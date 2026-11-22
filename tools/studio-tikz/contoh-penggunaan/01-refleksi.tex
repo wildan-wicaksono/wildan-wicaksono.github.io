@@ -14,8 +14,8 @@
     \coordinate (O) at (3.1555, 0.9461);
     \path (O) ++(-0.37, 0.18) node[inner sep=0pt] {$O$};
 
-    \draw[thin] (1, 2.4) circle (2.6);
-    \draw[semithick, opacity=0.8, dotted] (1.82927, 2.23415) circle (2.8875);
+    \draw[semithick, PineGreen] (1, 2.4) circle (2.6);
+    \draw[semithick, MidnightBlue, opacity=0.8, dotted] (1.82927, 2.23415) circle (2.8875);
     \draw[semithick] (A)--(B);
     \draw[semithick] (B)--(C);
     \draw[semithick] (C)--(A);
@@ -23,11 +23,11 @@
     \draw[thin] (B)--(M);
     \draw[thin] (B)--(N);
     \draw[thin] (N)--(C);
-    \draw[thin, dashed] (M)--(N);
+    \draw[semithick, BrickRed, dashed] (M)--(N);
     \draw[thick] (M)--(O);
     \pic[draw=MidnightBlue, thick, angle radius=0.39cm] {angle=A--B--N};
     \node[inner sep=0pt, text=MidnightBlue] at (0.49, 4.38) {$56^{\circ}$};
-    \pic[draw=black, angle radius=0.39cm] {angle=C--M--N};
+    \pic[draw=BrickRed, thick, angle radius=0.39cm] {angle=C--M--N};
 
     % Radius cetak titik tetap 1.5pt saat scale diubah.
     \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}

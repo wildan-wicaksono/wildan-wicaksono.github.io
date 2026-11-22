@@ -194,7 +194,8 @@
         "M"
       ],
       "name": "ABMO",
-      "lineWidth": "thin"
+      "lineWidth": "semithick",
+      "color": "PineGreen"
     },
     {
       "id": "circumcircle",
@@ -207,7 +208,8 @@
       "name": "ABCN",
       "lineWidth": "semithick",
       "linePattern": "dotted",
-      "opacity": 80
+      "opacity": 80,
+      "color": "MidnightBlue"
     },
     {
       "id": "BM",
@@ -243,8 +245,9 @@
         "M",
         "N"
       ],
-      "lineWidth": "thin",
-      "linePattern": "dashed"
+      "lineWidth": "semithick",
+      "linePattern": "dashed",
+      "color": "BrickRed"
     },
     {
       "id": "MO",
@@ -280,7 +283,9 @@
         "M",
         "N"
       ],
-      "angleMark": "single"
+      "angleMark": "single",
+      "color": "BrickRed",
+      "lineWidth": "thick"
     }
   ]
 }

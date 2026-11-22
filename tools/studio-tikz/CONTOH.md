@@ -23,8 +23,8 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
 **Soal.** Diberikan segitiga $ABC$ dan titik $M$ terletak pada $\overline{AC}$. Titik $N$ merupakan bayangan pencerminan $M$ terhadap garis $BC$. Garis $AN$ memotong $\overline{BC}$ di $O$. Terlebih lagi, $A$, $B$, $M$, dan $O$ terletak pada lingkaran yang sama. Jika $\angle ABN=56^\circ$, berapakah besar $\angle CMN$?
 
 <figure>
-  <img src="./contoh-penggunaan/01-refleksi.svg" alt="Segitiga ABC dengan M pada AC, N hasil refleksi M, O pada BC, dan sudut 56 derajat di B." width="560" style="display:block;width:100%;max-width:560px;height:auto;max-height:590px;object-fit:contain;margin:0 auto;background:#fff;border-radius:4px;" loading="lazy">
-  <figcaption>Lingkaran bergaris penuh melalui $A$, $B$, $M$, dan $O$. Busur biru di $B$ menandai sudut yang diketahui. Busur di $M$ menandai sudut yang ditanyakan.</figcaption>
+  <img src="./contoh-penggunaan/01-refleksi.svg" alt="Dua lingkaran melalui A dan B, dengan busur biru 56 derajat di B dan ruas refleksi MN putus-putus merah bata." width="560" style="display:block;width:100%;max-width:560px;height:auto;max-height:590px;object-fit:contain;margin:0 auto;background:#fff;border-radius:4px;" loading="lazy">
+  <figcaption>Lingkaran hijau bergaris penuh melalui $A,B,M,O$, dan lingkaran biru bertitik melalui $A,B,C,N$. Busur biru di $B$ menandai sudut $56^\circ$. Ruas $MN$ dan busur di $M$ berwarna merah bata.</figcaption>
 </figure>
 
 <p><a class="btn btn--primary" href="./index.html#contoh/01-refleksi" target="_blank" rel="noopener">Buka di Studio</a> · <a href="./contoh-penggunaan/01-refleksi.stikz.json" download="01-refleksi.stikz.json">Unduh proyek</a> · <a href="./contoh-penggunaan/01-refleksi.tex" download="01-refleksi.tex">Unduh TikZ</a></p>
@@ -46,8 +46,8 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
     \coordinate (O) at (3.1555, 0.9461);
     \path (O) ++(-0.37, 0.18) node[inner sep=0pt] {$O$};
 
-    \draw[thin] (1, 2.4) circle (2.6);
-    \draw[semithick, opacity=0.8, dotted] (1.82927, 2.23415) circle (2.8875);
+    \draw[semithick, PineGreen] (1, 2.4) circle (2.6);
+    \draw[semithick, MidnightBlue, opacity=0.8, dotted] (1.82927, 2.23415) circle (2.8875);
     \draw[semithick] (A)--(B);
     \draw[semithick] (B)--(C);
     \draw[semithick] (C)--(A);
@@ -55,11 +55,11 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
     \draw[thin] (B)--(M);
     \draw[thin] (B)--(N);
     \draw[thin] (N)--(C);
-    \draw[thin, dashed] (M)--(N);
+    \draw[semithick, BrickRed, dashed] (M)--(N);
     \draw[thick] (M)--(O);
     \pic[draw=MidnightBlue, thick, angle radius=0.39cm] {angle=A--B--N};
     \node[inner sep=0pt, text=MidnightBlue] at (0.49, 4.38) {$56^{\circ}$};
-    \pic[draw=black, angle radius=0.39cm] {angle=C--M--N};
+    \pic[draw=BrickRed, thick, angle radius=0.39cm] {angle=C--M--N};
 
     % Radius cetak titik tetap 1.5pt saat scale diubah.
     \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}
@@ -75,8 +75,8 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
 
 1. Pilih dua titik bebas $A$ dan $B$. Pilih **Busur dengan sudut**, masukkan $56^\circ$ dan pilih arah berlawanan jarum jam. Klik $B$ sebagai pusat, lalu $A$ sebagai titik awal. Dengan **Titik pada objek**, tempatkan $T$ di ujung lain busur dan $M$ di bagian dalamnya.
 2. Buat titik tengah $H$ dari $MT$. Tarik garis $BH$ dan $AM$, lalu beri nama titik potongnya $C$. Buat **Segitiga** $ABC$. Karena $BM=BT$, garis $BC$ adalah sumbu tegak lurus $MT$.
-3. Pakai **Refleksi terhadap garis** untuk mencerminkan $M$ terhadap $BC$. Namai bayangannya $N$ (posisinya berimpit dengan $T$). Potong $AN$ dengan sisi $BC$ untuk mendapatkan $O$. Buat lingkaran melalui $A,B,M$ dan lingkaran bertitik melalui $A,B,C$.
-4. Hubungkan $B$ ke $M$ dan $N$, lalu $N$ ke $C$. Buat $MN$ putus-putus dan tebalkan $MO$. Dengan **Busur sudut**, klik $A,B,N$ lalu pilih **Besar sudut otomatis**. Untuk sudut yang ditanyakan, klik $C,M,N$ dan tampilkan busurnya saja. Sembunyikan objek bantu $T$, $H$, garis, dan busur awal.
+3. Pakai **Refleksi terhadap garis** untuk mencerminkan $M$ terhadap $BC$. Namai bayangannya $N$ (posisinya berimpit dengan $T$). Potong $AN$ dengan sisi $BC$ untuk mendapatkan $O$. Buat lingkaran melalui $A,B,M$ dengan warna `PineGreen`. Untuk lingkaran melalui $A,B,C$, pilih `MidnightBlue` dengan garis bertitik.
+4. Hubungkan $B$ ke $M$ dan $N$, lalu $N$ ke $C$. Buat $MN$ putus-putus dengan warna `BrickRed` dan tebalkan $MO$. Dengan **Busur sudut**, klik $A,B,N$ lalu pilih **Besar sudut otomatis**. Untuk sudut yang ditanyakan, klik $C,M,N$ dan beri warna `BrickRed` pada busurnya. Sembunyikan objek bantu $T$, $H$, garis, dan busur awal.
 
 Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$, dan kedua lingkaran mengikuti konstruksi, sedangkan label sudut di $B$ tetap menunjukkan $56^\circ$.
 
@@ -156,8 +156,8 @@ Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$
 **Soal.** Diberikan segitiga $ABC$ yang tidak sama kaki dan garis $\ell$ yang menyinggung lingkaran luar segitiga $ABC$ di $C$. Titik $D$ dan $E$ berturut-turut merupakan titik tengah $BC$ dan $CA$. Garis $AD$ dan $BE$ memotong $\ell$ berturut-turut di $A_1$ dan $B_1$. Garis $AB_1$ memotong kembali lingkaran luar di $X$ selain $A$, dan $BA_1$ memotongnya kembali di $Y$ selain $B$. Buktikan bahwa $X$, $Y$, $D$, dan $E$ terletak pada satu lingkaran.
 
 <figure>
-  <img src="./contoh-penggunaan/03-garis-singgung.svg" alt="Garis singgung di C memotong AD dan BE. Titik X, Y, D, dan E tampak bersama tiga busur sudut bantu." width="560" style="display:block;width:100%;max-width:560px;height:auto;max-height:590px;object-fit:contain;margin:0 auto;background:#fff;border-radius:4px;" loading="lazy">
-  <figcaption>Pada garis singgung terdapat $B_1$, $C$, $A_1$, dan $T$. Lingkaran bertitik melalui $D,E,P,Q$. Lingkaran kecil bergaris penuh melalui $C,D,E$.</figcaption>
+  <img src="./contoh-penggunaan/03-garis-singgung.svg" alt="Segitiga ABC berarsir biru muda, garis singgung merah bata di C, dua lingkaran bantu hijau, dan tiga penanda sudut ungu." width="560" style="display:block;width:100%;max-width:560px;height:auto;max-height:590px;object-fit:contain;margin:0 auto;background:#fff;border-radius:4px;" loading="lazy">
+  <figcaption>Isian biru 14% menandai bagian dalam segitiga $ABC$. Garis merah bata menyinggung lingkaran luar biru di $C$. Dua lingkaran bantu berwarna hijau, dan ketiga busur ungu menandai sudut yang dibandingkan.</figcaption>
 </figure>
 
 <p><a class="btn btn--primary" href="./index.html#contoh/03-garis-singgung" target="_blank" rel="noopener">Buka di Studio</a> · <a href="./contoh-penggunaan/03-garis-singgung.stikz.json" download="03-garis-singgung.stikz.json">Unduh proyek</a> · <a href="./contoh-penggunaan/03-garis-singgung.tex" download="03-garis-singgung.tex">Unduh TikZ</a></p>
@@ -166,6 +166,7 @@ Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$
 <pre><code class="language-latex">\usetikzlibrary{angles}
 \begin{center}
 \begin{tikzpicture}[scale=0.8, font=\small]
+    \fill[fill=MidnightBlue, fill opacity=0.14] (0, 0)--(0, 5)--(-6, 4)--cycle;
     \coordinate (A) at (0, 0);
     \path (A) ++(0.09, -0.512) node[inner sep=0pt] {$A$};
     \coordinate (B) at (0, 5);
@@ -191,24 +192,24 @@ Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$
     \coordinate (Y) at (-2.70955, 6.15503);
     \path (Y) ++(0.368, 0.368) node[inner sep=0pt] {$Y$};
 
-    \draw[thick] (-2.66667, 2.5) circle (3.65529);
-    \draw[thick, dotted] (-6.41667, 3.25) circle (3.63815);
-    \draw[thick] (-4.33333, 3.25) circle (1.82764);
+    \draw[thick, MidnightBlue] (-2.66667, 2.5) circle (3.65529);
+    \draw[thick, PineGreen, dotted] (-6.41667, 3.25) circle (3.63815);
+    \draw[thick, PineGreen] (-4.33333, 3.25) circle (1.82764);
     \draw[thick] (A)--(B);
     \draw[thick] (B)--(C);
     \draw[thick] (C)--(A);
     \draw[thick] (A)--(A1);
     \draw[thick] (B)--(B1);
-    \draw[thick] (B1)--(T);
+    \draw[thick, BrickRed] (B1)--(T);
     \draw[thin, dashed] (X)--(T);
     \draw[thin, dashed] (T)--(Q);
     \draw[thick] (E)--(T);
     \draw[thick] (B1)--(A);
     \draw[thick] (B)--(A1);
     \draw[thin, opacity=0.45] (Q)--(P);
-    \pic[draw=black, angle radius=0.39cm] {angle=E--Q--P};
-    \pic[draw=black, angle radius=0.39cm] {angle=E--D--A};
-    \pic[draw=black, angle radius=0.39cm] {angle=B--A--D};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=E--Q--P};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=E--D--A};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=B--A--D};
 
     % Radius cetak titik tetap 1.5pt saat scale diubah.
     \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}
@@ -222,11 +223,13 @@ Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$
 
 **Cara menggambar di Studio**
 
-1. Buat **Segitiga** $ABC$ dan lingkaran luar melalui ketiga titik sudutnya. Buat titik tengah $D$ pada $BC$ serta $E$ pada $CA$. Tarik garis $AD$ dan $BE$.
-2. Pilih **Garis singgung dari titik**, klik titik $C$, lalu klik lingkaran luar. Dengan **Titik potong**, buat $A_1=AD\cap\ell$, $B_1=BE\cap\ell$, dan $T=DE\cap\ell$. Untuk perpotongan di luar segitiga, gunakan garis penuh.
+1. Buat **Segitiga** $ABC$. Dengan **Pilih / geser**, klik bagian dalam segitiga, pilih `MidnightBlue` pada **Warna isian**, lalu atur **Opasitas isian** ke **14%**. Buat lingkaran luar biru melalui ketiga titik sudutnya. Buat titik tengah $D$ pada $BC$ serta $E$ pada $CA$. Tarik garis $AD$ dan $BE$.
+2. Pilih **Garis singgung dari titik**, klik titik $C$, lalu klik lingkaran luar. Dengan **Titik potong**, buat $A_1=AD\cap\ell$, $B_1=BE\cap\ell$, dan $T=DE\cap\ell$. Untuk perpotongan di luar segitiga, gunakan garis penuh. Hubungkan $B_1$ ke $T$ dengan ruas `BrickRed` untuk menampilkan bagian garis singgung seperti pada gambar.
 3. Tarik $AB_1$ dan $BA_1$. Potong kembali keduanya dengan lingkaran luar untuk mendapatkan $X$ dan $Y$. Lakukan hal serupa pada $AD$ dan $BE$ untuk mendapatkan $P$ selain $A$ dan $Q$ selain $B$.
-4. Buat lingkaran bantu melalui $D,E,P$ dengan garis bertitik, dan lingkaran kecil melalui $C,D,E$. Gambar $XT$ dan $TQ$ putus-putus. Tarik $QP$ tipis, lalu gunakan satu busur untuk masing-masing sudut $\angle EQP$, $\angle EDA$, dan $\angle BAD$.
+4. Pilih `PineGreen` untuk kedua lingkaran bantu. Buat lingkaran melalui $D,E,P$ dengan garis bertitik, dan lingkaran kecil melalui $C,D,E$ dengan garis penuh. Gambar $XT$ dan $TQ$ putus-putus. Tarik $QP$ tipis, lalu gunakan satu busur `RoyalPurple` untuk masing-masing sudut $\angle EQP$, $\angle EDA$, dan $\angle BAD$.
 
-Coba aktifkan **Lihat objek tersembunyi**, pilih lingkaran **XYDE** di daftar objek, lalu klik **Tampilkan**. Lingkaran ini dibangun melalui $D,E,X$. Geser salah satu titik sudut segitiga dan periksa letak $Y$ terhadap lingkaran itu. Klik **Pas ke gambar** untuk melihat seluruh keliling.
+Coba ubah **Opasitas isian** segitiga. Di panel **Kode TikZ**, nilai `fill opacity=0.14` mengikuti persentase yang kamu pilih. Garis dan huruf tetap terbaca saat isian dibuat lebih pucat.
+
+Aktifkan **Lihat objek tersembunyi**, pilih lingkaran **XYDE** di daftar objek, lalu klik **Tampilkan**. Lingkaran ini dibangun melalui $D,E,X$. Geser salah satu titik sudut segitiga dan periksa letak $Y$ terhadap lingkaran itu. Klik **Pas ke gambar** untuk melihat seluruh keliling.
 
 [Kembali ke panduan pengguna](./panduan.html)

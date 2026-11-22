@@ -14,8 +14,8 @@
     <p>Diberikan segitiga $ABC$ dan titik $M$ terletak pada $\overline{AC}$. Titik $N$ merupakan bayangan pencerminan $M$ terhadap garis $BC$. Garis $AN$ memotong $\overline{BC}$ di $O$. Terlebih lagi, $A$, $B$, $M$, dan $O$ terletak pada lingkaran yang sama. Jika $\angle ABN=56^\circ$, berapakah besar $\angle CMN$?</p>
     <div class="studio-contoh-pasangan">
       <figure>
-        <img src="{{ '/tools/studio-tikz/contoh-penggunaan/01-refleksi.svg' | relative_url }}" alt="Segitiga ABC dengan M pada AC, N hasil refleksi M, O pada BC, dan sudut 56 derajat di B." loading="lazy">
-        <figcaption>Lingkaran bergaris penuh melalui $A$, $B$, $M$, dan $O$. Busur biru di $B$ menandai sudut yang diketahui. Busur di $M$ menandai sudut yang ditanyakan.</figcaption>
+        <img src="{{ '/tools/studio-tikz/contoh-penggunaan/01-refleksi.svg' | relative_url }}" alt="Dua lingkaran melalui A dan B, dengan busur biru 56 derajat di B dan ruas refleksi MN putus-putus merah bata." loading="lazy">
+        <figcaption>Lingkaran hijau bergaris penuh melalui $A,B,M,O$, dan lingkaran biru bertitik melalui $A,B,C,N$. Busur biru di $B$ menandai sudut $56^\circ$. Ruas $MN$ dan busur di $M$ berwarna merah bata.</figcaption>
       </figure>
       <div class="studio-contoh-sumber">
         <h4>Kode TikZ</h4>
@@ -35,8 +35,8 @@
     \coordinate (O) at (3.1555, 0.9461);
     \path (O) ++(-0.37, 0.18) node[inner sep=0pt] {$O$};
 
-    \draw[thin] (1, 2.4) circle (2.6);
-    \draw[semithick, opacity=0.8, dotted] (1.82927, 2.23415) circle (2.8875);
+    \draw[semithick, PineGreen] (1, 2.4) circle (2.6);
+    \draw[semithick, MidnightBlue, opacity=0.8, dotted] (1.82927, 2.23415) circle (2.8875);
     \draw[semithick] (A)--(B);
     \draw[semithick] (B)--(C);
     \draw[semithick] (C)--(A);
@@ -44,11 +44,11 @@
     \draw[thin] (B)--(M);
     \draw[thin] (B)--(N);
     \draw[thin] (N)--(C);
-    \draw[thin, dashed] (M)--(N);
+    \draw[semithick, BrickRed, dashed] (M)--(N);
     \draw[thick] (M)--(O);
     \pic[draw=MidnightBlue, thick, angle radius=0.39cm] {angle=A--B--N};
     \node[inner sep=0pt, text=MidnightBlue] at (0.49, 4.38) {$56^{\circ}$};
-    \pic[draw=black, angle radius=0.39cm] {angle=C--M--N};
+    \pic[draw=BrickRed, thick, angle radius=0.39cm] {angle=C--M--N};
 
     % Radius cetak titik tetap 1.5pt saat scale diubah.
     \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}
@@ -129,14 +129,15 @@
     <p>Diberikan segitiga $ABC$ yang tidak sama kaki dan garis $\ell$ yang menyinggung lingkaran luar segitiga $ABC$ di $C$. Titik $D$ dan $E$ berturut-turut merupakan titik tengah $BC$ dan $CA$. Garis $AD$ dan $BE$ memotong $\ell$ berturut-turut di $A_1$ dan $B_1$. Garis $AB_1$ memotong kembali lingkaran luar di $X$ selain $A$, dan $BA_1$ memotongnya kembali di $Y$ selain $B$. Buktikan bahwa $X$, $Y$, $D$, dan $E$ terletak pada satu lingkaran.</p>
     <div class="studio-contoh-pasangan">
       <figure>
-        <img src="{{ '/tools/studio-tikz/contoh-penggunaan/03-garis-singgung.svg' | relative_url }}" alt="Garis singgung di C memotong AD dan BE. Titik X, Y, D, dan E tampak bersama tiga busur sudut bantu." loading="lazy">
-        <figcaption>Pada garis singgung terdapat $B_1$, $C$, $A_1$, dan $T$. Lingkaran bertitik melalui $D,E,P,Q$. Lingkaran kecil bergaris penuh melalui $C,D,E$.</figcaption>
+        <img src="{{ '/tools/studio-tikz/contoh-penggunaan/03-garis-singgung.svg' | relative_url }}" alt="Segitiga ABC berarsir biru muda, garis singgung merah bata di C, dua lingkaran bantu hijau, dan tiga penanda sudut ungu." loading="lazy">
+        <figcaption>Isian biru 14% menandai bagian dalam segitiga $ABC$. Garis merah bata menyinggung lingkaran luar biru di $C$. Dua lingkaran bantu berwarna hijau, dan ketiga busur ungu menandai sudut yang dibandingkan.</figcaption>
       </figure>
       <div class="studio-contoh-sumber">
         <h4>Kode TikZ</h4>
         <pre tabindex="0" aria-label="Kode TikZ lengkap contoh 3"><code class="language-latex">\usetikzlibrary{angles}
 \begin{center}
 \begin{tikzpicture}[scale=0.8, font=\small]
+    \fill[fill=MidnightBlue, fill opacity=0.14] (0, 0)--(0, 5)--(-6, 4)--cycle;
     \coordinate (A) at (0, 0);
     \path (A) ++(0.09, -0.512) node[inner sep=0pt] {$A$};
     \coordinate (B) at (0, 5);
@@ -162,24 +163,24 @@
     \coordinate (Y) at (-2.70955, 6.15503);
     \path (Y) ++(0.368, 0.368) node[inner sep=0pt] {$Y$};
 
-    \draw[thick] (-2.66667, 2.5) circle (3.65529);
-    \draw[thick, dotted] (-6.41667, 3.25) circle (3.63815);
-    \draw[thick] (-4.33333, 3.25) circle (1.82764);
+    \draw[thick, MidnightBlue] (-2.66667, 2.5) circle (3.65529);
+    \draw[thick, PineGreen, dotted] (-6.41667, 3.25) circle (3.63815);
+    \draw[thick, PineGreen] (-4.33333, 3.25) circle (1.82764);
     \draw[thick] (A)--(B);
     \draw[thick] (B)--(C);
     \draw[thick] (C)--(A);
     \draw[thick] (A)--(A1);
     \draw[thick] (B)--(B1);
-    \draw[thick] (B1)--(T);
+    \draw[thick, BrickRed] (B1)--(T);
     \draw[thin, dashed] (X)--(T);
     \draw[thin, dashed] (T)--(Q);
     \draw[thick] (E)--(T);
     \draw[thick] (B1)--(A);
     \draw[thick] (B)--(A1);
     \draw[thin, opacity=0.45] (Q)--(P);
-    \pic[draw=black, angle radius=0.39cm] {angle=E--Q--P};
-    \pic[draw=black, angle radius=0.39cm] {angle=E--D--A};
-    \pic[draw=black, angle radius=0.39cm] {angle=B--A--D};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=E--Q--P};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=E--D--A};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=B--A--D};
 
     % Radius cetak titik tetap 1.5pt saat scale diubah.
     \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}

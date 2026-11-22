@@ -48,7 +48,9 @@
         "B",
         "C"
       ],
-      "lineWidth": "thick"
+      "lineWidth": "thick",
+      "fillColor": "MidnightBlue",
+      "fillOpacity": 14
     },
     {
       "id": "AB",
@@ -89,7 +91,8 @@
         "C"
       ],
       "name": "ABC",
-      "lineWidth": "thick"
+      "lineWidth": "thick",
+      "color": "MidnightBlue"
     },
     {
       "id": "D",
@@ -143,7 +146,8 @@
         "omega"
       ],
       "tangentSide": 0,
-      "hidden": true
+      "hidden": true,
+      "color": "BrickRed"
     },
     {
       "id": "A1",
@@ -306,7 +310,8 @@
       ],
       "name": "DEPQ",
       "lineWidth": "thick",
-      "linePattern": "dotted"
+      "linePattern": "dotted",
+      "color": "PineGreen"
     },
     {
       "id": "circleCDE",
@@ -317,7 +322,8 @@
         "E"
       ],
       "name": "CDE",
-      "lineWidth": "thick"
+      "lineWidth": "thick",
+      "color": "PineGreen"
     },
     {
       "id": "circleXYDE",
@@ -355,7 +361,8 @@
         "B1",
         "T"
       ],
-      "lineWidth": "thick"
+      "lineWidth": "thick",
+      "color": "BrickRed"
     },
     {
       "id": "sXT",
@@ -423,7 +430,9 @@
         "P"
       ],
       "angleMark": "single",
-      "angleLabelMode": "none"
+      "angleLabelMode": "none",
+      "color": "RoyalPurple",
+      "lineWidth": "semithick"
     },
     {
       "id": "EDA",
@@ -434,7 +443,9 @@
         "A"
       ],
       "angleMark": "single",
-      "angleLabelMode": "none"
+      "angleLabelMode": "none",
+      "color": "RoyalPurple",
+      "lineWidth": "semithick"
     },
     {
       "id": "BAD",
@@ -445,7 +456,9 @@
         "D"
       ],
       "angleMark": "single",
-      "angleLabelMode": "none"
+      "angleLabelMode": "none",
+      "color": "RoyalPurple",
+      "lineWidth": "semithick"
     }
   ]
 }
