@@ -16,7 +16,20 @@ Kalau sedang menyiapkan diagram untuk modul olimpiade, saya biasanya membuka Geo
 
 Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas $AB$, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
 
+Di sebelah **Lembar**, menu **Tata letak** mengatur letak kanvas dan kode. Saya memilih **Berdampingan** saat ingin melihat kode di kanan sambil menggambar. Untuk diagram yang lebar, **Bertumpuk** memberi kanvas selebar halaman dan meletakkan kode di bawahnya. **Otomatis** mengikuti lebar layar. Browser mengingat pilihan ini saat Studio dibuka lagi.
+
 {% include studio-tikz-contoh.html %}
+
+## Pusat segitiga dan garis bagi sudut
+
+Untuk menggambar lingkaran dalam $ABC$, pilih **Segitiga → Lingkaran dalam** lalu klik bagian dalam segitiga. Studio menggambar lingkaran yang menyinggung ketiga sisi dan menandai pusatnya sebagai $I$. Untuk membuat lingkaran singgung luar di hadapan $A$, pilih **Segitiga → Lingkaran singgung luar**, klik segitiganya, lalu klik $A$. Pusatnya diberi nama $I_A$. Pilih $B$ atau $C$ pada langkah terakhir untuk memperoleh $I_B$ atau $I_C$. <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/excircle">Coba animasi lingkaran singgung luar.</a>
+
+<figure>
+  <img src="{{ '/assets/studio-tikz-lingkaran-dalam-dan-luar.svg' | relative_url }}" alt="Lingkaran biru berpusat di I menyinggung ketiga sisi ABC. Lingkaran hijau berpusat di I sub A menyinggung BC serta perpanjangan AB dan AC. Di B kedua garis bagi membentuk sudut siku-siku." width="600" height="330" loading="lazy" style="display:block;width:100%;max-width:600px;height:auto;margin:0 auto;">
+  <figcaption>Di titik $B$, garis $BI$ membagi sudut dalam dan garis $BI_A$ membagi sudut luar. Untuk menggambar masing-masing garis, pilih alat garis bagi yang sesuai lalu klik $A$, $B$, dan $C$, dengan $B$ sebagai titik kedua.</figcaption>
+</figure>
+
+Menu **Segitiga** juga menyediakan **Pusat lingkaran luar** untuk membuat $O$ dan **Titik tinggi (ortosenter)** untuk membuat $H$, titik potong ketiga garis tinggi. Dengan **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau lingkaran melewati kedua titik dan mengikuti kursor sampai kamu mengeklik posisi $C$ yang tidak segaris. <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#pusat-dan-lingkaran-segitiga">Lihat panduan pusat dan lingkaran segitiga.</a>
 
 ## Coba satu diagram
 
@@ -61,7 +74,7 @@ GIF di atas memperlihatkan satu diagram dari awal. Di dalam Studio, setiap alat 
   <figcaption>Geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Geser $D$ sepanjang $AB$ atau seret langsung ruas $DE$. Amati letak $E$ pada $AC$ ketika $DE$ tetap antiparalel terhadap $BC$. <a href="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}">Buka diagram antiparalel di halaman tersendiri.</a></figcaption>
 </figure>
 
-Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu mengamati satu klik, dan **Ulangi** mengembalikan animasi ke awal. Di bawah setiap animasi alat gambar, buka **Utak-atik contoh** untuk menggeser titik pada konstruksi yang baru diperagakan. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Seluruh 44 animasi alat dan 19 animasi editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
+Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu mengamati satu klik, dan **Ulangi** mengembalikan animasi ke awal. Di bawah setiap animasi alat gambar, buka **Utak-atik contoh** untuk menggeser titik pada konstruksi yang baru diperagakan. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Seluruh 52 animasi alat dan 19 animasi editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
 
 <p><a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#katalog-animasi">Lihat katalog semua animasi</a> · <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}">Baca panduan pengguna</a></p>
 

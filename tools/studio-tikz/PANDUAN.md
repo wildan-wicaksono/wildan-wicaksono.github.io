@@ -7,6 +7,8 @@ comments: false
 
 Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modul LaTeX. Kamu bisa mengambil gambar lengkap atau memakai koordinatnya saja jika sudah punya gaya TikZ sendiri. [Buka editor](./index.html) · [Pilih animasi dari katalog](#katalog-animasi).
 
+Di sebelah **Lembar**, pilih **Tata letak → Berdampingan** untuk melihat kanvas di kiri dan kode di kanan, atau **Bertumpuk** untuk menempatkan kode di bawah kanvas. **Otomatis** mengikuti lebar layar. Pilihan tersimpan di browser dan berlaku saat kamu membuka gambar lain.
+
 ## Gambar pertama dalam lima langkah
 
 Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot DB$, lalu menghubungkan $C$ ke $D$.
@@ -27,16 +29,32 @@ Untuk mengikuti satu soal dari awal sampai menjadi diagram modul, buka [tiga con
 | --- | --- |
 | Titik $P$ yang mengikuti lingkaran | Pilih **Titik** lalu klik keliling. Gunakan **Pilih / geser** untuk menggeser $P$ sepanjang lingkaran. Klik ruang kosong dengan alat Titik untuk membuat titik bebas. |
 | Garis antiparalel | Dalam segitiga $ABC$, pilih **Titik dan garis → Garis antiparalel**, klik $BC$, lalu klik sebuah titik $D$ pada $AB$. Perpotongan garis baru dengan $AC$ adalah $E$. Jika titiknya berbeda, $B$, $C$, $E$, dan $D$ terletak pada satu lingkaran. |
+| Lingkaran lewat tiga titik | Pilih **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau muncul selama posisi kursor dan kedua titik tidak segaris. Klik titik $C$ atau tempat kosong untuk menetapkan titik ketiga. |
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
 | Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Lingkaran → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat $O$, lalu $P$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
 
 Pada [diagram antiparalel interaktif](./latihan-antiparalel.html), geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Kamu juga bisa menggeser $D$ sepanjang $AB$ atau menyeret ruas $DE$. Saat segitiga berubah, $E$ mengikuti perpotongan garis antiparalel dengan $AC$. Perhatikan keempat titik $B$, $C$, $D$, dan $E$ pada satu lingkaran.
 
+### Pusat dan lingkaran segitiga
+
+Buka menu **Segitiga**, pilih alat yang diinginkan, lalu klik bagian dalam segitiga yang telah dibuat dengan alat **Segitiga**. Jika gambarmu hanya berisi titik dan ruas, pilih ketiga titik sudut satu per satu. Titik pusat dan lingkarannya mengikuti perubahan saat kamu menggeser salah satu titik sudut.
+
+| Alat | Hasil pada segitiga $ABC$ |
+| --- | --- |
+| **Pusat lingkaran luar** | $O$, perpotongan garis sumbu sisi. Jarak $OA$, $OB$, dan $OC$ sama. |
+| **Titik tinggi (ortosenter)** | $H$, perpotongan ketiga garis tinggi. Pada segitiga tumpul, $H$ berada di luar segitiga. |
+| **Pusat lingkaran dalam** atau **Lingkaran dalam** | $I$, perpotongan garis bagi sudut dalam. Alat lingkaran juga menggambar lingkaran yang menyinggung ketiga sisi. |
+| **Pusat lingkaran singgung luar** atau **Lingkaran singgung luar** | Setelah mengeklik segitiga, klik $A$, $B$, atau $C$ untuk memilih pusat $I_A$, $I_B$, atau $I_C$. Dengan cara tiga titik, klik titik sudut yang dihadapi lingkaran terlebih dahulu. Misalnya, urutan $B,C,A$ menghasilkan $I_B$. |
+
+Lingkaran singgung luar di hadapan $A$ menyinggung ruas $BC$ serta perpanjangan $AB$ dan $AC$. Jika $I_A$ sudah dibuat, alat **Lingkaran singgung luar** memakai pusat itu kembali. Jika nama khusus sudah dipakai titik lain, Studio menambahkan tanda prima pada nama pusat yang baru, misalnya $O'$.
+
+Untuk membagi $\angle BAC$, pilih **Garis bagi sudut dalam** atau **Garis bagi sudut luar**, lalu klik $B$, $A$, dan $C$. Titik kedua, $A$, adalah puncak sudut. Jika sudah ada penanda sudut di sana, cukup klik penandanya. Coba buat kedua garis lalu geser $C$. Kedua garis tetap tegak lurus satu sama lain.
+
 ### Mengikuti animasi sambil mencoba alat
 
 Buka **Panduan alat** di atas kanvas, lalu cari istilah seperti *singgung* atau *inversi*. Jika alatnya sudah dipilih, klik **?** di sebelah namanya. Tekan **Putar animasi** untuk melihat urutan pemilihan objek. Tekan **Jeda** untuk berhenti, gunakan tombol langkah sebelumnya atau berikutnya untuk mengikuti satu langkah, atau **Ulangi** untuk kembali ke awal. Setelah animasi alat gambar, pilih **Utak-atik contoh**. Seret titik acuan untuk melihat perubahan pada konstruksi. Contoh memakai kanvas tersendiri sehingga kamu bisa kembali ke gambar yang sedang dikerjakan.
 
-Misalnya, lihat [sisi acuan untuk antiparalel](./index.html#panduan/antiTriangle) atau [pemilihan objek untuk lingkaran dari tiga syarat](./index.html#panduan/circleConstraints). Semua 44 alat dan 19 topik editor memiliki animasi yang tersimpan dalam HTML. Versi luring dapat memutarnya tanpa koneksi internet.
+Misalnya, lihat [sisi acuan untuk antiparalel](./index.html#panduan/antiTriangle) atau [pemilihan objek untuk lingkaran dari tiga syarat](./index.html#panduan/circleConstraints). Semua 52 alat dan 19 topik editor memiliki animasi yang tersimpan dalam HTML. Versi luring dapat memutarnya tanpa koneksi internet.
 
 ## Menempelkan hasil ke LaTeX
 
@@ -129,7 +147,7 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | Animasi alat | Yang dicontohkan |
 | --- | --- |
 | [Lingkaran](./index.html#panduan/circle2) | Menggambar lingkaran dari pusat dan satu titik pada keliling. |
-| [Lingkaran lewat 3 titik](./index.html#panduan/circle3) | Menggambar lingkaran melalui tiga titik yang tidak segaris. |
+| [Lingkaran lewat 3 titik](./index.html#panduan/circle3) | Melihat pratinjau melalui dua titik dan kursor, lalu menetapkan titik ketiga. |
 | [Lingkaran dengan jari-jari](./index.html#panduan/circleRadius) | Menetapkan panjang jari-jari, lalu memilih pusat. |
 | [Lingkaran dengan rumus jari-jari](./index.html#panduan/circleFormula) | Menentukan jari-jari dari panjang ruas, operasi hitung, atau kuasa. |
 | [Lingkaran berdiameter](./index.html#panduan/diameter) | Menggambar lingkaran dari kedua ujung diameter. |
@@ -148,6 +166,19 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | [Inversi titik pada lingkaran](./index.html#panduan/invert) | Menemukan bayangan titik terhadap lingkaran inversi. |
 | [Inversi garis](./index.html#panduan/invertLine) | Menemukan bayangan garis terhadap lingkaran inversi. |
 | [Inversi lingkaran](./index.html#panduan/invertCircle) | Menemukan bayangan lingkaran terhadap lingkaran inversi. |
+
+### Segitiga
+
+| Animasi alat | Yang dicontohkan |
+| --- | --- |
+| [Pusat lingkaran luar](./index.html#panduan/circumcenter) | Menandai $O$ yang berjarak sama dari ketiga titik sudut. |
+| [Titik tinggi (ortosenter)](./index.html#panduan/orthocenter) | Menemukan titik potong garis tinggi $H$. |
+| [Pusat lingkaran dalam](./index.html#panduan/incenter) | Menandai $I$ yang berjarak sama dari ketiga sisi. |
+| [Lingkaran dalam](./index.html#panduan/incircle) | Menggambar lingkaran berpusat di $I$ yang menyinggung ketiga sisi. |
+| [Pusat lingkaran singgung luar](./index.html#panduan/excenter) | Memilih titik sudut untuk menentukan $I_A$, $I_B$, atau $I_C$. |
+| [Lingkaran singgung luar](./index.html#panduan/excircle) | Membuat lingkaran yang menyinggung satu sisi dan perpanjangan dua sisi lainnya. |
+| [Garis bagi sudut dalam](./index.html#panduan/bisectInternal) | Membagi sudut dalam menjadi dua sudut yang sama besar. |
+| [Garis bagi sudut luar](./index.html#panduan/bisectExternal) | Membagi sudut antara satu sisi dan perpanjangan sisi lainnya. |
 
 ### Bidang
 
