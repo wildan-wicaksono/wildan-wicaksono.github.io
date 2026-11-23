@@ -9,6 +9,8 @@ Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modu
 
 Di sebelah **Lembar**, pilih **Tata letak → Berdampingan** untuk melihat kanvas di kiri dan kode di kanan, atau **Bertumpuk** untuk menempatkan kode di bawah kanvas. **Otomatis** mengikuti lebar layar. Pilihan tersimpan di browser dan berlaku saat kamu membuka gambar lain.
 
+Untuk menyembunyikan titik-titik latar, hilangkan centang **Tampilkan kisi** di bawah kanvas, di sebelah **Latar**. Browser mengingat pilihan ini. **Lekat ke kisi 0,5** mengatur pelekatan titik secara terpisah.
+
 ## Gambar pertama dalam lima langkah
 
 Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot DB$, lalu menghubungkan $C$ ke $D$.

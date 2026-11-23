@@ -65,6 +65,7 @@ button:hover{background:#eaf0e6;border-color:#afbcac}
 .toolguide{background:#e9ede1;border-color:var(--rule);color:#405447}
 .toolguide strong{color:#2d4a35}
 .canvas-wrap{background-color:var(--paper);background-image:radial-gradient(var(--grid) .8px, transparent 1.05px)}
+.canvas-wrap[data-grid="off"]{background-image:none}
 .canvas-wrap.drag{background-color:var(--soft)}
 .canvas-start span{color:#586557;background:var(--paper)}
 #picture .geo-label{stroke:var(--paper)}
@@ -628,7 +629,7 @@ Derived file: studio-math-labels.woff
       </div>
       <div id="label-entry" hidden><label>Isi label <input type="text" id="label-text" aria-describedby="label-latex-hint" maxlength="140" placeholder="mis. panjang alas" autocomplete="off"></label><label>Format <select id="label-mode"><option value="text">Teks</option><option value="math">Matematika</option></select></label><span id="label-latex-hint" hidden>Contoh LaTeX <code>\frac{\alpha}{2}</code>, <code>\sqrt{x}</code>, <code>x_1^{2}</code>.</span></div>
       <div class="canvas-wrap" id="drawing"><svg id="picture" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Kanvas gambar geometri" tabindex="0"></svg><div class="canvas-start" id="empty-hint"><span>Klik untuk meletakkan titik pertama</span></div></div>
-      <div class="viewbar"><label class="paper-picker">Latar <select aria-label="Warna latar kanvas" id="paper-tone"><option value="cream">Krem</option><option value="sage">Sage</option><option value="mist">Biru kabut</option><option value="white">Putih</option></select></label><label class="check" id="hidden-filter" hidden><input id="show-hidden" type="checkbox">Lihat objek tersembunyi (<span id="hidden-count">0</span>)</label><label class="check"><input id="snap" type="checkbox">Lekat ke kisi 0,5</label><div class="actions compact"><button type="button" id="zoom-out" aria-label="Perkecil">−</button><button type="button" id="zoom-in" aria-label="Perbesar">+</button><button type="button" id="fit">Pas ke gambar</button></div></div>
+      <div class="viewbar"><label class="paper-picker">Latar <select aria-label="Warna latar kanvas" id="paper-tone"><option value="cream">Krem</option><option value="sage">Sage</option><option value="mist">Biru kabut</option><option value="white">Putih</option></select></label><label class="check"><input id="show-grid" type="checkbox" aria-controls="drawing" checked>Tampilkan kisi</label><label class="check" id="hidden-filter" hidden><input id="show-hidden" type="checkbox">Lihat objek tersembunyi (<span id="hidden-count">0</span>)</label><label class="check"><input id="snap" type="checkbox">Lekat ke kisi 0,5</label><div class="actions compact"><button type="button" id="zoom-out" aria-label="Perkecil">−</button><button type="button" id="zoom-in" aria-label="Perbesar">+</button><button type="button" id="fit">Pas ke gambar</button></div></div>
       <div class="inspector" id="inspector" hidden><div class="inspector-top"><label for="objects">Objek</label><select id="objects" aria-label="Objek terpilih"></select><div class="obj-actions"><button id="select-all-objects" type="button" title="Pilih semua objek (Ctrl+A atau ⌘A)">Pilih semua</button><button id="visibility" type="button">Sembunyikan</button><button id="delete" type="button">Hapus</button></div></div>
        <div class="appearance-controls" id="appearance-controls" hidden>
          <details class="ink-picker" id="ink-picker"><summary><span class="slabel">Warna</span><span class="ink-chip" id="ink-chip"></span><span id="ink-name">black</span></summary>
@@ -5106,6 +5107,16 @@ function bindSavedSelect(field,key,apply) {
     try{localStorage.setItem(key,field.value);}catch{}
   };
 }
+function bindGridVisibility() {
+  const field=$("show-grid"),canvas=$("drawing"),key="studio-tikz-show-grid";
+  try{field.checked=localStorage.getItem(key)!=="off";}catch{}
+  function apply(){canvas.dataset.grid=field.checked?"on":"off";}
+  apply();
+  field.onchange=()=>{
+    apply();
+    try{localStorage.setItem(key,canvas.dataset.grid);}catch{}
+  };
+}
 function bindWorkspaceLayout() {
   const field=$("workspace-layout"),workspace=$("workspace");
   const apply=()=>{workspace.dataset.layout=field.value;};
@@ -5557,10 +5568,10 @@ const otherGuideEntries={
     steps:[
       "Di samping Lembar, pilih Tata letak. Berdampingan menempatkan kode di kanan kanvas. Bertumpuk menempatkannya di bawah agar kanvas dapat memakai lebar halaman. Otomatis mengikuti lebar layar. Browser mengingat pilihanmu.",
       "Gunakan + atau − di bawah kanvas untuk memperbesar atau memperkecil tampilan. Klik Pas ke gambar agar gambar yang terlihat masuk ke kanvas.",
-      "Aktifkan Lekat ke kisi 0,5 sebelum menempatkan atau menyeret titik bebas yang ingin dirapikan."
+      "Hilangkan centang Tampilkan kisi di bawah kanvas untuk menyembunyikan titik-titik latar. Aktifkan Lekat ke kisi 0,5 jika ingin menempatkan atau menyeret titik bebas ke kelipatan 0,5."
     ],
     result:"Koordinat titik bebas mengikuti kisi, misalnya x = 1,5 dan y = 2. Ukuran gambar dalam dokumen diatur melalui Skala TikZ.",
-    terms:"tata letak layout preferensi berdampingan bertumpuk kiri kanan atas bawah zoom fit grid snap kisi pembesaran tampilan kanvas"
+    terms:"tata letak layout preferensi berdampingan bertumpuk kiri kanan atas bawah zoom fit grid snap kisi titik-titik latar pola titik background pembesaran tampilan kanvas"
   },
   "editor-theme":{
     group:"editor",title:"Tema dan latar kanvas",
@@ -9194,6 +9205,7 @@ async function loadSource(bytes,name,example=null,request=++openToken,start=gene
 }
 bindWorkbenchNav();
 bindWorkspaceLayout();
+bindGridVisibility();
 bindToolGuide();
 bindArcControls();
 for(const panel of extensionPanels)panel.init?.();
