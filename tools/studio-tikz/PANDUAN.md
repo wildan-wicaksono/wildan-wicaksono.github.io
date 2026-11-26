@@ -17,9 +17,15 @@ Pilihan **Indonesia / English** berlaku juga untuk panduan alat. Untuk memperbes
 
 ## Kisi dan koordinat
 
-Di bawah kanvas, **Tampilkan kisi** menampilkan petak persegi tanpa sumbu. Pada **Jarak kisi**, pilih 0,25, 0,5 (bawaan), atau 1 satuan. **Lekat ke kisi** bekerja meskipun garisnya disembunyikan. Browser mengingat ketiga pilihan ini. Saat kanvas digeser atau diperbesar, kisi tetap mengikuti koordinat gambar. Saat tampilan diperkecil jauh, sebagian garis disembunyikan agar terbaca. Langkah pelekatan tetap sama. Kisi hanya muncul di kanvas.
+Saat editor pertama kali dibuka, kisi persegi dan pelekatan ke kisi sudah aktif. Mencentang **Tampilkan kisi** juga mengaktifkan **Lekat ke kisi**. Pelekatan hanya bekerja di dekat perpotongan garis kisi. Hilangkan centang **Lekat ke kisi** jika ingin menempatkan titik bebas sangat dekat dengan perpotongan tanpa melekat. Menyembunyikan kisi mempertahankan pilihan pelekatan. Browser mengingat pengaturanmu.
 
-Untuk mencoba, atur **Jarak kisi** ke $1$ dan aktifkan **Lekat ke kisi**. Pilih **Titik**, lalu gerakkan kursor di area kosong sampai penanda menunjukkan $(2,0)$. Klik di sana. Pada **Objek**, periksa bahwa $x=2$ dan $y=0$. Saat titik bebas diseret, penanda menunjukkan koordinat tujuan. Titik yang sudah ada dan perpotongan mempertahankan posisinya. Titik yang terikat pada garis atau lingkaran tetap berada pada objeknya, meskipun posisinya di antara garis kisi.
+**Jarak kisi** menunjukkan langkah yang dipakai untuk meletakkan atau menggeser titik. Pada pembesaran kanvas 50%, jaraknya 2 satuan. Naikkan pembesaran ke 100% untuk jarak 1 satuan atau ke 200% untuk 0,5 satuan. Perubahan pembesaran yang kecil bisa tetap memakai langkah yang sama. Titik yang sudah digambar tetap di koordinatnya. Kisi persegi tanpa sumbu ini hanya muncul di kanvas.
+
+Untuk mencoba, atur pembesaran ke 100% dan pastikan **Lekat ke kisi** aktif. Pilih **Titik**, arahkan kursor ke ruang kosong, lalu klik saat penanda menunjukkan $(2,0)$. Untuk memindahkan titik itu, pilih **Pilih / geser** dan seret bulatan titiknya. Lepaskan saat penanda menunjukkan koordinat tujuan. Menyeret hurufnya hanya memindahkan label.
+
+Pada setiap langkah yang menerima titik baru, dekatkan kursor ke perpotongan kisi untuk melekat, atau klik di antara perpotongan untuk memakai posisi kursor. Misalnya, pilih **Poligon**, letakkan titik sudut pertama di $(2,0)$, lalu klik di tengah petak untuk membuat titik sudut kedua di luar kisi. Jika alat meminta objek yang sudah ada, misalnya lingkaran acuan untuk inversi, pilih langsung objek itu.
+
+Titik yang terikat pada garis atau lingkaran mengikuti objeknya saat diseret. Titik itu melekat ke perpotongan kisi terdekat jika perpotongan tersebut terletak pada objeknya. Titik potong dua objek tetap ditentukan oleh keduanya. Jika garis melalui dua titik bebas bisa digeser utuh, titik penentu pertama bisa melekat ke perpotongan kisi terdekat dan titik lainnya ikut berpindah sejauh dan searah dengannya. Untuk garis sejajar, tegak lurus, atau antiparalel yang bisa digeser, titik yang dilalui garis menjadi acuannya.
 
 ## Gambar pertama dalam lima langkah
 

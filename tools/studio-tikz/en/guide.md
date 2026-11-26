@@ -72,9 +72,15 @@ For an inversion with power $k=OA\cdot OB$, enter `OA * OB` after drawing both s
 
 ### Grid and coordinates
 
-Use **Show grid** under the canvas to display a square grid without axes. Under **Grid spacing**, choose 0.25, 0.5 (the default), or 1 unit. **Snap to grid** works even with the lines hidden. The browser remembers all three settings. The grid follows the drawing coordinates as you pan or zoom. When you zoom far out, some lines are hidden for readability and the snap interval stays the same. The grid appears only on the canvas.
+The square grid and grid snapping are on the first time you open the editor. Checking **Show grid** also turns on **Snap to grid**. Snapping takes effect only near the intersection of two grid lines. Clear **Snap to grid** to place a free point very close to an intersection without snapping. Hiding the grid preserves the current snap setting. The browser remembers your choices.
 
-To try it, set **Grid spacing** to $1$ and turn on **Snap to grid**. Choose **Point** and move the pointer over blank space until the marker reads $(2,0)$. Click there and check that the **Objects** panel shows $x=2$ and $y=0$. When you drag a free point, the marker shows its destination coordinates. Existing points and intersections keep their positions. A point attached to a line or circle stays on that object, even when its coordinates fall between grid lines.
+**Grid spacing** shows the interval used when placing or dragging a point. At 50% canvas zoom the interval is 2 units. Zoom to 100% for 1 unit or 200% for 0.5 units. A small zoom change can keep the same interval. Existing points stay at their coordinates. The square grid has no axes and appears only on the canvas.
+
+To try it, set the canvas zoom to 100% and make sure **Snap to grid** is on. Choose **Point**, move the pointer over blank space, and click when the marker reads $(2,0)$. To move the point, choose **Select / move** and drag its dot. Release when the marker shows the destination coordinates. Dragging the letter moves only its label.
+
+At any step that accepts a new point, move near a grid intersection to snap or click between intersections to use the pointer position. For example, choose **Polygon**, place the first vertex at $(2,0)$, then click in the middle of a square for an off-grid second vertex. If a tool asks for an existing object, such as the reference circle for inversion, select that object directly.
+
+A point attached to a line or circle stays on that object as you drag. It snaps to a nearby grid intersection if that intersection lies on the object. An intersection of two objects still follows both. When you drag an entire movable line through two free points, its first defining point can snap to a nearby grid intersection. The other point moves by the same distance in the same direction. For a movable parallel, perpendicular or antiparallel line, the point the line passes through acts as its anchor.
 
 ## Use the animation and interactive example
 

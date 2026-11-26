@@ -17,7 +17,7 @@ I made **Studio TikZ** to see a construction alongside the code that goes into m
 
 With **Point**, click a blank spot to create a free point, or click segment $AB$ to place $P$ on it. Switch to **Select / move** and drag $P$ along $AB$. When you move $B$, the point follows the segment. [Try the Point animation](../index.html?lang=en#panduan/point).
 
-When I know the coordinates I want, I turn on **Show grid** and **Snap to grid** under the canvas. With the grid spacing set to $1$, choose **Point** and move the pointer over blank space until the marker reads $(2,0)$. Click to place the point exactly there. The square grid has no axes and appears only on the canvas. [Grid and coordinates](guide.html#grid-and-coordinates).
+To place a point at exactly $(2,0)$, I check **Show grid**, which also turns on **Snap to grid**. At 100% zoom, **Grid spacing** reads $1$ unit. I choose **Point**, move the pointer over blank space, and click when the marker reads $(2,0)$. With **Polygon**, I can place the first vertex there too, then click in the middle of a square for an off-grid second vertex. Snapping takes effect only near a grid intersection. To move a point, choose **Select / move** and drag the dot. Dragging the letter moves its label. [Grid and coordinates](guide.html#grid-and-coordinates).
 
 Use **+** above the canvas to add a sheet, or choose several files with **Open file**. Each drawing has its own tab. In the **Sheet** menu, choose **Example sheets** to explore a construction or **Wildan’s worked examples** for olympiad diagrams. To return from an example, click the personal tab you want, or choose **My sheets → My drawing** for the last personal tab you used.
 

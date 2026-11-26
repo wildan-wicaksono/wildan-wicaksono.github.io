@@ -68,7 +68,7 @@ button:hover{background:#eaf0e6;border-color:#afbcac}
 .canvas-wrap{background-color:var(--paper)}
 .canvas-grid-lines{fill:none;stroke:var(--grid);stroke-width:1;stroke-opacity:.58;shape-rendering:crispEdges;pointer-events:none}
 .grid-spacing{display:inline-flex;align-items:center;gap:5px;font-size:.79rem}
-.grid-spacing select{font:inherit;min-height:30px;padding:3px 4px}
+.grid-spacing data{font-variant-numeric:tabular-nums;font-weight:600}
 #grid-coordinates{position:absolute;inset-inline-start:8px;inset-block-end:8px;z-index:1;pointer-events:none;background:var(--paper);border:1px solid var(--grid);border-radius:4px;color:var(--paper-text,var(--ink));font:.79rem/1.3 var(--mono);padding:3px 6px}
 
 .canvas-wrap.drag{background-color:var(--soft)}
@@ -714,7 +714,7 @@ Derived file: studio-math-labels.woff
         <p id="studio-clip-hint" aria-live="polite"></p>
       </section>
       <div class="canvas-wrap" id="drawing"><svg id="picture" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Kanvas gambar geometri" tabindex="0"></svg><div class="canvas-start" id="empty-hint"><span>Klik untuk meletakkan titik pertama</span></div><output id="grid-coordinates" aria-live="off" dir="ltr" hidden></output></div>
-      <div class="viewbar"><label class="paper-picker">Latar <select aria-label="Warna latar kanvas" id="paper-tone"><option value="cream">Krem</option><option value="sage">Sage</option><option value="mist">Biru kabut</option><option value="white">Putih</option></select></label><label class="check"><input id="show-grid" type="checkbox" aria-controls="drawing" checked>Tampilkan kisi</label><label class="check" id="hidden-filter" hidden><input id="show-hidden" type="checkbox">Lihat objek tersembunyi (<span id="hidden-count">0</span>)</label><label class="check"><input id="snap" type="checkbox">Lekat ke kisi</label><label class="grid-spacing" for="grid-step">Jarak kisi <select id="grid-step"><option value="0.25">0,25</option><option value="0.5" selected>0,5</option><option value="1">1</option></select></label><button type="button" id="open-studio-clip" aria-expanded="false" aria-controls="studio-clip-panel">Clip gambar</button><div class="actions compact"><button type="button" id="zoom-out" aria-label="Perkecil" title="Perkecil (−)">−</button><label class="canvas-zoom-value"><input type="text" inputmode="decimal" aria-label="Pembesaran kanvas dalam persen" title="Pembesaran kanvas dalam persen" id="canvas-zoom" value="100" autocomplete="off" spellcheck="false">%</label><button type="button" id="zoom-in" aria-label="Perbesar" title="Perbesar (+)">+</button><button type="button" id="fit">Pas ke gambar</button></div></div>
+      <div class="viewbar"><label class="paper-picker">Latar <select aria-label="Warna latar kanvas" id="paper-tone"><option value="cream">Krem</option><option value="sage">Sage</option><option value="mist">Biru kabut</option><option value="white">Putih</option></select></label><label class="check"><input id="show-grid" type="checkbox" aria-controls="drawing" checked>Tampilkan kisi</label><label class="check" id="hidden-filter" hidden><input id="show-hidden" type="checkbox">Lihat objek tersembunyi (<span id="hidden-count">0</span>)</label><label class="check"><input id="snap" type="checkbox" checked>Lekat ke kisi</label><span class="grid-spacing">Jarak kisi <data id="grid-step" value="1">1</data></span><button type="button" id="open-studio-clip" aria-expanded="false" aria-controls="studio-clip-panel">Clip gambar</button><div class="actions compact"><button type="button" id="zoom-out" aria-label="Perkecil" title="Perkecil (−)">−</button><label class="canvas-zoom-value"><input type="text" inputmode="decimal" aria-label="Pembesaran kanvas dalam persen" title="Pembesaran kanvas dalam persen" id="canvas-zoom" value="100" autocomplete="off" spellcheck="false">%</label><button type="button" id="zoom-in" aria-label="Perbesar" title="Perbesar (+)">+</button><button type="button" id="fit">Pas ke gambar</button></div></div>
       <div class="inspector" id="inspector" hidden><div class="inspector-top"><label for="objects">Objek</label><select id="objects" aria-label="Objek terpilih"></select><div class="obj-actions"><button id="select-all-objects" type="button" title="Pilih semua objek (Ctrl+A atau ⌘A)">Pilih semua</button><button id="visibility" type="button">Sembunyikan</button><button id="delete" type="button">Hapus</button></div></div>
        <div class="appearance-controls" id="appearance-controls" hidden>
          <details class="ink-picker" id="ink-picker"><summary><span class="slabel">Warna</span><span class="ink-chip" id="ink-chip"></span><span id="ink-name">black</span></summary>
@@ -1797,6 +1797,20 @@ function numberTeX(x) {
   const s=Number(x.toFixed(5));
   return Object.is(s,-0)?"0":String(s);
 }
+// Free points carry the entered or snapped coordinate. Keep its full precision
+// and write small values in decimal form so a TikZ dimension never needs an exponent.
+const coordinateDecimal=new Intl.NumberFormat("en-US",{useGrouping:false,maximumSignificantDigits:21});
+function pointNumberTeX(value,free){
+  if(!free){
+    // At maximum canvas zoom the grid is spaced 1/128 unit apart. Projection
+    // on a construction can differ from an exact node by a few floating-point ulps.
+    const node=Math.round(value*128)/128;
+    const tolerance=Math.min(1e-8,32*Number.EPSILON*Math.max(1,Math.abs(value)));
+    if(Math.abs(value-node)>tolerance)return numberTeX(value);
+    value=node;
+  }
+  return coordinateDecimal.format(value===0?0:value);
+}
 // TikZ's default is 0.4 pt. Earlier Studio projects explicitly exported thick paths.
 const strokeWidths={default:.4,"ultra thin":.1,"very thin":.2,thin:.4,semithick:.6,thick:.8,"very thick":1.2,"ultra thick":1.6};
 const strokePatterns=["solid",...["dashed","dotted","dash dot","dash dot dot"].flatMap(name=>[name,"densely "+name,"loosely "+name])];
@@ -1902,7 +1916,7 @@ function makeCode(m,style,mode,scale=1,clip=null) {
     put("\\begin{tikzpicture}[scale="+scale+", font=\\small]");
   }
   const tab=mode==="full"?"    ":"";
-  const xy=p=>"("+numberTeX(p.x)+", "+numberTeX(p.y)+")";
+  const xy=p=>"("+pointNumberTeX(p.x,p.free)+", "+pointNumberTeX(p.y,p.free)+")";
   if(crop){
     put(tab+"\\begin{scope}");
     put(tab+"\\clip "+studioClipPathTeX(crop,xy,scale)+";",clip.type==="object"?[clip.ref]:[]);
@@ -3226,19 +3240,18 @@ const studioFigureEnglish = {
   "Aktifkan Pilih / geser dan tekan ruang kosong pada kanvas.": "Choose Select / move and press an empty area of the canvas.",
   "Sambil menahan tombol mouse, geser ke kanan atas.": "Hold the mouse button and drag up and to the right.",
   "Lepaskan. A dan B berpindah bersama di layar, sedangkan panjang AB tetap.": "Release. A and B move together on screen while AB keeps its length.",
-  "Kisi persegi berjarak 0,25 satuan. Dengan Lekat ke kisi, A dapat ditempatkan pada (1,25; 2).": "The square grid has 0.25-unit spacing. With Snap to grid on, you can place A at (1.25, 2).",
-  "(1,25; 2)": "(1.25, 2)",
+  "Pada pembesaran 100%, jarak kisi adalah 1 satuan. Penanda menunjukkan letak A di (2, 0).": "At 100% zoom, the grid spacing is 1 unit. The marker shows A at (2, 0).",
   "Pas ke gambar": "Fit drawing",
   "Pilih Bertumpuk agar kode berada di bawah kanvas. Pilih Berdampingan untuk membacanya di kanan.": "Choose Stacked to put the code below the canvas, or Side by side to read it on the right.",
   "Tata letak": "Layout",
   "Bertumpuk": "Stacked",
-  "Centang Tampilkan kisi. Di Jarak kisi, pilih 0,25 untuk melihat petak berukuran seperempat satuan.": "Turn on Show grid. Under Grid spacing, choose 0.25 to display quarter-unit squares.",
+  "Atur pembesaran ke 100%, lalu centang Tampilkan kisi. Jarak kisi menunjukkan 1 satuan dan pelekatan aktif.": "Set the zoom to 100% and check Show grid. Grid spacing reads 1 unit and snapping is on.",
   "Jarak kisi": "Grid spacing",
   "0,25": "0.25",
-  "Aktifkan Lekat ke kisi. Dengan alat Titik, arahkan kursor ke perpotongan garis kisi dan baca koordinatnya.": "Turn on Snap to grid. With Point selected, hover over a grid intersection and read its coordinates.",
+  "Dengan alat Titik, arahkan kursor ke perpotongan garis kisi dan baca koordinat pada penanda.": "With Point selected, hover over a grid intersection and read the coordinates on the marker.",
   "Lekat ke kisi": "Snap to grid",
   "Aktif": "On",
-  "Klik saat koordinat menunjukkan (1,25; 2) untuk menempatkan A.": "Click when the coordinates read (1.25, 2) to place A.",
+  "Klik saat koordinat menunjukkan (2, 0) untuk menempatkan A.": "Click when the coordinates read (2, 0) to place A.",
   "Klik + untuk memperbesar, atau Pas ke gambar untuk melihat seluruh konstruksi.": "Click + to zoom in, or Fit drawing to see the entire construction.",
   "Gambar yang sama pada tema terang dan gelap. Pilihan Tema dan Latar mengatur tampilan di layar.": "The same drawing in light and dark themes. Theme and Background control its appearance on screen.",
   "Krem": "Cream",
@@ -4239,7 +4252,7 @@ function studioExtraDynamicEnglish(s,t){
 // title | purpose | steps (one per column) | result. IDs also identify the illustrated examples.
 const englishGuideRows = `
 move|Select / move|Select and edit objects, or move points and their labels.|Click an object on the canvas or choose it in the Objects list.|Drag a free point by its dot. Drag its letter to move only the label.|Dependent constructions follow the point. A constrained point slides along its parent.
-point|Point|Place a free point, a point on an object, or an intersection with the same tool.|Click empty space for a free point. This also works inside a filled shape when the pointer is clear of its boundary, other lines and points.|Click a line, segment, ray, polygon edge, circle or arc to attach the point there. With Select / move, drag the dot along the object.|Click the cross at an intersection to attach the point to both objects. To slide it along just one object, hold Shift and click that object near the crossing. Click an existing point to select it again.|In the example, P is free, Q stays on the circle, and R follows the intersection of the segment and circle. Try dragging P, Q, then one endpoint of the segment.
+point|Point|Place a free point, a point on an object, or an intersection with the same tool.|Click blank space for a free point, including inside a filled shape away from its boundary, lines and other points. With Snap to grid on, a nearby grid intersection attracts the point. Click in the middle of a square for an off-grid point.|Click a line, segment, ray, polygon edge, circle or arc to attach the point there. With Select / move, drag the dot along the object.|Click the cross at an intersection to attach the point to both objects. To slide it along just one object, hold Shift and click that object near the crossing. Click an existing point to select it again.|In the example, P is free, Q stays on the circle, and R follows the intersection of the segment and circle. Try dragging P, Q, then one endpoint of the segment.
 pointFormula|Point from vector formula|Define a point by a linear combination of coordinates.|Place A and B. In Point formula enter D = (A + 2B) / 3. Clicking an existing point inserts its name.|Check the coordinates. Press Enter or choose Create point.|D divides AB internally in the ratio AD ∶ DB = 2 ∶ 1 and follows both endpoints.
 mid|Midpoint|Construct the midpoint of two points.|Click the first endpoint A, then the second endpoint B.|The midpoint remains equidistant from A and B. You can use this tool even before drawing AB.
 cut|Intersection|Find intersections of two lines, segments, rays, circles, or arcs.|Click the first object, then the second. For this tool a segment is extended to its supporting line.|All available intersections appear. Two intersecting circles can produce two points in one operation.
@@ -4273,7 +4286,7 @@ invert|Inversion|Invert a point, segment, ray, line, arc, circle, polygon, secto
 invertLine|Invert a line|Find the inverse image of a line, segment or ray.|Click the original object. To invert the full supporting line use Line through two points. To invert a segment or a ray select that object.|Click the inversion circle centered at O. This example uses a full line g.|A full line away from O maps to a circle through O. A segment AB on that line maps to the arc between A* and B* that avoids O. A segment collinear with O stays a segment if O lies outside it. When O is an endpoint, the rest of the segment maps to a ray.
 invertCircle|Invert a circle|Find the inverse image of a circle, arc or sector.|Click the original circle or arc, or click inside the sector to select the entire region. Use the source-object list when several objects overlap.|Click the reference circumference. Click the same circumference twice to invert the reference circle in itself.|A full circle through O maps to a line. An arc traces just its own image. The image of a sector includes both radius images and the image of its arc. A fill follows the corresponding side of the boundary, extending outside it when O lies inside the original region.
 regularPolygon|Regular polygon|Construct a polygon with equal sides and equal interior angles.|Enter the number of sides, for example 6 for a hexagon. Choose the direction.|Click two consecutive vertices to define the first side.|The other vertices and sides are constructed automatically and follow the initial side.
-polygon|Polygon|Construct a triangle, quadrilateral, or another polygon by choosing its vertices in order.|Select Polygon. Click A, B, then C in boundary order. Click an existing point to reuse it or click empty space to add a vertex.|To finish triangle ABC, click A again or press Enter. Its three vertices must be noncollinear. For more sides, continue with D, E, and any further vertices before closing.|With Select / move, click inside to adjust the fill color and opacity. Click an edge to select its segment.|If you close the shape after three points, Studio recognizes a triangle. For example, select Incircle and click inside ABC. In the interactive example, drag a vertex to change the triangle or pentagon.
+polygon|Polygon|Construct a triangle, quadrilateral, or another polygon by choosing its vertices in order.|Select Polygon. Click A, B, then C in boundary order. Click an existing point to reuse it or click blank space to add a vertex. Starting with the first vertex, click near a grid intersection to snap or in the middle of a square to use your pointer position.|To finish triangle ABC, click A again or press Enter. Its three vertices must be noncollinear. For more sides, continue with D, E, and any further vertices before closing.|With Select / move, click inside to adjust the fill color and opacity. Click an edge to select its segment.|If you close the shape after three points, Studio recognizes a triangle. For example, select Incircle and click inside ABC. In the interactive example, drag a vertex to change the triangle or pentagon.
 translate|Translation|Translate an object by a vector defined by two points.|Click the source object. Click inside a region to select a whole polygon or sector. The source-object list also lets you choose an image from an earlier transformation.|Click the start P and then the end Q of the translation vector.|Each point of the image moves the same distance and direction as the displacement from P to Q.
 rotate|Rotation|Rotate an object through a given angle about a center.|Enter the rotation in degrees. A positive angle turns counterclockwise. Enter −90 for a clockwise quarter turn.|Click inside a shape to rotate it as a whole, or choose the object from the source list. Click the center. Select the result to edit the angle later.|Corresponding points remain equally far from the center.
 reflect|Reflect|Reflect an object in a point or a line with the same tool.|Click the source object. To reflect a polygon as a whole, click inside it. Use the source-object list when objects overlap.|Click a point for central reflection. Click a line, segment, ray, or polygon side to reflect in its supporting line.|In the example, A′ is the reflection of A in line g, and A″ is its reflection in point O. Drag A, O, or an endpoint of g to compare the images.
@@ -4302,7 +4315,7 @@ editor-undo|Cancel, delete, and undo|Discard an unfinished construction or rever
 editor-selection|Select and edit several objects|Apply one action to a selection of objects.|With Select / move, hold Ctrl or ⌘ and click to add or remove objects. Select all or Ctrl+A selects the diagram, including hidden objects.|Choose a common color or visibility, save a group for later, or press Delete. Check the selection count first.|Deleting parent objects also removes their dependent constructions. Undo restores them together.
 editor-pan|Pan and scroll the canvas|Explore the diagram without moving its geometric points.|Scroll vertically, use Shift+wheel horizontally, or scroll with two fingers on a trackpad.|With Select / move drag empty space. With a construction tool drag the middle mouse button. Use Ctrl+wheel to zoom around the pointer.|Fit drawing brings the whole diagram back into view.
 editor-clip|Clip drawing|Choose which part of the diagram appears on the canvas and in TikZ.|Open Clip drawing below the canvas. For a rectangular boundary, click two opposite corners.|To follow an existing boundary, choose a full circle or polygon. Moving its defining points moves the clip.|Remove the clip to see the complete construction again. Save the project to keep the clipping boundary.|Points, labels and lines outside the boundary remain in the construction. Full drawing exports the same clipping path.
-editor-view|Layout, zoom, and grid|Arrange the canvas and code, zoom in, or place a free point precisely.|Next to Sheet, choose Layout. Side by side puts the code on the right, Stacked puts it below, and Automatic follows the screen width.|Use + or − to zoom, enter a percentage, or choose Fit drawing.|Turn on Show grid to display square cells. Set Grid spacing to 0.25, 0.5 (default), or 1 unit.|With Snap to grid on, free points snap to the chosen spacing even when the grid is hidden. Hover over empty space with Point to see the coordinates before clicking. They also appear as you drag a free point.|With 0.25 spacing, you can place A at (1.25, 2). Points on objects and intersections follow their constructions. The grid appears only on the canvas.
+editor-view|Layout, zoom, and grid|Arrange the canvas and code, zoom in, or place a free point precisely.|Next to Sheet, choose Layout. Side by side puts the code on the right, Stacked puts it below, and Automatic follows the screen width.|Use + or − to zoom, enter a percentage, or choose Fit drawing.|The grid and snapping are on when you first open the editor. Checking Show grid turns on Snap to grid. Snapping takes effect only near a grid intersection. Clear Snap to grid to turn it off. Hiding the grid preserves your snap setting. The browser remembers your choices.|Grid spacing shows the interval for the current zoom. The interval is 2 units at 50%, 1 unit at 100%, and 0.5 units at 200%. A small zoom change can keep the same interval. Existing points stay at their coordinates.|At any step that accepts a new point, click near a grid intersection to snap or in the middle of a square to place the point freely. This includes the first vertex of a polygon. If a tool asks for an existing object, select that object. To move a free point, choose Select / move and drag the dot. Dragging the letter moves its label.|When you drag an attached point, it snaps to a nearby grid intersection only if that intersection lies on its object. An intersection of two objects follows both. When you drag a movable line, its anchor can snap to a nearby grid intersection and the whole line moves with it.|At 100% zoom, you can place A at exactly (2, 0). The grid appears only on the canvas.
 editor-theme|Theme and canvas background|Choose a comfortable drawing background.|Choose System, Light, or Dark in the top bar. Use Background under the canvas to choose the paper tone.|The browser remembers your choices. Exported TikZ uses the object inks you selected.
 editor-project|Save and reopen a project|Keep the construction and styling for later editing or transfer.|Choose Save project to download the active sheet as a .stikz.json file. Give different projects distinct filenames.|Choose Open file or drop the project onto the canvas to reopen it. Select several files to open each drawing in its own tab.|The file preserves references, formulas and styling and can be moved to another browser or device.
 editor-import|Open a GeoGebra diagram|Use a two-dimensional .ggb construction as the starting point for TikZ.|Choose Open file or drop the .ggb file on the canvas. Check the imported objects and adjust their styles.|Points use stored coordinates. Recognized circles through points follow those points.
@@ -4424,6 +4437,7 @@ function bindStudioLanguage(){
       const prev=originalText.get(node);
       const original=prev&&node.data===prev.last?prev.original:node.data;
       let translated=studioLanguage==="en"&&el.dataset.familyNameEn?el.dataset.familyNameEn:studioTranslate(original);
+      if(el.id==="grid-step"&&studioLanguage==="en")translated=original.replace(",",".");
       if(el.closest(".guide-motion-buttons")&&original==="Ulangi"&&studioLanguage==="en")translated="Replay";
       if(el.closest(".quickhelp,#guide,#tex-library-note,.guide-figure figcaption,.guide-motion-status")&&/[A-Z].*[A-Z]|[A-Z]_[A-Z0-9]|∠|[0-9]°/.test(translated)){
         const span=document.createElement("span");
@@ -5114,16 +5128,29 @@ registerPanel({
 });
 
 "use strict";
+function tangentContactPoint(e,circle){
+  const pos=posFromEvent(e),inClip=doc.clip?studioClipPointTest():null;
+  const existing=model.points.find(p=>inEditor(p)&&(!inClip||inClip(p))&&dist(p,pos)*units().k<8&&circleDistance(circle,p)<1e-8*Math.max(1,circle.r));
+  if(existing)return {type:"existing",position:existing,key:existing.key};
+  const projected=projectGuidePoint(circle,"curve",pos);
+  if(!projected)return null;
+  const candidate=compatibleGridProjection(circle,"curve",projected,e.pointerType,pos);
+  const chosen=inClip&&!inClip(candidate.point)?projected:candidate;
+  if(inClip&&!inClip(chosen.point))return null;
+  return {type:"on",position:chosen.point,params:chosen.params,gridPoint:chosen.gridPoint};
+}
 registerTool("tangentAt",{
   title:"Garis singgung pada keliling",category:"circle",refs:["c"],
   hints:["Klik keliling lingkaran atau busur di posisi yang ingin disinggung."],
-  finish({objects,refs,add,name,model,position}){
+  contactPoint:tangentContactPoint,
+  finish({objects,refs,add,name,model,position,contact}){
     const circle=objects[0];
-    const existing=model.points.find(p=>!p.hidden&&dist(p,position)*units().k<8&&circleDistance(circle,p)<1e-8*Math.max(1,circle.r));
+    const existing=contact?contact.type==="existing"?contact.position:null:
+      model.points.find(p=>!p.hidden&&dist(p,position)*units().k<8&&circleDistance(circle,p)<1e-8*Math.max(1,circle.r));
     let pointKey=existing?.key;
     if(!pointKey){
-      const point=add("on",refs,{name:name()});
-      setSlidingPosition(point,circle,position);
+      const point=add("on",refs,{name:name(),...contact?.params});
+      if(!contact)setSlidingPosition(point,circle,position);
       pointKey=point.id;
     }
     return add("tangent",[pointKey,refs[0]],{tangentSide:0});
@@ -6041,6 +6068,11 @@ function triangleUnderCursor(e){
     return signs.every(s=>s>=0)||signs.every(s=>s<=0);
   });
 }
+function acceptsTrianglePoint(type,placement){
+  const triangle=model.values.get(pending[0]);
+  if(!oppositeVertexTool(type)||triangle?.kind!=="polygon")return true;
+  return placement?.type==="existing"&&triangleCornerIds(triangle,doc.steps).includes(placement.key);
+}
 function pickTriangleReference(type,e){
   if(!pending.length){
     if(hitObject(e,"p"))return false;
@@ -6051,7 +6083,8 @@ function pickTriangleReference(type,e){
     else if(!completeTool()){pending.pop();refresh();}
     return true;
   }
-  if(oppositeVertexTool(type)&&model.values.get(pending[0])?.kind==="polygon"&&!hitObject(e,"p",{pointLabels:false})){
+  if(oppositeVertexTool(type)&&model.values.get(pending[0])?.kind==="polygon"&&
+      !acceptsTrianglePoint(type,{type:"existing",key:hitObject(e,"p",{pointLabels:false})?.key})){
     notice("Klik tepat pada salah satu dari ketiga titik sudut segitiga.");return true;
   }
   return false;
@@ -6062,7 +6095,7 @@ for(const [type,title] of Object.entries(triangleCenterTitles)){
     "Klik titik sudut kedua.","Klik titik sudut ketiga."];
   registerTool(type,{title,category:"triangle",refs:triangleCenterInputs,hints,
     hint:()=>external&&model.values.get(pending[0])?.kind==="polygon"?"Klik titik sudut yang berhadapan dengan sisi singgung.":hints[pending.length],
-    pickReference:e=>pickTriangleReference(type,e),finish:ctx=>constructTriangleCenter(type,ctx)});
+    pickReference:e=>pickTriangleReference(type,e),acceptPointPreview:p=>acceptsTrianglePoint(type,p),finish:ctx=>constructTriangleCenter(type,ctx)});
 }
 // Looking up a circle's center also respects previously created or renamed triangle centers.
 function selectTriangleCircleCenter(circle){
@@ -7307,7 +7340,7 @@ function bindAngleInspector(){
 // on Escape, tool changes, undo, and opening another project.
 let studioClipDraft=null;
 function studioClipEditing(){return studioClipDraft!==null;}
-function clearStudioClipDraft(){studioClipDraft=null;}
+function clearStudioClipDraft(){if(studioClipDraft)pointPreview=null;studioClipDraft=null;}
 // Test the native, world-space mask before picking. SVG clips rendering, but
 // editor snapping and hit testing also consider nearby geometry numerically.
 function studioClipPointTest(){
@@ -7388,7 +7421,7 @@ function bindStudioClip(){
   };
   mode.onchange=()=>{
     if(!studioClipEditing())return;
-    studioClipDraft={mode:mode.value==="object"?"object":"rectangle"};render();
+    pointPreview=null;studioClipDraft={mode:mode.value==="object"?"object":"rectangle"};render();
   };
   $("studio-clip-object").onchange=e=>{
     const ref=e.target.value;
@@ -7409,12 +7442,12 @@ function studioClipClick(e){
     else{draft.message="Pilih poligon, lingkaran penuh, atau juring sebagai batas clip.";renderStudioClipControls();}
     return true;
   }
-  const p=rounded(posFromEvent(e));
+  const placement=canvasPositionPlacement(e),p=placement.position;
   if(!finitePoint(p)||Math.max(Math.abs(p.x),Math.abs(p.y))>1e8){
     draft.message="Masukkan koordinat di antara −100.000.000 dan 100.000.000.";renderStudioClipControls();return true;
   }
   if(!draft.a){
-    draft.a=p;draft.b=null;draft.message="";renderStudioClipControls();renderCanvas();
+    pointPreview=null;draft.a=p;draft.b=null;draft.message="";renderStudioClipControls();renderCanvas();
   }else if(draft.a.x===p.x||draft.a.y===p.y){
     draft.message="Kedua sudut harus berbeda arah mendatar dan tegak.";renderStudioClipControls();
   }else applyStudioClip({type:"rectangle",a:draft.a,b:p});
@@ -7426,8 +7459,10 @@ function studioClipMove(e){
   if(draft.mode==="object"){
     const ref=hitObject(e,"r|c",{clipRegions:true})?.key;
     if(ref!==draft.ref){draft.ref=ref;renderCanvas();}
-  }else if(draft.a){
-    draft.b=rounded(posFromEvent(e));renderCanvas();
+  }else{
+    const previous=pointPreview;pointPreview=canvasPositionPlacement(e);
+    if(draft.a)draft.b=pointPreview.position;
+    if(draft.a||hasPointPreviewMarker(previous)||hasPointPreviewMarker(pointPreview))renderCanvas();
   }
   return true;
 }
@@ -8148,21 +8183,30 @@ function bindSavedSelect(field,key,apply) {
   };
 }
 function bindGridVisibility() {
-  const visibility=$("show-grid"),snap=$("snap"),spacing=$("grid-step"),canvas=$("drawing");
+  const visibility=$("show-grid"),snap=$("snap"),canvas=$("drawing");
+  const visibilityKey="studio-tikz-show-grid",snapKey="studio-tikz-snap-grid";
+  function readCheck(key,fallback){
+    try{
+      const saved=localStorage.getItem(key);
+      if(saved==="on"||saved==="off")return saved==="on";
+    }catch{}
+    return fallback;
+  }
+  function saveCheck(key,checked){
+    try{localStorage.setItem(key,checked?"on":"off");}catch{}
+  }
   function redraw(){
     canvas.dataset.grid=visibility.checked?"on":"off";
     hover=null;pointPreview=null;renderCanvas();
   }
-  function bindCheck(field,key,defaultOn){
-    try{const saved=localStorage.getItem(key);field.checked=saved==="on"||saved!=="off"&&defaultOn;}catch{}
-    field.onchange=()=>{
-      redraw();
-      try{localStorage.setItem(key,field.checked?"on":"off");}catch{}
-    };
-  }
-  bindCheck(visibility,"studio-tikz-show-grid",true);
-  bindCheck(snap,"studio-tikz-snap-grid",false);
-  bindSavedSelect(spacing,"studio-tikz-grid-step",redraw);
+  visibility.checked=readCheck(visibilityKey,true);
+  snap.checked=readCheck(snapKey,visibility.checked);
+  visibility.onchange=()=>{
+    saveCheck(visibilityKey,visibility.checked);
+    if(visibility.checked){snap.checked=true;saveCheck(snapKey,true);}
+    redraw();
+  };
+  snap.onchange=()=>{saveCheck(snapKey,snap.checked);redraw();};
   canvas.dataset.grid=visibility.checked?"on":"off";
 }
 function bindWorkspaceLayout() {
@@ -8317,7 +8361,7 @@ const basicGuideEntries={
   },
   point:{
     purpose:"Menempatkan titik bebas, titik pada objek, atau titik potong dengan alat yang sama.",
-    steps:["Klik ruang kosong untuk membuat titik bebas. Ini juga berlaku di dalam bangun berisi warna, selama kursor jauh dari garis, keliling, atau titik lain.","Klik garis, ruas, sinar, sisi poligon, atau keliling lingkaran maupun busur untuk mengikat titik di sana. Dengan Pilih / geser, seret bulatannya sepanjang objek.","Klik penanda silang di perpotongan untuk mengikat titik pada kedua objek. Jika ingin titik yang tetap bisa digeser sepanjang satu objek, tahan Shift lalu klik pada objek itu di dekat persilangan. Klik titik yang sudah ada untuk memilihnya kembali."],
+    steps:["Klik ruang kosong untuk membuat titik bebas, termasuk di dalam bangun berisi warna yang jauh dari tepinya. Saat Lekat ke kisi aktif, kursor yang dekat perpotongan kisi akan melekat. Klik di tengah petak untuk menempatkan titik di luar kisi.","Klik garis, ruas, sinar, sisi poligon, atau keliling lingkaran maupun busur untuk mengikat titik di sana. Dengan Pilih / geser, seret bulatannya sepanjang objek.","Klik penanda silang di perpotongan untuk mengikat titik pada kedua objek. Jika ingin titik yang tetap bisa digeser sepanjang satu objek, tahan Shift lalu klik pada objek itu di dekat persilangan. Klik titik yang sudah ada untuk memilihnya kembali."],
     result:"Pada contoh, P bebas, Q tetap pada keliling, dan R mengikuti perpotongan ruas dengan lingkaran. Coba seret P, Q, lalu salah satu ujung ruas.",
     terms:"titik pada objek titik bebas titik terikat keliling busur batas geser melekat snap kisi potong point on object point on an object constrained point free point intersection"
   },
@@ -8538,7 +8582,7 @@ const otherGuideEntries={
   polygon:{
     purpose:"Membuat segitiga, segiempat, atau poligon lain dengan memilih titik sudutnya secara berurutan.",
     steps:[
-      "Pilih Poligon. Klik A, B, dan C mengikuti batas bangun. Klik titik yang ada untuk memakainya atau klik ruang kosong untuk membuat titik baru.",
+      "Pilih Poligon. Klik A, B, dan C mengikuti batas bangun. Klik titik yang ada untuk memakainya atau klik ruang kosong untuk membuat titik baru. Mulai dari titik sudut pertama, kamu bisa melekat ke perpotongan kisi yang dekat atau mengeklik di tengah petak untuk memakai posisi kursor.",
       "Untuk segitiga ABC, klik kembali A atau tekan Enter. Ketiga titiknya harus tidak segaris. Untuk membuat lebih banyak sisi, lanjutkan dengan D, E, dan seterusnya sebelum menutup bangun.",
       "Dengan Pilih / geser, klik bagian dalam untuk mengatur warna dan opasitas isian. Klik sisi untuk memilih ruas tersebut."
     ],
@@ -8730,10 +8774,12 @@ const otherGuideEntries={
     steps:[
       "Di samping Lembar, pilih Tata letak. Berdampingan menempatkan kode di kanan kanvas. Bertumpuk menempatkannya di bawah agar kanvas dapat memakai lebar halaman. Otomatis mengikuti lebar layar. Browser mengingat pilihanmu.",
       "Tekan tombol + atau − pada keyboard, atau isi persentase pembesaran di bawah kanvas, misalnya 150. Klik Pas ke gambar untuk melihat seluruh diagram.",
-      "Di bawah kanvas, centang Tampilkan kisi untuk melihat petak persegi. Pilih Jarak kisi sebesar 0,25, 0,5 (awal), atau 1 satuan.",
-      "Aktifkan Lekat ke kisi agar titik bebas menempel pada kelipatan jarak itu, termasuk saat kisi disembunyikan. Dengan alat Titik, arahkan kursor ke ruang kosong untuk melihat koordinat sebelum mengeklik. Koordinat juga terlihat saat titik bebas diseret."
+      "Kisi dan pelekatan aktif saat pertama kali editor dibuka. Mencentang Tampilkan kisi mengaktifkan Lekat ke kisi. Pelekatan hanya bekerja di dekat perpotongan kisi. Hilangkan centang Lekat ke kisi untuk mematikannya. Menyembunyikan kisi mempertahankan pilihan pelekatan. Browser mengingat pilihanmu.",
+      "Jarak kisi menunjukkan langkah yang dipakai pada pembesaran saat ini. Pada 50% jaraknya 2 satuan, pada 100% jaraknya 1, dan pada 200% jaraknya 0,5. Saat pembesaran berubah sedikit, langkahnya bisa tetap sama. Titik yang sudah digambar tetap di koordinatnya.",
+      "Pada langkah yang menerima titik baru, klik di dekat perpotongan kisi untuk melekat atau di tengah petak untuk menempatkan titik bebas. Ini juga berlaku pada titik sudut pertama Poligon. Jika alat meminta objek yang sudah ada, pilih objek itu. Untuk memindahkan titik bebas, pilih Pilih / geser lalu seret bulatan titik. Menyeret huruf memindahkan labelnya.",
+      "Saat titik terikat diseret, titik hanya melekat ke perpotongan kisi yang dekat dan terletak pada objeknya. Titik potong dua objek mengikuti kedua objek. Pada garis yang bisa digeser utuh, titik acuan bisa melekat ke perpotongan kisi yang dekat dan seluruh garis berpindah bersama."
     ],
-    result:"Dengan jarak 0,25, kamu bisa menempatkan A di (1,25; 2). Titik pada objek dan titik potong mengikuti konstruksinya. Kisi hanya terlihat di kanvas.",
+    result:"Pada pembesaran 100%, kamu bisa menempatkan A tepat di (2, 0). Kisi hanya terlihat di kanvas.",
     terms:"tata letak layout preferensi berdampingan bertumpuk kiri kanan atas bawah zoom fit grid snap kisi persegi petak kotak presisi koordinat jarak 0,25 0,5 latar background pembesaran tampilan kanvas"
   },
   "editor-theme":{
@@ -9512,11 +9558,11 @@ const editorHelpScenes={
     }
   },
   view:{
-    caption:"Kisi persegi berjarak 0,25 satuan. Dengan Lekat ke kisi, A dapat ditempatkan pada (1,25; 2).",
+    caption:"Pada pembesaran 100%, jarak kisi adalah 1 satuan. Penanda menunjukkan letak A di (2, 0).",
     draw(g){
       g.grid(36,39,5,4,26);
       g.circle(114,91,7,g.accent,{width:1.3});
-      g.text(101,161,"(1,25; 2)");
+      g.text(101,161,"(2, 0)");
       g.named([114,91],"A",12,-8);
       g.box(216,47,43,33);g.box(268,47,43,33);g.text(237,70,"−",{size:20});g.text(289,70,"+",{size:20});
       g.box(202,91,124,31);g.text(264,112,"Pas ke gambar");
@@ -10094,9 +10140,9 @@ const editorMotionScenes={
     base:[5,6,7,8,9,10],
     steps:[
       {text:"Pilih Bertumpuk agar kode berada di bawah kanvas. Pilih Berdampingan untuk membacanya di kanan.",setting:{label:"Tata letak",value:"Bertumpuk"},show:[]},
-      {text:"Centang Tampilkan kisi. Di Jarak kisi, pilih 0,25 untuk melihat petak berukuran seperempat satuan.",setting:{label:"Jarak kisi",value:"0,25"},show:[0]},
-      {text:"Aktifkan Lekat ke kisi. Dengan alat Titik, arahkan kursor ke perpotongan garis kisi dan baca koordinatnya.",setting:{label:"Lekat ke kisi",value:"Aktif"},at:[114,91],show:[1,2]},
-      {text:"Klik saat koordinat menunjukkan (1,25; 2) untuk menempatkan A.",at:[114,91],show:[3,4]},
+      {text:"Atur pembesaran ke 100%, lalu centang Tampilkan kisi. Jarak kisi menunjukkan 1 satuan dan pelekatan aktif.",setting:{label:"Pembesaran",value:"100%"},show:[0]},
+      {text:"Dengan alat Titik, arahkan kursor ke perpotongan garis kisi dan baca koordinat pada penanda.",setting:{label:"Lekat ke kisi",value:"Aktif"},at:[114,91],show:[1,2]},
+      {text:"Klik saat koordinat menunjukkan (2, 0) untuk menempatkan A.",at:[114,91],show:[3,4]},
       {text:"Klik + untuk memperbesar, atau Pas ke gambar untuk melihat seluruh konstruksi.",at:[289,64],show:[]}
     ]
   },
@@ -10942,7 +10988,6 @@ function bindCanvasNavigation(){
     }else panBy(dx,dy);
   },{passive:false});
   canvas.addEventListener("auxclick",event=>{if(event.button===1)event.preventDefault();});
-  canvas.addEventListener("lostpointercapture",event=>endPan(event,true));
   canvas.addEventListener("keydown",event=>{
     if(event.key==="Escape"&&pan){
       endPan({pointerId:pan.id},true);event.preventDefault();event.stopPropagation();return;
@@ -13279,10 +13324,12 @@ function renderCanvas(){
     }
     }
   }
-  if(hasPointPreviewMarker(pointPreview)){
-    const p=S(pointPreview.position),snap=svg("g",{"pointer-events":"none","aria-hidden":"true","class":"point-snap"});
+  const snapPosition=drag?($("snap").checked&&drag.snapPoint):hasPointPreviewMarker(pointPreview)?pointPreview.position:null;
+  if(snapPosition){
+    const p=S(snapPosition),snap=svg("g",{"pointer-events":"none","aria-hidden":"true","class":"point-snap"});
+    if(drag)snap.setAttribute("data-drag-grid","");
     snap.append(svg("circle",{cx:p.x,cy:p.y,r:7,fill:"var(--snap-paper,#fffaf0)","fill-opacity":.8,stroke:"var(--snap-ink,#265d49)","stroke-width":1.7}));
-    if(pointPreview.type==="cut"){
+    if(!drag&&pointPreview.type==="cut"){
       snap.append(svg("path",{d:"M "+(p.x-3)+" "+(p.y-3)+" l 6 6 m 0 -6 l -6 6",stroke:"var(--snap-ink,#265d49)","stroke-width":1.5}));
     }else snap.append(svg("circle",{cx:p.x,cy:p.y,r:2.4,fill:"var(--snap-ink,#265d49)"}));
     frag.append(snap);
@@ -13386,7 +13433,7 @@ function renderInspector(){
   $("line-controls").hidden=!s||obj?.kind!=="segment"||obj.infinite;$("point-controls").hidden=!s||!obj||obj.kind!=="point";
   if(!obj||!s)return;
   if(obj.kind==="point"){
-    $("pname").value=s.name;$("px").value=numberTeX(obj.x);$("py").value=numberTeX(obj.y);
+    $("pname").value=s.name;$("px").value=pointNumberTeX(obj.x,obj.free);$("py").value=pointNumberTeX(obj.y,obj.free);
     $("px").disabled=$("py").disabled=!obj.free;
     $("direction").querySelector('option[value="manual"]').disabled=!s.labelOffset;
     $("direction").value=s.labelOffset&&s.dir!=="none"?"manual":s.dir||"auto";
@@ -13409,15 +13456,18 @@ function posFromEvent(e){
   return units().world(e.clientX-rect.left,e.clientY-rect.top);
 }
 function canvasGridStep(){
-  const step=Number($("grid-step")?.value);
-  return step===.25||step===1?step:.5;
+  // At 100% zoom a square spans one unit. Keep the same step between zoom tiers.
+  return 2**Math.round(Math.log2(camera.span/defaultCanvasSpan));
 }
 function drawCanvasGrid(frag,u){
+  const step=canvasGridStep(),readout=$("grid-step");
+  if(readout.value!==String(step)){
+    readout.value=String(step);
+    readout.textContent=String(step).replace(".",",");
+  }
   if(!$("show-grid").checked)return;
-  // Whole multiples of the selected unit remain anchored to the world origin.
-  // At distant zooms, omit intermediate lines so they never become a solid tint.
-  const base=canvasGridStep(),factor=2**Math.max(0,Math.ceil(Math.log2(12/(base*u.k))));
-  const step=base*factor,spacing=step*u.k,origin=u.screen({x:0,y:0});
+  const spacing=step*u.k,origin=u.screen({x:0,y:0});
+  if(!Number.isFinite(spacing)||spacing<=0)return;
   const offset=v=>((v%spacing)+spacing)%spacing;
   const lines=[];
   for(let x=offset(origin.x);x<=u.w;x+=spacing)lines.push("M "+x+" 0 V "+u.h);
@@ -13425,21 +13475,37 @@ function drawCanvasGrid(frag,u){
   frag.append(svg("path",{id:"canvas-grid-lines",class:"canvas-grid-lines","data-canvas-grid":"","data-grid-step":step,
     "aria-hidden":"true","pointer-events":"none",d:lines.join(" ")}));
 }
-function rounded(p){
-  const inc=$("snap").checked?canvasGridStep():.001;
-  const coordinate=value=>{
-    const n=Math.round(value/inc)*inc;
-    return Object.is(n,-0)?0:n;
-  };
-  return {x:coordinate(p.x),y:coordinate(p.y)};
+function nearbyGridNode(p,pointerType){
+  if(!$("snap").checked)return null;
+  const step=canvasGridStep();
+  const node={x:Math.round(p.x/step)*step||0,y:Math.round(p.y/step)*step||0};
+  const reach=Math.min((pointerType==="touch"?18:12)/units().k,.4*step);
+  return Math.hypot(node.x-p.x,node.y-p.y)<=reach?node:null;
 }
-function hasPointPreviewMarker(preview){return !!preview&&(preview.type!=="point"||$("snap").checked);}
+function rounded(p,pointerType){
+  return nearbyGridNode(p,pointerType)||{x:Math.round(p.x*1000)/1000||0,y:Math.round(p.y*1000)/1000||0};
+}
+function compatibleGridProjection(parent,part,projection,pointerType,target=projection?.point){
+  if(!projection)return projection;
+  const node=nearbyGridNode(target,pointerType);
+  if(!node)return projection;
+  const step=canvasGridStep();
+  const atNode=projectGuidePoint(parent,part,node);
+  if(!atNode)return projection;
+  const guide=guidePiece(parent,part);
+  const size=Math.max(1,Math.abs(node.x),Math.abs(node.y),guide.r||0,
+    guide.anchor?norm(guide.anchor):0,guide.vector?norm(guide.vector):0);
+  const roundoff=Math.min(step*1e-5,32*Number.EPSILON*size);
+  // The projected parameters preserve the dependency when the parent moves.
+  // A nearby grid intersection off the curve must never become the new point.
+  return dist(atNode.point,node)<=roundoff?{...atNode,gridPoint:node}:projection;
+}
+function hasPointPreviewMarker(preview){return !!preview&&(preview.type!=="point"||!!preview.gridPoint);}
 function showGridCoordinates(){
   const out=$("grid-coordinates");
-  const moved=drag?.moved&&!drag.offsetField?model.values.get(drag.id):null;
-  const pos=$("snap").checked&&(moved?.free?moved:pointPreview?.type==="point"?pointPreview.position:null);
+  const pos=$("snap").checked&&(drag?drag.snapPoint:pointPreview?.gridPoint);
   out.hidden=!pos;
-  if(pos)out.textContent="("+numberTeX(pos.x)+", "+numberTeX(pos.y)+")";
+  if(pos)out.textContent="("+pointNumberTeX(pos.x,true)+", "+pointNumberTeX(pos.y,true)+")";
 }
 const groupByKind=Object.fromEntries(Object.entries(objectKinds).map(([group,kind])=>[kind,group]));
 function matches(o,type){return o&&acceptsGroup(type,groupByKind[o.kind]);}
@@ -13556,21 +13622,52 @@ function pointPlacement(e,{existing=true}={}){
     if(result)return result;
   }
   if(near.length){
-    const {parent,projected}=near[0];
-    return {type:"on",position:projected.point,refs:[parent.key],params:projected.params};
+    const {parent,part,projected}=near[0];
+    const candidate=compatibleGridProjection(parent,part,projected,e.pointerType,pos);
+    const chosen=inClip&&!inClip(candidate.point)?projected:candidate;
+    return {type:"on",position:chosen.point,refs:[parent.key],params:chosen.params,gridPoint:chosen.gridPoint};
   }
-  const position=rounded(pos);
-  if(inClip&&!inClip(position))return null;
-  return {type:"point",position,refs:[],params:position};
+  const placement=canvasPositionPlacement(e,pos);
+  return inClip&&!inClip(placement.position)?null:placement;
+}
+// Labels and rectangle corners use coordinates, without creating point dependencies.
+function canvasPositionPlacement(e,pos=posFromEvent(e)){
+  const gridPoint=nearbyGridNode(pos,e.pointerType);
+  const position=gridPoint||rounded(pos,e.pointerType);
+  return {type:"point",position,refs:[],params:position,gridPoint};
 }
 function placementStep(placement){
   return {id:nextId(),type:placement.type,name:newLabel(),refs:placement.refs,...placement.params};
 }
-function previewPoint(e){
-  if(tool==="point"||toolRefs(tool)[pending.length]==="p")return pointPlacement(e);
-  return null;
+function toolReferenceTarget(e,want){
+  if(!want)return null;
+  if(want==="p")return pointPlacement(e);
+  const object=hitObject(e,want);
+  if(object){
+    if(object.kind==="point")return {type:"existing",position:object,key:object.key};
+    const contactPoint=extraTools[tool]?.contactPoint;
+    if(contactPoint){
+      const contact=contactPoint(e,object);
+      return contact?{type:"object",key:object.key,contact}:null;
+    }
+    return {type:"object",key:object.key};
+  }
+  return want.split("|").includes("p")?pointPlacement(e,{existing:false}):null;
 }
-function completeTool(solutions=null,position=null){
+function previewPoint(e){
+  if(tool==="label"){
+    const placement=canvasPositionPlacement(e);
+    return doc.clip&&studioClipPointTest()?.(placement.position)===false?null:placement;
+  }
+  if(tool==="point")return pointPlacement(e);
+  const want=toolRefs(tool)[pending.length];
+  if(!want||(!want.split("|").includes("p")&&!extraTools[tool]?.contactPoint))return null;
+  const target=toolReferenceTarget(e,want);
+  const placement=target?.type==="object"?target.contact:target;
+  if(placement&&extraTools[tool]?.acceptPointPreview?.(placement)===false)return null;
+  return placement||null;
+}
+function completeTool(solutions=null,position=null,contact=null){
   const kind=tool,refs=[...pending],adds=[...draft];let focus=null;
   const add=(type,rs,extra={})=>{const s={id:nextId(),type,refs:[...rs],...extra};adds.push(s);return s;};
   function addSeg(a,b){
@@ -13585,7 +13682,7 @@ function completeTool(solutions=null,position=null){
         if(!solutions?.length)throw Error("Tidak ada lingkaran yang memenuhi ketiga syarat ini.");
         if(solutions.length>1){showSolutionChoices(solutions);return true;}
       }
-      focus=extraTools[kind].finish({refs,objects,add,name:()=>newLabel(adds),adds,model,addSeg,solutions,position});
+      focus=extraTools[kind].finish({refs,objects,add,name:()=>newLabel(adds),adds,model,addSeg,solutions,position,contact});
     }
     catch(error){notice(error.message);return false;}
     if(!focus)return false;
@@ -13628,7 +13725,7 @@ function place(e){
   if(extraTools[tool]?.pickReference?.(e))return;
   if(tool==="label"){
     const fields=readLabelFields();if(!fields)return;
-    const position=rounded(posFromEvent(e));
+    const {position}=canvasPositionPlacement(e);
     if(doc.clip&&studioClipPointTest()?.(position)===false){notice("Posisi setelah pembulatan berada di luar clip. Pilih posisi lain.");return;}
     const s={id:nextId(),type:"label",refs:[],...position,...fields};
     tool="move";commitSteps([s],s.id);return;
@@ -13646,22 +13743,21 @@ function place(e){
     const step={id:nextId(),type:"center",refs:[parent.key],name:newLabel()};
     commitSteps([step],step.id);return;
   }
-  const inputs=toolRefs(tool),want=inputs[pending.length],hit=hitObject(e,want,{pointLabels:want!=="p"});
-  const prevDraft=draft.length;
-  let key;
-  if(hit)key=hit.key;
-  else if(want.split("|").includes("p")){
-    const placement=pointPlacement(e,{existing:false});
-    if(!placement){notice("Posisi setelah pembulatan berada di luar clip. Pilih posisi lain.");return;}
-    const s=placementStep(placement);draft.push(s);key=s.id;
+  const want=toolRefs(tool)[pending.length],target=toolReferenceTarget(e,want);
+  if(!target){
+    notice(want?.split("|").includes("p")?"Posisi setelah pembulatan berada di luar clip. Pilih posisi lain.":
+      stepsHint[tool]?.[pending.length]||"Pilih objek yang sesuai di kanvas.");
+    return;
   }
-  else{notice(stepsHint[tool]?.[pending.length]||"Pilih objek yang sesuai di kanvas.");return;}
+  const prevDraft=draft.length;
+  let key=target.key;
+  if(!key){const step=placementStep(target);draft.push(step);key=step.id;}
   if(pending.includes(key)&&!extraTools[tool]?.allowRepeat){notice("Pilih objek yang berbeda.");return;}
   pending.push(key);hover=null;pointPreview=null;
   if(pending.length===toolRefs(tool).length){
     model=solveSketch([...doc.steps,...draft]);
-    if(!completeTool(null,posFromEvent(e))){pending.pop();draft.length=prevDraft;refresh();}
-  }else{notice("");hover=tool==="circle3"?null:rounded(posFromEvent(e));refresh();}
+    if(!completeTool(null,target.contact?.position||target.position||posFromEvent(e),target.contact)){pending.pop();draft.length=prevDraft;refresh();}
+  }else{notice("");hover=tool==="circle3"?null:target.position||posFromEvent(e);refresh();}
 }
 const canvas=$("picture");
 let canvasNavigator=null;
@@ -13726,45 +13822,68 @@ canvas.addEventListener("pointermove",e=>{
   }
   if(solutionPick){highlightSolution(circleSolutionAt(e));return;}
   if(drag&&e.pointerId===drag.pointer){
-    const v=posFromEvent(e);if(!drag.moved&&dist(v,drag.start)*units().k<3)return;
-    const p=rounded(plus(drag.from,minus(v,drag.start)));const s=doc.steps.find(s=>s.id===drag.id);
-    if(drag.anchors){
-      const delta=minus(p,drag.from);
-      for(const anchor of drag.anchors){
-        const target=doc.steps.find(step=>step.id===anchor.key);
-        target.x=anchor.x+delta.x;target.y=anchor.y+delta.y;
-      }
-    }else if(drag.offsetField){
-      const off=plus(drag.from,minus(v,drag.start));
-      s[drag.offsetField]={x:Number(off.x.toFixed(5)),y:Number(off.y.toFixed(5))};
-    }else if(s.type==="on"){
-      const target=plus(drag.from,minus(v,drag.start));
-      const projection=projectGuidePoint(model.values.get(s.refs[0]),s.onPart||"curve",target);
-      if(!projection)return;
-      delete s.arcFraction;delete s.onPart;
-      Object.assign(s,projection.params);
-    }else{s.x=p.x;s.y=p.y;}
-    drag.moved=true;refresh();return;
+    if(updateDragPosition(e))refresh();
+    return;
   }
-  if(e.pointerType!=="touch"&&(pending.length||tool==="point")){
-    const lastPreview=pointPreview,hadMarker=hasPointPreviewMarker(lastPreview);
+  if(e.pointerType!=="touch"&&tool!=="move"){
+    const previous=pointPreview;
     pointPreview=previewPoint(e);
-    hover=pointPreview?.position||rounded(posFromEvent(e));
-    if(tool==="invert"&&pending.length===1)hover.mirrorId=hitObject(e,"c")?.key;
-    const sameFree=hadMarker&&lastPreview.type==="point"&&pointPreview?.type==="point"&&
-      lastPreview.position.x===pointPreview.position.x&&lastPreview.position.y===pointPreview.position.y;
-    if(pending.length||!sameFree&&(hadMarker||hasPointPreviewMarker(pointPreview)))renderCanvas();
+    hover=pointPreview?.position||posFromEvent(e);
+    if(tool==="invert"&&pending.length===1)hover={...hover,mirrorId:hitObject(e,"c")?.key};
+    const sameGrid=pointPreview?.type==="point"&&previous?.type==="point"&&
+      pointPreview.gridPoint&&previous.gridPoint&&pointPreview.position.x===previous.position.x&&pointPreview.position.y===previous.position.y;
+    if(pending.length||!sameGrid&&(hasPointPreviewMarker(previous)||hasPointPreviewMarker(pointPreview)))renderCanvas();
   }
 });
+function updateDragPosition(e){
+  if(!Number.isFinite(e.clientX)||!Number.isFinite(e.clientY))return false;
+  const pos=posFromEvent(e);
+  if(!drag.moved&&dist(pos,drag.start)*units().k<3)return false;
+  const target=plus(drag.from,minus(pos,drag.start));
+  const step=doc.steps.find(s=>s.id===drag.id);
+  const hadMarker=!!drag.snapPoint;
+  drag.snapPoint=null;
+  if(drag.offsetField){
+    step[drag.offsetField]={x:Number(target.x.toFixed(5)),y:Number(target.y.toFixed(5))};
+  }else if(step.type==="on"){
+    const parent=model.values.get(step.refs[0]),part=step.onPart||"curve";
+    const projection=compatibleGridProjection(parent,part,projectGuidePoint(parent,part,target),e.pointerType,target);
+    if(!projection)return hadMarker;
+    if(projection.params.arcFraction===undefined)delete step.arcFraction;
+    if(projection.params.onPart===undefined)delete step.onPart;
+    Object.assign(step,projection.params);
+    drag.snapPoint=projection.gridPoint;
+  }else{
+    const gridPoint=nearbyGridNode(target,e.pointerType);
+    const p=gridPoint||rounded(target,e.pointerType);
+    if(drag.anchors){
+      for(const anchor of drag.anchors){
+        const point=doc.steps.find(s=>s.id===anchor.key);
+        point.x=p.x+(anchor.x-drag.from.x);point.y=p.y+(anchor.y-drag.from.y);
+      }
+    }else{step.x=p.x;step.y=p.y;}
+    if(drag.anchors||step.type==="point")drag.snapPoint=gridPoint;
+  }
+  drag.moved=true;return true;
+}
 function endDrag(e,cancel=false){
   if(canvasNavigator?.endPan(e,cancel))return;
   if(!drag||e.pointerId!==drag.pointer)return;
+  if(!cancel)updateDragPosition(e);
   const state=drag;drag=null;canvas.classList.remove("dragging");
   if(canvas.hasPointerCapture(e.pointerId))canvas.releasePointerCapture(e.pointerId);
-  if(state.moved){if(cancel){doc=state.before.doc;}else{remember(state.before);persistAppearance(state.before.doc,doc);changed();}refresh();}
+  if(!state.moved)return;
+  if(cancel)doc=state.before.doc;
+  else {
+    const ids=new Set(state.anchors?state.anchors.map(p=>p.key):[state.id]);
+    const changedSteps=doc.steps.some((s,i)=>ids.has(s.id)&&JSON.stringify(s)!==JSON.stringify(state.before.doc.steps[i]));
+    if(changedSteps){remember(state.before);persistAppearance(state.before.doc,doc);changed();}
+  }
+  refresh();
 }
 function clearPointerHover(){hover=null;pointPreview=null;if(typeof clearStudioClipHover==="function")clearStudioClipHover();if(!drag)renderCanvas();}
 canvas.addEventListener("pointerup",e=>endDrag(e));
+canvas.addEventListener("lostpointercapture",e=>endDrag(e,true));
 canvas.addEventListener("pointercancel",e=>{endDrag(e,true);clearPointerHover();});
 canvas.addEventListener("pointerleave",clearPointerHover);
 function newSheet(p,example=null){
