@@ -17,8 +17,6 @@ header:
 
 [Komentar dan usulan fitur](#comments)
 
-Studio TikZ dikembangkan oleh **Wildan Bagus Wicaksono** dengan bantuan AI. [Homepage](https://wildan-wicaksono.github.io/)
-
 Kalau sedang menyiapkan diagram untuk modul olimpiade, saya biasanya membuka GeoGebra, mencoba beberapa posisi titik sampai gambarnya enak dibaca, lalu melihat koordinatnya. Setelah itu saya pindah ke dokumen LaTeX dan mengetik TikZ secara manual. GeoGebra sebenarnya sudah menyediakan ekspor TikZ. Saya tetap sering menulis ulang kodenya karena punya kebiasaan sendiri dalam memberi nama titik, menempatkan label, memilih warna, dan menandai sudut.
 
 Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas $AB$, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
