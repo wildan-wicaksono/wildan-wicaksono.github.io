@@ -8,10 +8,10 @@
 <title>Studio TikZ · Editor geometri</title>
 <style>
 :root{--page:#f5f6f8;--sheet:#ffffff;--ink:#182535;--muted:#4f6071;--rule:#d9e0e6;--blue:#164e94;--soft:#edf4fb;--accent:#ffbd68;--mono:"IBM Plex Mono",Consolas,"Liberation Mono",monospace;--sans:"Inter","Segoe UI",Arial,sans-serif}
-*{box-sizing:border-box}html{color-scheme:light}body{margin:0;background:var(--page);color:var(--ink);font:16px/1.45 var(--sans)}button,select{font:inherit}button,select{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible,.hit:focus-visible{outline:3px solid #e89425;outline-offset:3px}button{color:var(--ink)}.mast{border-bottom:1px solid var(--rule);background:var(--sheet)}.mast-in,main{width:min(1264px,100%);margin:auto;padding:0 clamp(14px,3.4vw,54px)}.mast-in{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.035em;font-size:1.22rem}.brand svg{width:35px;height:35px;flex:none}.mast-actions,.actions,.controls,.row,.head-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}button{border-radius:8px;border:1px solid var(--rule);background:var(--sheet);padding:8px 13px;line-height:1.2;min-height:38px;font-size:.9rem;font-weight:600;transition:background .14s,border-color .14s}button:hover{background:#f0f4f8;border-color:#a4b4c4}button svg{width:16px;height:16px;flex:none}.with-icon{display:inline-flex;gap:8px;align-items:center;justify-content:center}.primary{color:white;background:var(--blue);border-color:var(--blue)}.primary:hover{background:#123f77;border-color:#123f77}.text-action{padding:5px 2px;border:0;border-bottom:1px solid #bccbd9;border-radius:0;min-height:30px;background:transparent;font-size:.86rem;color:var(--blue)}.text-action:hover{background:transparent;border-color:var(--blue)}.intro{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:clamp(18px,3.4vh,36px) 0 17px}.intro h1{font-family:"Instrument Serif",Georgia,"Times New Roman",serif;font-weight:normal;letter-spacing:-.048em;font-size:clamp(2rem,3.5vw,3.25rem);line-height:1.08;margin:0 0 5px}.intro p{color:var(--muted);margin:0;font-size:.98rem}.tutorial{display:flex;align-items:center;gap:15px;border:1px solid #cbd9e8;border-left:3px solid var(--blue);border-radius:9px;background:#edf3fa;padding:10px 13px;margin-bottom:17px;min-height:55px}.tutorial button{white-space:nowrap;flex:none}.guide-copy{min-width:0}.guide-status{display:block;color:#164678;font-size:.79rem;letter-spacing:.02em;font-weight:650;margin:0 0 1px}.guide-text{font-size:.91rem;color:#25394e}.workspace{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:stretch;gap:17px}.panel{min-width:0;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--sheet);display:flex;flex-direction:column;box-shadow:0 4px 14px #15253606}.panel-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 18px;min-height:64px}.heading-group{min-width:0}.heading-group h2{font-size:1.08rem;letter-spacing:-.017em;line-height:1.3;margin:0}.meta{color:var(--muted);font-size:.79rem;margin-top:2px;overflow-wrap:anywhere}.slabel{font-size:.82rem;color:var(--muted);font-weight:600}.select-field{display:flex;align-items:center;gap:7px}select{appearance:none;max-width:100%;background:var(--sheet) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='none' stroke='%23445566' stroke-width='1.5' d='m1 1 5 5 5-5'/%3E%3C/svg%3E") right 9px center/10px 7px no-repeat;color:var(--ink);border:1px solid var(--rule);border-radius:6px;min-height:35px;padding:5px 25px 5px 9px;font-size:.86rem}.canvas-wrap{position:relative;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background-color:#fcfdfe;background-image:radial-gradient(#b8c9d9 .85px, transparent 1.05px);background-size:18px 18px;display:grid;min-height:280px;height:clamp(280px,35vh,382px);place-items:center}.canvas-wrap.drag{box-shadow:inset 0 0 0 3px var(--blue);background-color:#e9f3fc}.canvas-wrap svg{display:block;width:100%;height:100%;overflow:visible}.geo-label{font-family:"STIX Two Text","Cambria Math",Georgia,serif;font-size:19px;font-style:italic;paint-order:stroke;stroke:#fcfdfe;stroke-width:3px;stroke-linejoin:round}.hit{cursor:pointer;outline:none}.hit .shape{pointer-events:none}.hit .pad{stroke:transparent;fill:none;stroke-width:18px}.hit:hover .halo{opacity:.22}.hit.selected .halo{opacity:.31}.halo{pointer-events:none;opacity:0;stroke:#e9a240;stroke-width:8px;fill:none}.point-halo{fill:#f0b459;stroke:transparent}.inspector{padding:13px 18px 16px;min-height:99px}.inspector-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.inspector-top label{font-size:.85rem;font-weight:650}.inspector-top select{max-width:67%}.controls{gap:8px 12px}.swatches{display:flex;gap:7px;align-items:center}.swatch{width:29px;height:29px;min-height:29px;padding:0;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid transparent}.swatch:hover{background:#fff}.swatch span{height:18px;width:18px;background:var(--chip);border-radius:50%;display:grid;place-items:center}.swatch[aria-pressed=true]{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}.swatch[aria-pressed=true] span:after{content:"";width:7px;height:4px;border-left:1.8px solid white;border-bottom:1.8px solid white;transform:rotate(-45deg);margin-top:-2px}.label-opt{display:flex;align-items:center;gap:8px;font-size:.87rem}.check{display:flex;align-items:center;gap:6px;font-size:.87rem;color:#35485a}.check input{width:16px;height:16px;accent-color:var(--blue)}.coded{background:#172433;border-color:#172433;color:#e4ecf5}.coded .panel-head{min-height:64px}.coded .meta{color:#b7c7d5}.coded .primary{background:#deedff;color:#163c6b;border-color:#deedff}.coded .primary:hover{background:white}.modebar{display:flex;gap:7px;padding:0 16px 12px;border-bottom:1px solid #354658}.modebar button{border:1px solid transparent;background:transparent;color:#bccbda;font-size:.8rem;min-height:29px;padding:5px 10px;border-radius:5px}.modebar button[aria-pressed=true]{color:#fff;background:#33485d;border-color:#506478}.codebox{overflow:auto;min-height:205px;max-height:455px;flex:1;padding:14px 0 17px;tab-size:4;color:#e0e8ef;font: .83rem/1.65 var(--mono);scrollbar-color:#536979 #172433}.codeline{display:flex;min-width:max-content;padding:0 15px 0 0;border-left:2px solid transparent;white-space:pre}.codeline.hot{border-color:#efad5c;background:#344352}.lineno{user-select:none;color:#91a0ad;display:inline-block;width:3.1em;flex:none;text-align:right;padding-right:1em}.tk-cmd{color:#9bc9fa}.tk-opt{color:#f0c98b}.tk-number{color:#b4dfbd}.code-foot{padding:9px 17px;border-top:1px solid #354658;color:#c1d2e2;font-size:.79rem;min-height:36px;overflow-wrap:anywhere}.notice{margin:12px 0 0;background:#fff1d7;border:1px solid #eac88b;border-radius:8px;padding:8px 12px;font-size:.89rem}.after{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 24px;font-size:.86rem;color:var(--muted);flex-wrap:wrap}.after p{margin:0}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.is-target{outline:3px solid #efb459;outline-offset:2px}[hidden]{display:none!important}.plain{padding:8px 12px;font-size:.9rem;line-height:1.4}
-@media(max-width:850px){.workspace{grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:11px}.panel-head{padding:12px}.inspector{padding:12px}.mast-in,main{padding-inline:15px}.canvas-wrap{height:290px}.codebox{font-size:.79rem}.intro h1{font-size:2.45rem}}
+*{box-sizing:border-box}html{color-scheme:light}body{margin:0;background:var(--page);color:var(--ink);font:16px/1.45 var(--sans)}button,select{font:inherit}button,select{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible,.hit:focus-visible{outline:3px solid #e89425;outline-offset:3px}button{color:var(--ink)}.mast{border-bottom:1px solid var(--rule);background:var(--sheet)}.mast-in,main{width:min(1264px,100%);margin:auto;padding:0 clamp(14px,3.4vw,54px)}.mast-in{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{margin:0;display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.035em;font-size:1.22rem}.brand svg{width:35px;height:35px;flex:none}.mast-actions,.actions,.controls,.row,.head-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}button{border-radius:8px;border:1px solid var(--rule);background:var(--sheet);padding:8px 13px;line-height:1.2;min-height:38px;font-size:.9rem;font-weight:600;transition:background .14s,border-color .14s}button:hover{background:#f0f4f8;border-color:#a4b4c4}button svg{width:16px;height:16px;flex:none}.with-icon{display:inline-flex;gap:8px;align-items:center;justify-content:center}.primary{color:white;background:var(--blue);border-color:var(--blue)}.primary:hover{background:#123f77;border-color:#123f77}.text-action{padding:5px 2px;border:0;border-bottom:1px solid #bccbd9;border-radius:0;min-height:30px;background:transparent;font-size:.86rem;color:var(--blue)}.text-action:hover{background:transparent;border-color:var(--blue)}.intro{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:14px 0}.intro p{color:var(--muted);margin:0;font-size:.98rem}.tutorial{display:flex;align-items:center;gap:15px;border:1px solid #cbd9e8;border-left:3px solid var(--blue);border-radius:9px;background:#edf3fa;padding:10px 13px;margin-bottom:17px;min-height:55px}.tutorial button{white-space:nowrap;flex:none}.guide-copy{min-width:0}.guide-status{display:block;color:#164678;font-size:.79rem;letter-spacing:.02em;font-weight:650;margin:0 0 1px}.guide-text{font-size:.91rem;color:#25394e}.workspace{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:stretch;gap:17px}.panel{min-width:0;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--sheet);display:flex;flex-direction:column;box-shadow:0 4px 14px #15253606}.panel-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 18px;min-height:64px}.heading-group{min-width:0}.heading-group h2{font-size:1.08rem;letter-spacing:-.017em;line-height:1.3;margin:0}.meta{color:var(--muted);font-size:.79rem;margin-top:2px;overflow-wrap:anywhere}.slabel{font-size:.82rem;color:var(--muted);font-weight:600}.select-field{display:flex;align-items:center;gap:7px}select{appearance:none;max-width:100%;background:var(--sheet) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='none' stroke='%23445566' stroke-width='1.5' d='m1 1 5 5 5-5'/%3E%3C/svg%3E") right 9px center/10px 7px no-repeat;color:var(--ink);border:1px solid var(--rule);border-radius:6px;min-height:35px;padding:5px 25px 5px 9px;font-size:.86rem}.canvas-wrap{position:relative;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background-color:#fcfdfe;background-image:radial-gradient(#b8c9d9 .85px, transparent 1.05px);background-size:18px 18px;display:grid;min-height:280px;height:clamp(280px,35vh,382px);place-items:center}.canvas-wrap.drag{box-shadow:inset 0 0 0 3px var(--blue);background-color:#e9f3fc}.canvas-wrap svg{display:block;width:100%;height:100%;overflow:visible}.geo-label{font-family:"STIX Two Text","Cambria Math",Georgia,serif;font-size:19px;font-style:italic;paint-order:stroke;stroke:#fcfdfe;stroke-width:3px;stroke-linejoin:round}.hit{cursor:pointer;outline:none}.hit .shape{pointer-events:none}.hit .pad{stroke:transparent;fill:none;stroke-width:18px}.hit:hover .halo{opacity:.22}.hit.selected .halo{opacity:.31}.halo{pointer-events:none;opacity:0;stroke:#e9a240;stroke-width:8px;fill:none}.point-halo{fill:#f0b459;stroke:transparent}.inspector{padding:13px 18px 16px;min-height:99px}.inspector-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.inspector-top label{font-size:.85rem;font-weight:650}.inspector-top select{max-width:67%}.controls{gap:8px 12px}.swatches{display:flex;gap:7px;align-items:center}.swatch{width:29px;height:29px;min-height:29px;padding:0;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid transparent}.swatch:hover{background:#fff}.swatch span{height:18px;width:18px;background:var(--chip);border-radius:50%;display:grid;place-items:center}.swatch[aria-pressed=true]{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}.swatch[aria-pressed=true] span:after{content:"";width:7px;height:4px;border-left:1.8px solid white;border-bottom:1.8px solid white;transform:rotate(-45deg);margin-top:-2px}.label-opt{display:flex;align-items:center;gap:8px;font-size:.87rem}.check{display:flex;align-items:center;gap:6px;font-size:.87rem;color:#35485a}.check input{width:16px;height:16px;accent-color:var(--blue)}.coded{background:#172433;border-color:#172433;color:#e4ecf5}.coded .panel-head{min-height:64px}.coded .meta{color:#b7c7d5}.coded .primary{background:#deedff;color:#163c6b;border-color:#deedff}.coded .primary:hover{background:white}.modebar{display:flex;gap:7px;padding:0 16px 12px;border-bottom:1px solid #354658}.modebar button{border:1px solid transparent;background:transparent;color:#bccbda;font-size:.8rem;min-height:29px;padding:5px 10px;border-radius:5px}.modebar button[aria-pressed=true]{color:#fff;background:#33485d;border-color:#506478}.codebox{overflow:auto;min-height:205px;max-height:455px;flex:1;padding:14px 0 17px;tab-size:4;color:#e0e8ef;font: .83rem/1.65 var(--mono);scrollbar-color:#536979 #172433}.codeline{display:flex;min-width:max-content;padding:0 15px 0 0;border-left:2px solid transparent;white-space:pre}.codeline.hot{border-color:#efad5c;background:#344352}.lineno{user-select:none;color:#91a0ad;display:inline-block;width:3.1em;flex:none;text-align:right;padding-right:1em}.tk-cmd{color:#9bc9fa}.tk-opt{color:#f0c98b}.tk-number{color:#b4dfbd}.code-foot{padding:9px 17px;border-top:1px solid #354658;color:#c1d2e2;font-size:.79rem;min-height:36px;overflow-wrap:anywhere}.notice{margin:12px 0 0;background:#fff1d7;border:1px solid #eac88b;border-radius:8px;padding:8px 12px;font-size:.89rem}.after{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 24px;font-size:.86rem;color:var(--muted);flex-wrap:wrap}.after p{margin:0}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.is-target{outline:3px solid #efb459;outline-offset:2px}[hidden]{display:none!important}.plain{padding:8px 12px;font-size:.9rem;line-height:1.4}
+@media(max-width:850px){.workspace{grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:11px}.panel-head{padding:12px}.inspector{padding:12px}.mast-in,main{padding-inline:15px}.canvas-wrap{height:290px}.codebox{font-size:.79rem}}
 @media(max-width:690px){.workspace{grid-template-columns:minmax(0,1fr)}.intro{align-items:start}.intro p{font-size:.9rem}.canvas-wrap{height:265px;min-height:240px}.codebox{max-height:330px}.tutorial{gap:10px}.after{align-items:start}.panel-head{min-height:55px}.inspector{min-height:88px}.brand{font-size:1.1rem}.mast-in{min-height:56px}.guide-text{font-size:.86rem}}
-@media(max-width:420px){.mast-in,main{padding-inline:10px}.intro{margin-top:17px}.intro h1{font-size:2rem}.tutorial{flex-wrap:wrap;gap:6px;padding:9px 10px}.guide-copy{flex-basis:100%}.panel-head{align-items:start}.head-right{align-self:center}.controls{gap:8px}.swatches{gap:4px}.swatch{width:27px;height:27px}.codebox{font-size:.77rem}.select-field>.slabel{display:none}}
+@media(max-width:420px){.mast-in,main{padding-inline:10px}.intro{margin:12px 0}.tutorial{flex-wrap:wrap;gap:6px;padding:9px 10px}.guide-copy{flex-basis:100%}.panel-head{align-items:start}.head-right{align-self:center}.controls{gap:8px}.swatches{gap:4px}.swatch{width:27px;height:27px}.codebox{font-size:.77rem}.select-field>.slabel{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .workspace{grid-template-columns:minmax(0,1.38fr) minmax(0,1fr);align-items:start}.intro{align-items:center}.editor .panel-head{min-height:55px;padding-block:10px}.compact{gap:5px}.compact button,.inspector-top button{font-size:.8rem;min-height:30px;padding:4px 8px}.compact button:disabled,button:disabled{opacity:.48;cursor:default}.tooltray{border-top:1px solid var(--rule);padding:9px 12px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.tooltray #tools{display:flex;align-items:center;gap:4px;flex-wrap:wrap}#tools button{display:flex;align-items:center;justify-content:center;gap:4px;font-size:.81rem;padding:6px 8px;min-height:34px;border:1px solid transparent;border-radius:6px;background:#f0f3f5}#tools button[aria-pressed=true]{background:#173e68;color:white}#tools svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}#more{min-height:33px;font-size:.8rem;max-width:170px}#more.active{color:white;background-color:#173e68}.toolguide{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;min-height:38px;padding:7px 14px;border-top:1px solid #dee6ed;background:#eef4fa;font-size:.85rem;color:#334c64}.toolguide strong{color:#143e69}.toolguide button{margin-left:auto;min-height:24px;padding:2px 7px;font-size:.77rem}.canvas-wrap{height:clamp(310px,48vh,490px);min-height:275px;display:block;overflow:hidden;background-color:#fbfcfd}.canvas-wrap svg{touch-action:none;user-select:none}.canvas-wrap svg[data-build="true"],.canvas-wrap svg[data-build="true"] .hit{cursor:crosshair}.canvas-wrap svg[data-build="false"] .free{cursor:grab}.canvas-wrap svg.dragging,.canvas-wrap svg.dragging .hit{cursor:grabbing}.canvas-start{pointer-events:none;position:absolute;inset:0;display:grid;place-content:center;color:#596b7d;font-size:.92rem}.canvas-start span{background:#fbfcfde8;padding:7px 12px;border-radius:6px}.viewbar{padding:7px 13px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:5px;flex-wrap:wrap;color:var(--muted)}.viewbar .check{font-size:.79rem}.inspector{min-height:0;padding:10px 13px 13px}.inspector-top{justify-content:flex-start;margin-bottom:8px}.inspector-top select{flex:1;max-width:280px}.inspector-top button{margin-left:auto}.controls{gap:7px 11px}.controls input[type=number],.controls input:not([type]){font:inherit;border:1px solid var(--rule);border-radius:5px;padding:4px 5px;min-height:32px;width:5.7em}.controls input:disabled{background:#f1f3f5;color:#647182}.controls .label-opt{font-size:.83rem}.coded{min-height:490px}.codebox{min-height:300px;max-height:540px}.notice{margin:0;padding:9px 14px;border-radius:0;border:0;border-top:1px solid #eac88b}.quickhelp{padding:10px 2px 3px;color:var(--muted);font-size:.9rem}.quickhelp summary{cursor:pointer;color:var(--blue);font-weight:600;display:list-item;width:fit-content}.quickhelp ol{padding-left:22px;margin:8px 0}.quickhelp p{margin:5px 0}.after{margin:6px 0 15px}.coded .code-foot{margin-top:auto}#coords[disabled],#full[disabled]{opacity:.7}.editor button:focus-visible{outline-offset:1px}
 @media(max-width:900px){.workspace{grid-template-columns:minmax(0,1.2fr) minmax(0,.88fr)}.tooltray #tools{gap:3px}#tools button{padding:5px 6px}.canvas-wrap{height:350px}}
@@ -42,7 +42,6 @@
 :root[data-paper="mist"]{--paper:#e9f0f1;--grid:#b0c3c7}
 :root[data-paper="white"]{--paper:#ffffff;--grid:#cbd0c8}
 .mast{background:#f5f4ec}
-.intro h1{color:#2a4035}
 .primary:hover{background:#284a3b;border-color:#284a3b}
 button:hover{background:#eaf0e6;border-color:#afbcac}
 #tools button{background:#e9ece3}
@@ -98,7 +97,7 @@ button:hover{background:#eaf0e6;border-color:#afbcac}
 :root[data-dark-paper="true"][data-paper="sage"]{--paper:#232d26;--grid:#394a3d;--paper-text:#c5d2c5}
 :root[data-dark-paper="true"][data-paper="mist"]{--paper:#222d32;--grid:#3a4a50;--paper-text:#c8d3d7}
 :root[data-theme="dark"] .mast{background:#1d2724}
-:root[data-theme="dark"] .intro h1,:root[data-theme="dark"] .toolguide strong{color:#e0ebdc}
+:root[data-theme="dark"] .toolguide strong{color:#e0ebdc}
 :root[data-theme="dark"] :is(input:not([type="checkbox"]):not([type="range"]):not([type="file"]),select){color:var(--ink);background-color:#202a25}
 :root[data-theme="dark"] select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='none' stroke='%23b8c5b9' stroke-width='1.5' d='m1 1 5 5 5-5'/%3E%3C/svg%3E")}
 :root[data-theme="dark"] input:disabled{color:#93a095;opacity:.75}
@@ -613,7 +612,7 @@ Derived file: studio-math-labels.woff
 </head>
 <body>
 <header class="mast"><div class="mast-in">
-  <div class="brand"><svg viewBox="0 0 38 38" aria-hidden="true"><rect x="1" y="1" width="36" height="36" rx="10" fill="#355649"/><circle cx="19" cy="19" r="12.2" fill="none" stroke="#dfe8d8" stroke-width="1.05"/><path d="M10 27.3 16 7.2 30.9 22.1Z" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><circle cx="16" cy="7.2" r="2" fill="#ffc47b"/></svg><span>Studio TikZ</span></div>
+  <h1 class="brand"><svg viewBox="0 0 38 38" aria-hidden="true"><rect x="1" y="1" width="36" height="36" rx="10" fill="#355649"/><circle cx="19" cy="19" r="12.2" fill="none" stroke="#dfe8d8" stroke-width="1.05"/><path d="M10 27.3 16 7.2 30.9 22.1Z" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><circle cx="16" cy="7.2" r="2" fill="#ffc47b"/></svg><span>Studio TikZ</span></h1>
   <div class="mast-actions"><label class="theme-picker"><span>Bahasa</span><select id="studio-language" aria-label="Bahasa / Language"><option value="id" lang="id">Indonesia</option><option value="en" lang="en">English</option></select></label><label class="theme-picker"><span>Tema</span><select id="studio-theme" aria-label="Tema tampilan"><option value="system">Sistem</option><option value="light">Terang</option><option value="dark">Gelap</option></select></label><button id="open-asy" type="button" aria-haspopup="dialog" aria-controls="asy-dialog">Tempel Asymptote</button><button id="open-file" type="button">Buka file</button><button id="save-project" type="button" class="primary">Simpan proyek</button><input type="file" accept=".ggb,.json" id="file" hidden></div>
 </div></header>
 <main>
@@ -622,9 +621,9 @@ Derived file: studio-math-labels.woff
     <div><label id="example-point-label">Titik <select id="example-point" aria-label="Titik yang dapat digeser"></select></label>
     <button type="button" id="example-fit">Pas ke gambar</button><button type="button" id="example-reset">Atur ulang</button></div>
   </div>
-  <section class="intro"><div><h1>Gambar geometri</h1><p>Letakkan titik di kanvas, buat konstruksinya, lalu salin TikZ ke modulmu.</p></div>
+  <div class="intro"><p>Letakkan titik di kanvas, buat konstruksinya, lalu salin TikZ ke modulmu.</p>
     <div class="workspace-choices">
-      <div class="select-field"><label class="slabel" for="examples">Lembar</label><select id="examples"><option value="current">Gambar saya</option><option value="blank">Kanvas baru</option><option value="triangle">Contoh segitiga</option><option value="reim">Contoh Reim</option><option value="tangencyDemo">Contoh lingkaran singgung</option><option value="antiparallelDemo">Contoh antiparalel siklis</option><option value="transformasi-bangun">Contoh transformasi bangun</option><option value="inversionProductDemo">Contoh inversi hasil kali</option><optgroup label="Contoh penggunaan Wildan"><option value="01-refleksi">Refleksi dan segiempat siklis</option><option value="02-garis-berat">Tiga lingkaran pada garis berat</option><option value="03-garis-singgung">Garis singgung dan dua garis berat</option></optgroup></select></div>
+      <div class="select-field"><label class="slabel" for="examples">Lembar</label><select id="examples"><optgroup label="Lembar saya"><option value="current">Gambar saya</option><option value="blank">Kanvas baru</option></optgroup><optgroup label="Contoh Studio"><option value="triangle">Contoh segitiga</option><option value="reim">Contoh Reim</option><option value="tangencyDemo">Contoh lingkaran singgung</option><option value="antiparallelDemo">Contoh antiparalel siklis</option><option value="transformasi-bangun">Contoh transformasi bangun</option><option value="inversionProductDemo">Contoh inversi hasil kali</option></optgroup><optgroup label="Contoh penggunaan Wildan"><option value="01-refleksi">Refleksi dan segiempat siklis</option><option value="02-garis-berat">Tiga lingkaran pada garis berat</option><option value="03-garis-singgung">Garis singgung dan dua garis berat</option></optgroup></select></div>
       <div class="select-field"><label class="slabel" for="workspace-layout">Tata letak</label>
         <select id="workspace-layout" aria-controls="workspace">
           <option value="auto">Otomatis</option>
@@ -633,7 +632,7 @@ Derived file: studio-math-labels.woff
         </select>
       </div>
     </div>
-  </section>
+  </div>
   <div class="workspace" id="workspace">
     <section class="panel editor">
       <div class="panel-head"><div class="heading-group"><h2 id="drawing-title">Kanvas</h2><div id="details" class="meta"></div></div><div class="actions compact"><button id="tool-guide-open" class="with-icon" type="button" aria-haspopup="dialog" aria-controls="tool-guide-dialog"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 6C9 4 5.5 3.7 2.5 4.5v14c3-.8 6.5-.5 9.5 1.5 3-2 6.5-2.3 9.5-1.5v-14C18.5 3.7 15 4 12 6Zm0 0v14"/></svg>Panduan alat</button><button id="undo" type="button" title="Ctrl+Z">Urungkan</button><button id="redo" type="button" title="Ctrl+Shift+Z">Ulangi</button></div></div>
@@ -2840,11 +2839,11 @@ function importSketch(m,example=null){
 "use strict";
 
 const studioFigureEnglish = {
-  "Segitiga ABC dan bayangannya yang dibatasi tiga busur. Titik tengah M berpeta ke M′ pada busur bayangan AB.": "Triangle ABC and its image bounded by three arcs. The midpoint M maps to M′ on the image of segment AB.",
-  "A dan B terletak pada lingkaran inversi. Ruas AB berpeta ke setengah lingkaran melalui A, M′ dan B.": "A and B lie on the inversion circle. Segment AB maps to the semicircle through A, M′ and B.",
+  "Segitiga ABC dan bayangannya yang dibatasi tiga busur. Titik tengah M berpeta ke M* pada busur bayangan AB.": "Triangle ABC and its image bounded by three arcs. The midpoint M maps to M* on the image of segment AB.",
+  "A dan B terletak pada lingkaran inversi. Ruas AB berpeta ke setengah lingkaran melalui A, M* dan B.": "A and B lie on the inversion circle. Segment AB maps to the semicircle through A, M* and B.",
   "Klik bagian dalam segitiga ABC untuk memilih bangun utuh.": "Click inside triangle ABC to select the entire shape.",
   "Klik keliling lingkaran acuan. Ketiga sisi segitiga berpeta ke tiga busur.": "Click the reference circumference. The three sides of the triangle map to three arcs.",
-  "M berada pada ruas AB. Bayangannya M′ berada pada busur dari A ke B.": "M lies on segment AB. Its image M′ lies on the arc from A to B.",
+  "M berada pada ruas AB. Bayangannya M* berada pada busur dari A ke B.": "M lies on segment AB. Its image M* lies on the arc from A to B.",
   "Inversi segitiga ABC dan titik tengah M": "Inversion of triangle ABC and its midpoint M",
   "P di ruang kosong, Q pada lingkaran berpusat O, dan R pada perpotongan keliling dengan ruas AB.": "P lies in empty space, Q on the circle centered at O, and R where the circle meets segment AB.",
   "P bisa digeser ke mana saja. Q bisa digeser sepanjang keliling. R mengikuti perpotongan ruas AB dengan lingkaran.": "Drag P anywhere. Q slides along the circumference. R follows the intersection of segment AB and the circle.",
@@ -3068,26 +3067,26 @@ const studioFigureEnglish = {
   "Faktor dilatasi": "Scale factor",
   "Klik O sebagai pusat dilatasi.": "Click O for the center of dilation.",
   "A′ terletak pada sinar OA dengan OA′ = 2 × OA.": "A′ lies on ray OA with OA′ = 2 × OA.",
-  "Inversi menempatkan P dan P′ pada sinar yang sama dari pusat O. Hasil kali OP dan OP′ sama dengan kuadrat jari-jari.": "Under inversion, P and P′ lie on the same ray from O. The product of OP and OP′ equals the square of the radius.",
-  "P dan P′ terletak pada sinar yang sama dari O, dengan OP × OP′ = r². Di sini OP = r/2 sehingga OP′ = 2r.": "P and P′ lie on the same ray from O, with OP × OP′ = r². Here OP = r/2, so OP′ = 2r.",
+  "Inversi menempatkan P dan P* pada sinar yang sama dari pusat O. Hasil kali OP dan OP* sama dengan kuadrat jari-jari.": "Under inversion, P and P* lie on the same ray from O. The product of OP and OP* equals the square of the radius.",
+  "P dan P* terletak pada sinar yang sama dari O, dengan OP × OP* = r². Di sini OP = r/2 sehingga OP* = 2r.": "P and P* lie on the same ray from O, with OP × OP* = r². Here OP = r/2, so OP* = 2r.",
   "Klik P, titik yang akan diinversi.": "Click P, the point to invert.",
-  "Klik keliling lingkaran inversi. P′ muncul pada sinar OP.": "Click the inversion circle. P′ appears on ray OP.",
-  "Pada contoh ini OP = r/2, sehingga OP′ = 2r.": "Here OP = r/2, so OP′ = 2r.",
-  "Garis g tegak lurus OH di H. Hasil inversi garis adalah lingkaran melalui O dan H′.": "Line g is perpendicular to OH at H. Its inverse is the circle through O and H′.",
-  "Klik garis g lalu lingkaran inversi berpusat O. Bayangan g adalah lingkaran dengan diameter OH′, dengan H′ bayangan kaki tegak lurus H.": "Click g, then the inversion circle centered at O. The image of g is the circle with diameter OH′, where H′ is the inverse of the perpendicular foot H.",
+  "Klik keliling lingkaran inversi. P* muncul pada sinar OP.": "Click the inversion circle. P* appears on ray OP.",
+  "Pada contoh ini OP = r/2, sehingga OP* = 2r.": "Here OP = r/2, so OP* = 2r.",
+  "Garis g tegak lurus OH di H. Hasil inversi garis adalah lingkaran melalui O dan H*.": "Line g is perpendicular to OH at H. Its inverse is the circle through O and H*.",
+  "Klik garis g lalu lingkaran inversi berpusat O. Bayangan g adalah lingkaran dengan diameter OH*, dengan H* bayangan kaki tegak lurus H.": "Click g, then the inversion circle centered at O. The image of g is the circle with diameter OH*, where H* is the inverse of the perpendicular foot H.",
   "Klik garis g sebagai objek asal.": "Click g to select the original line.",
   "Klik lingkaran inversi yang berpusat di O. Bayangan g adalah lingkaran melalui O.": "Click the inversion circle centered at O. The image of g is a circle through O.",
-  "H adalah titik pada g yang paling dekat ke O. Bayangannya H′ menjadi ujung diameter OH′.": "H is the point on g closest to O. Its image H′ is the other endpoint of diameter OH′.",
-  "Pada sinar dari O, titik-titik pada lingkaran asal dan bayangan muncul dalam urutan A, B, B′, A′.": "On the ray from O, the points on the original circle and its image occur in the order A, B, B′, A′.",
-  "Pilih lingkaran kecil melalui A dan B, lalu lingkaran inversi berpusat O. Bayangannya melalui A′ dan B′. Titik A yang lebih dekat ke O menghasilkan bayangan yang lebih jauh.": "Select the small circle through A and B, then the inversion circle centered at O. The image passes through A′ and B′. The point A, closer to O, has its image farther away.",
+  "H adalah titik pada g yang paling dekat ke O. Bayangannya H* menjadi ujung diameter OH*.": "H is the point on g closest to O. Its image H* is the other endpoint of diameter OH*.",
+  "Pada sinar dari O, titik-titik pada lingkaran asal dan bayangan muncul dalam urutan A, B, B*, A*.": "On the ray from O, the points on the original circle and its image occur in the order A, B, B*, A*.",
+  "Pilih lingkaran kecil melalui A dan B, lalu lingkaran inversi berpusat O. Bayangannya melalui A* dan B*. Titik A yang lebih dekat ke O menghasilkan bayangan yang lebih jauh.": "Select the small circle through A and B, then the inversion circle centered at O. The image passes through A* and B*. The point A, closer to O, has its image farther away.",
   "Klik keliling lingkaran kecil melalui A dan B sebagai objek asal.": "Click the small circle through A and B to select the original object.",
   "Klik lingkaran inversi berpusat O. Lingkaran hasil berada di sebelah kanan.": "Click the inversion circle centered at O. Its image is the circle on the right.",
-  "A berpeta ke A′ dan B ke B′. Keempatnya segaris dengan O.": "A maps to A′ and B to B′. All four points are collinear with O.",
+  "A berpeta ke A* dan B ke B*. Keempatnya segaris dengan O.": "A maps to A* and B to B*. All four points are collinear with O.",
   "Pada Hitung dari, pilih Kuasa k = r².": "Under Calculate from, select Power k = r².",
   "Kuasa k = r²": "Power k = r²",
   "Isi 4 sebagai nilai k. Jari-jari inversinya menjadi 2.": "Enter 4 for k. The inversion radius is 2.",
   "Klik pusat inversi O. Lingkaran acuan berjari-jari 2 terlihat pada pratinjau.": "Click the inversion center O. A reference circle of radius 2 appears in the preview.",
-  "Klik P. Di sini OP = 1, sehingga P′ berada pada sinar OP dengan OP′ = 4.": "Click P. Here OP = 1, so P′ lies on ray OP with OP′ = 4.",
+  "Klik P. Di sini OP = 1, sehingga P* berada pada sinar OP dengan OP* = 4.": "Click P. Here OP = 1, so P* lies on ray OP with OP* = 4.",
   "Posisi awal dan posisi akhir A terhubung ke B, dengan panah menunjukkan arah seretan.": "The starting and ending positions of A are both joined to B. An arrow shows the direction of the drag.",
   "Seret titik A ke ujung panah. Ruas yang menghubungkannya dengan B ikut berpindah.": "Drag A to the tip of the arrow. The segment joining A to B moves with it.",
   "Tekan dan tahan bulatan di ujung kiri ruas.": "Press and hold the point at the left end of the segment.",
@@ -3203,9 +3202,9 @@ const studioFigureEnglish = {
   "Kanvas baru membuka lembar kosong. Pada Contoh segitiga, titik sudut dan lingkaran luarnya sudah tersedia untuk dicoba.": "New canvas opens an empty sheet. Triangle example has draggable vertices and a circumcircle.",
   "Kanvas baru": "New canvas",
   "Contoh segitiga": "Triangle example",
-  "Pada menu Lembar, pilih Kanvas baru untuk membuka lembar kosong.": "In the Sheet menu, select New canvas to open an empty sheet.",
+  "Pada kelompok Lembar saya, pilih Kanvas baru untuk membuka lembar kosong.": "Under My sheets, select New canvas to open an empty sheet.",
   "Lembar": "Sheet",
-  "Buka kembali menu Lembar dan pilih Contoh segitiga.": "Open the Sheet menu again and select Triangle example.",
+  "Pada kelompok Contoh Studio, pilih Contoh segitiga.": "Under Example sheets, select Triangle example.",
   "Amati segitiga dan lingkaran luarnya pada lembar contoh.": "Explore the triangle and its circumcircle on the example sheet.",
   "Pada Gambar lengkap, baris \\draw menggambar ruas antara koordinat A dan B. Salin TikZ menyalin seluruh blok gambar.": "In Full drawing, the \\draw line connects coordinates A and B. Copy TikZ copies the entire diagram.",
   "Kanvas": "Canvas",
@@ -3225,7 +3224,7 @@ const studioFigureEnglish = {
   "Klik ruas AB. Jika ruas belum digambar, klik A lalu B.": "Click segment AB. If you have only the endpoints, click A then B.",
   "Garis sumbu melalui M di tengah AB dan membentuk sudut siku-siku.": "The perpendicular bisector meets AB at its midpoint M at a right angle.",
   "Klik titik P yang akan diinversi.": "Click the point P to invert.",
-  "Klik pusat O. Di sini OP = 1, sehingga P′ berada pada sinar OP dengan OP′ = 4.": "Click the center O. Here OP = 1, so P′ lies on ray OP with OP′ = 4.",
+  "Klik pusat O. Di sini OP = 1, sehingga P* berada pada sinar OP dengan OP* = 4.": "Click the center O. Here OP = 1, so P* lies on ray OP with OP* = 4.",
   "Dua bayangan dari titik A. Garis g membagi AA′ secara tegak lurus, sedangkan titik O membagi AA″ sama panjang.": "Two reflections of A. Line g is the perpendicular bisector of AA′, and O is the midpoint of AA″.",
   "Terhadap garis g, A menghasilkan A′. Terhadap titik O, A menghasilkan A″ dengan O tepat di tengah AA″.": "Reflection across line g takes A to A′. Reflection about point O takes A to A″, with O at the midpoint of AA″.",
   "Klik A sebagai objek asal.": "Click A to select the original object.",
@@ -3268,11 +3267,11 @@ const studioConstructionEnglish={
   "Pusat inversi tidak mempunyai bayangan hingga. Pilih titik lain.": "The center of inversion has no finite image. Choose another point.",
   "Cari bayangan titik, garis, atau lingkaran dengan satu alat. Pada contoh ini, objek asalnya titik P.": "Use one tool to invert a point, line or circle. In this example, start with point P.",
   "Pilih Lingkaran di kanvas sebagai acuan. Klik objek asal, misalnya titik P yang berbeda dari pusat inversi.": "Choose Circle on the canvas as the reference. Click the original object, such as a point P distinct from the center of inversion.",
-  "Bayangan berada pada sinar OP dan memenuhi OP × OP′ = r². Titik di dalam dan di luar lingkaran bertukar tempat. Titik pada keliling tetap di tempatnya. Bayangan garis atau lingkaran dapat berupa lingkaran maupun garis.": "The image lies on ray OP and satisfies OP × OP′ = r². Interior points map to exterior points and vice versa. Points on the circle are fixed. The image of a line or a circle can itself be either a line or a circle.",
+  "Bayangan berada pada sinar OP dan memenuhi OP × OP* = r². Titik di dalam dan di luar lingkaran bertukar tempat. Titik pada keliling tetap di tempatnya. Bayangan garis atau lingkaran dapat berupa lingkaran maupun garis.": "The image lies on ray OP and satisfies OP × OP* = r². Interior points map to exterior points and vice versa. Points on the circle are fixed. The image of a line or a circle can itself be either a line or a circle.",
   "Pada alat Inversi, pilih acuan Jari-jari atau kuasa. Pada Hitung dari, pilih Jari-jari r atau Kuasa k = r². Masukkan angka atau rumus positif, misalnya OA × OB jika kedua ruas sudah digambar.": "In the Inversion tool, choose Radius or power. Under Calculate from, choose Radius r or Power k = r². Enter a positive number or expression, such as OA × OB when both segments have been drawn.",
   "Klik titik, garis, atau lingkaran yang ingin diinversi, lalu klik pusat inversi O. Untuk bayangan titik, pilih titik selain O.": "Click the point, line or circle to invert, then click the center of inversion O. When inverting a point, choose one distinct from O.",
   "Klik titik P yang akan diinversi.": "Click point P to invert it.",
-  "Klik pusat O. Di sini OP = 1, sehingga P′ berada pada sinar OP dengan OP′ = 4.": "Click the center O. Here OP = 1, so P′ lies on ray OP with OP′ = 4.",
+  "Klik pusat O. Di sini OP = 1, sehingga P* berada pada sinar OP dengan OP* = 4.": "Click the center O. Here OP = 1, so P* lies on ray OP with OP* = 4.",
   "Inversi dengan jari-jari atau kuasa": "Inversion by radius or power",
   "Inversi garis": "Line inversion",
   "Inversi lingkaran": "Circle inversion",
@@ -3323,9 +3322,10 @@ Klik tepi atau bagian dalam bangun, atau pilih dari daftar.|Click the boundary o
 Buat poligon, lingkaran penuh, atau juring terlebih dahulu.|First construct a polygon, a full circle, or a sector.
 Pilih poligon, lingkaran penuh, atau juring sebagai batas clip.|Choose a polygon, a full circle, or a sector as the clip boundary.
 Atur ulang|Reset
-Gambar geometri|Draw geometry
 Letakkan titik di kanvas, buat konstruksinya, lalu salin TikZ ke modulmu.|Place points on the canvas, construct your diagram, and copy the TikZ into your document.
 Lembar|Sheet
+Lembar saya|My sheets
+Contoh Studio|Example sheets
 Gambar saya|My drawing
 Kanvas baru|New canvas
 Contoh segitiga|Triangle example
@@ -3336,7 +3336,7 @@ Objek asal|Source object
 Klik di kanvas atau pilih dari daftar|Click the canvas or choose from the list
 Contoh transformasi bangun|Transforming a shape
 Segi lima, refleksi, dan inversi|A pentagon, its reflection and its inverse
-Geser salah satu titik A–E. Segi lima hijau, bayangan refleksinya yang biru, dan bayangan inversinya yang jingga akan ikut berubah.|Drag any vertex A–E. The green pentagon, its blue reflection and its orange inverse all update.
+Geser salah satu titik A–E pada segi lima hijau. Untuk titik A, A′ berwarna biru adalah bayangan refleksi dan A* berwarna jingga adalah bayangan inversi.|Drag any vertex A–E of the green pentagon. For vertex A, the blue point A′ is its reflection and the orange point A* is its inverse.
 Contoh inversi hasil kali|Inversion by product example
 Contoh penggunaan Wildan|Wildan’s worked examples
 Refleksi dan segiempat siklis|Reflection and a cyclic quadrilateral
@@ -3651,7 +3651,7 @@ Tanpa|None
 Tidak ada hasil. Coba kata lain, misalnya “singgung” atau “inversi”.|No results. Try another word, such as “tangent” or “inversion”.
 Tersimpan di browser ini.|Saved in this browser.
 Gunakan Simpan proyek untuk menyimpan hasilnya.|Use Save project to keep the diagram.
-Contoh dokumentasi. Gunakan Simpan proyek untuk menyimpan perubahan.|Worked example. Use Save project to keep your changes.
+Lembar contoh. Gunakan Simpan proyek untuk menyimpan perubahan.|Example sheet. Use Save project to keep your changes.
 Pilih suatu objek|Select an object
 Tidak ada objek yang terlihat|No visible objects
 Kanvas kosong|Empty canvas
@@ -3782,7 +3782,7 @@ Garis singgung dan dua median|A tangent and two medians
 BC dan DE antiparalel|Antiparallel lines BC and DE
 Inversi dengan k = OA × OB|Inversion with k = OA × OB
 Seret D di sepanjang AB. Garis melalui D memotong AC di E. Lingkaran putus-putus melalui B, C, dan D juga melewati E.|Drag D along AB. The line through D meets AC at E. The dashed circle through B, C, and D also passes through E.
-Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P′ bergerak pada sinar OP dengan OP × OP′ = k.|Drag A or B to change k = OA × OB. Drag P to see P′ move along ray OP while OP × OP′ = k.
+Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P* bergerak pada sinar OP dengan OP × OP* = k.|Drag A or B to change k = OA × OB. Drag P to see P* move along ray OP while OP × OP* = k.
 `.trim().split("\n").map(row=>row.split("|")));
 
 "use strict";
@@ -3888,12 +3888,12 @@ const studioFeedbackEnglish={
   "Parameter busur dalam proyek tidak valid.": "The project has invalid arc parameters.",
   "Masukkan besar busur lebih dari 0° dan paling besar 360°.": "Enter an arc angle greater than 0° and at most 360°.",
   "Masukkan rotasi awal dalam derajat.": "Enter the starting rotation in degrees.",
-  "Contoh AB × CD. Pada inversi, OP · OP′ = k.": "For example, AB × CD. Under inversion, OP · OP′ = k.",
+  "Contoh AB × CD. Pada inversi, OP · OP* = k.": "For example, AB × CD. Under inversion, OP · OP* = k.",
   "Contoh 3, (AB + CD) / 2, atau sqrt(AB × CD).": "For example, 3, (AB + CD) / 2, or sqrt(AB × CD).",
   "Isi rumus atau pilih panjang ruas, lalu klik pusat lingkaran.": "Enter a formula or choose a segment length, then click the circle’s center.",
   "Seret D di sepanjang AB. Garis melalui D memotong AC di E. Lingkaran putus-putus melalui B, C, dan D juga melewati E.": "Drag D along AB. The line through D meets AC at E. The dashed circle through B, C, and D also passes through E.",
   "BC dan DE antiparalel": "BC and DE are antiparallel",
-  "Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P′ bergerak pada sinar OP dengan OP × OP′ = k.": "Drag A or B to change k = OA × OB. Drag P to see P′ move along ray OP with OP × OP′ = k.",
+  "Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P* bergerak pada sinar OP dengan OP × OP* = k.": "Drag A or B to change k = OA × OB. Drag P to see P* move along ray OP with OP × OP* = k.",
   "Inversi dengan k = OA × OB": "Inversion with k = OA × OB",
   "Gunakan notasi LaTeX seperti \\frac{\\alpha}{2}, \\sqrt{x}, atau x_1^{2}.": "Use LaTeX notation such as \\frac{\\alpha}{2}, \\sqrt{x}, or x_1^{2}.",
   "Masukkan isi label saja. Aktifkan Latar label transparan di panel Objek.": "Enter only the label content. Enable Translucent label background in the Objects panel.",
@@ -4179,9 +4179,9 @@ circleConstraints|Circle from 3 constraints|Construct a circle through selected 
 circleFixedTangency|Fixed-radius tangent circles|Construct circles with a specified radius tangent to two given circles.|Enter the desired radius. Click the two reference circles.|Click a dashed candidate, choose a solution number, or select Create all.|Each solution has the requested radius. Both internal and external tangencies are possible.
 pole|Pole of a line|Find the pole of a line with respect to a circle.|Click a line, segment, or ray, then a reference circle with center O. Choose a line that does not pass through O.|If H is the perpendicular foot from O to the line, its pole P lies on ray OH and satisfies OH × OP = r².
 polar|Polar of a point|Construct the polar of a point with respect to a circle.|Click a pole P different from the center O, then the reference circumference.|The polar is perpendicular to OP. For an exterior point it joins the two points of tangency. On the circle it is the tangent at P.
-invertFormula|Inversion by radius or power|Define an inversion circle from its radius or power and invert a source object in it.|In Transformations → Inversion, choose Radius or power. Under Calculate from, choose Radius r or Power k = r². Enter a positive number or an expression such as OA * OB using two existing segments.|Click the source object, then the center O. Click inside a polygon to select the whole shape. Use the source-object list to select an overlapping object.|The image follows changes to the object, center and formula. If k = 6 and OP = 2, then OP′ = 3. The center O has no finite image.
-invert|Inversion|Invert a point, segment, ray, line, arc, circle, polygon, sector or annotation.|Choose Transformations → Inversion and use a circle on the canvas. Click inside triangle ABC to select the whole shape. Click an individual side to invert just that segment, or select the source from the list.|Click the reference circumference. In the example, A and B initially lie on it. The midpoint M of AB maps to M′ on the image arc. When you invert a new point, Studio adds a star to its name. For example, the image of A is A*.|Open the interactive example and drag C. Move the center O inside the triangle to see its fill extend outside the boundary.|Each side maps according to its position relative to O. A side whose line misses O becomes an arc. A segment containing O strictly between its endpoints maps to two rays. Free labels follow their anchor. Angle marks follow the tangent directions at the image vertex.
-invertLine|Invert a line|Find the inverse image of a line, segment or ray.|Click the original object. To invert the full supporting line use Line through two points. To invert a segment or a ray select that object.|Click the inversion circle centered at O. This example uses a full line g.|A full line away from O maps to a circle through O. A segment AB on that line maps to the arc between A′ and B′ that avoids O. A segment collinear with O stays a segment if O lies outside it. When O is an endpoint, the rest of the segment maps to a ray.
+invertFormula|Inversion by radius or power|Define an inversion circle from its radius or power and invert a source object in it.|In Transformations → Inversion, choose Radius or power. Under Calculate from, choose Radius r or Power k = r². Enter a positive number or an expression such as OA * OB using two existing segments.|Click the source object, then the center O. Click inside a polygon to select the whole shape. Use the source-object list to select an overlapping object.|The image follows changes to the object, center and formula. If k = 6 and OP = 2, then OP* = 3. The center O has no finite image.
+invert|Inversion|Invert a point, segment, ray, line, arc, circle, polygon, sector or annotation.|Choose Transformations → Inversion and use a circle on the canvas. Click inside triangle ABC to select the whole shape. Click an individual side to invert just that segment, or select the source from the list.|Click the reference circumference. In the example, A and B initially lie on it. The midpoint M of AB maps to M* on the image arc. When you invert a new point, Studio adds a star to its name. For example, the image of A is A*.|Open the interactive example and drag C. Move the center O inside the triangle to see its fill extend outside the boundary.|Each side maps according to its position relative to O. A side whose line misses O becomes an arc. A segment containing O strictly between its endpoints maps to two rays. Free labels follow their anchor. Angle marks follow the tangent directions at the image vertex.
+invertLine|Invert a line|Find the inverse image of a line, segment or ray.|Click the original object. To invert the full supporting line use Line through two points. To invert a segment or a ray select that object.|Click the inversion circle centered at O. This example uses a full line g.|A full line away from O maps to a circle through O. A segment AB on that line maps to the arc between A* and B* that avoids O. A segment collinear with O stays a segment if O lies outside it. When O is an endpoint, the rest of the segment maps to a ray.
 invertCircle|Invert a circle|Find the inverse image of a circle, arc or sector.|Click the original circle or arc, or click inside the sector to select the entire region. Use the source-object list when several objects overlap.|Click the reference circumference. Click the same circumference twice to invert the reference circle in itself.|A full circle through O maps to a line. An arc traces just its own image. The image of a sector includes both radius images and the image of its arc. A fill follows the corresponding side of the boundary, extending outside it when O lies inside the original region.
 regularPolygon|Regular polygon|Construct a polygon with equal sides and equal interior angles.|Enter the number of sides, for example 6 for a hexagon. Choose the direction.|Click two consecutive vertices to define the first side.|The other vertices and sides are constructed automatically and follow the initial side.
 polygon|Polygon|Construct a triangle, quadrilateral, or another polygon by choosing its vertices in order.|Select Polygon. Click A, B, then C in boundary order. Click an existing point to reuse it or click empty space to add a vertex.|To finish triangle ABC, click A again or press Enter. Its three vertices must be noncollinear. For more sides, continue with D, E, and any further vertices before closing.|With Select / move, click inside to adjust the fill color and opacity. Click an edge to select its segment.|If you close the shape after three points, Studio recognizes a triangle. For example, select Incircle and click inside ABC. In the interactive example, drag a vertex to change the triangle or pentagon.
@@ -4217,7 +4217,7 @@ editor-view|Layout, zoom, and grid|Choose where the canvas and code appear and h
 editor-theme|Theme and canvas background|Choose a comfortable drawing background.|Choose System, Light, or Dark in the top bar. Use Background under the canvas to choose the paper tone.|The browser remembers your choices. Exported TikZ uses the object inks you selected.
 editor-project|Save and reopen a project|Keep the construction and styling for later editing or transfer.|Choose Save project and keep the downloaded .stikz.json file. Give different projects distinct filenames.|Choose Open file or drop the project onto the canvas to reopen it.|The file preserves references, formulas, and styling. The browser also tries to remember your most recent work.
 editor-import|Open a GeoGebra diagram|Use a two-dimensional .ggb construction as the starting point for TikZ.|Choose Open file or drop the .ggb file on the canvas. Check the imported objects and adjust their styles.|Points use stored coordinates. Recognized circles through points follow those points.
-editor-sheets|Start a sheet or explore examples|Create a blank sheet or open a prepared diagram.|Save work you want to keep. Use Sheet to choose New canvas or a named example.|Explore the construction and use Download example .ggb where available.|The selected sheet opens in the editor.
+editor-sheets|Start a sheet or explore examples|Open your drawing or explore a construction.|Under My sheets, choose My drawing or start a New canvas. To try an example, choose an entry under Example sheets or Wildan’s worked examples and drag a point.|Choose My sheets → My drawing to return. Use Save project to keep an edited example as a file.|The triangle and Reim examples also offer a .ggb download.
 editor-export|Copy the diagram or coordinates|Use the finished diagram in LaTeX or an AoPS post.|Choose Full diagram or Coordinates only and copy the code. Copy the preamble and paste it before the document begins.|To post the TikZ diagram on AoPS open AoPS format. To convert incoming Asymptote instead, open Paste Asymptote and convert the source.|Full diagram includes geometry and style. Selecting an object highlights its TikZ code.
 editor-scale|TikZ print scale|Set the compiled size of the diagram.|Choose Full diagram. Enter a positive TikZ scale and check the dot radius shown beside it.|Studio adjusts the radius in the code to keep printed point markers at 1.5 pt.
 `.trim();
@@ -4296,13 +4296,13 @@ function studioDynamicEnglish(s){
 // Input examples, clipboard source and editable fields remain literal.
 function studioGuideMath(element,text){
   if(typeof document.createTextNode!=="function"||typeof element.replaceChildren!=="function")return;
-  const patterns=/D = \(A \+ 2B\) \/ 3|\(AB \+ CD\) \/ 2|(?:AD ∶ DB = 2 ∶ 1|OH × OP = r²|OP × OP′ = r²|OP · OP′ = k|∠BAD = ∠DAC)|\b(?:[A-Z][A-Z′]{0,3}|[a-z])_[A-Z\d]|∠[A-Z]{2,3}|\b[A-Z]{2,4}′?\b|\b(?:[rxyk] = [r\d]+²?|r²|[1-9]\d*°)|(?<!\w)\b[B-IHMOPQTUXY]\b|\bA\b/gu;
+  const patterns=/D = \(A \+ 2B\) \/ 3|\(AB \+ CD\) \/ 2|(?:AD ∶ DB = 2 ∶ 1|OH × OP = r²|OP [×·] OP\* = (?:r²|k)|∠BAD = ∠DAC)|\b[A-Z]{1,4}(?:_[A-Z\d]+)?[′*]+|\b(?:[A-Z][A-Z′]{0,3}|[a-z])_[A-Z\d]|∠[A-Z]{2,3}|\b[A-Z]{2,4}′?\b|\b(?:[rxyk] = [r\d]+²?|r²|[1-9]\d*°)|(?<!\w)\b[B-IHMOPQTUXY]\b|\bA\b/gu;
   const fragment=document.createDocumentFragment();let end=0;
   for(const match of text.matchAll(patterns)){
     const v=match[0],start=match.index;
     if(["ID","EN","SVG","HTML","AMC","AIME","TIKZ","MAC"].includes(v))continue;
     if(v==="A"&&studioLanguage==="en"&&/^(?:\s+[a-z])(?!$)/.test(text.slice(start+1))&&!/^\s+(?:and|or|then|to|is|at|as|in|for|divides|off|stays|with|on|first|through|remains)\b/.test(text.slice(start+1)))continue;
-    const formula=v.replace("D = (A + 2B) / 3","D = \\frac{A+2B}{3}").replace("(AB + CD) / 2","\\frac{AB+CD}{2}").replaceAll("²","^2").replaceAll("∶",":").replaceAll("·","\\cdot ").replaceAll("×","\\times ").replaceAll("∠","\\angle ");
+    const formula=v.replace(/[A-Z]+(?:_[A-Z\d]+)?[′*]+/g,name=>safeMath(name)).replace("D = (A + 2B) / 3","D = \\frac{A+2B}{3}").replace("(AB + CD) / 2","\\frac{AB+CD}{2}").replaceAll("²","^2").replaceAll("∶",":").replaceAll("·","\\cdot ").replaceAll("×","\\times ").replaceAll("∠","\\angle ");
     try{
       const math=mathElement("math",{class:"studio-prose-math","aria-label":v},mathRow(mathLabelAtoms(formula)));
       fragment.append(document.createTextNode(text.slice(end,start)),math);end=start+v.length;
@@ -6371,7 +6371,7 @@ function updateRadiusMenu(entry,choices){
 function updateRadiusResult(entry,choices){
   const power=entry.mode.value==="power";
   entry.symbol.textContent=power?"k =":"r =";
-  entry.hint.textContent=power?"Contoh AB × CD. Pada inversi, OP · OP′ = k.":"Contoh 3, (AB + CD) / 2, atau sqrt(AB × CD).";
+  entry.hint.textContent=power?"Contoh AB × CD. Pada inversi, OP · OP* = k.":"Contoh 3, (AB + CD) / 2, atau sqrt(AB × CD).";
   try{
     const result=compileRadiusFormula(entry.formula.value,entry.mode.value,choices);
     entry.formula.removeAttribute("aria-invalid");entry.result.classList.remove("formula-error");
@@ -7657,7 +7657,7 @@ const guidedExamples={
     ]})
   },
   "transformasi-bangun":{
-    hint:"Geser salah satu titik A–E. Segi lima hijau, bayangan refleksinya yang biru, dan bayangan inversinya yang jingga akan ikut berubah.",
+    hint:"Geser salah satu titik A–E pada segi lima hijau. Untuk titik A, A′ berwarna biru adalah bayangan refleksi dan A* berwarna jingga adalah bayangan inversi.",
     project(){
       const corners=["A","B","C","D","E"];
       const positions=[[2.35,-1.1],[4.35,-1.35],[5.05,.55],[3.7,1.95],[1.85,.6]];
@@ -7678,11 +7678,16 @@ const guidedExamples={
       for(let i=0;i<5;i++)
         steps.push({id:"reflectedEdge"+i,type:"polygonSide",refs:["reflection","prime"+i,"prime"+((i+1)%5)],index:i});
       steps.push({id:"inversion",type:"invertObject",refs:["original","mirror"],color:"BurntOrange",fillColor:"BurntOrange",fillOpacity:22});
+      const inverseOffsets=[[.24,-.4],[-.19,-.43],[-.31,.12],[-.4,.9],[.65,.55]];
+      for(const [i,id] of corners.entries()){
+        const [x,y]=inverseOffsets[i];
+        steps.push({id:"inverseVertex"+i,type:"invertVertex",refs:[id,"mirror","inversion"],name:id+"*",color:"BurntOrange",labelOffset:{x,y}});
+      }
       return {format:"studio-tikz",version:1,title:"Segi lima, refleksi, dan inversi",steps};
     }
   },
   inversionProductDemo:{
-    hint:"Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P′ bergerak pada sinar OP dengan OP × OP′ = k.",
+    hint:"Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P* bergerak pada sinar OP dengan OP × OP* = k.",
     project:()=>({format:"studio-tikz",version:1,title:"Inversi dengan k = OA × OB",steps:[
       {id:"O",type:"point",refs:[],name:"O",x:0,y:0,dir:"below left"},
       {id:"A",type:"point",refs:[],name:"A",x:1.5,y:0,dir:"below"},
@@ -7692,7 +7697,7 @@ const guidedExamples={
       {id:"OA",type:"segment",refs:["O","A"],color:"RoyalBlue"},
       {id:"mirror",type:"circleFormula",refs:["O","OA","OB"],radiusFormula:"OA * OB",radiusMode:"power",radiusSymbols:["OA","OB"],color:"PineGreen",dashed:true},
       {id:"P",type:"point",refs:[],name:"P",x:-.8,y:1.4,dir:"left"},
-      {id:"image",type:"invert",refs:["P","mirror"],name:"P'",dir:"above right",color:"RoyalBlue"},
+      {id:"image",type:"invert",refs:["P","mirror"],name:"P*",dir:"above right",color:"RoyalBlue"},
       {id:"OP",type:"segment",refs:["O","P"],opacity:65},
       {id:"PPimage",type:"segment",refs:["P","image"],opacity:65}
     ]})
@@ -8111,19 +8116,19 @@ const circleGuideEntries={
   invertFormula:{
     purpose:"Membuat lingkaran acuan dari jari-jari atau kuasa, lalu menginversi objek terhadap lingkaran itu.",
     steps:["Pada Transformasi → Inversi, pilih Jari-jari atau kuasa. Pada Hitung dari, pilih Jari-jari r atau Kuasa k = r². Masukkan nilai positif atau rumus, misalnya OA * OB jika kedua ruas sudah digambar.","Klik objek asal lalu klik pusat O. Untuk menginversi poligon, klik bagian dalamnya. Saat beberapa objek bertumpuk, gunakan daftar Objek asal."],
-    result:"Bayangan mengikuti perubahan objek, pusat dan rumus. Jika k = 6 dan OP = 2, maka OP′ = 3. Titik O sendiri tidak mempunyai bayangan hingga.",
+    result:"Bayangan mengikuti perubahan objek, pusat dan rumus. Jika k = 6 dan OP = 2, maka OP* = 3. Titik O sendiri tidak mempunyai bayangan hingga.",
     terms:"inversi kuasa rumus produk juring poligon busur radius inversion power"
   },
   invert:{
     purpose:"Membuat bayangan inversi titik, ruas, sinar, garis, busur, lingkaran, poligon, juring atau anotasi.",
-    steps:["Pilih Transformasi → Inversi dan gunakan Lingkaran di kanvas. Klik bagian dalam segitiga ABC untuk memilih seluruh bangun. Untuk menginversi satu sisi saja, klik ruas itu. Kamu juga bisa menggunakan daftar Objek asal.","Klik keliling lingkaran acuan. Pada contoh, A dan B mula-mula berada pada keliling. Titik tengah M pada AB berpeta ke M′ pada busur bayangan. Saat kamu menginversi titik baru, Studio menamai bayangannya dengan bintang, misalnya A* untuk bayangan A.","Buka Utak-atik contoh, lalu geser C. Coba pindahkan pusat O ke dalam segitiga untuk melihat daerah isiannya menjadi tak terbatas."],
+    steps:["Pilih Transformasi → Inversi dan gunakan Lingkaran di kanvas. Klik bagian dalam segitiga ABC untuk memilih seluruh bangun. Untuk menginversi satu sisi saja, klik ruas itu. Kamu juga bisa menggunakan daftar Objek asal.","Klik keliling lingkaran acuan. Pada contoh, A dan B mula-mula berada pada keliling. Titik tengah M pada AB berpeta ke M* pada busur bayangan. Saat kamu menginversi titik baru, Studio menamai bayangannya dengan bintang, misalnya A* untuk bayangan A.","Buka Utak-atik contoh, lalu geser C. Coba pindahkan pusat O ke dalam segitiga untuk melihat daerah isiannya menjadi tak terbatas."],
     result:"Tiap sisi berpeta sesuai dengan letaknya terhadap O. Sisi yang garisnya menghindari O menjadi busur. Jika O berada di tengah-tengah suatu sisi, bagian di kedua sisi O berpeta ke dua sinar. Label bebas berpindah bersama titik letaknya. Penanda sudut mengikuti arah singgung bayangan pada titik sudut." ,
     terms:"inversi bangun titik ruas sinar busur lingkaran segitiga segiempat poligon juring label siku penanda sudut isian luar tak terbatas inversion object shape polygon exterior"
   },
   invertLine:{
     purpose:"Menemukan bayangan garis, ruas atau sinar terhadap lingkaran inversi.",
     steps:["Klik objek asal. Garis melalui dua titik memilih garis penuh. Untuk ruas AB pilih ruasnya. Untuk sinar pilih sinarnya.","Klik keliling lingkaran inversi berpusat O. Pada contoh, objek asalnya garis penuh g."],
-    result:"Garis penuh yang menghindari O menghasilkan lingkaran melalui O. Dari garis itu, ruas AB hanya menelusuri busur antara A′ dan B′ yang menghindari O. Jika AB segaris dengan O dan O berada di luar ruasnya, bayangannya juga ruas. Jika O merupakan ujungnya, bayangan bagian sisanya adalah sinar.",
+    result:"Garis penuh yang menghindari O menghasilkan lingkaran melalui O. Dari garis itu, ruas AB hanya menelusuri busur antara A* dan B* yang menghindari O. Jika AB segaris dengan O dan O berada di luar ruasnya, bayangannya juga ruas. Jika O merupakan ujungnya, bayangan bagian sisanya adalah sinar.",
     terms:"inversi garis ruas sinar busur bayangan menjadi lingkaran"
   },
   invertCircle:{
@@ -8380,9 +8385,9 @@ const otherGuideEntries={
     group:"editor",title:"Mulai lembar baru atau coba contoh",
     purpose:"Memulai gambar dari kanvas kosong atau mempelajari konstruksi yang sudah tersedia.",
     steps:[
-      "Jika ingin menyimpan salinan lembar aktif, klik Simpan proyek.",
-      "Buka menu Lembar. Pilih Kanvas baru atau salah satu contoh, misalnya Contoh segitiga, Contoh lingkaran singgung, Contoh inversi hasil kali, atau Contoh transformasi bangun.",
-      "Coba geser titik bebas dengan Pilih / geser dan amati perubahan bentuk serta kode."
+      "Di Lembar saya, pilih Gambar saya untuk membuka gambarmu atau Kanvas baru untuk memulai gambar lain.",
+      "Coba Contoh inversi hasil kali di kelompok Contoh Studio, atau pilih salah satu soal di Contoh penggunaan Wildan. Geser titik bebas untuk melihat konstruksinya berubah.",
+      "Saat selesai, pilih Lembar saya → Gambar saya untuk kembali. Untuk menyimpan salinan contoh yang kamu ubah, klik Simpan proyek."
     ],
     result:"Lembar terpilih terbuka di editor. Pada contoh segitiga dan Reim tersedia juga Unduh contoh .ggb.",
     terms:"contoh demo lembar kosong baru segitiga Reim antiparalel inversi"
@@ -8413,6 +8418,12 @@ const otherGuideEntries={
 
 "use strict";
 
+function raiseGuidePointStar(text,name){
+  if(!name.endsWith("*"))return;
+  text.textContent=name.slice(0,-1);
+  text.append(svg("tspan",{"baseline-shift":"super","font-size":"72%","font-style":"normal"},"∗"));
+}
+
 function helpDrawing(label,caption){
   const figure=document.createElement("figure");
   figure.className="guide-figure";
@@ -8437,7 +8448,11 @@ function helpDrawing(label,caption){
   }
   function point(x,y,name="",dx=6,dy=-7,style="ink"){
     const dot=svg("circle",{cx:x,cy:y,r:3.2,fill:inks[style]});drawing.append(dot);
-    if(name){const n=text(x+dx,y+dy,name,style,15);n.setAttribute("font-family","Georgia,serif");n.setAttribute("font-style","italic");}
+    if(name){
+      const label=text(x+dx,y+dy,name,style,15);
+      label.setAttribute("font-family","Georgia,serif");label.setAttribute("font-style","italic");
+      raiseGuidePointStar(label,name);
+    }
     return dot;
   }
   function arrow(x1,y1,x2,y2,style="result"){
@@ -8834,8 +8849,8 @@ const circleSketchCaptions={
   circleFixedTangency:"Dengan jari-jari 2 satuan, pusat C dan C′ sama-sama memenuhi kedua syarat singgung. Pilih lingkaran hasil yang diinginkan.",
   pole:"Klik garis g, lalu lingkaran berpusat O. H adalah kaki tegak lurus dari O ke g. Kutub P terletak pada sinar OH dan memenuhi OH × OP = r².",
   polar:"Klik titik luar P lalu lingkaran berpusat O. Garis polar melalui dua titik singgung T dan U serta tegak lurus OP.",
-  invertLine:"Klik garis g lalu lingkaran inversi berpusat O. Bayangan g adalah lingkaran dengan diameter OH′, dengan H′ bayangan kaki tegak lurus H.",
-  invertCircle:"Pilih lingkaran kecil melalui A dan B, lalu lingkaran inversi berpusat O. Bayangannya melalui A′ dan B′. Titik A yang lebih dekat ke O menghasilkan bayangan yang lebih jauh."
+  invertLine:"Klik garis g lalu lingkaran inversi berpusat O. Bayangan g adalah lingkaran dengan diameter OH*, dengan H* bayangan kaki tegak lurus H.",
+  invertCircle:"Pilih lingkaran kecil melalui A dan B, lalu lingkaran inversi berpusat O. Bayangannya melalui A* dan B*. Titik A yang lebih dekat ke O menghasilkan bayangan yang lebih jauh."
 };
 
 const circleSketchDescriptions={
@@ -8853,8 +8868,8 @@ const circleSketchDescriptions={
   circleFixedTangency:"Dua lingkaran hasil dengan jari-jari sama menyinggung kedua lingkaran acuan. Pusat C dan C′ berada di atas dan di bawah garis pusat lingkaran acuan.",
   pole:"Garis g memotong sinar OP di H dan tegak lurus sinar itu. Titik kutub P terletak lebih jauh dari O daripada H.",
   polar:"Dua garis singgung dari P menyentuh lingkaran di T dan U. Garis TU adalah polar P.",
-  invertLine:"Garis g tegak lurus OH di H. Hasil inversi garis adalah lingkaran melalui O dan H′.",
-  invertCircle:"Pada sinar dari O, titik-titik pada lingkaran asal dan bayangan muncul dalam urutan A, B, B′, A′."
+  invertLine:"Garis g tegak lurus OH di H. Hasil inversi garis adalah lingkaran melalui O dan H*.",
+  invertCircle:"Pada sinar dari O, titik-titik pada lingkaran asal dan bayangan muncul dalam urutan A, B, B*, A*."
 };
 
 function circleHelpFigure(id){
@@ -8973,14 +8988,14 @@ function paintCircleSketch(id,g){
     circle(o,r,muted,"5 4");
     line(o,image,muted,1.25,"3 4");line(p(h.x,19),p(h.x,163),ref,2.05);
     circle(p((o.x+image.x)/2,o.y),(image.x-o.x)/2,out);note(p(h.x+8,28),"g",ref);
-    point(o,"O",-18,13);point(h,"H",3,17);point(image,"H′",6,15);
+    point(o,"O",-18,13);point(h,"H",3,17);point(image,"H*",6,15);
   }else if(id==="invertCircle"){
     const o=p(120,91),r=60,a=p(o.x+20,o.y),b=p(o.x+50,o.y);
     const ai=p(o.x+r*r/20,o.y),bi=p(o.x+r*r/50,o.y);
     circle(o,r,muted,"5 4");line(o,p(ai.x+8,o.y),muted,1.15,"3 4");
     circle(p((a.x+b.x)/2,o.y),(b.x-a.x)/2,ref);
     circle(p((ai.x+bi.x)/2,o.y),(ai.x-bi.x)/2,out);
-    point(o,"O",-18,10);point(a,"A",-9,24);point(b,"B",-3,-14);point(bi,"B′",3,23);point(ai,"A′",4,-5);
+    point(o,"O",-18,10);point(a,"A",-9,24);point(b,"B",-3,-14);point(bi,"B*",3,23);point(ai,"A*",4,-5);
   }
 }
 
@@ -9255,9 +9270,10 @@ function guideFigure(id){
     drawing.append(svg("circle",{cx:c.x,cy:c.y,r,fill:"none",stroke,"stroke-width":1.6,...(dash?{"stroke-dasharray":dash}:{})}));
   }
   function point(p,label,dx,dy){
-    drawing.append(svg("circle",{cx:p.x,cy:p.y,r:2.9,fill:ink}),
-      svg("text",{x:p.x+dx,y:p.y+dy,fill:ink,"font-size":16,"font-family":'"Cambria Math",serif',"font-style":"italic",
-        stroke:"var(--sheet,#faf9f3)","stroke-width":2.5,"paint-order":"stroke fill"},label));
+    const text=svg("text",{x:p.x+dx,y:p.y+dy,fill:ink,"font-size":16,"font-family":'"Cambria Math",serif',"font-style":"italic",
+      stroke:"var(--sheet,#faf9f3)","stroke-width":2.5,"paint-order":"stroke fill"},label);
+    raiseGuidePointStar(text,label);
+    drawing.append(svg("circle",{cx:p.x,cy:p.y,r:2.9,fill:ink}),text);
   }
   if(isAnti){
     // A, B, C and D match the freely draggable antiparallel example. Choose E on
@@ -9281,14 +9297,14 @@ function guideFigure(id){
     circle(O,r,muted,"5 4"); // 0
     drawing.append(svg("path",{d:"M 212 95 L 147 30 L 277 30 Z",fill:reference,"fill-opacity":.09,stroke:reference,"stroke-width":1.7}));
     point(O,"O",-15,14);point(A,"A",5,14);point(B,"B",-14,-5);point(C,"C",5,2);
-    const diagonal=r/Math.SQRT2, M={x:179.5,y:62.5}, prime={x:212,y:30};
+    const diagonal=r/Math.SQRT2, M={x:179.5,y:62.5}, midpointImage={x:212,y:30};
     // The midpoint of AB maps to (3,3), fixing which semicircle joins A and B.
     const full="M 212 95 A "+diagonal+" "+diagonal+" 0 0 0 147 30 A 32.5 32.5 0 0 1 173 82 A "+diagonal+" "+diagonal+" 0 0 1 212 95 Z";
     drawing.append(svg("path",{d:full,fill:accent,"fill-opacity":.14,stroke:accent,"stroke-width":2.4}));
-    line(O,prime,muted,1.1,"3 3");
-    point(M,"M",-17,-2);point(prime,"M′",3,-6);point({x:173,y:82},"C′",1,15);
-    drawing.setAttribute("aria-label","Segitiga ABC dan bayangannya yang dibatasi tiga busur. Titik tengah M berpeta ke M′ pada busur bayangan AB.");
-    caption.textContent="A dan B terletak pada lingkaran inversi. Ruas AB berpeta ke setengah lingkaran melalui A, M′ dan B.";
+    line(O,midpointImage,muted,1.1,"3 3");
+    point(M,"M",-17,-2);point(midpointImage,"M*",3,-6);point({x:173,y:82},"C*",1,15);
+    drawing.setAttribute("aria-label","Segitiga ABC dan bayangannya yang dibatasi tiga busur. Titik tengah M berpeta ke M* pada busur bayangan AB.");
+    caption.textContent="A dan B terletak pada lingkaran inversi. Ruas AB berpeta ke setengah lingkaran melalui A, M* dan B.";
   }else if(id==="tangentAt"){
     const O={x:158,y:96},r=59,n={x:.6,y:-.8},v={x:.8,y:.6},T=plus(O,times(n,r));
     circle(O,r,muted);line(O,T,reference,1.6);line(plus(T,times(v,-78)),plus(T,times(v,134)),accent,2.5);
@@ -9315,9 +9331,9 @@ function guideFigure(id){
     const arrowBase=plus(end,times(n,-8)),side={x:-n.y*3,y:n.x*3};
     line(end,plus(arrowBase,side),muted,1.3);line(end,minus(arrowBase,side),muted,1.3);
     line(O,{x:O.x,y:O.y-r},reference);drawing.append(svg("text",{x:O.x-12,y:O.y-r*.5,fill:reference,"font-size":15,"font-family":"serif","font-style":"italic"},"r"));
-    point(O,"O",-17,11);point(P,"P",-1,19);point(image,"P′",2,-9);
-    drawing.setAttribute("aria-label","Inversi menempatkan P dan P′ pada sinar yang sama dari pusat O. Hasil kali OP dan OP′ sama dengan kuadrat jari-jari.");
-    caption.textContent="P dan P′ terletak pada sinar yang sama dari O, dengan OP × OP′ = r². Di sini OP = r/2 sehingga OP′ = 2r.";
+    point(O,"O",-17,11);point(P,"P",-1,19);point(image,"P*",2,-9);
+    drawing.setAttribute("aria-label","Inversi menempatkan P dan P* pada sinar yang sama dari pusat O. Hasil kali OP dan OP* sama dengan kuadrat jari-jari.");
+    caption.textContent="P dan P* terletak pada sinar yang sama dari O, dengan OP × OP* = r². Di sini OP = r/2 sehingga OP* = 2r.";
   }
   fig.append(drawing,caption);
   return fig;
@@ -9555,22 +9571,22 @@ function circleGuideMotion(id,drawing){
       setting("Pada Hitung dari, pilih Kuasa k = r².","Hitung dari","Kuasa k = r²"),
       setting("Isi 4 sebagai nilai k. Jari-jari inversinya menjadi 2.","k =","4"),
       step("Klik titik P yang akan diinversi.",point(8),[8,9]),
-      step("Klik pusat O. Di sini OP = 1, sehingga P′ berada pada sinar OP dengan OP′ = 4.",point(6),[0,1,2,3,4,5,10,11])
+      step("Klik pusat O. Di sini OP = 1, sehingga P* berada pada sinar OP dengan OP* = 4.",point(6),[0,1,2,3,4,5,10,11])
     ]};
     case "invert":return {base:[0,1,2,3,4,5,6,7,8,9],steps:[
       step("Klik bagian dalam segitiga ABC untuk memilih bangun utuh.",[230,46]),
       step("Klik keliling lingkaran acuan. Ketiga sisi segitiga berpeta ke tiga busur.",onCircle(0,180),[10,16,17]),
-      step("M berada pada ruas AB. Bayangannya M′ berada pada busur dari A ke B.",[212,30],[11,12,13,14,15])
+      step("M berada pada ruas AB. Bayangannya M* berada pada busur dari A ke B.",[212,30],[11,12,13,14,15])
     ]};
     case "invertLine":return {base:[0,2,4,5,6],steps:[
       step("Klik garis g sebagai objek asal.",onLine(2,.84)),
       step("Klik lingkaran inversi yang berpusat di O. Bayangan g adalah lingkaran melalui O.",onCircle(0,180),[3]),
-      step("H adalah titik pada g yang paling dekat ke O. Bayangannya H′ menjadi ujung diameter OH′.",null,[1,7,8,9,10])
+      step("H adalah titik pada g yang paling dekat ke O. Bayangannya H* menjadi ujung diameter OH*.",null,[1,7,8,9,10])
     ]};
     case "invertCircle":return {base:[0,2,4,5],steps:[
       step("Klik keliling lingkaran kecil melalui A dan B sebagai objek asal.",onCircle(2,-90),[6,7,8,9]),
       step("Klik lingkaran inversi berpusat O. Lingkaran hasil berada di sebelah kanan.",onCircle(0,180),[3]),
-      step("A berpeta ke A′ dan B ke B′. Keempatnya segaris dengan O.",null,[1,10,11,12,13])
+      step("A berpeta ke A* dan B ke B*. Keempatnya segaris dengan O.",null,[1,10,11,12,13])
     ]};
     case "antiTriangle":return {base:[1,2,3,6,7,8,9,10,11],steps:[
       step("Klik sisi acuan BC. Pada segitiga ini, Studio memilih ∠BAC sebagai sudut acuan.",onLine(3,.52),[5]),
@@ -9715,8 +9731,8 @@ const editorMotionScenes={
   sheets:{
     base:[],
     steps:[
-      {text:"Pada menu Lembar, pilih Kanvas baru untuk membuka lembar kosong.",setting:{label:"Lembar",value:"Kanvas baru"},show:[0,2,...editorMotionRange(4,31)]},
-      {text:"Buka kembali menu Lembar dan pilih Contoh segitiga.",setting:{label:"Lembar",value:"Contoh segitiga"},show:[1,3,...editorMotionRange(32,59),62,63]},
+      {text:"Pada kelompok Lembar saya, pilih Kanvas baru untuk membuka lembar kosong.",setting:{label:"Lembar",value:"Kanvas baru"},show:[0,2,...editorMotionRange(4,31)]},
+      {text:"Pada kelompok Contoh Studio, pilih Contoh segitiga.",setting:{label:"Lembar",value:"Contoh segitiga"},show:[1,3,...editorMotionRange(32,59),62,63]},
       {text:"Amati segitiga dan lingkaran luarnya pada lembar contoh.",at:[270,47],show:[60,61]}
     ]
   },
@@ -10153,12 +10169,12 @@ function circleExploration(tool) {
         return {id};
       },()=>{});
       add("image","invertObject",["source","mirror"],{...result,fillColor:"BurntOrange",fillOpacity:18});
-      for (const [index,dir] of ["right","right","below right"].entries()){
+      for (const [index,dir] of ["above","right","below right"].entries()){
         const key=vertices[index];
-        derived(key+"prime","invertVertex",[key,"mirror","image"],{name:key+"'",dir,...result});
+        derived(key+"prime","invertVertex",[key,"mirror","image"],{name:key+"*",dir,...result});
       }
       derived("M","mid",["A","B"],{dir:"above left"});
-      derived("Mprime","invert",["M","mirror"],{name:"M'",...result,dir:"above right"});
+      derived("Mprime","invert",["M","mirror"],{name:"M*",...result,dir:"above right"});
       return project("Inversi segitiga ABC dan titik tengah M");
     }
 
@@ -10169,13 +10185,13 @@ function circleExploration(tool) {
         radiusFormula:"OA * OB",radiusMode:"power",radiusSymbols:["OA","OB"],...ref,dashed:true
       });
       point("P",1.2,-1.6,{dir:"below left"});add("OP","ray",["O","P"],guide);
-      derived("image","invert",["P","mirror"],{name:"P'",...result,dir:"right"});
+      derived("image","invert",["P","mirror"],{name:"P*",...result,dir:"right"});
       return project("Inversi dengan kuasa k = OA × OB");
 
     case "invertLine":
       origin();fixedCircle("mirror","O",2,{...ref,dashed:true});referenceLine();
       add("image","invertLine",["g","mirror"],result);
-      derived("Hprime","invert",["H","mirror"],{name:"H'",dir:"right"});
+      derived("Hprime","invert",["H","mirror"],{name:"H*",dir:"right"});
       segment("OHprime","O","Hprime",guide);
       return project("Bayangan inversi dari garis g");
 
@@ -10183,8 +10199,8 @@ function circleExploration(tool) {
       origin();fixedCircle("mirror","O",3,{...ref,dashed:true});
       point("A",1,0,{dir:"below"});point("B",2.5,0,{dir:"above"});
       add("source","diameter",["A","B"],ref);add("image","invertCircle",["source","mirror"],result);
-      derived("Aprime","invert",["A","mirror"],{name:"A'",dir:"right",...result});
-      derived("Bprime","invert",["B","mirror"],{name:"B'",dir:"below right",...result});
+      derived("Aprime","invert",["A","mirror"],{name:"A*",dir:"right",...result});
+      derived("Bprime","invert",["B","mirror"],{name:"B*",dir:"below right",...result});
       segment("OA","O","A",guide);segment("AAprime","A","Aprime",guide);
       return project("Inversi lingkaran berdiameter AB");
     default:
@@ -12520,7 +12536,7 @@ function toolRefs(id){
 }
 const emptyDoc=()=>({format:"studio-tikz",version:1,title:"Gambar saya",steps:[]});
 let doc=emptyDoc(),model=solveSketch([]),selected=null,tool="point",mode="full",sourceExample=null;
-let workBeforeUsage=null;
+let personalSheet=null;
 const groupSelection=new Set();
 let currentLines=[],copyTimer,openToken=0,generation=0,counter=1;
 let scaleText=null,scaleUndoRecorded=false;
@@ -12537,8 +12553,8 @@ function newLabel(extra=[]){
 function notice(text){$("notice").textContent=text;$("notice").hidden=!text;}
 function scheduleSave(){
   if(typeof guideExampleId!=="undefined" && guideExampleId)return;
-  if(isUsageExample(sourceExample)){
-    $("save-state").textContent="Contoh dokumentasi. Gunakan Simpan proyek untuk menyimpan perubahan.";
+  if(sourceExample){
+    $("save-state").textContent="Lembar contoh. Gunakan Simpan proyek untuk menyimpan perubahan.";
     return;
   }
   try{localStorage.setItem(storeKey,JSON.stringify({doc,camera,sourceExample}));$("save-state").textContent="Tersimpan di browser ini.";}
@@ -12664,7 +12680,7 @@ const appearanceFields={
   arcClockwise:v=>typeof v==="boolean"
 };
 function persistAppearance(before,after){
-  if(!after.source||before.source!==after.source)return;
+  if(sourceExample||!after.source||before.source!==after.source)return;
   try{
     const key="studio-tikz-v1/"+after.source, memory=JSON.parse(localStorage.getItem(key)||"{}");
     const old=new Map(before.steps.filter(s=>s.sourceKey).map(s=>[s.sourceKey,s]));let dirty=false;
@@ -13263,13 +13279,16 @@ canvas.addEventListener("pointercancel",e=>{endDrag(e,true);clearPointerHover();
 canvas.addEventListener("pointerleave",clearPointerHover);
 function newSheet(p,example=null){
   checkProject(p);
-  if(isUsageExample(example)){
-    if(!workBeforeUsage)workBeforeUsage={state:snapshot(),history,future};
+  if(example){
+    if(!personalSheet){
+      scheduleSave();
+      personalSheet={state:snapshot(),history,future};
+    }
     history=[];future=[];generation++;
-  }else{
-    if(workBeforeUsage){history=workBeforeUsage.history;future=workBeforeUsage.future;remember(workBeforeUsage.state);workBeforeUsage=null;}
-    else remember(snapshot());
-  }
+  }else if(personalSheet){
+    history=personalSheet.history;future=personalSheet.future;
+    remember(personalSheet.state);personalSheet=null;
+  }else remember(snapshot());
   restore({doc:p,sourceExample:example,camera:{x:2.5,y:1.7,span:8.5}});
   if(p.steps.length)fit();
 }
@@ -13284,10 +13303,17 @@ function openUsageExample(id){
   if(example)notice(example.hint);
   return true;
 }
+function clearExampleLink(){
+  if(typeof window!=="undefined"&&window.location?.hash?.startsWith("#contoh/")){
+    try{window.history.replaceState(window.history.state,"",window.location.href.split("#")[0]);}catch{}
+  }
+}
 function returnToWork(){
-  if(!workBeforeUsage)return;
-  openToken++;generation++;
-  const work=workBeforeUsage;workBeforeUsage=null;
+  openToken++;
+  if(!personalSheet){render();return;}
+  generation++;
+  const work=personalSheet;personalSheet=null;
+  clearExampleLink();
   history=work.history;future=work.future;restore(work.state);
 }
 function usageFromHash(){
@@ -13314,7 +13340,7 @@ async function loadSource(bytes,name,example=null,request=++openToken,start=gene
     p=checkProject(raw);
   }
   if(request!==openToken||start!==generation)return;
-  newSheet(p,example);if(info)notice(info);
+  clearExampleLink();newSheet(p,example);if(info)notice(info);
 }
 bindWorkbenchNav();
 bindWorkspaceLayout();
@@ -13376,8 +13402,9 @@ async function readFile(file){
 $("file").onchange=e=>{readFile(e.target.files[0]);e.target.value="";};
 $("examples").onchange=async e=>{
   const value=e.target.value;
+  clearExampleLink();
   if(isUsageExample(value))openUsageExample(value);
-  else if(value==="current" && workBeforeUsage)returnToWork();
+  else if(value==="current")returnToWork();
   else if(value==="blank"){openToken++;newSheet(emptyDoc());}
   else if(value==="tangencyDemo"){
     openToken++;newSheet(tangencyExample(),value);selectTool("circleConstraints");
@@ -13387,7 +13414,7 @@ $("examples").onchange=async e=>{
     const example=guidedExamples[value];
     openToken++;newSheet(example.project(),value);notice(example.hint);
   }
-  else if(SAMPLES[value]){try{await loadSource(sampleBytes(value),SAMPLES[value].filename,value);}catch(err){notice(err.message);}}
+  else if(SAMPLES[value]){try{await loadSource(sampleBytes(value),SAMPLES[value].filename,value);}catch(err){render();notice(err.message);}}
   else render();
 };
 $("sample-download").onclick=()=>{if(sourceExample)download(SAMPLES[sourceExample].filename,new Blob([sampleBytes(sourceExample)],{type:"application/vnd.geogebra.file"}));};
@@ -13420,7 +13447,8 @@ document.addEventListener("keydown",e=>{
 try{
   const saved=guideExampleId?null:JSON.parse(localStorage.getItem(storeKey)||"null");
   if(saved){doc=checkProject(saved.doc);if(saved.camera&&finitePoint(saved.camera)&&saved.camera.span>0&&Number.isFinite(saved.camera.span))camera=saved.camera;
-    sourceExample=saved.sourceExample==="tangencyDemo"||Object.hasOwn(guidedExamples,saved.sourceExample)||Object.hasOwn(SAMPLES,saved.sourceExample)?saved.sourceExample:null;tool=doc.steps.length?"move":"point";}
+    // Older versions autosaved edits made on standard examples. Recover that file as personal work.
+    sourceExample=null;tool=doc.steps.length?"move":"point";}
 }catch{}
 refresh();new ResizeObserver(renderCanvas).observe($("drawing"));
 document.fonts?.ready.then(()=>{if(model.items.some(o=>o.labelBackdrop))renderCanvas();});

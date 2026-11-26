@@ -17,6 +17,8 @@ I made **Studio TikZ** to see a construction alongside the code that goes into m
 
 With **Point**, click a blank spot to create a free point, or click segment $AB$ to place $P$ on it. Switch to **Select / move** and drag $P$ along $AB$. When you move $B$, the point follows the segment. [Try the Point animation](../index.html?lang=en#panduan/point).
 
+In the **Sheet** menu, choose **Example sheets** to explore a construction or **Wildan’s worked examples** for diagrams from olympiad problems. To return to your own canvas, choose **My sheets → My drawing**.
+
 Choose the side-by-side layout to inspect the code while drawing, or stack the panels for a wider canvas. The browser remembers the layout and your Indonesian or English language preference. Focus the canvas before pressing **+** or **−** to zoom. The canvas zoom percentage and the printed TikZ scale can be adjusted independently.
 
 {% include studio-tikz-contoh.html language="en" %}
@@ -29,7 +31,7 @@ In the **Lines** menu, select **Perpendicular bisector**, then click the segment
 
 For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For inversion, click the reference circle. A pentagon maps edge by edge. You can then select its image for another transformation.
 
-Open the [shape transformation example](../index.html?lang=en#contoh/transformasi-bangun) in the **Sheet** menu and move a vertex or the inversion centre. The [interactive inversion lesson](../index.html?lang=en#panduan/invert) follows one triangle closely. Its vertices $A$ and $B$ initially lie on the reference circle. Segment $AB$ maps to the semicircle through $A$, $B$ and the image of its midpoint $M$. A new inversion names the image $M^{*}$. You can also enter a name such as `A*` in the **Name** field to label a point $A^{*}$.
+In **Sheet → Example sheets**, open [**Transforming a shape**](../index.html?lang=en#contoh/transformasi-bangun) and drag $A$ on the green pentagon. Its reflection is the blue point $A^{\prime}$ and its inverse is the orange point $A^{*}$. The other vertices follow the same pattern through $E^{\prime}$ and $E^{*}$. The [interactive inversion lesson](../index.html?lang=en#panduan/invert) follows one triangle closely. Its vertices $A$ and $B$ initially lie on the reference circle. Segment $AB$ maps to the semicircle from $A$ to $B$ through $M^{*}$, the image of its midpoint $M$. Drag the inversion centre $O$ and follow $M^{*}$ along the image arc. You can also enter a name such as `A*` in the **Name** field to label a point $A^{*}$.
 
 Use **Label** on the top toolbar to add a free annotation. In a crowded diagram, select a point label, angle label or free label and switch on its translucent background. Lower the background opacity if a nearby line needs to remain prominent. Choose **Angle** beside **Label** on the top toolbar and click $A$, $B$ and $C$ to mark the angle at $B$. At $90^\circ$ the arc becomes a square mark. Move a point so the angle changes and the arc returns. The square has its own size control. Select several objects using **Ctrl+click** (or **⌘+click**) to change their colour or hide them together. Name and save the group to select the same objects again later. The same palette is available for outlines and fills.
 
@@ -62,7 +64,7 @@ For a diagram using a custom module or a 3D projection, open **Convert an SVG re
 ## Strengths and limits
 
 - Dependencies follow the original points. For example, changing a triangle updates its incircle, tangent lines and inverse images.
-- The complete HTML runs offline. Save each construction in its own `.stikz.json` file to keep a collection or move it between computers. The browser remembers one current sheet.
+- The complete HTML runs offline. Save each construction in its own `.stikz.json` file to keep a collection or move it between computers. The browser remembers one personal sheet.
 - The editor focuses on olympiad geometry. General graphs and conics such as $y=x^2$ are outside its drawing tools.
 - GeoGebra imports use stored coordinates for some points. The Asymptote converter handles a subset of two-dimensional diagrams. Inspect both results before printing.
 - To update the offline copy, download the new editor and open your saved project in it.

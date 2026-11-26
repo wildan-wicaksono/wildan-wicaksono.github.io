@@ -11,7 +11,7 @@ comments: false
 
 ## Draw a first diagram
 
-1. Open a new sheet. Choose **Polygon** on the toolbar or in the **Regions** menu. Click three non-collinear positions for $A$, $B$ and $C$, then click $A$ again or press **Enter** to close the triangle.
+1. Choose **Sheet → My sheets → New canvas**. Choose **Polygon** on the toolbar or in the **Regions** menu. Click three non-collinear positions for $A$, $B$ and $C$, then click $A$ again or press **Enter** to close the triangle.
 2. In the **Points** menu, select the vector formula tool, enter `D = (A + 2B)/3` and create the point. Now $D$ sits on $AB$ with $AD:DB=2:1$.
 3. Draw a segment by clicking $C$ and $D$. Select a dashed line style for $CD$. To add another segment, click its two endpoints while the tool is active.
 4. Select **Angle** beside **Label** on the top toolbar and click $A,C,B$ in that order to mark the angle at $C$. Choose an automatic angle label to show $\angle ACB$ in degrees. A custom label accepts LaTeX.
@@ -31,7 +31,7 @@ The triangle menu produces the circumcentre $O$, the intersection of the altitud
 
 ### Choosing the source for a transformation
 
-Choose a tool, then click the source. Click inside a polygon or sector to select the whole shape. Click a polygon edge to select one segment. When objects overlap, use the source-object list. In the **Sheet** menu, open the [shape transformation example](../index.html?lang=en#contoh/transformasi-bangun). Drag a vertex of the pentagon to see its reflection and inverse image update.
+Choose a tool, then click the source. Click inside a polygon or sector to select the whole shape. Click a polygon edge to select one segment. When objects overlap, use the source-object list. In **Sheet → Example sheets**, open [**Transforming a shape**](../index.html?lang=en#contoh/transformasi-bangun). Drag $A$ on the green pentagon. Follow $A^{\prime}$ on the blue reflection and $A^{*}$ on the orange inverse image. Repeat with $E$ to see $E^{\prime}$ and $E^{*}$ move.
 
 | Tool | After choosing the source |
 | --- | --- |
@@ -45,7 +45,7 @@ Select an image as the source of the next transformation to compose them. For ex
 
 ### Inverting edges, regions and annotations
 
-In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Follow the images of $A$, $M$ and $B$ on the same arc.
+In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Find $M^{*}$, the image of $M$, on the image arc of segment $AB$. As you move $O$, observe that $OM\cdot OM^{*}=r^2$, where $r$ is the radius of the reference circle.
 
 | Source object | Image under inversion with centre $O$ |
 | --- | --- |
@@ -93,7 +93,7 @@ Set the TikZ scale to $2$ to double printed segment lengths. The generated point
 
 ## Save projects and use them offline
 
-Save each drawing as a separate `.stikz.json` file. Reopen it to keep construction dependencies, labels and styles. The browser remembers one current sheet, so save any work you want to keep before loading another example or starting a new sheet. Download the editor HTML for offline use. To update it, download a fresh copy and reopen your project file.
+Save each drawing as a separate `.stikz.json` file. Reopen it to keep construction dependencies, labels and styles. In the **Sheet** menu, **My sheets** contains your personal drawing and the option to start a new canvas. **Example sheets** contains Studio constructions, while **Wildan’s worked examples** contains three olympiad problem diagrams. From any example, choose **My sheets → My drawing** to restore your drawing, canvas view and undo/redo history during the session. If browser storage is available, reopening the editor restores your personal drawing. Choose **Save project** while an edited example is open to keep it as a file. Save your own drawing before starting a new canvas or opening a different project. Download the editor HTML for offline use. To update it, download a fresh copy and reopen your project file.
 
 Open a `.ggb` file or drop it onto the canvas to import supported GeoGebra objects. Check the object list and the import message afterwards. Some points retain their saved positions without their original constraints. To attach a point to an imported line or circle, choose **Point** and click its stroke.
 

@@ -9,6 +9,8 @@ comments: false
 
 Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modul LaTeX. Kamu bisa mengambil gambar lengkap atau memakai koordinatnya saja jika sudah punya gaya TikZ sendiri. [Buka editor](./index.html) · [Pilih animasi dari katalog](#katalog-animasi).
 
+Di menu **Lembar**, pilih **Lembar saya** untuk melanjutkan gambar pribadi atau memulai kanvas baru. **Contoh Studio** memuat contoh konstruksi, sedangkan **Contoh penggunaan Wildan** memuat tiga diagram soal beserta konstruksinya. Saat selesai mencoba contoh, pilih **Lembar saya → Gambar saya**. Gambar pribadi, posisi kanvas, serta riwayat **Urungkan** dan **Ulangi** kembali seperti saat kamu meninggalkannya.
+
 Di sebelah **Lembar**, pilih **Tata letak → Berdampingan** untuk melihat kanvas di kiri dan kode di kanan, atau **Bertumpuk** untuk menempatkan kode di bawah kanvas. **Otomatis** mengikuti lebar layar. Pilihan tersimpan di browser dan berlaku saat kamu membuka gambar lain.
 
 Untuk menyembunyikan titik-titik latar, hilangkan centang **Tampilkan kisi** di bawah kanvas, di sebelah **Latar**. Browser mengingat pilihan ini. **Lekat ke kisi 0,5** mengatur pelekatan titik secara terpisah.
@@ -19,7 +21,7 @@ Pilihan **Indonesia / English** berlaku juga untuk panduan alat. Untuk memperbes
 
 Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot DB$, lalu menghubungkan $C$ ke $D$.
 
-1. Pilih **Lembar → Kanvas baru**, lalu **Poligon** pada bilah alat atau di menu **Bidang**. Klik $A$ di kiri bawah, $B$ di kanan bawah, dan $C$ di atas. Klik kembali $A$ atau tekan **Enter** untuk menutup segitiga.
+1. Pilih **Lembar → Lembar saya → Kanvas baru**, lalu **Poligon** pada bilah alat atau di menu **Bidang**. Klik $A$ di kiri bawah, $B$ di kanan bawah, dan $C$ di atas. Klik kembali $A$ atau tekan **Enter** untuk menutup segitiga.
 2. Pilih **Titik → Titik dari rumus vektor**, ketik `D = (A + 2B)/3`, lalu klik **Buat titik**. $D$ muncul dua pertiga perjalanan dari $A$ ke $B$.
 3. Klik **Ruas**, lalu klik $C$ dan $D$. Pada **Pola garis**, pilih **Putus-putus** agar $CD$ mudah dibedakan dari sisi segitiga.
 4. Klik **Sudut** di samping **Label** pada bilah alat atas. Klik $A$, $C$, lalu $B$ untuk menandai $\angle ACB$. Pada **Label sudut**, pilih **Besar sudut otomatis (°)** untuk menampilkan ukurannya. Kamu juga bisa memasukkan label LaTeX sendiri.
@@ -46,7 +48,7 @@ Di perpotongan, tahan **Shift** lalu klik pada garis atau keliling yang ingin di
 
 ### Memilih bangun untuk transformasi
 
-Pilih alatnya, lalu klik objek asal. Klik bagian dalam poligon atau juring untuk memilih seluruh bangun. Klik satu sisi poligon untuk memilih ruas itu saja. Pada gambar yang padat, pilih benda yang dimaksud dari daftar **Objek asal**. Di [**Lembar → Contoh transformasi bangun**](index.html#contoh/transformasi-bangun), geser salah satu titik sudut segi lima dan amati kedua bayangannya.
+Pilih alatnya, lalu klik objek asal. Klik bagian dalam poligon atau juring untuk memilih seluruh bangun. Klik satu sisi poligon untuk memilih ruas itu saja. Pada gambar yang padat, pilih benda yang dimaksud dari daftar **Objek asal**. Di [**Lembar → Contoh Studio → Contoh transformasi bangun**](index.html#contoh/transformasi-bangun), geser titik $A$ pada segi lima hijau. Ikuti $A^{\prime}$ pada hasil refleksi biru dan $A^{*}$ pada hasil inversi jingga. Ulangi dengan $E$ untuk melihat $E^{\prime}$ dan $E^{*}$ bergerak.
 
 | Alat | Setelah memilih objek asal |
 | --- | --- |
@@ -60,7 +62,7 @@ Untuk menyusun dua transformasi, pilih bayangan pertama sebagai objek asal berik
 
 ### Menginversi sisi, bangun, dan anotasi
 
-Pada [contoh inversi segitiga](./index.html#panduan/invert), $A$ dan $B$ berada pada lingkaran acuan dan $M$ adalah titik tengah $AB$. Tekan **Putar animasi** untuk mengikuti urutan kliknya. Buka **Utak-atik contoh**, lalu geser $C$ atau $O$. Amati bayangan $A$, $M$, dan $B$ pada busur yang sama.
+Pada [contoh inversi segitiga](./index.html#panduan/invert), $A$ dan $B$ berada pada lingkaran acuan dan $M$ adalah titik tengah $AB$. Tekan **Putar animasi** untuk mengikuti urutan kliknya. Buka **Utak-atik contoh**, lalu geser $C$ atau $O$. Cari $M^{*}$, bayangan $M$, pada busur hasil inversi ruas $AB$. Saat $O$ digeser, perhatikan bahwa $OM\cdot OM^{*}=r^2$, dengan $r$ jari-jari lingkaran acuan.
 
 | Objek asal | Bayangannya terhadap lingkaran berpusat $O$ |
 | --- | --- |
@@ -141,7 +143,7 @@ Kalau ada banyak garis di dekat $I_A$, geser hurufnya atau pilih titiknya dan ak
 
 Klik **Simpan proyek** untuk mengunduh konstruksi beserta rumus dan gayanya. Beri setiap diagram nama berkas yang mudah dicari, misalnya `01-garis-berat.stikz.json` dan `02-lingkaran-luar.stikz.json`. Pertahankan akhiran `.stikz.json`. Untuk melanjutkan diagram tertentu, klik **Buka file** dan pilih salinannya.
 
-Studio mencoba menyimpan **satu lembar terakhir** di browser. Membuka contoh, membuat lembar baru, atau membuka proyek lain mengganti lembar yang diingat. Simpan proyek sebelum berpindah. Berkas proyek juga bisa dibuka pada komputer lain atau dipakai untuk kembali ke versi gambar sebelumnya.
+Studio menyimpan otomatis satu lembar pribadi di browser jika penyimpanan tersedia. Saat kamu membuka kembali editor, lembar itulah yang dimuat, termasuk jika sebelumnya kamu sedang mencoba contoh. Untuk menyimpan perubahan pada contoh, klik **Simpan proyek** saat contoh masih terbuka. Simpan juga gambar pribadimu sebagai berkas sebelum memulai kanvas baru atau membuka proyek lain.
 
 Untuk bekerja tanpa internet, <a href="./index.html" download="Studio-TikZ.html">unduh Studio-TikZ.html</a> dan buka melalui browser. Jika sedang membaca panduan di GitHub, buka berkas editor lalu gunakan **Download raw file**. Untuk memperbarui salinan luring, unduh HTML terbaru dan buka kembali proyek `.stikz.json`. Pada versi daring, muat ulang halaman setelah pembaruan diterbitkan. [Berkas editor](./index.html).
 
