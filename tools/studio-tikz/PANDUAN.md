@@ -162,8 +162,10 @@ Kanvas dan **Gambar lengkap** di TikZ menampilkan bagian yang sama, termasuk pot
 ## Menyalin diagram Asymptote dari AoPS
 
 1. [Buka konverter Asymptote](./index.html#asymptote) atau klik **Tempel Asymptote** di bilah atas editor. Tempel satu diagram, termasuk tag `[asy]` dan `[/asy]` jika ada, ke kolom **Kode Asymptote**. Kamu juga bisa memilih salah satu **Contoh AoPS**.
-2. Klik **Konversi ke TikZ**, lalu periksa **Pratinjau**. Untuk menggeser titik pada gambar hasil konversi, ubah koordinatnya di sumber lalu konversi lagi. Alur ini menghasilkan potongan TikZ tersendiri. Konstruksi yang bisa diseret di kanvas dibuat dengan alat gambar Studio.
-3. Di bagian **Paket LaTeX**, pilih **Salin preamble** dan tempel paket yang diperlukan sebelum `\begin{document}`. Klik **Salin TikZ**, lalu tempel gambarnya di badan dokumen, misalnya setelah teks soal.
+2. Klik **Konversi ke TikZ**. **Pratinjau hasil konversi** menunjukkan gambar dari sumber. Untuk mengubah gambar di pratinjau, sunting koordinat atau perintah Asymptote lalu konversi lagi. Untuk membuat konstruksi yang titiknya bisa diseret di kanvas, gunakan alat gambar Studio.
+3. Di kolom **Kode TikZ**, sunting hasilnya langsung jika perlu, misalnya warna atau isi label. **Salin TikZ** menyalin teks yang sedang terlihat, termasuk suntinganmu. Tempel di badan dokumen dan kompilasi untuk melihat perubahan. Gunakan **Paket LaTeX → Salin preamble** untuk menyalin paket konversi ke bagian sebelum `\begin{document}`.
+
+Pilih **Pulihkan hasil konversi** untuk mengembalikan kode sebelum disunting. Suntingan tetap tersedia saat sumber diubah, contoh lain dipilih, atau konversi gagal. Jika hasil konversi berikutnya berbeda, pilih **Ganti dengan hasil baru** untuk memakainya atau **Pertahankan suntingan** untuk melanjutkan kode sebelumnya. Kolom yang sama juga bisa disunting saat kamu membuka SVG, mengambil kembali TikZ dari label Asymptote, atau membuat kode penyisipan PDF.
 
 | Contoh AoPS | Yang bisa dicoba |
 | --- | --- |

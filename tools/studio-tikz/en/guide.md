@@ -105,7 +105,11 @@ The canvas and the complete TikZ export show the same clipped drawing, including
 
 ## Convert AoPS diagrams
 
-[Open the Asymptote converter](../index.html?lang=en#asymptote), paste one source diagram, convert it and inspect the preview. The `[asy]` tags may be included. Copy the preamble and the resulting TikZ separately. To move a point in the converted diagram, edit its source and convert again. The converter reads a subset of two-dimensional Asymptote. An unsupported command gives a source location.
+[Open the Asymptote converter](../index.html?lang=en#asymptote) and paste one source diagram, with or without its `[asy]` tags. Convert it and inspect **Conversion preview**, which shows the original result. To change what appears in the preview, edit the Asymptote source and convert again. The converter reads a subset of two-dimensional Asymptote and gives a source location for unsupported commands.
+
+Edit the **TikZ code** field to adjust a colour or the text of a label. **Copy TikZ** copies the current text, including your edits. Paste it in the document body and compile to see the changes. Use **Copy preamble** for the packages the converter lists.
+
+Choose **Restore converted code** to return to the original output. Editing the source, selecting another example or encountering a conversion error keeps your edited TikZ available. If the next conversion produces different code, choose **Replace with new result** or **Keep edits**. The same field is editable for imported SVG paths, TikZ recovered from an Asymptote label and PDF inclusion code.
 
 In the nested-squares example, change `n = 25` to `n = 5` to shorten the loop. In the four-circles example, changing `circle(O, 6/23)` to `circle(O, 1)` alters just the fourth radius.
 
