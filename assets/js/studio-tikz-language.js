@@ -10,7 +10,7 @@
   let preference = read();
   let activeLanguage = preference;
   const studioFrames = () => [...document.querySelectorAll('iframe')].filter(frame => {
-    if (frame.matches('[data-practice], #live-editor, #usage-editor')) return true;
+    if (frame.matches('[data-practice], #live-editor')) return true;
     try {
       const url = new URL(frame.getAttribute('src'), location.href);
       return url.origin === location.origin && /\/(contoh-vektor|latihan-antiparalel)\.html$/.test(url.pathname);
@@ -35,7 +35,6 @@
       for (const a of card.querySelectorAll('a')) a.href = en ? '#project-en' : '#proyek';
     }
     document.getElementById('live-editor').title = en ? 'Studio TikZ geometry editor' : 'Editor geometri Studio TikZ';
-    document.getElementById('usage-editor').title = en ? 'Worked example in Studio TikZ' : 'Contoh penggunaan di Studio TikZ';
   }
 
   function apply(language, navigate) {

@@ -17,7 +17,9 @@ I made **Studio TikZ** to see a construction alongside the code that goes into m
 
 With **Point**, click a blank spot to create a free point, or click segment $AB$ to place $P$ on it. Switch to **Select / move** and drag $P$ along $AB$. When you move $B$, the point follows the segment. [Try the Point animation](../index.html?lang=en#panduan/point).
 
-In the **Sheet** menu, choose **Example sheets** to explore a construction or **Wildan’s worked examples** for diagrams from olympiad problems. To return to your own canvas, choose **My sheets → My drawing**.
+When I know the coordinates I want, I turn on **Show grid** and **Snap to grid** under the canvas. With the grid spacing set to $1$, choose **Point** and move the pointer over blank space until the marker reads $(2,0)$. Click to place the point exactly there. The square grid has no axes and appears only on the canvas. [Grid and coordinates](guide.html#grid-and-coordinates).
+
+Use **+** above the canvas to add a sheet, or choose several files with **Open file**. Each drawing has its own tab. In the **Sheet** menu, choose **Example sheets** to explore a construction or **Wildan’s worked examples** for olympiad diagrams. To return from an example, click the personal tab you want, or choose **My sheets → My drawing** for the last personal tab you used.
 
 Choose the side-by-side layout to inspect the code while drawing, or stack the panels for a wider canvas. The browser remembers the layout and your Indonesian or English language preference. Focus the canvas before pressing **+** or **−** to zoom. The canvas zoom percentage and the printed TikZ scale can be adjusted independently.
 
@@ -59,16 +61,32 @@ Copy the preamble from the code panel before pasting the figure into your docume
 
 For an AoPS diagram, [open the Asymptote converter](../index.html?lang=en#asymptote) and paste the `[asy]` block. After conversion, edit **TikZ code** to change a line colour or label, then choose **Copy TikZ**. **Conversion preview** shows the original result. Compile your LaTeX document to see your edits.
 
-The source converter understands constructions such as line–circle intersections, helper functions, opacity and clipping. Testing included AMC/AIME, AoPS teaching material and national olympiad discussions. Examples can be found in the [2019 USA(J)MO Math Jam transcript](https://artofproblemsolving.com/school/mathjams-transcripts?id=491), [WOOT week-five worksheet](https://artofproblemsolving.com/texer/2021WOOTweek5HW) and [Project Numina’s archive of AoPS discussions](https://huggingface.co/datasets/project-numina/aops).
+The converter supports constructions such as line–circle intersections, helper functions, opacity and clipping.
+
+Try one of these problems from **AoPS Contests**. Open the thread and click the diagram in the **first post**. In the **Asymptote code below** window, select the text from `[asy]` through `[/asy]`, copy it, and paste it into **Paste Asymptote**.
+
+- [2023 AIME II, Problem 6](https://artofproblemsolving.com/community/c5h3016174p27101321#post27101321) — an L-shaped region made of three unit squares.
+- [2017 Canadian Open Mathematics Challenge, Problem A2](https://artofproblemsolving.com/community/c4h1722001p11140110#post11140110) — three circles centred at the vertices of an equilateral triangle, with shaded sectors.
+- [2020 Chilean National Mathematics Olympiad, Level 2 Problem 2](https://artofproblemsolving.com/community/c6h2945846p26371900#post26371900) — a $4\times4$ lattice of points for counting squares.
 
 For a diagram using a custom module or a 3D projection, open **Convert an SVG rendered by Asymptote** to bring the locally rendered paths into TikZ. In the other direction, the AoPS export wraps TikZ in a single Asymptote label. Pasting that wrapper into the converter recovers its original TikZ. [Read the conversion steps](guide.html#convert-aops-diagrams).
 
 ## Strengths and limits
 
-- Dependencies follow the original points. For example, changing a triangle updates its incircle, tangent lines and inverse images.
-- The complete HTML runs offline. Save each construction in its own `.stikz.json` file to keep a collection or move it between computers. The browser remembers one personal sheet.
-- The editor focuses on olympiad geometry. General graphs and conics such as $y=x^2$ are outside its drawing tools.
-- GeoGebra imports use stored coordinates for some points. The Asymptote converter handles a subset of two-dimensional diagrams. Inspect both results before printing.
-- To update the offline copy, download the new editor and open your saved project in it.
+### Strengths
+
+- **Learn the TikZ while drawing.** When I select a segment, Studio highlights the command that draws it. I can copy the complete figure in the style I use for handouts, or take just the coordinates and write my own lines and labels.
+- **Explore different positions in one construction.** Drag a triangle vertex and watch its incircle, angle bisector or inverse image move. The tool animations show where to click, and the interactive examples let readers move the points themselves.
+- **Prepare the diagram for print.** I can reposition LaTeX labels, use translucent fills and choose angle marks. Changing the TikZ scale keeps the printed point radius at $1.5\,\mathrm{pt}$.
+- **Reuse an AoPS diagram.** After a successful Asymptote conversion, I can edit a colour, line width or label in the **TikZ code** field and copy the result. The preview shows the original conversion. I compile the LaTeX document to see my edits.
+- **Keep several drawings open, including offline.** I can name a tab for each problem and switch between them during class. The downloaded HTML includes the drawing tools, interactive examples and guide animations.
+
+### Limitations
+
+- **Open sheets are stored in the current browser.** Clearing site data can remove those tabs. Before closing a sheet or moving to a different device, select its tab and choose **Save project**. Each `.stikz.json` file contains one drawing. **Open file** can open several files at once, each in its own tab.
+- **The drawing tools focus on olympiad geometry.** Studio has no general tool for plotting functions or drawing conics from their equations. To plot a parabola such as $y=x^2$, I still use GeoGebra.
+- **GeoGebra import covers some 2D objects.** Studio may read a point’s stored coordinates from a `.ggb` file even when its construction dependencies do not carry over. Saving a Studio drawing as `.stikz.json` preserves its construction.
+- **Pasting Asymptote can give an error.** If the block was cut short, copy it again from `[asy]` through `[/asy]`. Even a complete block that runs on AoPS can use a command or module Studio does not recognise. If the message gives a line and column, use **Go to this line** to inspect it. For unsupported features, render with Asymptote on your computer, then import the SVG or include the PDF in LaTeX. [SVG and PDF conversion steps](guide.html#convert-aops-diagrams).
+- **Update the offline copy manually.** Download the latest HTML from this project page, then open your saved `.stikz.json` file in the new editor.
 
 [Read the user guide](guide.html) · [Follow the three worked diagrams](examples.html)

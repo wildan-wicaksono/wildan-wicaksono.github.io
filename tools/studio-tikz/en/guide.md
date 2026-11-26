@@ -67,8 +67,14 @@ For an inversion with power $k=OA\cdot OB$, enter `OA * OB` after drawing both s
 - To name a point $A^{*}$, click its dot and enter `A*` in **Name**. The forms `A^*` and `A^{*}` also work. Both the canvas and the TikZ label show the superscript star. Enter `A_1*` for $A_1^{*}$. A new inversion of $A$ automatically uses $A^{*}$, while older projects keep their saved names.
 - Filled shapes share the outline palette. Change the fill opacity to see the lines underneath. To soften just the area behind a point label, an angle label or a free label, enable the translucent label background and adjust its opacity. The TikZ export preserves the treatment.
 - An angle arc becomes a square when its arms are perpendicular and returns to an arc if you move a point so the angle changes. Right-angle marks have an adjustable size. Select the mark and adjust its size until both short sides fit comfortably between the adjacent segments.
-- The canvas grid and grid snapping are separate settings. Clear the grid visibility checkbox under the canvas to remove background dots. Focus the canvas to zoom with **+** and **−**, or select a zoom percentage. Canvas zoom is independent of the print scale.
+- Focus the canvas to zoom with **+** and **−**, or select a zoom percentage. Canvas zoom is independent of the print scale.
 - Choose the layout beside the sheet menu. Side by side places the code on the right, stacked places it below, and automatic follows the screen width. Your browser also remembers the selected interface language.
+
+### Grid and coordinates
+
+Use **Show grid** under the canvas to display a square grid without axes. Under **Grid spacing**, choose 0.25, 0.5 (the default), or 1 unit. **Snap to grid** works even with the lines hidden. The browser remembers all three settings. The grid follows the drawing coordinates as you pan or zoom. When you zoom far out, some lines are hidden for readability and the snap interval stays the same. The grid appears only on the canvas.
+
+To try it, set **Grid spacing** to $1$ and turn on **Snap to grid**. Choose **Point** and move the pointer over blank space until the marker reads $(2,0)$. Click there and check that the **Objects** panel shows $x=2$ and $y=0$. When you drag a free point, the marker shows its destination coordinates. Existing points and intersections keep their positions. A point attached to a line or circle stays on that object, even when its coordinates fall between grid lines.
 
 ## Use the animation and interactive example
 
@@ -93,7 +99,11 @@ Set the TikZ scale to $2$ to double printed segment lengths. The generated point
 
 ## Save projects and use them offline
 
-Save each drawing as a separate `.stikz.json` file. Reopen it to keep construction dependencies, labels and styles. In the **Sheet** menu, **My sheets** contains your personal drawing and the option to start a new canvas. **Example sheets** contains Studio constructions, while **Wildan’s worked examples** contains three olympiad problem diagrams. From any example, choose **My sheets → My drawing** to restore your drawing, canvas view and undo/redo history during the session. If browser storage is available, reopening the editor restores your personal drawing. Choose **Save project** while an edited example is open to keep it as a file. Save your own drawing before starting a new canvas or opening a different project. Download the editor HTML for offline use. To update it, download a fresh copy and reopen your project file.
+Use **+** above the canvas to create a personal sheet. Each drawing has its own tab. Click a tab to switch drawings, or use **Rename sheet** to give it a descriptive name. Choose **Open file** and select one or more files to open each in a new tab alongside your existing sheets.
+
+In the **Sheet** menu, **Example sheets** contains construction demos, and **Wildan’s worked examples** contains three olympiad diagrams. From any example, click the personal tab you want, or choose **My sheets → My drawing** to return to the last personal tab you used. Each tab keeps its canvas view and undo/redo history during the session. When you reopen the editor, browser storage restores all open personal sheets and the last active personal tab if available. Undo/redo history starts afresh after a reload.
+
+**Save project** downloads the currently displayed drawing as a `.stikz.json` file with its dependencies, labels and styles. To keep an edited example as a personal sheet, save it to a file, then reopen that file. Download the editor HTML for offline use. To update it, download a fresh copy and reopen your project file.
 
 Open a `.ggb` file or drop it onto the canvas to import supported GeoGebra objects. Check the object list and the import message afterwards. Some points retain their saved positions without their original constraints. To attach a point to an imported line or circle, choose **Point** and click its stroke.
 
@@ -115,7 +125,13 @@ In the nested-squares example, change `n = 25` to `n = 5` to shorten the loop. I
 
 The source converter recognises point arrays, helper functions, loops, transparent fills and selected `olympiad` and `cse5` constructions. Try **Projection and reflection** to see a point and its perpendicular foot. Both `clip(path)` and `clip(currentpicture,path)` clip what has already been drawn. A subsequent drawing command can place an object outside that boundary.
 
-Tests included AMC/AIME statements and solutions, AoPS teaching material, and forum diagrams for olympiads in Indonesia, Canada, Australia and other countries. Forum contributors often supply their own diagrams when discussing a solution. Source examples include the [2019 USA(J)MO Math Jam transcript](https://artofproblemsolving.com/school/mathjams-transcripts?id=491), [WOOT week-five worksheet](https://artofproblemsolving.com/texer/2021WOOTweek5HW) and [Project Numina’s archive of AoPS discussions](https://huggingface.co/datasets/project-numina/aops).
+Try one of these problems from **AoPS Contests**. Open the thread and click the diagram in the **first post**. In the **Asymptote code below** window, select the text from `[asy]` through `[/asy]`, copy it, and paste it into **Paste Asymptote**.
+
+- [2023 AIME II, Problem 6](https://artofproblemsolving.com/community/c5h3016174p27101321#post27101321) — an L-shaped region made of three unit squares.
+- [2017 Canadian Open Mathematics Challenge, Problem A2](https://artofproblemsolving.com/community/c4h1722001p11140110#post11140110) — three circles centred at the vertices of an equilateral triangle, with shaded sectors.
+- [2020 Chilean National Mathematics Olympiad, Level 2 Problem 2](https://artofproblemsolving.com/community/c6h2945846p26371900#post26371900) — a $4\times4$ lattice of points for counting squares.
+
+The complete block in each of these posts was converted in Studio and the resulting TikZ compiled with pdfLaTeX.
 
 **When a command needs the Asymptote renderer**, open **Convert an SVG rendered by Asymptote**. This route can retain the appearance of splines, projections and geometry drawn by custom modules.
 

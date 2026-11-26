@@ -9,13 +9,17 @@ comments: false
 
 Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modul LaTeX. Kamu bisa mengambil gambar lengkap atau memakai koordinatnya saja jika sudah punya gaya TikZ sendiri. [Buka editor](./index.html) · [Pilih animasi dari katalog](#katalog-animasi).
 
-Di menu **Lembar**, pilih **Lembar saya** untuk melanjutkan gambar pribadi atau memulai kanvas baru. **Contoh Studio** memuat contoh konstruksi, sedangkan **Contoh penggunaan Wildan** memuat tiga diagram soal beserta konstruksinya. Saat selesai mencoba contoh, pilih **Lembar saya → Gambar saya**. Gambar pribadi, posisi kanvas, serta riwayat **Urungkan** dan **Ulangi** kembali seperti saat kamu meninggalkannya.
+Di atas kanvas, klik **+** untuk membuat lembar pribadi baru. Setiap gambar memiliki tab sendiri. Klik tab untuk berpindah gambar. **Ganti nama lembar** memudahkanmu membedakan dua lembar yang terbuka. Di menu **Lembar**, **Contoh Studio** memuat contoh konstruksi dan **Contoh penggunaan Wildan** memuat tiga diagram soal. Dari contoh mana pun, klik tab yang kamu inginkan atau pilih **Lembar saya → Gambar saya** untuk kembali ke lembar pribadi terakhir.
 
 Di sebelah **Lembar**, pilih **Tata letak → Berdampingan** untuk melihat kanvas di kiri dan kode di kanan, atau **Bertumpuk** untuk menempatkan kode di bawah kanvas. **Otomatis** mengikuti lebar layar. Pilihan tersimpan di browser dan berlaku saat kamu membuka gambar lain.
 
-Untuk menyembunyikan titik-titik latar, hilangkan centang **Tampilkan kisi** di bawah kanvas, di sebelah **Latar**. Browser mengingat pilihan ini. **Lekat ke kisi 0,5** mengatur pelekatan titik secara terpisah.
-
 Pilihan **Indonesia / English** berlaku juga untuk panduan alat. Untuk memperbesar kanvas, fokuskan gambar, lalu tekan **+** atau **−**. Pilih persentase pembesaran untuk kembali ke tampilan tertentu. **Skala TikZ** di panel kode mengatur ukuran saat dicetak.
+
+## Kisi dan koordinat
+
+Di bawah kanvas, **Tampilkan kisi** menampilkan petak persegi tanpa sumbu. Pada **Jarak kisi**, pilih 0,25, 0,5 (bawaan), atau 1 satuan. **Lekat ke kisi** bekerja meskipun garisnya disembunyikan. Browser mengingat ketiga pilihan ini. Saat kanvas digeser atau diperbesar, kisi tetap mengikuti koordinat gambar. Saat tampilan diperkecil jauh, sebagian garis disembunyikan agar terbaca. Langkah pelekatan tetap sama. Kisi hanya muncul di kanvas.
+
+Untuk mencoba, atur **Jarak kisi** ke $1$ dan aktifkan **Lekat ke kisi**. Pilih **Titik**, lalu gerakkan kursor di area kosong sampai penanda menunjukkan $(2,0)$. Klik di sana. Pada **Objek**, periksa bahwa $x=2$ dan $y=0$. Saat titik bebas diseret, penanda menunjukkan koordinat tujuan. Titik yang sudah ada dan perpotongan mempertahankan posisinya. Titik yang terikat pada garis atau lingkaran tetap berada pada objeknya, meskipun posisinya di antara garis kisi.
 
 ## Gambar pertama dalam lima langkah
 
@@ -141,9 +145,9 @@ Kalau ada banyak garis di dekat $I_A$, geser hurufnya atau pilih titiknya dan ak
 
 ## Menyimpan beberapa diagram dan memakai Studio secara luring
 
-Klik **Simpan proyek** untuk mengunduh konstruksi beserta rumus dan gayanya. Beri setiap diagram nama berkas yang mudah dicari, misalnya `01-garis-berat.stikz.json` dan `02-lingkaran-luar.stikz.json`. Pertahankan akhiran `.stikz.json`. Untuk melanjutkan diagram tertentu, klik **Buka file** dan pilih salinannya.
+Klik **Simpan proyek** untuk mengunduh konstruksi beserta rumus dan gayanya. Beri setiap diagram nama berkas yang mudah dicari, misalnya `01-garis-berat.stikz.json` dan `02-lingkaran-luar.stikz.json`. Pertahankan akhiran `.stikz.json`. Klik **Buka file** dan pilih satu atau beberapa berkas. Setiap berkas terbuka sebagai lembar pribadi baru, bersama lembar yang sudah terbuka.
 
-Studio menyimpan otomatis satu lembar pribadi di browser jika penyimpanan tersedia. Saat kamu membuka kembali editor, lembar itulah yang dimuat, termasuk jika sebelumnya kamu sedang mencoba contoh. Untuk menyimpan perubahan pada contoh, klik **Simpan proyek** saat contoh masih terbuka. Simpan juga gambar pribadimu sebagai berkas sebelum memulai kanvas baru atau membuka proyek lain.
+Jika penyimpanan browser tersedia, Studio memulihkan semua lembar pribadi yang terbuka beserta pilihan tab terakhir saat editor dibuka kembali. Setiap tab menyimpan posisi kanvas serta riwayat **Urungkan** dan **Ulangi** selama sesi berjalan. Riwayat dimulai kembali setelah halaman dimuat ulang. **Simpan proyek** mengunduh gambar yang sedang ditampilkan. Jika kamu menyunting contoh dan ingin menyimpannya sebagai lembar pribadi, simpan contoh itu sebagai berkas lalu pilih **Buka file**.
 
 Untuk bekerja tanpa internet, <a href="./index.html" download="Studio-TikZ.html">unduh Studio-TikZ.html</a> dan buka melalui browser. Jika sedang membaca panduan di GitHub, buka berkas editor lalu gunakan **Download raw file**. Untuk memperbarui salinan luring, unduh HTML terbaru dan buka kembali proyek `.stikz.json`. Pada versi daring, muat ulang halaman setelah pembaruan diterbitkan. [Berkas editor](./index.html).
 
@@ -176,7 +180,13 @@ Pilih **Pulihkan hasil konversi** untuk mengembalikan kode sebelum disunting. Su
 
 Konverter langsung membaca bagian Asymptote 2D yang banyak dipakai pada diagram olimpiade, termasuk fungsi bantu, array titik, perulangan, isian transparan, dan beberapa perintah modul `olympiad` dan `cse5`. Misalnya, `foot` membuat kaki tegak lurus dan `clip(path)` atau `clip(currentpicture,path)` membatasi gambar yang sudah dibuat hingga baris itu. Objek yang digambar sesudah perintah tersebut tetap dapat muncul di luar batas.
 
-Pengujian mencakup soal dan solusi AMC/AIME, materi pengajaran AoPS, serta postingan tentang olimpiade dari Indonesia, Kanada, Australia, dan negara lain. Kode dalam postingan bisa merupakan diagram buatan peserta untuk menjelaskan solusinya. Contoh sumber tersedia di [transkrip USA(J)MO Math Jam 2019](https://artofproblemsolving.com/school/mathjams-transcripts?id=491), [lembar WOOT minggu ke-5](https://artofproblemsolving.com/texer/2021WOOTweek5HW), dan [arsip diskusi AoPS dari Project Numina](https://huggingface.co/datasets/project-numina/aops).
+Coba salah satu soal berikut dari **AoPS Contests**. Buka tautannya, lalu klik diagram di **postingan pertama**. Pada jendela **Asymptote code below**, pilih teks mulai dari `[asy]` sampai `[/asy]`, salin, lalu tempel di **Tempel Asymptote**.
+
+- [AIME II 2023, soal 6](https://artofproblemsolving.com/community/c5h3016174p27101321#post27101321) — daerah berbentuk L dari tiga persegi satuan.
+- [Canadian Open Mathematics Challenge 2017, soal A2](https://artofproblemsolving.com/community/c4h1722001p11140110#post11140110) — tiga lingkaran berpusat di titik sudut segitiga sama sisi, dengan juring yang diarsir.
+- [Olimpiade Matematika Nasional Cile 2020, level 2 soal 2](https://artofproblemsolving.com/community/c6h2945846p26371900#post26371900) — kisi $4\times4$ titik untuk menyelidiki banyak persegi.
+
+Ketiga blok lengkap dari postingan ini sudah dicoba di Studio. Hasil TikZ masing-masing berhasil dikompilasi dengan pdfLaTeX.
 
 **Jika sebuah perintah belum terbaca**, Studio menunjukkan baris dan kolomnya. Untuk mempertahankan hasil dari spline, modul khusus, atau proyeksi 3D, gunakan **Konversi dari SVG hasil Asymptote**.
 

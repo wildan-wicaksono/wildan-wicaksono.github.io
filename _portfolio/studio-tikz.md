@@ -22,7 +22,9 @@ Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan m
 
 Dengan alat **Titik**, klik ruang kosong untuk membuat titik bebas, atau klik ruas $AB$ untuk menempatkan $P$ tepat pada ruas itu. Aktifkan **Pilih / geser** dan tarik $P$ sepanjang $AB$. Saat $B$ dipindah, $P$ ikut bergerak bersama ruasnya. [Coba animasi alat Titik]({{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/point).
 
-Di menu **Lembar**, pilih **Contoh Studio** untuk mencoba sebuah konstruksi atau **Contoh penggunaan Wildan** untuk membuka diagram soal. Setelah mencoba contoh, pilih **Lembar saya → Gambar saya** untuk melanjutkan gambar pribadi.
+Kalau saya sudah tahu koordinat yang diinginkan, saya bisa menyalakan **Tampilkan kisi** dan **Lekat ke kisi** di bawah kanvas. Dengan jarak kisi $1$, pilih **Titik** dan gerakkan kursor di area kosong sampai penanda menunjukkan $(2,0)$. Klik untuk menaruh titik tepat di sana. Kisi berbentuk persegi tanpa sumbu dan hanya terlihat di kanvas. [Panduan kisi dan koordinat]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#kisi-dan-koordinat).
+
+Gunakan **+** di atas kanvas untuk menambah lembar, atau pilih beberapa berkas lewat **Buka file**. Setiap gambar mendapat tab sendiri. Di menu **Lembar**, pilih **Contoh Studio** untuk mencoba sebuah konstruksi atau **Contoh penggunaan Wildan** untuk membuka diagram soal. Setelah mencoba contoh, klik tab pribadi yang ingin dilanjutkan atau pilih **Lembar saya → Gambar saya** untuk kembali ke tab pribadi terakhir.
 
 Di sebelah **Lembar**, menu **Tata letak** mengatur letak kanvas dan kode. Saya memilih **Berdampingan** saat ingin melihat kode di kanan sambil menggambar. Untuk diagram yang lebar, **Bertumpuk** memberi kanvas selebar halaman dan meletakkan kode di bawahnya. **Otomatis** mengikuti lebar layar. Browser mengingat tata letak dan pilihan bahasa Indonesia atau Inggris. Untuk memeriksa bagian kecil diagram, fokuskan kanvas lalu tekan **+** atau **−**, atau pilih persentase pembesaran. **Skala TikZ** mengatur ukuran gambar yang dicetak.
 
@@ -125,7 +127,13 @@ Di beberapa diagram lama saya, label memakai `\contour{white}{...}` untuk member
 
 Kalau soal di AoPS menyertakan diagram dalam blok `[asy]`, salin bloknya, <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#asymptote">buka konverter Asymptote</a>, tempel kodenya, lalu pilih **Konversi ke TikZ**. Di editor, konverter ini juga bisa dibuka lewat **Tempel Asymptote** di sebelah **Buka file**. Misalnya, pada contoh **Persegi bersarang**, ubah `n = 25` menjadi `n = 5` dan konversi lagi untuk melihat pengaruh jumlah persegi. Kamu bisa langsung menyunting **Kode TikZ**, misalnya mengganti warna garis, lalu klik **Salin TikZ**. **Pratinjau hasil konversi** menampilkan gambar dari konversi semula. Kompilasi dokumen LaTeX untuk melihat hasil suntingan.
 
-Untuk diagram olimpiade, konverter dapat membaca fungsi bantu untuk konstruksi, perpotongan garis dan lingkaran, warna dengan opasitas, serta pemotongan dengan `clip`. Pengujian mencakup contoh dari AMC/AIME, Math Jam dan WOOT, serta diagram dalam diskusi olimpiade nasional seperti Indonesia dan Australia. Bahan untuk dicoba tersedia di [transkrip USA(J)MO Math Jam 2019](https://artofproblemsolving.com/school/mathjams-transcripts?id=491), [lembar WOOT minggu ke-5](https://artofproblemsolving.com/texer/2021WOOTweek5HW), dan [arsip diskusi AoPS dari Project Numina](https://huggingface.co/datasets/project-numina/aops).
+Konverter dapat membaca konstruksi seperti perpotongan garis dan lingkaran, fungsi bantu, isian transparan, dan pemotongan dengan `clip`.
+
+Coba salah satu soal berikut dari **AoPS Contests**. Buka tautannya, lalu klik diagram di **postingan pertama**. Pada jendela **Asymptote code below**, pilih teks mulai dari `[asy]` sampai `[/asy]`, salin, lalu tempel di **Tempel Asymptote**.
+
+- [AIME II 2023, soal 6](https://artofproblemsolving.com/community/c5h3016174p27101321#post27101321) — daerah berbentuk L dari tiga persegi satuan.
+- [Canadian Open Mathematics Challenge 2017, soal A2](https://artofproblemsolving.com/community/c4h1722001p11140110#post11140110) — tiga lingkaran berpusat di titik sudut segitiga sama sisi, dengan juring yang diarsir.
+- [Olimpiade Matematika Nasional Cile 2020, level 2 soal 2](https://artofproblemsolving.com/community/c6h2945846p26371900#post26371900) — kisi $4\times4$ titik untuk menyelidiki banyak persegi.
 
 Jika kode memerlukan modul lain atau penggambaran 3D, buka **Konversi dari SVG hasil Asymptote**. Studio bisa mengubah gambar vektor hasil render di komputermu menjadi lintasan TikZ. [Lihat langkah konversi dan pilihan PDF]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops).
 
@@ -133,16 +141,18 @@ Untuk membawa diagram ke forum AoPS, buka opsi **Format AoPS** pada panel kode. 
 
 ## Kelebihan
 
-- **Kode bisa dipelajari sambil menggambar.** Saya bisa menelusuri hubungan antara objek di kanvas dan perintah TikZ-nya, lalu menyunting kode tersebut langsung di dokumen saya.
-- **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama. Pilih **Transformasi → Inversi** untuk mengikuti bayangan sebuah sisi, busur, atau bangun utuh.
-- **Tampilan siap disesuaikan untuk modul.** Label mendukung LaTeX. Ketebalan garis, pola putus-putus, penanda sudut, warna, dan opasitas bisa diatur per objek. Saat skala ekspor diubah, radius cetak titik tetap $1{,}5\,\mathrm{pt}$.
-- **Bisa dibawa mengajar.** Saya bisa menyimpan editor dan contoh diagram di laptop sebelum kelas, lalu membuka keduanya saat mengajar.
+- **Gambar dan kode bisa dipelajari bersama.** Saat menyusun modul, saya bisa memilih satu ruas dan melihat perintah TikZ yang menggambarnya. Saya bisa menyalin gambar lengkap dengan gaya yang biasa saya pakai, atau mengambil koordinat saja dan menulis sendiri garis serta labelnya.
+- **Satu konstruksi bisa dicoba dalam beberapa posisi.** Geser titik sudut segitiga, lalu amati lingkaran dalam, garis bagi, atau bayangan inversinya. Animasi alat menunjukkan urutan klik. Di contoh interaktif, pembaca bisa menggeser titik dan melihat akibatnya.
+- **Diagram bisa disesuaikan untuk dicetak.** Label LaTeX bisa digeser, daerah dapat diisi warna transparan, dan penanda sudut bisa diatur. Saat skala TikZ diubah, radius cetak titik tetap $1{,}5\,\mathrm{pt}$.
+- **Kode dari diagram AoPS bisa dipakai lagi.** Untuk blok Asymptote yang berhasil dikonversi, saya bisa menyunting warna, ketebalan garis, atau label di kolom **Kode TikZ**, lalu menyalin hasilnya. Pratinjau menunjukkan hasil konversi awal. Saya mengompilasi dokumen LaTeX untuk melihat suntingannya.
+- **Beberapa gambar bisa dibuka dalam satu editor, juga saat offline.** Saya bisa memberi nama satu tab untuk tiap soal dan berpindah gambar selama kelas. Alat gambar, contoh interaktif, dan animasi panduan sudah tersedia dalam HTML yang diunduh.
 
 ## Keterbatasan
 
-- **Belum ada daftar proyek di dalam editor.** Browser mengingat satu lembar pribadi. Kamu tetap bisa menyimpan banyak gambar sebagai file terpisah. Klik **Simpan proyek**, beri nama yang mudah dikenali seperti `inversi.stikz.json` dan `menelaus.stikz.json`, lalu pilih **Buka file** saat ingin melanjutkan salah satunya. Kalau browser langsung mengunduh dengan nama bawaan, ubah nama file di folder unduhan.
-- **Cakupannya geometri olimpiade.** Saat ini belum ada plot fungsi seperti $y=x^2$, atau alat umum untuk parabola, elips, dan hiperbola. Untuk kebutuhan menggambar grafik, saya masih memilih GeoGebra. Fokus Studio TikZ adalah konstruksi dan penyajian diagram geometri.
-- **Impor GeoGebra mendukung sebagian objek 2D.** Pada berkas `.ggb`, sebagian titik dibaca dari koordinat tersimpan. Hubungan konstruksi dari GeoGebra belum tentu ikut terbawa. Format `.stikz.json` menyimpan hubungan yang dibuat di Studio TikZ.
-- **Salinan offline perlu diperbarui manual.** Untuk memakai versi yang lebih baru, buka kembali halaman proyek ini, unduh HTML terbaru, lalu buka file proyekmu di sana. Menyimpan gambar dan memperbarui aplikasi menggunakan dua file yang berbeda.
+- **Lembar tersimpan di browser yang dipakai.** Jika data situs dihapus, kumpulan tab bisa hilang. Sebelum menutup lembar atau pindah perangkat, pilih tabnya lalu klik **Simpan proyek**. Setiap file `.stikz.json` memuat satu gambar. **Buka file** bisa membuka beberapa file sekaligus, masing-masing di tab tersendiri.
+- **Cakupannya geometri olimpiade.** Studio belum menyediakan alat umum untuk memplot fungsi atau menggambar irisan kerucut dari persamaannya. Untuk menggambar parabola $y=x^2$, misalnya, saya masih menggunakan GeoGebra.
+- **Impor GeoGebra mencakup sebagian objek 2D.** Pada file `.ggb`, Studio bisa membaca posisi titik dari koordinat tersimpan meskipun hubungan konstruksinya tidak ikut terbawa. Simpan gambar yang dibuat di Studio sebagai `.stikz.json` agar hubungan antarobjek dapat dibuka kembali.
+- **Menempelkan kode Asymptote bisa menghasilkan pesan galat.** Jika blok terpotong, salin ulang mulai `[asy]` sampai `[/asy]`. Kode yang lengkap dan berjalan di AoPS pun bisa memakai perintah atau modul yang belum dikenali Studio. Jika pesan menyebut baris dan kolom, klik **Ke baris ini** untuk memeriksanya. Untuk fitur yang belum didukung, render dengan Asymptote di komputermu, lalu impor SVG atau sisipkan PDF di LaTeX. [Langkah konversi SVG dan PDF]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops).
+- **Salinan offline perlu diperbarui manual.** Unduh HTML terbaru dari halaman proyek ini, lalu buka file `.stikz.json` yang sudah kamu simpan di editor baru.
 
 Kalau kamu mencoba Studio TikZ untuk bahan ajar atau soal olimpiade, saya ingin tahu bagian mana yang mudah diikuti dan bagian mana yang masih membingungkan. Contoh konstruksi atau potongan kode yang kamu pakai akan membantu saya memahami masukannya.
