@@ -21,7 +21,9 @@ Choose the side-by-side layout to inspect the code while drawing, or stack the p
 
 ## Construction and presentation
 
-To bisect $AB$ perpendicularly, select **Perpendicular bisector**, then click the segment or its two endpoints. Drag $A$ and check that the line still passes through the midpoint. For an inversion, select the source point, line or circle and then click the reference circle. Reflection follows a similar sequence. Select the source object and then the mirror point or line. The diagrams and step-by-step examples in the [tool guide](guide.html) cover these and the other constructions.
+To bisect $AB$ perpendicularly, select **Perpendicular bisector**, then click the segment or its two endpoints. Drag $A$ and check that the line still passes through the midpoint. For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For inversion, click the reference circle. A pentagon maps edge by edge. You can then select its image for another transformation.
+
+Open the [shape transformation example](../index.html?lang=en#contoh/transformasi-bangun) in the **Sheet** menu and move a vertex or the inversion centre. The [interactive inversion lesson](../index.html?lang=en#panduan/invert) follows one triangle closely. Its vertices $A$ and $B$ initially lie on the reference circle. Segment $AB$ maps to the semicircle through $A$, $M'$ and $B$, where $M'$ is the image of its midpoint $M$.
 
 In a crowded diagram, select a point label, angle label or free label and switch on its translucent background. Lower the background opacity if a nearby line needs to remain prominent. A right-angle mark has its own size control. Select several objects using **Ctrl+click** (or **⌘+click**) to change their colour or hide them together. Name and save the group to select the same objects again later. The same palette is available for outlines and fills.
 

@@ -25,9 +25,36 @@ Select the **perpendicular bisector** tool and click a segment or both endpoints
 
 The triangle menu produces the circumcentre $O$, the intersection of the altitudes $H$, the incentre $I$ or the corresponding circles. Click the interior of a triangle, or choose its three vertices. For an excircle, click the vertex opposite the required circle after choosing the triangle. If you enter three separate points, start with the opposite vertex. Thus $I_A$ labels the centre of the excircle opposite $A$. The internal and external angle-bisector tools take three points with the vertex second.
 
-For inversion, click the source point, line or circle, then the circumference of the reference circle. To specify a radius or power instead, select that option, enter a value or a segment expression and choose the source and centre. With $k=OA\cdot OB$, a source point $P$ and its image $P'$ satisfy $OP\cdot OP'=k$. Fixed-radius circles can use expressions such as `(AB + CD)/2`.
+### Choosing the source for a transformation
 
-To reflect an object, choose **Reflection**, click the original, then the mirror. Clicking a point gives central reflection. Clicking a line, ray, polygon side or segment reflects the object across its entire supporting line. The reflection tool stays active so that you can immediately reflect another object.
+Choose a tool, then click the source. Click inside a polygon or sector to select the whole shape. Click a polygon edge to select one segment. When objects overlap, use the source-object list. In the **Sheet** menu, open the [shape transformation example](../index.html?lang=en#contoh/transformasi-bangun). Drag a vertex of the pentagon to see its reflection and inverse image update.
+
+| Tool | After choosing the source |
+| --- | --- |
+| Translation | Click the tail and head of the translation vector. |
+| Rotation | Enter an angle and select the centre. |
+| Reflection | Click a point for central reflection or a line for the mirror. A segment used as a mirror represents its supporting line. |
+| Dilation | Enter a scale factor and select the centre. |
+| Inversion | Click the reference circumference. With **Radius or power**, enter the value or formula and select the centre. |
+
+Select an image as the source of the next transformation to compose them. For example, reflect a pentagon in a line, then invert its reflection. Moving an original vertex updates both images. Press **Esc** to return to **Select / move**.
+
+### Inverting edges, regions and annotations
+
+In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Follow the arc through $A'$, $M'$ and $B'$.
+
+| Source object | Image under inversion with centre $O$ |
+| --- | --- |
+| Point $P$ | Its image $P'$ lies on ray $OP$ and satisfies $OP\cdot OP'=r^2$. The centre $O$ has no finite image. |
+| Segment $AB$ on a line that misses $O$ | The arc from $A'$ to $B'$ that avoids $O$. To invert the entire supporting line, first draw **Line through two points**. |
+| Segment collinear with $O$ | A segment when $O$ is outside the source segment. If $O$ is an endpoint, the rest maps to a ray. If $O$ is between the endpoints, the image consists of two rays. |
+| Ray, arc or sector | The image follows the selected part of the curve. A sector boundary includes its two radii and its arc. |
+| Polygon | Every edge maps individually. A triangle generally produces three arcs and a pentagon five. Move the centre into the polygon to make the fill extend outside the curved boundary. With the centre on an edge, the unbounded parts continue to the edge of the drawing. |
+| Free label or angle mark | A label follows the image of its anchor and stays upright. The angle marker follows the tangent directions at the image vertex and keeps the angle measure. An anchor or vertex at $O$ has no finite image. |
+
+Existing files retain their saved constructions. If a file uses the older inverse of the **supporting line**, create a new inversion of the segment to obtain just its image arc.
+
+For an inversion with power $k=OA\cdot OB$, enter `OA * OB` after drawing both segments. Then $OP\cdot OP'=k$. You can also define the radius of a circle with a segment-length expression such as `(AB + CD)/2`.
 
 ## Selecting objects and styling labels
 
@@ -122,7 +149,7 @@ Choose a topic to open its illustrated steps and interactive construction direct
 | --- | --- |
 | [Translation](../index.html?lang=en#panduan/translate) · [Rotation](../index.html?lang=en#panduan/rotate) · [Dilation](../index.html?lang=en#panduan/dilate) | Choose the source object and set a vector, angle or scale factor. |
 | [Reflection](../index.html?lang=en#panduan/reflect) · [Reflect in a line](../index.html?lang=en#panduan/reflectLine) · [Reflect in a point](../index.html?lang=en#panduan/reflectPoint) | Compare the image after moving the mirror or centre. |
-| [Inversion](../index.html?lang=en#panduan/invert) · [Inverse of a line](../index.html?lang=en#panduan/invertLine) · [Inverse of a circle](../index.html?lang=en#panduan/invertCircle) · [Radius or power](../index.html?lang=en#panduan/invertFormula) | Use a reference circle or specify its radius or power directly. |
+| [Inversion](../index.html?lang=en#panduan/invert) · [Inverse of a line](../index.html?lang=en#panduan/invertLine) · [Inverse of a circle](../index.html?lang=en#panduan/invertCircle) · [Radius or power](../index.html?lang=en#panduan/invertFormula) | Explore a triangle whose three edges map to arcs. Use an existing circle or specify the radius or power. |
 
 | Editor and export | Illustrated topics |
 | --- | --- |

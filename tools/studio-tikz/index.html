@@ -184,6 +184,8 @@ button:hover{background:#eaf0e6;border-color:#afbcac}
 
 .canvas-zoom-value{display:inline-flex;align-items:center;gap:2px;font-size:.8rem}.canvas-zoom-value input{width:5.2em;text-align:right;min-height:30px;border:1px solid var(--rule);border-radius:5px;color:var(--ink);background:var(--page);padding:2px 4px;font:inherit}.author-credit a{color:var(--blue)}
 
+#transform-source{min-width:0;max-width:min(100%,30em)}
+
 .appearance-controls{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 18px;margin:4px 0 12px}
 .ink-picker{max-width:100%;min-width:140px}
 .ink-picker[open]{flex:1 1 100%}
@@ -607,7 +609,7 @@ Derived file: studio-math-labels.woff
   </div>
   <section class="intro"><div><h1>Gambar geometri</h1><p>Letakkan titik di kanvas, buat konstruksinya, lalu salin TikZ ke modulmu.</p></div>
     <div class="workspace-choices">
-      <div class="select-field"><label class="slabel" for="examples">Lembar</label><select id="examples"><option value="current">Gambar saya</option><option value="blank">Kanvas baru</option><option value="triangle">Contoh segitiga</option><option value="reim">Contoh Reim</option><option value="tangencyDemo">Contoh lingkaran singgung</option><option value="antiparallelDemo">Contoh antiparalel siklis</option><option value="inversionProductDemo">Contoh inversi hasil kali</option><optgroup label="Contoh penggunaan Wildan"><option value="01-refleksi">Refleksi dan segiempat siklis</option><option value="02-garis-berat">Tiga lingkaran pada garis berat</option><option value="03-garis-singgung">Garis singgung dan dua garis berat</option></optgroup></select></div>
+      <div class="select-field"><label class="slabel" for="examples">Lembar</label><select id="examples"><option value="current">Gambar saya</option><option value="blank">Kanvas baru</option><option value="triangle">Contoh segitiga</option><option value="reim">Contoh Reim</option><option value="tangencyDemo">Contoh lingkaran singgung</option><option value="antiparallelDemo">Contoh antiparalel siklis</option><option value="transformasi-bangun">Contoh transformasi bangun</option><option value="inversionProductDemo">Contoh inversi hasil kali</option><optgroup label="Contoh penggunaan Wildan"><option value="01-refleksi">Refleksi dan segiempat siklis</option><option value="02-garis-berat">Tiga lingkaran pada garis berat</option><option value="03-garis-singgung">Garis singgung dan dua garis berat</option></optgroup></select></div>
       <div class="select-field"><label class="slabel" for="workspace-layout">Tata letak</label>
         <select id="workspace-layout" aria-controls="workspace">
           <option value="auto">Otomatis</option>
@@ -634,6 +636,9 @@ Derived file: studio-math-labels.woff
         <div class="tool-panel" id="tool-panel" role="group" hidden></div>
       </div>
       <div class="toolguide" aria-live="polite"><span class="toolguide-current"><strong id="tool-name">Titik</strong><button id="tool-guide-context" type="button" aria-label="Panduan alat aktif" title="Panduan alat aktif" aria-haspopup="dialog" aria-controls="tool-guide-dialog">?</button></span><span id="guide">Klik kanvas untuk meletakkan titik A.</span><button id="cancel" type="button" hidden>Batalkan</button></div>
+      <div class="controls arc-tool-options" id="transform-source-wrap" hidden>
+        <label class="label-opt" for="transform-source">Objek asal</label><select id="transform-source"></select>
+      </div>
       <div id="construction-options"></div>
       <div class="arc-tool-options controls" id="arc-tool-options" hidden>
         <label class="label-opt" id="arc-tool-opening-wrap">Besar busur (°) <input id="arc-tool-opening" type="number" min="0" max="360" step="any" value="90"></label>
@@ -1684,7 +1689,7 @@ function numberTeX(x) {
 // TikZ's default is 0.4 pt. Earlier Studio projects explicitly exported thick paths.
 const strokeWidths={default:.4,"ultra thin":.1,"very thin":.2,thin:.4,semithick:.6,thick:.8,"very thick":1.2,"ultra thick":1.6};
 const strokePatterns=["solid",...["dashed","dotted","dash dot","dash dot dot"].flatMap(name=>[name,"densely "+name,"loosely "+name])];
-function hasGeometricStroke(obj){return !!obj&&["segment","circle","polygon","angle"].includes(obj.kind);}
+function hasGeometricStroke(obj){return !!obj&&["segment","circle","polygon","angle","path"].includes(obj.kind);}
 function validLineWidth(value){return typeof value==="string"&&Object.hasOwn(strokeWidths,value);}
 function validLinePattern(value){return strokePatterns.includes(value);}
 function resolvedLineWidth(obj){return obj.lineWidth??(obj.kind==="angle"?"default":"thick");}
@@ -1750,7 +1755,7 @@ function vectorCoordinateTeX(point,pointMap,scale){
 function visibleExport(m,includeVectorRefs=false){
   if(!m.items?.some(obj=>obj.hidden))return m;
   const visible={...m};
-  for(const key of ["segments","circles","angles","labels","arcs","polygons","items"]){
+  for(const key of ["segments","circles","angles","labels","arcs","polygons","paths","items"]){
     if(m[key])visible[key]=m[key].filter(obj=>!obj.hidden);
   }
   // Named endpoints can still be referenced by visible paths after a point is hidden.
@@ -1784,7 +1789,7 @@ function makeCode(m,style,mode,scale=1) {
   }
   const tab=mode==="full"?"    ":"";
   const xy=p=>"("+numberTeX(p.x)+", "+numberTeX(p.y)+")";
-  if(mode==="full"&&typeof exportRegionFills==="function")exportRegionFills(m,style,xy,tab,put);
+  if(mode==="full"&&typeof exportRegionFills==="function")exportRegionFills(m,style,xy,tab,put,scale);
   for(const p of m.points){
     const d=style(p).dir;
     const labelOpts=labelInkOptions(style(p)), ink=labelOpts.length?"["+labelOpts.join(", ")+"]":"";
@@ -1803,7 +1808,8 @@ function makeCode(m,style,mode,scale=1) {
   if(m.points.length&&(m.circles.length||m.segments.length))put("");
   const node=k=>"("+m.pointMap.get(k).node+")";
   if(m.polygons?.length)exportPolygonOutlines(m,style,xy,tab,put);
-  for(const c of m.circles) put(tab+"\\draw["+optionsFor(c,style)+"] "+(c.sector?regionFillPath(c,xy):c.arc?arcTikzPath(c,xy):(c.centerKey?node(c.centerKey):xy({x:c.cx,y:c.cy}))+" circle ("+numberTeX(c.r)+")")+";",[c.key]);
+  if(m.paths?.length)exportInverseOutlines(m,style,xy,tab,put,scale);
+  for(const c of m.circles) put(tab+"\\draw["+optionsFor(c,style)+"] "+(c.sector?regionFillPath(c,xy):c.arc?arcTikzPath(c,xy,scale):(c.centerKey?node(c.centerKey):xy({x:c.cx,y:c.cy}))+" circle ("+numberTeX(c.r)+")")+";",[c.key]);
   for(const s of m.segments){
     const path=s.infinite?(s.ray&&s.from?node(s.from):xy(s.start))+"--"+xy(s.end):
       (s.from?node(s.from):xy(s.start))+"--"+(s.to?node(s.to):xy(s.end));
@@ -2182,9 +2188,20 @@ function arcSvgPath(circle, toScreen, scale) {
   }
   return move + edge(arc.sweep,arc.end);
 }
-function arcTikzPath(circle, xy) {
+function circularTikzStep(start,sweep,r,a,b,xy,scale=1) {
+  // A short arc may lie fully on the page yet have a support circle too large
+  // for TeX's dimension registers. Local cubic controls avoid that radius.
+  if(r*Math.max(1,scale)>450&&Math.abs(sweep)<10){
+    const handle=4/3*r*Math.tan(sweep*DEGREE/4);
+    const tangent=angle=>({x:-Math.sin(angle*DEGREE),y:Math.cos(angle*DEGREE)});
+    const c1=plus(a,times(tangent(start),handle)),c2=minus(b,times(tangent(start+sweep),handle));
+    return " .. controls "+xy(c1)+" and "+xy(c2)+" .. "+xy(b);
+  }
+  return " arc[start angle="+numberTeX(start)+", delta angle="+numberTeX(sweep)+", radius="+numberTeX(r)+"]";
+}
+function arcTikzPath(circle, xy, scale=1) {
   const arc = circle.arc;
-  return xy(arc.start)+" arc[start angle="+numberTeX(arc.startDeg)+", delta angle="+numberTeX(arc.sweep)+", radius="+numberTeX(circle.r)+"]";
+  return xy(arc.start)+circularTikzStep(arc.startDeg,arc.sweep,circle.r,arc.start,arc.end,xy,scale);
 }
 function validateArc(step) {
   if (step.arcMode !== undefined && !["full","half","angle"].includes(step.arcMode) ||
@@ -2213,7 +2230,7 @@ function renderArcTool(tool) {
   if (settings.arcMode === "angle") $("arc-tool-opening").value = settings.arcOpening;
 }
 function renderArcInspector(object, step) {
-  const show = object?.kind === "circle" && !!step && !object.sector;
+  const show = object?.kind === "circle" && !!step && !object.sector && step.type !== "invertObject";
   $("arc-options").hidden = !show;
   if (!show) return;
   const mode = step.arcMode || "full";
@@ -2265,9 +2282,9 @@ const EPS=1e-9;
 const POINT_TYPES=new Set(["point","on","center","mid","foot","cut"]);
 const LINE_TYPES=new Set(["segment","line","parallel","normal"]);
 const CIRCLE_TYPES=new Set(["circle2","circle3","diameter","circleFixed"]);
-const inputKinds={label:[],point:[],on:["g"],center:["c"],segment:["p","p"],line:["p","p"],triangle:["p","p","p"],semicircle:["p","p"],circleArc:["p","p"],circle2:["p","p"],circle3:["p","p","p"],diameter:["p","p"],mid:["p","p"],foot:["p","l"],cut:["g","g"],parallel:["p","l"],normal:["p","l"],angle:["p","p","p"],right:["p","p","p"],circleFixed:[]};
+const inputKinds={label:[],point:[],on:["g|h"],center:["c"],segment:["p","p"],line:["p","p"],triangle:["p","p","p"],semicircle:["p","p"],circleArc:["p","p"],circle2:["p","p"],circle3:["p","p","p"],diameter:["p","p"],mid:["p","p"],foot:["p","l"],cut:["g|h","g|h"],parallel:["p","l"],normal:["p","l"],angle:["p","p","p"],right:["p","p","p"],circleFixed:[]};
 const extraSteps=Object.create(null),extraTools=Object.create(null),extensionPanels=[];
-const objectKinds={p:"point",l:"segment",c:"circle",r:"polygon",t:"label",a:"angle"};
+const objectKinds={p:"point",l:"segment",c:"circle",r:"polygon",h:"path",t:"label",a:"angle"};
 const groupByObjectKind=Object.fromEntries(Object.entries(objectKinds).map(([group,kind])=>[kind,group]));
 function registerStep(type,spec){
   extraSteps[type]=spec;
@@ -2279,7 +2296,11 @@ function registerTool(id,spec){extraTools[id]=spec;}
 function registerPanel(panel){extensionPanels.push(panel);}
 function acceptsGroup(expected,actual){
   return expected.split("|").some(choice=>choice==="x"||choice===actual||(choice==="g"&&(actual==="l"||actual==="c"))||
-    (actual==="g"&&(choice==="l"||choice==="c")));
+    (actual==="g"&&(choice==="l"||choice==="c"||choice==="v"))||
+    (actual==="v"&&["h","l","c","g"].includes(choice))||(choice==="v"&&["h","l","c"].includes(actual)));
+}
+function isInversionImageStep(type){
+  return ["invert","invertLine","invertCircle","invertObject","invertAngle","invertLabel","invertVertex"].includes(type);
 }
 const tickStyles=["","ukursama","ukursama2","ukursama4","ukursama3"];
 const plus=(a,b)=>({x:a.x+b.x,y:a.y+b.y}), minus=(a,b)=>({x:a.x-b.x,y:a.y-b.y});
@@ -2321,18 +2342,29 @@ function objectRoots(a,b){
   const h=Math.sqrt(Math.max(0,(a.r-t)*(a.r+t)));
   return Math.abs(d-sum)<=tol||(diff>0&&Math.abs(d-diff)<=tol)||h===0?[f]:[plus(f,times(rot(e),h)),plus(f,times(rot(e),-h))];
 }
+function permitsGuidePoint(obj,point){return !obj.excludedPoints?.length||!inverseCurveExcludes(obj,point);}
 function intersectionBranches(a,b) {
   return objectRoots(a,b).map((point,branch)=>({point,branch}))
-    .filter(({point})=>[a,b].every(obj=>(!obj.arc||arcContainsPoint(obj,point))&&
+    .filter(({point})=>[a,b].every(obj=>permitsGuidePoint(obj,point)&&(!obj.arc||arcContainsPoint(obj,point))&&
       (!obj.ray||dot(minus(point,obj.anchor),unit(obj.vector))>=-EPS)));
 }
 const guidePartNames=["curve","startRadius","endRadius"];
+function pathGuideName(piece,index){return "edge:"+String(piece.guideId??index);}
+function validGuidePart(part,parent){
+  if(guidePartNames.includes(part))return part==="curve"||["c","g","v"].includes(parent);
+  return (parent==="h"||parent==="v")&&typeof part==="string"&&part.length<=96&&/^edge:\d+(?:\.1)*$/.test(part);
+}
 function pointGuidePieces(obj) {
+  if(obj?.kind==="path")return obj.pieces.map(pathGuideName);
   if(obj?.kind==="segment")return ["curve"];
   if(obj?.kind!=="circle")return [];
   return obj.sector&&obj.arc&&Math.abs(obj.arc.sweep)<360?guidePartNames.slice():["curve"];
 }
 function guidePiece(obj,part) {
+  if(obj?.kind==="path"){
+    const piece=obj.pieces.find((p,i)=>pathGuideName(p,i)===part);
+    return piece?invNativeCurve(piece):null;
+  }
   if(part==="curve")return obj?.kind==="segment"||obj?.kind==="circle"?obj:null;
   if(!pointGuidePieces(obj).includes(part))return null;
   const center={x:obj.cx,y:obj.cy};
@@ -2343,14 +2375,15 @@ function guidePointAt(obj,t,arcFraction,part="curve") {
   const guide=guidePiece(obj,part);
   if(!guide)return null;
   if(guide.kind==="segment"&&!guide.infinite&&!guide.ray)t=Math.max(0,Math.min(1,t));
-  return alongPoint(guide,t,arcFraction);
+  const point=alongPoint(guide,t,arcFraction);
+  return finitePoint(point)&&permitsGuidePoint(obj,point)?point:null;
 }
 function projectGuidePoint(obj,part,pos) {
   const guide=guidePiece(obj,part);
   if(!guide||!finitePoint(pos))return null;
   const t=alongParameter(guide,pos);
   const params={t},point=alongPoint(guide,t);
-  if(!finitePoint(point))return null;
+  if(!finitePoint(point)||!permitsGuidePoint(obj,point))return null;
   if(part!=="curve")params.onPart=part;
   if(guide.arc){
     params.arcFraction=closestArcFraction(guide.arc,t/DEGREE);
@@ -2398,12 +2431,23 @@ function coincidentArcContacts(a,b) {
 function boundedGuideIntersections(a,partA,b,partB) {
   const first=guidePiece(a,partA),second=guidePiece(b,partB);
   if(!first||!second)return [];
-  const roots=objectRoots(first,second);
-  if(!roots.length&&first.kind===second.kind){
-    return first.kind==="circle"?coincidentArcContacts(first,second):collinearEndContact(first,second);
+  const roots=objectRoots(first,second).map((point,branch)=>({point,branch}));
+  const contacts=!roots.length&&first.kind===second.kind
+    ?first.kind==="circle"?coincidentArcContacts(first,second):collinearEndContact(first,second)
+    :roots;
+  return contacts.filter(({point})=>finitePoint(point)&&permitsGuidePoint(a,point)&&permitsGuidePoint(b,point)&&
+    withinGuidePiece(first,point)&&withinGuidePiece(second,point));
+}
+function allPathIntersections(first,second,limit=Infinity){
+  const roots=[];
+  for(const left of pointGuidePieces(first))for(const right of pointGuidePieces(second)){
+    for(const root of boundedGuideIntersections(first,left,second,right)){
+      if(roots.some(other=>dist(other.point,root.point)<=EPS))continue;
+      roots.push({...root,parts:[left,right]});
+      if(roots.length>limit)return roots;
+    }
   }
-  return roots.map((point,branch)=>({point,branch}))
-    .filter(({point})=>finitePoint(point)&&withinGuidePiece(first,point)&&withinGuidePiece(second,point));
+  return roots;
 }
 function worldBounds(points,circles) {
   let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;
@@ -2450,7 +2494,7 @@ function angleLabelFor(step,marker,vertex,firstRay,radians) {
   const custom=step.angleLabelMode==="custom";
   const text=custom?step.angleLabelText.trim():degrees+"°";
   const tex=custom?safeLabelMathTex(text):degrees+"^{\\circ}";
-  return {...position,base,text,display:text,tex};
+  return {...position,base,text,display:text,tex,mode:custom?"custom":"auto"};
 }
 function validateAngleLabel(step) {
   const mode=step.angleLabelMode??"none",text=step.angleLabelText,offset=step.angleLabelOffset;
@@ -2461,8 +2505,8 @@ function validateAngleLabel(step) {
   if(text?.trim())safeLabelMathTex(text);
 }
 function solveSketch(steps,title="Gambar saya"){
-  const values=new Map(),points=[],segments=[],circles=[],angles=[],labels=[],polygons=[],unavailable=[];
-  const buckets={p:points,l:segments,c:circles,r:polygons,a:angles,t:labels};
+  const values=new Map(),points=[],segments=[],circles=[],angles=[],labels=[],polygons=[],paths=[],unavailable=[];
+  const buckets={p:points,l:segments,c:circles,r:polygons,h:paths,a:angles,t:labels};
   const nodeNames=namedNodes(steps);
   // Generated vertices follow their polygon in the dependency order. Their names
   // are available independently of their geometry, including after a rename.
@@ -2487,9 +2531,10 @@ function solveSketch(steps,title="Gambar saya"){
     if(extraSteps[type]){
       const result=extraSteps[type].solve(s,refs,values,vertexNames);
       if(result&&(group!=="p"||finitePoint(result))){
-        const resolved=group==="g"?groupByObjectKind[result.kind]:group;
+        const dynamic=group==="g"||group==="v";
+        const resolved=dynamic?groupByObjectKind[result.kind]:group;
         obj={...result,kind:objectKinds[resolved]};
-        if(group==="g")obj.dynamicGroup=true;
+        if(dynamic)obj.dynamicGroup=true;
         if(resolved==="p")Object.assign(obj,{name:s.id,node:nodeNames.get(s.id),label:safeMath(s.name),display:plainLabel(s.name),dir:s.dir||"auto",labelOffset:s.labelOffset||null,mark:s.mark!==false,free:false,sliding:false});
         if(resolved==="l"){obj.ticks=s.ticks??obj.ticks??0;obj.dashed=s.dashed??obj.dashed??false;}
         if(resolved==="c")obj.dashed=s.dashed??obj.dashed??false;
@@ -2507,7 +2552,8 @@ function solveSketch(steps,title="Gambar saya"){
       if(type==="foot")pos=plus(b.anchor,times(b.vector,dot(minus(a,b.anchor),b.vector)/dot(b.vector,b.vector)));
       if(type==="cut"){
         const [partA,partB]=s.parts||["curve","curve"];
-        const hits=s.bounded?boundedGuideIntersections(a,partA,b,partB):intersectionBranches(a,b);
+        const hits=s.bounded?boundedGuideIntersections(a,partA,b,partB):
+          a.kind==="path"||b.kind==="path"?[]:intersectionBranches(a,b);
         pos=hits.find(hit=>hit.branch===(s.branch||0))?.point;
       }
       if(finitePoint(pos)){
@@ -2563,6 +2609,9 @@ function solveSketch(steps,title="Gambar saya"){
       if(s.fillColor!==undefined)obj.fillColor=s.fillColor;
       if(s.fillOpacity!==undefined)obj.fillOpacity=s.fillOpacity;
       obj.hidden=!!(obj.hidden||s.hidden||(s.hidden===undefined&&obj.kind==="point"&&s.mark===false));
+      if(type==="invertVertex"){
+        obj.regionOwner=c.key;obj.hidden||=c.hidden;
+      }
       if(obj.kind==="point")obj.mark=!obj.hidden;
       if(typeof applyRegionAppearance==="function")applyRegionAppearance(obj,s,refs);
       values.set(s.id,obj);
@@ -2583,13 +2632,14 @@ function solveSketch(steps,title="Gambar saya"){
     if(angle.angleLabel)boundsPoints.push(angle.angleLabel);
   }
   for(const poly of polygons)if(!poly.hidden)boundsPoints.push(...poly.vertices);
+  for(const path of paths)if(!path.hidden)boundsPoints.push(...inversePathBoundsPoints(path));
   for(const c of circles)if(c.sector&&!c.hidden)boundsPoints.push({x:c.cx,y:c.cy});
   const bbox=worldBounds(boundsPoints,circles.filter(c=>!c.hidden));
   for(const s of segments) [s.start,s.end]=s.infinite?boundedLine(s.anchor,s.vector,bbox,s.ray):[s.anchor,plus(s.anchor,s.vector)];
   const center=visiblePoints.reduce((a,p)=>plus(a,times(p,1/visiblePoints.length)),{x:0,y:0});
   for(const p of points)if(p.dir==="auto")p.dir=directions[(Math.round(Math.atan2(p.y-center.y,p.x-center.x)*4/Math.PI)+8)%8][0];
   const pointMap=new Map(points.map(p=>[p.key,p]));
-  return {title,points,segments,circles,angles,labels,polygons,items:[...polygons,...circles,...segments,...angles,...points,...labels],pointMap,values,bbox,unavailable};
+  return {title,points,segments,circles,angles,labels,polygons,paths,items:[...polygons,...paths,...circles,...segments,...angles,...points,...labels],pointMap,values,bbox,unavailable};
 }
 function ticksWorld(seg){
   if(!seg.ticks||seg.infinite)return [];
@@ -2623,17 +2673,18 @@ function checkProject(p){
       if(s.labelMode==="math")mathLabelAtoms(s.text);
     }
     if(s.labelOffset!=null&&(!finitePoint(s.labelOffset)||Math.max(Math.abs(s.labelOffset.x),Math.abs(s.labelOffset.y))>1e8))throw Error("Posisi label titik tidak valid.");
-    if(s.type==="right"||s.type==="imageAngle"&&rightMarkers.has(s.refs[0]))rightMarkers.add(s.id);
-    if(s.angleMark!==undefined&&(!["angle","right","imageAngle"].includes(s.type)||!angleMarkOptions(rightMarkers.has(s.id)).some(([id])=>id===s.angleMark)))throw Error("Tanda sudut tidak valid untuk konstruksi ini.");
+    if(s.type==="right"||["imageAngle","invertAngle"].includes(s.type)&&rightMarkers.has(s.refs[0]))rightMarkers.add(s.id);
+    if(s.angleMark!==undefined&&(!["angle","right","imageAngle","invertAngle"].includes(s.type)||!angleMarkOptions(rightMarkers.has(s.id)).some(([id])=>id===s.angleMark)))throw Error("Tanda sudut tidak valid untuk konstruksi ini.");
     if(s.rightSize!=null&&(!rightMarkers.has(s.id)||!Number.isFinite(s.rightSize)||s.rightSize<=0||s.rightSize>1000))throw Error("Ukuran penanda siku-siku tidak valid.");
     if(s.labelBackdrop!=null&&(!Number.isInteger(s.labelBackdrop)||s.labelBackdrop<5||s.labelBackdrop>85))throw Error("Opasitas latar label harus antara 5% dan 85%.");
     if(s.type==="angle"||s.type==="right")validateAngleLabel(s);
     if(s.type==="on"&&!Number.isFinite(s.t))throw Error("Parameter titik pada objek tidak valid.");
-    if(s.onPart!==undefined&&(s.type!=="on"||!guidePartNames.includes(s.onPart)))throw Error("Bagian objek untuk titik tidak valid.");
-    if(s.onPart&&s.onPart!=="curve"&&(s.t<0||s.t>1||!["c","g"].includes(seen.get(s.refs[0]))))throw Error("Parameter titik pada jari-jari juring tidak valid.");
+    if(s.onPart!==undefined&&(s.type!=="on"||!validGuidePart(s.onPart,seen.get(s.refs[0]))))throw Error("Bagian objek untuk titik tidak valid.");
+    if(["startRadius","endRadius"].includes(s.onPart)&&(s.t<0||s.t>1))throw Error("Parameter titik pada jari-jari juring tidak valid.");
+    if(s.type==="cut"&&!s.bounded&&s.refs.some(id=>seen.get(id)==="h"))throw Error("Bagian objek pada perpotongan tidak valid.");
     if(s.bounded!==undefined&&(s.type!=="cut"||typeof s.bounded!=="boolean"))throw Error("Batas perpotongan tidak valid.");
     if(s.parts!==undefined&&(!s.bounded||!Array.isArray(s.parts)||s.parts.length!==2||!s.parts.every((part,i)=>
-      guidePartNames.includes(part)&&(part==="curve"||["c","g"].includes(seen.get(s.refs[i]))))))throw Error("Bagian objek pada perpotongan tidak valid.");
+      validGuidePart(part,seen.get(s.refs[i])))))throw Error("Bagian objek pada perpotongan tidak valid.");
     if(s.type==="point"&&(!finitePoint(s)||Math.max(Math.abs(s.x),Math.abs(s.y))>1e8))throw Error("Koordinat titik tidak valid.");
     if(["arcMode","arcStart","arcClockwise","arcOpening","arcFraction"].some(field=>s[field]!==undefined))validateArc(s);
     if(s.type==="circleFixed"&&(![s.cx,s.cy,s.r].every(Number.isFinite)||s.r<=0))throw Error("Lingkaran dalam proyek tidak valid.");
@@ -2689,6 +2740,12 @@ function importSketch(m,example=null){
 "use strict";
 
 const studioFigureEnglish = {
+  "Segitiga ABC dan bayangannya yang dibatasi tiga busur. Titik tengah M berpeta ke M′ pada busur bayangan AB.": "Triangle ABC and its image bounded by three arcs. The midpoint M maps to M′ on the image of segment AB.",
+  "A dan B terletak pada lingkaran inversi. Ruas AB berpeta ke setengah lingkaran melalui A, M′ dan B.": "A and B lie on the inversion circle. Segment AB maps to the semicircle through A, M′ and B.",
+  "Klik bagian dalam segitiga ABC untuk memilih bangun utuh.": "Click inside triangle ABC to select the entire shape.",
+  "Klik keliling lingkaran acuan. Ketiga sisi segitiga berpeta ke tiga busur.": "Click the reference circumference. The three sides of the triangle map to three arcs.",
+  "M berada pada ruas AB. Bayangannya M′ berada pada busur dari A ke B.": "M lies on segment AB. Its image M′ lies on the arc from A to B.",
+  "Inversi segitiga ABC dan titik tengah M": "Inversion of triangle ABC and its midpoint M",
   "P tepat di perpotongan dua ruas.": "P lies at the intersection of two segments.",
   "Pada perpotongan kedua ruas, klik penanda silang untuk membuat P. Titik P akan mengikuti kedua ruas.": "Click the cross where the segments meet to create P. It follows both segments when they move.",
   "Arahkan kursor ke perpotongan kedua ruas.": "Move the pointer to the intersection of the two segments.",
@@ -3175,6 +3232,11 @@ Contoh segitiga|Triangle example
 Contoh Reim|Reim example
 Contoh lingkaran singgung|Tangent circles example
 Contoh antiparalel siklis|Cyclic antiparallel example
+Objek asal|Source object
+Klik di kanvas atau pilih dari daftar|Click the canvas or choose from the list
+Contoh transformasi bangun|Transforming a shape
+Segi lima, refleksi, dan inversi|A pentagon, its reflection and its inverse
+Geser salah satu titik A–E. Segi lima hijau, bayangan refleksinya yang biru, dan bayangan inversinya yang jingga akan ikut berubah.|Drag any vertex A–E. The green pentagon, its blue reflection and its orange inverse all update.
 Contoh inversi hasil kali|Inversion by product example
 Contoh penggunaan Wildan|Wildan’s worked examples
 Refleksi dan segiempat siklis|Reflection and a cyclic quadrilateral
@@ -3600,6 +3662,10 @@ Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P′ bergerak 
 "use strict";
 
 const studioFeedbackEnglish={
+  "Klik objek asal. Klik bagian dalam bangun untuk memilih seluruh bangun, atau klik tepinya untuk memilih satu sisi.": "Click the source. Click inside a shape to select it as a whole, or click an edge to select one side.",
+  "Isi jari-jari atau kuasa, lalu klik objek yang ingin diinversi.": "Enter a radius or power, then click the object to invert.",
+  "Bayangan inversi tidak terdefinisi pada posisi ini.": "The inverse image is undefined in this position.",
+  "Konstruksi ini melebihi batas 1.500 objek per proyek.": "This construction exceeds the limit of 1,500 objects per project.",
   "Busur": "Arc",
   "Sudut": "Angle",
   "Titik kutub": "Pole",
@@ -3946,19 +4012,19 @@ circleConstraints|Circle from 3 constraints|Construct a circle through selected 
 circleFixedTangency|Fixed-radius tangent circles|Construct circles with a specified radius tangent to two given circles.|Enter the desired radius. Click the two reference circles.|Click a dashed candidate, choose a solution number, or select Create all.|Each solution has the requested radius. Both internal and external tangencies are possible.
 pole|Pole of a line|Find the pole of a line with respect to a circle.|Click a line, segment, or ray, then a reference circle with center O. Choose a line that does not pass through O.|If H is the perpendicular foot from O to the line, its pole P lies on ray OH and satisfies OH × OP = r².
 polar|Polar of a point|Construct the polar of a point with respect to a circle.|Click a pole P different from the center O, then the reference circumference.|The polar is perpendicular to OP. For an exterior point it joins the two points of tangency. On the circle it is the tangent at P.
-invertFormula|Inversion by radius or power|Create a reference circle and an inverse image together.|In the Inversion tool choose Radius or power. Select Radius r or Power k = r² and enter a positive value or a segment-length expression such as OA × OB.|Click the point, line, or circle to invert, then select center O.|The new circle and image follow the input. For k = 6 and OP = 2 the inverse satisfies OP′ = 3.
-invert|Inversion|Invert a point, line, or circle in an existing reference circle.|Click the point, line, or circle to invert, then click the reference circumference. To define a new reference circle, choose Radius or power, enter its value or formula, and click its center.|For a point P the image satisfies OP × OP′ = r². A line away from O becomes a circle through O. A circle through O becomes a line.
-invertLine|Invert a line|Invert a line with respect to a circle.|Click the source line, then the reference circumference.|A line through the inversion center maps to itself. Any other line becomes a circle through the center.
-invertCircle|Invert a circle|Invert the supporting circle of a circle, arc, or sector.|Click the source circumference, then the reference circle. To invert the reference circle in itself click it twice.|A circle through the inversion center becomes a line. Other circles have circular images.
+invertFormula|Inversion by radius or power|Define an inversion circle from its radius or power and invert a source object in it.|In Transformations → Inversion, choose Radius or power. Under Calculate from, choose Radius r or Power k = r². Enter a positive number or an expression such as OA * OB using two existing segments.|Click the source object, then the center O. Click inside a polygon to select the whole shape. Use the source-object list to select an overlapping object.|The image follows changes to the object, center and formula. If k = 6 and OP = 2, then OP′ = 3. The center O has no finite image.
+invert|Inversion|Invert a point, segment, ray, line, arc, circle, polygon, sector or annotation.|Choose Transformations → Inversion and use a circle on the canvas. Click inside triangle ABC to select the whole shape. Click an individual side to invert just that segment, or select the source from the list.|Click the reference circumference. In the example, A and B initially lie on it. The midpoint M of AB maps to M′ on the image arc.|Open the interactive example and drag C. Move the center O inside the triangle to see its fill extend outside the boundary.|Each side maps according to its position relative to O. A side whose line misses O becomes an arc. A segment containing O strictly between its endpoints maps to two rays. Free labels follow their anchor. Angle marks follow the tangent directions at the image vertex.
+invertLine|Invert a line|Find the inverse image of a line, segment or ray.|Click the original object. To invert the full supporting line use Line through two points. To invert a segment or a ray select that object.|Click the inversion circle centered at O. This example uses a full line g.|A full line away from O maps to a circle through O. A segment AB on that line maps to the arc between A′ and B′ that avoids O. A segment collinear with O stays a segment if O lies outside it. When O is an endpoint, the rest of the segment maps to a ray.
+invertCircle|Invert a circle|Find the inverse image of a circle, arc or sector.|Click the original circle or arc, or click inside the sector to select the entire region. Use the source-object list when several objects overlap.|Click the reference circumference. Click the same circumference twice to invert the reference circle in itself.|A full circle through O maps to a line. An arc traces just its own image. The image of a sector includes both radius images and the image of its arc. A fill follows the corresponding side of the boundary, extending outside it when O lies inside the original region.
 triangle|Triangle|Construct a triangle with its own selectable interior and three selectable sides.|Click three noncollinear vertices. Click empty space to add a new vertex.|Use Select / move and click inside the triangle to change its fill.|Each side can serve as a separate reference while the triangle remains a single object.
 regularPolygon|Regular polygon|Construct a polygon with equal sides and equal interior angles.|Enter the number of sides, for example 6 for a hexagon. Choose the direction.|Click two consecutive vertices to define the first side.|The other vertices and sides are constructed automatically and follow the initial side.
 polygon|Polygon from points|Trace a closed region using a sequence of vertices.|Click vertices in boundary order. Existing intersection points can also be used.|After at least three vertices click the first vertex again to close the polygon. Choose a fill and its opacity.|A polygon, including a concave one, can be selected as one object.
-translate|Translation|Translate an object by a vector defined by two points.|Click the source object. Click inside a region to select a whole polygon or sector.|Click the start P and then the end Q of the translation vector.|Each point of the image moves the same distance and direction as the displacement from P to Q.
-rotate|Rotation|Rotate an object through a given angle about a center.|Enter the rotation in degrees. A positive angle turns counterclockwise. Enter −90 for a clockwise quarter turn.|Click the object, then the center. Select the result to edit the angle later.|Corresponding points remain equally far from the center.
-reflect|Reflect|Reflect an object in a point or a line with the same tool.|Click the source object. To reflect a polygon as a whole, click inside it.|Click a point for central reflection. Click a line, segment, ray, or polygon side to reflect in its supporting line.|In the example, A′ is the reflection of A in line g, and A″ is its reflection in point O. Drag A, O, or an endpoint of g to compare the images.
+translate|Translation|Translate an object by a vector defined by two points.|Click the source object. Click inside a region to select a whole polygon or sector. The source-object list also lets you choose an image from an earlier transformation.|Click the start P and then the end Q of the translation vector.|Each point of the image moves the same distance and direction as the displacement from P to Q.
+rotate|Rotation|Rotate an object through a given angle about a center.|Enter the rotation in degrees. A positive angle turns counterclockwise. Enter −90 for a clockwise quarter turn.|Click inside a shape to rotate it as a whole, or choose the object from the source list. Click the center. Select the result to edit the angle later.|Corresponding points remain equally far from the center.
+reflect|Reflect|Reflect an object in a point or a line with the same tool.|Click the source object. To reflect a polygon as a whole, click inside it. Use the source-object list when objects overlap.|Click a point for central reflection. Click a line, segment, ray, or polygon side to reflect in its supporting line.|In the example, A′ is the reflection of A in line g, and A″ is its reflection in point O. Drag A, O, or an endpoint of g to compare the images.
 reflectLine|Reflect in a line|Reflect an object across a line.|Click the source object, then the mirror line, segment, or ray.|For a point A off the mirror, the mirror is the perpendicular bisector of AA′.
 reflectPoint|Reflect in a point|Reflect an object about a center of symmetry.|Click the source object, then the center O.|For a point A, O is the midpoint of AA′. The same relation holds for every point of a reflected shape.
-dilate|Dilation|Scale an object about a given center.|Enter a scale factor, for example 2 or 0.5. Click the object, then the center.|Select the image to change the factor.|A factor of 2 doubles the distance from O. A negative factor puts the image on the opposite side of O.
+dilate|Dilation|Scale an object about a given center.|Enter a scale factor, for example 2 or 0.5. Choose the source object by clicking it or using the source list. To scale a whole polygon, click inside it. Then click the center.|Select the image to change the factor.|A factor of 2 doubles the distance from O. A negative factor puts the image on the opposite side of O.
 circumcenter|Circumcenter|Mark the point O equidistant from the three vertices.|Click inside triangle ABC or click A, B, and C in order. Drag a vertex and compare OA, OB, and OC.|O is the circumcenter. In an obtuse triangle it lies outside the triangle.
 orthocenter|Intersection of the altitudes|Mark H where the three altitudes of triangle ABC meet.|Click inside the triangle or click its three vertices. Follow the perpendicular from each vertex to its opposite side.|All three altitudes pass through H. In a right triangle H coincides with the right-angle vertex.
 incenter|Incenter|Construct the point I where the internal angle bisectors meet.|Click inside triangle ABC or click its three vertices. Drag A in the example and compare the distances from I to the three sides.|I lies inside the triangle. Its common distance to the sides is the inradius.
@@ -4005,7 +4071,7 @@ function initialStudioLanguage(){
 }
 let studioLanguage=initialStudioLanguage();
 const studioEnglish={...studioFigureEnglish,...studioConstructionEnglish,...studioUiEnglish,...studioFeedbackEnglish};
-const studioCountNames={titik:["point","points"],"garis/ruas":["line/segment","lines/segments"],lingkaran:["circle","circles"],busur:["arc","arcs"],poligon:["polygon","polygons"],"penanda sudut":["angle mark","angle marks"],label:["label","labels"]};
+const studioCountNames={titik:["point","points"],"garis/ruas":["line/segment","lines/segments"],lingkaran:["circle","circles"],busur:["arc","arcs"],poligon:["polygon","polygons"],lintasan:["path","paths"],"penanda sudut":["angle mark","angle marks"],label:["label","labels"]};
 function studioTranslate(text){
   if(studioLanguage!=="en"||typeof text!=="string")return text;
   const core=text.trim();
@@ -4016,6 +4082,7 @@ function studioTranslate(text){
 }
 function studioDynamicEnglish(s){
   let m;
+  if(s.startsWith("Inversi · "))return "Inversion · "+studioTranslate(s.slice("Inversi · ".length));
   if((m=/^Langkah (\d+\/\d+) · (.*)$/s.exec(s)))return "Step "+m[1]+" · "+studioTranslate(m[2]);
   if((m=/^Hasil akhir · (\d+) langkah$/.exec(s)))return "Final result · "+m[1]+" steps";
   if((m=/^(\d+) langkah$/.exec(s)))return m[1]+" steps";
@@ -4029,7 +4096,7 @@ function studioDynamicEnglish(s){
   if((m=/^(.*) · baris (\d+)$/.exec(s)))return studioTranslate(m[1])+" · line "+m[2];
   if((m=/^Terikat pada (.*)\. Seret titik untuk menggesernya sepanjang objek\.$/.exec(s)))return "Attached to "+studioTranslate(m[1])+". Drag the point to slide it along the object.";
   if((m=/^(.*) \((tersembunyi|tidak terdefinisi)\)$/.exec(s)))return studioTranslate(m[1])+" ("+(m[2]==="tersembunyi"?"hidden":"undefined")+")";
-  if(/^\d+ (?:titik|garis\/ruas|lingkaran|busur|poligon|penanda sudut|label)\b/.test(s))return s.split(" · ").map(part=>{
+  if(/^\d+ (?:titik|garis\/ruas|lingkaran|busur|poligon|lintasan|penanda sudut|label)\b/.test(s))return s.split(" · ").map(part=>{
     const [,n,kind]=/^(\d+) (.*)$/.exec(part)||[];return studioCountNames[kind]?n+" "+studioCountNames[kind][Number(n)===1?0:1]:part.replace("objek tidak terdefinisi pada posisi ini","objects undefined in this position");
   }).join(" · ");
   if((m=/^(.+?) (rapat|renggang) \(([^)]+)\)$/.exec(s)))return (m[2]==="rapat"?"Dense ":"Loose ")+studioTranslate(m[1]).toLowerCase()+" ("+m[3]+")";
@@ -4569,17 +4636,23 @@ registerStep("invert",{
   solve:(step,[point,circle])=>inverseInCircle(point,circle)
 });
 function addInvertedObject(source,mirror,mirrorId,{add,name,model}){
+  const refs=[source.key,mirrorId];
   if(source.kind==="point"){
     if(!inverseInCircle(source,mirror))throw Error("Pusat inversi tidak mempunyai bayangan hingga. Pilih titik lain.");
-    const used=new Set(model.points.map(p=>sourcePointName(p)));
-    return add("invert",[source.key,mirrorId],{name:primeName(source,used,name)});
+    const used=constructionPointNames(model);
+    return add("invert",refs,{name:primeName(source,used,name),...inverseAppearance(source)});
   }
-  if(!inverseSupportingObject(source,mirror))throw Error("Bayangan inversi tidak terdefinisi pada posisi ini.");
-  return add(source.kind==="circle"?"invertCircle":"invertLine",[source.key,mirrorId]);
+  const image=inverseCurveObject(source,mirror);
+  if(!image)throw Error("Bayangan inversi tidak terdefinisi pada posisi ini.");
+  const type=source.kind==="label"?"invertLabel":source.kind==="angle"?"invertAngle":"invertObject";
+  const result=add(type,refs,inverseAppearance(source));
+  if(source.kind==="polygon"||source.kind==="path")addInvertedVertices(source,mirrorId,result.id,{add,name,model});
+  return result;
 }
 registerTool("invert",{
-  title:"Inversi",category:"transform",refs:["p|l|c","c"],allowRepeat:true,
-  hints:["Klik titik, garis, atau lingkaran yang ingin diinversi.","Klik keliling lingkaran acuan."],
+  title:"Inversi",category:"transform",refs:["x","c"],allowRepeat:true,
+  hints:["Klik objek asal. Klik bagian dalam bangun untuk memilih seluruh bangun, atau klik tepinya untuk memilih satu sisi.","Klik keliling lingkaran acuan."],
+  preview(ctx){previewInvertedObject(ctx,model.values.get(ctx.hover?.mirrorId));return true;},
   finish(ctx){return addInvertedObject(ctx.objects[0],ctx.objects[1],ctx.refs[1],ctx);}
 });
 
@@ -4809,6 +4882,208 @@ function tangencyExample(){
 
 "use strict";
 
+// Coordinates use the Euclidean plane. Infinity is used only as a limiting endpoint.
+// Contours preserve traversal order, including when an edge passes through the pole.
+function inverseFinitePoint(p, mirror){
+  if(!finitePoint(p))return null;
+  const o={x:mirror.cx,y:mirror.cy},d=minus(p,o),length=norm(d);
+  if(!length)return null;
+  const q=plus(o,times(unit(d),mirror.r*(mirror.r/length)));
+  return finitePoint(q)?q:null;
+}
+// Excluded finite limits have no preimage. Re-evaluating an arc endpoint can
+// introduce a few ulps, particularly at sin(π) or cos(π/2).
+function inverseCurveExcludes(obj,p){
+  return !!obj?.excludedPoints?.some(q=>dist(q,p)<=32*Number.EPSILON*
+    Math.max(1,Math.abs(q.x),Math.abs(q.y),Math.abs(p.x),Math.abs(p.y)));
+}
+function invAngle(v){return Math.atan2(v.y,v.x)*180/Math.PI;}
+function invCircularPoint(center,r,deg){
+  const a=deg*Math.PI/180;
+  return {x:center.x+r*Math.cos(a),y:center.y+r*Math.sin(a)};
+}
+function invPiecesOf(obj){
+  if(obj.kind==="path")return obj.pieces;
+  if(obj.kind==="polygon")return obj.vertices.map((a,i)=>({type:"line",a,b:obj.vertices[(i+1)%obj.vertices.length]}));
+  if(obj.kind==="segment"){
+    if(obj.infinite||obj.ray)return [{type:obj.ray?"ray":"lineInfinite",a:obj.anchor,v:obj.vector}];
+    return [{type:"line",a:obj.anchor,b:plus(obj.anchor,obj.vector)}];
+  }
+  if(obj.kind!=="circle")return [];
+  const c={x:obj.cx,y:obj.cy},r=obj.r,a=obj.arc;
+  if(!a||Math.abs(a.sweep)>=360)return [{type:"circle",c,r}];
+  const arc={type:"arc",c,r,start:a.startDeg,sweep:a.sweep};
+  if(!obj.sector)return [arc];
+  // A radius endpoint is evaluated with trigonometry. For example sin(π)
+  // leaves a tiny residual even when a radial edge passes exactly through O.
+  // Keep this uncertainty local to the computed radii, not user-drawn segments.
+  const radiusRoundoff=32*Number.EPSILON*Math.max(r,Math.abs(c.x),Math.abs(c.y));
+  return [arc,{type:"line",a:a.end,b:c,radiusRoundoff},{type:"line",a:c,b:a.start,radiusRoundoff}];
+}
+function invArcBetween(c,r,a,b,orientation){
+  const start=invAngle(minus(a,c)),end=invAngle(minus(b,c));
+  // Avoid modulo addition to preserve very small angles.
+  let sweep=(end-start)*orientation;
+  if(sweep<0)sweep+=360;
+  return {type:"arc",c,r,start,sweep:sweep*orientation};
+}
+function invReversePiece(s){
+  if(s.type==="line")return {...s,a:s.b,b:s.a};
+  if(s.type==="ray")return {...s,reverse:!s.reverse};
+  if(s.type==="lineInfinite")return {...s,v:times(s.v,-1)};
+  if(s.type==="arc")return {...s,start:s.start+s.sweep,sweep:-s.sweep};
+  return s;
+}
+function invLinePieces(p, mirror, o){
+  const full=p.type==="lineInfinite",ray=p.type==="ray",v=ray||full?p.v:minus(p.b,p.a);
+  if(!norm(v))return [];
+  const axis=unit(v),normal=rot(axis),offset=minus(p.a,o),h=dot(normal,offset);
+  const tol=32*Number.EPSILON*(Math.abs(normal.x*offset.x)+Math.abs(normal.y*offset.y));
+  if(Math.abs(h)>Math.max(tol,p.radiusRoundoff||0)){
+    const shift=.5*mirror.r*(mirror.r/h),c=plus(o,times(normal,shift)),r=Math.abs(shift);
+    if(full)return [{type:"circle",c,r}];
+    const a=inverseFinitePoint(p.a,mirror),b=ray?o:inverseFinitePoint(p.b,mirror);
+    if(!a||!b)return [];
+    return [invArcBetween(c,r,a,b,-Math.sign(h))];
+  }
+  if(full)return [{type:"lineInfinite",a:o,v:axis}];
+  // In the signed coordinate t along this line, inversion is t -> R²/t.
+  const nearStart=norm(offset)<=(p.radiusRoundoff||0),nearEnd=!ray&&dist(p.b,o)<=(p.radiusRoundoff||0);
+  const ta=nearStart?0:dot(offset,axis),tb=ray?Infinity:nearEnd?0:dot(minus(p.b,o),axis);
+  const a=nearStart?null:inverseFinitePoint(p.a,mirror),b=ray?o:nearEnd?null:inverseFinitePoint(p.b,mirror);
+  function radialRay(endpoint,sign,reverse=false){
+    const fromPole=minus(endpoint,o);
+    // Re-use the exact finite radial anchor for the direction. This prevents
+    // floating residue in the former source edge from moving this ray off O.
+    return {type:"ray",a:endpoint,v:norm(fromPole)?fromPole:times(axis,sign),reverse};
+  }
+  if(!a&&tb!==0)return [radialRay(b,Math.sign(tb),true)];
+  if(!b&&ta!==0)return [radialRay(a,Math.sign(ta))];
+  if(!a||!b)return [];
+  if(ta<0&&tb>0)return [radialRay(a,-1),radialRay(b,1,true)];
+  return [{type:"line",a,b}];
+}
+function invCirclePieces(p,mirror,o){
+  const offset=minus(p.c,o),d=norm(offset),r=p.r,whole=p.type==="circle";
+  const roundoff=32*Number.EPSILON*Math.max(d,r);
+  if(Math.abs(d-r)>roundoff){
+    const scale=(mirror.r/(d+r))*(mirror.r/(d-r));
+    const c=plus(o,times(offset,scale)),ri=Math.abs(scale)*r;
+    if(whole)return [{type:"circle",c,r:ri}];
+    const a=inverseFinitePoint(invCircularPoint(p.c,r,p.start),mirror);
+    const b=inverseFinitePoint(invCircularPoint(p.c,r,p.start+p.sweep),mirror);
+    return a&&b?[invArcBetween(c,ri,a,b,-Math.sign(d-r)*Math.sign(p.sweep))]:[];
+  }
+  const axis=unit(offset),lineAnchor=plus(o,times(axis,.5*mirror.r*(mirror.r/d)));
+  // For a CCW traversal, after a crossing of O the image resumes at the
+  // negative end of this line and before the crossing it approaches the positive end.
+  const direction=rot(axis);
+  if(whole)return [{type:"lineInfinite",a:lineAnchor,v:direction}];
+  const sign=Math.sign(p.sweep),v=times(direction,sign),poleAngle=invAngle(times(axis,-1));
+  const travel=wrapDegrees((poleAngle-p.start)*sign),span=Math.abs(p.sweep);
+  const angularTol=256*Number.EPSILON*360;
+  const atStart=travel<=angularTol||360-travel<=angularTol,atEnd=Math.abs(travel-span)<=angularTol;
+  const sample=angle=>inverseFinitePoint(invCircularPoint(p.c,r,angle),mirror);
+  if(atStart&&atEnd)return [];
+  if(atStart)return [{type:"ray",a:sample(p.start+p.sweep),v:times(v,-1),reverse:true}];
+  if(atEnd)return [{type:"ray",a:sample(p.start),v}];
+  const a=sample(p.start),b=sample(p.start+p.sweep);
+  if(travel<span)return [{type:"ray",a,v},{type:"ray",a:b,v:times(v,-1),reverse:true}];
+  return [{type:"line",a,b}];
+}
+function inversePiece(p,mirror){
+  const o={x:mirror.cx,y:mirror.cy};
+  const result=p.type==="circle"||p.type==="arc"?invCirclePieces(p,mirror,o):invLinePieces(p,mirror,o);
+  return p.type==="ray"&&p.reverse?result.reverse().map(invReversePiece):result;
+}
+function invOnPiece(p,q){
+  if(p.type==="circle"||p.type==="arc"){
+    const off=minus(q,p.c),radius=norm(off),tol=64*Number.EPSILON*Math.max(radius,p.r);
+    return Math.abs(radius-p.r)<=tol&&(p.type==="circle"||arcHasAngle({startDeg:p.start,sweep:p.sweep},invAngle(off)));
+  }
+  const d=minus(q,p.a),v=p.type==="line"?minus(p.b,p.a):p.v,len=norm(v);
+  if(!len)return !norm(d);
+  const axis=unit(v),tol=64*Number.EPSILON*Math.max(len,norm(d));
+  const along=dot(d,axis);
+  return Math.abs(cross(d,axis))<=tol&&(p.type==="lineInfinite"||along>=-tol&&(p.type==="ray"||along<=len+tol));
+}
+function invPolygonInterior(vertices,q){
+  let inside=false;
+  for(let i=0,j=vertices.length-1;i<vertices.length;j=i++){
+    const a=vertices[i],b=vertices[j];
+    if((a.y>q.y)!==(b.y>q.y)&&q.x<a.x+(b.x-a.x)*((q.y-a.y)/(b.y-a.y)))inside=!inside;
+  }
+  return inside;
+}
+function invSourceArea(obj,edges){
+  if(obj.region===false)return null;
+  if(obj.contains)return obj.containsClosure||obj.contains;
+  if(obj.kind==="polygon")return p=>edges.some(e=>invOnPiece(e,p))||invPolygonInterior(obj.vertices,p);
+  if(obj.kind==="circle"&&(!obj.arc||obj.sector)){
+    return p=>{
+      const offset={x:p.x-obj.cx,y:p.y-obj.cy};
+      return norm(offset)<=obj.r*(1+32*Number.EPSILON)&&
+        (!obj.arc||!norm(offset)||arcHasAngle(obj.arc,invAngle(offset)));
+    };
+  }
+  return null;
+}
+function invNativeCurve(p){
+  switch(p.type){
+    case "line":return {kind:"segment",anchor:p.a,vector:minus(p.b,p.a),infinite:false};
+    case "ray":return {kind:"segment",anchor:p.a,vector:p.v,infinite:true,ray:true};
+    case "lineInfinite":return {kind:"segment",anchor:p.a,vector:p.v,infinite:true};
+    case "circle":return {kind:"circle",cx:p.c.x,cy:p.c.y,r:p.r};
+    case "arc":return {kind:"circle",cx:p.c.x,cy:p.c.y,r:p.r,arc:{
+      startDeg:p.start,sweep:p.sweep,start:invCircularPoint(p.c,p.r,p.start),end:invCircularPoint(p.c,p.r,p.start+p.sweep)}};
+  }
+}
+function inverseCurveObject(source,mirror,step={}){
+  if(!source||!mirror||!(mirror.r>0)||![mirror.cx,mirror.cy,mirror.r].every(Number.isFinite))return null;
+  if(source.kind==="point")return inverseFinitePoint(source,mirror);
+  if(source.kind==="angle"||source.kind==="label")return inverseAnnotation(source,mirror,step);
+  const edges=invPiecesOf(source),o={x:mirror.cx,y:mirror.cy},pieces=[];
+  for(const [i,edge] of edges.entries()){
+    const images=inversePiece(edge,mirror);
+    for(const [j,piece] of images.entries()){
+      const finite=piece.type==="line"?finitePoint(piece.a)&&finitePoint(piece.b):
+        piece.type==="ray"||piece.type==="lineInfinite"?finitePoint(piece.a)&&finitePoint(piece.v)&&norm(piece.v)>0:
+        finitePoint(piece.c)&&Number.isFinite(piece.r)&&piece.r>0;
+      if(!finite)return null;
+      const prefix=edge.guideId??String(i);
+      piece.guideId=j?prefix+"."+j:prefix;
+      pieces.push(piece);
+    }
+  }
+  if(!pieces.length)return null;
+  const sourceArea=invSourceArea(source,edges);
+  const native=pieces.length===1&&source.kind!=="polygon"&&!source.sector&&source.kind!=="path";
+  const result=native?invNativeCurve(pieces[0]):{kind:"path",pieces};
+  const captionKind={polygon:"poligon",circle:source.sector?"juring":source.arc?"busur":"lingkaran",path:"objek",
+    segment:source.ray?"sinar":source.infinite?"garis":"ruas"};
+  result.caption="Inversi "+captionKind[source.kind]+" · "+(source.caption||source.name||"");
+  result.region=!!sourceArea;
+  result.excludedPoints=(source.excludedPoints||[]).map(p=>inverseFinitePoint(p,mirror)).filter(Boolean);
+  const sourceHasInfinity=edges.some(e=>e.type==="ray"||e.type==="lineInfinite");
+  if(sourceHasInfinity||source.exterior)result.excludedPoints.push(o);
+  const infiniteEdges=pieces.some(e=>e.type==="ray"||e.type==="lineInfinite");
+  if(sourceArea){
+    result.exterior=sourceArea(o)&&!edges.some(e=>invOnPiece(e,o));
+    result.containsClosure=p=>{
+      const preimage=inverseFinitePoint(p,mirror);
+      return preimage?sourceArea(preimage):!!source.exterior||sourceHasInfinity;
+    };
+    result.contains=p=>{
+      const preimage=inverseFinitePoint(p,mirror);
+      return !!preimage&&!inverseCurveExcludes(result,p)&&(source.contains||sourceArea)(preimage);
+    };
+  }
+  result.unbounded=!!result.exterior||infiniteEdges;
+  return result;
+}
+
+"use strict";
+
 function inverseSupportingObject(source,mirror) {
   const pole={x:mirror.cx,y:mirror.cy},R=mirror.r;
   const caption=(source.kind==="circle"?"Inversi lingkaran":"Inversi garis")+" · "+(source.caption||source.name||"");
@@ -4851,6 +5126,259 @@ for(const [type,title,group,hint] of [
       if(!inverseSupportingObject(...objects))throw Error("Bayangan inversi tidak terdefinisi pada posisi ini.");
       return add(type,refs);
     }});
+}
+
+// Older projects store inverses of the supporting line or circle. New object
+// inversions keep the source domain, including endpoints and curved regions.
+function previewInvertedObject({objects,frag,u,S,ghost},mirror){
+  const source=objects[0];
+  if(!source||!mirror)return;
+  const image=inverseCurveObject(source,mirror);
+  if(!image)return;
+  const ink="var(--snap-ink,#4c7394)";
+  if(source.kind==="point"){
+    const p=S(image);
+    frag.append(svg("circle",{cx:p.x,cy:p.y,r:3,fill:ink,"pointer-events":"none"}));
+  }else if(source.kind==="label"){
+    frag.append(labelTextElement(image.text,image.labelMode==="math",{...S(image),fill:ink,"pointer-events":"none"}));
+  }else if(source.kind==="angle"){
+    frag.append(svg("path",{...ghost,stroke:ink,d:angleMarkSvgPath(image,S,u.k)}));
+  }else{
+    for(const chain of inverseChains(image,inverseViewportBox(u))){
+      frag.append(svg("path",{...ghost,stroke:ink,d:inverseSvgChain(chain,u)}));
+    }
+  }
+}
+function inverseAppearance(source){
+  const fields={};
+  for(const key of ["color","opacity","dashed","lineWidth","linePattern","fillColor","fillOpacity","labelBackdrop"]){
+    if(source[key]!=null)fields[key]=source[key];
+  }
+  if(source.kind==="point"&&source.dir==="none")fields.dir="none";
+  if(source.kind==="angle"){
+    if(source.angleMark)fields.angleMark=source.angleMark;
+    if(source.angleLabel){
+      fields.angleLabelMode=sourceAngleLabelMode(source);
+      if(fields.angleLabelMode==="custom")fields.angleLabelText=source.angleLabel.text;
+    }
+  }
+  return fields;
+}
+function addInvertedVertices(source,mirrorId,ownerId,{add,name,model}){
+  const used=constructionPointNames(model);
+  const vertices=source.vertices||model.points.filter(p=>p.regionOwner===source.key);
+  for(const vertex of vertices){
+    const point=vertex.key?model.values.get(vertex.key):model.points.find(p=>p.regionOwner===source.key&&dist(p,vertex)<=EPS);
+    if(!point)continue;
+    add("invertVertex",[point.key,mirrorId,ownerId],{name:primeName(point,used,name),...inverseAppearance(point),...(point.hidden?{hidden:true}:{})});
+  }
+}
+registerStep("invertVertex",{group:"p",refs:["p","c","v"],solve:(step,[point,mirror])=>inverseInCircle(point,mirror)});
+registerStep("invertObject",{
+  group:"v",refs:["l|c|r|h","c"],solve(step,[source,mirror]){
+    const image=inverseCurveObject(source,mirror,step);
+    if(image)image.caption="Inversi · "+(source.caption||source.display||source.name||"objek");
+    return image;
+  }
+});
+for(const [type,group,validate] of [["invertAngle","a",validateAngleLabel],["invertLabel","t",s=>validateImageText(s)]]){
+  registerStep(type,{group,refs:[group,"c"],validate,solve(step,[source,mirror]){
+    const image=inverseAnnotation(source,mirror,step);
+    if(image)image.caption="Inversi · "+(source.caption||source.display||source.name||"objek");
+    return image;
+  }});
+}
+
+"use strict";
+
+// Keep the true curves separate from the rectangle used to display unbounded
+// regions. Lines along that rectangle belong only to the fill, never its stroke.
+function inverseArcPoint(piece,angle){return invCircularPoint(piece.c,piece.r,angle);}
+function inversePathBoundsPoints(o){
+  const result=[];
+  for(const p of invPiecesOf(o)){
+    if(p.type==="arc"||p.type==="circle"){
+      const full=p.type==="circle",arc={startDeg:p.start,sweep:p.sweep};
+      if(!full)result.push(inverseArcPoint(p,p.start),inverseArcPoint(p,p.start+p.sweep));
+      for(const a of [0,90,180,270])if(full||arcHasAngle(arc,a))result.push(inverseArcPoint(p,a));
+    }else{
+      result.push(p.a);
+      if(p.b)result.push(p.b);
+      else{
+        const v=unit(p.v);
+        result.push(plus(p.a,v));
+        if(p.type==="lineInfinite")result.push(minus(p.a,v));
+      }
+    }
+  }
+  return result;
+}
+function inverseBoundaryDistance(o,q){
+  let distance=Infinity;
+  for(const p of invPiecesOf(o)){
+    if(p.type==="circle"||p.type==="arc"){
+      if(p.type==="circle"||arcHasAngle({startDeg:p.start,sweep:p.sweep},Math.atan2(q.y-p.c.y,q.x-p.c.x)/DEGREE)){
+        distance=Math.min(distance,Math.abs(dist(q,p.c)-p.r));
+      }else distance=Math.min(distance,dist(q,inverseArcPoint(p,p.start)),dist(q,inverseArcPoint(p,p.start+p.sweep)));
+    }else{
+      const v=p.type==="line"?minus(p.b,p.a):p.v, n=norm(v);
+      if(!n)continue;
+      const direction=times(v,1/n);
+      let t=dot(minus(q,p.a),direction);
+      if(p.type!=="lineInfinite")t=Math.max(0,t);
+      if(p.type==="line")t=Math.min(t,n);
+      distance=Math.min(distance,dist(q,plus(p.a,times(direction,t))));
+    }
+  }
+  return distance;
+}
+function inverseViewportBox(u,inset=0){
+  const lo=u.world(inset,u.h-inset),hi=u.world(u.w-inset,inset);
+  return {x0:lo.x,y0:lo.y,x1:hi.x,y1:hi.y};
+}
+function inverseExportBox(m){
+  const {x0,y0,x1,y1}=m.bbox;
+  const margin=Math.max(.55,.12*Math.max(x1-x0,y1-y0));
+  return {x0:x0-margin,y0:y0-margin,x1:x1+margin,y1:y1+margin};
+}
+function inversePieceSpans(p,box){
+  if(p.type==="line")return [p];
+  if(p.type==="arc"||p.type==="circle"){
+    const start=p.type==="circle"?0:p.start,sweep=p.type==="circle"?360:p.sweep;
+    // A full circle needs two SVG arc commands; PGF also handles these shorter
+    // increments more accurately. Both renderers receive the same endpoints.
+    const count=Math.max(1,Math.ceil(Math.abs(sweep)/180)),spans=[];
+    for(let i=0;i<count;i++){
+      const first=start+sweep*i/count,last=start+sweep*(i+1)/count;
+      spans.push({type:"arc",a:inverseArcPoint(p,first),b:inverseArcPoint(p,last),
+        c:p.c,r:p.r,start:first,sweep:last-first});
+    }
+    return spans;
+  }
+  const ray=p.type==="ray",ends=clipLineEndpoints(p.a,p.v,box,ray);
+  if(!ends)return [];
+  if(p.reverse)ends.reverse();
+  return [{type:"line",a:ends[0],b:ends[1],startArrow:!ray||!!p.reverse,endArrow:!ray||!p.reverse}];
+}
+function inverseChains(o,box){
+  const chains=[];
+  const matches=(a,b)=>dist(a,b)<=1e-9*Math.max(1,Math.hypot(a.x,a.y),Math.hypot(b.x,b.y));
+  for(const p of invPiecesOf(o)){
+    for(const span of inversePieceSpans(p,box)){
+      const last=chains.at(-1)?.at(-1);
+      if(last&&!last.endArrow&&!span.startArrow&&matches(last.b,span.a))chains.at(-1).push(span);
+      else chains.push([span]);
+    }
+  }
+  const first=chains[0]?.[0],last=chains.at(-1)?.at(-1);
+  if(chains.length>1&&!last.endArrow&&!first.startArrow&&matches(last.b,first.a)){
+    chains[0]=chains.pop().concat(chains[0]);
+  }
+  return chains;
+}
+function inverseRectangle(box){
+  const {x0,x1,y0,y1}=box,w=x1-x0,h=y1-y0,perimeter=2*(w+h);
+  const corners=[{x:x0,y:y0},{x:x1,y:y0},{x:x1,y:y1},{x:x0,y:y1}];
+  const at=[0,w,w+h,2*w+h];
+  function parameter(p){
+    const distances=[Math.abs(p.y-y0),Math.abs(p.x-x1),Math.abs(p.y-y1),Math.abs(p.x-x0)];
+    const edge=distances.indexOf(Math.min(...distances));
+    const offset=[p.x-x0,p.y-y0,x1-p.x,y1-p.y][edge];
+    return (at[edge]+offset+perimeter)%perimeter;
+  }
+  function point(t){
+    t=(t+perimeter)%perimeter;
+    if(t<w)return {x:x0+t,y:y0};
+    if(t<w+h)return {x:x1,y:y0+t-w};
+    if(t<2*w+h)return {x:x1-(t-w-h),y:y1};
+    return {x:x0,y:y1-(t-2*w-h)};
+  }
+  return {corners,at,perimeter,parameter,point};
+}
+function inverseFillChains(o,view){
+  // Extend the working rectangle just enough to contain all finite boundary
+  // pieces. Only rays or infinite lines can then end on its perimeter.
+  const box={...view};
+  const margin=Math.max(1e-6,1e-6*Math.max(view.x1-view.x0,view.y1-view.y0));
+  for(const p of inversePathBoundsPoints(o)){
+    box.x0=Math.min(box.x0,p.x-margin);box.x1=Math.max(box.x1,p.x+margin);
+    box.y0=Math.min(box.y0,p.y-margin);box.y1=Math.max(box.y1,p.y+margin);
+  }
+  const chains=inverseChains(o,box),rect=inverseRectangle(box),closures=[],cuts=[0,rect.perimeter];
+  function join(chain,a,b){chain.push({type:"line",a,b});}
+  for(const chain of chains){
+    const first=chain[0],last=chain.at(-1);
+    if(!first.startArrow&&!last.endArrow)continue;
+    const from=rect.parameter(last.b),to=rect.parameter(first.a);
+    const extent=(to-from+rect.perimeter)%rect.perimeter;
+    closures.push({from,extent});cuts.push(from,to);
+    let prev=last.b;
+    const between=rect.at.map((x,i)=>({corner:rect.corners[i],offset:(x-from+rect.perimeter)%rect.perimeter}))
+      .filter(v=>v.offset>0&&v.offset<extent).sort((a,b)=>a.offset-b.offset);
+    for(const {corner} of between){join(chain,prev,corner);prev=corner;}
+    join(chain,prev,first.a);
+  }
+  // Pick a point on the rectangle away from all ends. Closing each chain along
+  // the perimeter fixes a parity there. Reverse that parity when an inverse
+  // test says the actual region is on the other side (disk exterior, half-plane,
+  // or a polygon that touches the inversion pole).
+  cuts.sort((a,b)=>a-b);
+  let gap=-1,probe=0;
+  for(let i=1;i<cuts.length;i++){
+    const width=cuts[i]-cuts[i-1];
+    if(width>gap){gap=width;probe=(cuts[i]+cuts[i-1])/2;}
+  }
+  const parity=closures.filter(({from,extent})=>(probe-from+rect.perimeter)%rect.perimeter<extent).length%2;
+  const inside=o.contains?o.contains(rect.point(probe)):o.exterior;
+  if(Boolean(parity)!==Boolean(inside)){
+    const frame=[];
+    rect.corners.forEach((a,i)=>join(frame,a,rect.corners[(i+1)%4]));
+    chains.push(frame);
+  }
+  return chains;
+}
+function inverseSvgChain(chain,u,closed=false){
+  const xy=p=>{const q=u.screen(p);return q.x+" "+q.y;};
+  const out=["M "+xy(chain[0].a)];
+  for(const p of chain){
+    if(p.type==="line")out.push("L "+xy(p.b));
+    else{
+      const radius=p.r*u.k;
+      out.push("A "+radius+" "+radius+" 0 "+(Math.abs(p.sweep)>180?1:0)+" "+(p.sweep<0?1:0)+" "+xy(p.b));
+    }
+  }
+  if(closed)out.push("Z");
+  return out.join(" ");
+}
+function inverseTikzChain(chain,xy,closed=false,scale=1){
+  const out=[xy(chain[0].a)];
+  for(const p of chain){
+    if(p.type==="line")out.push("--"+xy(p.b));
+    else out.push(circularTikzStep(p.start,p.sweep,p.r,p.a,p.b,xy,scale));
+  }
+  if(closed)out.push("--cycle");
+  return out.join("");
+}
+function drawInversePath(o,g,u){
+  const box=inverseViewportBox(u,Math.min(4,u.w/4,u.h/4));
+  for(const chain of inverseChains(o,box)){
+    const d=inverseSvgChain(chain,u),color=inks[o.color||"black"].hex;
+    const attrs={d,class:"shape",fill:"none",stroke:color,"stroke-linejoin":"round",...svgStrokeAttrs(o)};
+    if(chain[0].startArrow)attrs["marker-start"]="url(#line-tip)";
+    if(chain.at(-1).endArrow)attrs["marker-end"]="url(#line-tip)";
+    g.append(svg("path",{d,class:"halo"}),svg("path",attrs),svg("path",{d,class:"pad"}));
+  }
+}
+function exportInverseOutlines(m,style,xy,tab,put,scale){
+  if(!m.paths?.length)return;
+  const box=inverseExportBox(m);
+  for(const o of m.paths){
+    for(const chain of inverseChains(o,box)){
+      const first=chain[0].startArrow,last=chain.at(-1).endArrow;
+      const arrow=first||last?", "+(first?"latex":"")+"-"+(last?"latex":""):"";
+      put(tab+"\\draw["+optionsFor(o,style)+arrow+"] "+inverseTikzChain(chain,xy,false,scale)+";",[o.key]);
+    }
+  }
 }
 
 "use strict";
@@ -4910,7 +5438,7 @@ function linkPolygonSide(owner,side,index){
   side.dashed=side.linePattern===undefined?(base.dashed??owner.dashed):side.linePattern!=="solid";
 }
 function applyRegionAppearance(obj,step,refs){
-  if(obj.kind==="polygon"||obj.kind==="circle"){
+  if(obj.kind==="polygon"||obj.kind==="circle"||obj.region){
     if(step.fillColor===undefined)obj.fillColor??=null;else obj.fillColor=step.fillColor;
     obj.fillOpacity=step.fillOpacity??obj.fillOpacity??30;
     obj.dashed=obj.linePattern!==undefined?obj.linePattern!=="solid":(step.dashed??obj.dashed??false);
@@ -5030,7 +5558,7 @@ function sectorSvgPath(c,S,scale){
   const center=S({x:c.cx,y:c.cy}),arc=arcSvgPath(c,S,scale);
   return Math.abs(c.arc.sweep)===360?arc+" Z":arc+" L "+center.x+" "+center.y+" Z";
 }
-function regionHasInterior(o){return o.kind==="polygon"||o.kind==="circle"&&(!o.arc||o.sector);}
+function regionHasInterior(o){return o.region??(o.kind==="polygon"||o.kind==="circle"&&(!o.arc||o.sector));}
 function polygonBoundary(poly,closed,side){
   const linked=poly.linkedSides;
   if(!linked?.size)return closed(poly.vertices);
@@ -5039,11 +5567,14 @@ function polygonBoundary(poly,closed,side){
 function drawRegionFills(items,frag,u){
   for(const o of items){
     if(!inEditor(o)||!regionHasInterior(o))continue;
-    if(!o.fillColor&&o.kind!=="polygon"&&!o.sector)continue;
+    if(!o.fillColor&&o.kind!=="polygon"&&!(o.kind==="path"&&!o.unbounded)&&!o.sector)continue;
     const fill=o.fillColor?inks[o.fillColor].hex:"transparent";
     const attr={fill,"fill-opacity":(o.fillOpacity??30)/100,"pointer-events":"fill","data-key":o.key};
     if(o.hidden)attr.opacity=.32;
-    if(o.kind==="polygon"){
+    if(o.region&&o.contains){
+      const d=inverseFillChains(o,inverseViewportBox(u)).map(chain=>inverseSvgChain(chain,u,true)).join(" ");
+      if(d)frag.append(svg("path",{...attr,d,"fill-rule":"evenodd"}));
+    }else if(o.kind==="polygon"){
       const points=o.vertices.map(u.screen).map(p=>p.x+","+p.y).join(" ");
       frag.append(svg("polygon",{...attr,points}));
     }else if(o.sector)frag.append(svg("path",{...attr,d:sectorSvgPath(o,u.screen,u.k)}));
@@ -5062,10 +5593,15 @@ function regionFillPath(o,xy){
   if(o.sector&&Math.abs(o.arc.sweep)!==360)return arcTikzPath(o,xy)+"--"+xy({x:o.cx,y:o.cy})+"--cycle";
   return xy({x:o.cx,y:o.cy})+" circle ("+numberTeX(o.r)+")";
 }
-function exportRegionFills(m,style,xy,tab,put){
+function exportRegionFills(m,style,xy,tab,put,scale=1){
   for(const o of m.items){
     const s=style(o);
     if(!regionHasInterior(o)||!s.fillColor)continue;
+    if(o.region&&o.contains){
+      const d=inverseFillChains(o,inverseExportBox(m)).map(chain=>inverseTikzChain(chain,xy,true,scale)).join(" ");
+      if(d)put(tab+"\\fill[even odd rule, fill="+s.fillColor+", fill opacity="+(s.fillOpacity??30)/100+"] "+d+";",[o.key]);
+      continue;
+    }
     put(tab+"\\fill[fill="+s.fillColor+", fill opacity="+(s.fillOpacity??30)/100+"] "+regionFillPath(o,xy)+";",[o.key]);
   }
 }
@@ -5551,7 +6087,7 @@ let numericFormulaEditor=null;
 function circleFormulaFor(step){
   if(!step)return null;
   if(step.type==="circleFormula"||step.type==="circleRadius")return step;
-  if(["invert","invertLine","invertCircle"].includes(step.type)){
+  if(isInversionImageStep(step.type)){
     const mirror=doc.steps.find(candidate=>candidate.id===step.refs[1]);
     if(mirror?.type==="circleFormula")return mirror;
   }
@@ -5704,11 +6240,13 @@ registerTool("circleFormula",{
   }
 });
 registerTool("invertFormula",{
-  title:"Inversi dengan jari-jari atau kuasa",category:"transform",menu:false,refs:["p|l|c","p"],allowRepeat:true,
-  hints:["Isi jari-jari atau kuasa dan klik titik, garis, atau lingkaran yang ingin diinversi.","Klik pusat lingkaran inversi."],
-  preview({objects,hover,S,u,frag,ghost}){
+  title:"Inversi dengan jari-jari atau kuasa",category:"transform",menu:false,refs:["x","p"],allowRepeat:true,
+  hints:["Isi jari-jari atau kuasa, lalu klik objek yang ingin diinversi.","Klik pusat lingkaran inversi."],
+  preview(ctx){
+    const {objects,hover,S,u,frag,ghost}=ctx;
     if(objects.length===1&&hover&&formulaDrafts.previewRadius){
       const center=S(hover);
+      previewInvertedObject(ctx,{cx:hover.x,cy:hover.y,r:formulaDrafts.previewRadius});
       frag.append(svg("circle",{...ghost,cx:center.x,cy:center.y,r:formulaDrafts.previewRadius*u.k}));
     }
     return true;
@@ -6021,19 +6559,20 @@ const transformTools={
   reflectPoint:{title:"Refleksi terhadap titik",refs:["p"],hints:["Klik pusat refleksi."]},
   dilate:{title:"Dilatasi",refs:["p"],hints:["Klik pusat dilatasi."]}
 };
-const imageKinds={point:["imagePoint","p"],segment:["imageLine","l"],circle:["imageCircle","c"],polygon:["imagePolygon","r"],angle:["imageAngle","a"],label:["imageLabel","t"]};
+const imageKinds={point:["imagePoint","p"],segment:["imageLine","l"],circle:["imageCircle","c"],polygon:["imagePolygon","r"],path:["imagePath","h"],angle:["imageAngle","a"],label:["imageLabel","t"]};
+function validateImageText(step){
+  if((step.text===undefined)!==(step.labelMode===undefined))throw Error("Isi dan format label bayangan harus diberikan bersama.");
+  if(step.labelMode!==undefined&&!["text","math"].includes(step.labelMode))throw Error("Format label bayangan tidak valid.");
+  if(step.text!==undefined&&(typeof step.text!=="string"||!step.text.trim()||step.text.length>140||/[\u0000-\u001f]/.test(step.text)))throw Error("Isi label bayangan tidak valid.");
+  if(step.text&&step.labelMode==="math")safeLabelMathTex(step.text);
+  if(step.imageLabelOffset!=null&&(!finitePoint(step.imageLabelOffset)||Math.max(Math.abs(step.imageLabelOffset.x),Math.abs(step.imageLabelOffset.y))>1e8))throw Error("Posisi label bayangan tidak valid.");
+}
 function checkTransform(step){
   if(!Object.hasOwn(transformTools,step.method))throw Error("Transformasi tidak dikenal.");
   if(step.method==="rotate"&&(!Number.isFinite(step.degrees)||Math.abs(step.degrees)>1e8))throw Error("Masukkan sudut rotasi antara −100.000.000° dan 100.000.000°.");
   if(step.method==="dilate"&&(!Number.isFinite(step.factor)||step.factor===0||Math.abs(step.factor)>1e8))throw Error("Gunakan faktor dilatasi bukan nol dengan nilai absolut maksimal 100.000.000.");
   if(step.type==="imageAngle")validateAngleLabel(step);
-  if(step.type==="imageLabel"){
-    if((step.text===undefined)!==(step.labelMode===undefined))throw Error("Isi dan format label bayangan harus diberikan bersama.");
-    if(step.labelMode!==undefined&&!["text","math"].includes(step.labelMode))throw Error("Format label bayangan tidak valid.");
-    if(step.text!==undefined&&(typeof step.text!=="string"||!step.text.trim()||step.text.length>140||/[\u0000-\u001f]/.test(step.text)))throw Error("Isi label bayangan tidak valid.");
-    if(step.text&&step.labelMode==="math")safeLabelMathTex(step.text);
-    if(step.imageLabelOffset!=null&&(!finitePoint(step.imageLabelOffset)||Math.max(Math.abs(step.imageLabelOffset.x),Math.abs(step.imageLabelOffset.y))>1e8))throw Error("Posisi label bayangan tidak valid.");
-  }
+  if(step.type==="imageLabel")validateImageText(step);
 }
 // A similarity fixes the local origin, acts linearly on displacement, then places the image.
 function similarity(step,refs){
@@ -6055,7 +6594,11 @@ function similarity(step,refs){
     default:return null;
   }
   const vector=v=>({x:xx*v.x+xy*v.y,y:yx*v.x+yy*v.y});
-  return {scale,orientation,vector,point:p=>plus(target,vector(minus(p,base)))};
+  function inversePoint(p){
+    const dx=(p.x-target.x)/scale,dy=(p.y-target.y)/scale;
+    return plus(base,{x:(xx/scale)*dx+(yx/scale)*dy,y:(xy/scale)*dx+(yy/scale)*dy});
+  }
+  return {scale,orientation,vector,point:p=>plus(target,vector(minus(p,base))),inversePoint};
 }
 function mapCircleImage(step,source,map){
   const center=map.point({x:source.cx,y:source.cy});
@@ -6094,6 +6637,61 @@ function mapAngleImage(step,source,map){
   }
   return marker;
 }
+function mapLabelImage(step,source,base){
+  const off=step.imageLabelOffset||{x:0,y:0};
+  return {...plus(base,off),imageLabelBase:base,imageLabelOffset:off,text:step.text??source.text,labelMode:step.labelMode??source.labelMode};
+}
+function sourceAngleLabelMode(source){
+  const label=source.angleLabel;
+  if(!label)return "none";
+  return label.mode??(label.tex===String(Number(source.angleDegrees.toFixed(2)))+"^{\\circ}"?"auto":"custom");
+}
+function inverseAnnotation(source,mirror,step={}){
+  if(source.kind==="label"){
+    const base=inverseFinitePoint(source,mirror);
+    return base?{kind:"label",...mapLabelImage(step,source,base),caption:"Inversi · "+source.caption}:null;
+  }
+  if(source.kind!=="angle")return null;
+  const vertex=source.imageVertex||source.markVertex||minus(plus(source.start,source.end),source.corner);
+  const image=inverseFinitePoint(vertex,mirror);
+  if(!image)return null;
+  // The differential of inversion is a positive scalar times reflection in
+  // the perpendicular to the radius. Only direction is relevant for an angle.
+  const radial=unit(minus(vertex,{x:mirror.cx,y:mirror.cy}));
+  const direction=v=>minus(v,times(radial,2*dot(v,radial)));
+  const radius=source.right?(step.rightSize??source.r):source.r;
+  const first=unit(direction(minus(source.end,vertex))),last=unit(direction(minus(source.start,vertex)));
+  const start=plus(image,times(first,radius)),end=plus(image,times(last,radius));
+  const result={kind:"angle",imageVertex:image,start,end,corner:plus(start,times(last,radius)),
+    r:radius,right:source.right,angleDegrees:source.angleDegrees,angleMark:resolvedAngleMark(source.right,step.angleMark??source.angleMark),
+    caption:"Inversi · "+source.caption};
+  const original=source.angleLabel;
+  const mode=step.angleLabelMode??sourceAngleLabelMode(source);
+  if(mode!=="none"){
+    const offset=original?direction(minus(original,original.base)):null;
+    const fields={angleLabelMode:mode,angleLabelText:step.angleLabelText??original?.text,
+      angleLabelOffset:step.angleLabelOffset??offset};
+    result.angleLabel=angleLabelFor(fields,result,image,first,source.angleDegrees*DEGREE);
+  }
+  return result;
+}
+function mapPathImage(source,map){
+  const pieces=source.pieces.map(piece=>{
+    switch(piece.type){
+      case "line":return {...piece,a:map.point(piece.a),b:map.point(piece.b)};
+      case "ray":case "lineInfinite":return {...piece,a:map.point(piece.a),v:map.vector(piece.v)};
+      case "circle":return {...piece,c:map.point(piece.c),r:piece.r*map.scale};
+      case "arc":{
+        const angle=piece.start*DEGREE;
+        const ray=map.vector({x:Math.cos(angle),y:Math.sin(angle)});
+        return {...piece,c:map.point(piece.c),r:piece.r*map.scale,
+          start:wrapDegrees(Math.atan2(ray.y,ray.x)/DEGREE),sweep:piece.sweep*map.orientation};
+      }
+      default:throw Error("Objek gambar tidak dikenal.");
+    }
+  });
+  return {pieces};
+}
 function mappedGeometry(step,[source,...refs]){
   const map=similarity(step,refs);if(!map)return null;
   const caption=transformTools[step.method].title+" · "+(source.caption||source.display||source.name||"objek");
@@ -6104,12 +6702,18 @@ function mappedGeometry(step,[source,...refs]){
     case "polygon":o={vertices:source.vertices.map(map.point),linkedSides:new Set()};break;
     case "circle":o=mapCircleImage(step,source,map);break;
     case "angle":o=mapAngleImage(step,source,map);break;
-    case "label":{
-      const base=map.point(source),off=step.imageLabelOffset||{x:0,y:0};
-      o={...plus(base,off),imageLabelBase:base,imageLabelOffset:off,text:step.text??source.text,labelMode:step.labelMode??source.labelMode};
-      break;
-    }
+    case "label":o=mapLabelImage(step,source,map.point(source));break;
+    case "path":o=mapPathImage(source,map);break;
     default:return null;
+  }
+  // The inverse of a disk may be its unbounded exterior or a half-plane.
+  // A subsequent similarity carries the same side of the boundary with it.
+  const changedBoundary=source.kind==="circle"&&["arcMode","arcStart","arcOpening","arcClockwise"].some(k=>step[k]!==undefined);
+  if(!changedBoundary){
+    for(const attr of ["region","exterior","unbounded"])if(source[attr]!==undefined)o[attr]=source[attr];
+    if(source.excludedPoints?.length)o.excludedPoints=source.excludedPoints.map(map.point);
+    if(source.contains)o.contains=p=>source.contains(map.inversePoint(p));
+    if(source.containsClosure)o.containsClosure=p=>source.containsClosure(map.inversePoint(p));
   }
   return {...o,caption,dashed:step.dashed??false};
 }
@@ -6118,7 +6722,7 @@ for(const [type,group] of Object.values(imageKinds)){
     validate:checkTransform,solve:mappedGeometry});
 }
 registerStep("imageGeneral",{
-  group:"g",refs:s=>["g",...(Object.hasOwn(transformTools,s.method)?transformTools[s.method].refs:[])],validate:checkTransform,
+  group:"v",refs:s=>["g|h",...(Object.hasOwn(transformTools,s.method)?transformTools[s.method].refs:[])],validate:checkTransform,
   solve(step,refs){const obj=mappedGeometry(step,refs);return obj?{...obj,kind:refs[0].kind}:null;}
 });
 const rotationSetting={field:"degrees",label:"Sudut rotasi (°)",initial:90};
@@ -6134,6 +6738,11 @@ function sourcePointName(source){
   const sub="₀₁₂₃₄₅₆₇₈₉";
   return (source?.display||"").replace(/′/g,"'").replace(/[₀-₉]+/g,m=>"_"+Array.from(m,c=>sub.indexOf(c)).join(""));
 }
+function constructionPointNames(model){
+  const used=new Set(model.points.map(sourcePointName));
+  for(const step of model.unavailable||[])if(POINT_TYPES.has(step.type)&&step.name)used.add(step.name);
+  return used;
+}
 function primeName(source,used,fallback){
   const original=sourcePointName(source);if(!original)return fallback();
   let n=original+"'";
@@ -6145,7 +6754,7 @@ function makeImage(method,{refs,objects,add,name,model},props){
   const [source]=objects,type=source.dynamicGroup?"imageGeneral":imageKinds[source.kind][0];
   const appearance={};
   for(const k of ["color","opacity","dashed","lineWidth","linePattern","angleMark","labelBackdrop","ticks","fillColor","fillOpacity"])if(source[k]!=null)appearance[k]=source[k];
-  const used=new Set(model.points.map(sourcePointName));
+  const used=constructionPointNames(model);
   const fields={method,...props,...appearance};
   if(source.kind==="point"){
     fields.name=primeName(source,used,name);
@@ -6153,9 +6762,8 @@ function makeImage(method,{refs,objects,add,name,model},props){
     if(source.labelOffset)fields.labelOffset=similarity(fields,objects.slice(1)).vector(source.labelOffset);
   }
   if(source.kind==="angle"&&source.angleLabel){
-    const auto=source.angleLabel.text===String(Number(source.angleDegrees.toFixed(2)))+"°";
-    fields.angleLabelMode=auto?"auto":"custom";
-    if(!auto)fields.angleLabelText=source.angleLabel.text;
+    fields.angleLabelMode=sourceAngleLabelMode(source);
+    if(fields.angleLabelMode==="custom")fields.angleLabelText=source.angleLabel.text;
     const off=minus(source.angleLabel,source.angleLabel.base);
     if(norm(off)>EPS)fields.angleLabelOffset=similarity(fields,objects.slice(1)).vector(off);
   }
@@ -6232,6 +6840,35 @@ registerPanel({
     }
   }
 });
+
+"use strict";
+
+function bindTransformSource(){
+  const picker=$("transform-source");
+  picker.addEventListener("change",()=>{
+    if(extraTools[tool]?.category!=="transform")return;
+    const key=picker.value;
+    if(!key){clearPending();notice("");refresh();return;}
+    const object=model.values.get(key);
+    if(!inEditor(object)||!matches(object,toolRefs(tool)[0]))return;
+    // Replacing a source also releases any reference points drafted for the old one.
+    clearPending();
+    pending.push(key);
+    notice("");refresh();
+  });
+}
+function renderTransformSource(kind){
+  const wrap=$("transform-source-wrap");
+  wrap.hidden=extraTools[kind]?.category!=="transform";
+  if(wrap.hidden)return;
+  const selector=$("transform-source"),expected=toolRefs(kind)[0];
+  const temporary=new Set(draft.map(step=>step.id));
+  const candidates=model.items.filter(o=>inEditor(o)&&!temporary.has(o.key)&&matches(o,expected));
+  addOptions(selector,[["","Klik di kanvas atau pilih dari daftar"],
+    ...candidates.map(o=>[o.key,objectName(o,model)])]);
+  selector.value=pending[0]||"";
+}
+registerPanel({init:bindTransformSource,guide:renderTransformSource});
 
 "use strict";
 let solutionPick=null,solutionHighlight=-1;
@@ -6618,6 +7255,31 @@ const guidedExamples={
       {id:"DE",type:"segment",refs:["D","E"],color:"RoyalBlue"},
       {id:"verification",type:"circle3",refs:["B","C","D"],color:"BurntOrange",dashed:true,opacity:78}
     ]})
+  },
+  "transformasi-bangun":{
+    hint:"Geser salah satu titik A–E. Segi lima hijau, bayangan refleksinya yang biru, dan bayangan inversinya yang jingga akan ikut berubah.",
+    project(){
+      const corners=["A","B","C","D","E"];
+      const positions=[[2.35,-1.1],[4.35,-1.35],[5.05,.55],[3.7,1.95],[1.85,.6]];
+      const dirs=["below","below","right","above","above left"];
+      const steps=corners.map((id,i)=>({id,type:"point",name:id,refs:[],x:positions[i][0],y:positions[i][1],dir:dirs[i]}));
+      steps.push(
+        {id:"O",type:"point",name:"O",refs:[],x:0,y:0,dir:"below left"},
+        {id:"U",type:"point",name:"U",refs:[],x:0,y:2.3,hidden:true},
+        {id:"axis",type:"line",refs:["O","U"],color:"gray",linePattern:"dashed"},
+        {id:"mirror",type:"circleRadius",refs:["O"],radius:1.8,color:"gray",linePattern:"dotted"},
+        {id:"original",type:"polygon",refs:corners,color:"PineGreen",fillColor:"PineGreen",fillOpacity:12});
+      for(const [i,id] of corners.entries())
+        steps.push({id:"edge"+i,type:"polygonSide",refs:["original",id,corners[(i+1)%5]],index:i});
+      steps.push({id:"reflection",type:"imagePolygon",method:"reflectLine",refs:["original","axis"],
+        color:"RoyalBlue",fillColor:"RoyalBlue",fillOpacity:12});
+      for(const [i,id] of corners.entries())
+        steps.push({id:"prime"+i,type:"polygonVertex",refs:["reflection"],index:i,name:id+"'",dir:dirs[i]});
+      for(let i=0;i<5;i++)
+        steps.push({id:"reflectedEdge"+i,type:"polygonSide",refs:["reflection","prime"+i,"prime"+((i+1)%5)],index:i});
+      steps.push({id:"inversion",type:"invertObject",refs:["original","mirror"],color:"BurntOrange",fillColor:"BurntOrange",fillOpacity:22});
+      return {format:"studio-tikz",version:1,title:"Segi lima, refleksi, dan inversi",steps};
+    }
   },
   inversionProductDemo:{
     hint:"Seret A atau B untuk mengubah k = OA × OB. Seret P untuk melihat P′ bergerak pada sinar OP dengan OP × OP′ = k.",
@@ -7019,28 +7681,28 @@ const circleGuideEntries={
     terms:"polar kutub tali busur titik singgung"
   },
   invertFormula:{
-    purpose:"Buat lingkaran inversi dan bayangan objek dalam satu konstruksi.",
-    steps:["Pada alat Inversi, pilih acuan Jari-jari atau kuasa. Pada Hitung dari, pilih Jari-jari r atau Kuasa k = r². Masukkan angka atau rumus positif, misalnya OA × OB jika kedua ruas sudah digambar.","Klik titik, garis, atau lingkaran yang ingin diinversi, lalu klik pusat inversi O. Untuk bayangan titik, pilih titik selain O."],
-    result:"Studio membuat lingkaran acuan dan bayangan objek. Dalam mode kuasa, k = 6 dan OP = 2 menghasilkan OP′ = 3. Jika rumus memakai panjang ruas, hasilnya mengikuti perubahan ruas.",
-    terms:"inversi kuasa rumus produk OA OB radius inversion power"
+    purpose:"Membuat lingkaran acuan dari jari-jari atau kuasa, lalu menginversi objek terhadap lingkaran itu.",
+    steps:["Pada Transformasi → Inversi, pilih Jari-jari atau kuasa. Pada Hitung dari, pilih Jari-jari r atau Kuasa k = r². Masukkan nilai positif atau rumus, misalnya OA * OB jika kedua ruas sudah digambar.","Klik objek asal lalu klik pusat O. Untuk menginversi poligon, klik bagian dalamnya. Saat beberapa objek bertumpuk, gunakan daftar Objek asal."],
+    result:"Bayangan mengikuti perubahan objek, pusat dan rumus. Jika k = 6 dan OP = 2, maka OP′ = 3. Titik O sendiri tidak mempunyai bayangan hingga.",
+    terms:"inversi kuasa rumus produk juring poligon busur radius inversion power"
   },
   invert:{
-    purpose:"Cari bayangan titik, garis, atau lingkaran dengan satu alat. Pada contoh ini, objek asalnya titik P.",
-    steps:["Pilih Lingkaran di kanvas sebagai acuan. Klik objek asal, misalnya titik P yang berbeda dari pusat inversi.","Klik lingkaran acuan berpusat O dengan jari-jari r."],
-    result:"Bayangan berada pada sinar OP dan memenuhi OP × OP′ = r². Titik di dalam dan di luar lingkaran bertukar tempat. Titik pada keliling tetap di tempatnya. Bayangan garis atau lingkaran dapat berupa lingkaran maupun garis.",
-    terms:"inversi titik bayangan resiprokal inversion"
+    purpose:"Membuat bayangan inversi titik, ruas, sinar, garis, busur, lingkaran, poligon, juring atau anotasi.",
+    steps:["Pilih Transformasi → Inversi dan gunakan Lingkaran di kanvas. Klik bagian dalam segitiga ABC untuk memilih seluruh bangun. Untuk menginversi satu sisi saja, klik ruas itu. Kamu juga bisa menggunakan daftar Objek asal.","Klik keliling lingkaran acuan. Pada contoh, A dan B mula-mula berada pada keliling. Titik tengah M pada AB berpeta ke M′ pada busur bayangan.","Buka Utak-atik contoh, lalu geser C. Coba pindahkan pusat O ke dalam segitiga untuk melihat daerah isiannya menjadi tak terbatas."],
+    result:"Tiap sisi berpeta sesuai dengan letaknya terhadap O. Sisi yang garisnya menghindari O menjadi busur. Jika O berada di tengah-tengah suatu sisi, bagian di kedua sisi O berpeta ke dua sinar. Label bebas berpindah bersama titik letaknya. Penanda sudut mengikuti arah singgung bayangan pada titik sudut." ,
+    terms:"inversi bangun titik ruas sinar busur lingkaran segitiga segiempat poligon juring label siku penanda sudut isian luar tak terbatas inversion object shape polygon exterior"
   },
   invertLine:{
-    purpose:"Cari bayangan suatu garis terhadap lingkaran inversi yang sudah ada.",
-    steps:["Klik garis asal. Jika memilih ruas atau sinar, alat memakai seluruh garis pendukungnya.","Klik keliling lingkaran inversi."],
-    result:"Garis yang tidak melewati pusat inversi menghasilkan lingkaran melalui pusat itu. Garis yang melewati pusat tampil kembali sebagai garis yang sama.",
-    terms:"inversi garis ruas sinar bayangan menjadi lingkaran"
+    purpose:"Menemukan bayangan garis, ruas atau sinar terhadap lingkaran inversi.",
+    steps:["Klik objek asal. Garis melalui dua titik memilih garis penuh. Untuk ruas AB pilih ruasnya. Untuk sinar pilih sinarnya.","Klik keliling lingkaran inversi berpusat O. Pada contoh, objek asalnya garis penuh g."],
+    result:"Garis penuh yang menghindari O menghasilkan lingkaran melalui O. Dari garis itu, ruas AB hanya menelusuri busur antara A′ dan B′ yang menghindari O. Jika AB segaris dengan O dan O berada di luar ruasnya, bayangannya juga ruas. Jika O merupakan ujungnya, bayangan bagian sisanya adalah sinar.",
+    terms:"inversi garis ruas sinar busur bayangan menjadi lingkaran"
   },
   invertCircle:{
-    purpose:"Cari bayangan suatu lingkaran terhadap lingkaran inversi yang sudah ada.",
-    steps:["Klik keliling lingkaran asal. Busur atau juring memakai lingkaran penuhnya.","Klik lingkaran inversi. Untuk menginversi lingkaran acuan terhadap dirinya sendiri, klik lingkaran yang sama dua kali."],
-    result:"Lingkaran yang melalui pusat inversi menghasilkan garis. Lingkaran lainnya menghasilkan lingkaran, dan lingkaran acuan tetap pada tempatnya saat diinversi terhadap dirinya sendiri.",
-    terms:"inversi lingkaran menjadi garis bayangan lingkaran"
+    purpose:"Menemukan bayangan lingkaran, busur atau juring terhadap lingkaran inversi.",
+    steps:["Klik lingkaran atau busur asal, atau klik bagian dalam juring untuk menginversi seluruh juring. Pilih lewat Objek asal jika beberapa objek bertumpuk.","Klik lingkaran acuan. Untuk menginversi lingkaran acuan terhadap dirinya sendiri, klik kelilingnya dua kali."],
+    result:"Lingkaran penuh melalui O berpeta ke garis. Busur mengikuti bagian kurva yang ditelusurinya. Bayangan juring memuat bayangan kedua jari-jari dan busurnya. Isian mengikuti sisi batas yang sesuai, termasuk daerah tak terbatas bila O berada di dalamnya.",
+    terms:"inversi lingkaran busur juring daerah batas isian menjadi garis"
   }
 };
 
@@ -7077,7 +7739,7 @@ const otherGuideEntries={
   translate:{
     purpose:"Menggeser suatu objek sejauh dan searah vektor yang ditentukan oleh dua titik.",
     steps:[
-      "Pilih Transformasi → Translasi, lalu klik objek asal. Klik bagian dalam jika ingin memilih seluruh poligon atau juring.",
+      "Pilih Transformasi → Translasi, lalu klik objek asal. Klik bagian dalam untuk memilih seluruh poligon atau juring. Daftar Objek asal juga memuat bayangan dari transformasi sebelumnya.",
       "Klik pangkal vektor, lalu ujungnya. Misalnya, untuk menggeser A sejauh vektor PQ, klik A, P, kemudian Q."
     ],
     result:"Bayangan A′ berpindah dari A dengan arah dan jarak yang sama seperti perpindahan dari P ke Q.",
@@ -7087,14 +7749,14 @@ const otherGuideEntries={
     purpose:"Memutar suatu objek mengelilingi titik pusat dengan sudut tertentu.",
     steps:[
       "Pilih Transformasi → Rotasi. Isi Sudut rotasi (°). Gunakan 90 untuk seperempat putaran berlawanan arah jarum jam atau −90 untuk arah sebaliknya.",
-      "Klik objek asal, lalu klik pusat rotasi. Untuk mengubah sudut setelahnya, pilih objek bayangannya dan ubah Sudut rotasi (°)."
+      "Pilih objek lewat daftar Objek asal atau klik bagian dalam untuk memutar seluruh bangun. Klik pusat rotasi. Untuk menyesuaikan putaran, pilih bayangannya dan ubah Sudut rotasi (°)."
     ],
     result:"Setiap titik pada bayangan berada pada jarak yang sama dari pusat seperti titik asalnya.",
     terms:"putar rotasi pusat derajat sudut bayangan"
   },
   reflect:{
     purpose:"Mencerminkan objek terhadap titik atau garis dengan satu alat.",
-    steps:["Klik objek asal. Untuk mencerminkan poligon sebagai satu bangun, klik bagian dalamnya.","Klik titik untuk refleksi pusat. Klik garis, ruas, sinar, atau sisi poligon untuk refleksi terhadap garis pendukungnya."],
+    steps:["Klik objek asal. Untuk mencerminkan poligon sebagai satu bangun, klik bagian dalamnya. Pada gambar yang padat, gunakan daftar Objek asal.","Klik titik untuk refleksi pusat. Klik garis, ruas, sinar, atau sisi poligon untuk refleksi terhadap garis pendukungnya."],
     result:"Pada contoh, A′ adalah bayangan A terhadap garis g, sedangkan A″ adalah bayangan A terhadap titik O. Geser A, O, atau ujung garis untuk membandingkan kedua bayangan.",
     terms:"refleksi cermin bayangan garis titik sisi ruas sinar point line reflection mirror"
   },
@@ -7120,7 +7782,7 @@ const otherGuideEntries={
     purpose:"Memperbesar atau memperkecil suatu objek terhadap titik pusat dengan faktor skala tertentu.",
     steps:[
       "Pilih Transformasi → Dilatasi. Isi Faktor dilatasi, misalnya 2 untuk menggandakan jarak dari pusat atau 0,5 untuk membaginya dua.",
-      "Klik objek asal, lalu titik pusat. Untuk mengubah hasilnya, pilih bayangan dan ubah Faktor dilatasi."
+      "Klik objek asal, misalnya bagian dalam poligon, lalu klik pusatnya. Objek yang bertumpuk bisa dipilih lewat daftar Objek asal. Pilih bayangannya untuk mengubah Faktor dilatasi."
     ],
     result:"Untuk faktor 2, jarak OA′ menjadi dua kali OA. Faktor negatif menempatkan bayangan di sisi seberang pusat.",
     terms:"homoteti perbesaran pengecilan skala faktor bayangan"
@@ -7293,7 +7955,7 @@ const otherGuideEntries={
     purpose:"Memulai gambar dari kanvas kosong atau mempelajari konstruksi yang sudah tersedia.",
     steps:[
       "Jika ingin menyimpan salinan lembar aktif, klik Simpan proyek.",
-      "Buka menu Lembar. Pilih Kanvas baru atau salah satu contoh, misalnya Contoh segitiga, Contoh lingkaran singgung, atau Contoh inversi hasil kali.",
+      "Buka menu Lembar. Pilih Kanvas baru atau salah satu contoh, misalnya Contoh segitiga, Contoh lingkaran singgung, Contoh inversi hasil kali, atau Contoh transformasi bangun.",
       "Coba geser titik bebas dengan Pilih / geser dan amati perubahan bentuk serta kode."
     ],
     result:"Lembar terpilih terbuka di editor. Pada contoh segitiga dan Reim tersedia juga Unduh contoh .ggb.",
@@ -8188,6 +8850,21 @@ function guideFigure(id){
     point(a,"A",-7,-8);point(b,"B",-19,9);point(cc,"C",9,8);point(d,"D",-18,-3);point(e,"E",5,-9);
     drawing.setAttribute("aria-label","Segitiga ABC dengan D pada AB dan E pada AC. Lingkaran putus-putus melalui B, C, E, dan D.");
     caption.textContent="Dalam ∠BAC, DE antiparalel terhadap BC. Lingkaran putus-putus melalui keempat titik B, C, E, dan D.";
+  }else if(id==="invert"){
+    // Diagram coordinates are the native example scaled by 65/3 and translated.
+    // The source is A=(3,0), B=(0,3), C=(6,3) with inversion radius 3.
+    const O={x:147,y:95},r=65,A={x:212,y:95},B={x:147,y:30},C={x:277,y:30};
+    circle(O,r,muted,"5 4"); // 0
+    drawing.append(svg("path",{d:"M 212 95 L 147 30 L 277 30 Z",fill:reference,"fill-opacity":.09,stroke:reference,"stroke-width":1.7}));
+    point(O,"O",-15,14);point(A,"A",5,14);point(B,"B",-14,-5);point(C,"C",5,2);
+    const diagonal=r/Math.SQRT2, M={x:179.5,y:62.5}, prime={x:212,y:30};
+    // The midpoint of AB maps to (3,3), fixing which semicircle joins A and B.
+    const full="M 212 95 A "+diagonal+" "+diagonal+" 0 0 0 147 30 A 32.5 32.5 0 0 1 173 82 A "+diagonal+" "+diagonal+" 0 0 1 212 95 Z";
+    drawing.append(svg("path",{d:full,fill:accent,"fill-opacity":.14,stroke:accent,"stroke-width":2.4}));
+    line(O,prime,muted,1.1,"3 3");
+    point(M,"M",-17,-2);point(prime,"M′",3,-6);point({x:173,y:82},"C′",1,15);
+    drawing.setAttribute("aria-label","Segitiga ABC dan bayangannya yang dibatasi tiga busur. Titik tengah M berpeta ke M′ pada busur bayangan AB.");
+    caption.textContent="A dan B terletak pada lingkaran inversi. Ruas AB berpeta ke setengah lingkaran melalui A, M′ dan B.";
   }else if(id==="tangentAt"){
     const O={x:158,y:96},r=59,n={x:.6,y:-.8},v={x:.8,y:.6},T=plus(O,times(n,r));
     circle(O,r,muted);line(O,T,reference,1.6);line(plus(T,times(v,-78)),plus(T,times(v,134)),accent,2.5);
@@ -8473,10 +9150,10 @@ function circleGuideMotion(id,drawing){
       step("Klik titik P yang akan diinversi.",point(8),[8,9]),
       step("Klik pusat O. Di sini OP = 1, sehingga P′ berada pada sinar OP dengan OP′ = 4.",point(6),[0,1,2,3,4,5,10,11])
     ]};
-    case "invert":return {base:[0,4,5,6,7],steps:[
-      step("Klik P, titik yang akan diinversi.",point(8),[8,9]),
-      step("Klik keliling lingkaran inversi. P′ muncul pada sinar OP.",onCircle(0,180),[1,2,3,10,11]),
-      step("Pada contoh ini OP = r/2, sehingga OP′ = 2r.",null)
+    case "invert":return {base:[0,1,2,3,4,5,6,7,8,9],steps:[
+      step("Klik bagian dalam segitiga ABC untuk memilih bangun utuh.",[230,46]),
+      step("Klik keliling lingkaran acuan. Ketiga sisi segitiga berpeta ke tiga busur.",onCircle(0,180),[10,16,17]),
+      step("M berada pada ruas AB. Bayangannya M′ berada pada busur dari A ke B.",[212,30],[11,12,13,14,15])
     ]};
     case "invertLine":return {base:[0,2,4,5,6],steps:[
       step("Klik garis g sebagai objek asal.",onLine(2,.84)),
@@ -9058,12 +9735,25 @@ function circleExploration(tool) {
       add("square","right",["O","H","T"]);
       return project("Garis polar TU dari titik P");
 
-    case "invert":
-      origin();fixedCircle("mirror","O",2,{...ref,dashed:true});
-      point("P",Math.sqrt(15)/4,-.25,{dir:"above"});
-      add("OP","ray",["O","P"],guide);
-      derived("image","invert",["P","mirror"],{name:"P'",...result,dir:"below"});
-      return project("Inversi titik P terhadap lingkaran");
+    case "invert":{
+      origin();fixedCircle("mirror","O",3,{...guide,linePattern:"dashed"});
+      point("A",3,0,{dir:"below right"});point("B",0,3,{dir:"above left"});point("C",6,3,{dir:"above right"});
+      const vertices=["A","B","C"];
+      add("source","triangle",vertices,{...ref,fillColor:"PineGreen",fillOpacity:9});
+      addPolygonParts("source",vertices,3,(type,refs,fields)=>{
+        const id="side"+fields.index;
+        add(id,type,refs,fields);
+        return {id};
+      },()=>{});
+      add("image","invertObject",["source","mirror"],{...result,fillColor:"BurntOrange",fillOpacity:18});
+      for (const [index,dir] of ["right","right","below right"].entries()){
+        const key=vertices[index];
+        derived(key+"prime","invertVertex",[key,"mirror","image"],{name:key+"'",dir,...result});
+      }
+      derived("M","mid",["A","B"],{dir:"above left"});
+      derived("Mprime","invert",["M","mirror"],{name:"M'",...result,dir:"above right"});
+      return project("Inversi segitiga ABC dan titik tengah M");
+    }
 
     case "invertFormula":
       origin();point("A",1.5,0,{dir:"below"});point("B",4,0,{dir:"right"});
@@ -10813,6 +11503,7 @@ function fit(){
     if(o.kind==="point"&&o.labelOffset&&o.dir!=="none")points.push(plus(o,o.labelOffset));
     if(o.angleLabel)points.push(o.angleLabel);
     if(o.kind==="polygon")points.push(...o.vertices);
+    if(o.kind==="path")points.push(...inversePathBoundsPoints(o));
     if(o.sector)points.push({x:o.cx,y:o.cy});
     if(o.kind==="segment")points.push(o.start,o.end);
     if(o.kind==="angle")points.push(...angleMarkBoundsPoints(o));
@@ -10858,6 +11549,8 @@ function renderCanvas(){
       const {x,y}=S(obj);
       g.append(svg("circle",{cx:x,cy:y,r:8,class:"halo point-halo"}),svg("circle",{cx:x,cy:y,r:3.4,fill:inks[obj.color||"black"].hex}),svg("circle",{cx:x,cy:y,r:11,fill:"transparent"}));
       if(obj.dir!=="none")g.append(pointLabelElement(obj,S));
+    }else if(obj.kind==="path"){
+      drawInversePath(obj,g,u);
     }else if(obj.kind==="polygon"){
       drawRegionOutline(obj,g,u);
     }else if(obj.kind==="label"){
@@ -11000,7 +11693,7 @@ function renderInspector(){
   $("visibility").textContent=visibilityTargets.length&&visibilityTargets.every(o=>o.hidden)?"Tampilkan":"Sembunyikan";
   const formulaIds=new Set(doc.steps.filter(step=>step.type==="circleFormula").map(step=>step.id));
   const unresolved=model.unavailable.filter(step=>step.type==="pointFormula"||formulaIds.has(step.id)||
-    (["invert","invertLine","invertCircle"].includes(step.type)&&formulaIds.has(step.refs[1])));
+    (isInversionImageStep(step.type)&&formulaIds.has(step.refs[1])));
   $("inspector").hidden=!choices.length&&!unresolved.length&&!groupSelection.size;
   if($("inspector").hidden)return;
   addOptions($("objects"),[["",groupSelection.size?groupSelection.size+" objek terpilih":"Pilih suatu objek"],...choices.map(o=>[o.key,objectName(o,model)+(o.hidden?" (tersembunyi)":"")]),
@@ -11022,7 +11715,7 @@ function renderInspector(){
 function render(){
   $("drawing-title").textContent=doc.title==="Gambar saya"?"Kanvas":doc.title;
   const visibleCircles=model.circles.filter(c=>!c.hidden),nArcs=visibleCircles.filter(c=>c.arc).length;
-  const counts=[[model.points.filter(p=>p.mark).length,"titik"],[model.segments.filter(s=>!s.hidden).length,"garis/ruas"],[visibleCircles.length-nArcs,"lingkaran"],[nArcs,"busur"],[model.polygons.filter(p=>!p.hidden).length,"poligon"],[model.angles.filter(a=>!a.hidden).length,"penanda sudut"],[model.labels.filter(l=>!l.hidden).length,"label"]];
+  const counts=[[model.points.filter(p=>p.mark).length,"titik"],[model.segments.filter(s=>!s.hidden).length,"garis/ruas"],[visibleCircles.length-nArcs,"lingkaran"],[nArcs,"busur"],[model.polygons.filter(p=>!p.hidden).length,"poligon"],[model.angles.filter(a=>!a.hidden).length,"penanda sudut"],[model.labels.filter(l=>!l.hidden).length,"label"],[model.paths?.filter(p=>!p.hidden).length||0,"lintasan"]];
   const count=counts.filter(([n])=>n).map(([n,kind])=>n+" "+kind).join(" · ")||"Tidak ada objek yang terlihat";
   $("details").textContent=doc.steps.length||draft.length?count+(model.unavailable.length?" · "+model.unavailable.length+" objek tidak terdefinisi pada posisi ini":""):"Kanvas kosong";
   $("examples").value=sourceExample||"current";$("sample-download").hidden=!Object.hasOwn(SAMPLES,sourceExample);
@@ -11062,7 +11755,9 @@ function hitObject(e,kind=null,{pointLabels=true}={}){
   for(let i=model.items.length-1;i>=0;i--){
     const o=model.items[i];if(!accepts(o))continue;
     let distance=Infinity,enclosed=Infinity;
-    if(o.kind==="segment"){
+    if(o.kind==="path"){
+      distance=inverseBoundaryDistance(o,v);
+    }else if(o.kind==="segment"){
       const ends=lineViewportEndpoints(o,u);
       if(ends)distance=canvasEdgeDistance(v,...ends);
     }else if(o.kind==="circle"){
@@ -11071,7 +11766,7 @@ function hitObject(e,kind=null,{pointLabels=true}={}){
       if(o.sector&&o.arc&&Math.abs(o.arc.sweep)<360){
         distance=Math.min(distance,canvasEdgeDistance(v,center,o.arc.start),canvasEdgeDistance(v,center,o.arc.end));
       }
-      if((o.fillColor&&(o.fillOpacity??30)>0||o.sector)&&regionHasInterior(o)&&dist(center,v)<o.r&&
+      if(!o.contains&&(o.fillColor&&(o.fillOpacity??30)>0||o.sector)&&regionHasInterior(o)&&dist(center,v)<o.r&&
           (!o.sector||arcContainsPoint(o,v)))enclosed=Math.PI*o.r*o.r*(o.sector?Math.abs(o.arc.sweep)/360:1);
     }else if(o.kind==="polygon"){
       let inside=false,twiceArea=0;
@@ -11082,6 +11777,13 @@ function hitObject(e,kind=null,{pointLabels=true}={}){
         twiceArea+=cross(minus(a,o.vertices[0]),minus(b,o.vertices[0]));
       }
       if(inside)enclosed=Math.abs(twiceArea)/2;
+    }
+    if(o.region&&o.contains&&(o.fillColor&&(o.fillOpacity??30)>0||o.kind==="path"&&!o.unbounded)&&o.contains(v)){
+      if(o.unbounded)enclosed=Number.MAX_VALUE;
+      else{
+        const bounds=worldBounds(inversePathBoundsPoints(o),[]);
+        enclosed=(bounds.x1-bounds.x0)*(bounds.y1-bounds.y0);
+      }
     }
     const pixels=distance*u.k;
     if(pixels<=threshold&&(pixels<min-1e-6||Math.abs(pixels-min)<=1e-6&&o===direct)){best=o;min=pixels;}
@@ -11101,7 +11803,7 @@ function pointPlacement(e,{existing=true,crossings=true,free=true}={}){
   const near=[];
   for(let i=model.items.length-1;i>=0;i--){
     const parent=model.items[i];
-    if(!inEditor(parent)||(parent.kind!=="segment"&&parent.kind!=="circle"))continue;
+    if(!inEditor(parent))continue;
     for(const part of pointGuidePieces(parent)){
       const projected=projectGuidePoint(parent,part,pos);
       if(!projected)continue;
@@ -11173,9 +11875,11 @@ function completeTool(solutions=null,position=null){
     if(Math.abs(cross(minus(b,a),minus(c,a)))<EPS){notice("Pilih tiga titik yang tidak segaris.");return false;}
     focus=addSeg(refs[0],refs[1]);addSeg(refs[1],refs[2]);addSeg(refs[2],refs[0]);
   }else if(kind==="cut"){
-    const roots=intersectionBranches(...refs.map(k=>model.values.get(k)));
+    const objects=refs.map(k=>model.values.get(k));
+    const exactBounds=objects.some(o=>o.kind==="path"||o.region!==undefined);
+    const roots=exactBounds?allPathIntersections(...objects,1500-doc.steps.length-adds.length):intersectionBranches(...objects);
     if(!roots.length){notice("Kedua objek belum memiliki perpotongan tunggal atau pasangan titik potong. Pilih objek kedua yang lain.");return false;}
-    for(const {branch} of roots){const s=add("cut",refs,{name:newLabel(adds),branch});if(!focus)focus=s;}
+    for(const {branch,parts} of roots){const s=add("cut",refs,{name:newLabel(adds),branch,...(parts?{parts,bounded:true}:{})});if(!focus)focus=s;}
   }else if(kind==="mid"||kind==="foot"){
     focus=add(kind,refs,{name:newLabel(adds)});
     if(kind==="foot"){
@@ -11189,6 +11893,7 @@ function completeTool(solutions=null,position=null){
   }else if(kind==="segment"){focus=addSeg(...refs);}
   else if(arcToolSettings[kind]){focus=add(kind==="semicircle"?"diameter":"circle2",refs,arcToolSettings[kind]);}
   else{focus=add(kind,refs);}
+  if(doc.steps.length+adds.length>1500){notice("Konstruksi ini melebihi batas 1.500 objek per proyek.");return false;}
   const calculated=solveSketch([...doc.steps,...adds]);
   if(!calculated.values.has(focus.id)){notice(kind==="right"?"Sudut ini belum 90°. Gunakan Kaki tegak lurus untuk membuat konstruksi siku-siku.":"Konstruksi tidak terdefinisi pada pilihan ini. Pilih titik lain.");return false;}
   // Constructions repeat until Escape. A transform or solution choice opens the
@@ -11311,6 +12016,7 @@ canvas.addEventListener("pointermove",e=>{
     const hadMarker=pointPreview&&pointPreview.type!=="point";
     pointPreview=previewPoint(e);
     hover=pointPreview?.position||rounded(posFromEvent(e));
+    if(tool==="invert"&&pending.length===1)hover.mirrorId=hitObject(e,"c")?.key;
     if(pending.length||hadMarker||(pointPreview&&pointPreview.type!=="point"))renderCanvas();
   }
 });
@@ -11338,12 +12044,14 @@ function newSheet(p,example=null){
   if(p.steps.length)fit();
 }
 function isUsageExample(id){
-  return typeof USAGE_PROJECTS!=="undefined" && Object.hasOwn(USAGE_PROJECTS,id);
+  return id==="transformasi-bangun"||typeof USAGE_PROJECTS!=="undefined"&&Object.hasOwn(USAGE_PROJECTS,id);
 }
 function openUsageExample(id){
   if(!isUsageExample(id))return false;
   openToken++;
-  newSheet(clone(USAGE_PROJECTS[id]),id);
+  const example=guidedExamples[id];
+  newSheet(example?example.project():clone(USAGE_PROJECTS[id]),id);
+  if(example)notice(example.hint);
   return true;
 }
 function returnToWork(){

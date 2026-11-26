@@ -30,7 +30,9 @@ Saat garis memotong huruf $P$, geser dulu hurufnya. Jika ruangnya sempit, pilih 
 
 Untuk mewarnai beberapa ruas sekaligus, aktifkan **Pilih / geser**, tahan **Ctrl** atau **⌘**, lalu klik ruas yang diinginkan. Panel **Objek** dapat mengatur warna dan menyembunyikan pilihan bersama. Isikan **Nama grup** lalu klik **Simpan grup** untuk memilih kembali kumpulan yang sama. Palet isian bangun memuat warna yang sama dengan palet garis tepinya. Ukuran penanda siku-siku bisa diatur tersendiri.
 
-Di menu **Titik dan garis**, pilih **Garis sumbu**, lalu klik ruas $AB$ atau kedua ujungnya. Garis yang muncul tegak lurus $AB$ tepat di tengahnya. Untuk membalik sebuah objek terhadap lingkaran, pilih **Transformasi → Inversi**, klik titik, garis, atau lingkaran yang akan dibalik, lalu lingkaran acuannya. **Transformasi → Refleksi** memakai urutan serupa. Klik objek asal, lalu titik pusat pencerminan atau garis cermin.
+Di menu **Titik dan garis**, pilih **Garis sumbu**, lalu klik ruas $AB$ atau kedua ujungnya. Garis yang muncul tegak lurus $AB$ tepat di tengahnya. Untuk mentranslasi, merotasi, mencerminkan, mendilatasi, atau menginversi bangun utuh, pilih alatnya lalu klik bagian dalam bangun. **Objek asal** membantu memilih ketika beberapa objek bertumpuk. Pada refleksi, klik titik atau garis cerminnya. Pada inversi, klik lingkaran acuan. Bayangan segi lima, misalnya, mengikuti bayangan kelima sisinya. Bayangan itu bisa dipilih lagi untuk transformasi berikutnya.
+
+Di [**Lembar → Contoh transformasi bangun**]({{ '/tools/studio-tikz/index.html' | relative_url }}#contoh/transformasi-bangun), coba geser satu titik sudut atau pusat inversi. Untuk mengamati satu sisi lebih dekat, buka [animasi inversi segitiga]({{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/invert). Pada contoh itu, ujung $A$ dan $B$ berada pada keliling lingkaran acuan. Bayangan ruas $AB$ adalah setengah lingkaran melalui $A$, $M'$ dan $B$, dengan $M'$ bayangan titik tengah $M$.
 
 ## Pusat segitiga dan garis bagi sudut
 
@@ -122,7 +124,7 @@ Untuk membawa diagram ke forum AoPS, buka opsi **Format AoPS** pada panel kode. 
 ## Kelebihan
 
 - **Kode bisa dipelajari sambil menggambar.** Saya bisa menelusuri hubungan antara objek di kanvas dan perintah TikZ-nya, lalu menyunting kode tersebut langsung di dokumen saya.
-- **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama. Alat inversi untuk titik, garis, dan lingkaran ada di menu **Transformasi**.
+- **Konstruksi mengikuti titik acuannya.** Saat susunan gambar perlu dirapikan, titik tengah, garis singgung, dan bayangan inversi ikut diperbarui. Ini membantu saat saya ingin memeriksa beberapa konfigurasi untuk soal yang sama. Pilih **Transformasi → Inversi** untuk mengikuti bayangan sebuah sisi, busur, atau bangun utuh.
 - **Tampilan siap disesuaikan untuk modul.** Label mendukung LaTeX. Ketebalan garis, pola putus-putus, penanda sudut, warna, dan opasitas bisa diatur per objek. Saat skala ekspor diubah, radius cetak titik tetap $1{,}5\,\mathrm{pt}$.
 - **Bisa dibawa mengajar.** Saya bisa menyimpan editor dan contoh diagram di laptop sebelum kelas, lalu membuka keduanya saat mengajar.
 

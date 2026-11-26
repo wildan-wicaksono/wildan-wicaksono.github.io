@@ -40,7 +40,34 @@ Untuk mengikuti satu soal dari awal sampai menjadi diagram modul, buka [tiga con
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
 | Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Transformasi → Inversi**, gunakan **Jari-jari atau kuasa**, pilih kuasa $k=r^2$, lalu isi `OA * OB`. Klik $P$, kemudian pusat $O$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
 
-Untuk inversi dengan lingkaran yang sudah ada, klik objek asal (titik, garis, atau lingkaran) lalu klik keliling lingkaran acuan. Pada **Transformasi → Refleksi**, klik objek asal, lalu titik atau garis cerminnya. Jika memilih sebuah ruas sebagai cermin, Studio menggunakan garis yang memuat ruas itu. Kamu dapat langsung mencerminkan objek berikutnya dengan alat yang sama. Pada alat yang biasa dipakai berulang, misalnya **Ruas**, kamu bisa langsung memilih pasangan titik berikutnya. Tekan **Esc** atau pilih **Pilih / geser** untuk kembali menyunting objek.
+### Memilih bangun untuk transformasi
+
+Pilih alatnya, lalu klik objek asal. Klik bagian dalam poligon atau juring untuk memilih seluruh bangun. Klik satu sisi poligon untuk memilih ruas itu saja. Pada gambar yang padat, pilih benda yang dimaksud dari daftar **Objek asal**. Di [**Lembar → Contoh transformasi bangun**](index.html#contoh/transformasi-bangun), geser salah satu titik sudut segi lima dan amati kedua bayangannya.
+
+| Alat | Setelah memilih objek asal |
+| --- | --- |
+| Translasi | Klik pangkal vektor, lalu ujungnya. |
+| Rotasi | Masukkan sudut putaran, lalu pilih pusatnya. |
+| Refleksi | Klik titik untuk pusat pencerminan atau garis untuk sumbu. Jika cerminnya ruas, Studio memakai garis yang memuat ruas itu. |
+| Dilatasi | Masukkan faktor skala, lalu pilih pusatnya. |
+| Inversi | Klik keliling lingkaran acuan. Dengan opsi **Jari-jari atau kuasa**, isi nilai atau rumus lalu klik pusatnya. |
+
+Untuk menyusun dua transformasi, pilih bayangan pertama sebagai objek asal berikutnya. Misalnya, refleksikan segi lima terhadap sebuah garis, lalu inversikan hasil refleksinya. Menggeser titik awal memperbarui kedua bayangan. Tekan **Esc** untuk kembali ke **Pilih / geser**.
+
+### Menginversi sisi, bangun, dan anotasi
+
+Pada [contoh inversi segitiga](./index.html#panduan/invert), $A$ dan $B$ berada pada lingkaran acuan dan $M$ adalah titik tengah $AB$. Tekan **Putar animasi** untuk mengikuti urutan kliknya. Buka **Utak-atik contoh**, lalu geser $C$ atau $O$. Amati busur yang melalui $A'$, $M'$, dan $B'$.
+
+| Objek asal | Bayangannya terhadap lingkaran berpusat $O$ |
+| --- | --- |
+| Titik $P$ | Bayangan $P'$ berada pada sinar $OP$ dengan $OP\cdot OP'=r^2$. Titik $O$ sendiri tidak memiliki bayangan hingga. |
+| Ruas $AB$ pada garis yang menghindari $O$ | Busur dari $A'$ ke $B'$ yang menghindari $O$. Untuk menginversi seluruh garisnya, buat **Garis melalui dua titik**. |
+| Ruas pada garis melalui $O$ | Jika $O$ di luar ruas, hasilnya ruas. Jika $O$ di salah satu ujungnya, bagian sisanya menjadi sinar. Jika $O$ di antara kedua ujung, hasilnya dua sinar. |
+| Sinar, busur, atau juring | Bagian kurva yang dipilih menentukan bayangannya. Pada juring, kedua jari-jari dan busurnya ikut menentukan batas. |
+| Poligon | Setiap sisi mendapat bayangannya sendiri. Umumnya, segitiga menghasilkan tiga busur dan segi lima menghasilkan lima busur. Pindahkan pusat ke dalam bangun untuk melihat isiannya meluas ke luar batas lengkung. Jika pusat berada pada sisi, bagian yang tak terbatas terlihat sampai tepi gambar. |
+| Label bebas atau penanda sudut | Titik letak label berpeta dan tulisannya tetap tegak. Penanda sudut mengikuti arah singgung di bayangan titik sudut dan mempertahankan besar sudutnya. Titik letak atau titik sudut yang berimpit dengan $O$ tidak memiliki bayangan hingga. |
+
+Proyek lama tetap memakai konstruksi yang tersimpan. Pada proyek yang dahulu menginversi **garis pendukung** dari sebuah ruas, buat inversi baru jika ingin memperoleh bayangan ruasnya saja.
 
 Pada [diagram antiparalel interaktif](./latihan-antiparalel.html), geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Kamu juga bisa menggeser $D$ sepanjang $AB$ atau menyeret ruas $DE$. Saat segitiga berubah, $E$ mengikuti perpotongan garis antiparalel dengan $AC$. Perhatikan keempat titik $B$, $C$, $D$, dan $E$ pada satu lingkaran.
 
@@ -241,7 +268,7 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | [Refleksi terhadap titik](./index.html#panduan/reflectPoint) | Mencerminkan objek terhadap sebuah titik pusat. |
 | [Dilatasi](./index.html#panduan/dilate) | Menskalakan objek terhadap titik pusat dengan faktor tertentu. |
 | [Inversi dengan jari-jari atau kuasa](./index.html#panduan/invertFormula) | Menginversi dengan pusat dan nilai jari-jari atau kuasa pilihan. |
-| [Inversi dengan lingkaran acuan](./index.html#panduan/invert) | Memilih objek asal lalu lingkaran acuan. Contoh ini menggunakan titik. |
+| [Inversi dengan lingkaran acuan](./index.html#panduan/invert) | Menginversi segitiga utuh dan melacak bayangan titik tengah salah satu sisinya. |
 | [Inversi garis](./index.html#panduan/invertLine) | Menemukan bayangan garis terhadap lingkaran inversi. |
 | [Inversi lingkaran](./index.html#panduan/invertCircle) | Menemukan bayangan lingkaran terhadap lingkaran inversi. |
 
