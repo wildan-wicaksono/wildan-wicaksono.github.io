@@ -155,6 +155,8 @@ Kalau ada banyak garis di dekat $I_A$, geser hurufnya atau pilih titiknya dan ak
 
 Jika penyimpanan browser tersedia, Studio otomatis mengingat semua lembar pribadi yang terbuka dan tab terakhir yang dipilih. Setiap tab menyimpan posisi kanvas serta riwayat **Urungkan** dan **Ulangi** selama sesi berlangsung. Riwayat dimulai kembali setelah halaman dimuat ulang. File hasil **Simpan lembar** bisa dipindah ke browser atau perangkat lain.
 
+Untuk menggambar dari awal di tab yang sama, pilih tab pribadi lalu klik **Kosongkan gambar**. Nama tab tetap tersimpan. Gunakan **Urungkan** untuk mengembalikan gambar selama sesi masih terbuka.
+
 Untuk membuang gambar dari daftar tab dan penyimpanan browser, pilih tabnya, klik **Hapus lembar**, periksa namanya, lalu konfirmasi. Untuk menyimpan salinan, klik **Simpan lembar** sebelum menghapusnya. Penghapusan berlaku hanya pada lembar terpilih. Salinan yang sudah diunduh tetap bisa dibuka lagi. Jika tab terakhir dihapus, Studio membuka lembar kosong.
 
 Untuk bekerja tanpa internet, <a href="./index.html" download="Studio-TikZ.html">unduh Studio-TikZ.html</a> dan buka melalui browser. Jika sedang membaca panduan di GitHub, buka berkas editor lalu gunakan **Download raw file**. Untuk memperbarui salinan luring, unduh HTML terbaru dan buka kembali proyek `.stikz.json`. Pada versi daring, muat ulang halaman setelah pembaruan diterbitkan. [Berkas editor](./index.html).
@@ -189,7 +191,7 @@ Misalnya, pada sebuah ekspor GeoGebra dengan tiga lingkaran, hasilnya seperti be
 | 2 | $D,E,F,K$ | Pusat dan jari-jari dari kode. Pilih tiga titik jika ingin lingkarannya mengikuti titik-titik itu. |
 | 3 | $F,K,M,H'$ | Pusat dan jari-jari dari kode. Jika kamu memilih $F,K,M$, posisi $H'$ tidak ikut menentukan lingkaran. |
 
-Jika kamu memilih $D,E,K$ pada lingkaran kedua lalu menggeser $D$, lingkaran akan melalui posisi baru $D$ serta tetap melalui $E$ dan $K$. Titik $F$ bisa tertinggal di luar atau di dalam. Koordinat awal saja belum memberi tahu bagaimana $F$ dikonstruksi. Untuk menerapkan pilihan ini pada diagram yang pernah diimpor, konversikan lagi sumber Asymptote-nya dan buka sebagai lembar baru.
+Untuk memeriksa hasil impor, pilih $D,E,K$ pada lingkaran kedua, buka lembar, lalu geser $D$. Lingkaran akan tetap melalui $D,E,K$, sedangkan $F$ dapat berada di dalam atau di luar lingkaran. Ekspor ini hanya menyimpan koordinat $F$. Jika $F$ seharusnya merupakan titik potong tertentu, buat kembali titik potong itu di Studio sesuai soal. Untuk mengganti tiga titik penentu pada diagram yang pernah diimpor, konversikan kembali sumber Asymptote-nya dan buka sebagai lembar baru.
 
 Kamu juga bisa tetap di konverter dan menyunting kolom **Kode TikZ** langsung. **Salin TikZ** di sana menyalin teks yang sudah disunting. Tempel di badan dokumen dan kompilasi untuk melihat perubahannya. **Pratinjau hasil konversi** dan **Buka di lembar baru** menggunakan gambar dari sumber Asymptote. Jalur SVG, PDF, dan TikZ yang dibungkus dalam label menyediakan kode untuk disalin.
 

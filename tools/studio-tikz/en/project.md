@@ -3,11 +3,14 @@ layout: single
 title: "Studio TikZ"
 permalink: /tools/studio-tikz/en/project.html
 comments: true
+comments_path: /portfolio/studio-tikz/
 ---
 
 {% include studio-tikz-language.html language="en" id="/portfolio/studio-tikz/" en="/tools/studio-tikz/en/project.html" %}
 
 <p><a class="btn btn--primary" href="../index.html?lang=en">Open Studio TikZ</a> <a class="btn" href="#contoh-studio-tikz">Examples and LaTeX code</a> <a class="btn" href="../index.html" download="Studio-TikZ.html">Download the offline editor</a></p>
+
+[Comments and feature requests](#comments)
 
 Studio TikZ was developed by **Wildan Bagus Wicaksono** with assistance from AI. [Homepage](https://wildan-wicaksono.github.io/)
 
@@ -88,8 +91,12 @@ For a diagram using a custom module or a 3D projection, open **Convert an SVG re
 - **Autosave keeps sheets in the current browser.** **Save sheet** downloads the displayed drawing as one `.stikz.json` file. **Delete sheet** asks for confirmation before removing the selected sheet from browser storage. Use **Open file** to reopen a downloaded copy in a new tab alongside your other drawings.
 - **The drawing tools focus on olympiad geometry.** Studio has no general tool for plotting functions or drawing conics from their equations. To plot a parabola such as $y=x^2$, I still use GeoGebra.
 - **GeoGebra import covers some 2D objects.** Studio may read a point’s stored coordinates from a `.ggb` file even when its construction dependencies do not carry over. Saving a Studio drawing as `.stikz.json` preserves its construction.
-- **Asymptote coordinates can lose construction relationships.** Some GeoGebra exports record only the center and radius of a circle. Before opening the sheet, use **Circles through three points** to choose the three points the circle should follow. Other points initially on the circumference can move off it as the drawing changes. [See the point selection example](guide.html#convert-aops-diagrams).
+- **Asymptote import recovers only some construction relationships.** A drawing can look exactly like the original and still behave differently when you drag a point. For example, a GeoGebra export may record only the center and radius of a circle through $D,E,F,K$. If you select $D,E,K$ as its defining points, the circle will follow those three. The original coordinates alone cannot tell Studio how $F$ should move to stay on the circle. [See the point selection example](guide.html#convert-aops-diagrams).
 - **Pasting Asymptote can give an error.** If the block was cut short, copy it again from `[asy]` through `[/asy]`. Even a complete block that runs on AoPS can use a command or module Studio does not recognise. If the message gives a line and column, use **Go to this line** to inspect it. For unsupported features, render with Asymptote on your computer, then import the SVG or include the PDF in LaTeX. [SVG and PDF conversion steps](guide.html#convert-aops-diagrams).
 - **Update the offline copy manually.** Download the latest HTML from this project page, then open your saved `.stikz.json` file in the new editor.
 
 [Read the user guide](guide.html) · [Follow the three worked diagrams](examples.html)
+
+### Comments and feature requests
+
+If you need a construction for a problem or handout, [tell me in the comments](#comments). I’d also like to hear how you use Studio TikZ. If an imported diagram behaves unexpectedly when you drag a point, a small example or a snippet of Asymptote will help me try it.

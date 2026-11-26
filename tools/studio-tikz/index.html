@@ -686,6 +686,7 @@ Derived file: studio-math-labels.woff
     <div class="sheet-tab-actions">
       <button type="button" id="personal-sheet-add"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>Tambah lembar</button>
       <button type="button" id="personal-sheet-rename" class="sheet-icon" title="Ganti nama lembar" aria-label="Ganti nama lembar" aria-controls="personal-sheet-rename-form" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m3 10-1 4 4-1 8-8-3-3zM9.7 3.3l3 3"/></svg></button>
+      <button type="button" id="personal-sheet-clear" disabled>Kosongkan gambar</button>
       <button type="button" id="personal-sheet-close" title="Hapus lembar aktif dari browser ini"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M2.5 4.5h11M6 4.5V2.8h4v1.7M4.2 4.5l.6 8.7h6.4l.6-8.7M6.8 6.7v4.4m2.4-4.4v4.4"/></svg>Hapus lembar</button>
     </div>
     <form class="sheet-rename-form" id="personal-sheet-rename-form" hidden>
@@ -3493,6 +3494,8 @@ Lembar pribadi|Personal sheets
 Tambah lembar|Add sheet
 Ganti nama lembar|Rename sheet
 Hapus lembar|Delete sheet
+Kosongkan gambar|Clear drawing
+Gambar dikosongkan. Gunakan Urungkan untuk mengembalikannya.|Drawing cleared. Use Undo to restore it.
 Hapus lembar aktif dari browser ini|Delete the active sheet from this browser
 Nama lembar|Sheet name
 Simpan nama|Save name
@@ -8049,6 +8052,15 @@ function closeProjectTab(id){
   if(personalWorkspace.storageFailed)$("save-state").textContent="Lembar telah dihapus dari sesi ini. Penyimpanan browser gagal diperbarui sehingga lembar dapat muncul kembali saat Studio dibuka.";
   return true;
 }
+function clearPersonalDrawing(){
+  if(!personalWorkspace||sourceExample||(!doc.steps.length&&!doc.clip))return;
+  finishSheetGesture();
+  remember(snapshot());
+  const blank={...emptyDoc(),title:doc.title};
+  if(doc.exportScale!==undefined)blank.exportScale=doc.exportScale;
+  restore({doc:blank,camera,sourceExample:null});
+  notice("Gambar dikosongkan. Gunakan Urungkan untuk mengembalikannya.");
+}
 function renameProjectTab(id,value){
   if(!personalWorkspace)return false;
   const title=value.trim(),tab=personalWorkspace.tabs.find(t=>t.id===id);
@@ -8398,6 +8410,7 @@ function renderProjectTabs(view){
     if(title.textContent!==name)title.textContent=name;
   }else delete title.dataset.personalTitle;
 
+  document.getElementById("personal-sheet-clear").disabled=view.preview||!active||(!doc.steps.length&&!doc.clip);
   const signature=JSON.stringify([studioLanguage,view.activeId,view.preview,view.tabs]);
   if(list.dataset.signature===signature)return;
   list.dataset.signature=signature;
@@ -8465,6 +8478,7 @@ function bindProjectTabControls(){
     activateProjectTab(tabs[next].dataset.sheetId);focusTab();
   });
   get("add").addEventListener("click",()=>{openProjectTab();focusTab();});
+  get("clear").addEventListener("click",()=>{clearPersonalDrawing();focusTab();});
   get("close").addEventListener("click",()=>{closeProjectTab(projectTabView().activeId);focusTab();});
   rename.addEventListener("click",()=>{
     if(!form.hidden){endRename();return;}

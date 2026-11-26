@@ -5,6 +5,7 @@ collection: portfolio
 layout: single
 permalink: /portfolio/studio-tikz/
 comments: true
+comments_path: /portfolio/studio-tikz/
 header:
   teaser: /assets/studio-tikz-demo.png
   teaser_alt: "Contoh diagram geometri yang dibuat di Studio TikZ"
@@ -13,6 +14,8 @@ header:
 {% include studio-tikz-language.html language="id" id="/portfolio/studio-tikz/" en="/tools/studio-tikz/en/project.html" %}
 
 <p><a class="btn btn--primary" href="{{ '/tools/studio-tikz/index.html' | relative_url }}">Buka Studio TikZ</a> <a class="btn" href="#contoh-studio-tikz">Contoh dan kode LaTeX</a> <a class="btn" href="{{ '/tools/studio-tikz/index.html' | relative_url }}" download="Studio-TikZ.html">Unduh versi offline</a></p>
+
+[Komentar dan usulan fitur](#comments)
 
 Studio TikZ dikembangkan oleh **Wildan Bagus Wicaksono** dengan bantuan AI. [Homepage](https://wildan-wicaksono.github.io/)
 
@@ -154,8 +157,10 @@ Untuk membawa diagram ke forum AoPS, buka opsi **Format AoPS** pada panel kode. 
 - **Penyimpanan otomatis berlaku di browser yang dipakai.** **Simpan lembar** mengunduh salinan gambar yang tampil sebagai satu file `.stikz.json`. **Hapus lembar** meminta konfirmasi sebelum menghapus lembar terpilih dari browser. File yang sudah diunduh bisa dibuka lagi lewat **Buka file** sebagai tab baru di samping gambar lain.
 - **Cakupannya geometri olimpiade.** Studio belum menyediakan alat umum untuk memplot fungsi atau menggambar irisan kerucut dari persamaannya. Untuk menggambar parabola $y=x^2$, misalnya, saya masih menggunakan GeoGebra.
 - **Impor GeoGebra mencakup sebagian objek 2D.** Pada file `.ggb`, Studio bisa membaca posisi titik dari koordinat tersimpan meskipun hubungan konstruksinya tidak ikut terbawa. Simpan gambar yang dibuat di Studio sebagai `.stikz.json` agar hubungan antarobjek dapat dibuka kembali.
-- **Koordinat Asymptote bisa kehilangan hubungan konstruksi.** Sebagian ekspor GeoGebra menyimpan lingkaran hanya sebagai pusat dan jari-jari. Sebelum membuka lembar, periksa **Lingkaran dari tiga titik** untuk memilih tiga titik yang harus terus dilalui. Titik lain yang semula berada pada keliling dapat terlepas saat gambar digeser. [Contoh pemilihan titik]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops).
+- **Impor Asymptote hanya memulihkan sebagian hubungan antarobjek.** Gambar awal bisa tampak persis seperti sumbernya, tetapi beberapa titik bisa terlepas saat digeser. Misalnya, sebuah ekspor GeoGebra hanya mencatat pusat dan jari-jari lingkaran yang melalui $D,E,F,K$. Jika kamu memilih $D,E,K$ sebagai tiga titik penentu, lingkaran akan mengikuti ketiganya. Koordinat awal saja belum menjelaskan bagaimana $F$ harus bergerak agar tetap pada keliling. [Contoh pemilihan titik]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops).
 - **Menempelkan kode Asymptote bisa menghasilkan pesan galat.** Jika blok terpotong, salin ulang mulai `[asy]` sampai `[/asy]`. Kode yang lengkap dan berjalan di AoPS pun bisa memakai perintah atau modul yang belum dikenali Studio. Jika pesan menyebut baris dan kolom, klik **Ke baris ini** untuk memeriksanya. Untuk fitur yang belum didukung, render dengan Asymptote di komputermu, lalu impor SVG atau sisipkan PDF di LaTeX. [Langkah konversi SVG dan PDF]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops).
 - **Salinan offline perlu diperbarui manual.** Unduh HTML terbaru dari halaman proyek ini, lalu buka file `.stikz.json` yang sudah kamu simpan di editor baru.
 
-Kalau kamu mencoba Studio TikZ untuk bahan ajar atau soal olimpiade, saya ingin tahu bagian mana yang mudah diikuti dan bagian mana yang masih membingungkan. Contoh konstruksi atau potongan kode yang kamu pakai akan membantu saya memahami masukannya.
+### Komentar dan usulan fitur
+
+Kalau ada konstruksi yang kamu butuhkan untuk soal atau modul, [tuliskan di kolom komentar](#comments). Saya juga ingin mendengar pengalamanmu memakai Studio TikZ. Kalau suatu gambar sulit dibuat atau hasil impor berubah saat titik digeser, contoh kecil atau potongan kode Asymptote akan membantu saya mencobanya.

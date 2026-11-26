@@ -113,6 +113,8 @@ In the **Sheet** menu, **Example sheets** contains construction demos, and **Wil
 
 **Save sheet** downloads the displayed drawing, including its dependencies, labels and styles, as one portable `.stikz.json` file. To keep an edited example as a personal sheet, save it and use **Open file** to open the downloaded copy in a new tab.
 
+To start over in the same tab, select your personal sheet and choose **Clear drawing**. The tab keeps its name. Use **Undo** to restore the drawing during the same session.
+
 To remove a drawing from the tabs and browser storage, select its tab, choose **Delete sheet**, check the name and confirm. Use **Save sheet** first to keep a copy for later. Deletion applies only to the selected sheet. You can reopen any copy you already downloaded. Deleting the last sheet opens a fresh blank one.
 
 Download the editor HTML for offline use. To update it, download a fresh copy and reopen your saved sheet.
@@ -143,7 +145,7 @@ Here is how the choices work in a GeoGebra export with three circles.
 | 2 | $D,E,F,K$ | The source center and radius. Choose three points if you want the circle to follow them. |
 | 3 | $F,K,M,H'$ | The source center and radius. If you choose $F,K,M$, the position of $H'$ does not determine the circle. |
 
-If you choose $D,E,K$ for the second circle and then drag $D$, the circle passes through the new $D$ and still passes through $E$ and $K$. Point $F$ may now lie inside or outside it. Its original coordinates alone do not tell Studio how it was constructed. To apply these choices to a previously imported diagram, convert its Asymptote source again and open a new sheet.
+To check the import, choose $D,E,K$ for the second circle, open the sheet and drag $D$. The circle still passes through $D,E,K$, while $F$ may now lie inside or outside it. This export records only the coordinates of $F$. If the problem defines $F$ as a particular intersection, construct that intersection in Studio. To change the three defining points for a diagram you imported earlier, convert its Asymptote source again and open a new sheet.
 
 You can also stay in the converter and edit the **TikZ code** field directly. **Copy TikZ** there copies your edited text. Paste it in the document body and compile to see the changes. **Conversion preview** and **Open in new sheet** use the drawing from the Asymptote source. The SVG, PDF and wrapped-TikZ options provide code to copy.
 
