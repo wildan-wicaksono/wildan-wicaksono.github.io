@@ -9,7 +9,7 @@ comments: true
 
 <p><a class="btn btn--primary" href="../index.html?lang=en">Open Studio TikZ</a> <a class="btn" href="#contoh-studio-tikz">Examples and LaTeX code</a> <a class="btn" href="../index.html" download="Studio-TikZ.html">Download the offline editor</a></p>
 
-By **Wildan Bagus Wicaksono** · [Homepage](https://wildan-wicaksono.github.io/)
+Studio TikZ was developed by **Wildan Bagus Wicaksono** with assistance from AI. [Homepage](https://wildan-wicaksono.github.io/)
 
 When I prepare an olympiad handout, I usually move points around in GeoGebra until the diagram reads well, take the coordinates and type the TikZ by hand. GeoGebra provides its own TikZ export. I kept rewriting it because I have my own conventions for naming points, placing labels, colouring circles and marking angles.
 
