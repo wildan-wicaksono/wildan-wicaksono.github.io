@@ -22,7 +22,7 @@ Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot 
 1. Pilih **Lembar → Kanvas baru**, lalu **Poligon** pada bilah alat atau di menu **Bidang**. Klik $A$ di kiri bawah, $B$ di kanan bawah, dan $C$ di atas. Klik kembali $A$ atau tekan **Enter** untuk menutup segitiga.
 2. Pilih **Titik → Titik dari rumus vektor**, ketik `D = (A + 2B)/3`, lalu klik **Buat titik**. $D$ muncul dua pertiga perjalanan dari $A$ ke $B$.
 3. Klik **Ruas**, lalu klik $C$ dan $D$. Pada **Pola garis**, pilih **Putus-putus** agar $CD$ mudah dibedakan dari sisi segitiga.
-4. Pilih **Sudut → Sudut**. Klik $A$, $C$, lalu $B$ untuk menandai $\angle ACB$. Pada **Label sudut**, pilih **Besar sudut otomatis (°)** untuk menampilkan ukurannya. Kamu juga bisa memasukkan label LaTeX sendiri.
+4. Klik **Sudut** di samping **Label** pada bilah alat atas. Klik $A$, $C$, lalu $B$ untuk menandai $\angle ACB$. Pada **Label sudut**, pilih **Besar sudut otomatis (°)** untuk menampilkan ukurannya. Kamu juga bisa memasukkan label LaTeX sendiri.
 5. Aktifkan **Pilih / geser** dan pindahkan bulatan $B$. $D$ tetap membagi $AB$ dengan perbandingan $2:1$, sedangkan besar $\angle ACB$ berubah. Untuk merapikan posisi huruf $B$, seret hurufnya.
 
 Seret $A$, $B$, atau $C$ pada [diagram pembagian ruas interaktif](./contoh-vektor.html). Untuk menyunting konstruksinya di Studio, unduh proyek contoh, lalu pilih **Buka file**. <a href="./contoh-segitiga.stikz.json" download="contoh-segitiga.stikz.json">Contoh segitiga dengan $AD:DB=2:1$</a>.
@@ -206,7 +206,7 @@ Klik kanvas sebelum memakai pintasan. Di Mac, gunakan **⌘** untuk kombinasi **
 
 ## Katalog animasi
 
-Di bilah alat atas, **Label** menambahkan teks atau rumus bebas dan **Poligon** memulai segitiga atau bangun bersisi lebih banyak. Menu **Titik**, **Garis**, **Bidang**, **Sudut**, dan **Transformasi** menampilkan alat dalam daftar vertikal. Menu **Lingkaran** dan **Segitiga** mengelompokkan alat menurut jenis konstruksinya. Klik nama alat berikut untuk membuka panduannya di Studio. Saat memakai HTML luring, pilih alat di kanvas, klik **?** di sebelah namanya, atau cari judul yang sama melalui **Panduan alat**.
+Di bilah alat atas, **Sudut** menandai sudut dan **Label** di sebelahnya menambahkan teks atau rumus bebas. Gunakan **Poligon** untuk membuat segitiga atau bangun bersisi lebih banyak. Menu **Titik**, **Garis**, **Bidang**, dan **Transformasi** menampilkan alat dalam daftar vertikal. Menu **Lingkaran** dan **Segitiga** mengelompokkan alat menurut jenis konstruksinya. Klik nama alat berikut untuk membuka panduannya di Studio. Saat memakai HTML luring, pilih alat di kanvas, klik **?** di sebelah namanya, atau cari judul yang sama melalui **Panduan alat**.
 
 ### Titik
 
@@ -271,12 +271,6 @@ Di bilah alat atas, **Label** menambahkan teks atau rumus bebas dan **Poligon** 
 | [Poligon](./index.html#panduan/polygon) | Klik tiga titik sudut untuk segitiga, atau tambahkan titik sudut berikutnya untuk bangun lain. Klik titik pertama atau tekan **Enter** untuk menutupnya. |
 | [Poligon beraturan](./index.html#panduan/regularPolygon) | Melengkapi poligon beraturan dari satu sisi dan jumlah sudut. |
 
-### Sudut
-
-| Animasi alat | Yang dicontohkan |
-| --- | --- |
-| [Sudut](./index.html#panduan/angle) | Klik tiga titik dengan titik sudut sebagai pilihan kedua. Pada $90^\circ$, penandanya otomatis menjadi siku-siku. |
-
 ### Transformasi
 
 | Animasi alat | Yang dicontohkan |
@@ -298,6 +292,7 @@ Di bilah alat atas, **Label** menambahkan teks atau rumus bebas dan **Poligon** 
 | --- | --- |
 | [Pilih / geser](./index.html#panduan/move) | Memilih objek, menyeret titik, atau merapikan letak label. |
 | [Label](./index.html#panduan/label) | Meletakkan teks atau rumus LaTeX di posisi pilihan. |
+| [Sudut](./index.html#panduan/angle) | Klik tiga titik dengan titik sudut sebagai pilihan kedua. Pada $90^\circ$, penandanya otomatis menjadi siku-siku. |
 
 ### 20 animasi editor dan ekspor
 

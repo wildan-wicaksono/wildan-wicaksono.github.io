@@ -14,7 +14,7 @@ comments: false
 1. Open a new sheet. Choose **Polygon** on the toolbar or in the **Regions** menu. Click three non-collinear positions for $A$, $B$ and $C$, then click $A$ again or press **Enter** to close the triangle.
 2. In the **Points** menu, select the vector formula tool, enter `D = (A + 2B)/3` and create the point. Now $D$ sits on $AB$ with $AD:DB=2:1$.
 3. Draw a segment by clicking $C$ and $D$. Select a dashed line style for $CD$. To add another segment, click its two endpoints while the tool is active.
-4. Select **Angle** and click $A,C,B$ in that order to mark the angle at $C$. Choose an automatic angle label to show $\angle ACB$ in degrees. A custom label accepts LaTeX.
+4. Select **Angle** beside **Label** on the top toolbar and click $A,C,B$ in that order to mark the angle at $C$. Choose an automatic angle label to show $\angle ACB$ in degrees. A custom label accepts LaTeX.
 5. Switch to the move tool and drag $B$, then drag its letter to give it room. $D$ follows the segment, and the displayed angle updates. You can also [drag points in the interactive example](../contoh-vektor.html?lang=en).
 
 ## Geometry that follows its inputs
@@ -137,7 +137,7 @@ Use **⌘** in place of **Ctrl** on a Mac. Deleting an object also removes const
 
 ## Tool catalogue
 
-The top toolbar includes **Label** for a free annotation and **Polygon** for a triangle or a many-sided shape. The **Points**, **Lines**, **Regions**, **Angles** and **Transformations** menus list their tools vertically. The **Circle** and **Triangle** menus group related constructions. Choose a topic below to open its animation.
+On the top toolbar, choose **Angle** to mark an angle or **Label** beside it to add a free annotation. Choose **Polygon** for a triangle or a many-sided shape. The **Points**, **Lines**, **Regions** and **Transformations** menus list their tools vertically. The **Circle** and **Triangle** menus group related constructions. Choose a topic below to open its animation.
 
 | Points | What to try |
 | --- | --- |
@@ -171,13 +171,10 @@ The top toolbar includes **Label** for a free annotation and **Polygon** for a t
 | [Polygon](../index.html?lang=en#panduan/polygon) | Click three vertices for a triangle, or continue placing vertices for a larger polygon. Click the first vertex or press **Enter** to close the shape. |
 | [Regular polygon](../index.html?lang=en#panduan/regularPolygon) | Choose the number of vertices and one side to create a regular polygon. |
 
-| Angles | What to try |
-| --- | --- |
-| [Angle](../index.html?lang=en#panduan/angle) | Click three points, with the vertex second. At $90^\circ$ the mark becomes a square. |
-
 | Top toolbar | What to try |
 | --- | --- |
 | [Label](../index.html?lang=en#panduan/label) | Place a text or LaTeX annotation. |
+| [Angle](../index.html?lang=en#panduan/angle) | Click three points, with the vertex second. At $90^\circ$ the mark becomes a square. |
 
 | Transformations | What to try |
 | --- | --- |

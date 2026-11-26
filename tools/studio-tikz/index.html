@@ -642,6 +642,7 @@ Derived file: studio-math-labels.woff
         <button type="button" data-tool="point"><svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="10" cy="10" r="2.8" fill="currentColor"/></svg>Titik</button>
         <button type="button" data-tool="segment"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="m3 15 14-11"/><circle cx="3" cy="15" r="1.6" fill="currentColor"/><circle cx="17" cy="4" r="1.6" fill="currentColor"/></svg>Ruas</button>
         <button type="button" data-tool="polygon"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M3 8 10 2.5 17.5 6 15.5 16.5 4.5 15Z"/></svg>Poligon</button>
+        <button type="button" data-tool="angle"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M13 3 3 16h14M7.3 10.4a7 7 0 0 1 2.7 5.6"/></svg>Sudut</button>
         <button type="button" data-tool="label"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M3 6V4h14v2M10 4v12m-3 0h6"/></svg>Label</button>
         <button type="button" data-tool="circle2"><svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.2"/><circle cx="10" cy="10" r="1" fill="currentColor"/></svg>Lingkaran</button>
       </div>
@@ -737,7 +738,7 @@ Derived file: studio-math-labels.woff
     <ol><li>Pilih <b>Poligon</b>, klik A, B, dan C, lalu klik A lagi atau tekan Enter untuk menutup segitiga. Untuk mewarnai bagian dalam, pilih segitiganya lalu atur warna isi.</li>
     <li>Buka <b>Lingkaran</b> dan pilih <b>Lingkaran lewat 3 titik</b>. Klik A, B, dan C.</li>
     <li>Buka <b>Garis → Garis sejajar</b>. Klik sisi AB, gerakkan kursor, lalu klik lagi untuk menentukan letak garis.</li>
-    <li>Untuk menandai ∠ABC, pilih <b>Sudut → Sudut</b> lalu klik A, B, dan C. Pilih <b>Besar sudut otomatis (°)</b> atau <b>LaTeX kustom</b> di bawah kanvas.</li></ol>
+    <li>Untuk menandai ∠ABC, pilih <b>Sudut</b> di bilah alat, lalu klik A, B, dan C. Pilih <b>Besar sudut otomatis (°)</b> atau <b>LaTeX kustom</b> di bawah kanvas.</li></ol>
     <p>Gunakan <b>Pilih / geser</b> untuk menggerakkan titik atau label. Pilih <b>Simpan proyek</b> agar gambar bisa diedit lagi melalui <b>Buka file</b>.</p>
   </details>
   <div class="after"><span id="save-state" role="status"></span><button type="button" class="text-action" id="sample-download" hidden>Unduh contoh .ggb</button></div>
@@ -3450,8 +3451,7 @@ Lingkaran lewat 3 titik|Circle through 3 points
 Garis → Garis sejajar|Lines → Parallel line
 . Klik sisi AB, gerakkan kursor, lalu klik lagi untuk menentukan letak garis.|. Click side AB, move the pointer, and click again to fix the line.
 Untuk menandai ∠ABC, pilih|To mark ∠ABC, choose
-Sudut → Sudut|Angles → Angle
-lalu klik A, B, dan C. Pilih|and click A, B, and C. Choose
+di bilah alat, lalu klik A, B, dan C. Pilih|on the toolbar, then click A, B, and C. Choose
 atau|or
 di bawah kanvas.|under the canvas.
 Gunakan|Use
@@ -3524,7 +3524,6 @@ Transformasi|Transformations
 Inversi|Inversion
 Kelompok Titik|Point tools
 Kelompok Lingkaran|Circle tools
-Kelompok Sudut|Angle tools
 Kelompok Segitiga|Triangle tools
 Editor dan ekspor|Editor and export
 Cara menggunakan|How to use it
@@ -4162,7 +4161,7 @@ ray|Ray|Draw a ray with a given starting point and direction.|Click its starting
 parallel|Parallel line|Construct a parallel through a chosen position.|Click a reference line, segment, or ray such as BC.|Move the preview. Click an existing point P or an empty position to fix the line.|The resulting line passes through P and stays parallel to BC.
 normal|Perpendicular line|Construct a perpendicular through a chosen position.|Click a reference line, segment, or ray such as BC.|Move the preview and click the required position or point P.|The new line passes through P and meets BC at 90°.
 antiTriangle|Antiparallel line|Draw an antiparallel to one side of a triangle with respect to the opposite angle.|Click side BC of triangle ABC. If BC belongs to several triangles, choose ∠BAC from Reference angle or click A.|Move the line to AB and click D. Intersect it with AC to mark E. Without a detected triangle, select the reference side, then the angle mark or its two arms, and finally the position.|For distinct B, C, E, and D the four points are concyclic.
-angle|Angle|Mark an angle from three points. The mark becomes a square when the arms are perpendicular.|Select Angle. For ∠ABC click A, then vertex B, then C.|Under Angle label, choose Automatic measure (°) or Custom LaTeX. Use Select / move to drag the label into position.|In the interactive example, drag A sideways to change the angle. Choose Reset to return to exactly 90°. Use Perpendicular line to construct arms that always meet at a right angle.|At 90° a right-angle mark appears. When the angle moves away from 90°, the arc returns. An automatic label follows the measure, while a custom formula stays with the marker.
+angle|Angle|Mark an angle from three points. The mark becomes a square when the arms are perpendicular.|Select Angle next to Label on the toolbar. For ∠ABC click A, then vertex B, then C.|Under Angle label, choose Automatic measure (°) or Custom LaTeX. Use Select / move to drag the label into position.|In the interactive example, drag A sideways to change the angle. Choose Reset to return to exactly 90°. Use Perpendicular line to construct arms that always meet at a right angle.|At 90° a right-angle mark appears. When the angle moves away from 90°, the arc returns. An automatic label follows the measure, while a custom formula stays with the marker.
 label|Label|Add a separate text annotation or a mathematical expression.|Enter its content. Choose Text for prose or Mathematics for LaTeX, such as a fraction.|Click its position on the canvas. Drag it using Select / move to reposition it.|The label appears at the chosen position and is included in the TikZ export.
 circle2|Circle|Construct a circle from a center and a point on its circumference.|Click the center O, then a point A on the circumference.|The radius equals OA. Drag A to change the radius.
 circle3|Circle through 3 points|Draw the circle passing through three points.|Click two distinct points A and B. Move the pointer to preview the circle and click a third point C off line AB.|To mark its center separately choose Circle center and click its circumference.|The circle follows all three points. It disappears while the points are collinear.
@@ -7715,7 +7714,6 @@ const toolFamilies = [
     {heading:"Lingkaran singgung segitiga", tools:["incircle","excircle"]}
   ]},
   {key:"region", name:"Bidang", sections:[{tools:["polygon","regularPolygon","sector"]}]},
-  {key:"angle", name:"Sudut", nameEn:"Angles", sections:[{tools:["angle"]}]},
   {key:"transform", name:"Transformasi", sections:[{tools:["translate","rotate","reflect","dilate","invert"]}]}
 ];
 const familyOfTool=new Map();
@@ -7778,7 +7776,7 @@ function bindWorkbenchNav() {
     opener.type="button"; opener.id="family-"+family.key; opener.dataset.family=family.key;
     opener.textContent=family.name;
     if(family.nameEn)opener.dataset.familyNameEn=family.nameEn;
-    if(["point","circle","triangle","angle"].includes(family.key))opener.setAttribute("aria-label","Kelompok "+family.name);
+    if(["point","circle","triangle"].includes(family.key))opener.setAttribute("aria-label","Kelompok "+family.name);
     opener.setAttribute("aria-controls","tool-panel"); opener.setAttribute("aria-expanded","false");
     bar.append(opener);
     const group=document.createElement("section");group.dataset.family=family.key;group.hidden=true;
@@ -8001,7 +7999,7 @@ const basicGuideEntries={
   },
   angle:{
     purpose:"Menandai sudut dari tiga titik. Penanda berubah menjadi kotak ketika kedua kaki saling tegak lurus.",
-    steps:["Pilih Sudut. Untuk ∠ABC, klik A, lalu B sebagai titik sudut, lalu C.","Di Label sudut, pilih Besar sudut otomatis (°) atau LaTeX kustom. Seret tulisannya dengan Pilih / geser untuk mengatur posisi label.","Pada contoh interaktif, seret A ke samping agar sudut berubah. Pilih Atur ulang untuk kembali tepat ke 90°. Untuk membuat sudut yang selalu 90°, gunakan Garis tegak lurus saat membangun kaki sudutnya."],
+    steps:["Pilih Sudut di bilah alat, di sebelah Label. Untuk ∠ABC, klik A, lalu B sebagai titik sudut, lalu C.","Di Label sudut, pilih Besar sudut otomatis (°) atau LaTeX kustom. Seret tulisannya dengan Pilih / geser untuk mengatur posisi label.","Pada contoh interaktif, seret A ke samping agar sudut berubah. Pilih Atur ulang untuk kembali tepat ke 90°. Untuk membuat sudut yang selalu 90°, gunakan Garis tegak lurus saat membangun kaki sudutnya."],
     result:"Penanda mengikuti besar sudut. Tepat pada 90° muncul tanda siku-siku. Ketika sudut berubah lagi, busur kembali. Nilai otomatis mengikuti besar sudut, sedangkan rumus kustom tetap mengikuti penandanya.",
     terms:"sudut busur sudut tanda siku-siku 90 derajat ukur kotak penanda label LaTeX angle arc right-angle mark right angle perpendicular"
   },
@@ -10293,7 +10291,7 @@ function guideCatalog(){
   }
   // The unified inversion tool has separate worked examples for curves and powers.
   for(const id of ["reflectLine","reflectPoint","invertLine","invertCircle","invertFormula"])add(id,"transform","Transformasi");
-  add("label","quick","Alat utama");
+  for(const id of ["angle","label"])add(id,"quick","Alat utama");
   add("move","editor","Editor dan ekspor");
   for(const [id,article] of Object.entries(otherGuideEntries)){
     if(article.group==="editor")add(id,"editor","Editor dan ekspor");
