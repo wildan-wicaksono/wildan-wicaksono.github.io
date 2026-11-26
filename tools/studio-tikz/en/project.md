@@ -22,7 +22,7 @@ With **Point**, click a blank spot to create a free point, or click segment $AB$
 
 To place a point at exactly $(2,0)$, I check **Show grid**, which also turns on **Snap to grid**. At 100% zoom, **Grid spacing** reads $1$ unit. I choose **Point**, move the pointer over blank space, and click when the marker reads $(2,0)$. With **Polygon**, I can place the first vertex there too, then click in the middle of a square for an off-grid second vertex. Snapping takes effect only near a grid intersection. To move a point, choose **Select / move** and drag the dot. Dragging the letter moves its label. [Grid and coordinates](guide.html#grid-and-coordinates).
 
-Use **+** above the canvas to add a sheet, or choose several files with **Open file**. Each drawing has its own tab. In the **Sheet** menu, choose **Example sheets** to explore a construction or **Wildan’s worked examples** for olympiad diagrams. To return from an example, click the personal tab you want, or choose **My sheets → My drawing** for the last personal tab you used.
+Choose **+ Add sheet** for a blank tab with the lowest available sheet number, or select several files with **Open file**. Each drawing has its own tab. In the **Sheet** menu, choose **Example sheets** to explore a construction or **Wildan’s worked examples** for olympiad diagrams. To return from an example, click the personal tab you want, or choose **My sheets → My drawing** for the last personal tab you used.
 
 Choose the side-by-side layout to inspect the code while drawing, or stack the panels for a wider canvas. The browser remembers the layout and your Indonesian or English language preference. Focus the canvas before pressing **+** or **−** to zoom. The canvas zoom percentage and the printed TikZ scale can be adjusted independently.
 
@@ -88,7 +88,7 @@ For a diagram using a custom module or a 3D projection, open **Convert an SVG re
 
 ### Limitations
 
-- **Autosave keeps sheets in the current browser.** **Save sheet** downloads the displayed drawing as one `.stikz.json` file. **Delete sheet** asks for confirmation before removing the selected sheet from browser storage. Use **Open file** to reopen a downloaded copy in a new tab alongside your other drawings.
+- **Autosave keeps sheets in the current browser.** **Save sheet** downloads the displayed drawing as one `.stikz.json` file. **Delete sheet** asks for confirmation before removing the selected tab. When one sheet remains, use **Clear drawing** to start over in that tab. Use **Open file** to reopen a downloaded copy in a new tab alongside your other drawings.
 - **The drawing tools focus on olympiad geometry.** Studio has no general tool for plotting functions or drawing conics from their equations. To plot a parabola such as $y=x^2$, I still use GeoGebra.
 - **GeoGebra import covers some 2D objects.** Studio may read a point’s stored coordinates from a `.ggb` file even when its construction dependencies do not carry over. Saving a Studio drawing as `.stikz.json` preserves its construction.
 - **Asymptote import recovers only some construction relationships.** A drawing can look exactly like the original and still behave differently when you drag a point. For example, a GeoGebra export may record only the center and radius of a circle through $D,E,F,K$. If you select $D,E,K$ as its defining points, the circle will follow those three. The original coordinates alone cannot tell Studio how $F$ should move to stay on the circle. [See the point selection example](guide.html#convert-aops-diagrams).

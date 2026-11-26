@@ -9,7 +9,7 @@ comments: false
 
 Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modul LaTeX. Kamu bisa mengambil gambar lengkap atau memakai koordinatnya saja jika sudah punya gaya TikZ sendiri. [Buka editor](./index.html) · [Pilih animasi dari katalog](#katalog-animasi).
 
-Di atas kanvas, klik **+** untuk membuat lembar pribadi baru. Setiap gambar memiliki tab sendiri. Klik tab untuk berpindah gambar. **Ganti nama lembar** memudahkanmu membedakan dua lembar yang terbuka. Di menu **Lembar**, **Contoh Studio** memuat contoh konstruksi dan **Contoh penggunaan Wildan** memuat tiga diagram soal. Dari contoh mana pun, klik tab yang kamu inginkan atau pilih **Lembar saya → Gambar saya** untuk kembali ke lembar pribadi terakhir.
+Di atas kanvas, klik **+ Tambah lembar** untuk membuka tab kosong. Studio memakai nomor terkecil yang tersedia. Misalnya, jika **Lembar 1** dan **Lembar 3** masih terbuka, tab berikutnya bernama **Lembar 2**. Setiap gambar memiliki tab sendiri. Klik tab untuk berpindah gambar. **Ganti nama lembar** memudahkanmu membedakan dua lembar yang terbuka. Di menu **Lembar**, **Contoh Studio** memuat contoh konstruksi dan **Contoh penggunaan Wildan** memuat tiga diagram soal. Dari contoh mana pun, klik tab yang kamu inginkan atau pilih **Lembar saya → Gambar saya** untuk kembali ke lembar pribadi terakhir.
 
 Di sebelah **Lembar**, pilih **Tata letak → Berdampingan** untuk melihat kanvas di kiri dan kode di kanan, atau **Bertumpuk** untuk menempatkan kode di bawah kanvas. **Otomatis** mengikuti lebar layar. Pilihan tersimpan di browser dan berlaku saat kamu membuka gambar lain.
 
@@ -31,7 +31,7 @@ Titik yang terikat pada garis atau lingkaran mengikuti objeknya saat diseret. Ti
 
 Kita akan menggambar segitiga $ABC$ dan titik $D$ pada $AB$ sehingga $AD=2\cdot DB$, lalu menghubungkan $C$ ke $D$.
 
-1. Pilih **Lembar → Lembar saya → Kanvas baru**, lalu **Poligon** pada bilah alat atau di menu **Bidang**. Klik $A$ di kiri bawah, $B$ di kanan bawah, dan $C$ di atas. Klik kembali $A$ atau tekan **Enter** untuk menutup segitiga.
+1. Klik **+ Tambah lembar**, lalu pilih **Poligon** pada bilah alat atau di menu **Bidang**. Klik $A$ di kiri bawah, $B$ di kanan bawah, dan $C$ di atas. Klik kembali $A$ atau tekan **Enter** untuk menutup segitiga.
 2. Pilih **Titik → Titik dari rumus vektor**, ketik `D = (A + 2B)/3`, lalu klik **Buat titik**. $D$ muncul dua pertiga perjalanan dari $A$ ke $B$.
 3. Klik **Ruas**, lalu klik $C$ dan $D$. Pada **Pola garis**, pilih **Putus-putus** agar $CD$ mudah dibedakan dari sisi segitiga.
 4. Klik **Sudut** di samping **Label** pada bilah alat atas. Klik $A$, $C$, lalu $B$ untuk menandai $\angle ACB$. Pada **Label sudut**, pilih **Besar sudut otomatis (°)** untuk menampilkan ukurannya. Kamu juga bisa memasukkan label LaTeX sendiri.
@@ -157,7 +157,7 @@ Jika penyimpanan browser tersedia, Studio otomatis mengingat semua lembar pribad
 
 Untuk menggambar dari awal di tab yang sama, pilih tab pribadi lalu klik **Kosongkan gambar**. Nama tab tetap tersimpan. Gunakan **Urungkan** untuk mengembalikan gambar selama sesi masih terbuka.
 
-Untuk membuang gambar dari daftar tab dan penyimpanan browser, pilih tabnya, klik **Hapus lembar**, periksa namanya, lalu konfirmasi. Untuk menyimpan salinan, klik **Simpan lembar** sebelum menghapusnya. Penghapusan berlaku hanya pada lembar terpilih. Salinan yang sudah diunduh tetap bisa dibuka lagi. Jika tab terakhir dihapus, Studio membuka lembar kosong.
+Untuk membuang gambar dari daftar tab dan penyimpanan browser, pilih tabnya, klik **Hapus lembar**, periksa namanya, lalu konfirmasi. Untuk menyimpan salinan, klik **Simpan lembar** sebelum menghapusnya. Salinan yang sudah diunduh tetap bisa dibuka lagi. Saat tinggal satu lembar pribadi, tombol **Hapus lembar** nonaktif. Untuk mengosongkan lembar itu, pilih **Kosongkan gambar**.
 
 Untuk bekerja tanpa internet, <a href="./index.html" download="Studio-TikZ.html">unduh Studio-TikZ.html</a> dan buka melalui browser. Jika sedang membaca panduan di GitHub, buka berkas editor lalu gunakan **Download raw file**. Untuk memperbarui salinan luring, unduh HTML terbaru dan buka kembali proyek `.stikz.json`. Pada versi daring, muat ulang halaman setelah pembaruan diterbitkan. [Berkas editor](./index.html).
 

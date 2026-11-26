@@ -11,7 +11,7 @@ comments: false
 
 ## Draw a first diagram
 
-1. Choose **Sheet → My sheets → New canvas**. Choose **Polygon** on the toolbar or in the **Regions** menu. Click three non-collinear positions for $A$, $B$ and $C$, then click $A$ again or press **Enter** to close the triangle.
+1. Choose **+ Add sheet**. Choose **Polygon** on the toolbar or in the **Regions** menu. Click three non-collinear positions for $A$, $B$ and $C$, then click $A$ again or press **Enter** to close the triangle.
 2. In the **Points** menu, select the vector formula tool, enter `D = (A + 2B)/3` and create the point. Now $D$ sits on $AB$ with $AD:DB=2:1$.
 3. Draw a segment by clicking $C$ and $D$. Select a dashed line style for $CD$. To add another segment, click its two endpoints while the tool is active.
 4. Select **Angle** beside **Label** on the top toolbar and click $A,C,B$ in that order to mark the angle at $C$. Choose an automatic angle label to show $\angle ACB$ in degrees. A custom label accepts LaTeX.
@@ -107,7 +107,7 @@ Set the TikZ scale to $2$ to double printed segment lengths. The generated point
 
 ## Save sheets and use them offline
 
-Use **+** above the canvas to create a personal sheet. Each drawing has its own tab. Click a tab to switch drawings, or use **Rename sheet** to give it a descriptive name. Choose **Open file** and select one or more files to open each in a new tab alongside your existing sheets.
+Choose **+ Add sheet** above the canvas to open a blank tab. Studio uses the lowest available sheet number. For example, if **Sheet 1** and **Sheet 3** are open, the next tab is **Sheet 2**. Each drawing has its own tab. Click a tab to switch drawings, or use **Rename sheet** to give it a descriptive name. Choose **Open file** and select one or more files to open each in a new tab alongside your existing sheets.
 
 In the **Sheet** menu, **Example sheets** contains construction demos, and **Wildan’s worked examples** contains three olympiad diagrams. From any example, click the personal tab you want, or choose **My sheets → My drawing** to return to the last personal tab you used. Each tab keeps its canvas view and undo/redo history during the session. When you reopen the editor, browser storage restores all open personal sheets and the last active personal tab if available. Undo/redo history starts afresh after a reload.
 
@@ -115,7 +115,7 @@ In the **Sheet** menu, **Example sheets** contains construction demos, and **Wil
 
 To start over in the same tab, select your personal sheet and choose **Clear drawing**. The tab keeps its name. Use **Undo** to restore the drawing during the same session.
 
-To remove a drawing from the tabs and browser storage, select its tab, choose **Delete sheet**, check the name and confirm. Use **Save sheet** first to keep a copy for later. Deletion applies only to the selected sheet. You can reopen any copy you already downloaded. Deleting the last sheet opens a fresh blank one.
+To remove a drawing from the tabs and browser storage, select its tab, choose **Delete sheet**, check the name and confirm. Use **Save sheet** first to keep a copy for later. You can reopen any copy you already downloaded. When only one personal sheet remains, **Delete sheet** is disabled. Use **Clear drawing** if you want to empty that sheet.
 
 Download the editor HTML for offline use. To update it, download a fresh copy and reopen your saved sheet.
 

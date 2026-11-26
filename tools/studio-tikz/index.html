@@ -670,7 +670,7 @@ Derived file: studio-math-labels.woff
   </div>
   <div class="intro"><p>Letakkan titik di kanvas, buat konstruksinya, lalu salin TikZ ke modulmu.</p>
     <div class="workspace-choices">
-      <div class="select-field"><label class="slabel" for="examples">Lembar</label><select id="examples"><optgroup label="Lembar saya"><option value="current">Gambar saya</option><option value="blank">Kanvas baru</option></optgroup><optgroup label="Contoh Studio"><option value="triangle">Contoh segitiga</option><option value="reim">Contoh Reim</option><option value="tangencyDemo">Contoh lingkaran singgung</option><option value="antiparallelDemo">Contoh antiparalel siklis</option><option value="transformasi-bangun">Contoh transformasi bangun</option><option value="inversionProductDemo">Contoh inversi hasil kali</option></optgroup><optgroup label="Contoh penggunaan Wildan"><option value="01-refleksi">Refleksi dan segiempat siklis</option><option value="02-garis-berat">Tiga lingkaran pada garis berat</option><option value="03-garis-singgung">Garis singgung dan dua garis berat</option></optgroup></select></div>
+      <div class="select-field"><label class="slabel" for="examples">Lembar</label><select id="examples"><optgroup label="Lembar saya"><option value="current">Gambar saya</option></optgroup><optgroup label="Contoh Studio"><option value="triangle">Contoh segitiga</option><option value="reim">Contoh Reim</option><option value="tangencyDemo">Contoh lingkaran singgung</option><option value="antiparallelDemo">Contoh antiparalel siklis</option><option value="transformasi-bangun">Contoh transformasi bangun</option><option value="inversionProductDemo">Contoh inversi hasil kali</option></optgroup><optgroup label="Contoh penggunaan Wildan"><option value="01-refleksi">Refleksi dan segiempat siklis</option><option value="02-garis-berat">Tiga lingkaran pada garis berat</option><option value="03-garis-singgung">Garis singgung dan dua garis berat</option></optgroup></select></div>
       <div class="select-field"><label class="slabel" for="workspace-layout">Tata letak</label>
         <select id="workspace-layout" aria-controls="workspace">
           <option value="auto">Otomatis</option>
@@ -687,7 +687,7 @@ Derived file: studio-math-labels.woff
       <button type="button" id="personal-sheet-add"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>Tambah lembar</button>
       <button type="button" id="personal-sheet-rename" class="sheet-icon" title="Ganti nama lembar" aria-label="Ganti nama lembar" aria-controls="personal-sheet-rename-form" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m3 10-1 4 4-1 8-8-3-3zM9.7 3.3l3 3"/></svg></button>
       <button type="button" id="personal-sheet-clear" disabled>Kosongkan gambar</button>
-      <button type="button" id="personal-sheet-close" title="Hapus lembar aktif dari browser ini"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M2.5 4.5h11M6 4.5V2.8h4v1.7M4.2 4.5l.6 8.7h6.4l.6-8.7M6.8 6.7v4.4m2.4-4.4v4.4"/></svg>Hapus lembar</button>
+      <button type="button" id="personal-sheet-close" disabled title="Hapus lembar aktif dari browser ini"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M2.5 4.5h11M6 4.5V2.8h4v1.7M4.2 4.5l.6 8.7h6.4l.6-8.7M6.8 6.7v4.4m2.4-4.4v4.4"/></svg>Hapus lembar</button>
     </div>
     <form class="sheet-rename-form" id="personal-sheet-rename-form" hidden>
       <label for="personal-sheet-name">Nama lembar</label>
@@ -3363,7 +3363,6 @@ const studioFigureEnglish = {
   "Periksa titik A dan B pada hasil impor.": "Check the imported points A and B.",
   "Pilih ruas AB di kanvas untuk menyesuaikan tampilannya.": "Select segment AB on the canvas to change its appearance.",
   "Tambah lembar membuka tab pribadi dengan kanvas kosong. Contoh segitiga berisi tiga titik dan lingkaran luarnya. Klik tab pribadi untuk kembali ke gambarmu.": "Add sheet opens a personal tab with a blank canvas. The triangle example contains three vertices and their circumcircle. Select your personal tab to return to your drawing.",
-  "Kanvas baru": "New canvas",
   "Contoh segitiga": "Triangle example",
   "Klik Tambah lembar untuk membuka kanvas kosong di tab baru.": "Choose Add sheet to open a blank canvas in a new tab.",
   "Lembar": "Sheet",
@@ -3497,17 +3496,17 @@ Hapus lembar|Delete sheet
 Kosongkan gambar|Clear drawing
 Gambar dikosongkan. Gunakan Urungkan untuk mengembalikannya.|Drawing cleared. Use Undo to restore it.
 Hapus lembar aktif dari browser ini|Delete the active sheet from this browser
+Pilih lembar pribadi untuk menghapusnya.|Select a personal sheet to delete it.
+Lembar terakhir harus tetap ada. Gunakan Kosongkan gambar untuk mengosongkannya.|Keep at least one personal sheet open. Use Clear drawing to empty it.
 Nama lembar|Sheet name
 Simpan nama|Save name
 Masukkan nama lembar.|Enter a sheet name.
 Gunakan nama hingga 130 karakter tanpa karakter kontrol.|Use up to 130 characters without control characters.
 Hapus lembar “{nama}” beserta isinya dari browser ini?|Delete the sheet “{nama}” and its contents from this browser?
 Untuk menyimpan salinan .stikz.json terlebih dahulu, pilih Batal lalu Simpan lembar.|To keep a .stikz.json copy first, choose Cancel, then Save sheet.
-Studio akan membuka lembar kosong.|Studio will open a blank sheet.
 Lembar telah dihapus dari sesi ini. Penyimpanan browser gagal diperbarui sehingga lembar dapat muncul kembali saat Studio dibuka.|The sheet was removed from this session. Browser storage could not be updated, so it may reappear when you reopen Studio.
 Contoh Studio|Example sheets
 Gambar saya|My drawing
-Kanvas baru|New canvas
 Contoh segitiga|Triangle example
 Contoh Reim|Reim example
 Contoh lingkaran singgung|Tangent circles example
@@ -4456,7 +4455,7 @@ editor-view|Layout, zoom, and grid|Arrange the canvas and code, zoom in, or plac
 editor-theme|Theme and canvas background|Choose a comfortable drawing background.|Choose System, Light, or Dark in the top bar. Use Background under the canvas to choose the paper tone.|The browser remembers your choices. Exported TikZ uses the object inks you selected.
 editor-project|Save and reopen a sheet|Keep the construction and styling for later editing or transfer.|Choose Save sheet to download the displayed drawing as a .stikz.json file, including when an example is open.|Choose Open file and select the downloaded .stikz.json file. Each file opens in a new tab alongside any sheets you already have open.|The file preserves references, formulas and styling and can be moved to another browser or device.
 editor-import|Open a GeoGebra diagram|Use a two-dimensional .ggb construction as the starting point for TikZ.|Choose Open file or drop the .ggb file on the canvas. Check the imported objects and adjust their styles.|Points use stored coordinates. Recognized circles through points follow those points.
-editor-sheets|Manage drawing sheets and explore examples|Work on several drawings in one editor and try examples between them.|Select Add sheet for a blank canvas. Select a named tab above the canvas to switch drawings. With the keyboard, focus a tab and press Left or Right.|Choose Rename sheet, enter a title such as Triangle inversion, and press Enter. Use Save sheet to download the active drawing as a .stikz.json file.|From the Sheet menu, try Inversion by product example under Example sheets or a problem from Wildan’s worked examples. Select any personal tab to return to your drawing.|Choose Delete sheet to remove the selected sheet from browser storage. Check the sheet name in the confirmation. To keep a copy, choose Save sheet before deleting.|When browser storage is available, Studio automatically keeps the personal sheets still open. Previously downloaded .stikz.json files can be reopened in new tabs.
+editor-sheets|Manage drawing sheets and explore examples|Work on several drawings in one editor and try examples between them.|Choose Add sheet for a blank tab with the lowest available sheet number. Select a named tab above the canvas to switch drawings. With the keyboard, focus a tab and press Left or Right.|Choose Rename sheet, enter a title such as Triangle inversion, and press Enter. Use Save sheet to download the active drawing as a .stikz.json file.|From the Sheet menu, try Inversion by product example under Example sheets or a problem from Wildan’s worked examples. Select any personal tab to return to your drawing.|With several personal tabs open, choose Delete sheet and check the name before confirming. When only one sheet remains, this button is disabled. Use Clear drawing to start over in that tab.|When browser storage is available, Studio automatically keeps the personal sheets still open. Previously downloaded .stikz.json files can be reopened in new tabs.
 editor-export|Copy the diagram or coordinates|Use the finished diagram in LaTeX or an AoPS post.|Choose Full diagram or Coordinates only and copy the code. Copy the preamble and paste it before the document begins.|To post the TikZ diagram on AoPS, open AoPS format.|To use a diagram from AoPS, open Paste Asymptote. Paste the [asy] block or choose Projection and reflection, then select Convert to TikZ.|If Circles through three points appears after conversion, check the suggested points for each circle. Choose three points the circle should follow when dragged, or keep the source center and radius.|To move points in a supported drawing, choose Open in new sheet. With Select / move, drag point P in that example. Choose Copy TikZ in the sheet. The code follows the drawing. Your other sheets stay open.|The original Asymptote stays in the converter. To change a formula or loop in the source, edit the Asymptote and convert again.|To edit the TikZ in the converter, try changing a line width value to 1.2bp, then select Copy TikZ. Copy the preamble into your LaTeX document and add any packages your edits require. The preview shows the original conversion. Compile your document to see the new line width.|Choose Restore converted code to return to the original. If a new conversion is ready while your code contains edits, choose Keep edits or Replace with new result.|Full diagram includes geometry and style. Selecting an object highlights its TikZ code.
 editor-scale|TikZ print scale|Set the compiled size of the diagram.|Choose Full diagram. Enter a positive TikZ scale and check the dot radius shown beside it.|Studio adjusts the radius in the code to keep printed point markers at 1.5 pt.
 `.trim();
@@ -7948,8 +7947,8 @@ function drawProjectTabs(){
 function storeProjectTabs(){
   personalWorkspace.storageFailed=true;
   captureProjectTab();
-  const {tabs,activeId,nextId,nextTitle}=personalWorkspace;
-  const content=JSON.stringify({version:1,activeId,nextId,nextTitle,
+  const {tabs,activeId,nextId}=personalWorkspace;
+  const content=JSON.stringify({version:1,activeId,nextId,
     tabs:tabs.map(({id,doc,camera,defaultTitle,fitOnOpen})=>({id,doc,camera,defaultTitle,...(fitOnOpen?{fitOnOpen:true}:{})}))});
   // Use one atomic write. On a nearly full browser, upgrading the old slot
   // in place avoids needing twice the space just to migrate a large drawing.
@@ -7966,13 +7965,14 @@ function makePersonalTab(id,doc,defaultTitle=false,camera=defaultSheetCamera()){
 }
 function blankProjectTab(){
   const w=personalWorkspace;
-  let title;
-  do{title="Lembar "+w.nextTitle++;}while(w.tabs.some(t=>t.doc.title===title));
-  return makePersonalTab("sheet-"+w.nextId++,{...emptyDoc(),title},true);
+  const used=new Set(w.tabs.map(tab=>tab.doc.title));
+  let number=1;
+  while(used.has("Lembar "+number)||used.has("Sheet "+number))number++;
+  return makePersonalTab("sheet-"+w.nextId++,{...emptyDoc(),title:"Lembar "+number},true);
 }
 function initializeProjectTabs(){
   if(personalWorkspace||typeof guideExampleId!=="undefined"&&guideExampleId)return;
-  const w=personalWorkspace={activeId:null,tabs:[],nextId:1,nextTitle:1};
+  const w=personalWorkspace={activeId:null,tabs:[],nextId:1};
   let saved,legacy;
   try{saved=JSON.parse(localStorage.getItem(projectTabsKey)||"null");}catch{}
   if(!saved){try{legacy=JSON.parse(localStorage.getItem(storeKey)||"null");}catch{}}
@@ -7988,11 +7988,9 @@ function initializeProjectTabs(){
         w.tabs.push(tab);
         ids.add(t.id);
         w.nextId=Math.max(w.nextId,Number(t.id.slice(6))+1);
-        const title=/^Lembar ([1-9]\d{0,10})$/.exec(p.title);
-        if(t.defaultTitle&&title)w.nextTitle=Math.max(w.nextTitle,Number(title[1])+1);
       }catch{}
     }
-    for(const key of ["nextId","nextTitle"])if(Number.isSafeInteger(saved[key])&&saved[key]>0&&saved[key]<1e11)w[key]=Math.max(w[key],saved[key]);
+    if(Number.isSafeInteger(saved.nextId)&&saved.nextId>0&&saved.nextId<1e11)w.nextId=Math.max(w.nextId,saved.nextId);
     if(ids.has(saved.activeId))w.activeId=saved.activeId;
   }
   if(!w.tabs.length&&legacy?.doc){
@@ -8034,7 +8032,7 @@ function activateProjectTab(id){
   showPersonalTab(tab);
 }
 function closeProjectTab(id){
-  if(!personalWorkspace||sourceExample||id!==personalWorkspace.activeId)return false;
+  if(!personalWorkspace||personalWorkspace.tabs.length<2||sourceExample||id!==personalWorkspace.activeId)return false;
   const {tabs}=personalWorkspace,i=tabs.findIndex(t=>t.id===id);
   if(i<0)return false;
   const view=projectTabView().tabs[i];
@@ -8042,12 +8040,10 @@ function closeProjectTab(id){
   const shown=view.duplicateIndex>1?name+" ("+view.duplicateIndex+")":name;
   const question=studioTranslate("Hapus lembar “{nama}” beserta isinya dari browser ini?").replace("{nama}",()=>shown);
   const copy=studioTranslate("Untuk menyimpan salinan .stikz.json terlebih dahulu, pilih Batal lalu Simpan lembar.");
-  const last=tabs.length===1?"\n"+studioTranslate("Studio akan membuka lembar kosong."):"";
-  if(!window.confirm(question+"\n\n"+copy+last))return false;
+  if(!window.confirm(question+"\n\n"+copy))return false;
 
   finishSheetGesture();captureProjectTab();openToken++;
   tabs.splice(i,1);
-  if(!tabs.length)tabs.push(blankProjectTab());
   showPersonalTab(tabs[Math.min(i,tabs.length-1)]);
   if(personalWorkspace.storageFailed)$("save-state").textContent="Lembar telah dihapus dari sesi ini. Penyimpanan browser gagal diperbarui sehingga lembar dapat muncul kembali saat Studio dibuka.";
   return true;
@@ -8418,7 +8414,12 @@ function renderProjectTabs(view){
   if(view.preview||form.dataset.sheetId!==view.activeId){
     form.hidden=true;rename.setAttribute("aria-expanded","false");
   }
-  rename.disabled=document.getElementById("personal-sheet-close").disabled=view.preview||!active;
+  rename.disabled=view.preview||!active;
+  const close=document.getElementById("personal-sheet-close");
+  close.disabled=rename.disabled||view.tabs.length<2;
+  close.title=view.preview?"Pilih lembar pribadi untuk menghapusnya.":view.tabs.length<2
+    ?"Lembar terakhir harus tetap ada. Gunakan Kosongkan gambar untuk mengosongkannya."
+    :"Hapus lembar aktif dari browser ini";
   const workspace=document.getElementById("workspace");
   const restoreFocus=list.contains(document.activeElement);
   const scrollLeft=list.scrollLeft;
@@ -8977,10 +8978,10 @@ const otherGuideEntries={
     group:"editor",title:"Kelola lembar gambar dan coba contoh",
     purpose:"Mengerjakan beberapa gambar dalam satu editor dan mencoba contoh di sela-selanya.",
     steps:[
-      "Klik Tambah lembar untuk membuka kanvas kosong. Pilih tab bernama di atas kanvas untuk berpindah gambar. Dengan papan ketik, fokuskan sebuah tab lalu tekan panah kiri atau kanan.",
+      "Klik Tambah lembar untuk membuka tab kosong dengan nomor terkecil yang tersedia. Pilih tab bernama di atas kanvas untuk berpindah gambar. Dengan papan ketik, fokuskan sebuah tab lalu tekan panah kiri atau kanan.",
       "Pilih Ganti nama lembar, ketik nama seperti Inversi segitiga, lalu tekan Enter. Untuk menyimpan salinan gambar aktif sebagai file .stikz.json, klik Simpan lembar.",
       "Di menu Lembar, coba Contoh inversi hasil kali dari Contoh Studio atau pilih soal dari Contoh penggunaan Wildan. Klik salah satu tab pribadi untuk kembali ke gambarmu.",
-      "Pilih Hapus lembar untuk menghapus tab terpilih dari penyimpanan browser. Periksa nama pada konfirmasi. Jika kamu masih membutuhkan gambarnya, klik Simpan lembar sebelum menghapus."
+      "Jika ada beberapa tab pribadi, pilih Hapus lembar dan periksa namanya sebelum mengonfirmasi. Saat tinggal satu lembar, tombol ini nonaktif. Gunakan Kosongkan gambar untuk memulai ulang di tab itu."
     ],
     result:"Jika penyimpanan browser tersedia, lembar pribadi yang masih terbuka disimpan otomatis. File .stikz.json yang sudah diunduh tetap bisa dibuka kembali sebagai tab baru.",
     terms:"contoh demo lembar kosong baru tab daftar proyek banyak gambar simpan ganti nama tutup segitiga Reim"
@@ -9767,7 +9768,7 @@ const editorHelpScenes={
   sheets:{
     caption:"Tambah lembar membuka tab pribadi dengan kanvas kosong. Contoh segitiga berisi tiga titik dan lingkaran luarnya. Klik tab pribadi untuk kembali ke gambarmu.",
     draw(g){
-      g.head(83,"Kanvas baru");g.head(270,"Contoh segitiga");
+      g.head(83,"Tambah lembar");g.head(270,"Contoh segitiga");
       g.box(12,36,144,99);g.box(199,36,144,99);
       for(const sx of [12,199])g.grid(sx+8,45,8,5,16);
       const o=[270,86],r=39;
@@ -14950,7 +14951,6 @@ $("examples").onchange=async e=>{
   clearExampleLink();
   if(isUsageExample(value))openUsageExample(value);
   else if(value==="current")returnToWork();
-  else if(value==="blank"){if(personalWorkspace)openProjectTab();else newSheet(emptyDoc());}
   else if(value==="tangencyDemo"){
     openToken++;newSheet(tangencyExample(),value);selectTool("circleConstraints");
     notice("Klik keliling lingkaran hijau, keliling lingkaran biru, lalu titik P. Pilih hasilnya di kanvas atau lewat tombol solusi.");

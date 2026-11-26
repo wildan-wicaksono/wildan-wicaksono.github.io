@@ -17,6 +17,8 @@ header:
 
 [Komentar dan usulan fitur](#comments)
 
+Studio TikZ dikembangkan oleh **Wildan Bagus Wicaksono** dengan bantuan AI. [Homepage](https://wildan-wicaksono.github.io/)
+
 Kalau sedang menyiapkan diagram untuk modul olimpiade, saya biasanya membuka GeoGebra, mencoba beberapa posisi titik sampai gambarnya enak dibaca, lalu melihat koordinatnya. Setelah itu saya pindah ke dokumen LaTeX dan mengetik TikZ secara manual. GeoGebra sebenarnya sudah menyediakan ekspor TikZ. Saya tetap sering menulis ulang kodenya karena punya kebiasaan sendiri dalam memberi nama titik, menempatkan label, memilih warna, dan menandai sudut.
 
 Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas $AB$, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
@@ -25,7 +27,7 @@ Dengan alat **Titik**, klik ruang kosong untuk membuat titik bebas, atau klik ru
 
 Kalau saya ingin menaruh titik tepat di $(2,0)$, saya centang **Tampilkan kisi**. Ini juga mengaktifkan **Lekat ke kisi**. Pada pembesaran 100%, **Jarak kisi** menunjukkan $1$ satuan. Saya pilih **Titik**, arahkan kursor ke ruang kosong, lalu klik saat penanda menunjukkan $(2,0)$. Pada **Poligon**, saya juga bisa menaruh titik sudut pertama tepat di sana, lalu mengeklik di tengah petak untuk membuat titik sudut berikutnya di luar kisi. Pelekatan hanya bekerja di dekat perpotongan kisi. Untuk menggeser titik, pilih **Pilih / geser** dan seret bulatannya. Menyeret huruf hanya memindahkan label. [Panduan kisi dan koordinat]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#kisi-dan-koordinat).
 
-Gunakan **+** di atas kanvas untuk menambah lembar, atau pilih beberapa berkas lewat **Buka file**. Setiap gambar mendapat tab sendiri. Di menu **Lembar**, pilih **Contoh Studio** untuk mencoba sebuah konstruksi atau **Contoh penggunaan Wildan** untuk membuka diagram soal. Setelah mencoba contoh, klik tab pribadi yang ingin dilanjutkan atau pilih **Lembar saya → Gambar saya** untuk kembali ke tab pribadi terakhir.
+Gunakan **+ Tambah lembar** untuk membuka tab kosong dengan nomor terkecil yang tersedia, atau pilih beberapa berkas lewat **Buka file**. Setiap gambar mendapat tab sendiri. Di menu **Lembar**, pilih **Contoh Studio** untuk mencoba sebuah konstruksi atau **Contoh penggunaan Wildan** untuk membuka diagram soal. Setelah mencoba contoh, klik tab pribadi yang ingin dilanjutkan atau pilih **Lembar saya → Gambar saya** untuk kembali ke tab pribadi terakhir.
 
 Di sebelah **Lembar**, menu **Tata letak** mengatur letak kanvas dan kode. Saya memilih **Berdampingan** saat ingin melihat kode di kanan sambil menggambar. Untuk diagram yang lebar, **Bertumpuk** memberi kanvas selebar halaman dan meletakkan kode di bawahnya. **Otomatis** mengikuti lebar layar. Browser mengingat tata letak dan pilihan bahasa Indonesia atau Inggris. Untuk memeriksa bagian kecil diagram, fokuskan kanvas lalu tekan **+** atau **−**, atau pilih persentase pembesaran. **Skala TikZ** mengatur ukuran gambar yang dicetak.
 
@@ -152,7 +154,7 @@ Untuk membawa diagram ke forum AoPS, buka opsi **Format AoPS** pada panel kode. 
 
 ## Keterbatasan
 
-- **Penyimpanan otomatis berlaku di browser yang dipakai.** **Simpan lembar** mengunduh salinan gambar yang tampil sebagai satu file `.stikz.json`. **Hapus lembar** meminta konfirmasi sebelum menghapus lembar terpilih dari browser. File yang sudah diunduh bisa dibuka lagi lewat **Buka file** sebagai tab baru di samping gambar lain.
+- **Penyimpanan otomatis berlaku di browser yang dipakai.** **Simpan lembar** mengunduh salinan gambar yang tampil sebagai satu file `.stikz.json`. **Hapus lembar** meminta konfirmasi sebelum menghapus tab terpilih. Jika tinggal satu lembar, gunakan **Kosongkan gambar** untuk memulai ulang di tab itu. File yang sudah diunduh bisa dibuka lagi lewat **Buka file** sebagai tab baru di samping gambar lain.
 - **Cakupannya geometri olimpiade.** Studio belum menyediakan alat umum untuk memplot fungsi atau menggambar irisan kerucut dari persamaannya. Untuk menggambar parabola $y=x^2$, misalnya, saya masih menggunakan GeoGebra.
 - **Impor GeoGebra mencakup sebagian objek 2D.** Pada file `.ggb`, Studio bisa membaca posisi titik dari koordinat tersimpan meskipun hubungan konstruksinya tidak ikut terbawa. Simpan gambar yang dibuat di Studio sebagai `.stikz.json` agar hubungan antarobjek dapat dibuka kembali.
 - **Impor Asymptote hanya memulihkan sebagian hubungan antarobjek.** Gambar awal bisa tampak persis seperti sumbernya, tetapi beberapa titik bisa terlepas saat digeser. Misalnya, sebuah ekspor GeoGebra hanya mencatat pusat dan jari-jari lingkaran yang melalui $D,E,F,K$. Jika kamu memilih $D,E,K$ sebagai tiga titik penentu, lingkaran akan mengikuti ketiganya. Koordinat awal saja belum menjelaskan bagaimana $F$ harus bergerak agar tetap pada keliling. [Contoh pemilihan titik]({{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops).
