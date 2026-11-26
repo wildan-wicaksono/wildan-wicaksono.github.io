@@ -62,3 +62,135 @@
   .studio-contoh .studio-contoh-sumber pre { max-height: none; overflow: visible; }
   .studio-contoh pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 }
+
+.studio-latex-panel {
+  --tex-paper: #fafcfb;
+  --tex-bar: #edf3ef;
+  --tex-edge: #c5d4cb;
+  --tex-ink: #263731;
+  --tex-muted: #54685d;
+  --tex-focus: #226648;
+  --tex-command: #254f9b;
+  --tex-keyword: #743991;
+  --tex-option: #00685c;
+  --tex-number: #8c491c;
+  --tex-math: #903663;
+  --tex-name: #3d6228;
+  --tex-selection: #d3e5f6;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  margin: .65rem 0 1rem;
+  border: 1px solid var(--tex-edge);
+  border-radius: .42rem;
+  color: var(--tex-ink);
+  background: var(--tex-paper);
+  text-align: start;
+}
+html[data-theme="dark"] .studio-latex-panel {
+  --tex-paper: #202927;
+  --tex-bar: #2b3732;
+  --tex-edge: #52645a;
+  --tex-ink: #e3eae5;
+  --tex-muted: #b2c2b7;
+  --tex-focus: #9fe1bf;
+  --tex-command: #a8c9ff;
+  --tex-keyword: #d9b6ef;
+  --tex-option: #87d9ca;
+  --tex-number: #f3bc88;
+  --tex-math: #f0adc9;
+  --tex-name: #bedba5;
+  --tex-selection: #384955;
+}
+.studio-latex-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .22rem .6rem;
+  padding: .3rem .65rem .3rem .9rem;
+  border-bottom: 1px solid var(--tex-edge);
+  color: var(--tex-muted);
+  background: var(--tex-bar);
+  font: 600 .78rem/1.4 system-ui, sans-serif;
+}
+.studio-latex-language {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+.studio-latex-toolbar .studio-latex-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35em;
+  min-height: 1.75rem;
+  margin: 0;
+  padding: .15rem .6rem;
+  border: 1px solid var(--tex-edge);
+  border-radius: .3rem;
+  color: var(--tex-ink);
+  background: var(--tex-paper);
+  font: inherit;
+  cursor: pointer;
+}
+.studio-latex-toolbar .studio-latex-copy:hover { border-color: var(--tex-focus); }
+.studio-latex-toolbar .studio-latex-copy:focus-visible {
+  outline: 2px solid var(--tex-focus);
+  outline-offset: 1px;
+}
+html .studio-latex-panel pre.studio-latex-block {
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: min(65vh, 32rem);
+  overflow: auto;
+  margin: 0;
+  padding: .8rem .9rem;
+  border: 0;
+  border-radius: 0;
+  color: var(--tex-ink);
+  background: var(--tex-paper);
+  tab-size: 4;
+  scrollbar-color: var(--tex-muted) var(--tex-paper);
+}
+html .studio-contoh-sumber .studio-latex-panel pre.studio-latex-block {
+  max-height: min(60vh, 20rem);
+}
+.studio-latex-panel pre.studio-latex-block:focus-visible {
+  outline: 2px solid var(--tex-focus);
+  outline-offset: -2px;
+}
+html .studio-latex-panel pre.studio-latex-block > code {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: .84rem/1.58 ui-monospace, "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  font-variant-ligatures: none;
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.studio-latex-block .tex-command { color: var(--tex-command); font-weight: 600; }
+.studio-latex-block .tex-keyword { color: var(--tex-keyword); }
+.studio-latex-block .tex-option { color: var(--tex-option); }
+.studio-latex-block .tex-number { color: var(--tex-number); }
+.studio-latex-block .tex-math { color: var(--tex-math); }
+.studio-latex-block .tex-name { color: var(--tex-name); }
+.studio-latex-block .tex-punctuation { color: var(--tex-muted); }
+.studio-latex-block .tex-comment { color: var(--tex-muted); font-style: italic; }
+.studio-latex-block ::selection { background: var(--tex-selection); }
+@media print {
+  html .studio-latex-panel { break-inside: auto; border-color: #888; overflow: visible; }
+  .studio-latex-toolbar { display: none; }
+  html .studio-latex-panel pre.studio-latex-block,
+  html .studio-contoh-sumber .studio-latex-panel pre.studio-latex-block {
+    max-height: none;
+    overflow: visible;
+    color: #111;
+    background: #fff;
+  }
+  html .studio-latex-panel pre.studio-latex-block > code { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .studio-latex-block code > span { color: inherit; }
+}
