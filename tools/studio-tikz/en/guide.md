@@ -103,13 +103,19 @@ The complete diagram includes `center` and `tikzpicture`. Coordinates-only outpu
 
 Set the TikZ scale to $2$ to double printed segment lengths. The generated point radius compensates for that scale to keep the printed dot at $1.5\,\mathrm{pt}$.
 
-## Save projects and use them offline
+<span id="save-projects-and-use-them-offline"></span>
+
+## Save sheets and use them offline
 
 Use **+** above the canvas to create a personal sheet. Each drawing has its own tab. Click a tab to switch drawings, or use **Rename sheet** to give it a descriptive name. Choose **Open file** and select one or more files to open each in a new tab alongside your existing sheets.
 
 In the **Sheet** menu, **Example sheets** contains construction demos, and **Wildan’s worked examples** contains three olympiad diagrams. From any example, click the personal tab you want, or choose **My sheets → My drawing** to return to the last personal tab you used. Each tab keeps its canvas view and undo/redo history during the session. When you reopen the editor, browser storage restores all open personal sheets and the last active personal tab if available. Undo/redo history starts afresh after a reload.
 
-**Save project** downloads the currently displayed drawing as a `.stikz.json` file with its dependencies, labels and styles. To keep an edited example as a personal sheet, save it to a file, then reopen that file. Download the editor HTML for offline use. To update it, download a fresh copy and reopen your project file.
+**Save sheet** downloads the displayed drawing, including its dependencies, labels and styles, as one portable `.stikz.json` file. To keep an edited example as a personal sheet, save it and use **Open file** to open the downloaded copy in a new tab.
+
+To remove a drawing from the tabs and browser storage, select its tab, choose **Delete sheet**, check the name and confirm. Use **Save sheet** first to keep a copy for later. Deletion applies only to the selected sheet. You can reopen any copy you already downloaded. Deleting the last sheet opens a fresh blank one.
+
+Download the editor HTML for offline use. To update it, download a fresh copy and reopen your saved sheet.
 
 Open a `.ggb` file or drop it onto the canvas to import supported GeoGebra objects. Check the object list and the import message afterwards. Some points retain their saved positions without their original constraints. To attach a point to an imported line or circle, choose **Point** and click its stroke.
 

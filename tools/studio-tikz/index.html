@@ -217,7 +217,7 @@ button:hover{background:#eaf0e6;border-color:#afbcac}
 .sheet-rename-form input{width:min(14rem,100%);min-width:5rem;max-width:100%;min-height:32px;border:1px solid var(--rule);border-radius:5px;background:var(--sheet);color:var(--ink);padding:4px 7px;font:inherit}
 .sheet-rename-form button[type="submit"]{border-color:var(--rule);color:var(--blue)}
 html[data-example-id] .personal-sheets{display:none!important}
-@media(max-width:650px){.sheet-strip-label{display:none}.personal-sheets{gap:2px}.personal-sheet-list [role="tab"]{max-width:9rem}.sheet-tab-actions button{min-height:36px}.sheet-tab-actions .sheet-icon{width:35px}}
+@media(max-width:650px){.sheet-strip-label{display:none}.personal-sheets{gap:2px;flex-wrap:wrap}.personal-sheet-list{flex:1 0 100%}.sheet-tab-actions{flex-wrap:wrap;border-inline-start:0;padding-inline-start:0}.personal-sheet-list [role="tab"]{max-width:9rem}.sheet-tab-actions button{min-height:36px}.sheet-tab-actions .sheet-icon{width:35px}}
 
 .appearance-controls{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 18px;margin:4px 0 12px}
 .ink-picker{max-width:100%;min-width:140px}
@@ -643,7 +643,7 @@ Derived file: studio-math-labels.woff
 <body>
 <header class="mast"><div class="mast-in">
   <h1 class="brand"><svg viewBox="0 0 38 38" aria-hidden="true"><rect x="1" y="1" width="36" height="36" rx="10" fill="#355649"/><circle cx="19" cy="19" r="12.2" fill="none" stroke="#dfe8d8" stroke-width="1.05"/><path d="M10 27.3 16 7.2 30.9 22.1Z" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><circle cx="16" cy="7.2" r="2" fill="#ffc47b"/></svg><span>Studio TikZ</span></h1>
-  <div class="mast-actions"><label class="theme-picker"><span>Bahasa</span><select id="studio-language" aria-label="Bahasa / Language"><option value="id" lang="id">Indonesia</option><option value="en" lang="en">English</option></select></label><label class="theme-picker"><span>Tema</span><select id="studio-theme" aria-label="Tema tampilan"><option value="system">Sistem</option><option value="light">Terang</option><option value="dark">Gelap</option></select></label><button id="open-asy" type="button" aria-haspopup="dialog" aria-controls="asy-dialog">Tempel Asymptote</button><button id="open-file" type="button">Buka file</button><button id="save-project" type="button" class="primary">Simpan proyek</button><input type="file" accept=".ggb,.json" id="file" multiple hidden></div>
+  <div class="mast-actions"><label class="theme-picker"><span>Bahasa</span><select id="studio-language" aria-label="Bahasa / Language"><option value="id" lang="id">Indonesia</option><option value="en" lang="en">English</option></select></label><label class="theme-picker"><span>Tema</span><select id="studio-theme" aria-label="Tema tampilan"><option value="system">Sistem</option><option value="light">Terang</option><option value="dark">Gelap</option></select></label><button id="open-asy" type="button" aria-haspopup="dialog" aria-controls="asy-dialog">Tempel Asymptote</button><button id="open-file" type="button" title="Buka setiap file sebagai lembar baru">Buka file</button><button id="save-project" type="button" class="primary" title="Unduh lembar yang ditampilkan sebagai file .stikz.json">Simpan lembar</button><input type="file" accept=".ggb,.json" id="file" multiple hidden></div>
 </div></header>
 <main>
   <div class="guide-example-tools">
@@ -669,7 +669,7 @@ Derived file: studio-math-labels.woff
     <div class="sheet-tab-actions">
       <button type="button" id="personal-sheet-add"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>Tambah lembar</button>
       <button type="button" id="personal-sheet-rename" class="sheet-icon" title="Ganti nama lembar" aria-label="Ganti nama lembar" aria-controls="personal-sheet-rename-form" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m3 10-1 4 4-1 8-8-3-3zM9.7 3.3l3 3"/></svg></button>
-      <button type="button" id="personal-sheet-close" class="sheet-icon" title="Tutup lembar" aria-label="Tutup lembar"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 4 8 8m0-8-8 8"/></svg></button>
+      <button type="button" id="personal-sheet-close" title="Hapus lembar aktif dari browser ini"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M2.5 4.5h11M6 4.5V2.8h4v1.7M4.2 4.5l.6 8.7h6.4l.6-8.7M6.8 6.7v4.4m2.4-4.4v4.4"/></svg>Hapus lembar</button>
     </div>
     <form class="sheet-rename-form" id="personal-sheet-rename-form" hidden>
       <label for="personal-sheet-name">Nama lembar</label>
@@ -783,7 +783,7 @@ Derived file: studio-math-labels.woff
     <li>Buka <b>Lingkaran</b> dan pilih <b>Lingkaran lewat 3 titik</b>. Klik A, B, dan C.</li>
     <li>Buka <b>Garis → Garis sejajar</b>. Klik sisi AB, gerakkan kursor, lalu klik lagi untuk menentukan letak garis.</li>
     <li>Untuk menandai ∠ABC, pilih <b>Sudut</b> di bilah alat, lalu klik A, B, dan C. Pilih <b>Besar sudut otomatis (°)</b> atau <b>LaTeX kustom</b> di bawah kanvas.</li></ol>
-    <p>Gunakan <b>Pilih / geser</b> untuk menggerakkan titik atau label. Pilih <b>Simpan proyek</b> agar gambar bisa diedit lagi melalui <b>Buka file</b>.</p>
+    <p>Gunakan <b>Pilih / geser</b> untuk menggerakkan titik atau label. Pilih <b>Simpan lembar</b> agar gambar bisa diedit lagi melalui <b>Buka file</b>.</p>
   </details>
   <div class="after"><span id="save-state" role="status"></span><button type="button" class="text-action" id="sample-download" hidden>Unduh contoh .ggb</button></div>
   <noscript><p class="notice">Aktifkan JavaScript di browser untuk menggambar.</p></noscript>
@@ -3262,13 +3262,13 @@ const studioFigureEnglish = {
   "Tema": "Theme",
   "Gelap": "Dark",
   "Perhatikan warna garis dan titik saat gambar tampil di atas latar gelap.": "Notice how the lines and points look against a dark background.",
-  "Simpan proyek menghasilkan berkas .stikz.json. Lewat Buka file, titik, sisi, dan isian segitiga bisa disunting kembali.": "Save project creates a .stikz.json file. Open file restores the editable vertices, sides and fill.",
+  "Simpan lembar mengunduh gambar beserta konstruksinya sebagai berkas .stikz.json. Buka file menambahkan gambar dari berkas itu ke tab baru.": "Save sheet downloads the drawing and its construction as a .stikz.json file. Open file adds the drawing from that file in a new tab.",
   "Gambar-saya.stikz.json": "My-drawing.stikz.json",
-  "Simpan": "Save",
+  "Simpan lembar": "Save sheet",
   "Buka file": "Open file",
   "Simpan berkas Gambar-saya.stikz.json di komputer.": "Save My-drawing.stikz.json to your computer.",
-  "Klik Simpan proyek untuk menyimpan gambar beserta konstruksinya.": "Click Save project to keep the drawing and its constructions.",
-  "Klik Buka file dan pilih berkas tersebut untuk melanjutkan penyuntingan.": "Click Open file and select that file to continue editing.",
+  "Klik Simpan lembar untuk mengunduh salinan gambar beserta konstruksinya.": "Click Save sheet to download a copy of the drawing and its construction.",
+  "Klik Buka file dan pilih berkas yang sudah diunduh. Gambar terbuka di tab baru.": "Click Open file and select the downloaded file. The drawing opens in a new tab.",
   "Buka file membaca berkas .ggb. Dalam contoh ini, hasil impor memuat titik A, titik B, dan ruas AB.": "Open file reads .ggb files. This example imports points A and B and segment AB.",
   "latihan.ggb": "example.ggb",
   "Klik Buka file, lalu pilih latihan.ggb dari GeoGebra.": "Click Open file and select example.ggb from GeoGebra.",
@@ -3375,7 +3375,9 @@ Terang|Light
 Gelap|Dark
 Tempel Asymptote|Paste Asymptote
 Buka file|Open file
-Simpan proyek|Save project
+Simpan lembar|Save sheet
+Buka setiap file sebagai lembar baru|Open each file in a new sheet
+Unduh lembar yang ditampilkan sebagai file .stikz.json|Download the displayed sheet as a .stikz.json file
 Seret titik acuan untuk mengubah gambar. Dengan papan ketik, pilih titik lalu gunakan tombol panah di kanvas.|Drag a reference point to change the drawing. With a keyboard, select a point and use the arrow keys on the canvas.
 Titik|Point
 Contoh nama titik: A*, A_1*, A^{*}, atau A′.|Example point names: A*, A_1*, A^{*}, or A′.
@@ -3403,12 +3405,16 @@ Lembar saya|My sheets
 Lembar pribadi|Personal sheets
 Tambah lembar|Add sheet
 Ganti nama lembar|Rename sheet
-Tutup lembar|Close sheet
+Hapus lembar|Delete sheet
+Hapus lembar aktif dari browser ini|Delete the active sheet from this browser
 Nama lembar|Sheet name
 Simpan nama|Save name
 Masukkan nama lembar.|Enter a sheet name.
 Gunakan nama hingga 130 karakter tanpa karakter kontrol.|Use up to 130 characters without control characters.
-Tutup lembar ini? Simpan proyek ke file untuk menyimpan salinan.|Close this sheet? Save the project to a file to keep a copy.
+Hapus lembar “{nama}” beserta isinya dari browser ini?|Delete the sheet “{nama}” and its contents from this browser?
+Untuk menyimpan salinan .stikz.json terlebih dahulu, pilih Batal lalu Simpan lembar.|To keep a .stikz.json copy first, choose Cancel, then Save sheet.
+Studio akan membuka lembar kosong.|Studio will open a blank sheet.
+Lembar telah dihapus dari sesi ini. Penyimpanan browser gagal diperbarui sehingga lembar dapat muncul kembali saat Studio dibuka.|The sheet was removed from this session. Browser storage could not be updated, so it may reappear when you reopen Studio.
 Contoh Studio|Example sheets
 Gambar saya|My drawing
 Kanvas baru|New canvas
@@ -3752,8 +3758,8 @@ Kanan bawah|Below right
 Tanpa|None
 Tidak ada hasil. Coba kata lain, misalnya “singgung” atau “inversi”.|No results. Try another word, such as “tangent” or “inversion”.
 Tersimpan di browser ini.|Saved in this browser.
-Penyimpanan otomatis gagal. Gunakan Simpan proyek pada setiap lembar yang ingin disimpan.|Autosave failed. Use Save project for each sheet you want to keep.
-Lembar contoh. Gunakan Simpan proyek untuk menyimpan perubahan.|Example sheet. Use Save project to keep your changes.
+Penyimpanan otomatis gagal. Gunakan Simpan lembar pada setiap lembar yang ingin disimpan.|Autosave failed. Use Save sheet for each sheet you want to keep.
+Lembar contoh. Gunakan Simpan lembar untuk mengunduh salinan yang bisa diedit.|Example sheet. Use Save sheet to download an editable copy.
 Pilih suatu objek|Select an object
 Tidak ada objek yang terlihat|No visible objects
 Kanvas kosong|Empty canvas
@@ -3785,7 +3791,10 @@ Preamble tersalin.|Preamble copied.
 Kode sudah dipilih. Tekan Ctrl+C atau ⌘C.|Code selected. Press Ctrl+C or ⌘C.
 Tersalin ✓|Copied ✓
 Koordinat tersalin. Tempel di dalam tikzpicture.|Coordinates copied. Paste them inside tikzpicture.
-Proyek disiapkan untuk diunduh.|Project ready to download.
+Salinan .stikz.json untuk lembar ini disiapkan untuk diunduh.|A .stikz.json copy of this sheet is ready to download.
+Unduhan lembar ini sudah diminta. Penyimpanan otomatis gagal. Unduh juga lembar lain yang ingin disimpan.|The download for this sheet was requested. Autosave failed. Download the other sheets you want to keep, too.
+Unduhan gagal dimulai. Coba Simpan lembar lagi.|The download could not start. Try Save sheet again.
+Unduhan dan penyimpanan otomatis gagal. Coba Simpan lembar lagi.|The download and autosave failed. Try Save sheet again.
 Blok tikzpicture tersalin. Tempel di dalam dokumen LaTeX.|tikzpicture copied. Paste it in your LaTeX document.
 Kode untuk disalin secara manual|Code to copy manually
 Masukkan skala antara 0,0001 dan 16383.|Enter a scale between 0.0001 and 16383.
@@ -4317,9 +4326,9 @@ editor-pan|Pan and scroll the canvas|Explore the diagram without moving its geom
 editor-clip|Clip drawing|Choose which part of the diagram appears on the canvas and in TikZ.|Open Clip drawing below the canvas. For a rectangular boundary, click two opposite corners.|To follow an existing boundary, choose a full circle or polygon. Moving its defining points moves the clip.|Remove the clip to see the complete construction again. Save the project to keep the clipping boundary.|Points, labels and lines outside the boundary remain in the construction. Full drawing exports the same clipping path.
 editor-view|Layout, zoom, and grid|Arrange the canvas and code, zoom in, or place a free point precisely.|Next to Sheet, choose Layout. Side by side puts the code on the right, Stacked puts it below, and Automatic follows the screen width.|Use + or − to zoom, enter a percentage, or choose Fit drawing.|The grid and snapping are on when you first open the editor. Checking Show grid turns on Snap to grid. Snapping takes effect only near a grid intersection. Clear Snap to grid to turn it off. Hiding the grid preserves your snap setting. The browser remembers your choices.|Grid spacing shows the interval for the current zoom. The interval is 2 units at 50%, 1 unit at 100%, and 0.5 units at 200%. A small zoom change can keep the same interval. Existing points stay at their coordinates.|At any step that accepts a new point, click near a grid intersection to snap or in the middle of a square to place the point freely. This includes the first vertex of a polygon. If a tool asks for an existing object, select that object. To move a free point, choose Select / move and drag the dot. Dragging the letter moves its label.|When you drag an attached point, it snaps to a nearby grid intersection only if that intersection lies on its object. An intersection of two objects follows both. When you drag a movable line, its anchor can snap to a nearby grid intersection and the whole line moves with it.|At 100% zoom, you can place A at exactly (2, 0). The grid appears only on the canvas.
 editor-theme|Theme and canvas background|Choose a comfortable drawing background.|Choose System, Light, or Dark in the top bar. Use Background under the canvas to choose the paper tone.|The browser remembers your choices. Exported TikZ uses the object inks you selected.
-editor-project|Save and reopen a project|Keep the construction and styling for later editing or transfer.|Choose Save project to download the active sheet as a .stikz.json file. Give different projects distinct filenames.|Choose Open file or drop the project onto the canvas to reopen it. Select several files to open each drawing in its own tab.|The file preserves references, formulas and styling and can be moved to another browser or device.
+editor-project|Save and reopen a sheet|Keep the construction and styling for later editing or transfer.|Choose Save sheet to download the displayed drawing as a .stikz.json file, including when an example is open.|Choose Open file and select the downloaded .stikz.json file. Each file opens in a new tab alongside any sheets you already have open.|The file preserves references, formulas and styling and can be moved to another browser or device.
 editor-import|Open a GeoGebra diagram|Use a two-dimensional .ggb construction as the starting point for TikZ.|Choose Open file or drop the .ggb file on the canvas. Check the imported objects and adjust their styles.|Points use stored coordinates. Recognized circles through points follow those points.
-editor-sheets|Manage drawing sheets and explore examples|Work on several drawings in one editor and try examples between them.|Select Add sheet for a blank canvas. Select a named tab above the canvas to switch drawings. With the keyboard, focus a tab and press Left or Right.|Choose Rename sheet, enter a title such as Triangle inversion, and press Enter. Use Save project to download the active drawing as a .stikz.json file.|From the Sheet menu, try Inversion by product example under Example sheets or a problem from Wildan’s worked examples. Select any personal tab to return to your drawing.|Choose Close sheet when you finish. To keep a file for later, select Save project before closing the tab.|The browser keeps the personal sheets that are still open. Use Open file to reopen a saved .stikz.json drawing.
+editor-sheets|Manage drawing sheets and explore examples|Work on several drawings in one editor and try examples between them.|Select Add sheet for a blank canvas. Select a named tab above the canvas to switch drawings. With the keyboard, focus a tab and press Left or Right.|Choose Rename sheet, enter a title such as Triangle inversion, and press Enter. Use Save sheet to download the active drawing as a .stikz.json file.|From the Sheet menu, try Inversion by product example under Example sheets or a problem from Wildan’s worked examples. Select any personal tab to return to your drawing.|Choose Delete sheet to remove the selected sheet from browser storage. Check the sheet name in the confirmation. To keep a copy, choose Save sheet before deleting.|When browser storage is available, Studio automatically keeps the personal sheets still open. Previously downloaded .stikz.json files can be reopened in new tabs.
 editor-export|Copy the diagram or coordinates|Use the finished diagram in LaTeX or an AoPS post.|Choose Full diagram or Coordinates only and copy the code. Copy the preamble and paste it before the document begins.|To post the TikZ diagram on AoPS, open AoPS format.|To use a diagram from AoPS, open Paste Asymptote. Paste the [asy] block or choose Semicircles and a chord, then select Convert to TikZ.|In the TikZ code field, try changing one line width value to 1.2bp, then select Copy TikZ. Copy the preamble into your LaTeX document and add any packages your edits require. The preview shows the original conversion. Compile your document to see the new line width.|Choose Restore converted code to return to the original. If a new conversion is ready while your code contains edits, choose Keep edits or Replace with new result.|Full diagram includes geometry and style. Selecting an object highlights its TikZ code.
 editor-scale|TikZ print scale|Set the compiled size of the diagram.|Choose Full diagram. Enter a positive TikZ scale and check the dot radius shown beside it.|Studio adjusts the radius in the code to keep printed point markers at 1.5 pt.
 `.trim();
@@ -7801,6 +7810,7 @@ function drawProjectTabs(){
   if(typeof renderProjectTabs==="function"&&personalWorkspace)renderProjectTabs(projectTabView());
 }
 function storeProjectTabs(){
+  personalWorkspace.storageFailed=true;
   captureProjectTab();
   const {tabs,activeId,nextId,nextTitle}=personalWorkspace;
   const content=JSON.stringify({version:1,activeId,nextId,nextTitle,
@@ -7812,6 +7822,7 @@ function storeProjectTabs(){
     if(localStorage.getItem(projectTabsKey)!==null||!localStorage.getItem(storeKey))throw error;
     localStorage.setItem(storeKey,content);
   }
+  personalWorkspace.storageFailed=false;
 }
 function validTabCamera(c){return c&&finitePoint(c)&&Number.isFinite(c.span)&&c.span>0?{x:c.x,y:c.y,span:c.span}:defaultSheetCamera();}
 function makePersonalTab(id,doc,defaultTitle=false,camera=defaultSheetCamera()){
@@ -7887,21 +7898,23 @@ function activateProjectTab(id){
   showPersonalTab(tab);
 }
 function closeProjectTab(id){
-  if(!personalWorkspace)return false;
+  if(!personalWorkspace||sourceExample||id!==personalWorkspace.activeId)return false;
   const {tabs}=personalWorkspace,i=tabs.findIndex(t=>t.id===id);
   if(i<0)return false;
-  finishSheetGesture();captureProjectTab();
-  if((tabs[i].doc.steps.length||tabs[i].doc.clip||tabs[i].doc.exportScale!==undefined||!tabs[i].defaultTitle)&&
-      !window.confirm(studioTranslate("Tutup lembar ini? Simpan proyek ke file untuk menyimpan salinan.")))return false;
-  openToken++;
+  const view=projectTabView().tabs[i];
+  const name=view.defaultTitle?studioTranslate(view.title):view.title;
+  const shown=view.duplicateIndex>1?name+" ("+view.duplicateIndex+")":name;
+  const question=studioTranslate("Hapus lembar “{nama}” beserta isinya dari browser ini?").replace("{nama}",()=>shown);
+  const copy=studioTranslate("Untuk menyimpan salinan .stikz.json terlebih dahulu, pilih Batal lalu Simpan lembar.");
+  const last=tabs.length===1?"\n"+studioTranslate("Studio akan membuka lembar kosong."):"";
+  if(!window.confirm(question+"\n\n"+copy+last))return false;
+
+  finishSheetGesture();captureProjectTab();openToken++;
   tabs.splice(i,1);
   if(!tabs.length)tabs.push(blankProjectTab());
-  if(id===personalWorkspace.activeId){
-    const next=tabs[Math.min(i,tabs.length-1)];
-    if(!sourceExample){showPersonalTab(next);return true;}
-    personalWorkspace.activeId=next.id;
-  }
-  saveInactiveTabs();return true;
+  showPersonalTab(tabs[Math.min(i,tabs.length-1)]);
+  if(personalWorkspace.storageFailed)$("save-state").textContent="Lembar telah dihapus dari sesi ini. Penyimpanan browser gagal diperbarui sehingga lembar dapat muncul kembali saat Studio dibuka.";
+  return true;
 }
 function renameProjectTab(id,value){
   if(!personalWorkspace)return false;
@@ -7919,7 +7932,7 @@ function renameProjectTab(id,value){
 function saveInactiveTabs(){
   drawProjectTabs();
   try{storeProjectTabs();}
-  catch{$("save-state").textContent="Penyimpanan otomatis gagal. Gunakan Simpan proyek pada setiap lembar yang ingin disimpan.";}
+  catch{$("save-state").textContent="Penyimpanan otomatis gagal. Gunakan Simpan lembar pada setiap lembar yang ingin disimpan.";}
 }
 function appendImportedTab(p,id,foreground,save=true){
   const w=personalWorkspace,tab=makePersonalTab(id,p);
@@ -8764,7 +8777,7 @@ const otherGuideEntries={
   "editor-clip":{
     group:"editor",title:"Clip gambar",
     purpose:"Menentukan bagian gambar yang terlihat di kanvas dan hasil TikZ.",
-    steps:["Di bawah kanvas, buka Clip gambar. Untuk batas persegi panjang, klik dua sudut yang berhadapan.","Untuk memakai keliling sebagai batas, pilih lingkaran penuh atau poligon yang sudah dibuat. Jika bangun itu berubah, batas potong mengikutinya.","Lepaskan clip untuk melihat seluruh konstruksi lagi. Simpan proyek agar batas potong dapat dipakai kembali."],
+    steps:["Di bawah kanvas, buka Clip gambar. Untuk batas persegi panjang, klik dua sudut yang berhadapan.","Untuk memakai keliling sebagai batas, pilih lingkaran penuh atau poligon yang sudah dibuat. Jika bangun itu berubah, batas potong mengikutinya.","Lepaskan clip untuk melihat seluruh konstruksi lagi. Simpan lembar agar batas potong dapat dipakai kembali."],
     result:"Titik, label, dan garis di luar batas tetap ada dalam konstruksi. Gambar lengkap memakai perintah clip yang sama.",
     terms:"clip crop mask potong pangkas persegi panjang lingkaran batas gambar ekspor tikz kotak rectangle"
   },
@@ -8793,11 +8806,11 @@ const otherGuideEntries={
     terms:"dark mode light krem sage biru kertas latar tampilan"
   },
   "editor-project":{
-    group:"editor",title:"Simpan dan buka kembali proyek",
+    group:"editor",title:"Simpan dan buka kembali lembar",
     purpose:"Menyimpan gambar beserta hubungan konstruksinya agar bisa dilanjutkan atau dipindah ke perangkat lain.",
     steps:[
-      "Klik Simpan proyek untuk mengunduh lembar aktif sebagai berkas .stikz.json.",
-      "Untuk melanjutkan, klik Buka file. Jika kamu memilih beberapa berkas .stikz.json sekaligus, masing-masing terbuka di tab tersendiri."
+      "Klik Simpan lembar untuk mengunduh gambar yang sedang tampil sebagai berkas .stikz.json, termasuk jika kamu sedang membuka contoh.",
+      "Untuk melanjutkan, klik Buka file dan pilih berkas .stikz.json yang sudah diunduh. Masing-masing terbuka di tab baru di samping lembar yang sudah ada."
     ],
     result:"Titik, rumus, hubungan antarobjek, dan gaya ikut tersimpan. File yang sudah diunduh bisa dipindahkan ke browser atau perangkat lain.",
     terms:"unduh simpan buka berkas lokal offline cadangan autosave json proyek"
@@ -8808,7 +8821,7 @@ const otherGuideEntries={
     steps:[
       "Klik Buka file dan pilih berkas .ggb, atau seret berkas itu ke kanvas.",
       "Periksa hasil impor di daftar Objek dan baca pesan impor untuk melihat objek yang dilewati.",
-      "Sesuaikan tampilannya, lalu klik Simpan proyek jika ingin menyunting hasilnya lagi di Studio."
+      "Sesuaikan tampilannya, lalu klik Simpan lembar jika ingin menyunting hasilnya lagi di Studio."
     ],
     result:"Titik menggunakan posisi tersimpan dari GeoGebra. Lingkaran melalui titik yang dikenali akan mengikuti titik-titik acuannya.",
     terms:"GeoGebra impor ggb buka berkas drag drop file"
@@ -8818,11 +8831,11 @@ const otherGuideEntries={
     purpose:"Mengerjakan beberapa gambar dalam satu editor dan mencoba contoh di sela-selanya.",
     steps:[
       "Klik Tambah lembar untuk membuka kanvas kosong. Pilih tab bernama di atas kanvas untuk berpindah gambar. Dengan papan ketik, fokuskan sebuah tab lalu tekan panah kiri atau kanan.",
-      "Pilih Ganti nama lembar, ketik nama seperti Inversi segitiga, lalu tekan Enter. Untuk menyimpan salinan gambar aktif sebagai file .stikz.json, klik Simpan proyek.",
+      "Pilih Ganti nama lembar, ketik nama seperti Inversi segitiga, lalu tekan Enter. Untuk menyimpan salinan gambar aktif sebagai file .stikz.json, klik Simpan lembar.",
       "Di menu Lembar, coba Contoh inversi hasil kali dari Contoh Studio atau pilih soal dari Contoh penggunaan Wildan. Klik salah satu tab pribadi untuk kembali ke gambarmu.",
-      "Pilih Tutup lembar saat selesai. Jika ingin menyimpan salinannya untuk nanti, klik Simpan proyek sebelum menutup tab."
+      "Pilih Hapus lembar untuk menghapus tab terpilih dari penyimpanan browser. Periksa nama pada konfirmasi. Jika kamu masih membutuhkan gambarnya, klik Simpan lembar sebelum menghapus."
     ],
-    result:"Browser menyimpan lembar pribadi yang masih terbuka. Setiap file .stikz.json bisa dibuka kembali melalui Buka file.",
+    result:"Jika penyimpanan browser tersedia, lembar pribadi yang masih terbuka disimpan otomatis. File .stikz.json yang sudah diunduh tetap bisa dibuka kembali sebagai tab baru.",
     terms:"contoh demo lembar kosong baru tab daftar proyek banyak gambar simpan ganti nama tutup segitiga Reim"
   },
   "editor-export":{
@@ -9579,7 +9592,7 @@ const editorHelpScenes={
     }
   },
   project:{
-    caption:"Simpan proyek menghasilkan berkas .stikz.json. Lewat Buka file, titik, sisi, dan isian segitiga bisa disunting kembali.",
+    caption:"Simpan lembar mengunduh gambar beserta konstruksinya sebagai berkas .stikz.json. Buka file menambahkan gambar dari berkas itu ke tab baru.",
     draw(g){
       g.head(181,"Gambar-saya.stikz.json");
       g.box(119,42,122,78);
@@ -9590,7 +9603,7 @@ const editorHelpScenes={
         g.poly([[x+8,90],[x+41,90],[x+19,67]],{stroke:g.ref,width:1.4,fill:g.ref,fillOpacity:.2});
       }
       g.arrow(68,82,109,82);g.arrow(249,82,291,82);
-      g.text(59,112,"Simpan",{size:13});g.text(291,112,"Buka file",{size:13});
+      g.text(59,112,"Simpan lembar",{size:13});g.text(291,112,"Buka file",{size:13});
     }
   },
   import:{
@@ -10157,9 +10170,9 @@ const editorMotionScenes={
   project:{
     base:[6,7],
     steps:[
-      {text:"Klik Simpan proyek untuk menyimpan gambar beserta konstruksinya.",at:[58,108],show:[10,11,14]},
+      {text:"Klik Simpan lembar untuk mengunduh salinan gambar beserta konstruksinya.",at:[58,108],show:[10,11,14]},
       {text:"Simpan berkas Gambar-saya.stikz.json di komputer.",at:[180,81],show:[0,1,2,3,4,5]},
-      {text:"Klik Buka file dan pilih berkas tersebut untuk melanjutkan penyuntingan.",at:[290,109],show:[8,9,12,13,15]}
+      {text:"Klik Buka file dan pilih berkas yang sudah diunduh. Gambar terbuka di tab baru.",at:[290,109],show:[8,9,12,13,15]}
     ]
   },
   import:{
@@ -13050,7 +13063,7 @@ function notice(text){$("notice").textContent=text;$("notice").hidden=!text;}
 function scheduleSave(){
   if(typeof guideExampleId!=="undefined" && guideExampleId)return;
   if(sourceExample){
-    $("save-state").textContent="Lembar contoh. Gunakan Simpan proyek untuk menyimpan perubahan.";
+    $("save-state").textContent="Lembar contoh. Gunakan Simpan lembar untuk mengunduh salinan yang bisa diedit.";
     return;
   }
   try{
@@ -13058,7 +13071,7 @@ function scheduleSave(){
     else localStorage.setItem(storeKey,JSON.stringify({doc,camera,sourceExample}));
     $("save-state").textContent="Tersimpan di browser ini.";
   }
-  catch{$("save-state").textContent="Penyimpanan otomatis gagal. Gunakan Simpan proyek pada setiap lembar yang ingin disimpan.";}
+  catch{$("save-state").textContent="Penyimpanan otomatis gagal. Gunakan Simpan lembar pada setiap lembar yang ingin disimpan.";}
 }
 function remember(before){
   history.push(before);if(history.length>70)history.shift();future=[];generation++;
@@ -13942,11 +13955,37 @@ function usageFromHash(){
   return match ? openUsageExample(match[1]) : false;
 }
 function download(name,blob){
-  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);
+  const url=URL.createObjectURL(blob),a=document.createElement("a");
+  try{a.href=url;a.download=name;document.body.append(a);a.click();}
+  finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);}
+}
+function sheetDownloadName(){
+  const used=new Set();
+  function availableName(title){
+    const base=(title||"Gambar-saya").normalize("NFC").replace(/[^\p{L}\p{N} -]/gu,"").trim().replace(/\s+/g,"-")||"Gambar-saya";
+    let name=base,n=2;
+    while(used.has(name.toLowerCase()))name=base+"-"+n++;
+    used.add(name.toLowerCase());
+    return name+".stikz.json";
+  }
+  if(typeof personalWorkspace!=="undefined"&&personalWorkspace){
+    for(const tab of personalWorkspace.tabs){
+      const file=availableName(tab.doc.title);
+      if(!sourceExample&&tab.id===personalWorkspace.activeId)return file;
+    }
+  }
+  return availableName(doc.title);
 }
 function saveProject(){
-  const file=(doc.title||"Gambar-saya").replace(/[^\p{L}\p{N} -]/gu,"").trim().replace(/\s+/g,"-")||"Gambar-saya";
-  download(file+".stikz.json",new Blob([JSON.stringify(doc,null,2)],{type:"application/json"}));$("save-state").textContent="Proyek disiapkan untuk diunduh.";
+  const failed=typeof personalWorkspace!=="undefined"&&personalWorkspace?.storageFailed;
+  try{
+    download(sheetDownloadName(),new Blob([JSON.stringify(doc,null,2)],{type:"application/json"}));
+    $("save-state").textContent=failed?"Unduhan lembar ini sudah diminta. Penyimpanan otomatis gagal. Unduh juga lembar lain yang ingin disimpan.":
+      "Salinan .stikz.json untuk lembar ini disiapkan untuk diunduh.";
+  }catch{
+    $("save-state").textContent=failed?"Unduhan dan penyimpanan otomatis gagal. Coba Simpan lembar lagi.":
+      "Unduhan gagal dimulai. Coba Simpan lembar lagi.";
+  }
 }
 async function loadSource(bytes,name,example=null,request=++openToken,start=generation){
   const {project,info}=await decodeProjectSource(bytes,name,example);

@@ -83,7 +83,7 @@ For a diagram using a custom module or a 3D projection, open **Convert an SVG re
 
 ### Limitations
 
-- **Open sheets are stored in the current browser.** Clearing site data can remove those tabs. Before closing a sheet or moving to a different device, select its tab and choose **Save project**. Each `.stikz.json` file contains one drawing. **Open file** can open several files at once, each in its own tab.
+- **Autosave keeps sheets in the current browser.** **Save sheet** downloads the displayed drawing as one `.stikz.json` file. **Delete sheet** asks for confirmation before removing the selected sheet from browser storage. Use **Open file** to reopen a downloaded copy in a new tab alongside your other drawings.
 - **The drawing tools focus on olympiad geometry.** Studio has no general tool for plotting functions or drawing conics from their equations. To plot a parabola such as $y=x^2$, I still use GeoGebra.
 - **GeoGebra import covers some 2D objects.** Studio may read a point’s stored coordinates from a `.ggb` file even when its construction dependencies do not carry over. Saving a Studio drawing as `.stikz.json` preserves its construction.
 - **Pasting Asymptote can give an error.** If the block was cut short, copy it again from `[asy]` through `[/asy]`. Even a complete block that runs on AoPS can use a command or module Studio does not recognise. If the message gives a line and column, use **Go to this line** to inspect it. For unsupported features, render with Asymptote on your computer, then import the SVG or include the PDF in LaTeX. [SVG and PDF conversion steps](guide.html#convert-aops-diagrams).
