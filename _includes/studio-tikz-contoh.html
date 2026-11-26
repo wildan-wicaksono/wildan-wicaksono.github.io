@@ -1,0 +1,198 @@
+<link rel="stylesheet" href="{{ '/assets/css/studio-tikz-contoh.css' | relative_url }}">
+<section class="studio-contoh" lang="{% if include.language == 'en' %}en{% else %}id{% endif %}" aria-labelledby="contoh-studio-tikz">
+  <h2 id="contoh-studio-tikz">{% if include.language == 'en' %}Studio TikZ examples{% else %}Contoh Studio TikZ{% endif %}</h2>
+  <p>{% if include.language == 'en' %}Here are three diagrams I use when teaching olympiad geometry. Read the TikZ alongside each figure, or open the construction in Studio and drag its points.{% else %}Berikut tiga diagram yang saya pakai untuk soal geometri olimpiade. Di setiap contoh, lihat gambar dan kode TikZ-nya berdampingan, atau buka konstruksinya di Studio untuk menggeser titik.{% endif %}</p>
+  <div class="studio-contoh-paket">
+    <h3 id="paket-latex">{% if include.language == 'en' %}LaTeX packages{% else %}Paket LaTeX{% endif %}</h3>
+    <p>{% if include.language == 'en' %}Place these two lines before <code>\begin{document}</code>. The <code>dvipsnames</code> option supplies the named colours used in these diagrams.{% else %}Taruh dua baris ini sebelum <code>\begin{document}</code>. Opsi <code>dvipsnames</code> menyediakan palet warna yang dipakai pada diagram.{% endif %}</p>
+    <pre><code>\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}</code></pre>
+    <p>{% if include.language == 'en' %}Examples 1 and 3 use <code>\usetikzlibrary{angles}</code> for the angle arcs. The line is included in each code sample.{% else %}Contoh 1 dan 3 menggunakan <code>\usetikzlibrary{angles}</code> untuk busur sudut. Barisnya sudah disertakan dalam kode masing-masing.{% endif %}</p>
+  </div>
+  <article class="studio-contoh-item">
+    <h3>{% if include.language == 'en' %}1. A reflection and two cyclic quadrilaterals{% else %}1. Refleksi dan dua segiempat siklis{% endif %}</h3>
+    <p>{% if include.language == 'en' %}Let $M$ lie on $\overline{AC}$ in triangle $ABC$. Reflect $M$ across $BC$ to obtain $N$. Line $AN$ meets $\overline{BC}$ at $O$, and $A,B,M,O$ are concyclic. If $\angle ABN=56^\circ$, find $\angle CMN$.{% else %}Diberikan segitiga $ABC$ dan titik $M$ terletak pada $\overline{AC}$. Titik $N$ merupakan bayangan pencerminan $M$ terhadap garis $BC$. Garis $AN$ memotong $\overline{BC}$ di $O$. Terlebih lagi, $A$, $B$, $M$, dan $O$ terletak pada lingkaran yang sama. Jika $\angle ABN=56^\circ$, berapakah besar $\angle CMN$?{% endif %}</p>
+    <div class="studio-contoh-pasangan">
+      <figure>
+        <img src="{{ '/tools/studio-tikz/contoh-penggunaan/01-refleksi.svg' | relative_url }}" alt="{% if include.language == 'en' %}Two circles through A and B, a blue 56-degree angle at B, and a dashed red reflection segment MN.{% else %}Dua lingkaran melalui A dan B, dengan busur biru 56 derajat di B dan ruas refleksi MN putus-putus merah bata.{% endif %}" loading="lazy">
+        <figcaption>{% if include.language == 'en' %}The solid green circle passes through $A,B,M,O$, and the dotted blue circle passes through $A,B,C,N$. The blue arc at $B$ marks $56^\circ$. The dashed segment $MN$ and the arc at $M$ are brick red.{% else %}Lingkaran hijau bergaris penuh melalui $A,B,M,O$, dan lingkaran biru bertitik melalui $A,B,C,N$. Busur biru di $B$ menandai sudut $56^\circ$. Ruas $MN$ dan busur di $M$ berwarna merah bata.{% endif %}</figcaption>
+      </figure>
+      <div class="studio-contoh-sumber">
+        <h4>{% if include.language == 'en' %}TikZ code{% else %}Kode TikZ{% endif %}</h4>
+        <pre tabindex="0" aria-label="{% if include.language == 'en' %}Full TikZ code for example 1{% else %}Kode TikZ lengkap contoh 1{% endif %}"><code class="language-latex">\usetikzlibrary{angles}
+\begin{center}
+\begin{tikzpicture}[scale=1, font=\small]
+    \coordinate (A) at (0, 0);
+    \path (A) ++(-0.36, -0.29) node[inner sep=0pt] {$A$};
+    \coordinate (B) at (1, 5);
+    \path (B) ++(-0.055, 0.32) node[inner sep=0pt] {$B$};
+    \coordinate (M) at (2, 0);
+    \path (M) ++(0.025, -0.35) node[inner sep=0pt] {$M$};
+    \coordinate (C) at (3.65855, 0);
+    \path (C) ++(0.33, -0.25) node[inner sep=0pt] {$C$};
+    \coordinate (N) at (4.58599, 1.375);
+    \path (N) ++(0.32, 0.05) node[inner sep=0pt] {$N$};
+    \coordinate (O) at (3.1555, 0.9461);
+    \path (O) ++(-0.37, 0.18) node[inner sep=0pt] {$O$};
+
+    \draw[semithick, PineGreen] (1, 2.4) circle (2.6);
+    \draw[semithick, MidnightBlue, opacity=0.8, dotted] (1.82927, 2.23415) circle (2.8875);
+    \draw[semithick] (A)--(B);
+    \draw[semithick] (B)--(C);
+    \draw[semithick] (C)--(A);
+    \draw[thin] (A)--(N);
+    \draw[thin] (B)--(M);
+    \draw[thin] (B)--(N);
+    \draw[thin] (N)--(C);
+    \draw[semithick, BrickRed, dashed] (M)--(N);
+    \draw[thick] (M)--(O);
+    \pic[draw=MidnightBlue, thick, angle radius=0.39cm] {angle=A--B--N};
+    \node[inner sep=0pt, text=MidnightBlue] at (0.49, 4.38) {$56^{\circ}$};
+    \pic[draw=BrickRed, thick, angle radius=0.39cm] {angle=C--M--N};
+
+{% if include.language == 'en' %}    % Keep printed point radius at 1.5pt when scale changes.{% else %}    % Radius cetak titik tetap 1.5pt saat scale diubah.{% endif %}
+    \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}
+    \pgfmathsetlengthmacro{\studioRadiusTitik}{1.5pt/veclen(\studioXX,\studioYX)}
+    \foreach \s in {A,B,M,C,N,O}
+        \filldraw (\s) circle (\studioRadiusTitik);
+\end{tikzpicture}
+\end{center}
+</code></pre>
+      </div>
+    </div>
+    <p><a href="{{ '/tools/studio-tikz/index.html' | relative_url }}{% if include.language == 'en' %}?lang=en{% else %}{% endif %}#contoh/01-refleksi">{% if include.language == 'en' %}Drag the points in example 1 in Studio{% else %}Geser titik pada contoh 1 di Studio{% endif %}</a></p>
+  </article>
+  <article class="studio-contoh-item">
+    <h3>{% if include.language == 'en' %}2. Three circles on the medians{% else %}2. Tiga lingkaran pada garis berat segitiga{% endif %}</h3>
+    <p>{% if include.language == 'en' %}Let $G$ be the centroid of triangle $ABC$. Let $D,E,F$ be the midpoints of $BC,CA,AB$, respectively, and $D_1,E_1,F_1$ the midpoints of $AG,BG,CG$. Prove that the circumcircles of $D_1EF$, $DE_1F$ and $DEF_1$ have a common point.{% else %}Diberikan segitiga $ABC$ dengan $G$ titik potong ketiga garis beratnya. Titik $D$, $E$, dan $F$ berturut-turut merupakan titik tengah $BC$, $CA$, dan $AB$. Titik $D_1$, $E_1$, dan $F_1$ berturut-turut merupakan titik tengah $AG$, $BG$, dan $CG$. Buktikan bahwa lingkaran luar segitiga $D_1EF$, $DE_1F$, dan $DEF_1$ berpotongan di satu titik.{% endif %}</p>
+    <div class="studio-contoh-pasangan">
+      <figure>
+        <img src="{{ '/tools/studio-tikz/contoh-penggunaan/02-garis-berat.svg' | relative_url }}" alt="{% if include.language == 'en' %}The three medians of ABC and three circles through H near AB.{% else %}Ketiga garis berat segitiga ABC dan tiga lingkaran berwarna yang melalui titik H dekat sisi AB.{% endif %}" loading="lazy">
+        <figcaption>{% if include.language == 'en' %}The circumcircle of $D_1EF$ is blue, that of $DE_1F$ is green, and the dashed red circle passes through $D,E,F_1$. Their common point is marked $H$.{% else %}Lingkaran luar $D_1EF$ berwarna biru, lingkaran luar $DE_1F$ berwarna hijau, dan lingkaran luar $DEF_1$ digambar merah putus-putus. Huruf $H$ menandai perpotongan yang ingin diamati.{% endif %}</figcaption>
+      </figure>
+      <div class="studio-contoh-sumber">
+        <h4>{% if include.language == 'en' %}TikZ code{% else %}Kode TikZ{% endif %}</h4>
+        <pre tabindex="0" aria-label="{% if include.language == 'en' %}Full TikZ code for example 2{% else %}Kode TikZ lengkap contoh 2{% endif %}"><code class="language-latex">\begin{center}
+\begin{tikzpicture}[scale=1, font=\small]
+    \coordinate (A) at (0, 0);
+    \path (A) ++(-0.008, -0.3) node[inner sep=0pt] {$A$};
+    \coordinate (B) at (9, 0);
+    \path (B) ++(0.06, -0.303) node[inner sep=0pt] {$B$};
+    \coordinate (C) at (7.24, 8.24);
+    \path (C) ++(0.008, 0.33) node[inner sep=0pt] {$C$};
+    \coordinate (D) at (8.12, 4.12);
+    \path (D) ++(0.287, 0.04) node[inner sep=0pt] {$D$};
+    \coordinate (E) at (3.62, 4.12);
+    \path (E) ++(-0.223, 0.215) node[inner sep=0pt] {$E$};
+    \coordinate (F) at (4.5, 0);
+    \path (F) ++(-0.009, -0.3) node[inner sep=0pt] {$F$};
+    \coordinate (G) at (5.41333, 2.74667);
+    \path (G) ++(0.123, -0.495) node[inner sep=0pt] {$G$};
+    \coordinate (D1) at (2.70667, 1.37333);
+    \path (D1) ++(-0.184, -0.454) node[inner sep=0pt] {$D_{1}$};
+    \coordinate (E1) at (7.20667, 1.37333);
+    \path (E1) ++(0.266, -0.658) node[inner sep=0pt] {$E_{1}$};
+    \coordinate (F1) at (6.32667, 5.49333);
+    \path (F1) ++(0.415, 0.221) node[inner sep=0pt] {$F_{1}$};
+    \coordinate (H) at (6.28748, 0.5786);
+    \path (H) ++(0.116, -0.287) node[inner sep=0pt] {$H$};
+
+    \draw[semithick, MidnightBlue] (4.77139, 2.21195) circle (2.22853);
+    \draw[semithick, PineGreen] (4.22861, 3.8888) circle (3.89825);
+    \draw[semithick, BrickRed, dashed] (5.87, 3.03945) circle (2.49601);
+    \draw[thick] (A)--(B);
+    \draw[thick] (B)--(C);
+    \draw[thick] (C)--(A);
+    \draw[thick] (A)--(D);
+    \draw[thick] (B)--(E);
+    \draw[thick] (C)--(F);
+    \draw[thin] (D)--(E);
+    \draw[thin] (E)--(H);
+    \draw[thin] (H)--(D);
+    \draw[thick] (D1)--(H);
+    \draw[thick] (H)--(F);
+
+{% if include.language == 'en' %}    % Keep printed point radius at 1.5pt when scale changes.{% else %}    % Radius cetak titik tetap 1.5pt saat scale diubah.{% endif %}
+    \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}
+    \pgfmathsetlengthmacro{\studioRadiusTitik}{1.5pt/veclen(\studioXX,\studioYX)}
+    \foreach \s in {A,B,C,D,E,F,G,D1,E1,F1,H}
+        \filldraw (\s) circle (\studioRadiusTitik);
+\end{tikzpicture}
+\end{center}
+</code></pre>
+      </div>
+    </div>
+    <p><a href="{{ '/tools/studio-tikz/index.html' | relative_url }}{% if include.language == 'en' %}?lang=en{% else %}{% endif %}#contoh/02-garis-berat">{% if include.language == 'en' %}Drag the points in example 2 in Studio{% else %}Geser titik pada contoh 2 di Studio{% endif %}</a></p>
+  </article>
+  <article class="studio-contoh-item">
+    <h3>{% if include.language == 'en' %}3. A tangent and two medians{% else %}3. Garis singgung dan dua garis berat{% endif %}</h3>
+    <p>{% if include.language == 'en' %}Let $\ell$ be the tangent at $C$ to the circumcircle of a non-isosceles triangle $ABC$. Let $D$ and $E$ be the midpoints of $BC$ and $CA$. Lines $AD$ and $BE$ meet $\ell$ at $A_1$ and $B_1$. Line $AB_1$ meets the circumcircle again at $X$, and $BA_1$ meets it again at $Y$. Prove that $X,Y,D,E$ are concyclic.{% else %}Diberikan segitiga $ABC$ yang tidak sama kaki dan garis $\ell$ yang menyinggung lingkaran luar segitiga $ABC$ di $C$. Titik $D$ dan $E$ berturut-turut merupakan titik tengah $BC$ dan $CA$. Garis $AD$ dan $BE$ memotong $\ell$ berturut-turut di $A_1$ dan $B_1$. Garis $AB_1$ memotong kembali lingkaran luar di $X$ selain $A$, dan $BA_1$ memotongnya kembali di $Y$ selain $B$. Buktikan bahwa $X$, $Y$, $D$, dan $E$ terletak pada satu lingkaran.{% endif %}</p>
+    <div class="studio-contoh-pasangan">
+      <figure>
+        <img src="{{ '/tools/studio-tikz/contoh-penggunaan/03-garis-singgung.svg' | relative_url }}" alt="{% if include.language == 'en' %}A blue-shaded triangle, a red tangent at C, two green circles, and three purple angle marks.{% else %}Segitiga ABC berarsir biru muda, garis singgung merah bata di C, dua lingkaran bantu hijau, dan tiga penanda sudut ungu.{% endif %}" loading="lazy">
+        <figcaption>{% if include.language == 'en' %}A blue fill at 14% opacity marks triangle $ABC$. The brick-red line is tangent to the blue circumcircle at $C$. The two auxiliary circles are green. Purple arcs mark the three angles being compared.{% else %}Isian biru 14% menandai bagian dalam segitiga $ABC$. Garis merah bata menyinggung lingkaran luar biru di $C$. Dua lingkaran bantu berwarna hijau, dan ketiga busur ungu menandai sudut yang dibandingkan.{% endif %}</figcaption>
+      </figure>
+      <div class="studio-contoh-sumber">
+        <h4>{% if include.language == 'en' %}TikZ code{% else %}Kode TikZ{% endif %}</h4>
+        <pre tabindex="0" aria-label="{% if include.language == 'en' %}Full TikZ code for example 3{% else %}Kode TikZ lengkap contoh 3{% endif %}"><code class="language-latex">\usetikzlibrary{angles}
+\begin{center}
+\begin{tikzpicture}[scale=0.8, font=\small]
+    \fill[fill=MidnightBlue, fill opacity=0.14] (0, 0)--(0, 5)--(-6, 4)--cycle;
+    \coordinate (A) at (0, 0);
+    \path (A) ++(0.09, -0.512) node[inner sep=0pt] {$A$};
+    \coordinate (B) at (0, 5);
+    \path (B) ++(0.368, 0.368) node[inner sep=0pt] {$B$};
+    \coordinate (C) at (-6, 4);
+    \path (C) ++(-0.52, 0) node[inner sep=0pt] {$C$};
+    \coordinate (D) at (-3, 4.5);
+    \path (D) ++(-0.373, -0.444) node[inner sep=0pt] {$D$};
+    \coordinate (E) at (-3, 2);
+    \path (E) ++(0.168, -0.628) node[inner sep=0pt] {$E$};
+    \coordinate (A1) at (-4.65672, 6.98507);
+    \path (A1) ++(-0.502, 0.135) node[inner sep=0pt] {$A_{1}$};
+    \coordinate (B1) at (-10.09091, -5.09091);
+    \path (B1) ++(-0.52, 0) node[inner sep=0pt] {$B_{1}$};
+    \coordinate (T) at (-3, 10.66667);
+    \path (T) ++(0, 0.52) node[inner sep=0pt] {$T$};
+    \coordinate (P) at (-3.94872, 5.92308);
+    \path (P) ++(-0.715, 0.04) node[inner sep=0pt] {$P$};
+    \coordinate (Q) at (-5.16667, -0.16667);
+    \path (Q) ++(0.051, -0.578) node[inner sep=0pt] {$Q$};
+    \coordinate (X) at (-2.24054, -1.13036);
+    \path (X) ++(0, -0.52) node[inner sep=0pt] {$X$};
+    \coordinate (Y) at (-2.70955, 6.15503);
+    \path (Y) ++(0.368, 0.368) node[inner sep=0pt] {$Y$};
+
+    \draw[thick, MidnightBlue] (-2.66667, 2.5) circle (3.65529);
+    \draw[thick, PineGreen, dotted] (-6.41667, 3.25) circle (3.63815);
+    \draw[thick, PineGreen] (-4.33333, 3.25) circle (1.82764);
+    \draw[thick] (A)--(B);
+    \draw[thick] (B)--(C);
+    \draw[thick] (C)--(A);
+    \draw[thick] (A)--(A1);
+    \draw[thick] (B)--(B1);
+    \draw[thick, BrickRed] (B1)--(T);
+    \draw[thin, dashed] (X)--(T);
+    \draw[thin, dashed] (T)--(Q);
+    \draw[thick] (E)--(T);
+    \draw[thick] (B1)--(A);
+    \draw[thick] (B)--(A1);
+    \draw[thin, opacity=0.45] (Q)--(P);
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=E--Q--P};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=E--D--A};
+    \pic[draw=RoyalPurple, semithick, angle radius=0.39cm] {angle=B--A--D};
+
+{% if include.language == 'en' %}    % Keep printed point radius at 1.5pt when scale changes.{% else %}    % Radius cetak titik tetap 1.5pt saat scale diubah.{% endif %}
+    \pgfgettransformentries{\studioXX}{\studioYX}{\studioXY}{\studioYY}{\studioDX}{\studioDY}
+    \pgfmathsetlengthmacro{\studioRadiusTitik}{1.5pt/veclen(\studioXX,\studioYX)}
+    \foreach \s in {A,B,C,D,E,A1,B1,T,P,Q,X,Y}
+        \filldraw (\s) circle (\studioRadiusTitik);
+\end{tikzpicture}
+\end{center}
+</code></pre>
+      </div>
+    </div>
+    <p><a href="{{ '/tools/studio-tikz/index.html' | relative_url }}{% if include.language == 'en' %}?lang=en{% else %}{% endif %}#contoh/03-garis-singgung">{% if include.language == 'en' %}Drag the points in example 3 in Studio{% else %}Geser titik pada contoh 3 di Studio{% endif %}</a></p>
+  </article>
+  <p><a href="{% if include.language == 'en' %}{{ '/tools/studio-tikz/en/examples.html' | relative_url }}#construct-the-reflection-diagram{% else %}{{ '/tools/studio-tikz/contoh-penggunaan.html' | relative_url }}{% endif %}">{% if include.language == 'en' %}Read the construction steps for all three diagrams{% else %}Baca langkah konstruksi ketiga diagram{% endif %}</a></p>
+</section>

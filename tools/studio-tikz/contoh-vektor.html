@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Titik D pada ruas AB · Studio TikZ</title>
+<style>
+  :root {
+    color-scheme:light dark; --paper:#faf9f4; --panel:#fffef9; --ink:#22372e; --muted:#4d6054;
+    --rule:#cbd8ce; --triangle:#006794; --pine-line:#008a73; --pine:#086655; --brick:#b6321d; --halo:#dbeae4;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root {--paper:#222d27;--panel:#26332b;--ink:#edf0e8;--muted:#c3cfc4;--rule:#526559;--triangle:#afd4ee;--pine-line:#90dcc2;--pine:#90dcc2;--brick:#ffb1a0;--halo:#435f52}
+  }
+  * {box-sizing:border-box}
+  body {margin:0;background:var(--paper);color:var(--ink);font:15px/1.35 system-ui,sans-serif}
+  main {max-width:660px;margin:auto;padding:11px 16px}
+  header,.readouts {display:flex;align-items:center;justify-content:space-between;gap:8px}
+  h1 {margin:0;font:normal 24px/1.15 Georgia,serif}
+  .formula {font-family:Georgia,serif;white-space:nowrap}
+  button {min-height:35px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit;cursor:pointer}
+  button:hover {border-color:var(--pine)}
+  button:focus-visible {outline:2px solid var(--pine);outline-offset:2px}
+  p {margin:5px 0 8px;color:var(--muted)}
+  #diagram {display:block;width:100%;height:clamp(198px,39vw,221px);border:1px solid var(--rule);border-radius:8px;background:var(--panel)}
+  #triangle,#cd,#angle {fill:none;stroke-linejoin:round;stroke-linecap:round}
+  #triangle {stroke:var(--triangle);stroke-width:2.1}
+  #cd {stroke:var(--pine-line);stroke-width:1.8;stroke-dasharray:5 4}
+  #angle {stroke:var(--brick);stroke-width:1.7}
+  svg text {fill:var(--ink);font:italic 18px Georgia,serif;stroke:var(--panel);stroke-width:3px;paint-order:stroke fill;pointer-events:none}
+  #point-D {pointer-events:none;fill:var(--pine)}
+  #point-D text {fill:var(--pine)}
+  .handle {cursor:grab;touch-action:none;outline:none}
+  .handle.dragging {cursor:grabbing}
+  .handle circle {touch-action:none}
+  .target {fill:transparent}
+  .ring {fill:var(--halo);stroke:none}
+  .handle:hover .ring,.handle:focus-visible .ring,.handle.dragging .ring {stroke:var(--pine);stroke-width:1.7}
+  .dot {fill:var(--ink)}
+  .readouts {margin-top:6px;justify-content:space-between;font-variant-numeric:tabular-nums;flex-wrap:wrap;gap:3px 10px}
+  #d-value {color:var(--pine)}
+  #angle-value {color:var(--brick)}
+  .sr {position:absolute;width:1px;height:1px;padding:0;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap;border:0}
+  @media(max-width:385px) {main{padding:9px 10px}h1{font-size:22px}.readouts{font-size:14px}}
+  #lesson-language {background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:5px;font:inherit;font-size:14px;padding:4px;cursor:pointer;min-height:30px}
+  math {font-family:math,"Cambria Math",serif;font-weight:normal}
+.lesson-actions {display:flex;gap:6px;align-items:center}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1 data-copy="heading" data-attr="aria-label" aria-label="Titik D sama dengan A tambah dua B, dibagi tiga"><math display="inline"><mi>D</mi><mo>=</mo><mfrac><mrow><mi>A</mi><mo>+</mo><mn>2</mn><mi>B</mi></mrow><mn>3</mn></mfrac></math></h1>
+    <div class="lesson-actions"><select id="lesson-language" aria-label="Bahasa"><option value="id" lang="id">ID</option><option value="en" lang="en">EN</option></select><button type="button" id="reset" data-copy="reset">Atur ulang</button></div>
+  </header>
+  <p id="hint" data-copy="hint">Geser A, B, atau C. Dengan papan ketik, gunakan Tab lalu tombol panah.</p>
+  <svg id="diagram" viewBox="0 0 480 220" role="group" aria-labelledby="diagram-title diagram-desc">
+    <title id="diagram-title" data-copy="diagram">Segitiga ABC dengan D pada ruas AB</title>
+    <desc id="diagram-desc" data-copy="desc">Titik D berada dua pertiga perjalanan dari A ke B. Ruas CD digambar putus-putus dan busur kecil di C menandai sudut ACB.</desc>
+    <path id="triangle"/>
+    <line id="cd"/>
+    <path id="angle"/>
+    <g id="point-D"><circle r="3.4"/><text>D</text></g>
+    <g id="point-A" class="handle" tabindex="0" role="application" data-copy="handle" data-attr="aria-roledescription" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
+      <circle class="target" r="20"/><circle class="ring" r="7.5"/><circle class="dot" r="3.6"/><text>A</text>
+    </g>
+    <g id="point-B" class="handle" tabindex="0" role="application" data-copy="handle" data-attr="aria-roledescription" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
+      <circle class="target" r="20"/><circle class="ring" r="7.5"/><circle class="dot" r="3.6"/><text>B</text>
+    </g>
+    <g id="point-C" class="handle" tabindex="0" role="application" data-copy="handle" data-attr="aria-roledescription" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
+      <circle class="target" r="20"/><circle class="ring" r="7.5"/><circle class="dot" r="3.6"/><text>C</text>
+    </g>
+  </svg>
+  <div class="readouts"><span id="d-value"></span><span class="formula"><math><mi>AD</mi><mo>=</mo><mn>2</mn><mi>DB</mi></math></span><span id="angle-value"></span></div>
+  <span class="sr" id="announcement" role="status"></span>
+</main>
+<script>
+(() => {
+  'use strict';
+  const el = id => document.getElementById(id);
+  const svg = el('diagram');
+  const initial = {A:{x:0,y:0},B:{x:6,y:0},C:{x:2,y:4}};
+  const points = {};
+  const names = Object.keys(initial);
+  const handles = Object.fromEntries(names.map(name => [name,el('point-'+name)]));
+
+  const localeKey = 'studio-tikz-language';
+  function preferredLanguage() {
+    try {
+      const query = new URLSearchParams(location.search).get('lang');
+      if (query === 'en' || query === 'id') return query;
+      return localStorage.getItem(localeKey) === 'en' ? 'en' : 'id';
+    } catch { return 'id'; }
+  }
+  let language = preferredLanguage();
+  const pick = (id, en) => language === 'en' ? en : id;
+  const copy = {"title": ["Titik D pada ruas AB · Studio TikZ", "Point D on segment AB · Studio TikZ"], "heading": ["Titik D sama dengan A tambah dua B, dibagi tiga", "D equals the sum of A and twice B, divided by three"], "handle": ["titik yang dapat digeser", "draggable point"], "reset": ["Atur ulang", "Reset"], "hint": ["Geser A, B, atau C. Dengan papan ketik, gunakan Tab lalu tombol panah.", "Drag A, B or C. With a keyboard, press Tab to select a point, then use the arrow keys."], "diagram": ["Segitiga ABC dengan D pada ruas AB", "Triangle ABC with D on segment AB"], "desc": ["Titik D berada dua pertiga perjalanan dari A ke B. Ruas CD digambar putus-putus dan busur kecil di C menandai sudut ACB.", "Point D lies two-thirds of the way from A to B. Segment CD is dashed, and a small arc at C marks angle ACB."]};
+  function updateLanguage(next) {
+    if (next !== 'en' && next !== 'id') return;
+    language = next;
+    document.documentElement.lang = next;
+    document.title = copy.title[Number(next === 'en')];
+    for (const node of document.querySelectorAll('[data-copy]')) {
+      const value = copy[node.dataset.copy][Number(next === 'en')];
+      if (node.dataset.attr) node.setAttribute(node.dataset.attr, value);
+      else node.textContent = value;
+    }
+    const selector = document.getElementById('lesson-language');
+    selector.value = next;
+    selector.setAttribute('aria-label',pick('Bahasa','Language'));
+    redraw();
+  }
+  function bindLanguage(redrawLesson) {
+    redraw = redrawLesson;
+    const selector = document.getElementById('lesson-language');
+    selector.addEventListener('change', () => {
+      const next = selector.value;
+      try { localStorage.setItem(localeKey,next); } catch {}
+      updateLanguage(next);
+      if (window.parent !== window) window.parent.postMessage({type:localeKey,language:next},'*');
+    });
+    window.addEventListener('message', event => {
+      if (event.source === window.parent && event.data?.type === localeKey) updateLanguage(event.data.language);
+    });
+    window.addEventListener('storage', event => { if (event.key === localeKey) updateLanguage(event.newValue); });
+    updateLanguage(language);
+  }
+  let redraw = () => {};
+
+  const formatters = {id:new Intl.NumberFormat('id-ID',{maximumFractionDigits:2}),en:new Intl.NumberFormat('en-US',{maximumFractionDigits:2})};
+  const format = value => formatters[language].format(Math.abs(value)<0.005 ? 0 : value);
+  const coord = p => '('+format(p.x)+pick('; ', ', ')+format(p.y)+')';
+  let view, drag = null;
+
+  function resetPoints() {
+    for (const name of names) points[name] = {...initial[name]};
+  }
+  function resize() {
+    const w = svg.clientWidth, h = svg.clientHeight;
+    if (!w || !h) return;
+    // Refit on resize only. The scale remains fixed throughout each drag.
+    const edge = 24;
+    const values = Object.values(points);
+    const left = Math.min(-1.3,...values.map(p=>p.x)), right = Math.max(7.3,...values.map(p=>p.x));
+    const bottom = Math.min(-0.4,...values.map(p=>p.y)), top = Math.max(4.4,...values.map(p=>p.y));
+    const scale = Math.min((w-2*edge)/(right-left),(h-2*edge)/(top-bottom));
+    view = {w,h,edge,scale,ox:(w-scale*(left+right))/2,oy:(h+scale*(bottom+top))/2};
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+    draw();
+  }
+  function screen(p) {return {x:view.ox+view.scale*p.x,y:view.oy-view.scale*p.y};}
+  function world(p) {return {x:(p.x-view.ox)/view.scale,y:(view.oy-p.y)/view.scale};}
+  function placeLabel(group,p,away) {
+    let x = p.x-away.x, y = p.y-away.y;
+    const length = Math.hypot(x,y);
+    if (length) {x/=length;y/=length;} else {x=0;y=-1;}
+    const text = group.querySelector('text');
+    text.setAttribute('x',13*x);
+    text.setAttribute('y',13*y+5);
+    text.setAttribute('text-anchor', x<-.36?'end':x>.36?'start':'middle');
+    group.setAttribute('transform','translate('+p.x+' '+p.y+')');
+  }
+  function draw() {
+    const {A,B,C} = points;
+    const D = {x:(A.x+2*B.x)/3,y:(A.y+2*B.y)/3};
+    const a=screen(A), b=screen(B), c=screen(C), d=screen(D);
+    const center = {x:(a.x+b.x+c.x)/3,y:(a.y+b.y+c.y)/3};
+    el('triangle').setAttribute('d','M '+a.x+' '+a.y+' L '+b.x+' '+b.y+' L '+c.x+' '+c.y+' Z');
+    for (const [key,value] of Object.entries({x1:c.x,y1:c.y,x2:d.x,y2:d.y})) el('cd').setAttribute(key,value);
+    for (const name of names) {
+      placeLabel(handles[name],screen(points[name]),center);
+      handles[name].setAttribute('aria-label',pick('Titik ','Point ')+name+' '+coord(points[name]));
+    }
+    // Put the label on the side of AB opposite C.
+    let nx = b.y-a.y, ny = a.x-b.x;
+    if (nx*(c.x-d.x)+ny*(c.y-d.y)>0) {nx=-nx;ny=-ny;}
+    placeLabel(el('point-D'),d,{x:d.x-nx,y:d.y-ny});
+    el('d-value').textContent='D = '+coord(D);
+
+    const ax=a.x-c.x, ay=a.y-c.y, bx=b.x-c.x, by=b.y-c.y;
+    const ca=Math.hypot(ax,ay), cb=Math.hypot(bx,by);
+    let arc='', measure=pick('tak terdefinisi','undefined');
+    if (ca>1e-8 && cb>1e-8) {
+      const turn=Math.atan2(ax*by-ay*bx,ax*bx+ay*by);
+      measure=format(Math.abs(turn)*180/Math.PI)+'°';
+      const r=Math.min(19,0.24*ca,0.24*cb);
+      if (r>1 && Math.abs(turn)>0.003) {
+        arc='M '+(c.x+r*ax/ca)+' '+(c.y+r*ay/ca)+' A '+r+' '+r+' 0 0 '+(turn>0?1:0)+' '+(c.x+r*bx/cb)+' '+(c.y+r*by/cb);
+      }
+    }
+    el('angle').setAttribute('d',arc);
+    el('angle-value').textContent='∠ACB = '+measure;
+  }
+
+  function svgPosition(event) {
+    const matrix=svg.getScreenCTM();
+    return matrix ? new DOMPoint(event.clientX,event.clientY).matrixTransform(matrix.inverse()) : null;
+  }
+  function setPosition(name,p) {
+    const clamp=(v,limit)=>Math.max(view.edge,Math.min(limit-view.edge,v));
+    points[name]=world({x:clamp(p.x,view.w),y:clamp(p.y,view.h)});
+    draw();
+  }
+  function announce(name) {
+    el('announcement').textContent=name+' '+coord(points[name])+'. '+el('d-value').textContent+'. '+el('angle-value').textContent+'.';
+  }
+  function endDrag(event) {
+    if (!drag || drag.id!==event.pointerId) return;
+    const {name,id}=drag, handle=handles[name];
+    drag=null;
+    handle.classList.remove('dragging');
+    if (handle.hasPointerCapture(id)) handle.releasePointerCapture(id);
+    announce(name);
+  }
+  const offsets={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,1],ArrowDown:[0,-1]};
+  for (const name of names) {
+    const handle=handles[name];
+    handle.addEventListener('pointerdown',event=>{
+      if (drag || event.button!==0) return;
+      const cursor=svgPosition(event);
+      if (!cursor) return;
+      const p=screen(points[name]);
+      drag={name,id:event.pointerId,dx:p.x-cursor.x,dy:p.y-cursor.y};
+      handle.focus({preventScroll:true});
+      handle.setPointerCapture(event.pointerId);
+      handle.classList.add('dragging');
+      event.preventDefault();
+    });
+    handle.addEventListener('pointermove',event=>{
+      if (drag?.name!==name || drag.id!==event.pointerId) return;
+      const cursor=svgPosition(event);
+      if (cursor) setPosition(name,{x:cursor.x+drag.dx,y:cursor.y+drag.dy});
+    });
+    for (const type of ['pointerup','pointercancel','lostpointercapture']) handle.addEventListener(type,endDrag);
+    handle.addEventListener('keydown',event=>{
+      const delta=offsets[event.key];
+      if (!delta) return;
+      event.preventDefault();
+      const p=points[name], step=event.shiftKey?1:0.25;
+      setPosition(name,screen({x:p.x+delta[0]*step,y:p.y+delta[1]*step}));
+      announce(name);
+    });
+  }
+  el('reset').addEventListener('click',()=>{
+    if (drag) endDrag({pointerId:drag.id});
+    resetPoints();resize();
+    el('announcement').textContent=pick('Posisi awal dipulihkan. ','Starting positions restored. ')+el('d-value').textContent+'. '+el('angle-value').textContent+'.';
+  });
+  resetPoints();resize();
+  bindLanguage(()=>{if(view) draw();});
+  new ResizeObserver(resize).observe(svg);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+{
+  "format": "studio-tikz",
+  "version": 1,
+  "title": "Garis berat dan tiga lingkaran luar",
+  "steps": [
+    {
+      "id": "A",
+      "type": "point",
+      "refs": [],
+      "name": "A",
+      "x": 0,
+      "y": 0,
+      "dir": "above",
+      "labelOffset": {
+        "x": -0.008,
+        "y": -0.3
+      }
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "refs": [],
+      "name": "B",
+      "x": 9,
+      "y": 0,
+      "dir": "above",
+      "labelOffset": {
+        "x": 0.06,
+        "y": -0.303
+      }
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "refs": [],
+      "name": "C",
+      "x": 7.24,
+      "y": 8.24,
+      "dir": "above",
+      "labelOffset": {
+        "x": 0.008,
+        "y": 0.33
+      }
+    },
+    {
+      "id": "ABC",
+      "type": "triangle",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "AB",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "A",
+        "B"
+      ],
+      "index": 0
+    },
+    {
+      "id": "BC",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "B",
+        "C"
+      ],
+      "index": 1
+    },
+    {
+      "id": "CA",
+      "type": "polygonSide",
+      "refs": [
+        "ABC",
+        "C",
+        "A"
+      ],
+      "index": 2
+    },
+    {
+      "id": "D",
+      "type": "mid",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "name": "D",
+      "dir": "above",
+      "labelOffset": {
+        "x": 0.287,
+        "y": 0.04
+      }
+    },
+    {
+      "id": "E",
+      "type": "mid",
+      "refs": [
+        "C",
+        "A"
+      ],
+      "name": "E",
+      "dir": "above",
+      "labelOffset": {
+        "x": -0.223,
+        "y": 0.215
+      }
+    },
+    {
+      "id": "F",
+      "type": "mid",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "name": "F",
+      "dir": "above",
+      "labelOffset": {
+        "x": -0.009,
+        "y": -0.3
+      }
+    },
+    {
+      "id": "AD",
+      "type": "segment",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "BE",
+      "type": "segment",
+      "refs": [
+        "B",
+        "E"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "CF",
+      "type": "segment",
+      "refs": [
+        "C",
+        "F"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "G",
+      "type": "cut",
+      "refs": [
+        "AD",
+        "BE"
+      ],
+      "name": "G",
+      "dir": "above",
+      "labelOffset": {
+        "x": 0.123,
+        "y": -0.495
+      }
+    },
+    {
+      "id": "D1",
+      "type": "mid",
+      "refs": [
+        "A",
+        "G"
+      ],
+      "name": "D_1",
+      "dir": "above",
+      "labelOffset": {
+        "x": -0.184,
+        "y": -0.454
+      }
+    },
+    {
+      "id": "E1",
+      "type": "mid",
+      "refs": [
+        "B",
+        "G"
+      ],
+      "name": "E_1",
+      "dir": "above",
+      "labelOffset": {
+        "x": 0.266,
+        "y": -0.658
+      }
+    },
+    {
+      "id": "F1",
+      "type": "mid",
+      "refs": [
+        "C",
+        "G"
+      ],
+      "name": "F_1",
+      "dir": "above",
+      "labelOffset": {
+        "x": 0.415,
+        "y": 0.221
+      }
+    },
+    {
+      "id": "k1",
+      "type": "circle3",
+      "refs": [
+        "D1",
+        "E",
+        "F"
+      ],
+      "color": "MidnightBlue",
+      "lineWidth": "semithick"
+    },
+    {
+      "id": "k2",
+      "type": "circle3",
+      "refs": [
+        "D",
+        "E1",
+        "F"
+      ],
+      "color": "PineGreen",
+      "lineWidth": "semithick"
+    },
+    {
+      "id": "k3",
+      "type": "circle3",
+      "refs": [
+        "D",
+        "E",
+        "F1"
+      ],
+      "color": "BrickRed",
+      "lineWidth": "semithick",
+      "linePattern": "dashed"
+    },
+    {
+      "id": "O1",
+      "type": "center",
+      "refs": [
+        "k1"
+      ],
+      "name": "O_1",
+      "hidden": true
+    },
+    {
+      "id": "O2",
+      "type": "center",
+      "refs": [
+        "k2"
+      ],
+      "name": "O_2",
+      "hidden": true
+    },
+    {
+      "id": "axis",
+      "type": "line",
+      "refs": [
+        "O1",
+        "O2"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "H",
+      "type": "imagePoint",
+      "refs": [
+        "F",
+        "axis"
+      ],
+      "name": "H",
+      "dir": "above",
+      "labelOffset": {
+        "x": 0.116,
+        "y": -0.287
+      },
+      "method": "reflectLine"
+    },
+    {
+      "id": "DE",
+      "type": "segment",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "lineWidth": "thin"
+    },
+    {
+      "id": "EH",
+      "type": "segment",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "lineWidth": "thin"
+    },
+    {
+      "id": "HD",
+      "type": "segment",
+      "refs": [
+        "H",
+        "D"
+      ],
+      "lineWidth": "thin"
+    },
+    {
+      "id": "D1H",
+      "type": "segment",
+      "refs": [
+        "D1",
+        "H"
+      ],
+      "lineWidth": "thick"
+    },
+    {
+      "id": "HF",
+      "type": "segment",
+      "refs": [
+        "H",
+        "F"
+      ],
+      "lineWidth": "thick"
+    }
+  ]
+}

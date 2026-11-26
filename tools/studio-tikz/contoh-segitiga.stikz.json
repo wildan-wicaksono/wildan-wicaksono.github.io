@@ -1,0 +1,26 @@
+{
+  "format": "studio-tikz",
+  "version": 1,
+  "title": "Segitiga ABC dengan AD : DB = 2 : 1",
+  "steps": [
+    {"id": "A", "type": "point", "refs": [], "name": "A", "x": 0, "y": 0, "dir": "below left"},
+    {"id": "B", "type": "point", "refs": [], "name": "B", "x": 6, "y": 0, "dir": "below right"},
+    {"id": "C", "type": "point", "refs": [], "name": "C", "x": 2, "y": 4, "dir": "above"},
+    {"id": "ABC", "type": "triangle", "refs": ["A", "B", "C"], "color": "MidnightBlue"},
+    {"id": "AB", "type": "polygonSide", "refs": ["ABC", "A", "B"], "index": 0},
+    {"id": "BC", "type": "polygonSide", "refs": ["ABC", "B", "C"], "index": 1},
+    {"id": "CA", "type": "polygonSide", "refs": ["ABC", "C", "A"], "index": 2},
+    {
+      "id": "D", "type": "pointFormula", "refs": ["A", "B"], "name": "D",
+      "pointFormula": "(A + 2B) / 3", "pointSymbols": ["A", "B"], "dir": "below", "color": "PineGreen"
+    },
+    {
+      "id": "CD", "type": "segment", "refs": ["C", "D"], "color": "PineGreen",
+      "lineWidth": "semithick", "linePattern": "dashed"
+    },
+    {
+      "id": "ACB", "type": "angle", "refs": ["A", "C", "B"], "color": "BrickRed",
+      "angleMark": "single", "angleLabelMode": "auto", "angleLabelOffset": {"x": -0.11, "y": -0.5}
+    }
+  ]
+}

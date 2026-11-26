@@ -18,7 +18,9 @@
     giscus.setAttribute("data-repo-id", "R_kgDOMSB9Lw");
     giscus.setAttribute("data-category", "Announcements");
     giscus.setAttribute("data-category-id", "DIC_kwDOMSB9L84DFevy");
-    giscus.setAttribute("data-mapping", "pathname");
+    var thread = container.getAttribute("data-thread");
+    giscus.setAttribute("data-mapping", thread ? "specific" : "pathname");
+    if (thread) giscus.setAttribute("data-term", thread);
     giscus.setAttribute("data-strict", "1");
     giscus.setAttribute("data-reactions-enabled", "1");
     giscus.setAttribute("data-emit-metadata", "0");
