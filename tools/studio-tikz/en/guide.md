@@ -45,11 +45,15 @@ Select an image as the source of the next transformation to compose them. For ex
 
 ### Inverting edges, regions and annotations
 
-In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Find $M^{\ast}$, the image of $M$, on the image arc of segment $AB$. As you move $O$, observe that $OM\cdot OM^{\ast}=r^2$, where $r$ is the radius of the reference circle.
+In the [Inversion guide](../index.html?lang=en#panduan/invert), use **Inversion example** to choose **Triangle**, **Line**, **Circle**, or **Radius or power**.
+
+In the triangle example, $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Find $M^{\ast}$, the image of $M$, on the image arc of segment $AB$. As you move $O$, observe that $OM\cdot OM^{\ast}=r^2$, where $r$ is the radius of the reference circle.
 
 | Source object | Image under inversion with centre $O$ |
 | --- | --- |
 | Point $P$ | Its image $P^{\ast}$ lies on ray $OP$ and satisfies $OP\cdot OP^{\ast}=r^2$. The centre $O$ has no finite image. |
+| Line | A line through $O$ maps back to itself. Any other line maps to a circle through $O$. |
+| Circle | A circle through $O$ maps to a line. Any other circle maps to a circle. |
 | Segment $AB$ on a line that misses $O$ | The arc from $A^{\ast}$ to $B^{\ast}$ that avoids $O$. To invert the entire supporting line, first draw **Line through two points**. |
 | Segment collinear with $O$ | A segment when $O$ is outside the source segment. If $O$ is an endpoint, the rest maps to a ray. If $O$ is between the endpoints, the image consists of two rays. |
 | Ray, arc or sector | The image follows the selected part of the curve. A sector boundary includes its two radii and its arc. |
@@ -230,7 +234,7 @@ On the top toolbar, choose **Angle** to mark an angle or **Label** beside it to 
 | --- | --- |
 | [Translation](../index.html?lang=en#panduan/translate) · [Rotation](../index.html?lang=en#panduan/rotate) · [Dilation](../index.html?lang=en#panduan/dilate) | Choose the source object and set a vector, angle or scale factor. |
 | [Reflection](../index.html?lang=en#panduan/reflect) · [Reflect in a line](../index.html?lang=en#panduan/reflectLine) · [Reflect in a point](../index.html?lang=en#panduan/reflectPoint) | Compare the image after moving the mirror or centre. |
-| [Inversion](../index.html?lang=en#panduan/invert) · [Inverse of a line](../index.html?lang=en#panduan/invertLine) · [Inverse of a circle](../index.html?lang=en#panduan/invertCircle) · [Radius or power](../index.html?lang=en#panduan/invertFormula) | Explore a triangle whose three edges map to arcs. Use an existing circle or specify the radius or power. |
+| [Inversion](../index.html?lang=en#panduan/invert) | Select a point, line, circle or other shape. Use an existing reference circle or specify the centre and its radius or power. |
 
 | Editor and export | Illustrated topics |
 | --- | --- |

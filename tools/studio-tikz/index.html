@@ -395,6 +395,8 @@ html[data-example-id] .personal-sheets{display:none!important}
 }
 #tool-guide-detail h4 {margin: 17px 0 5px; font-size: .87rem;}
 #tool-guide-detail .guide-purpose {color: var(--muted); margin: 6px 0 15px;}
+.guide-example-picker {display:flex; flex-wrap:wrap; align-items:center; gap:.4rem .75rem; font-weight:600; margin:.6rem 0;}
+.guide-example-picker select {max-width:100%; min-height:34px;}
 #tool-guide-detail ol {padding-inline-start: 1.45rem; margin: 7px 0 14px;}
 #tool-guide-detail li {padding-inline-start: .15rem;}
 #tool-guide-detail li + li {margin-top: 5px;}
@@ -3533,6 +3535,7 @@ Alat gambar|Drawing tools
 Pilih / geser|Select / move
 Ruas|Segment
 Segitiga|Triangle
+Contoh inversi|Inversion example
 Lingkaran|Circle
 Kelompok konstruksi|Construction groups
 Panduan alat aktif|Guide to the active tool
@@ -4419,8 +4422,8 @@ pole|Pole of a line|Find the pole of a line with respect to a circle.|Click a li
 polar|Polar of a point|Construct the polar of a point with respect to a circle.|Click a pole P different from the center O, then the reference circumference.|The polar is perpendicular to OP. For an exterior point it joins the two points of tangency. On the circle it is the tangent at P.
 invertFormula|Inversion by radius or power|Define an inversion circle from its radius or power and invert a source object in it.|In Transformations → Inversion, choose Radius or power. Under Calculate from, choose Radius r or Power k = r². Enter a positive number or an expression such as OA * OB using two existing segments.|Click the source object, then the center O. Click inside a polygon to select the whole shape. Use the source-object list to select an overlapping object.|The image follows changes to the object, center and formula. If k = 6 and OP = 2, then OP* = 3. The center O has no finite image.
 invert|Inversion|Invert a point, segment, ray, line, arc, circle, polygon, sector or annotation.|Choose Transformations → Inversion and use a circle on the canvas. Click inside triangle ABC to select the whole shape. Click an individual side to invert just that segment, or select the source from the list.|Click the reference circumference. In the example, A and B initially lie on it. The midpoint M of AB maps to M* on the image arc. When you invert a new point, Studio adds a star to its name. For example, the image of A is A*.|Open the interactive example and drag C. Move the center O inside the triangle to see its fill extend outside the boundary.|Each side maps according to its position relative to O. A side whose line misses O becomes an arc. A segment containing O strictly between its endpoints maps to two rays. Free labels follow their anchor. Angle marks follow the tangent directions at the image vertex.
-invertLine|Invert a line|Find the inverse image of a line, segment or ray.|Click the original object. To invert the full supporting line use Line through two points. To invert a segment or a ray select that object.|Click the inversion circle centered at O. This example uses a full line g.|A full line away from O maps to a circle through O. A segment AB on that line maps to the arc between A* and B* that avoids O. A segment collinear with O stays a segment if O lies outside it. When O is an endpoint, the rest of the segment maps to a ray.
-invertCircle|Invert a circle|Find the inverse image of a circle, arc or sector.|Click the original circle or arc, or click inside the sector to select the entire region. Use the source-object list when several objects overlap.|Click the reference circumference. Click the same circumference twice to invert the reference circle in itself.|A full circle through O maps to a line. An arc traces just its own image. The image of a sector includes both radius images and the image of its arc. A fill follows the corresponding side of the boundary, extending outside it when O lies inside the original region.
+invertLine|Invert a line|Find the inverse image of a line, segment or ray.|Click the original object. To invert the full supporting line use Line through two points. To invert a segment or a ray select that object.|Click the inversion circle centered at O. This example uses a full line g.|A line missing O maps to a circle through O with O excluded. A line through O maps to itself with O excluded. A segment AB on that line maps to the arc between A* and B* that avoids O. A segment collinear with O stays a segment if O lies outside it. When O is an endpoint, the rest of the segment maps to a ray.
+invertCircle|Invert a circle|Find the inverse image of a circle, arc or sector.|Click the original circle or arc, or click inside the sector to select the entire region. Use the source-object list when several objects overlap.|Click the reference circumference. Click the same circumference twice to invert the reference circle in itself.|A circle through O maps to a line missing O. A circle missing O maps to another circle or to itself. An arc traces just its own image. The image of a sector includes both radius images and the image of its arc. A fill follows the corresponding side of the boundary, extending outside it when O lies inside the original region.
 regularPolygon|Regular polygon|Construct a polygon with equal sides and equal interior angles.|Enter the number of sides, for example 6 for a hexagon. Choose the direction.|Click two consecutive vertices to define the first side.|The other vertices and sides are constructed automatically and follow the initial side.
 polygon|Polygon|Construct a triangle, quadrilateral, or another polygon by choosing its vertices in order.|Select Polygon. Click A, B, then C in boundary order. Click an existing point to reuse it or click blank space to add a vertex. Starting with the first vertex, click near a grid intersection to snap or in the middle of a square to use your pointer position.|To finish triangle ABC, click A again or press Enter. Its three vertices must be noncollinear. For more sides, continue with D, E, and any further vertices before closing.|With Select / move, click inside to adjust the fill color and opacity. Click an edge to select its segment.|If you close the shape after three points, Studio recognizes a triangle. For example, select Incircle and click inside ABC. In the interactive example, drag a vertex to change the triangle or pentagon.
 translate|Translation|Translate an object by a vector defined by two points.|Click the source object. Click inside a region to select a whole polygon or sector. The source-object list also lets you choose an image from an earlier transformation.|Click the start P and then the end Q of the translation vector.|Each point of the image moves the same distance and direction as the displacement from P to Q.
@@ -4615,7 +4618,8 @@ function bindStudioLanguage(){
       if(typeof projectTabView==="function"&&typeof renderProjectTabs==="function")renderProjectTabs(projectTabView());
       guideEntriesCache=null;
       if(document.getElementById("tool-guide-dialog").open){
-        const active=document.querySelector("#tool-guide-list [aria-current=true]")?.dataset.guideId;
+        const active=document.getElementById("guide-inversion-example")?.value||
+          document.querySelector("#tool-guide-list [aria-current=true]")?.dataset.guideId;
         renderGuideIndex(active);
       }
     }
@@ -8718,13 +8722,13 @@ const circleGuideEntries={
   invertLine:{
     purpose:"Menemukan bayangan garis, ruas atau sinar terhadap lingkaran inversi.",
     steps:["Klik objek asal. Garis melalui dua titik memilih garis penuh. Untuk ruas AB pilih ruasnya. Untuk sinar pilih sinarnya.","Klik keliling lingkaran inversi berpusat O. Pada contoh, objek asalnya garis penuh g."],
-    result:"Garis penuh yang menghindari O menghasilkan lingkaran melalui O. Dari garis itu, ruas AB hanya menelusuri busur antara A* dan B* yang menghindari O. Jika AB segaris dengan O dan O berada di luar ruasnya, bayangannya juga ruas. Jika O merupakan ujungnya, bayangan bagian sisanya adalah sinar.",
+    result:"Garis yang menghindari O berpeta ke lingkaran melalui O, dengan O dikecualikan. Garis melalui O berpeta ke garis yang sama, juga tanpa O. Dari garis itu, ruas AB hanya menelusuri busur antara A* dan B* yang menghindari O. Jika AB segaris dengan O dan O berada di luar ruasnya, bayangannya juga ruas. Jika O merupakan ujungnya, bayangan bagian sisanya adalah sinar.",
     terms:"inversi garis ruas sinar busur bayangan menjadi lingkaran"
   },
   invertCircle:{
     purpose:"Menemukan bayangan lingkaran, busur atau juring terhadap lingkaran inversi.",
     steps:["Klik lingkaran atau busur asal, atau klik bagian dalam juring untuk menginversi seluruh juring. Pilih lewat Objek asal jika beberapa objek bertumpuk.","Klik lingkaran acuan. Untuk menginversi lingkaran acuan terhadap dirinya sendiri, klik kelilingnya dua kali."],
-    result:"Lingkaran penuh melalui O berpeta ke garis. Busur mengikuti bagian kurva yang ditelusurinya. Bayangan juring memuat bayangan kedua jari-jari dan busurnya. Isian mengikuti sisi batas yang sesuai, termasuk daerah tak terbatas bila O berada di dalamnya.",
+    result:"Lingkaran melalui O berpeta ke garis yang menghindari O. Lingkaran yang menghindari O berpeta ke lingkaran lain, atau kembali ke lingkaran itu sendiri. Busur mengikuti bagian kurva yang ditelusurinya. Bayangan juring memuat bayangan kedua jari-jari dan busurnya. Isian mengikuti sisi batas yang sesuai, termasuk daerah tak terbatas bila O berada di dalamnya.",
     terms:"inversi lingkaran busur juring daerah batas isian menjadi garis"
   }
 };
@@ -10889,6 +10893,9 @@ function startNativeGuideExample(id){
 
 let guideEntriesCache=null;
 let guideOpener=null;
+const inversionGuideExamples=new Map([
+  ["invert","Segitiga"],["invertLine","Garis"],["invertCircle","Lingkaran"],["invertFormula","Jari-jari atau kuasa"]
+]);
 
 function guideCatalog(){
   if(guideEntriesCache)return guideEntriesCache;
@@ -10903,6 +10910,14 @@ function guideCatalog(){
       entry.terms=[entry.title,entry.terms].join(" ");
       Object.assign(entry,translation,{groupName:groupNameEn||studioTranslate(groupName)});
     }
+    if(id==="invert"){
+      const keywords=[];
+      for(const example of inversionGuideExamples.keys()){
+        keywords.push(circleGuideEntries[example].terms,titles[example]);
+        if(typeof studioLanguage!=="undefined"&&studioLanguage==="en")keywords.push(englishGuideArticles.get(example).title);
+      }
+      entry.terms+=" "+keywords.join(" ");
+    }
     entries.set(id,entry);
   }
   for(const family of toolFamilies){
@@ -10911,8 +10926,7 @@ function guideCatalog(){
       if(spec.category===family.key&&spec.menu!==false)add(id,family.key,family.name,family.nameEn);
     }
   }
-  // The unified inversion tool has separate worked examples for curves and powers.
-  for(const id of ["reflectLine","reflectPoint","invertLine","invertCircle","invertFormula"])add(id,"transform","Transformasi");
+  for(const id of ["reflectLine","reflectPoint"])add(id,"transform","Transformasi");
   for(const id of ["angle","label"])add(id,"quick","Alat utama");
   add("move","editor","Editor dan ekspor");
   for(const [id,article] of Object.entries(otherGuideEntries)){
@@ -10947,7 +10961,16 @@ function guideTextElement(tag,text,className){
   if(className)element.className=className;
   return element;
 }
-function renderGuideArticle(entry){
+function appendGuideLesson(detail,entry){
+  const figure=guideFigure(entry.id);
+  if(figure){attachGuideMotion(entry,figure);detail.append(figure);}
+  if(entry.group!=="editor"||entry.id==="move")detail.append(guideExampleDisclosure(entry));
+  const steps=document.createElement("ol");
+  for(const instruction of entry.steps)steps.append(guideTextElement("li",instruction));
+  detail.append(guideTextElement("h4","Cara menggunakan"),steps);
+  detail.append(guideTextElement("h4","Hasil"),guideTextElement("p",entry.result,"guide-result"));
+}
+function renderGuideArticle(entry,exampleId){
   stopGuideMotion();
   const detail=$("tool-guide-detail");
   detail.replaceChildren();
@@ -10962,14 +10985,32 @@ function renderGuideArticle(entry){
   const heading=guideTextElement("h3",entry.title);
   heading.id="guide-article-title";
   detail.setAttribute("aria-label",entry.title);
-  const steps=document.createElement("ol");
-  for(const instruction of entry.steps)steps.append(guideTextElement("li",instruction));
   detail.append(heading,guideTextElement("p",entry.purpose,"guide-purpose"));
-  const figure=guideFigure(entry.id);
-  if(figure){attachGuideMotion(entry,figure);detail.append(figure);}
-  if(entry.group!=="editor"||entry.id==="move")detail.append(guideExampleDisclosure(entry));
-  detail.append(guideTextElement("h4","Cara menggunakan"),steps);
-  detail.append(guideTextElement("h4","Hasil"),guideTextElement("p",entry.result,"guide-result"));
+  if(entry.id==="invert"){
+    const label=guideTextElement("label","Contoh inversi","guide-example-picker");
+    const select=document.createElement("select");
+    select.id="guide-inversion-example";
+    for(const [id,name] of inversionGuideExamples){
+      const option=guideTextElement("option",name);
+      option.value=id;select.append(option);
+    }
+    select.value=inversionGuideExamples.has(exampleId)?exampleId:"invert";
+    label.append(select);
+    const body=document.createElement("div");
+    function showExample(){
+      stopGuideMotion();
+      body.replaceChildren();
+      const id=select.value;
+      if(id==="invert"){appendGuideLesson(body,entry);return;}
+      const example=typeof studioLanguage!=="undefined"&&studioLanguage==="en"
+        ?englishGuideArticles.get(id):circleGuideEntries[id];
+      body.append(guideTextElement("p",example.purpose,"guide-purpose"));
+      appendGuideLesson(body,{...example,id,title:example.title||titles[id],group:entry.group});
+    }
+    select.onchange=showExample;
+    detail.append(label,body);
+    showExample();
+  }else appendGuideLesson(detail,entry);
   detail.parentElement.scrollTop=0;
 }
 function renderGuideIndex(preferredId){
@@ -10992,7 +11033,8 @@ function renderGuideIndex(preferredId){
   $("tool-guide-status").textContent=message;
   if(!results.length)list.append(guideTextElement("p",message,"guide-empty"));
   list.scrollTop=0;
-  renderGuideArticle(results.find(entry=>entry.id===preferredId)||results[0]);
+  const canonical=guideEntryById(preferredId);
+  renderGuideArticle(results.find(entry=>entry.id===canonical?.id)||results[0],preferredId);
 }
 function showGuideIndex(){
   currentGuidePlayer?.pause();
@@ -11001,7 +11043,7 @@ function showGuideIndex(){
 }
 function guideEntryById(id){
   // Existing links and offline readers can still request the former tool names.
-  const topic=({on:"point",triangle:"polygon",right:"angle"})[id]||id;
+  const topic=inversionGuideExamples.has(id)?"invert":({on:"point",triangle:"polygon",right:"angle"})[id]||id;
   return guideCatalog().find(article=>article.id===topic);
 }
 function showToolGuide(id=null){
@@ -11009,7 +11051,7 @@ function showToolGuide(id=null){
   if(!dialog.open)guideOpener=document.activeElement;
   $("tool-guide-search").value="";
   dialog.dataset.view=entry?"detail":"index";
-  renderGuideIndex(entry?.id||tool);
+  renderGuideIndex(entry?id:tool);
   if(!dialog.open)dialog.showModal();
   if(entry){
     $("tool-guide-detail").focus({preventScroll:true});

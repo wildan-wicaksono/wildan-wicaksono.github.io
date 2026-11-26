@@ -72,11 +72,15 @@ Untuk menyusun dua transformasi, pilih bayangan pertama sebagai objek asal berik
 
 ### Menginversi sisi, bangun, dan anotasi
 
-Pada [contoh inversi segitiga](./index.html#panduan/invert), $A$ dan $B$ berada pada lingkaran acuan dan $M$ adalah titik tengah $AB$. Tekan **Putar animasi** untuk mengikuti urutan kliknya. Buka **Utak-atik contoh**, lalu geser $C$ atau $O$. Cari $M^{\ast}$, bayangan $M$, pada busur hasil inversi ruas $AB$. Saat $O$ digeser, perhatikan bahwa $OM\cdot OM^{\ast}=r^2$, dengan $r$ jari-jari lingkaran acuan.
+Di [Panduan alat → Inversi](./index.html#panduan/invert), gunakan **Contoh inversi** untuk memilih **Segitiga**, **Garis**, **Lingkaran**, atau **Jari-jari atau kuasa**.
+
+Pada contoh segitiga, $A$ dan $B$ berada pada lingkaran acuan dan $M$ adalah titik tengah $AB$. Tekan **Putar animasi** untuk mengikuti urutan kliknya. Buka **Utak-atik contoh**, lalu geser $C$ atau $O$. Cari $M^{\ast}$, bayangan $M$, pada busur hasil inversi ruas $AB$. Saat $O$ digeser, perhatikan bahwa $OM\cdot OM^{\ast}=r^2$, dengan $r$ jari-jari lingkaran acuan.
 
 | Objek asal | Bayangannya terhadap lingkaran berpusat $O$ |
 | --- | --- |
 | Titik $P$ | Bayangan $P^{\ast}$ berada pada sinar $OP$ dengan $OP\cdot OP^{\ast}=r^2$. Titik $O$ sendiri tidak memiliki bayangan hingga. |
+| Garis | Garis yang melalui $O$ kembali ke garis yang sama. Garis lain menjadi lingkaran melalui $O$. |
+| Lingkaran | Lingkaran yang melalui $O$ menjadi garis. Lingkaran lain tetap berbentuk lingkaran. |
 | Ruas $AB$ pada garis yang menghindari $O$ | Busur dari $A^{\ast}$ ke $B^{\ast}$ yang menghindari $O$. Untuk menginversi seluruh garisnya, buat **Garis melalui dua titik**. |
 | Ruas pada garis melalui $O$ | Jika $O$ di luar ruas, hasilnya ruas. Jika $O$ di salah satu ujungnya, bagian sisanya menjadi sinar. Jika $O$ di antara kedua ujung, hasilnya dua sinar. |
 | Sinar, busur, atau juring | Bagian kurva yang dipilih menentukan bayangannya. Pada juring, kedua jari-jari dan busurnya ikut menentukan batas. |
@@ -321,10 +325,7 @@ Di bilah alat atas, **Sudut** menandai sudut dan **Label** di sebelahnya menamba
 | [Refleksi terhadap garis](./index.html#panduan/reflectLine) | Mencerminkan objek terhadap sebuah garis. |
 | [Refleksi terhadap titik](./index.html#panduan/reflectPoint) | Mencerminkan objek terhadap sebuah titik pusat. |
 | [Dilatasi](./index.html#panduan/dilate) | Menskalakan objek terhadap titik pusat dengan faktor tertentu. |
-| [Inversi dengan jari-jari atau kuasa](./index.html#panduan/invertFormula) | Menginversi dengan pusat dan nilai jari-jari atau kuasa pilihan. |
-| [Inversi dengan lingkaran acuan](./index.html#panduan/invert) | Menginversi segitiga utuh dan melacak bayangan titik tengah salah satu sisinya. |
-| [Inversi garis](./index.html#panduan/invertLine) | Menemukan bayangan garis terhadap lingkaran inversi. |
-| [Inversi lingkaran](./index.html#panduan/invertCircle) | Menemukan bayangan lingkaran terhadap lingkaran inversi. |
+| [Inversi](./index.html#panduan/invert) | Pilih titik, garis, lingkaran, atau bangun lain. Gunakan lingkaran acuan yang sudah ada atau tentukan pusat dan jari-jari atau kuasanya. |
 
 ### Bilah alat atas
 

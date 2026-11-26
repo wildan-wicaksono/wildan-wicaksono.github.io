@@ -12,8 +12,6 @@ comments_path: /portfolio/studio-tikz/
 
 [Comments and feature requests](#comments)
 
-Studio TikZ was developed by **Wildan Bagus Wicaksono** with assistance from AI. [Homepage](https://wildan-wicaksono.github.io/)
-
 When I prepare an olympiad handout, I usually move points around in GeoGebra until the diagram reads well, take the coordinates and type the TikZ by hand. GeoGebra provides its own TikZ export. I kept rewriting it because I have my own conventions for naming points, placing labels, colouring circles and marking angles.
 
 I made **Studio TikZ** to see a construction alongside the code that goes into my handout. Draw a segment $AB$, select it and watch the corresponding line of code. Change the line to dashed and compare the two versions. I hope these small experiments make my TikZ style easier to learn.
@@ -34,7 +32,7 @@ Choose **Polygon** and click the vertices in order. For triangle $ABC$, click $A
 
 In the **Lines** menu, select **Perpendicular bisector**, then click the segment or its two endpoints. Drag $A$ and check that the line still passes through the midpoint. To bisect $\angle ABC$, choose **Internal angle bisector** or **External angle bisector** in **Lines**, then click $A$, $B$ and $C$, or click an existing angle mark.
 
-For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For inversion, click the reference circle. A pentagon maps edge by edge. You can then select its image for another transformation.
+For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For **Transformations → Inversion**, click the source object and then the circumference of the reference circle. Try choosing a circle through the inversion centre as the source to see it map to a line. A pentagon maps edge by edge, and you can select its image for another transformation.
 
 In **Sheet → Example sheets**, open [**Transforming a shape**](../index.html?lang=en#contoh/transformasi-bangun) and drag $A$ on the green pentagon. Its reflection is the blue point $A^{\prime}$ and its inverse is the orange point $A^{\ast}$. The other vertices follow the same pattern through $E^{\prime}$ and $E^{\ast}$. The [interactive inversion lesson](../index.html?lang=en#panduan/invert) follows one triangle closely. Its vertices $A$ and $B$ initially lie on the reference circle. Segment $AB$ maps to the semicircle from $A$ to $B$ through $M^{\ast}$, the image of its midpoint $M$. Drag the inversion centre $O$ and follow $M^{\ast}$ along the image arc. You can also enter a name such as `A*` in the **Name** field to label a point $A^{\ast}$.
 
