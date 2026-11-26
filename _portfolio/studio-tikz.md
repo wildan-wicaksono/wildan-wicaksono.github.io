@@ -46,7 +46,7 @@ Untuk menggambar lingkaran dalam $ABC$, pilih **Segitiga → Lingkaran dalam** l
 
 <figure>
   <img src="{{ '/assets/studio-tikz-lingkaran-dalam-dan-luar.svg' | relative_url }}" alt="Lingkaran biru berpusat di I menyinggung ketiga sisi ABC. Lingkaran hijau berpusat di I sub A menyinggung BC serta perpanjangan AB dan AC. Di B kedua garis bagi membentuk sudut siku-siku." width="600" height="330" loading="lazy" style="display:block;width:100%;max-width:600px;height:auto;margin:0 auto;">
-  <figcaption>Di titik $B$, garis $BI$ membagi sudut dalam dan garis $BI_A$ membagi sudut luar. Untuk menggambar masing-masing garis, pilih alat garis bagi yang sesuai lalu klik $A$, $B$, dan $C$, dengan $B$ sebagai titik kedua.</figcaption>
+  <figcaption>Di titik $B$, garis $BI$ membagi sudut dalam dan garis $BI_A$ membagi sudut luar. Untuk menggambar masing-masing garis, buka menu <strong>Garis</strong>, pilih <strong>Garis bagi sudut dalam</strong> atau <strong>Garis bagi sudut luar</strong>, lalu klik $A$, $B$, dan $C$, dengan $B$ sebagai titik kedua.</figcaption>
 </figure>
 
 Menu **Segitiga** juga menyediakan **Pusat lingkaran luar** untuk membuat $O$ dan **Titik tinggi** untuk membuat $H$, titik potong ketiga garis tinggi. Dengan **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau lingkaran melewati kedua titik dan mengikuti kursor sampai kamu mengeklik posisi $C$ yang tidak segaris. <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#pusat-dan-lingkaran-segitiga">Lihat panduan pusat dan lingkaran segitiga.</a>

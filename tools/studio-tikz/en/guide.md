@@ -25,7 +25,9 @@ When drawing a three-point circle, click two points and move the pointer to prev
 
 In **Lines**, select the **perpendicular bisector** tool and click a segment or both endpoints. Try moving one endpoint to see the bisector remain perpendicular and pass through the midpoint. For an **antiparallel**, choose $BC$ in triangle $ABC$ and a point $D$ on $AB$. Let the new line cut $AC$ at $E$. In a non-degenerate configuration, $B,C,E,D$ lie on a circle. [Explore the interactive diagram](../latihan-antiparalel.html?lang=en).
 
-The triangle menu produces the circumcentre $O$, the intersection of the altitudes $H$, the incentre $I$ or the corresponding circles. Click inside a closed three-vertex polygon, or select its three vertices individually. For an excircle, click the vertex opposite the required circle after choosing the triangle. If you enter three separate points, start with the opposite vertex. Thus $I_A$ labels the centre of the excircle opposite $A$. The internal and external angle-bisector tools take three points with the vertex second.
+To bisect $\angle BAC$, choose **Internal angle bisector** or **External angle bisector** in **Lines**. Click $B$, $A$ and $C$ in that order, or click a mark already drawn at $A$.
+
+The triangle menu produces the circumcentre $O$, the intersection of the altitudes $H$, the incentre $I$ or the corresponding circles. Click inside a closed three-vertex polygon, or select its three vertices individually. For an excircle, click the vertex opposite the required circle after choosing the triangle. If you enter three separate points, start with the opposite vertex. Thus $I_A$ labels the centre of the excircle opposite $A$.
 
 ### Choosing the source for a transformation
 
@@ -148,6 +150,7 @@ The top toolbar includes **Label** for a free annotation and **Polygon** for a t
 | [Segment](../index.html?lang=en#panduan/segment) · [Line](../index.html?lang=en#panduan/line) · [Ray](../index.html?lang=en#panduan/ray) | Choose two defining points and compare the extent of each line. |
 | [Parallel](../index.html?lang=en#panduan/parallel) · [Perpendicular](../index.html?lang=en#panduan/normal) · [Antiparallel](../index.html?lang=en#panduan/antiTriangle) | Place a line using an existing direction or the sides of an angle. |
 | [Perpendicular bisector](../index.html?lang=en#panduan/perpendicularBisector) | Click the segment or both endpoints. |
+| [Internal angle bisector](../index.html?lang=en#panduan/bisectInternal) · [External angle bisector](../index.html?lang=en#panduan/bisectExternal) | Choose three points with the vertex second, or click an existing angle mark. |
 
 | Circles | What to try |
 | --- | --- |
@@ -162,7 +165,6 @@ The top toolbar includes **Label** for a free annotation and **Polygon** for a t
 | --- | --- |
 | [Circumcentre](../index.html?lang=en#panduan/circumcenter) · [Intersection of altitudes](../index.html?lang=en#panduan/orthocenter) | Mark $O$ or $H$ and drag a vertex. |
 | [Incentre](../index.html?lang=en#panduan/incenter) · [Incircle](../index.html?lang=en#panduan/incircle) · [Excentre](../index.html?lang=en#panduan/excenter) · [Excircle](../index.html?lang=en#panduan/excircle) | Mark a centre equidistant from the side lines or draw its circle. |
-| [Internal bisector](../index.html?lang=en#panduan/bisectInternal) · [External bisector](../index.html?lang=en#panduan/bisectExternal) | Choose three points with the vertex second. |
 
 | Regions | What to try |
 | --- | --- |
@@ -172,7 +174,6 @@ The top toolbar includes **Label** for a free annotation and **Polygon** for a t
 | Angles | What to try |
 | --- | --- |
 | [Angle](../index.html?lang=en#panduan/angle) | Click three points, with the vertex second. At $90^\circ$ the mark becomes a square. |
-| [Internal bisector](../index.html?lang=en#panduan/bisectInternal) · [External bisector](../index.html?lang=en#panduan/bisectExternal) | Choose the angle to bisect. |
 
 | Top toolbar | What to try |
 | --- | --- |

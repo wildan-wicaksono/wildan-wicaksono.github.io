@@ -88,7 +88,7 @@ Setelah membuat segitiga dengan **Poligon**, buka menu **Segitiga**, pilih alat 
 
 Lingkaran singgung luar di hadapan $A$ menyinggung ruas $BC$ serta perpanjangan $AB$ dan $AC$. Jika $I_A$ sudah dibuat, alat **Lingkaran singgung luar** memakai pusat itu kembali. Jika nama khusus sudah dipakai titik lain, Studio menambahkan tanda prima pada nama pusat yang baru, misalnya $O'$.
 
-Untuk membagi $\angle BAC$, pilih **Garis bagi sudut dalam** atau **Garis bagi sudut luar**, lalu klik $B$, $A$, dan $C$. Titik kedua, $A$, adalah puncak sudut. Jika sudah ada penanda sudut di sana, cukup klik penandanya. Coba buat kedua garis lalu geser $C$. Kedua garis tetap tegak lurus satu sama lain.
+Untuk membagi $\angle BAC$, buka menu **Garis**, pilih **Garis bagi sudut dalam** atau **Garis bagi sudut luar**, lalu klik $B$, $A$, dan $C$. Titik kedua, $A$, adalah puncak sudut. Jika sudah ada penanda sudut di sana, cukup klik penandanya. Coba buat kedua garis lalu geser $C$. Kedua garis tetap tegak lurus satu sama lain.
 
 ### Mengikuti animasi sambil mencoba alat
 
@@ -228,6 +228,8 @@ Di bilah alat atas, **Label** menambahkan teks atau rumus bebas dan **Poligon** 
 | [Garis sejajar](./index.html#panduan/parallel) | Menggeser pratinjau garis sejajar hingga melalui titik pilihan. |
 | [Garis tegak lurus](./index.html#panduan/normal) | Menarik garis tegak lurus acuan melalui titik pilihan. |
 | [Garis sumbu](./index.html#panduan/perpendicularBisector) | Membagi ruas menjadi dua bagian sama panjang dan tegak lurus. |
+| [Garis bagi sudut dalam](./index.html#panduan/bisectInternal) | Membagi sudut dalam menjadi dua sudut yang sama besar. |
+| [Garis bagi sudut luar](./index.html#panduan/bisectExternal) | Membagi sudut antara satu sisi dan perpanjangan sisi lainnya. |
 | [Garis antiparalel](./index.html#panduan/antiTriangle) | Membuat $DE$ antiparalel terhadap $BC$ dalam $\angle BAC$. |
 
 ### Lingkaran
@@ -261,8 +263,6 @@ Di bilah alat atas, **Label** menambahkan teks atau rumus bebas dan **Poligon** 
 | [Lingkaran dalam](./index.html#panduan/incircle) | Menggambar lingkaran berpusat di $I$ yang menyinggung ketiga sisi. |
 | [Pusat lingkaran singgung luar](./index.html#panduan/excenter) | Memilih titik sudut untuk menentukan $I_A$, $I_B$, atau $I_C$. |
 | [Lingkaran singgung luar](./index.html#panduan/excircle) | Membuat lingkaran yang menyinggung satu sisi dan perpanjangan dua sisi lainnya. |
-| [Garis bagi sudut dalam](./index.html#panduan/bisectInternal) | Membagi sudut dalam menjadi dua sudut yang sama besar. |
-| [Garis bagi sudut luar](./index.html#panduan/bisectExternal) | Membagi sudut antara satu sisi dan perpanjangan sisi lainnya. |
 
 ### Bidang
 
@@ -276,7 +276,6 @@ Di bilah alat atas, **Label** menambahkan teks atau rumus bebas dan **Poligon** 
 | Animasi alat | Yang dicontohkan |
 | --- | --- |
 | [Sudut](./index.html#panduan/angle) | Klik tiga titik dengan titik sudut sebagai pilihan kedua. Pada $90^\circ$, penandanya otomatis menjadi siku-siku. |
-| [Garis bagi sudut dalam](./index.html#panduan/bisectInternal) · [Garis bagi sudut luar](./index.html#panduan/bisectExternal) | Memilih garis bagi sesuai daerah sudut yang hendak dibagi. |
 
 ### Transformasi
 

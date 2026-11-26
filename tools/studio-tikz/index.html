@@ -3519,7 +3519,6 @@ Konstruksi singgung|Tangent constructions
 Pole dan polar|Poles and polars
 Pusat segitiga|Triangle centers
 Lingkaran singgung segitiga|Triangle contact circles
-Garis bagi sudut|Angle bisectors
 Bidang|Regions
 Transformasi|Transformations
 Inversi|Inversion
@@ -4199,8 +4198,8 @@ incenter|Incenter|Construct the point I where the internal angle bisectors meet.
 incircle|Incircle|Construct the circle tangent to all three sides of a triangle.|Click inside triangle ABC or click A, B, and C in order. In the example compare the radii to the contact points.|The circle is centered at I and each radius to a contact point is perpendicular to the corresponding side.
 excenter|Excenter|Construct the excenter opposite a chosen vertex.|Click inside the triangle, then the vertex opposite the required contact side. Click A for the A-excenter.|Alternatively click the three vertices starting with the chosen vertex.|I_A is the intersection of the internal angle bisector at A and the external bisectors at B and C.
 excircle|Excircle|Construct a circle tangent to one side and the extensions of the other two sides.|Click inside the triangle, then its vertex opposite the required side. For the excircle across BC click A.|Alternatively click the three vertices beginning with the chosen vertex.|The A-excircle is centered at I_A and touches BC and the extensions of AB and AC.
-bisectInternal|Internal angle bisector|Bisect the interior angle between two rays.|For ∠BAC click B, vertex A, then C. If an angle mark exists, click the mark instead.|If the bisector meets BC at D, then ∠BAD = ∠DAC.
-bisectExternal|External angle bisector|Bisect the angle between one ray and the extension of the other.|For ∠BAC click B, vertex A, then C, or click the existing angle mark.|The external bisector is perpendicular to the internal bisector at the same vertex.
+bisectInternal|Internal angle bisector|Bisect the interior angle between two rays.|Choose Lines → Internal angle bisector. For ∠BAC click B, vertex A, then C. If an angle mark exists, click the mark instead.|If the bisector meets BC at D, then ∠BAD = ∠DAC.
+bisectExternal|External angle bisector|Bisect the angle between one ray and the extension of the other.|Choose Lines → External angle bisector. For ∠BAC click B, vertex A, then C, or click the existing angle mark.|The external bisector is perpendicular to the internal bisector at the same vertex.
 perpendicularBisector|Perpendicular bisector|Construct the line perpendicular to a segment at its midpoint.|Click a segment, or click its endpoints A and B.|Every point on the line is equally distant from A and B. The line follows its endpoints.
 editor-visibility|Hide and show objects|Keep construction objects while simplifying the finished diagram.|Select an object and choose Hide. To restore it choose its name in Objects and click Show.|Use Show hidden objects to find hidden geometry on the canvas.|Dependent constructions stay attached. TikZ retains hidden coordinates that visible objects require.
 editor-color|Object color and opacity|Choose an xcolor ink for a point, label, or outline.|Select an object. Open Color, search for an ink such as ForestGreen, and select it. Adjust Opacity.|Canvas and TikZ use the selected ink and opacity.
@@ -6025,7 +6024,7 @@ function previewAngleBisector({tool,objects,hover,S,u,frag,ghost}){
 for(const [type,title] of Object.entries(bisectorTitles)){
   registerStep(type,{group:"l",refs:step=>step.refs.length===1?["a"]:["p","p","p"],
     solve:(step,objects)=>makeAngleBisector(type,objects)});
-  registerTool(type,{title,category:"angle",
+  registerTool(type,{title,category:"line",
     refs:(id,refs,model)=>model.values.get(refs[0])?.kind==="angle"?["a"]:["p|a","p","p"],
     hints:["Klik titik pada kaki pertama, atau langsung klik penanda sudut yang sudah ada.",
       "Klik titik sudut (titik tengah dalam urutan tiga klik).","Klik titik pada kaki kedua untuk menetapkan garis bagi."],
@@ -7705,7 +7704,7 @@ const guidedExamples={
 
 const toolFamilies = [
   {key:"point", name:"Titik", nameEn:"Points", sections:[{tools:["point","pointFormula","mid","cut","foot"]}]},
-  {key:"line", name:"Garis", nameEn:"Lines", sections:[{tools:["segment","line","ray","parallel","normal","perpendicularBisector","antiTriangle"]}]},
+  {key:"line", name:"Garis", nameEn:"Lines", sections:[{tools:["segment","line","ray","parallel","normal","perpendicularBisector","antiTriangle","bisectInternal","bisectExternal"]}]},
   {key:"circle", name:"Lingkaran", grouped:true, sections:[
     {heading:"Lingkaran dan busur", tools:["circle2","circle3","circleRadius","circleFormula","diameter","center","semicircle","circleArc","sector"]},
     {heading:"Konstruksi singgung", tools:["tangentAt","tangent","commonTangent","circleConstraints","circleFixedTangency"]},
@@ -7713,11 +7712,10 @@ const toolFamilies = [
   ]},
   {key:"triangle", name:"Segitiga", grouped:true, sections:[
     {heading:"Pusat segitiga", tools:["circumcenter","orthocenter","incenter","excenter"]},
-    {heading:"Lingkaran singgung segitiga", tools:["incircle","excircle"]},
-    {heading:"Garis bagi sudut", tools:["bisectInternal","bisectExternal"]}
+    {heading:"Lingkaran singgung segitiga", tools:["incircle","excircle"]}
   ]},
   {key:"region", name:"Bidang", sections:[{tools:["polygon","regularPolygon","sector"]}]},
-  {key:"angle", name:"Sudut", nameEn:"Angles", sections:[{tools:["angle","bisectInternal","bisectExternal"]}]},
+  {key:"angle", name:"Sudut", nameEn:"Angles", sections:[{tools:["angle"]}]},
   {key:"transform", name:"Transformasi", sections:[{tools:["translate","rotate","reflect","dilate","invert"]}]}
 ];
 const familyOfTool=new Map();
@@ -8508,14 +8506,14 @@ const triangleGuideEntries={
   bisectInternal:{
     caption:"Garis melalui A membagi sudut antara AB dan AC. Satu takik pada setiap busur menandai dua sudut yang sama besar.",
     purpose:"Membuat garis melalui titik sudut yang membagi sudut dalam menjadi dua sama besar.",
-    steps:[bisectorSelection,"Pada contoh, amati dua busur bertanda sama di antara AB dan AC. Geser B untuk mengubah sudut."],
+    steps:["Pilih Garis → Garis bagi sudut dalam. "+bisectorSelection,"Pada contoh, amati dua busur bertanda sama di antara AB dan AC. Geser B untuk mengubah sudut."],
     result:"Jika garis memotong BC di D, besar sudut BAD sama dengan besar sudut DAC.",
     terms:"bisektor bisektris internal garis bagi pembagi sudut dalam angle bisector"
   },
   bisectExternal:{
     caption:"Garis putus-putus memperpanjang BA melewati A. Garis bagi membagi sudut antara perpanjangan ini dan AC.",
     purpose:"Membagi sudut antara satu kaki sudut dan perpanjangan kaki lainnya menjadi dua sama besar.",
-    steps:[bisectorSelection,"Pada contoh, ikuti perpanjangan BA melewati A. Dua busur bertanda sama membagi sudut antara perpanjangan itu dan AC."],
+    steps:["Pilih Garis → Garis bagi sudut luar. "+bisectorSelection,"Pada contoh, ikuti perpanjangan BA melewati A. Dua busur bertanda sama membagi sudut antara perpanjangan itu dan AC."],
     result:"Garis bagi sudut luar di A tegak lurus terhadap garis bagi sudut dalam di titik yang sama.",
     terms:"bisektor bisektris eksternal garis bagi pembagi sudut luar external angle bisector"
   }

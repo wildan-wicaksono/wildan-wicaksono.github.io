@@ -25,7 +25,9 @@ Choose the side-by-side layout to inspect the code while drawing, or stack the p
 
 Choose **Polygon** and click the vertices in order. For triangle $ABC$, click $A$, $B$ and $C$, then click $A$ again or press **Enter** to close it. For a quadrilateral, add $D$ before closing. Click inside the finished shape to select or fill it. [Try the Polygon animation](../index.html?lang=en#panduan/polygon).
 
-In the **Lines** menu, select **Perpendicular bisector**, then click the segment or its two endpoints. Drag $A$ and check that the line still passes through the midpoint. For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For inversion, click the reference circle. A pentagon maps edge by edge. You can then select its image for another transformation.
+In the **Lines** menu, select **Perpendicular bisector**, then click the segment or its two endpoints. Drag $A$ and check that the line still passes through the midpoint. To bisect $\angle ABC$, choose **Internal angle bisector** or **External angle bisector** in **Lines**, then click $A$, $B$ and $C$, or click an existing angle mark.
+
+For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For inversion, click the reference circle. A pentagon maps edge by edge. You can then select its image for another transformation.
 
 Open the [shape transformation example](../index.html?lang=en#contoh/transformasi-bangun) in the **Sheet** menu and move a vertex or the inversion centre. The [interactive inversion lesson](../index.html?lang=en#panduan/invert) follows one triangle closely. Its vertices $A$ and $B$ initially lie on the reference circle. Segment $AB$ maps to the semicircle through $A$, $B$ and the image of its midpoint $M$. A new inversion names the image $M^{*}$. You can also enter a name such as `A*` in the **Name** field to label a point $A^{*}$.
 
