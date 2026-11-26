@@ -31,7 +31,7 @@ The triangle menu produces the circumcentre $O$, the intersection of the altitud
 
 ### Choosing the source for a transformation
 
-Choose a tool, then click the source. Click inside a polygon or sector to select the whole shape. Click a polygon edge to select one segment. When objects overlap, use the source-object list. In **Sheet → Example sheets**, open [**Transforming a shape**](../index.html?lang=en#contoh/transformasi-bangun). Drag $A$ on the green pentagon. Follow $A^{\prime}$ on the blue reflection and $A^{*}$ on the orange inverse image. Repeat with $E$ to see $E^{\prime}$ and $E^{*}$ move.
+Choose a tool, then click the source. Click inside a polygon or sector to select the whole shape. Click a polygon edge to select one segment. When objects overlap, use the source-object list. In **Sheet → Example sheets**, open [**Transforming a shape**](../index.html?lang=en#contoh/transformasi-bangun). Drag $A$ on the green pentagon. Follow $A^{\prime}$ on the blue reflection and $A^{\ast}$ on the orange inverse image. Repeat with $E$ to see $E^{\prime}$ and $E^{\ast}$ move.
 
 | Tool | After choosing the source |
 | --- | --- |
@@ -45,12 +45,12 @@ Select an image as the source of the next transformation to compose them. For ex
 
 ### Inverting edges, regions and annotations
 
-In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Find $M^{*}$, the image of $M$, on the image arc of segment $AB$. As you move $O$, observe that $OM\cdot OM^{*}=r^2$, where $r$ is the radius of the reference circle.
+In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Find $M^{\ast}$, the image of $M$, on the image arc of segment $AB$. As you move $O$, observe that $OM\cdot OM^{\ast}=r^2$, where $r$ is the radius of the reference circle.
 
 | Source object | Image under inversion with centre $O$ |
 | --- | --- |
-| Point $P$ | Its image $P^{*}$ lies on ray $OP$ and satisfies $OP\cdot OP^{*}=r^2$. The centre $O$ has no finite image. |
-| Segment $AB$ on a line that misses $O$ | The arc from $A^{*}$ to $B^{*}$ that avoids $O$. To invert the entire supporting line, first draw **Line through two points**. |
+| Point $P$ | Its image $P^{\ast}$ lies on ray $OP$ and satisfies $OP\cdot OP^{\ast}=r^2$. The centre $O$ has no finite image. |
+| Segment $AB$ on a line that misses $O$ | The arc from $A^{\ast}$ to $B^{\ast}$ that avoids $O$. To invert the entire supporting line, first draw **Line through two points**. |
 | Segment collinear with $O$ | A segment when $O$ is outside the source segment. If $O$ is an endpoint, the rest maps to a ray. If $O$ is between the endpoints, the image consists of two rays. |
 | Ray, arc or sector | The image follows the selected part of the curve. A sector boundary includes its two radii and its arc. |
 | Polygon | Every edge maps individually. A triangle generally produces three arcs and a pentagon five. Move the centre into the polygon to make the fill extend outside the curved boundary. With the centre on an edge, the unbounded parts continue to the edge of the drawing. |
@@ -58,13 +58,13 @@ In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$
 
 Existing files retain their saved constructions. If a file uses the older inverse of the **supporting line**, create a new inversion of the segment to obtain just its image arc.
 
-For an inversion with power $k=OA\cdot OB$, enter `OA * OB` after drawing both segments. Then $OP\cdot OP^{*}=k$. You can also define the radius of a circle with a segment-length expression such as `(AB + CD)/2`.
+For an inversion with power $k=OA\cdot OB$, enter `OA * OB` after drawing both segments. Then $OP\cdot OP^{\ast}=k$. You can also define the radius of a circle with a segment-length expression such as `(AB + CD)/2`.
 
 ## Selecting objects and styling labels
 
 - Use the move tool and **Ctrl+click** or **⌘+click** to select several objects. Change their colour or opacity together, or hide them. Name and save the group to recall its members from the saved group list after reopening the project. To bring hidden objects back, show hidden objects in the list, select them and make them visible.
 - To select a triangle inside a circle, click inside the triangle. Click the circumference to select the circle. You can also pick an object directly from the object list. Regular polygons appear with their shape and vertex names.
-- To name a point $A^{*}$, click its dot and enter `A*` in **Name**. The forms `A^*` and `A^{*}` also work. Both the canvas and the TikZ label show the superscript star. Enter `A_1*` for $A_1^{*}$. A new inversion of $A$ automatically uses $A^{*}$, while older projects keep their saved names.
+- To name a point $A^{\ast}$, click its dot and enter `A*` in **Name**. The forms `A^*` and `A^{*}` also work. Both the canvas and the TikZ label show the superscript star. Enter `A_1*` for $A_1^{\ast}$. A new inversion of $A$ automatically uses $A^{\ast}$, while older projects keep their saved names.
 - Filled shapes share the outline palette. Change the fill opacity to see the lines underneath. To soften just the area behind a point label, an angle label or a free label, enable the translucent label background and adjust its opacity. The TikZ export preserves the treatment.
 - An angle arc becomes a square when its arms are perpendicular and returns to an arc if you move a point so the angle changes. Right-angle marks have an adjustable size. Select the mark and adjust its size until both short sides fit comfortably between the adjacent segments.
 - Focus the canvas to zoom with **+** and **−**, or select a zoom percentage. Canvas zoom is independent of the print scale.

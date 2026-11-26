@@ -52,13 +52,13 @@ Untuk mengikuti satu soal dari awal sampai menjadi diagram modul, buka [tiga con
 | Garis antiparalel | Dalam segitiga $ABC$, pilih **Garis → Garis antiparalel**, klik $BC$, lalu klik sebuah titik $D$ pada $AB$. Perpotongan garis baru dengan $AC$ adalah $E$. Jika titiknya berbeda, $B$, $C$, $E$, dan $D$ terletak pada satu lingkaran. |
 | Lingkaran lewat tiga titik | Pilih **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau muncul selama posisi kursor dan kedua titik tidak segaris. Klik titik $C$ atau tempat kosong untuk menetapkan titik ketiga. |
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
-| Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Transformasi → Inversi**, gunakan **Jari-jari atau kuasa**, pilih kuasa $k=r^2$, lalu isi `OA * OB`. Klik $P$, kemudian pusat $O$. Bayangan $P^{*}$ memenuhi $OP\cdot OP^{*}=OA\cdot OB$. |
+| Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Transformasi → Inversi**, gunakan **Jari-jari atau kuasa**, pilih kuasa $k=r^2$, lalu isi `OA * OB`. Klik $P$, kemudian pusat $O$. Bayangan $P^{\ast}$ memenuhi $OP\cdot OP^{\ast}=OA\cdot OB$. |
 
 Di perpotongan, tahan **Shift** lalu klik pada garis atau keliling yang ingin diikuti jika titiknya harus bisa digeser sepanjang satu objek. Jika di tempat itu sudah ada bulatan titik, klik biasa memilih titik tersebut.
 
 ### Memilih bangun untuk transformasi
 
-Pilih alatnya, lalu klik objek asal. Klik bagian dalam poligon atau juring untuk memilih seluruh bangun. Klik satu sisi poligon untuk memilih ruas itu saja. Pada gambar yang padat, pilih benda yang dimaksud dari daftar **Objek asal**. Di [**Lembar → Contoh Studio → Contoh transformasi bangun**](index.html#contoh/transformasi-bangun), geser titik $A$ pada segi lima hijau. Ikuti $A^{\prime}$ pada hasil refleksi biru dan $A^{*}$ pada hasil inversi jingga. Ulangi dengan $E$ untuk melihat $E^{\prime}$ dan $E^{*}$ bergerak.
+Pilih alatnya, lalu klik objek asal. Klik bagian dalam poligon atau juring untuk memilih seluruh bangun. Klik satu sisi poligon untuk memilih ruas itu saja. Pada gambar yang padat, pilih benda yang dimaksud dari daftar **Objek asal**. Di [**Lembar → Contoh Studio → Contoh transformasi bangun**](index.html#contoh/transformasi-bangun), geser titik $A$ pada segi lima hijau. Ikuti $A^{\prime}$ pada hasil refleksi biru dan $A^{\ast}$ pada hasil inversi jingga. Ulangi dengan $E$ untuk melihat $E^{\prime}$ dan $E^{\ast}$ bergerak.
 
 | Alat | Setelah memilih objek asal |
 | --- | --- |
@@ -72,12 +72,12 @@ Untuk menyusun dua transformasi, pilih bayangan pertama sebagai objek asal berik
 
 ### Menginversi sisi, bangun, dan anotasi
 
-Pada [contoh inversi segitiga](./index.html#panduan/invert), $A$ dan $B$ berada pada lingkaran acuan dan $M$ adalah titik tengah $AB$. Tekan **Putar animasi** untuk mengikuti urutan kliknya. Buka **Utak-atik contoh**, lalu geser $C$ atau $O$. Cari $M^{*}$, bayangan $M$, pada busur hasil inversi ruas $AB$. Saat $O$ digeser, perhatikan bahwa $OM\cdot OM^{*}=r^2$, dengan $r$ jari-jari lingkaran acuan.
+Pada [contoh inversi segitiga](./index.html#panduan/invert), $A$ dan $B$ berada pada lingkaran acuan dan $M$ adalah titik tengah $AB$. Tekan **Putar animasi** untuk mengikuti urutan kliknya. Buka **Utak-atik contoh**, lalu geser $C$ atau $O$. Cari $M^{\ast}$, bayangan $M$, pada busur hasil inversi ruas $AB$. Saat $O$ digeser, perhatikan bahwa $OM\cdot OM^{\ast}=r^2$, dengan $r$ jari-jari lingkaran acuan.
 
 | Objek asal | Bayangannya terhadap lingkaran berpusat $O$ |
 | --- | --- |
-| Titik $P$ | Bayangan $P^{*}$ berada pada sinar $OP$ dengan $OP\cdot OP^{*}=r^2$. Titik $O$ sendiri tidak memiliki bayangan hingga. |
-| Ruas $AB$ pada garis yang menghindari $O$ | Busur dari $A^{*}$ ke $B^{*}$ yang menghindari $O$. Untuk menginversi seluruh garisnya, buat **Garis melalui dua titik**. |
+| Titik $P$ | Bayangan $P^{\ast}$ berada pada sinar $OP$ dengan $OP\cdot OP^{\ast}=r^2$. Titik $O$ sendiri tidak memiliki bayangan hingga. |
+| Ruas $AB$ pada garis yang menghindari $O$ | Busur dari $A^{\ast}$ ke $B^{\ast}$ yang menghindari $O$. Untuk menginversi seluruh garisnya, buat **Garis melalui dua titik**. |
 | Ruas pada garis melalui $O$ | Jika $O$ di luar ruas, hasilnya ruas. Jika $O$ di salah satu ujungnya, bagian sisanya menjadi sinar. Jika $O$ di antara kedua ujung, hasilnya dua sinar. |
 | Sinar, busur, atau juring | Bagian kurva yang dipilih menentukan bayangannya. Pada juring, kedua jari-jari dan busurnya ikut menentukan batas. |
 | Poligon | Setiap sisi mendapat bayangannya sendiri. Umumnya, segitiga menghasilkan tiga busur dan segi lima menghasilkan lima busur. Pindahkan pusat ke dalam bangun untuk melihat isiannya meluas ke luar batas lengkung. Jika pusat berada pada sisi, bagian yang tak terbatas terlihat sampai tepi gambar. |
@@ -145,7 +145,7 @@ Dalam **Pilih / geser**, tahan **Ctrl** atau **⌘** sambil mengeklik beberapa o
 
 Saat memilih segitiga di dalam lingkaran, klik ruang di tengah segitiga. Untuk memilih lingkaran, klik kelilingnya. Daftar **Objek** juga dapat dipakai untuk memilih bangun secara langsung. Poligon beraturan ditampilkan dengan jenis bangun dan nama titik sudutnya.
 
-Untuk menamai titik $A^{*}$, pilih bulatan titiknya dan isi **Nama** dengan `A*`. Bentuk `A^*` dan `A^{*}` juga diterima. Kanvas dan label TikZ menampilkan bintang sebagai superskrip. Untuk $A_1^{*}$, ketik `A_1*`. Saat membuat inversi baru dari $A$, Studio memilih nama $A^{*}$ secara otomatis. Proyek lama memakai nama yang sudah tersimpan.
+Untuk menamai titik $A^{\ast}$, pilih bulatan titiknya dan isi **Nama** dengan `A*`. Bentuk `A^*` dan `A^{*}` juga diterima. Kanvas dan label TikZ menampilkan bintang sebagai superskrip. Untuk $A_1^{\ast}$, ketik `A_1*`. Saat membuat inversi baru dari $A$, Studio memilih nama $A^{\ast}$ secara otomatis. Proyek lama memakai nama yang sudah tersimpan.
 
 Kalau ada banyak garis di dekat $I_A$, geser hurufnya atau pilih titiknya dan aktifkan **Latar label transparan**. Atur opasitas latar sambil melihat garis di bawah teks. Pengaturan ini juga berlaku untuk label bebas dan label sudut dan ikut dibawa ke TikZ. Alat **Sudut** mengganti busur dengan tanda siku-siku saat kedua kaki tegak lurus. Jika titik digeser sehingga sudutnya berubah, busur muncul kembali. Klik tanda siku-siku lalu atur **Ukuran siku-siku** agar muat di antara kedua kaki sudut. Ukuran tanda tidak mengubah sudut geometrinya.
 
