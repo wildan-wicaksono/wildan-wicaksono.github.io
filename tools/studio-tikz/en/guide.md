@@ -133,6 +133,18 @@ The canvas and the complete TikZ export show the same clipped drawing, including
 
 In this example, $H$ stays at the foot of the perpendicular from $P$ to line $AB$, and $Q$ follows as the reflection of $P$ across $AB$. Studio recognises those relationships from `foot(P,A,B)` and `reflect(A,B)*P`. Some other formulas carry over only as point coordinates. Similarly, in **Nested squares**, the loop determines the number of squares during conversion. To change the count, return to **Paste Asymptote**, edit the original source there and convert again.
 
+**Circles through three points.** A GeoGebra Asymptote export sometimes records a circle as `CR((x,y),r)`. After conversion, review this option before opening the sheet. Studio suggests three points when exactly three candidates lie on the circumference, or when exactly one drawn triangle has all three vertices there. You can change the three points or keep the center and radius from the code.
+
+Here is how the choices work in a GeoGebra export with three circles.
+
+| Circle | Points on the circumference at import | Initial choice |
+| --- | --- | --- |
+| 1 | $A,B,C,D,E,M,H',A'$ | $A,B,C$, since triangle $ABC$ is drawn. |
+| 2 | $D,E,F,K$ | The source center and radius. Choose three points if you want the circle to follow them. |
+| 3 | $F,K,M,H'$ | The source center and radius. If you choose $F,K,M$, the position of $H'$ does not determine the circle. |
+
+If you choose $D,E,K$ for the second circle and then drag $D$, the circle passes through the new $D$ and still passes through $E$ and $K$. Point $F$ may now lie inside or outside it. Its original coordinates alone do not tell Studio how it was constructed. To apply these choices to a previously imported diagram, convert its Asymptote source again and open a new sheet.
+
 You can also stay in the converter and edit the **TikZ code** field directly. **Copy TikZ** there copies your edited text. Paste it in the document body and compile to see the changes. **Conversion preview** and **Open in new sheet** use the drawing from the Asymptote source. The SVG, PDF and wrapped-TikZ options provide code to copy.
 
 Choose **Restore converted code** to return to the original output. Editing the source, selecting another example or encountering a conversion error keeps your edited TikZ available. If the next conversion produces different code, choose **Replace with new result** or **Keep edits**. The same field is editable for imported SVG paths, TikZ recovered from an Asymptote label and PDF inclusion code.

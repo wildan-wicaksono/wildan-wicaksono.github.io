@@ -552,6 +552,16 @@ html[data-example-id] .panel.editor {border-radius:7px;box-shadow:none;}
 #asy-error {margin: 0; color: var(--ink); overflow-wrap: anywhere; font-size: .92rem;}
 #asy-error-line {margin-top: 4px;}
 #asy-result {margin-top: 16px; border-top: 1px solid var(--rule); padding-top: 13px;}
+#asy-circle-review {margin:0 0 14px;}
+#asy-circle-review > p {margin:4px 0 8px; font-size:.88rem; color:var(--muted);}
+#asy-circle-choices {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr)); gap:8px;}
+#asy-circle-choices fieldset {min-width:0; margin:0; padding:5px 9px 9px; border:1px solid var(--rule); border-radius:7px;}
+#asy-circle-choices legend {padding:0 4px; font-size:.86rem; font-weight:650;}
+#asy-circle-choices small {display:block; margin:0 0 7px; color:var(--muted); overflow-wrap:anywhere;}
+#asy-circle-choices select {max-width:100%; min-width:0; font-size:.84rem;}
+.asy-circle-mode {width:100%;}
+.asy-circle-points:not([hidden]) {display:flex; gap:5px; margin-top:6px;}
+.asy-circle-points select {flex:1;}
 .asy-sheet-action {display:flex; align-items:center; flex-wrap:wrap; gap:5px 12px; margin-bottom:14px;}
 .asy-sheet-action p {margin:0; flex:1 1 17rem; font-size:.85rem; color:var(--muted);}
 .asy-result-grid {display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 14px;}
@@ -864,6 +874,11 @@ Derived file: studio-math-labels.woff
       <p>Jika hasilnya mengandung bitmap atau efek yang belum bisa diubah menjadi lintasan, jalankan <code>asy -f pdf diagram.asy</code>. <span>Simpan PDF di samping berkas .tex.</span> <button type="button" id="asy-use-pdf" class="text-action">Sisipkan diagram.pdf di TikZ</button></p>
     </details>
     <div id="asy-result" hidden>
+      <section id="asy-circle-review" aria-labelledby="asy-circle-heading" hidden>
+        <h3 id="asy-circle-heading">Lingkaran dari tiga titik</h3>
+        <p>Lingkaran berikut ditulis dengan pusat dan jari-jari. Pilih tiga titik agar lingkaran mengikutinya saat digeser. Titik lain pada keliling bisa terlepas saat gambar berubah.</p>
+        <div id="asy-circle-choices"></div>
+      </section>
       <div class="asy-sheet-action">
         <button type="button" class="primary" id="asy-open-sheet" aria-describedby="asy-sheet-hint" disabled>Buka di lembar baru</button>
         <p id="asy-sheet-hint" role="status"></p>
@@ -3683,6 +3698,18 @@ Proyeksi dan pencerminan|Projection and reflection
 Tempel kode dari AoPS di sini|Paste code from AoPS here
 Konversi ke TikZ|Convert to TikZ
 Buka di lembar baru|Open in new sheet
+Lingkaran dari tiga titik|Circles through three points
+Lingkaran berikut ditulis dengan pusat dan jari-jari. Pilih tiga titik agar lingkaran mengikutinya saat digeser. Titik lain pada keliling bisa terlepas saat gambar berubah.|These circles were written with a center and radius. Choose three points for a circle to follow as you drag them. Other points on its circumference may move off it when the drawing changes.
+Konstruksi lingkaran|Circle construction
+Pertahankan pusat dan jari-jari|Keep center and radius
+Lewat tiga titik|Through three points
+Ada segitiga yang digambar pada lingkaran ini.|A triangle is drawn on this circle.
+Ada tiga titik pada keliling.|Three points lie on the circumference.
+Beberapa pilihan tiga titik cocok.|Several triples of points fit.
+Tiga titik pilihan tidak menentukan lingkaran pada gambar sumber.|The three selected points do not define the circle in the source drawing.
+Titik pertama|First point
+Titik kedua|Second point
+Titik ketiga|Third point
 dari AoPS atau kode Asymptote biasa. Setelah dikonversi, pilih|from AoPS or ordinary Asymptote code. Once converted, choose
 untuk menggeser titik di kanvas.|to drag points on the canvas.
 Tampilkan hasil konversi kode yang sedang dibuka untuk menyunting gambarnya.|Display the conversion of the current source to edit its geometry.
@@ -4427,7 +4454,7 @@ editor-theme|Theme and canvas background|Choose a comfortable drawing background
 editor-project|Save and reopen a sheet|Keep the construction and styling for later editing or transfer.|Choose Save sheet to download the displayed drawing as a .stikz.json file, including when an example is open.|Choose Open file and select the downloaded .stikz.json file. Each file opens in a new tab alongside any sheets you already have open.|The file preserves references, formulas and styling and can be moved to another browser or device.
 editor-import|Open a GeoGebra diagram|Use a two-dimensional .ggb construction as the starting point for TikZ.|Choose Open file or drop the .ggb file on the canvas. Check the imported objects and adjust their styles.|Points use stored coordinates. Recognized circles through points follow those points.
 editor-sheets|Manage drawing sheets and explore examples|Work on several drawings in one editor and try examples between them.|Select Add sheet for a blank canvas. Select a named tab above the canvas to switch drawings. With the keyboard, focus a tab and press Left or Right.|Choose Rename sheet, enter a title such as Triangle inversion, and press Enter. Use Save sheet to download the active drawing as a .stikz.json file.|From the Sheet menu, try Inversion by product example under Example sheets or a problem from Wildan’s worked examples. Select any personal tab to return to your drawing.|Choose Delete sheet to remove the selected sheet from browser storage. Check the sheet name in the confirmation. To keep a copy, choose Save sheet before deleting.|When browser storage is available, Studio automatically keeps the personal sheets still open. Previously downloaded .stikz.json files can be reopened in new tabs.
-editor-export|Copy the diagram or coordinates|Use the finished diagram in LaTeX or an AoPS post.|Choose Full diagram or Coordinates only and copy the code. Copy the preamble and paste it before the document begins.|To post the TikZ diagram on AoPS, open AoPS format.|To use a diagram from AoPS, open Paste Asymptote. Paste the [asy] block or choose Projection and reflection, then select Convert to TikZ.|To move points in a supported drawing, choose Open in new sheet. With Select / move, drag point P in that example. Choose Copy TikZ in the sheet. The code follows the drawing. Your other sheets stay open.|The original Asymptote stays in the converter. To change a formula or loop in the source, edit the Asymptote and convert again.|To edit the TikZ in the converter, try changing a line width value to 1.2bp, then select Copy TikZ. Copy the preamble into your LaTeX document and add any packages your edits require. The preview shows the original conversion. Compile your document to see the new line width.|Choose Restore converted code to return to the original. If a new conversion is ready while your code contains edits, choose Keep edits or Replace with new result.|Full diagram includes geometry and style. Selecting an object highlights its TikZ code.
+editor-export|Copy the diagram or coordinates|Use the finished diagram in LaTeX or an AoPS post.|Choose Full diagram or Coordinates only and copy the code. Copy the preamble and paste it before the document begins.|To post the TikZ diagram on AoPS, open AoPS format.|To use a diagram from AoPS, open Paste Asymptote. Paste the [asy] block or choose Projection and reflection, then select Convert to TikZ.|If Circles through three points appears after conversion, check the suggested points for each circle. Choose three points the circle should follow when dragged, or keep the source center and radius.|To move points in a supported drawing, choose Open in new sheet. With Select / move, drag point P in that example. Choose Copy TikZ in the sheet. The code follows the drawing. Your other sheets stay open.|The original Asymptote stays in the converter. To change a formula or loop in the source, edit the Asymptote and convert again.|To edit the TikZ in the converter, try changing a line width value to 1.2bp, then select Copy TikZ. Copy the preamble into your LaTeX document and add any packages your edits require. The preview shows the original conversion. Compile your document to see the new line width.|Choose Restore converted code to return to the original. If a new conversion is ready while your code contains edits, choose Keep edits or Replace with new result.|Full diagram includes geometry and style. Selecting an object highlights its TikZ code.
 editor-scale|TikZ print scale|Set the compiled size of the diagram.|Choose Full diagram. Enter a positive TikZ scale and check the dot radius shown beside it.|Studio adjusts the radius in the code to keep printed point markers at 1.5 pt.
 `.trim();
 const englishGuideArticles=new Map(englishGuideRows.split("\n").map(line=>{
@@ -8953,6 +8980,7 @@ const otherGuideEntries={
       "Jika kamu sudah menyiapkan lingkungan tikzpicture sendiri, pilih Koordinat saja, klik Salin koordinat, lalu tempel di dalam lingkungan itu.",
       "Untuk forum AoPS, klik Format AoPS. Gunakan gambar dari kanvas atau tempel tikzpicture sendiri. Jika memakai makro tambahan, masukkan definisinya di Preamble tambahan. Klik Salin [asy] dan tempel bloknya di forum.",
       "Untuk mengolah diagram dari AoPS, buka Tempel Asymptote. Tempel blok [asy] atau pilih contoh Proyeksi dan pencerminan, lalu klik Konversi ke TikZ.",
+      "Jika muncul Lingkaran dari tiga titik setelah konversi, periksa titik yang disarankan untuk tiap lingkaran. Pilih tiga titik yang harus diikuti saat digeser, atau pertahankan pusat dan jari-jari dari sumber.",
       "Untuk menggeser titik pada gambar yang didukung, klik Buka di lembar baru. Dengan Pilih / geser, seret titik P pada contoh itu. Klik Salin TikZ di lembar tersebut. Kode mengikuti bentuk di kanvas. Lembar lain tetap terbuka.",
       "Sumber Asymptote tetap tersedia di konverter. Untuk mengubah rumus atau perulangan sumber, sunting Asymptote dan konversi lagi.",
       "Kalau ingin menyunting TikZ di konverter, coba ubah salah satu nilai line width menjadi 1.2bp, lalu klik Salin TikZ. Salin preamble ke dokumen LaTeX dan tambahkan paket yang diperlukan untuk suntinganmu. Pratinjau menampilkan hasil konversi awal. Kompilasi dokumen untuk melihat tebal garis yang baru.",
@@ -11128,6 +11156,12 @@ registerPanel({init:bindCanvasNavigation});
 
 "use strict";
 
+// A distance remains an ordinary number in calculations. Keep its endpoints
+// through variables, array entries and helper calls for a circle that uses it.
+function asyScalarValue(value){
+  return value?.kind==="measurement"?value.value:value;
+}
+
 // Interpret the drawing subset directly. Identifiers are resolved only in lexical
 // scopes and in the drawing runtime, never in the browser's global scope.
 function runAsySubset(source,runtime){
@@ -11384,6 +11418,7 @@ function runAsySubset(source,runtime){
   let scopes=[globals],steps=0,iterations=0,callDepth=0,activeNodes=0;
   function charge(at){if(++steps>limits.steps)fail(at,"Konversi melebihi batas operasi.");}
   function finite(value,at){
+    value=asyScalarValue(value);
     if(typeof value!=="number"||!Number.isFinite(value))fail(at,"Diperlukan bilangan hingga. Periksa pembagian dan koordinat.");
     return value;
   }
@@ -11410,6 +11445,7 @@ function runAsySubset(source,runtime){
     return value;
   }
   function binary(op,a,b,at){
+    a=asyScalarValue(a);b=asyScalarValue(b);
     const numeric=typeof a==="number"&&typeof b==="number";
     if(op==="=="||op==="!="){
       let equal;
@@ -11427,7 +11463,9 @@ function runAsySubset(source,runtime){
       }
     }
     if(a?.kind==="pair"&&b?.kind==="pair"&&(op==="+"||op==="-")){
-      const sign=op==="+"?1:-1;return pair(a.x+sign*b.x,a.y+sign*b.y,at);
+      const sign=op==="+"?1:-1,v=pair(a.x+sign*b.x,a.y+sign*b.y,at);
+      if(op==="-")Object.defineProperty(v,"asyDifference",{value:[a,b]});
+      return v;
     }
     if(a?.kind==="pair"&&typeof b==="number"&&(op==="*"||op==="/")){
       const k=op==="*"?b:1/b;return pair(a.x*k,a.y*k,at);
@@ -11448,7 +11486,7 @@ function runAsySubset(source,runtime){
       case "name":return lookup(node.name,at);
       case "array":return node.items.map(ev);
       case "index":{
-        const list=ev(node.base),key=ev(node.key);
+        const list=ev(node.base),key=asyScalarValue(ev(node.key));
         if(!Array.isArray(list)||!Number.isInteger(key)||key<0||key>=list.length||list[key]===undefined)
           fail(at,"Indeks larik tidak tersedia.");
         return list[key];
@@ -11458,7 +11496,7 @@ function runAsySubset(source,runtime){
         const base=ev(node.base);
         if(base?.kind==="pair"&&["x","y"].includes(node.property))return base[node.property];
         if(base?.kind==="triangle"&&["A","B","C"].includes(node.property))return base[node.property];
-        if(base?.circle&&node.property==="r")return base.circle.r;
+        if(base?.circle&&node.property==="r")return base.asyRadiusMeasure||base.circle.r;
         if(base?.circle&&node.property==="C")return base.circle.center;
         if(Array.isArray(base)&&node.property==="length")return base.length;
         fail(at,"Properti ini tidak tersedia untuk objek tersebut.");break;
@@ -11467,12 +11505,13 @@ function runAsySubset(source,runtime){
       case "call":{
         const args=node.args.map(ev),fn=functions.get(node.name);
         if(fn?.result==="void"&&!asStatement)fail(at,"Panggilan fungsi void hanya dapat digunakan sebagai pernyataan.");
-        return fn?callHelper(fn,args,at):invoke(at,"call",node.name,args);
+        return fn?callHelper(fn,args,at):invoke(at,"call",node.name,args,asStatement);
       }
       case "unary":{
         const x=ev(node.arg);
         if(node.op==="!")return !bool(x,at);
         if(x?.kind==="pair")return node.op==="-"?pair(-x.x,-x.y,at):x;
+        if(node.op==="+"&&x?.kind==="measurement")return x;
         return node.op==="-"?-finite(x,at):finite(x,at);
       }
       case "binary":{
@@ -11494,6 +11533,7 @@ function runAsySubset(source,runtime){
     if(type==="point")type="pair";
     if(type==="guide")type="path";
     if(type==="circle"&&value?.circle)return;
+    value=asyScalarValue(value);
     const valid=type==="int"?Number.isSafeInteger(value):type==="real"?Number.isFinite(value)||value?.kind==="length":
       type==="string"?typeof value==="string":type==="bool"?typeof value==="boolean":
       type==="path"?value?.kind==="path"||value?.kind==="pair":value?.kind===type;
@@ -11504,7 +11544,7 @@ function runAsySubset(source,runtime){
     if(scope){
       const item=scope.get(name);checkType(item.type,value,at);item.value=value;return;
     }
-    if(!invoke(at,"set",name,value))fail(at,"Variabel «"+name+"» belum dideklarasikan.");
+    if(!invoke(at,"set",name,asyScalarValue(value)))fail(at,"Variabel «"+name+"» belum dideklarasikan.");
   }
   function withScope(action){scopes.push(new Map());try{return action();}finally{scopes.pop();}}
   function callHelper(fn,args,at){
@@ -11556,7 +11596,7 @@ function runAsySubset(source,runtime){
       }
       case "setIndex":{
         const name=node.node.base.name,scope=owner(name),item=scope?.get(name);
-        const key=evaluate(node.node.key),value=evaluate(node.value);
+        const key=asyScalarValue(evaluate(node.node.key)),value=evaluate(node.value);
         if(!Array.isArray(item?.value)||!Number.isSafeInteger(key)||key<0||key>=limits.array)
           fail(at,"Indeks larik harus berupa bilangan bulat dari 0 sampai 2047.");
         checkType(item.type.slice(0,-2),value,at);item.value[key]=value;break;
@@ -11698,6 +11738,33 @@ function createAsyRuntime(defaultSize=150) {
     const u=delta(b,a),v=delta(c,a),det=2*cross(u,v);
     if(Math.abs(det)<=1e-12*magnitude(u)*magnitude(v))throw Error("Tiga titik segaris tidak menentukan lingkaran.");
     return pair(a.x+(scalar(u,u)*v.y-scalar(v,v)*u.y)/det,a.y+(u.x*scalar(v,v)-v.x*scalar(u,u))/det);
+  }
+  const measure=(value,type,points)=>({kind:"measurement",value,type,points});
+  function sameTriangle(a,b){
+    return a.length===3&&b.length===3&&a.every(p=>b.includes(p));
+  }
+  function sameCenter(p,q){
+    if(p===q)return true;
+    const a=p.asyConstruction,b=q.asyConstruction;
+    return a?.type==="circumcenter"&&b?.type==="circumcenter"&&sameTriangle(a.points,b.points);
+  }
+  // Preserve a source constraint only when the operands identify it. Two
+  // unrelated lengths may happen to be equal before the first drag.
+  function circleWithRadius(center,radius){
+    const circle=arc(center,asyScalarValue(radius),0,360,true);
+    if(radius?.kind!=="measurement")return circle;
+    Object.defineProperty(circle,"asyRadiusMeasure",{value:radius});
+    const corners=center.asyConstruction?.type==="circumcenter"&&center.asyConstruction.points;
+    if(radius.type==="circumradius"&&corners&&sameTriangle(corners,radius.points))
+      return constructed(circle,"circle3",corners);
+    if(radius.type==="distance"){
+      const [a,b]=radius.points,through=sameCenter(center,a)?b:sameCenter(center,b)?a:null;
+      if(through){
+        if(corners&&corners.includes(through))return constructed(circle,"circle3",corners);
+        return constructed(circle,"circle2",[center,through]);
+      }
+    }
+    return circle;
   }
   function primitiveIntersections(p,q){
     if(!p.circle&&!q.circle){
@@ -11962,7 +12029,8 @@ function createAsyRuntime(defaultSize=150) {
   const supportedCalls=new Set(["draw","fill","filldraw","dot","label","circle","Circle","arc","Arc","box","midpoint","waypoint","rgb","gray","grey","linewidth","fontsize","linetype","opacity","defaultpen","unitsize","size","dir","unit","abs","length","degrees","radians","foot","extension","intersectionpoint","intersectionpoints","rightanglemark","circumcircle","circumcenter","centroid","rotate","reflect","shift","scale","MP","D","CR","L","IP","IPs","triangle","incenter","inradius","incircle","circumradius","orthocenter","anglemark","polygon","excenter","exradius","excircle","conj","tangent","Line","CP","OP","sec",...mathCalls.keys()]);
   supportedCalls.add("clip");
   let geometryModule=false;
-  function call(name,args){
+  function call(name,values,asStatement=false){
+    const args=values.map(asyScalarValue);
     if(mathCalls.has(name)){checkArgs(name,args,1);return num(mathCalls.get(name)(num(args[0])));}
     switch(name){
       case "MP":{
@@ -11971,20 +12039,29 @@ function createAsyRuntime(defaultSize=150) {
         const f=typeof tail[0]==="number"?tail.shift():pointFontSize,alignment=tail[0]||names.get("S");
         if(tail.length>1)throw Error("Urutan argumen MP belum didukung.");
         const ink={...csePens.get("pointfontpen"),font:Math.max(4,num(f))};
-        if(label)call("label",[label.startsWith("$")?label:"$"+label+"$",p,point(alignment),ink]);
+        if(label){
+          const preceding=ops.at(-1);
+          call("label",[label.startsWith("$")?label:"$"+label+"$",p,point(alignment),ink]);
+          const op=ops.at(-1);
+          Object.defineProperty(op,"asyMacro",{value:"MP"});
+          if(asStatement&&preceding?.type==="dot"&&preceding.asyMacro==="D")
+            Object.defineProperty(op,"asyAnchor",{value:preceding.at});
+        }
         return p;
       }
       case "D":{
         if(typeof args[0]==="string"){const p=call("MP",args);call("dot",[p,csePens.get("pointpen")]);return p;}
         checkArgs(name,args,1,2);const v=args[0],isPoint=v?.kind==="pair";
-        call(isPoint?"dot":"draw",[v,args[1]||csePens.get(isPoint?"pointpen":"pathpen")]);return v;
+        call(isPoint?"dot":"draw",[v,args[1]||csePens.get(isPoint?"pointpen":"pathpen")]);
+        if(isPoint)Object.defineProperty(ops.at(-1),"asyMacro",{value:"D"});
+        return v;
       }
       case "CR":{
         checkArgs(name,args,2,4);const [ctr,r,a=0,b=360]=args;
-        return arc(ctr,r,a,b,a===0&&b===360);
+        return a===0&&b===360?circleWithRadius(ctr,values[1]):arc(ctr,r,a,b);
       }
       case "CP":{
-        checkArgs(name,args,2);return constructed(arc(point(args[0]),magnitude(delta(args[1],args[0])),0,360,true),"circle2",args);
+        checkArgs(name,args,2);return circleWithRadius(point(args[0]),measure(magnitude(delta(...args)),"distance",args));
       }
       case "Line":case "L":{
         checkArgs(name,args,2,4);const [a,b,s=.6,t=s]=args;
@@ -12001,8 +12078,13 @@ function createAsyRuntime(defaultSize=150) {
       case "radians":checkArgs(name,args,1);return radians(args[0]);
       case "sec":checkArgs(name,args,1);return num(1/Math.cos(num(args[0])));
       case "conj":{checkArgs(name,args,1);const p=point(args[0]);return pair(p.x,-p.y);}
-      case "abs":checkArgs(name,args,1);return typeof args[0]==="number"?Math.abs(args[0]):magnitude(args[0]);
-      case "length":checkArgs(name,args,1);return Array.isArray(args[0])?args[0].length:magnitude(args[0]);
+      case "abs":case "length":{
+        checkArgs(name,args,1);const v=args[0];
+        if(name==="length"&&Array.isArray(v))return v.length;
+        if(name==="abs"&&typeof v==="number")return values[0]?.kind==="measurement"?values[0]:Math.abs(v);
+        const result=magnitude(v);
+        return v.asyDifference?measure(result,"distance",v.asyDifference):result;
+      }
       case "foot":checkArgs(name,args,3);return constructed(projection(...args),"foot",args);
       case "extension":checkArgs(name,args,4);return constructed(lineIntersection(...args,false),"extension",args);
       case "IPs":case "intersectionpoints":case "IP":case "OP":case "intersectionpoint":{
@@ -12023,8 +12105,8 @@ function createAsyRuntime(defaultSize=150) {
         const corners=trianglePoints(name,args),[a,b,c]=corners,o=constructed(circumcenter(a,b,c),"circumcenter",corners);
         if(name==="circumcenter")return o;
         if(name==="orthocenter")return constructed(pair(a.x+b.x+c.x-2*o.x,a.y+b.y+c.y-2*o.y),"orthocenter",corners);
-        const radius=magnitude(delta(a,o));
-        return name==="circumradius"?radius:constructed(arc(o,radius,0,360,true),"circle3",corners);
+        const radius=measure(magnitude(delta(a,o)),"circumradius",corners);
+        return name==="circumradius"?radius:circleWithRadius(o,radius);
       }
       case "incircle":case "incenter":case "inradius":case "excircle":case "excenter":case "exradius":{
         const corners=trianglePoints(name,args),external=name.startsWith("ex");
@@ -12128,7 +12210,7 @@ function createAsyRuntime(defaultSize=150) {
         const diameter=name==="circle"&&geometryModule&&args.length===2&&args[1]?.kind==="pair";
         const p=args.length===3?call("circumcircle",args):diameter
           ?constructed(arc(constructed(along(point(args[0]),args[1],.5),"mid",args),magnitude(delta(...args))/2,0,360,true),"diameter",args)
-          :arc(args[0],args[1],0,360,true);
+          :circleWithRadius(args[0],values[1]);
         if(name==="circle"&&geometryModule)p.geometryCircle=true;
         return p;
       }
@@ -12158,7 +12240,8 @@ function createAsyRuntime(defaultSize=150) {
       case "grey":case "gray":checkArgs(name,args,1);return color(args[0],args[0],args[0]);
       case "linetype":{
         checkArgs(name,args,1);
-        const a=typeof args[0]==="string"?args[0].trim().split(/\s+/).map(Number):args[0];
+        const a=typeof args[0]==="string"?args[0].trim().split(/\s+/).map(Number):
+          Array.isArray(args[0])?args[0].map(asyScalarValue):args[0];
         if(!Array.isArray(a)||!a.length||a.length>32||!a.every(n=>Number.isFinite(n)&&n>=0)||!a.some(n=>n>0))throw Error("Pola linetype tidak valid.");
         return pen({pattern:a.length%2?[...a,...a]:a});
       }
@@ -12821,6 +12904,127 @@ function asyCircleConstruction(path,getPoint){
   return {type:relation.type,refs:relation.points.map(p=>getPoint(p))};
 }
 
+const asyPointLocation=p=>p.x+","+p.y;
+function asyLabelPointName(op){
+  return op.type==="label"&&op.label.math?pointNameParts(op.label.tex.slice(1,-1))?.canonical:null;
+}
+function asyImportPointInfo(scene){
+  const namedAt=new WeakMap(),byLocation=new Map(),sourceLabel=new Map(),reserved=new Set(),anchors=new WeakMap();
+  for(const {name,at} of scene.namedPoints){
+    const n=pointNameParts(name)?.canonical;
+    if(!n||n.length>48)continue;
+    if(!namedAt.has(at))namedAt.set(at,n);
+    reserved.add(n);
+    const k=asyPointLocation(at);
+    if(!byLocation.has(k))byLocation.set(k,new Set());
+    byLocation.get(k).add(at);
+  }
+  function namedAtLocation(p){
+    const matches=byLocation.get(asyPointLocation(p));
+    return matches?.size===1?namedAt.get(matches.values().next().value):undefined;
+  }
+  for(const op of scene.ops){
+    const n=asyLabelPointName(op);
+    if(!n||n.length>48)continue;
+    let at=op.at;
+    if(op.asyAnchor){
+      const candidate=op.asyAnchor,actualName=namedAtLocation(candidate),otherName=namedAtLocation(at);
+      // Some GeoGebra exports immediately follow D(point) with MP(name,offset).
+      // Respect separately named positions and unrelated, distant annotations.
+      if((actualName?n===actualName:!reserved.has(n))&&(!otherName||otherName===actualName)&&
+          dist(at,candidate)*scene.bpPerUnit<=3*op.pen.font){
+        at=candidate;anchors.set(op,at);
+      }
+    }
+    const k=asyPointLocation(at);
+    if(!reserved.has(n)&&!sourceLabel.has(k)){sourceLabel.set(k,n);reserved.add(n);}
+  }
+  return {namedAt,byLocation,sourceLabel,reserved,anchors,namedAtLocation};
+}
+
+// Numeric exports can retain the drawing while omitting its construction.
+// Limit reconstruction to marked points and named vertices on painted paths.
+// Label anchor coordinates, arc samples and invisible helper shapes often sit
+// on the same mathematical circle but are not evidence of defining points.
+function asyCircumcircleCandidates(scene,info=asyImportPointInfo(scene)){
+  const points=new Map(),triangles=new Map(),groups=new Map(),marked=new Set(),circleOrdinals=new Map();
+  for(const op of scene.ops){
+    if(op.type==="dot"&&!op.pen.invisible&&op.pen.alpha!==0)marked.add(asyPointLocation(op.at));
+  }
+  function record(p,isDot){
+    if(!finitePoint(p))return;
+    const k=asyPointLocation(p),named=info.byLocation.get(k);
+    if(named?.size>1)return;
+    if(!isDot&&!named)return;
+    const other=points.get(k);
+    let at=named?.values().next().value||p;
+    // Coincident derived points can represent distinct objects; a literal dot
+    // is not sufficient to associate those dependency graphs.
+    if(named&&!info.namedAt.has(p)&&at.asyConstruction)at=p;
+    if(other&&other.at!==at&&(other.at.asyConstruction||at.asyConstruction)){other.ambiguous=true;return;}
+    if(!other)points.set(k,{at,name:info.namedAt.get(at)||info.sourceLabel.get(k)||("("+numberTeX(p.x)+", "+numberTeX(p.y)+")")});
+  }
+  for(const op of scene.ops){
+    if(op.pen?.invisible||op.pen?.alpha===0)continue;
+    if(op.type==="dot"){record(op.at,true);continue;}
+    if(op.type!=="draw"&&op.type!=="fill")continue;
+    const p=op.path;
+    if(p.circle){
+      const c=p.circle.center,key=asyPointLocation(c)+"/"+p.circle.r;
+      if(!circleOrdinals.has(key))circleOrdinals.set(key,circleOrdinals.size);
+      // A named center or a source-defined circle already has explicit meaning.
+      if(p.asyConstruction||c.asyConstruction||info.namedAt.has(c)||info.byLocation.has(asyPointLocation(c))||marked.has(asyPointLocation(c)))continue;
+      if(!groups.has(key))groups.set(key,{path:p,paths:new Set(),index:circleOrdinals.get(key)});
+      groups.get(key).paths.add(p);
+      continue;
+    }
+    if(p.segments.some(s=>s.center))continue;
+    const vertices=[p.start,...p.segments.map(s=>s.to)];
+    vertices.forEach(v=>record(v,false));
+    if(!p.closed)continue;
+    const keys=vertices.map(asyPointLocation);
+    if(keys.at(-1)===keys[0])keys.pop();
+    if(keys.length===3&&new Set(keys).size===3)triangles.set(keys.slice().sort().join("/"),keys);
+  }
+  const pool=[...points.values()].filter(p=>!p.ambiguous),result=[];
+  for(const group of groups.values()){
+    const circle=group.path.circle,c=circle.center,r=circle.r;
+    const tolerance=asyCircleTolerance(circle);
+    // A tiny radius at very large coordinates can be below input precision.
+    if(tolerance>r*1e-5)continue;
+    const candidates=pool.filter(p=>Math.abs(dist(p.at,c)-r)<=tolerance);
+    if(candidates.length<3)continue;
+    const indexByLocation=new Map(candidates.map((item,i)=>[asyPointLocation(item.at),i]));
+    const matching=[];
+    for(const keys of triangles.values()){
+      const indices=keys.map(k=>indexByLocation.get(k));
+      if(indices.every(i=>i!==undefined)&&asyCircumcircleFits(circle,indices.map(i=>candidates[i].at)))matching.push(indices);
+    }
+    const triangle=matching.length===1?matching[0]:null;
+    // A wide chord and the point farthest from it give a stable suggestion
+    // even when a dense cluster of points comes first in the exported file.
+    const a=candidates[0].at;
+    let b=1,third=0;
+    for(let i=2;i<candidates.length;i++)if(dist(a,candidates[i].at)>dist(a,candidates[b].at))b=i;
+    const vector=minus(candidates[b].at,a);
+    for(let i=1;i<candidates.length;i++)
+      if(Math.abs(cross(vector,minus(candidates[i].at,a)))>Math.abs(cross(vector,minus(candidates[third].at,a))))third=i;
+    const suggested=triangle||[0,b,third].sort((i,j)=>i-j);
+    if(!asyCircumcircleFits(circle,suggested.map(i=>candidates[i].at)))continue;
+    result.push({...group,paths:[...group.paths],candidates,triangle,suggested});
+  }
+  return result;
+}
+function asyCircleTolerance(circle){
+  const {center:c,r}=circle;
+  return r*1e-7+32*Number.EPSILON*Math.max(Math.abs(c.x),Math.abs(c.y),r);
+}
+function asyCircumcircleFits(circle,points){
+  if(points.length!==3||points.some(p=>!finitePoint(p)))return false;
+  const fit=circThree(...points),tolerance=asyCircleTolerance(circle);
+  return fit!==null&&Math.hypot(fit.cx-circle.center.x,fit.cy-circle.center.y)<=2*tolerance&&Math.abs(fit.r-circle.r)<=2*tolerance;
+}
+
 "use strict";
 
 // Paths emitted by the Asymptote interpreter consist of straight and circular
@@ -12950,39 +13154,45 @@ registerStep("asyPath",{
 
 // The evaluator has already resolved functions and loops. Source pair identity
 // still distinguishes two named points which happen to coincide.
-function makeAsyProject(scene,title="Gambar Asymptote"){
+function makeAsyProject(scene,title="Gambar Asymptote",{circleBindings}={}){
   if(!scene?.ops?.length||!(scene.bpPerUnit>0))throw Error("Konversikan kode Asymptote untuk membuka lembar.");
-  const steps=[],byId=new Map(),notes=new Set(),names=new Set(),reserved=new Set();
-  const namedAt=new WeakMap(),byLocation=new Map(),sourceLabel=new Map();
+  const steps=[],byId=new Map(),notes=new Set(),names=new Set();
+  const info=asyImportPointInfo(scene),{namedAt,byLocation,sourceLabel,reserved,anchors}=info;
   const pointIds=new WeakMap(),literalIds=new Map(),axisIds=new Map(),dots=new Set();
   let order=0,nextPoint=1;
   const note=message=>notes.add(message);
-  const location=p=>p.x+","+p.y;
-  const nameOf=p=>pointNameParts(p)?.canonical;
+  const location=asyPointLocation;
   function add(type,refs,fields={}){
     if(steps.length>=1500)throw Error("Gambar melebihi batas 1.500 objek dalam satu lembar Studio.");
     const id="asy"+(steps.length+1),s={id,type,refs,...fields};
     if(!POINT_TYPES.has(type)&&!s.hidden)s.asyPaintOrder=order;
     steps.push(s);byId.set(id,s);return id;
   }
-  for(const {name,at} of scene.namedPoints){
-    const n=nameOf(name);
-    if(!n||n.length>48)continue;
-    if(!namedAt.has(at))namedAt.set(at,n);
-    reserved.add(n);
-    const k=location(at);
-    if(!byLocation.has(k))byLocation.set(k,new Set());
-    byLocation.get(k).add(at);
+  const recovered=new Map(),chosenCenters=[];
+  for(const entry of asyCircumcircleCandidates(scene,info)){
+    const useDefault=entry.candidates.length===3||entry.triangle;
+    const chosen=circleBindings!==undefined?circleBindings.get(entry.path)
+      :useDefault?entry.suggested.map(i=>entry.candidates[i].at):null;
+    if(chosen==null)continue;
+    if(!Array.isArray(chosen)||!chosen.every(p=>entry.candidates.some(candidate=>candidate.at===p))||
+        !asyCircumcircleFits(entry.path.circle,chosen))throw Error("Tiga titik pilihan tidak menentukan lingkaran pada gambar sumber.");
+    for(const path of entry.paths)recovered.set(path,chosen);
+    chosenCenters.push({points:chosen,circle:entry.path.circle});
   }
-  function pureName(op){
-    if(op.type!=="label"||!op.label.math)return null;
-    return nameOf(op.label.tex.slice(1,-1));
+  // GeoGebra can print the same center with slightly different last digits
+  // at the end of a radius. Only relink anonymous straight-path vertices
+  // at machine precision, and only when there is a unique chosen circle.
+  const centerEnds=new WeakMap(),markedLocations=new Set(scene.ops.filter(o=>o.type==="dot").map(o=>location(o.at)));
+  function recognizeCenter(p){
+    if(p.asyConstruction||byLocation.has(location(p))||markedLocations.has(location(p))||centerEnds.has(p))return;
+    const matches=chosenCenters.filter(({circle:{center,r}})=>
+      dist(center,p)<=64*Number.EPSILON*Math.max(Math.abs(center.x),Math.abs(center.y),r));
+    if(matches.length===1)centerEnds.set(p,matches[0]);
   }
-  for(const op of scene.ops){
-    const n=pureName(op);
-    if(!n||n.length>48)continue;
-    const k=location(op.at);
-    if(!reserved.has(n)&&!sourceLabel.has(k)){sourceLabel.set(k,n);reserved.add(n);}
+  if(chosenCenters.length)for(const op of scene.ops){
+    if(!["draw","fill"].includes(op.type)||op.path.circle||!op.path.segments.every(s=>!s.center))continue;
+    recognizeCenter(op.path.start);
+    op.path.segments.forEach(s=>recognizeCenter(s.to));
   }
   function takeName(n){
     if(!n||names.has(n)){
@@ -13040,11 +13250,22 @@ function makeAsyProject(scene,title="Gambar Asymptote"){
   function colorForMark(op){
     return {color:ink(op.pen),opacity:op.pen.invisible?0:op.type==="label"?100:Math.round(100*(op.pen.alpha??1))};
   }
-  const context={add,point,style,note};
+  function pathPoint(p){
+    const center=centerEnds.get(p);
+    if(!center)return point(p);
+    if(!center.id)center.id=add("circumcenter",center.points.map(point),{name:takeName(),dir:"none",mark:false});
+    return center.id;
+  }
+  function nativeCircle(path){
+    const points=recovered.get(path);
+    if(points)return {type:"circle3",refs:points.map(point)};
+    return asyCircleConstruction(path,point)||{type:"circleRadius",refs:[point(path.circle.center)],radius:path.circle.r};
+  }
+  const context={add,point:pathPoint,style,note};
   function shape(op){
     const p=op.path,s=p.segments[0],fill=op.type==="fill";
     if(p.circle){
-      const construction=asyCircleConstruction(p,point)||{type:"circleRadius",refs:[point(p.circle.center)],radius:p.circle.r};
+      const construction=nativeCircle(p);
       add(construction.type,construction.refs,{...construction,...style(op.pen,{stroke:!fill,fill})});return;
     }
     if(p.segments.length===1&&s.center){
@@ -13057,7 +13278,7 @@ function makeAsyProject(scene,title="Gambar Asymptote"){
       }
     }
     if(!fill&&!p.closed&&p.segments.length===1&&!s.center&&dist(p.start,s.to)>EPS){
-      add("segment",[point(p.start),point(s.to)],style(op.pen,{stroke:true,fill:false}));return;
+      add("segment",[pathPoint(p.start),pathPoint(s.to)],style(op.pen,{stroke:true,fill:false}));return;
     }
     if(!fill&&!p.closed&&p.segments.length&&p.segments.every(piece=>!piece.center&&piece.to.x===p.start.x&&piece.to.y===p.start.y)){
       // A zero-length stroke with round caps has a circular footprint.
@@ -13078,15 +13299,17 @@ function makeAsyProject(scene,title="Gambar Asymptote"){
     Object.assign(s,{mark:true,asyPaintOrder:order,...colorForMark(op)});
   }
   function annotation(op){
-    const id=point(op.at),s=byId.get(id),color=colorForMark(op);
-    const n=pureName(op),dir=directions.find(d=>d[2]===op.dx&&d[3]===-op.dy)?.[0];
-    if(n===s.name&&dots.has(id)&&s.dir==="none"&&dir&&dir!=="none"&&s.color===color.color&&s.opacity===color.opacity){
+    const anchor=anchors.get(op)||op.at,id=point(anchor),s=byId.get(id),color=colorForMark(op);
+    const samePosition=anchor.x===op.at.x&&anchor.y===op.at.y;
+    const n=asyLabelPointName(op),dir=directions.find(d=>d[2]===op.dx&&d[3]===-op.dy)?.[0];
+    if(samePosition&&n===s.name&&dots.has(id)&&s.dir==="none"&&dir&&dir!=="none"&&s.color===color.color&&s.opacity===color.opacity){
       s.dir=dir;s.asyLabelOrder=order;return;
     }
     // Studio places an independent annotation at its center. Convert the Asy
     // alignment and physical padding to a relative offset from the live point.
     const [left,bottom,right,top]=op.pad;
-    const fields={x:(left+right)/(2*scene.bpPerUnit),y:(bottom+top)/(2*scene.bpPerUnit),...color};
+    const fields={x:op.at.x-anchor.x+(left+right)/(2*scene.bpPerUnit),
+      y:op.at.y-anchor.y+(bottom+top)/(2*scene.bpPerUnit),...color};
     if(op.label.math){fields.text=op.label.tex.slice(1,-1);fields.labelMode="math";}
     else if(op.label.parts.every(part=>!part.math)){fields.text=op.label.display;fields.labelMode="text";}
     else{
@@ -13103,7 +13326,8 @@ function makeAsyProject(scene,title="Gambar Asymptote"){
     if(scene.clips.length!==1||last.type!=="clipEnd")throw Error("Studio hanya mendukung satu batas clip untuk seluruh lembar. Gunakan hasil TikZ untuk clip bertingkat atau sebagian.");
     if(mask.box)clip={type:"rectangle",a:{x:mask.start.x,y:mask.start.y},b:{x:mask.box.x,y:mask.box.y}};
     else if(mask.circle){
-      const ref=add("circleRadius",[point(mask.circle.center)],{radius:mask.circle.r,hidden:true});
+      const construction=nativeCircle(mask);
+      const ref=add(construction.type,construction.refs,{...construction,hidden:true});
       clip={type:"object",ref};
     }else if(mask.closed&&mask.segments.every(s=>!s.center)){
       const refs=[mask.start,...mask.segments.map(s=>s.to)].map(point);
@@ -13236,15 +13460,72 @@ function bindAsyConverter() {
   const native = element("asy-native"), saveSource = element("asy-save-source"), svgFile = element("asy-svg-file");
   const resetTikz = element("asy-reset-tikz"), replacement = element("asy-replacement");
   const openSheet = element("asy-open-sheet"), sheetHint = element("asy-sheet-hint");
+  const circleReview = element("asy-circle-review"), circleChoices = element("asy-circle-choices");
+  let circleRows = [];
   let customSource = "", errorLocation = null, revision = 0;
   let current = null, candidate = null, originalText = "";
   let focusCanvasAfterClose = false;
 
   function hasEdits() { return current !== null && output.value !== originalText; }
+  function showCircleChoices(scene) {
+    circleChoices.textContent = "";
+    circleRows = [];
+    if (!scene) return;
+    for (const entry of asyCircumcircleCandidates(scene)) {
+      const field = document.createElement("fieldset"), legend = document.createElement("legend");
+      const radius = Number(entry.path.circle.r.toPrecision(5));
+      legend.textContent = "Lingkaran " + (entry.index + 1) + " (r ≈ " + radius + ")";
+      field.append(legend);
+      const mode = document.createElement("select");
+      mode.setAttribute("aria-label", "Konstruksi lingkaran");
+      mode.className = "asy-circle-mode";
+      mode.add(new Option("Pertahankan pusat dan jari-jari", "radius"));
+      mode.add(new Option("Lewat tiga titik", "three"));
+      const hasTriangle = !!entry.triangle, unambiguous = entry.candidates.length === 3;
+      mode.value = hasTriangle || unambiguous ? "three" : "radius";
+      const description = document.createElement("small");
+      const reason = document.createElement("span");
+      reason.textContent = hasTriangle ? "Ada segitiga yang digambar pada lingkaran ini."
+        : unambiguous ? "Ada tiga titik pada keliling." : "Beberapa pilihan tiga titik cocok.";
+      description.append(reason, " " + entry.candidates.map(p => p.name).join(", "));
+      const points = document.createElement("div");
+      points.className = "asy-circle-points";
+      const initial = entry.triangle || entry.suggested;
+      const selectors = initial.map((chosen, slot) => {
+        const select = document.createElement("select");
+        select.setAttribute("aria-label", ["Titik pertama", "Titik kedua", "Titik ketiga"][slot]);
+        entry.candidates.forEach((p, i) => select.add(new Option(p.name, String(i))));
+        select.value = String(chosen);
+        points.append(select);
+        return select;
+      });
+      function sync() {
+        points.hidden = mode.value === "radius";
+        const picks = selectors.map(select => select.value);
+        selectors.forEach((select, slot) => {
+          for (const option of select.options) option.disabled = option.value !== picks[slot] && picks.includes(option.value);
+        });
+      }
+      mode.addEventListener("change", sync);
+      points.addEventListener("change", sync);
+      field.append(description, mode, points);
+      circleChoices.append(field);
+      sync();
+      circleRows.push({entry, mode, selectors});
+    }
+  }
+  function circleBindings() {
+    const bindings = new Map();
+    for (const {entry, mode, selectors} of circleRows) {
+      if (mode.value === "three") bindings.set(entry.path, selectors.map(select => entry.candidates[Number(select.value)].at));
+    }
+    return bindings;
+  }
   function updateEditControls() {
     resetTikz.disabled = !hasEdits();
     copyTikz.disabled = !current || !output.value.trim();
     openSheet.disabled = !current?.scene || current.source !== source.value || !!candidate;
+    circleReview.hidden = openSheet.disabled || !circleRows.length;
     if (candidate || current?.scene && current.source !== source.value) {
       sheetHint.textContent = "Tampilkan hasil konversi kode yang sedang dibuka untuk menyunting gambarnya.";
     } else if (!current?.scene) {
@@ -13281,6 +13562,7 @@ function bindAsyConverter() {
   function displayResult(converted, message) {
     clearCandidate();
     current = converted;
+    showCircleChoices(converted.scene);
     element("asy-preview-paper").hidden = !converted.svg;
     if (converted.svg) image.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(converted.svg);
     else image.removeAttribute("src");
@@ -13299,6 +13581,7 @@ function bindAsyConverter() {
     if (current.tikz === converted.tikz && current.preamble === converted.preamble &&
         current.svg === converted.svg && (current.notes || []).join(" ") === (converted.notes || []).join(" ")) {
       current = converted;
+      showCircleChoices(converted.scene);
       updateEditControls();
       status.textContent = "Hasil konversi sama. Suntingan TikZ dipertahankan.";
       return;
@@ -13410,7 +13693,7 @@ function bindAsyConverter() {
     try {
       const example = examples.value && examples.selectedOptions[0]?.textContent;
       const title = example ? "Asymptote · " + example : "Asymptote";
-      const {project,notes} = makeAsyProject(current.scene, title);
+      const {project,notes} = makeAsyProject(current.scene, title, {circleBindings:circleBindings()});
       if (!personalWorkspace) throw Error("Buka Studio utama untuk membuat lembar pribadi.");
       openToken++;
       newSheet(project);
@@ -14332,7 +14615,8 @@ canvas.addEventListener("pointerdown",e=>{
   if(e.button!==0||!e.isPrimary)return;
   if(drag||canvasNavigator?.active)return;
   if(typeof studioClipClick==="function"&&studioClipClick(e))return;
-  if(doc.clip&&studioClipPointTest()?.(posFromEvent(e))===false){
+  const inClip=doc.clip?studioClipPointTest():null;
+  if(inClip&&!inClip(posFromEvent(e))){
     if(!e.ctrlKey&&!e.metaKey)canvasNavigator?.beginPan(e,()=>{
       if(tool==="move"){setSingleSelection(null);notice("");refresh();}
       else notice("Klik di dalam clip, atau pilih Ubah clip untuk melihat seluruh gambar.");
@@ -14354,9 +14638,18 @@ canvas.addEventListener("pointerdown",e=>{
   canvas.focus?.({preventScroll:true});
   const pointLabel=e.target.closest?.("[data-point-label]"),angleLabel=e.target.closest?.("[data-angle-label]"),annotation=e.target.closest?.("[data-note-label]");
   const labelKey=pointLabel?.dataset.pointLabel||angleLabel?.dataset.angleLabel||annotation?.dataset.noteLabel;
-  const hit=labelKey?model.values.get(labelKey):hitObject(e);
-  if(!hit&&canvasNavigator?.beginPan(e,()=>{setSingleSelection(null);notice("");refresh();}))return;
   const pos=posFromEvent(e);
+  let hit=labelKey?model.values.get(labelKey):hitObject(e);
+  // An imported point caption can overlap its own dot at small zoom levels.
+  // Keep the dot draggable at its center and the caption draggable elsewhere.
+  if(annotation&&hit?.asyPaintOrder!==undefined){
+    const label=doc.steps.find(s=>s.id===hit.key&&s.type==="label");
+    const point=model.values.get(label?.refs[0]);
+    if(point?.mark&&(point.free||point.sliding)&&(!inClip||inClip(point))&&dist(pos,point)*units().k<=(e.pointerType==="touch"?6:4)){
+      hit=point;
+    }
+  }
+  if(!hit&&canvasNavigator?.beginPan(e,()=>{setSingleSelection(null);notice("");refresh();}))return;
   let offsetField=null;
   let from=hit?{x:hit.x,y:hit.y}:null;
   if(hit?.imageLabelBase&&hit.kind==="label"){

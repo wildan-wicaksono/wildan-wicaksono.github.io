@@ -179,6 +179,18 @@ Kanvas dan **Gambar lengkap** di TikZ menampilkan bagian yang sama, termasuk pot
 
 Pada contoh ini, $H$ tetap menjadi kaki tegak lurus dari $P$ ke garis $AB$, dan $Q$ ikut bergerak sebagai bayangan $P$ terhadap $AB$. Studio mengenali hubungan itu dari perintah `foot(P,A,B)` dan `reflect(A,B)*P`. Sebagian rumus lain hanya menghasilkan koordinat saat diimpor. Begitu pula pada **Persegi bersarang**, perulangan menentukan jumlah persegi saat konversi. Untuk mengubah jumlahnya, buka kembali **Tempel Asymptote**, sunting sumber yang masih ada di sana lalu konversi lagi.
 
+**Lingkaran dari tiga titik.** Ekspor Asymptote dari GeoGebra kadang menyimpan lingkaran sebagai `CR((x,y),r)`. Setelah konversi, periksa pilihan ini sebelum membuka lembar. Studio menyarankan tiga titik jika tepat tiga titik yang sesuai berada di keliling, atau jika di antara titik-titik itu ada tepat satu segitiga yang digambar. Kamu bisa mengganti ketiganya atau mempertahankan pusat dan jari-jari dari kode.
+
+Misalnya, pada sebuah ekspor GeoGebra dengan tiga lingkaran, hasilnya seperti berikut.
+
+| Lingkaran | Titik yang terletak pada keliling saat diimpor | Pilihan awal |
+| --- | --- | --- |
+| 1 | $A,B,C,D,E,M,H',A'$ | $A,B,C$, karena segitiga $ABC$ digambar. |
+| 2 | $D,E,F,K$ | Pusat dan jari-jari dari kode. Pilih tiga titik jika ingin lingkarannya mengikuti titik-titik itu. |
+| 3 | $F,K,M,H'$ | Pusat dan jari-jari dari kode. Jika kamu memilih $F,K,M$, posisi $H'$ tidak ikut menentukan lingkaran. |
+
+Jika kamu memilih $D,E,K$ pada lingkaran kedua lalu menggeser $D$, lingkaran akan melalui posisi baru $D$ serta tetap melalui $E$ dan $K$. Titik $F$ bisa tertinggal di luar atau di dalam. Koordinat awal saja belum memberi tahu bagaimana $F$ dikonstruksi. Untuk menerapkan pilihan ini pada diagram yang pernah diimpor, konversikan lagi sumber Asymptote-nya dan buka sebagai lembar baru.
+
 Kamu juga bisa tetap di konverter dan menyunting kolom **Kode TikZ** langsung. **Salin TikZ** di sana menyalin teks yang sudah disunting. Tempel di badan dokumen dan kompilasi untuk melihat perubahannya. **Pratinjau hasil konversi** dan **Buka di lembar baru** menggunakan gambar dari sumber Asymptote. Jalur SVG, PDF, dan TikZ yang dibungkus dalam label menyediakan kode untuk disalin.
 
 Pilih **Pulihkan hasil konversi** untuk mengembalikan kode sebelum disunting. Suntingan tetap tersedia saat sumber diubah, contoh lain dipilih, atau konversi gagal. Jika hasil konversi berikutnya berbeda, pilih **Ganti dengan hasil baru** untuk memakainya atau **Pertahankan suntingan** untuk melanjutkan kode sebelumnya. Kolom yang sama juga bisa disunting saat kamu membuka SVG, mengambil kembali TikZ dari label Asymptote, atau membuat kode penyisipan PDF.
