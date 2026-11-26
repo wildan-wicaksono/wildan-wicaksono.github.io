@@ -18,6 +18,11 @@
 @media(max-width:740px){.workspace{grid-template-columns:minmax(0,1fr)}.coded{min-height:220px}.codebox{max-height:340px;min-height:130px}.intro{flex-wrap:wrap;gap:8px}.canvas-wrap{height:clamp(270px,53vh,400px)}.tooltray{padding:7px}.mast-actions{gap:5px}.mast-actions button{font-size:.8rem;min-height:35px;padding:6px 8px}}
 @media(pointer:coarse){.tooltray select,#tools button,.viewbar button,.inspector select{min-height:37px}.swatch{width:33px;height:33px}.controls input[type=number],.controls input:not([type]){font-size:16px}}
 
+/* Hollow diamonds are edit controls, independent of source ink and opacity. */
+.asy-handle path{fill:none;stroke-linejoin:round;pointer-events:none}
+.asy-handle-outline{stroke:var(--paper);stroke-width:4.5}
+.asy-handle-mark{stroke:var(--snap-ink,#265d49);stroke-width:1.6}
+.asy-handle:hover .asy-handle-mark,.asy-handle.selected .asy-handle-mark{stroke-width:2.5}
 .hit.hidden-guide{opacity:.32}.hit.hidden-guide .halo{stroke-dasharray:3 3}
 .inspector-top{flex-wrap:wrap}.obj-actions{display:flex;align-items:center;gap:5px;margin-left:auto}.obj-actions button{margin-left:0}.inspector-top select{min-width:9rem}
 #hidden-filter{order:1;gap:2px}#hidden-filter input{margin-right:4px}.viewbar .actions{order:2;margin-left:auto}.viewbar{row-gap:6px}
@@ -547,6 +552,8 @@ html[data-example-id] .panel.editor {border-radius:7px;box-shadow:none;}
 #asy-error {margin: 0; color: var(--ink); overflow-wrap: anywhere; font-size: .92rem;}
 #asy-error-line {margin-top: 4px;}
 #asy-result {margin-top: 16px; border-top: 1px solid var(--rule); padding-top: 13px;}
+.asy-sheet-action {display:flex; align-items:center; flex-wrap:wrap; gap:5px 12px; margin-bottom:14px;}
+.asy-sheet-action p {margin:0; flex:1 1 17rem; font-size:.85rem; color:var(--muted);}
 .asy-result-grid {display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 14px;}
 .asy-result-grid > section {min-width: 0;}
 .asy-result-head, #asy-dialog #asy-preview-title {min-height: 34px; margin-bottom: 5px;}
@@ -809,13 +816,14 @@ Derived file: studio-math-labels.woff
     <button id="asy-close" type="button" aria-label="Tutup konverter" title="Tutup konverter">Tutup</button>
   </header>
   <div class="asy-body">
-    <p id="asy-intro">Tempel satu blok <code>[asy]…[/asy]</code> dari AoPS atau kode Asymptote biasa untuk mendapatkan gambar dan kode TikZ.</p>
+    <p id="asy-intro">Tempel satu blok <code>[asy]…[/asy]</code> dari AoPS atau kode Asymptote biasa. Setelah dikonversi, pilih <strong>Buka di lembar baru</strong> untuk menggeser titik di kanvas.</p>
     <details class="asy-scope"><summary>Cara menyalin diagram dari forum AoPS</summary>
       <p>Klik diagram di postingan soal. Saat jendela <strong>Asymptote code below</strong> terbuka, salin seluruh blok <code>[asy]…[/asy]</code> lalu tempel di kolom Kode Asymptote.</p>
     </details>
     <details class="asy-scope"><summary>Sintaks yang didukung</summary>
       <p>Konverter membaca koordinat, ruas, busur, lingkaran, persegi panjang, isian, titik, dan label. Variabel, aritmetika, <code>if</code>, dan perulangan <code>for</code> terbatas dapat dipakai seperti pada contoh. Jika ada perintah yang belum didukung, periksa baris yang ditunjuk dan konversikan kembali.</p>
       <p>Diagram olimpiade juga dapat memakai larik titik, fungsi bantu, proyeksi, perpotongan, pusat segitiga, serta sejumlah perintah olympiad dan cse5. Untuk fitur di luar cakupan pembaca kode, gunakan SVG hasil render lokal.</p>
+      <p>Di lembar baru, ruas yang memakai titik yang sama ikut berubah ketika titik itu digeser. Sebagian rumus menjadi koordinat hasil perhitungan. Untuk mengubah jumlah objek dari perulangan, ubah kode Asymptote lalu konversikan kembali.</p>
     </details>
     <div class="asy-input-head">
       <label for="asy-source">Kode Asymptote</label>
@@ -856,6 +864,10 @@ Derived file: studio-math-labels.woff
       <p>Jika hasilnya mengandung bitmap atau efek yang belum bisa diubah menjadi lintasan, jalankan <code>asy -f pdf diagram.asy</code>. <span>Simpan PDF di samping berkas .tex.</span> <button type="button" id="asy-use-pdf" class="text-action">Sisipkan diagram.pdf di TikZ</button></p>
     </details>
     <div id="asy-result" hidden>
+      <div class="asy-sheet-action">
+        <button type="button" class="primary" id="asy-open-sheet" aria-describedby="asy-sheet-hint" disabled>Buka di lembar baru</button>
+        <p id="asy-sheet-hint" role="status"></p>
+      </div>
       <div class="asy-result-grid">
         <section aria-labelledby="asy-preview-title"><h3 id="asy-preview-title">Pratinjau hasil konversi</h3>
           <div id="asy-preview-paper" class="asy-paper"><img id="asy-preview" alt="Pratinjau diagram hasil konversi"></div>
@@ -1580,7 +1592,12 @@ const antiparallelExampleHTML="\u003c!doctype html>\n\u003chtml lang=\"id\">\n\u
 const vectorExampleHTML="\u003c!doctype html>\n\u003chtml lang=\"id\">\n\u003chead>\n\u003cmeta charset=\"utf-8\">\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\u003cmeta name=\"color-scheme\" content=\"light dark\">\n\u003ctitle>Titik D pada ruas AB \u00b7 Studio TikZ\u003c/title>\n\u003cstyle>\n  :root {\n    color-scheme:light dark; --paper:#faf9f4; --panel:#fffef9; --ink:#22372e; --muted:#4d6054;\n    --rule:#cbd8ce; --triangle:#006794; --pine-line:#008a73; --pine:#086655; --brick:#b6321d; --halo:#dbeae4;\n  }\n  @media(prefers-color-scheme:dark) {\n    :root {--paper:#222d27;--panel:#26332b;--ink:#edf0e8;--muted:#c3cfc4;--rule:#526559;--triangle:#afd4ee;--pine-line:#90dcc2;--pine:#90dcc2;--brick:#ffb1a0;--halo:#435f52}\n  }\n  * {box-sizing:border-box}\n  body {margin:0;background:var(--paper);color:var(--ink);font:15px/1.35 system-ui,sans-serif}\n  main {max-width:660px;margin:auto;padding:11px 16px}\n  header,.readouts {display:flex;align-items:center;justify-content:space-between;gap:8px}\n  h1 {margin:0;font:normal 24px/1.15 Georgia,serif}\n  .formula {font-family:Georgia,serif;white-space:nowrap}\n  button {min-height:35px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit;cursor:pointer}\n  button:hover {border-color:var(--pine)}\n  button:focus-visible {outline:2px solid var(--pine);outline-offset:2px}\n  p {margin:5px 0 8px;color:var(--muted)}\n  #diagram {display:block;width:100%;height:clamp(198px,39vw,221px);border:1px solid var(--rule);border-radius:8px;background:var(--panel)}\n  #triangle,#cd,#angle {fill:none;stroke-linejoin:round;stroke-linecap:round}\n  #triangle {stroke:var(--triangle);stroke-width:2.1}\n  #cd {stroke:var(--pine-line);stroke-width:1.8;stroke-dasharray:5 4}\n  #angle {stroke:var(--brick);stroke-width:1.7}\n  svg text {fill:var(--ink);font:italic 18px Georgia,serif;stroke:var(--panel);stroke-width:3px;paint-order:stroke fill;pointer-events:none}\n  #point-D {pointer-events:none;fill:var(--pine)}\n  #point-D text {fill:var(--pine)}\n  .handle {cursor:grab;touch-action:none;outline:none}\n  .handle.dragging {cursor:grabbing}\n  .handle circle {touch-action:none}\n  .target {fill:transparent}\n  .ring {fill:var(--halo);stroke:none}\n  .handle:hover .ring,.handle:focus-visible .ring,.handle.dragging .ring {stroke:var(--pine);stroke-width:1.7}\n  .dot {fill:var(--ink)}\n  .readouts {margin-top:6px;justify-content:space-between;font-variant-numeric:tabular-nums;flex-wrap:wrap;gap:3px 10px}\n  #d-value {color:var(--pine)}\n  #angle-value {color:var(--brick)}\n  .sr {position:absolute;width:1px;height:1px;padding:0;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap;border:0}\n  @media(max-width:385px) {main{padding:9px 10px}h1{font-size:22px}.readouts{font-size:14px}}\n  #lesson-language {background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:5px;font:inherit;font-size:14px;padding:4px;cursor:pointer;min-height:30px}\n  math {font-family:math,\"Cambria Math\",serif;font-weight:normal}\n.lesson-actions {display:flex;gap:6px;align-items:center}\n\u003c/style>\n\u003c/head>\n\u003cbody>\n\u003cmain>\n  \u003cheader>\n    \u003ch1 data-copy=\"heading\" data-attr=\"aria-label\" aria-label=\"Titik D sama dengan A tambah dua B, dibagi tiga\">\u003cmath display=\"inline\">\u003cmi>D\u003c/mi>\u003cmo>=\u003c/mo>\u003cmfrac>\u003cmrow>\u003cmi>A\u003c/mi>\u003cmo>+\u003c/mo>\u003cmn>2\u003c/mn>\u003cmi>B\u003c/mi>\u003c/mrow>\u003cmn>3\u003c/mn>\u003c/mfrac>\u003c/math>\u003c/h1>\n    \u003cdiv class=\"lesson-actions\">\u003cselect id=\"lesson-language\" aria-label=\"Bahasa\">\u003coption value=\"id\" lang=\"id\">ID\u003c/option>\u003coption value=\"en\" lang=\"en\">EN\u003c/option>\u003c/select>\u003cbutton type=\"button\" id=\"reset\" data-copy=\"reset\">Atur ulang\u003c/button>\u003c/div>\n  \u003c/header>\n  \u003cp id=\"hint\" data-copy=\"hint\">Geser A, B, atau C. Dengan papan ketik, gunakan Tab lalu tombol panah.\u003c/p>\n  \u003csvg id=\"diagram\" viewBox=\"0 0 480 220\" role=\"group\" aria-labelledby=\"diagram-title diagram-desc\">\n    \u003ctitle id=\"diagram-title\" data-copy=\"diagram\">Segitiga ABC dengan D pada ruas AB\u003c/title>\n    \u003cdesc id=\"diagram-desc\" data-copy=\"desc\">Titik D berada dua pertiga perjalanan dari A ke B. Ruas CD digambar putus-putus dan busur kecil di C menandai sudut ACB.\u003c/desc>\n    \u003cpath id=\"triangle\"/>\n    \u003cline id=\"cd\"/>\n    \u003cpath id=\"angle\"/>\n    \u003cg id=\"point-D\">\u003ccircle r=\"3.4\"/>\u003ctext>D\u003c/text>\u003c/g>\n    \u003cg id=\"point-A\" class=\"handle\" tabindex=\"0\" role=\"application\" data-copy=\"handle\" data-attr=\"aria-roledescription\" aria-roledescription=\"titik yang dapat digeser\" aria-describedby=\"hint\">\n      \u003ccircle class=\"target\" r=\"20\"/>\u003ccircle class=\"ring\" r=\"7.5\"/>\u003ccircle class=\"dot\" r=\"3.6\"/>\u003ctext>A\u003c/text>\n    \u003c/g>\n    \u003cg id=\"point-B\" class=\"handle\" tabindex=\"0\" role=\"application\" data-copy=\"handle\" data-attr=\"aria-roledescription\" aria-roledescription=\"titik yang dapat digeser\" aria-describedby=\"hint\">\n      \u003ccircle class=\"target\" r=\"20\"/>\u003ccircle class=\"ring\" r=\"7.5\"/>\u003ccircle class=\"dot\" r=\"3.6\"/>\u003ctext>B\u003c/text>\n    \u003c/g>\n    \u003cg id=\"point-C\" class=\"handle\" tabindex=\"0\" role=\"application\" data-copy=\"handle\" data-attr=\"aria-roledescription\" aria-roledescription=\"titik yang dapat digeser\" aria-describedby=\"hint\">\n      \u003ccircle class=\"target\" r=\"20\"/>\u003ccircle class=\"ring\" r=\"7.5\"/>\u003ccircle class=\"dot\" r=\"3.6\"/>\u003ctext>C\u003c/text>\n    \u003c/g>\n  \u003c/svg>\n  \u003cdiv class=\"readouts\">\u003cspan id=\"d-value\">\u003c/span>\u003cspan class=\"formula\">\u003cmath>\u003cmi>AD\u003c/mi>\u003cmo>=\u003c/mo>\u003cmn>2\u003c/mn>\u003cmi>DB\u003c/mi>\u003c/math>\u003c/span>\u003cspan id=\"angle-value\">\u003c/span>\u003c/div>\n  \u003cspan class=\"sr\" id=\"announcement\" role=\"status\">\u003c/span>\n\u003c/main>\n\u003cscript>\n(() => {\n  'use strict';\n  const el = id => document.getElementById(id);\n  const svg = el('diagram');\n  const initial = {A:{x:0,y:0},B:{x:6,y:0},C:{x:2,y:4}};\n  const points = {};\n  const names = Object.keys(initial);\n  const handles = Object.fromEntries(names.map(name => [name,el('point-'+name)]));\n\n  const localeKey = 'studio-tikz-language';\n  function preferredLanguage() {\n    try {\n      const query = new URLSearchParams(location.search).get('lang');\n      if (query === 'en' || query === 'id') return query;\n      return localStorage.getItem(localeKey) === 'en' ? 'en' : 'id';\n    } catch { return 'id'; }\n  }\n  let language = preferredLanguage();\n  const pick = (id, en) => language === 'en' ? en : id;\n  const copy = {\"title\": [\"Titik D pada ruas AB \u00b7 Studio TikZ\", \"Point D on segment AB \u00b7 Studio TikZ\"], \"heading\": [\"Titik D sama dengan A tambah dua B, dibagi tiga\", \"D equals the sum of A and twice B, divided by three\"], \"handle\": [\"titik yang dapat digeser\", \"draggable point\"], \"reset\": [\"Atur ulang\", \"Reset\"], \"hint\": [\"Geser A, B, atau C. Dengan papan ketik, gunakan Tab lalu tombol panah.\", \"Drag A, B or C. With a keyboard, press Tab to select a point, then use the arrow keys.\"], \"diagram\": [\"Segitiga ABC dengan D pada ruas AB\", \"Triangle ABC with D on segment AB\"], \"desc\": [\"Titik D berada dua pertiga perjalanan dari A ke B. Ruas CD digambar putus-putus dan busur kecil di C menandai sudut ACB.\", \"Point D lies two-thirds of the way from A to B. Segment CD is dashed, and a small arc at C marks angle ACB.\"]};\n  function updateLanguage(next) {\n    if (next !== 'en' && next !== 'id') return;\n    language = next;\n    document.documentElement.lang = next;\n    document.title = copy.title[Number(next === 'en')];\n    for (const node of document.querySelectorAll('[data-copy]')) {\n      const value = copy[node.dataset.copy][Number(next === 'en')];\n      if (node.dataset.attr) node.setAttribute(node.dataset.attr, value);\n      else node.textContent = value;\n    }\n    const selector = document.getElementById('lesson-language');\n    selector.value = next;\n    selector.setAttribute('aria-label',pick('Bahasa','Language'));\n    redraw();\n  }\n  function bindLanguage(redrawLesson) {\n    redraw = redrawLesson;\n    const selector = document.getElementById('lesson-language');\n    selector.addEventListener('change', () => {\n      const next = selector.value;\n      try { localStorage.setItem(localeKey,next); } catch {}\n      updateLanguage(next);\n      if (window.parent !== window) window.parent.postMessage({type:localeKey,language:next},'*');\n    });\n    window.addEventListener('message', event => {\n      if (event.source === window.parent && event.data?.type === localeKey) updateLanguage(event.data.language);\n    });\n    window.addEventListener('storage', event => { if (event.key === localeKey) updateLanguage(event.newValue); });\n    updateLanguage(language);\n  }\n  let redraw = () => {};\n\n  const formatters = {id:new Intl.NumberFormat('id-ID',{maximumFractionDigits:2}),en:new Intl.NumberFormat('en-US',{maximumFractionDigits:2})};\n  const format = value => formatters[language].format(Math.abs(value)\u003c0.005 ? 0 : value);\n  const coord = p => '('+format(p.x)+pick('; ', ', ')+format(p.y)+')';\n  let view, drag = null;\n\n  function resetPoints() {\n    for (const name of names) points[name] = {...initial[name]};\n  }\n  function resize() {\n    const w = svg.clientWidth, h = svg.clientHeight;\n    if (!w || !h) return;\n    // Refit on resize only. The scale remains fixed throughout each drag.\n    const edge = 24;\n    const values = Object.values(points);\n    const left = Math.min(-1.3,...values.map(p=>p.x)), right = Math.max(7.3,...values.map(p=>p.x));\n    const bottom = Math.min(-0.4,...values.map(p=>p.y)), top = Math.max(4.4,...values.map(p=>p.y));\n    const scale = Math.min((w-2*edge)/(right-left),(h-2*edge)/(top-bottom));\n    view = {w,h,edge,scale,ox:(w-scale*(left+right))/2,oy:(h+scale*(bottom+top))/2};\n    svg.setAttribute('viewBox','0 0 '+w+' '+h);\n    draw();\n  }\n  function screen(p) {return {x:view.ox+view.scale*p.x,y:view.oy-view.scale*p.y};}\n  function world(p) {return {x:(p.x-view.ox)/view.scale,y:(view.oy-p.y)/view.scale};}\n  function placeLabel(group,p,away) {\n    let x = p.x-away.x, y = p.y-away.y;\n    const length = Math.hypot(x,y);\n    if (length) {x/=length;y/=length;} else {x=0;y=-1;}\n    const text = group.querySelector('text');\n    text.setAttribute('x',13*x);\n    text.setAttribute('y',13*y+5);\n    text.setAttribute('text-anchor', x\u003c-.36?'end':x>.36?'start':'middle');\n    group.setAttribute('transform','translate('+p.x+' '+p.y+')');\n  }\n  function draw() {\n    const {A,B,C} = points;\n    const D = {x:(A.x+2*B.x)/3,y:(A.y+2*B.y)/3};\n    const a=screen(A), b=screen(B), c=screen(C), d=screen(D);\n    const center = {x:(a.x+b.x+c.x)/3,y:(a.y+b.y+c.y)/3};\n    el('triangle').setAttribute('d','M '+a.x+' '+a.y+' L '+b.x+' '+b.y+' L '+c.x+' '+c.y+' Z');\n    for (const [key,value] of Object.entries({x1:c.x,y1:c.y,x2:d.x,y2:d.y})) el('cd').setAttribute(key,value);\n    for (const name of names) {\n      placeLabel(handles[name],screen(points[name]),center);\n      handles[name].setAttribute('aria-label',pick('Titik ','Point ')+name+' '+coord(points[name]));\n    }\n    // Put the label on the side of AB opposite C.\n    let nx = b.y-a.y, ny = a.x-b.x;\n    if (nx*(c.x-d.x)+ny*(c.y-d.y)>0) {nx=-nx;ny=-ny;}\n    placeLabel(el('point-D'),d,{x:d.x-nx,y:d.y-ny});\n    el('d-value').textContent='D = '+coord(D);\n\n    const ax=a.x-c.x, ay=a.y-c.y, bx=b.x-c.x, by=b.y-c.y;\n    const ca=Math.hypot(ax,ay), cb=Math.hypot(bx,by);\n    let arc='', measure=pick('tak terdefinisi','undefined');\n    if (ca>1e-8 && cb>1e-8) {\n      const turn=Math.atan2(ax*by-ay*bx,ax*bx+ay*by);\n      measure=format(Math.abs(turn)*180/Math.PI)+'\u00b0';\n      const r=Math.min(19,0.24*ca,0.24*cb);\n      if (r>1 && Math.abs(turn)>0.003) {\n        arc='M '+(c.x+r*ax/ca)+' '+(c.y+r*ay/ca)+' A '+r+' '+r+' 0 0 '+(turn>0?1:0)+' '+(c.x+r*bx/cb)+' '+(c.y+r*by/cb);\n      }\n    }\n    el('angle').setAttribute('d',arc);\n    el('angle-value').textContent='\u2220ACB = '+measure;\n  }\n\n  function svgPosition(event) {\n    const matrix=svg.getScreenCTM();\n    return matrix ? new DOMPoint(event.clientX,event.clientY).matrixTransform(matrix.inverse()) : null;\n  }\n  function setPosition(name,p) {\n    const clamp=(v,limit)=>Math.max(view.edge,Math.min(limit-view.edge,v));\n    points[name]=world({x:clamp(p.x,view.w),y:clamp(p.y,view.h)});\n    draw();\n  }\n  function announce(name) {\n    el('announcement').textContent=name+' '+coord(points[name])+'. '+el('d-value').textContent+'. '+el('angle-value').textContent+'.';\n  }\n  function endDrag(event) {\n    if (!drag || drag.id!==event.pointerId) return;\n    const {name,id}=drag, handle=handles[name];\n    drag=null;\n    handle.classList.remove('dragging');\n    if (handle.hasPointerCapture(id)) handle.releasePointerCapture(id);\n    announce(name);\n  }\n  const offsets={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,1],ArrowDown:[0,-1]};\n  for (const name of names) {\n    const handle=handles[name];\n    handle.addEventListener('pointerdown',event=>{\n      if (drag || event.button!==0) return;\n      const cursor=svgPosition(event);\n      if (!cursor) return;\n      const p=screen(points[name]);\n      drag={name,id:event.pointerId,dx:p.x-cursor.x,dy:p.y-cursor.y};\n      handle.focus({preventScroll:true});\n      handle.setPointerCapture(event.pointerId);\n      handle.classList.add('dragging');\n      event.preventDefault();\n    });\n    handle.addEventListener('pointermove',event=>{\n      if (drag?.name!==name || drag.id!==event.pointerId) return;\n      const cursor=svgPosition(event);\n      if (cursor) setPosition(name,{x:cursor.x+drag.dx,y:cursor.y+drag.dy});\n    });\n    for (const type of ['pointerup','pointercancel','lostpointercapture']) handle.addEventListener(type,endDrag);\n    handle.addEventListener('keydown',event=>{\n      const delta=offsets[event.key];\n      if (!delta) return;\n      event.preventDefault();\n      const p=points[name], step=event.shiftKey?1:0.25;\n      setPosition(name,screen({x:p.x+delta[0]*step,y:p.y+delta[1]*step}));\n      announce(name);\n    });\n  }\n  el('reset').addEventListener('click',()=>{\n    if (drag) endDrag({pointerId:drag.id});\n    resetPoints();resize();\n    el('announcement').textContent=pick('Posisi awal dipulihkan. ','Starting positions restored. ')+el('d-value').textContent+'. '+el('angle-value').textContent+'.';\n  });\n  resetPoints();resize();\n  bindLanguage(()=>{if(view) draw();});\n  new ResizeObserver(resize).observe(svg);\n})();\n\u003c/script>\n\u003c/body>\n\u003c/html>\n";
 "use strict";
 // xcolor standard names and CMYK values from the LaTeX graphics bundle's dvipsnam.def.
-const inks = {
+function importedInkHex(name){
+  return typeof name==="string"&&/^AsyRGB[0-9A-F]{6}$/.test(name)?"#"+name.slice(6):null;
+}
+// RGB imports carry their own swatch in a validated color name. No mutable
+// palette or imported-color registry is required when a project is reopened.
+const inks = new Proxy({
   black:{hex:"#000000", title:"Hitam"}, white:{hex:"#ffffff", title:"Putih"},
   red:{hex:"#ff0000", title:"Merah"}, green:{hex:"#00ff00", title:"Hijau"},
   blue:{hex:"#0000ff", title:"Biru"}, cyan:{hex:"#00aeef", title:"Sian"},
@@ -1591,7 +1608,16 @@ const inks = {
   teal:{hex:"#008080", title:"Hijau kebiruan"}, pink:{hex:"#ffbfbf", title:"Merah muda"},
   darkgray:{hex:"#404040", title:"Abu-abu tua"}, gray:{hex:"#7f807f", title:"Abu-abu"},
   lightgray:{hex:"#bfbfbf", title:"Abu-abu muda"}
-};
+},{
+  get(target,key){
+    const hex=importedInkHex(key);
+    return hex?{hex,title:hex}:Reflect.get(target,key);
+  },
+  getOwnPropertyDescriptor(target,key){
+    const hex=importedInkHex(key);
+    return hex?{value:{hex,title:hex},enumerable:false,configurable:true}:Reflect.getOwnPropertyDescriptor(target,key);
+  }
+});
 // SVG has no DeviceCMYK color space. These sRGB previews are sampled from
 // the actual xcolor swatches rendered by MuPDF with its default output profile.
 const namedColors = {
@@ -1897,12 +1923,27 @@ function visibleExport(m,includeVectorRefs=false){
   visible.points=m.points.filter(p=>!p.hidden||required.has(p.key)).map(p=>p.hidden?{...p,mark:false,dir:"none",labelOffset:null}:p);
   return visible;
 }
+function asyPaintOrders(items){
+  const used=new Set();
+  for(const o of items||[]){
+    if(o.asyPaintOrder!==undefined)used.add(o.asyPaintOrder);
+    if(o.asyLabelOrder!==undefined)used.add(o.asyLabelOrder);
+  }
+  return [...used].sort((a,b)=>a-b);
+}
 function makeCode(m,style,mode,scale=1,clip=null) {
   const crop=mode==="full"&&clip?resolveStudioClip(clip,m):null;
   if(mode==="full"&&clip&&!crop)return [];
   m=visibleExport(m,mode==="full");
   if(crop)m=studioClipExportModel(m,crop);
-  const lines=[]; const put=(text,keys=[])=>lines.push({text,keys});
+  const lines=[],orders=mode==="full"?asyPaintOrders(m.items):[];
+  const paints=new Map(orders.map(i=>[i,[]])),ordinary=[];
+  const orderByKey=new Map(orders.length?m.items.map(o=>[o.key,o.asyPaintOrder]):[]);
+  let painting=false;
+  const put=(text,keys=[],order=orderByKey.get(keys[0]))=>{
+    const list=painting?(paints.get(order)||ordinary):lines;
+    list.push({text,keys});
+  };
   const backedLabels=[];
   const vectorCoords=new Map();
   if(mode==="full"){
@@ -1916,24 +1957,37 @@ function makeCode(m,style,mode,scale=1,clip=null) {
     put("\\begin{tikzpicture}[scale="+scale+", font=\\small]");
   }
   const tab=mode==="full"?"    ":"";
+  const rgbNames=new Set();
+  for(const o of (mode==="full"?m.items:m.points)||[]){
+    const appearance=style(o);
+    for(const name of [appearance.color,appearance.fillColor])if(importedInkHex(name))rgbNames.add(name);
+  }
+  for(const name of rgbNames)put(tab+"\\definecolor{"+name+"}{HTML}{"+name.slice(6)+"}");
   const xy=p=>"("+pointNumberTeX(p.x,p.free)+", "+pointNumberTeX(p.y,p.free)+")";
   if(crop){
     put(tab+"\\begin{scope}");
     put(tab+"\\clip "+studioClipPathTeX(crop,xy,scale)+";",clip.type==="object"?[clip.ref]:[]);
   }
+  painting=orders.length>0;
   if(mode==="full"&&typeof exportRegionFills==="function")exportRegionFills(m,style,xy,tab,put,scale);
   for(const p of m.points){
     const d=style(p).dir;
     const labelOpts=labelInkOptions(style(p)), ink=labelOpts.length?"["+labelOpts.join(", ")+"]":"";
-    const hasLabel=p.mark&&d!=="none", backed=hasLabel&&!!p.labelBackdrop, lab=hasLabel&&!backed&&!p.labelOffset?"[label="+(ink?"{"+ink+d+":$"+p.label+"$}":d+":$"+p.label+"$")+"]":"";
+    const hasLabel=p.mark&&d!=="none", backed=hasLabel&&!!p.labelBackdrop, lab=hasLabel&&!backed&&!p.labelOffset&&!orders.length?"[label="+(ink?"{"+ink+d+":$"+p.label+"$}":d+":$"+p.label+"$")+"]":"";
+    painting=false;
     put(tab+"\\coordinate"+lab+" ("+p.node+") at "+(vectorCoords.get(p.key)||xy(p))+";",[p.key]);
+    painting=orders.length>0;
+    if(painting&&hasLabel&&!backed&&!p.labelOffset){
+      const opts=[d,...labelOpts].join(", ");
+      put(tab+"\\path ("+p.node+") node["+opts+"] {$"+p.label+"$};",[p.key],p.asyLabelOrder);
+    }
     if(backed){
       const where=p.labelOffset?" ++"+xy(p.labelOffset):"";
       const opts=[...(p.labelOffset?[]:[d,"outer sep=1.6pt"]),...backedLabelOptions(style(p))];
-      backedLabels.push({text:tab+"\\path ("+p.node+")"+where+" node["+opts.join(", ")+"] {$"+p.label+"$};",keys:[p.key]});
+      backedLabels.push({text:tab+"\\path ("+p.node+")"+where+" node["+opts.join(", ")+"] {$"+p.label+"$};",keys:[p.key],order:p.asyLabelOrder});
     }else if(hasLabel&&p.labelOffset){
       const opts=["inner sep=0pt",...labelOpts].join(", ");
-      put(tab+"\\path ("+p.node+") ++("+numberTeX(p.labelOffset.x)+", "+numberTeX(p.labelOffset.y)+") node["+opts+"] {$"+p.label+"$};",[p.key]);
+      put(tab+"\\path ("+p.node+") ++("+numberTeX(p.labelOffset.x)+", "+numberTeX(p.labelOffset.y)+") node["+opts+"] {$"+p.label+"$};",[p.key],p.asyLabelOrder);
     }
   }
   if(mode==="coords")return [...lines,...backedLabels];
@@ -1954,7 +2008,7 @@ function makeCode(m,style,mode,scale=1,clip=null) {
       const key=tickStyles[s.ticks], custom=[key,...ink].join(", ");
       put(tab+"\\pgfkeysifdefined{/tikz/"+key+"/.@cmd}{\\path["+custom+"] "+path+";}{",[s.key]);
       for(const [u,v] of ticksWorld(s))put(tab+"    \\draw"+opts+" "+xy(u)+"--"+xy(v)+";",[s.key]);
-      put(tab+"}");
+      put(tab+"}",[s.key]);
     }
   }
   for(const a of m.angles||[]){
@@ -1969,7 +2023,7 @@ function makeCode(m,style,mode,scale=1,clip=null) {
         put(tab+"\\ifdefined\\siku \\siku["+numberTeX(a.r)+"cm]"+args+"\\else",[a.key]);
       }
       put(tab+"\\draw["+outline+"] "+mark.square.map(xy).join("--")+";",[a.key]);
-      if(custom)put(tab+"\\fi");
+      if(custom)put(tab+"\\fi",[a.key]);
     }else if(!a.imageVertex&&!a.right&&mark.mode==="single"){
       const parts=[a.first,a.vertex,a.last].map(k=>m.pointMap.get(k).node).join("--");
       put(tab+"\\pic[draw="+outline+", angle radius="+numberTeX(a.r)+"cm] {angle="+parts+"};",[a.key]);
@@ -1986,17 +2040,24 @@ function makeCode(m,style,mode,scale=1,clip=null) {
       if(a.labelBackdrop)backedLabels.push({text:line,keys:[a.key]});else put(line,[a.key]);
     }
   }
-  const pointGroups=new Map();
+  const pointGroups=new Map(),sourceDots=[];
   for(const p of m.points.filter(p=>p.mark)){
+    if(orders.length&&p.asyPaintOrder!==undefined){sourceDots.push(p);continue;}
     const key=inkOptions(style(p)).join(", ");
     if(!pointGroups.has(key))pointGroups.set(key,[]);
     pointGroups.get(key).push(p);
   }
-  if(pointGroups.size){
+  if(pointGroups.size||sourceDots.length){
+    painting=false;
     put("");
     put(tab+"% Radius cetak titik tetap 1.5pt saat scale diubah.");
     put(tab+"\\pgfgettransformentries{\\studioXX}{\\studioYX}{\\studioXY}{\\studioYY}{\\studioDX}{\\studioDY}");
     put(tab+"\\pgfmathsetlengthmacro{\\studioRadiusTitik}{1.5pt/veclen(\\studioXX,\\studioYX)}");
+  }
+  painting=orders.length>0;
+  for(const p of sourceDots){
+    const opts=inkOptions(style(p)).join(", ");
+    put(tab+"\\filldraw"+(opts?"["+opts+"]":"")+" ("+p.node+") circle (\\studioRadiusTitik);",[p.key]);
   }
   for(const [options,points] of pointGroups){
     const keys=points.map(p=>p.key);
@@ -2008,7 +2069,12 @@ function makeCode(m,style,mode,scale=1,clip=null) {
     const line=tab+"\\node["+opts.join(", ")+"] at "+xy(label)+" {"+labelContentTex(label)+"};";
     if(label.labelBackdrop)backedLabels.push({text:line,keys:[label.key]});else put(line,[label.key]);
   }
-  lines.push(...backedLabels);
+  for(const row of backedLabels)put(row.text,row.keys,row.order);
+  if(painting){
+    for(const group of paints.values())lines.push(...group);
+    lines.push(...ordinary);
+    painting=false;
+  }
   if(crop){
     put(tab+"\\end{scope}");
     put(tab+"\\pgfresetboundingbox");
@@ -2419,7 +2485,7 @@ const EPS=1e-9;
 const POINT_TYPES=new Set(["point","on","center","mid","foot","cut"]);
 const LINE_TYPES=new Set(["segment","line","parallel","normal"]);
 const CIRCLE_TYPES=new Set(["circle2","circle3","diameter","circleFixed"]);
-const inputKinds={label:[],point:[],on:["g|h|r"],center:["c"],segment:["p","p"],line:["p","p"],triangle:["p","p","p"],semicircle:["p","p"],circleArc:["p","p"],circle2:["p","p"],circle3:["p","p","p"],diameter:["p","p"],mid:["p","p"],foot:["p","l"],cut:step=>step.bounded?["g|h|r","g|h|r"]:["g|h","g|h"],parallel:["p","l"],normal:["p","l"],angle:["p","p","p"],right:["p","p","p"],circleFixed:[]};
+const inputKinds={label:s=>s.refs?.length?["p"]:[],point:[],on:["g|h|r"],center:["c"],segment:["p","p"],line:["p","p"],triangle:["p","p","p"],semicircle:["p","p"],circleArc:["p","p"],circle2:["p","p"],circle3:["p","p","p"],diameter:["p","p"],mid:["p","p"],foot:["p","l"],cut:step=>step.bounded?["g|h|r","g|h|r"]:["g|h","g|h"],parallel:["p","l"],normal:["p","l"],angle:["p","p","p"],right:["p","p","p"],circleFixed:[]};
 const extraSteps=Object.create(null),extraTools=Object.create(null),extensionPanels=[];
 const objectKinds={p:"point",l:"segment",c:"circle",r:"polygon",h:"path",t:"label",a:"angle"};
 const groupByObjectKind=Object.fromEntries(Object.entries(objectKinds).map(([group,kind])=>[kind,group]));
@@ -2716,7 +2782,7 @@ function solveSketch(steps,title="Gambar saya"){
         buckets[resolved].push(obj);
       }
     }else if(type==="label"){
-      obj={kind:"label",text:s.text,labelMode:s.labelMode||"text",x:s.x,y:s.y,caption:"Label "+s.text};
+      obj={kind:"label",text:s.text,labelMode:s.labelMode||"text",x:(a?.x||0)+s.x,y:(a?.y||0)+s.y,caption:"Label "+s.text};
       labels.push(obj);
     }else if(group==="p"){
       let pos=null;
@@ -2768,6 +2834,8 @@ function solveSketch(steps,title="Gambar saya"){
       }
     }
     if(obj){
+      if(s.asyPaintOrder!==undefined)obj.asyPaintOrder=s.asyPaintOrder;
+      if(s.asyLabelOrder!==undefined)obj.asyLabelOrder=s.asyLabelOrder;
       obj.key=s.id;obj.color=s.color??obj.color??color;obj.opacity=s.opacity??obj.opacity??100;
       if(hasGeometricStroke(obj)){
         if(s.lineWidth!==undefined)obj.lineWidth=s.lineWidth;
@@ -2776,11 +2844,12 @@ function solveSketch(steps,title="Gambar saya"){
       if(s.labelBackdrop!=null)obj.labelBackdrop=s.labelBackdrop;
       if(s.fillColor!==undefined)obj.fillColor=s.fillColor;
       if(s.fillOpacity!==undefined)obj.fillOpacity=s.fillOpacity;
-      obj.hidden=!!(obj.hidden||s.hidden||(s.hidden===undefined&&obj.kind==="point"&&s.mark===false));
+      if(s.asyHandle&&type==="point")obj.asyHandle=true;
+      obj.hidden=!!(obj.hidden||s.hidden||(s.hidden===undefined&&obj.kind==="point"&&s.mark===false&&!obj.asyHandle));
       if(type==="invertVertex"){
         obj.regionOwner=c.key;obj.hidden||=c.hidden;
       }
-      if(obj.kind==="point")obj.mark=!obj.hidden;
+      if(obj.kind==="point")obj.mark=!obj.hidden&&!obj.asyHandle;
       if(typeof applyRegionAppearance==="function")applyRegionAppearance(obj,s,refs);
       values.set(s.id,obj);
     }else unavailable.push(s);
@@ -2826,7 +2895,10 @@ function checkProject(p){
   const seen=new Map(),labels=new Set(),rightMarkers=new Set();
   for(const s of p.steps){
     if(!s||typeof s!=="object"||(!Object.hasOwn(extraSteps,s.type)&&(!Object.hasOwn(inputKinds,s.type)||["triangle","semicircle","circleArc"].includes(s.type)))||typeof s.id!=="string"||!/^[A-Za-z0-9:_-]{1,80}$/.test(s.id)||seen.has(s.id))throw Error("Proyek memiliki objek yang tidak valid.");
+    if(s.asyHandle!==undefined&&(s.type!=="point"||typeof s.asyHandle!=="boolean"))throw Error("Titik bantu Asymptote tidak valid.");
     if(s.hidden!==undefined&&typeof s.hidden!=="boolean")throw Error("Status tampil objek tidak valid.");
+    if([s.asyPaintOrder,s.asyLabelOrder].some(i=>i!==undefined&&(!Number.isSafeInteger(i)||i<0))||
+       s.asyLabelOrder!==undefined&&(s.asyPaintOrder===undefined||!POINT_TYPES.has(s.type)))throw Error("Urutan gambar Asymptote tidak valid.");
     if(!Array.isArray(s.refs)||s.refs.length>1500)throw Error("Referensi konstruksi tidak valid.");
     const rule=extraSteps[s.type]?.refs??inputKinds[s.type];
     const constraints=typeof rule==="function"?rule(s,seen):rule;
@@ -3610,6 +3682,32 @@ Empat lingkaran|Four circles
 Proyeksi dan pencerminan|Projection and reflection
 Tempel kode dari AoPS di sini|Paste code from AoPS here
 Konversi ke TikZ|Convert to TikZ
+Buka di lembar baru|Open in new sheet
+dari AoPS atau kode Asymptote biasa. Setelah dikonversi, pilih|from AoPS or ordinary Asymptote code. Once converted, choose
+untuk menggeser titik di kanvas.|to drag points on the canvas.
+Tampilkan hasil konversi kode yang sedang dibuka untuk menyunting gambarnya.|Display the conversion of the current source to edit its geometry.
+Untuk menggeser titik, konversikan kode Asymptote yang memuat konstruksi geometri.|To drag points, convert Asymptote source containing geometric constructions.
+Lembar akan memakai geometri dari kode Asymptote asli. Suntingan TikZ tetap tersedia di sini.|The sheet will use the geometry from the original Asymptote source. Your TikZ edits stay here.
+Geser titik di kanvas untuk mengubah gambar dan kode TikZ.|Drag points on the canvas to update the drawing and its TikZ code.
+Gunakan Pilih / geser untuk menyeret titik kontrol.|Use Select / move to drag control points.
+Buka Studio utama untuk membuat lembar pribadi.|Open the main Studio editor to create a personal sheet.
+Konversikan kode Asymptote untuk membuka lembar.|Convert the Asymptote code before opening a sheet.
+Gambar melebihi batas 1.500 objek dalam satu lembar Studio.|This drawing exceeds the limit of 1,500 objects per Studio sheet.
+Ada koordinat Asymptote yang tidak dapat dibuka di Studio.|Some Asymptote coordinates cannot be represented in Studio.
+Ketebalan atau pola garis disesuaikan dengan pilihan gaya Studio.|Line widths or dash patterns use the closest Studio styles.
+Ada lintasan yang belum dapat dibuka sebagai objek Studio.|A path in this drawing cannot be opened as a Studio object.
+Label campuran ini belum dapat dibuka sebagai label Studio.|This mixed text and math label cannot be opened as a Studio label.
+Studio hanya mendukung satu batas clip untuk seluruh lembar. Gunakan hasil TikZ untuk clip bertingkat atau sebagian.|Studio supports one clipping boundary for the whole sheet. Use the converted TikZ for nested or partial clipping.
+Bentuk batas clip ini belum tersedia di Studio. Gunakan hasil TikZ.|Studio does not support this clipping shape. Use the converted TikZ.
+Ada perintah gambar yang belum dapat dibuka di Studio.|A drawing operation cannot be opened in Studio.
+Ukuran titik dan huruf mengikuti gaya Studio.|Point markers and lettering use Studio sizes.
+Skala gambar Asymptote di luar jangkauan lembar Studio. Sesuaikan size atau unitsize.|The drawing scale is outside Studio’s range. Adjust size or unitsize in the source.
+Salah satu konstruksi tidak terdefinisi dalam lembar Studio. Gunakan hasil TikZ atau sesuaikan sumber Asymptote.|A construction is undefined in the editable sheet. Use the converted TikZ or adjust the Asymptote source.
+Bagian lintasan Asymptote tidak valid.|An Asymptote path section is invalid.
+Titik bantu Asymptote tidak valid.|An Asymptote control point is invalid.
+Urutan gambar Asymptote tidak valid.|The Asymptote drawing order is invalid.
+Lintasan Asymptote|Asymptote path
+Di lembar baru, ruas yang memakai titik yang sama ikut berubah ketika titik itu digeser. Sebagian rumus menjadi koordinat hasil perhitungan. Untuk mengubah jumlah objek dari perulangan, ubah kode Asymptote lalu konversikan kembali.|On the new sheet, segments sharing a point move with it. Some formulas become their evaluated coordinates. To change the number of objects produced by a loop, edit the Asymptote source and convert it again.
 Ke baris ini|Go to this line
 Pratinjau|Preview
 Tempel paket di atas sebelum|Paste the packages above before
@@ -4329,7 +4427,7 @@ editor-theme|Theme and canvas background|Choose a comfortable drawing background
 editor-project|Save and reopen a sheet|Keep the construction and styling for later editing or transfer.|Choose Save sheet to download the displayed drawing as a .stikz.json file, including when an example is open.|Choose Open file and select the downloaded .stikz.json file. Each file opens in a new tab alongside any sheets you already have open.|The file preserves references, formulas and styling and can be moved to another browser or device.
 editor-import|Open a GeoGebra diagram|Use a two-dimensional .ggb construction as the starting point for TikZ.|Choose Open file or drop the .ggb file on the canvas. Check the imported objects and adjust their styles.|Points use stored coordinates. Recognized circles through points follow those points.
 editor-sheets|Manage drawing sheets and explore examples|Work on several drawings in one editor and try examples between them.|Select Add sheet for a blank canvas. Select a named tab above the canvas to switch drawings. With the keyboard, focus a tab and press Left or Right.|Choose Rename sheet, enter a title such as Triangle inversion, and press Enter. Use Save sheet to download the active drawing as a .stikz.json file.|From the Sheet menu, try Inversion by product example under Example sheets or a problem from Wildan’s worked examples. Select any personal tab to return to your drawing.|Choose Delete sheet to remove the selected sheet from browser storage. Check the sheet name in the confirmation. To keep a copy, choose Save sheet before deleting.|When browser storage is available, Studio automatically keeps the personal sheets still open. Previously downloaded .stikz.json files can be reopened in new tabs.
-editor-export|Copy the diagram or coordinates|Use the finished diagram in LaTeX or an AoPS post.|Choose Full diagram or Coordinates only and copy the code. Copy the preamble and paste it before the document begins.|To post the TikZ diagram on AoPS, open AoPS format.|To use a diagram from AoPS, open Paste Asymptote. Paste the [asy] block or choose Semicircles and a chord, then select Convert to TikZ.|In the TikZ code field, try changing one line width value to 1.2bp, then select Copy TikZ. Copy the preamble into your LaTeX document and add any packages your edits require. The preview shows the original conversion. Compile your document to see the new line width.|Choose Restore converted code to return to the original. If a new conversion is ready while your code contains edits, choose Keep edits or Replace with new result.|Full diagram includes geometry and style. Selecting an object highlights its TikZ code.
+editor-export|Copy the diagram or coordinates|Use the finished diagram in LaTeX or an AoPS post.|Choose Full diagram or Coordinates only and copy the code. Copy the preamble and paste it before the document begins.|To post the TikZ diagram on AoPS, open AoPS format.|To use a diagram from AoPS, open Paste Asymptote. Paste the [asy] block or choose Projection and reflection, then select Convert to TikZ.|To move points in a supported drawing, choose Open in new sheet. With Select / move, drag point P in that example. Choose Copy TikZ in the sheet. The code follows the drawing. Your other sheets stay open.|The original Asymptote stays in the converter. To change a formula or loop in the source, edit the Asymptote and convert again.|To edit the TikZ in the converter, try changing a line width value to 1.2bp, then select Copy TikZ. Copy the preamble into your LaTeX document and add any packages your edits require. The preview shows the original conversion. Compile your document to see the new line width.|Choose Restore converted code to return to the original. If a new conversion is ready while your code contains edits, choose Keep edits or Replace with new result.|Full diagram includes geometry and style. Selecting an object highlights its TikZ code.
 editor-scale|TikZ print scale|Set the compiled size of the diagram.|Choose Full diagram. Enter a positive TikZ scale and check the dot radius shown beside it.|Studio adjusts the radius in the code to keep printed point markers at 1.5 pt.
 `.trim();
 const englishGuideArticles=new Map(englishGuideRows.split("\n").map(line=>{
@@ -5863,7 +5961,10 @@ function drawRegionFills(items,frag,u){
     const fill=o.fillColor?inks[o.fillColor].hex:"transparent";
     const attr={fill,"fill-opacity":(o.fillOpacity??30)/100,"pointer-events":"fill","data-key":o.key};
     if(o.hidden)attr.opacity=.32;
-    if(o.region&&o.contains){
+    if(o.asyContour){
+      const d=inverseChains(o,inverseViewportBox(u)).map(chain=>inverseSvgChain(chain,u,true)).join(" ");
+      if(d)frag.append(svg("path",{...attr,d,"fill-rule":"nonzero"}));
+    }else if(o.region&&o.contains){
       const d=inverseFillChains(o,inverseViewportBox(u)).map(chain=>inverseSvgChain(chain,u,true)).join(" ");
       if(d)frag.append(svg("path",{...attr,d,"fill-rule":"evenodd"}));
     }else if(o.kind==="polygon"){
@@ -5889,6 +5990,11 @@ function exportRegionFills(m,style,xy,tab,put,scale=1){
   for(const o of m.items){
     const s=style(o);
     if(!regionHasInterior(o)||!s.fillColor)continue;
+    if(o.asyContour){
+      const d=inverseChains(o,inverseExportBox(m)).map(chain=>inverseTikzChain(chain,xy,true,scale)).join(" ");
+      if(d)put(tab+"\\fill[fill="+s.fillColor+", fill opacity="+(s.fillOpacity??30)/100+"] "+d+";",[o.key]);
+      continue;
+    }
     if(o.region&&o.contains){
       const d=inverseFillChains(o,inverseExportBox(m)).map(chain=>inverseTikzChain(chain,xy,true,scale)).join(" ");
       if(d)put(tab+"\\fill[even odd rule, fill="+s.fillColor+", fill opacity="+(s.fillOpacity??30)/100+"] "+d+";",[o.key]);
@@ -7574,12 +7680,12 @@ function renderPalette(id,objects,read){
   }
   if(!objects.length)return;
   const name=commonStyle(objects,read),chip=$(id+"-chip");
-  $(id+"-name").textContent=name===undefined?"Campuran":name||"Tanpa isian";
+  $(id+"-name").textContent=name===undefined?"Campuran":importedInkHex(name)||name||"Tanpa isian";
   chip.style.backgroundColor=inks[name]?.hex||"transparent";
   chip.classList.toggle("no-fill",name==="");chip.classList.toggle("mixed-ink",name===undefined);
   if(state.chosen!==name){
-    if(state.chosen!=null)$(id+"-choice-"+(state.chosen||"none")).setAttribute("aria-pressed","false");
-    if(name!==undefined)$(id+"-choice-"+(name||"none")).setAttribute("aria-pressed","true");
+    if(state.chosen!=null)$(id+"-choice-"+(state.chosen||"none"))?.setAttribute("aria-pressed","false");
+    if(name!==undefined)$(id+"-choice-"+(name||"none"))?.setAttribute("aria-pressed","true");
     state.chosen=name;
   }
 }
@@ -8846,12 +8952,14 @@ const otherGuideEntries={
       "Klik Salin TikZ, lalu tempel gambar di badan dokumen setelah teks soal.",
       "Jika kamu sudah menyiapkan lingkungan tikzpicture sendiri, pilih Koordinat saja, klik Salin koordinat, lalu tempel di dalam lingkungan itu.",
       "Untuk forum AoPS, klik Format AoPS. Gunakan gambar dari kanvas atau tempel tikzpicture sendiri. Jika memakai makro tambahan, masukkan definisinya di Preamble tambahan. Klik Salin [asy] dan tempel bloknya di forum.",
-      "Untuk mengolah diagram dari AoPS, buka Tempel Asymptote. Tempel blok [asy] atau pilih contoh Setengah lingkaran dan tali busur, lalu klik Konversi ke TikZ.",
-      "Di kolom Kode TikZ, coba ubah salah satu nilai line width menjadi 1.2bp, lalu klik Salin TikZ. Salin preamble ke dokumen LaTeX dan tambahkan paket yang diperlukan untuk suntinganmu. Pratinjau menampilkan hasil konversi awal. Kompilasi dokumen untuk melihat tebal garis yang baru.",
+      "Untuk mengolah diagram dari AoPS, buka Tempel Asymptote. Tempel blok [asy] atau pilih contoh Proyeksi dan pencerminan, lalu klik Konversi ke TikZ.",
+      "Untuk menggeser titik pada gambar yang didukung, klik Buka di lembar baru. Dengan Pilih / geser, seret titik P pada contoh itu. Klik Salin TikZ di lembar tersebut. Kode mengikuti bentuk di kanvas. Lembar lain tetap terbuka.",
+      "Sumber Asymptote tetap tersedia di konverter. Untuk mengubah rumus atau perulangan sumber, sunting Asymptote dan konversi lagi.",
+      "Kalau ingin menyunting TikZ di konverter, coba ubah salah satu nilai line width menjadi 1.2bp, lalu klik Salin TikZ. Salin preamble ke dokumen LaTeX dan tambahkan paket yang diperlukan untuk suntinganmu. Pratinjau menampilkan hasil konversi awal. Kompilasi dokumen untuk melihat tebal garis yang baru.",
       "Klik Pulihkan hasil konversi untuk kembali ke kode awal. Jika ada hasil konversi baru saat kode sedang disunting, pilih Pertahankan suntingan atau Ganti dengan hasil baru."
     ],
     result:"Mode lengkap menyertakan bentuk dan gayanya. Memilih objek di kanvas juga menyorot baris kode yang berkaitan dengannya.",
-    terms:"ekspor export copy salin tikzpicture LaTeX modul kode koordinat AoPS Asymptote asy konversi sunting edit hasil"
+    terms:"ekspor export copy salin tikzpicture LaTeX modul kode koordinat AoPS Asymptote asy konversi impor ke kanvas buka di lembar baru open in new sheet import sunting edit hasil"
   },
   "editor-scale":{
     group:"editor",title:"Skala cetak gambar TikZ",
@@ -11475,7 +11583,11 @@ function runAsySubset(source,runtime){
     }
   }
   program.forEach(execute);
-  return typeof runtime.finish==="function"?invoke(eof,"finish"):undefined;
+  if(typeof runtime.finish==="function"){
+    const namedPoints=[];
+    for(const [name,{value}] of globals)if(value?.kind==="pair")namedPoints.push({name,at:value});
+    return invoke(eof,"finish",namedPoints);
+  }
 }
 
 "use strict";
@@ -11490,6 +11602,12 @@ function createAsyRuntime(defaultSize=150) {
   names.set("currentpicture",currentPicture);
   const pair=(x,y)=>({kind:"pair",x,y});
   const path=(start,segments,closed=false)=>({kind:"path",start,segments,closed});
+  // Retain the defining operands for native sheet editing, without changing
+  // the evaluated paint geometry or serializing an entire expression graph.
+  function constructed(value,type,points,fields={}){
+    Object.defineProperty(value,"asyConstruction",{value:{type,points,...fields}});
+    return value;
+  }
   const pen=props=>({kind:"pen",...props});
   const num=(n,what="Bilangan")=>{
     if(typeof n!=="number"||!Number.isFinite(n)||Math.abs(n)>1e12)throw Error(what+" harus bilangan berhingga dalam jangkauan konversi.");
@@ -11543,7 +11661,15 @@ function createAsyRuntime(defaultSize=150) {
   };
   const coord=n=>fmt(n*coordinateFactor);
   const xy=p=>"("+coord(p.x)+", "+coord(p.y)+")";
-  const atAngle=(c,r,degrees)=>pair(c.x+r*Math.cos(degrees*Math.PI/180),c.y+r*Math.sin(degrees*Math.PI/180));
+  function atAngle(c,r,degrees){
+    // An exact quadrant gives an exact coordinate, including when the same
+    // endpoint reappears as a literal pair or named point in the source.
+    if(degrees%90===0){
+      const q=((degrees/90)%4+4)%4;
+      return pair(c.x+r*[1,0,-1,0][q],c.y+r*[0,1,0,-1][q]);
+    }
+    return pair(c.x+r*Math.cos(degrees*Math.PI/180),c.y+r*Math.sin(degrees*Math.PI/180));
+  }
   const delta=(p,q)=>pair(point(p).x-point(q).x,p.y-q.y);
   const cross=(u,v)=>u.x*v.y-u.y*v.x;
   const scalar=(u,v)=>u.x*v.x+u.y*v.y;
@@ -11697,7 +11823,11 @@ function createAsyRuntime(defaultSize=150) {
   // Keep similarities explicit so circles stay circular and reflections reverse arcs.
   const transform=(a,b,c,d,x=0,y=0)=>({kind:"transform",a,b,c,d,x,y});
   function transformed(t,p){
-    const map=q=>pair(t.a*point(q).x+t.c*q.y+t.x,t.b*q.x+t.d*q.y+t.y);
+    const map=q=>{
+      const image=pair(t.a*point(q).x+t.c*q.y+t.x,t.b*q.x+t.d*q.y+t.y);
+      const axis=t.asyConstruction;
+      return axis?.type==="reflectLine"?constructed(image,"reflectLine",[q,...axis.points]):image;
+    };
     if(p?.kind==="pair")return map(p);
     if(p?.kind==="triangle")return triangleValue(map(p.A),map(p.B),map(p.C));
     if(p?.kind==="transform")return transform(t.a*p.a+t.c*p.b,t.b*p.a+t.d*p.b,t.a*p.c+t.c*p.d,t.b*p.c+t.d*p.d,t.a*p.x+t.c*p.y+t.x,t.b*p.x+t.d*p.y+t.y);
@@ -11854,7 +11984,7 @@ function createAsyRuntime(defaultSize=150) {
         return arc(ctr,r,a,b,a===0&&b===360);
       }
       case "CP":{
-        checkArgs(name,args,2);return arc(point(args[0]),magnitude(delta(args[1],args[0])),0,360,true);
+        checkArgs(name,args,2);return constructed(arc(point(args[0]),magnitude(delta(args[1],args[0])),0,360,true),"circle2",args);
       }
       case "Line":case "L":{
         checkArgs(name,args,2,4);const [a,b,s=.6,t=s]=args;
@@ -11873,8 +12003,8 @@ function createAsyRuntime(defaultSize=150) {
       case "conj":{checkArgs(name,args,1);const p=point(args[0]);return pair(p.x,-p.y);}
       case "abs":checkArgs(name,args,1);return typeof args[0]==="number"?Math.abs(args[0]):magnitude(args[0]);
       case "length":checkArgs(name,args,1);return Array.isArray(args[0])?args[0].length:magnitude(args[0]);
-      case "foot":checkArgs(name,args,3);return projection(...args);
-      case "extension":checkArgs(name,args,4);return lineIntersection(...args,false);
+      case "foot":checkArgs(name,args,3);return constructed(projection(...args),"foot",args);
+      case "extension":checkArgs(name,args,4);return constructed(lineIntersection(...args,false),"extension",args);
       case "IPs":case "intersectionpoints":case "IP":case "OP":case "intersectionpoint":{
         checkArgs(name,args,2,name==="IP"?3:2);
         const bothGeometry=args[0]?.geometryCircle&&args[1]?.geometryCircle;
@@ -11887,18 +12017,23 @@ function createAsyRuntime(defaultSize=150) {
       }
       case "triangle":checkArgs(name,args,3);return triangleValue(...args);
       case "centroid":{
-        const p=trianglePoints(name,args);return pair(p.reduce((v,q)=>v+q.x,0)/3,p.reduce((v,q)=>v+q.y,0)/3);
+        const p=trianglePoints(name,args);return constructed(pair(p.reduce((v,q)=>v+q.x,0)/3,p.reduce((v,q)=>v+q.y,0)/3),"centroid",p);
       }
       case "circumcircle":case "circumcenter":case "circumradius":case "orthocenter":{
-        const [a,b,c]=trianglePoints(name,args),o=circumcenter(a,b,c);
+        const corners=trianglePoints(name,args),[a,b,c]=corners,o=constructed(circumcenter(a,b,c),"circumcenter",corners);
         if(name==="circumcenter")return o;
-        if(name==="orthocenter")return pair(a.x+b.x+c.x-2*o.x,a.y+b.y+c.y-2*o.y);
+        if(name==="orthocenter")return constructed(pair(a.x+b.x+c.x-2*o.x,a.y+b.y+c.y-2*o.y),"orthocenter",corners);
         const radius=magnitude(delta(a,o));
-        return name==="circumradius"?radius:arc(o,radius,0,360,true);
+        return name==="circumradius"?radius:constructed(arc(o,radius,0,360,true),"circle3",corners);
       }
       case "incircle":case "incenter":case "inradius":case "excircle":case "excenter":case "exradius":{
-        const {center,r}=triangleContactCircle(...trianglePoints(name,args),name.startsWith("ex"));
-        return name.endsWith("center")?center:name.endsWith("radius")?r:arc(center,r,0,360,true);
+        const corners=trianglePoints(name,args),external=name.startsWith("ex");
+        const {center,r}=triangleContactCircle(...corners,external);
+        if(name.endsWith("radius"))return r;
+        // Studio names the opposite vertex first. Asymptote uses the last vertex.
+        const [a,b,c]=corners;
+        constructed(center,external?"excenter":"incenter",external?[c,a,b]:corners);
+        return name.endsWith("center")?center:constructed(arc(center,r,0,360,true),name,[center]);
       }
       case "tangent":{
         checkArgs(name,args,3,4);const [p,o,r,branch=1]=args,v=delta(p,o),d=magnitude(v);
@@ -11923,7 +12058,9 @@ function createAsyRuntime(defaultSize=150) {
         checkArgs(name,args,3,4);
         const [a,b,c,s=8]=args,ab=normalized(delta(a,b)),cb=normalized(delta(c,b)),k=num(s)*markScale;
         const p=pair(b.x+k*ab.x,b.y+k*ab.y),q=pair(b.x+k*cb.x,b.y+k*cb.y);
-        return path(p,[{to:pair(p.x+q.x-b.x,p.y+q.y-b.y)},{to:q}]);
+        const marker=path(p,[{to:pair(p.x+q.x-b.x,p.y+q.y-b.y)},{to:q}]);
+        return Math.abs(ab.x*cb.x+ab.y*cb.y)<=1e-9&&k>0&&k<=1000
+          ?constructed(marker,"rightanglemark",[a,b,c],{rightSize:k}):marker;
       }
       case "shift":{
         checkArgs(name,args,1,2);const p=args.length===1?point(args[0]):pair(num(args[0]),num(args[1]));
@@ -11936,7 +12073,7 @@ function createAsyRuntime(defaultSize=150) {
       }
       case "reflect":{
         checkArgs(name,args,2);const [p,q]=args,u=normalized(delta(q,p)),a=2*u.x*u.x-1,b=2*u.x*u.y;
-        return transform(a,b,b,-a,p.x*(1-a)-b*p.y,p.y*(1+a)-b*p.x);
+        return constructed(transform(a,b,b,-a,p.x*(1-a)-b*p.y,p.y*(1+a)-b*p.x),"reflectLine",args);
       }
       case "clip":{
         const params=args[0]===currentPicture?args.slice(1):args;
@@ -11990,7 +12127,7 @@ function createAsyRuntime(defaultSize=150) {
         checkArgs(name,args,2,3);
         const diameter=name==="circle"&&geometryModule&&args.length===2&&args[1]?.kind==="pair";
         const p=args.length===3?call("circumcircle",args):diameter
-          ?arc(along(point(args[0]),args[1],.5),magnitude(delta(...args))/2,0,360,true)
+          ?constructed(arc(constructed(along(point(args[0]),args[1],.5),"mid",args),magnitude(delta(...args))/2,0,360,true),"diameter",args)
           :arc(args[0],args[1],0,360,true);
         if(name==="circle"&&geometryModule)p.geometryCircle=true;
         return p;
@@ -12012,7 +12149,10 @@ function createAsyRuntime(defaultSize=150) {
       }
       case "waypoint":checkArgs(name,args,2);return pathPosition(asPath(args[0]),num(args[1])).at;
       case "midpoint":{
-        checkArgs(name,args,1,2);return args.length===2?along(point(args[0]),point(args[1]),.5):pathPosition(asPath(args[0]),.5).at;
+        checkArgs(name,args,1,2);
+        if(args.length===2)return constructed(along(point(args[0]),point(args[1]),.5),"mid",args);
+        const g=asPath(args[0]),at=pathPosition(g,.5).at;
+        return !g.closed&&g.segments.length===1&&!g.segments[0].center?constructed(at,"mid",[g.start,g.segments[0].to]):at;
       }
       case "rgb":checkArgs(name,args,3);return color(...args);
       case "grey":case "gray":checkArgs(name,args,1);return color(args[0],args[0],args[0]);
@@ -12209,7 +12349,7 @@ function createAsyRuntime(defaultSize=150) {
     const margin=Math.max(1,(Math.max(box[2]-box[0],box[3]-box[1]))*.045),vb=[box[0]-margin,-box[3]-margin,box[2]-box[0]+2*margin,box[3]-box[1]+2*margin].map(fmt).join(" ");
     return '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pratinjau hasil konversi Asymptote" viewBox="'+vb+'">'+body.join("")+"</svg>";
   }
-  function finish(){
+  function finish(namedPoints=[]){
     if(!ops.length)throw Error("Blok belum memuat gambar. Gunakan draw, fill, dot, atau label.");
     const labelOps=ops.filter(o=>o.type==="label");
     const order=clips.length?clippedPaintOrder():[...ops.filter(o=>o.type!=="label"),...labelOps];
@@ -12230,7 +12370,8 @@ function createAsyRuntime(defaultSize=150) {
     if(normalize)notes.push("Koordinat TikZ ditulis dalam sentimeter agar skala gambar dapat direpresentasikan oleh LaTeX.");
     if(!usedUnitsize&&labelOps.length)notes.push("Ukuran size dengan label diperkirakan dari metrik huruf. Posisi akhir mengikuti font dokumen LaTeX.");
     if(labelOps.some(o=>!o.label.simple))notes.push("Pratinjau menyederhanakan rumus label. Kode TikZ menyimpan notasi LaTeX-nya.");
-    return {tikz,preamble:"\\usepackage[dvipsnames]{xcolor}\n\\usepackage{tikz}",svg:preview(order,k,bounds),count:ops.length,notes};
+    return {tikz,preamble:"\\usepackage[dvipsnames]{xcolor}\n\\usepackage{tikz}",svg:preview(order,k,bounds),count:ops.length,notes,
+      scene:{ops:order,clips,namedPoints,bpPerUnit:k}};
   }
   return {lookup:name=>name==="dotfactor"?dotfactor:name==="markscalefactor"?markScale:name==="pointfontsize"?pointFontSize:name==="defaultpen"||name==="currentpen"?current:csePens.get(name)||names.get(name),
     useModule(name){if(name==="geometry")geometryModule=true;},
@@ -12647,6 +12788,348 @@ function convertAsySvgToTikZ(source){
 
 "use strict";
 
+// Only translate operations recorded by the interpreter. Distinct geometric
+// constructions can happen to have equal coordinates in the initial diagram.
+function asyPointConstruction(value,getPoint,getAuxLine){
+  const relation=value.asyConstruction;
+  if(!relation)return null;
+  const {type,points}=relation,[a,b,c,d]=points;
+  switch(type){
+    case "mid":
+    case "circumcenter":
+    case "orthocenter":
+    case "incenter":
+    case "excenter":
+      return {type,refs:points.map(p=>getPoint(p))};
+    case "centroid":
+      return {type:"pointFormula",refs:points.map(p=>getPoint(p)),
+        pointFormula:"(U + V + W) / 3",pointSymbols:["U","V","W"]};
+    case "foot":
+      return {type,refs:[getPoint(a),getAuxLine(b,c)]};
+    case "reflectLine":
+      return {type:"imagePoint",method:"reflectLine",refs:[getPoint(a),getAuxLine(b,c)]};
+    case "extension":
+      return {type:"cut",refs:[getAuxLine(a,b),getAuxLine(c,d)]};
+    default:
+      return null;
+  }
+}
+
+function asyCircleConstruction(path,getPoint){
+  const relation=path.asyConstruction;
+  if(!relation||!["circle2","circle3","diameter","incircle","excircle"].includes(relation.type))return null;
+  return {type:relation.type,refs:relation.points.map(p=>getPoint(p))};
+}
+
+"use strict";
+
+// Paths emitted by the Asymptote interpreter consist of straight and circular
+// pieces. A circular piece is determined by its two ends and a point on the arc.
+function asyProjectPath(op,ctx){
+  const p=op.path;
+  if(!p?.start||!Array.isArray(p.segments)||!["draw","fill"].includes(op.type))return false;
+  const construction=p.asyConstruction;
+  if(op.type==="draw"&&construction?.type==="rightanglemark"){
+    const refs=construction.points.map(p=>ctx.point(p));
+    ctx.add("angle",refs,{...ctx.style(op.pen,{stroke:true,fill:false}),rightSize:construction.rightSize});
+    return true;
+  }
+  const same=(a,b)=>dist(a,b)<=32*Number.EPSILON*Math.max(1,Math.abs(a.x),Math.abs(a.y),Math.abs(b.x),Math.abs(b.y));
+  const arcSegments=p.segments.filter(s=>s.center);
+  if(p.closed&&arcSegments.length===1){
+    const arc=arcSegments[0],index=p.segments.indexOf(arc),begin=index?p.segments[index-1].to:p.start;
+    const sweep=arc.b-arc.a;
+    // A 180-degree circular segment and a sector have the same boundary.
+    // A sector written as center--Arc(...)--cycle likewise shares the exact
+    // center/start handles with an independently drawn outline of that arc.
+    const half=op.type==="draw"&&p.segments.length===1&&Math.abs(Math.abs(sweep)-180)<1e-10;
+    const endsAtCenter=p.segments.length===2&&(
+      index===1&&same(p.start,arc.center)||index===0&&same(p.segments[1].to,arc.center));
+    if(half||endsAtCenter){
+      ctx.add("sector",[ctx.point(arc.center),ctx.point(begin)],{
+        ...ctx.style(op.pen,{stroke:op.type==="draw",fill:op.type==="fill"}),arcOpening:Math.abs(sweep),arcClockwise:sweep<0});
+      return true;
+    }
+  }
+  const pieces=[],vertices=[p.start];
+  let from=p.start;
+  function appendLine(to){
+    if(!same(from,to)){pieces.push({to});vertices.push(to);}
+    from=to;
+  }
+  for(const s of p.segments){
+    if(!s.center){appendLine(s.to);continue;}
+    const count=Math.max(1,Math.ceil(Math.abs(s.b-s.a)/180));
+    const at=angle=>({x:s.center.x+s.r*Math.cos(angle*Math.PI/180),y:s.center.y+s.r*Math.sin(angle*Math.PI/180)});
+    for(let i=0;i<count;i++){
+      const start=s.a+(s.b-s.a)*i/count,end=s.a+(s.b-s.a)*(i+1)/count;
+      const to=i===count-1?s.to:at(end);
+      pieces.push({mid:at((start+end)/2),to});
+      from=to;
+    }
+  }
+  if(!pieces.length)return false;
+  const style=ctx.style(op.pen,{stroke:op.type==="draw",fill:op.type==="fill"});
+  if(p.closed&&pieces.every(s=>!s.mid)){
+    if(same(vertices[0],vertices.at(-1)))vertices.pop();
+    // A self-crossing contour can have zero signed area. Keep its winding and
+    // repeated vertices in a general path instead of an undefined Studio polygon.
+    const origin=vertices[0];let area=0,total=0;
+    for(let i=1;i+1<vertices.length;i++){
+      const a=minus(vertices[i],origin),b=minus(vertices[i+1],origin);
+      area+=cross(a,b);total+=norm(a)*norm(b);
+    }
+    if(vertices.length>=3&&vertices.length<=100&&Math.abs(area)>EPS*total){
+      const refs=vertices.map(v=>ctx.point(v));
+      if(new Set(refs).size===refs.length){
+        ctx.add(refs.length===3?"triangle":"polygon",refs,style);
+        return true;
+      }
+    }
+  }
+  const refs=[ctx.point(p.start)],parts=[];
+  for(const piece of pieces){
+    if(piece.mid)refs.push(ctx.point(piece.mid));
+    refs.push(ctx.point(piece.to));parts.push(piece.mid?"arc":"line");
+  }
+  ctx.add("asyPath",refs,{...style,pathParts:parts,closed:p.closed===true});
+  return true;
+}
+
+// Winding number of a mixed line/arc boundary. Split an arc at its vertical
+// extrema so that endpoint crossings use the same half-open rule as segments.
+function asyPathContains(pieces,p){
+  let winding=0;
+  function crossRay(a,b,intersectX){
+    if((a.y>p.y)!==(b.y>p.y)&&intersectX()>p.x)winding+=b.y>a.y?1:-1;
+  }
+  for(const edge of pieces){
+    if(edge.type==="line"){
+      crossRay(edge.a,edge.b,()=>edge.a.x+(p.y-edge.a.y)*(edge.b.x-edge.a.x)/(edge.b.y-edge.a.y));
+    }else{
+      const begin=edge.start,end=begin+edge.sweep,lo=Math.min(begin,end),hi=Math.max(begin,end);
+      const cuts=[lo];
+      for(let t=90+180*Math.ceil((lo-90)/180);t<hi;t+=180)if(t>lo)cuts.push(t);
+      cuts.push(hi);if(edge.sweep<0)cuts.reverse();
+      for(let i=1;i<cuts.length;i++){
+        const a=invCircularPoint(edge.c,edge.r,cuts[i-1]),b=invCircularPoint(edge.c,edge.r,cuts[i]);
+        crossRay(a,b,()=>{
+          const y=(p.y-edge.c.y)/edge.r,side=Math.cos((cuts[i-1]+cuts[i])*Math.PI/360);
+          return edge.c.x+Math.sign(side)*edge.r*Math.sqrt(Math.max(0,1-y*y));
+        });
+      }
+    }
+  }
+  return winding!==0;
+}
+registerStep("asyPath",{
+  group:"h",refs:s=>Array(s.refs.length).fill("p"),
+  validate(s){
+    if(typeof s.closed!=="boolean"||!Array.isArray(s.pathParts)||!s.pathParts.length||
+       s.pathParts.some(type=>type!=="line"&&type!=="arc")||
+       1+s.pathParts.reduce((n,type)=>n+(type==="arc"?2:1),0)!==s.refs.length)throw Error("Bagian lintasan Asymptote tidak valid.");
+  },
+  solve(step,points){
+    let i=0;const pieces=[];
+    for(const kind of step.pathParts){
+      const start=points[i++];
+      if(kind==="line"){pieces.push({type:"line",a:start,b:points[i]});continue;}
+      const mid=points[i++],end=points[i],circle=circThree(start,mid,end);
+      if(!circle)return null;
+      const turn=Math.sign(cross(minus(mid,start),minus(end,start)));
+      pieces.push(invArcBetween({x:circle.cx,y:circle.cy},circle.r,start,end,turn));
+    }
+    if(step.closed&&step.refs[0]!==step.refs.at(-1))pieces.push({type:"line",a:points.at(-1),b:points[0]});
+    for(let k=0;k<pieces.length;k++)pieces[k].guideId=String(k);
+    return {kind:"path",pieces,region:step.closed,asyContour:true,refs:step.refs,
+      ...(step.closed?{contains:p=>asyPathContains(pieces,p)}:{}),caption:"Lintasan Asymptote"};
+  }
+});
+
+"use strict";
+
+// The evaluator has already resolved functions and loops. Source pair identity
+// still distinguishes two named points which happen to coincide.
+function makeAsyProject(scene,title="Gambar Asymptote"){
+  if(!scene?.ops?.length||!(scene.bpPerUnit>0))throw Error("Konversikan kode Asymptote untuk membuka lembar.");
+  const steps=[],byId=new Map(),notes=new Set(),names=new Set(),reserved=new Set();
+  const namedAt=new WeakMap(),byLocation=new Map(),sourceLabel=new Map();
+  const pointIds=new WeakMap(),literalIds=new Map(),axisIds=new Map(),dots=new Set();
+  let order=0,nextPoint=1;
+  const note=message=>notes.add(message);
+  const location=p=>p.x+","+p.y;
+  const nameOf=p=>pointNameParts(p)?.canonical;
+  function add(type,refs,fields={}){
+    if(steps.length>=1500)throw Error("Gambar melebihi batas 1.500 objek dalam satu lembar Studio.");
+    const id="asy"+(steps.length+1),s={id,type,refs,...fields};
+    if(!POINT_TYPES.has(type)&&!s.hidden)s.asyPaintOrder=order;
+    steps.push(s);byId.set(id,s);return id;
+  }
+  for(const {name,at} of scene.namedPoints){
+    const n=nameOf(name);
+    if(!n||n.length>48)continue;
+    if(!namedAt.has(at))namedAt.set(at,n);
+    reserved.add(n);
+    const k=location(at);
+    if(!byLocation.has(k))byLocation.set(k,new Set());
+    byLocation.get(k).add(at);
+  }
+  function pureName(op){
+    if(op.type!=="label"||!op.label.math)return null;
+    return nameOf(op.label.tex.slice(1,-1));
+  }
+  for(const op of scene.ops){
+    const n=pureName(op);
+    if(!n||n.length>48)continue;
+    const k=location(op.at);
+    if(!reserved.has(n)&&!sourceLabel.has(k)){sourceLabel.set(k,n);reserved.add(n);}
+  }
+  function takeName(n){
+    if(!n||names.has(n)){
+      do{n="P_"+nextPoint++;}while(reserved.has(n)||names.has(n));
+    }
+    names.add(n);return n;
+  }
+  function point(p){
+    if(!finitePoint(p))throw Error("Ada koordinat Asymptote yang tidak dapat dibuka di Studio.");
+    if(pointIds.has(p))return pointIds.get(p);
+    const k=location(p),named=namedAt.get(p),distinct=named||p.asyConstruction;
+    if(!distinct){
+      const candidates=byLocation.get(k);
+      if(candidates?.size===1){
+        const candidate=candidates.values().next().value;
+        if(!candidate.asyConstruction){
+          const id=point(candidate);pointIds.set(p,id);return id;
+        }
+      }
+      if(literalIds.has(k))return literalIds.get(k);
+    }
+    const related=asyPointConstruction(p,point,axis);
+    const type=related?.type||"point",refs=related?.refs||[];
+    const fields=related?{...related}:{x:p.x,y:p.y};
+    const id=add(type,refs,{...fields,name:takeName(named||sourceLabel.get(k)),dir:"none",mark:false,...(type==="point"?{asyHandle:true}:{})});
+    pointIds.set(p,id);
+    if(!distinct)literalIds.set(k,id);
+    return id;
+  }
+  function axis(a,b){
+    const refs=[point(a),point(b)],key=refs.slice().sort().join("/");
+    if(!axisIds.has(key))axisIds.set(key,add("line",refs,{hidden:true}));
+    return axisIds.get(key);
+  }
+  function ink(pen){
+    const code=pen.rgb.map(v=>Math.round(255*v).toString(16).padStart(2,"0")).join("").toUpperCase();
+    return ({'000000':"black",FFFFFF:"white",FF0000:"red",'00FF00':"green",'0000FF':"blue"})[code]||"AsyRGB"+code;
+  }
+  function style(pen,{stroke,fill}){
+    const color=ink(pen),alpha=pen.invisible?0:Math.round(100*(pen.alpha??1));
+    const result={color,opacity:stroke?alpha:0};
+    if(fill){result.fillColor=color;result.fillOpacity=alpha;}
+    if(!stroke)return result;
+    const width=pen.width*72.27/72;
+    result.lineWidth=Object.keys(strokeWidths).reduce((best,id)=>Math.abs(strokeWidths[id]-width)<Math.abs(strokeWidths[best]-width)?id:best,"thin");
+    const pattern=pen.pattern||[];
+    if(pattern.length){
+      const dots=pattern.filter((v,i)=>i%2===0&&v===0).length;
+      const base=pattern[0]===0?"dotted":dots>1?"dash dot dot":dots===1?"dash dot":"dashed";
+      result.linePattern=(pattern[0]>=20?"loosely ":"")+base;
+    }
+    if(pattern.length||Math.abs(width-strokeWidths[result.lineWidth])>.015)note("Ketebalan atau pola garis disesuaikan dengan pilihan gaya Studio.");
+    return result;
+  }
+  function colorForMark(op){
+    return {color:ink(op.pen),opacity:op.pen.invisible?0:op.type==="label"?100:Math.round(100*(op.pen.alpha??1))};
+  }
+  const context={add,point,style,note};
+  function shape(op){
+    const p=op.path,s=p.segments[0],fill=op.type==="fill";
+    if(p.circle){
+      const construction=asyCircleConstruction(p,point)||{type:"circleRadius",refs:[point(p.circle.center)],radius:p.circle.r};
+      add(construction.type,construction.refs,{...construction,...style(op.pen,{stroke:!fill,fill})});return;
+    }
+    if(p.segments.length===1&&s.center){
+      const sweep=s.b-s.a,full=Math.abs(sweep)===360;
+      const halfFill=fill&&p.closed&&Math.abs(Math.abs(sweep)-180)<1e-9;
+      if(full||!p.closed&&!fill||halfFill){
+        const refs=[point(s.center),point(p.start)];
+        const fields=full?{}:{arcMode:"angle",arcOpening:Math.abs(sweep),arcClockwise:sweep<0};
+        add(halfFill?"sector":"circle2",refs,{...fields,...style(op.pen,{stroke:!fill,fill})});return;
+      }
+    }
+    if(!fill&&!p.closed&&p.segments.length===1&&!s.center&&dist(p.start,s.to)>EPS){
+      add("segment",[point(p.start),point(s.to)],style(op.pen,{stroke:true,fill:false}));return;
+    }
+    if(!fill&&!p.closed&&p.segments.length&&p.segments.every(piece=>!piece.center&&piece.to.x===p.start.x&&piece.to.y===p.start.y)){
+      // A zero-length stroke with round caps has a circular footprint.
+      // Keeping the physical radius avoids magnifying it into a Studio dot.
+      const radius=op.pen.width/(2*scene.bpPerUnit);
+      if(radius>EPS){
+        add("circleRadius",[point(p.start)],{radius,...style(op.pen,{stroke:false,fill:true})});return;
+      }
+    }
+    if(!asyProjectPath(op,context))throw Error("Ada lintasan yang belum dapat dibuka sebagai objek Studio.");
+  }
+  function dotMark(op){
+    const id=point(op.at);
+    // Repeated paint operations can differ in color, transparency or order.
+    const mark=dots.has(id)?add("mid",[id,id],{name:takeName(),dir:"none"}):id;
+    dots.add(id);const s=byId.get(mark);
+    delete s.asyHandle;
+    Object.assign(s,{mark:true,asyPaintOrder:order,...colorForMark(op)});
+  }
+  function annotation(op){
+    const id=point(op.at),s=byId.get(id),color=colorForMark(op);
+    const n=pureName(op),dir=directions.find(d=>d[2]===op.dx&&d[3]===-op.dy)?.[0];
+    if(n===s.name&&dots.has(id)&&s.dir==="none"&&dir&&dir!=="none"&&s.color===color.color&&s.opacity===color.opacity){
+      s.dir=dir;s.asyLabelOrder=order;return;
+    }
+    // Studio places an independent annotation at its center. Convert the Asy
+    // alignment and physical padding to a relative offset from the live point.
+    const [left,bottom,right,top]=op.pad;
+    const fields={x:(left+right)/(2*scene.bpPerUnit),y:(bottom+top)/(2*scene.bpPerUnit),...color};
+    if(op.label.math){fields.text=op.label.tex.slice(1,-1);fields.labelMode="math";}
+    else if(op.label.parts.every(part=>!part.math)){fields.text=op.label.display;fields.labelMode="text";}
+    else{
+      const body=op.label.parts.map(part=>part.math?part.tex.slice(1,-1):"\\mathrm{"+part.display.replace(/\s/g,"\\ ")+"}").join("");
+      try{mathLabelAtoms(body);}catch{throw Error("Label campuran ini belum dapat dibuka sebagai label Studio.");}
+      fields.text=body;fields.labelMode="math";
+    }
+    add("label",[id],fields);
+  }
+  let clip;
+  if(scene.clips.length){
+    const mask=scene.clips[0]?.path;
+    const last=scene.ops.at(-1);
+    if(scene.clips.length!==1||last.type!=="clipEnd")throw Error("Studio hanya mendukung satu batas clip untuk seluruh lembar. Gunakan hasil TikZ untuk clip bertingkat atau sebagian.");
+    if(mask.box)clip={type:"rectangle",a:{x:mask.start.x,y:mask.start.y},b:{x:mask.box.x,y:mask.box.y}};
+    else if(mask.circle){
+      const ref=add("circleRadius",[point(mask.circle.center)],{radius:mask.circle.r,hidden:true});
+      clip={type:"object",ref};
+    }else if(mask.closed&&mask.segments.every(s=>!s.center)){
+      const refs=[mask.start,...mask.segments.map(s=>s.to)].map(point);
+      if(refs.at(-1)===refs[0])refs.pop();
+      clip={type:"object",ref:add("polygon",refs,{hidden:true})};
+    }else throw Error("Bentuk batas clip ini belum tersedia di Studio. Gunakan hasil TikZ.");
+  }
+  for(const [i,op] of scene.ops.entries()){
+    order=i;
+    if(op.type==="clipStart"||op.type==="clipEnd")continue;
+    if(op.type==="dot")dotMark(op);
+    else if(op.type==="label")annotation(op);
+    else if(op.type==="draw"||op.type==="fill")shape(op);
+    else throw Error("Ada perintah gambar yang belum dapat dibuka di Studio.");
+  }
+  if(scene.ops.some(op=>op.type==="dot"||op.type==="label"))note("Ukuran titik dan huruf mengikuti gaya Studio.");
+  const scale=scene.bpPerUnit*2.54/72;
+  if(!validExportScale(scale))throw Error("Skala gambar Asymptote di luar jangkauan lembar Studio. Sesuaikan size atau unitsize.");
+  const project=checkProject({format:"studio-tikz",version:1,title,steps,exportScale:scale,...(clip?{clip}:{})});
+  const model=solveSketch(project.steps,project.title);
+  if(model.unavailable.length||clip&&!resolveStudioClip(clip,model))throw Error("Salah satu konstruksi tidak terdefinisi dalam lembar Studio. Gunakan hasil TikZ atau sesuaikan sumber Asymptote.");
+  return {project,notes:[...notes]};
+}
+
+"use strict";
+
 const asyExamples = {
   arc: `[asy]
 import graph;
@@ -12752,13 +13235,25 @@ function bindAsyConverter() {
   const copyTikz = element("asy-copy-tikz"), copyPreamble = element("asy-copy-preamble");
   const native = element("asy-native"), saveSource = element("asy-save-source"), svgFile = element("asy-svg-file");
   const resetTikz = element("asy-reset-tikz"), replacement = element("asy-replacement");
+  const openSheet = element("asy-open-sheet"), sheetHint = element("asy-sheet-hint");
   let customSource = "", errorLocation = null, revision = 0;
   let current = null, candidate = null, originalText = "";
+  let focusCanvasAfterClose = false;
 
   function hasEdits() { return current !== null && output.value !== originalText; }
   function updateEditControls() {
     resetTikz.disabled = !hasEdits();
     copyTikz.disabled = !current || !output.value.trim();
+    openSheet.disabled = !current?.scene || current.source !== source.value || !!candidate;
+    if (candidate || current?.scene && current.source !== source.value) {
+      sheetHint.textContent = "Tampilkan hasil konversi kode yang sedang dibuka untuk menyunting gambarnya.";
+    } else if (!current?.scene) {
+      sheetHint.textContent = "Untuk menggeser titik, konversikan kode Asymptote yang memuat konstruksi geometri.";
+    } else {
+      sheetHint.textContent = hasEdits()
+        ? "Lembar akan memakai geometri dari kode Asymptote asli. Suntingan TikZ tetap tersedia di sini."
+        : "Geser titik di kanvas untuk mengubah gambar dan kode TikZ.";
+    }
   }
   function clearCandidate() { candidate = null; replacement.hidden = true; }
 
@@ -12803,11 +13298,14 @@ function bindAsyConverter() {
     if (!hasEdits()) { displayResult(converted, message); return; }
     if (current.tikz === converted.tikz && current.preamble === converted.preamble &&
         current.svg === converted.svg && (current.notes || []).join(" ") === (converted.notes || []).join(" ")) {
+      current = converted;
+      updateEditControls();
       status.textContent = "Hasil konversi sama. Suntingan TikZ dipertahankan.";
       return;
     }
     candidate = {converted, message};
     replacement.hidden = false;
+    updateEditControls();
     status.textContent = "";
   }
   output.addEventListener("input", () => {
@@ -12824,6 +13322,7 @@ function bindAsyConverter() {
   });
   element("asy-keep-edits").addEventListener("click", () => {
     clearCandidate();
+    updateEditControls();
     status.textContent = "Suntingan TikZ dipertahankan.";
     output.focus();
   });
@@ -12837,6 +13336,7 @@ function bindAsyConverter() {
     if (convert.disabled) return;
     try {
       const converted = convertAsyToTikZ(source.value);
+      if (converted.scene) converted.source = source.value;
       showResult(converted, converted.kind === "embeddedTikz" ? "TikZ asli ditemukan di dalam label Asymptote." : converted.count + " perintah gambar dikonversi.");
     } catch (problem) {
       const line = problem.line, column = problem.column;
@@ -12905,8 +13405,30 @@ function bindAsyConverter() {
     if (field.value === value && dialog.open) status.textContent = success;
   }
   opener.addEventListener("click", openAsyConverter);
+  openSheet.addEventListener("click", () => {
+    if (openSheet.disabled || !current?.scene || current.source !== source.value) return;
+    try {
+      const example = examples.value && examples.selectedOptions[0]?.textContent;
+      const title = example ? "Asymptote · " + example : "Asymptote";
+      const {project,notes} = makeAsyProject(current.scene, title);
+      if (!personalWorkspace) throw Error("Buka Studio utama untuk membuat lembar pribadi.");
+      openToken++;
+      newSheet(project);
+      const hint = "Gunakan Pilih / geser untuk menyeret titik kontrol.";
+      notice([hint,...notes].map(studioTranslate).join(" "));
+      focusCanvasAfterClose = true;
+      dialog.close();
+    } catch (problem) {
+      sheetHint.textContent = problem.message;
+    }
+  });
   element("asy-close").addEventListener("click", () => dialog.close());
-  dialog.addEventListener("close", () => opener.focus({preventScroll: true}));
+  dialog.addEventListener("close", () => {
+    if (focusCanvasAfterClose) {
+      focusCanvasAfterClose = false;
+      element("picture").focus();
+    } else opener.focus({preventScroll:true});
+  });
   dialog.addEventListener("keydown", event => {
     // Keep editor shortcuts (delete, undo and select all) on the drawing canvas.
     event.stopPropagation();
@@ -13257,6 +13779,20 @@ function renderGuide(){
   $("guide").textContent=solutionPick?"Klik salah satu keliling putus-putus atau pilih nomor solusi di bawah.":hint;$("cancel").hidden=!pending.length;
   $("undo").disabled=!history.length&&!pending.length;$("redo").disabled=!future.length||!!pending.length;
 }
+// Imported construction points have no ink of their own. Keep their controls
+// above the source artwork so a filled shape or coincident path cannot hide them.
+function drawAsyHandles(layer,screen){
+  if(tool!=="move")return;
+  for(const p of model.points){
+    if(!p.asyHandle||!inEditor(p))continue;
+    const {x,y}=screen(p),selected=isSelectedObject(p.key);
+    const group=svg("g",{class:"hit free asy-handle"+(selected?" selected":"")+(p.hidden?" hidden-guide":""),"data-key":p.key,"aria-label":objectName(p,model)});
+    const diamond="M "+x+" "+(y-5)+" l 5 5 -5 5 -5 -5 Z";
+    group.append(svg("title",{},objectName(p,model)),svg("circle",{cx:x,cy:y,r:10,fill:"transparent"}),
+      svg("path",{d:diamond,class:"asy-handle-outline"}),svg("path",{d:diamond,class:"asy-handle-mark"}));
+    layer.append(group);
+  }
+}
 function renderCanvas(){
   displayCanvasZoom();
   const el=$("picture"), u=units(), S=u.screen, frag=document.createDocumentFragment();
@@ -13268,9 +13804,17 @@ function renderCanvas(){
   drawCanvasGrid(frag,u);
   const labelLayer=svg("g"), backed=[];
   const inkLayer=doc.clip?studioClipLayer(doc.clip,model,spec,frag,u):frag;
-  drawRegionFills(model.items,inkLayer,u);
+  // Imported paint commands retain their source order, including fills that
+  // cover an earlier stroke. Ordinary Studio constructions keep their layers.
+  const paintLayers=new Map();
+  for(const order of asyPaintOrders(model.items)){
+    const layer=svg("g",{"data-asy-paint":order});paintLayers.set(order,layer);inkLayer.append(layer);
+  }
+  drawRegionFills(paintLayers.size?model.items.filter(o=>o.asyPaintOrder===undefined):model.items,inkLayer,u);
   for(const obj of model.items){
-    if(!inEditor(obj))continue;
+    if(!inEditor(obj)||obj.asyHandle)continue;
+    const objectLayer=paintLayers.get(obj.asyPaintOrder)||inkLayer;
+    if(objectLayer!==inkLayer)drawRegionFills([obj],objectLayer,u);
     const g=svg("g",{class:"hit"+(isSelectedObject(obj.key)||pending.includes(obj.key)?" selected":"")+(obj.free||obj.sliding||movableLinePoints(obj,model.values)?" free":""),"data-key":obj.key,"aria-label":objectName(obj,model)});
     if((obj.opacity??100)!==100)g.setAttribute("opacity",String(obj.opacity/100));
     if(obj.hidden)g.classList.add("hidden-guide");
@@ -13302,16 +13846,20 @@ function renderCanvas(){
         g.append(labelTextElement(obj.angleLabel.text,true,{...S(obj.angleLabel),"data-angle-label":obj.key,fill:inks[obj.color].hex}));
       }
     }
-    if(obj.labelBackdrop){
+    if(obj.labelBackdrop||obj.asyLabelOrder!==undefined){
       const label=g.querySelector(".geo-label, .geo-formula");
       if(label&&label!==g){
         const layer=svg("g",{class:"hit backed-label"+(obj.hidden?" hidden-guide":""),"data-key":obj.key});
-        const box=svg("rect",{class:"label-backdrop",rx:2,"fill-opacity":obj.labelBackdrop/100,"pointer-events":"none"});
         if((obj.opacity??100)!==100)label.setAttribute("opacity",obj.opacity/100);
-        layer.append(box,label);labelLayer.append(layer);backed.push({box,label});
+        if(obj.labelBackdrop){
+          const box=svg("rect",{class:"label-backdrop",rx:2,"fill-opacity":obj.labelBackdrop/100,"pointer-events":"none"});
+          layer.append(box);backed.push({box,label});
+        }
+        layer.append(label);
+        (paintLayers.get(obj.asyLabelOrder??obj.asyPaintOrder)||labelLayer).append(layer);
       }
     }
-    inkLayer.append(g);
+    objectLayer.append(g);
   }
   if(pending.length&&(hover||tool==="polygon")){
     const prior=pending.map(k=>model.values.get(k)).filter(o=>o?.kind==="point").map(S);const h=hover&&S(hover);
@@ -13348,6 +13896,7 @@ function renderCanvas(){
     frag.append(snap);
   }
   if(backed.length)inkLayer.append(labelLayer);
+  drawAsyHandles(inkLayer,S);
   if(typeof drawStudioClipTool==="function")drawStudioClipTool(frag,u);
   drawSolutions(frag,S,u);
   el.replaceChildren(frag);
@@ -13534,7 +14083,11 @@ function hitObject(e,kind=null,{pointLabels=true,clipRegions=false}={}){
   if(inClip&&!inClip(v))return null;
   let best=null,min=Infinity;
   if(!kind||acceptsGroup(kind,"p")){
-    for(const p of model.points.filter(inEditor)){const d=dist(p,v)*u.k;if(d<=threshold&&d<min&&(!inClip||inClip(p))){best=p;min=d;}}
+    for(const p of model.points){
+      if(!inEditor(p)||p.asyHandle&&tool!=="move")continue;
+      const d=dist(p,v)*u.k;
+      if(d<=threshold&&(d<min||d===min&&p.key===selected)&&(!inClip||inClip(p))){best=p;min=d;}
+    }
     if(best)return best;
     if(pointLabels){
       const labeled=e.target.closest?.("[data-key]"),found=model.values.get(labeled?.dataset.key);
@@ -13874,6 +14427,8 @@ function updateDragPosition(e){
         const point=doc.steps.find(s=>s.id===anchor.key);
         point.x=p.x+(anchor.x-drag.from.x);point.y=p.y+(anchor.y-drag.from.y);
       }
+    }else if(step.type==="label"&&step.refs.length){
+      const at=model.values.get(step.refs[0]);step.x=p.x-at.x;step.y=p.y-at.y;
     }else{step.x=p.x;step.y=p.y;}
     if(drag.anchors||step.type==="point")drag.snapPoint=gridPoint;
   }

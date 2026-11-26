@@ -127,15 +127,19 @@ The canvas and the complete TikZ export show the same clipped drawing, including
 
 ## Convert AoPS diagrams
 
-[Open the Asymptote converter](../index.html?lang=en#asymptote) and paste one source diagram, with or without its `[asy]` tags. Convert it and inspect **Conversion preview**, which shows the original result. To change what appears in the preview, edit the Asymptote source and convert again. The converter reads a subset of two-dimensional Asymptote and gives a source location for unsupported commands.
+1. [Open the Asymptote converter](../index.html?lang=en#asymptote) or choose **Paste Asymptote** in the editor. Paste one diagram, with or without its `[asy]` tags. To try a built-in diagram, choose **Projection and reflection** from **AoPS examples**.
+2. Choose **Convert to TikZ**, then **Open in new sheet** to bring a supported drawing onto the canvas. Studio opens a new personal tab alongside your existing sheets.
+3. With **Select / move**, drag the dot labelled $P$ in that example. Watch the segments that meet at $P$ and the coordinates in the **TikZ code** panel change together. Choose **Copy TikZ** for the figure and **Copy preamble** for the packages it requires. **Save sheet** downloads a copy you can reopen.
 
-Edit the **TikZ code** field to adjust a colour or the text of a label. **Copy TikZ** copies the current text, including your edits. Paste it in the document body and compile to see the changes. Use **Copy preamble** for the packages the converter lists.
+In this example, $H$ stays at the foot of the perpendicular from $P$ to line $AB$, and $Q$ follows as the reflection of $P$ across $AB$. Studio recognises those relationships from `foot(P,A,B)` and `reflect(A,B)*P`. Some other formulas carry over only as point coordinates. Similarly, in **Nested squares**, the loop determines the number of squares during conversion. To change the count, return to **Paste Asymptote**, edit the original source there and convert again.
+
+You can also stay in the converter and edit the **TikZ code** field directly. **Copy TikZ** there copies your edited text. Paste it in the document body and compile to see the changes. **Conversion preview** and **Open in new sheet** use the drawing from the Asymptote source. The SVG, PDF and wrapped-TikZ options provide code to copy.
 
 Choose **Restore converted code** to return to the original output. Editing the source, selecting another example or encountering a conversion error keeps your edited TikZ available. If the next conversion produces different code, choose **Replace with new result** or **Keep edits**. The same field is editable for imported SVG paths, TikZ recovered from an Asymptote label and PDF inclusion code.
 
 In the nested-squares example, change `n = 25` to `n = 5` to shorten the loop. In the four-circles example, changing `circle(O, 6/23)` to `circle(O, 1)` alters just the fourth radius.
 
-The source converter recognises point arrays, helper functions, loops, transparent fills and selected `olympiad` and `cse5` constructions. Try **Projection and reflection** to see a point and its perpendicular foot. Both `clip(path)` and `clip(currentpicture,path)` clip what has already been drawn. A subsequent drawing command can place an object outside that boundary.
+The source converter recognises point arrays, helper functions, loops, transparent fills and selected `olympiad` and `cse5` constructions. Both `clip(path)` and `clip(currentpicture,path)` clip what has already been drawn. A subsequent drawing command can place an object outside that boundary.
 
 Try one of these problems from **AoPS Contests**. Open the thread and click the diagram in the **first post**. In the **Asymptote code below** window, select the text from `[asy]` through `[/asy]`, copy it, and paste it into **Paste Asymptote**.
 
@@ -145,7 +149,7 @@ Try one of these problems from **AoPS Contests**. Open the thread and click the 
 
 The complete block in each of these posts was converted in Studio and the resulting TikZ compiled with pdfLaTeX.
 
-**When a command needs the Asymptote renderer**, open **Convert an SVG rendered by Asymptote**. This route can retain the appearance of splines, projections and geometry drawn by custom modules.
+If conversion fails, check that you copied the complete diagram. When Studio reports a line and column, choose **Go to this line** to inspect the source. **When a command needs the Asymptote renderer**, open **Convert an SVG rendered by Asymptote**. This route can retain the appearance of splines, projections and geometry drawn by custom modules.
 
 1. Download `diagram.asy`. With Asymptote and the source’s required modules installed, run `asy -f svg diagram.asy` in its folder.
 2. Choose **Open the rendered SVG** and select `diagram.svg`. Inspect the preview and copy the TikZ and preamble. The output consists of static drawing paths. If letters were rendered as outlines, they become paths too. Edit the original source to change a formula or a construction point, then render again.

@@ -59,7 +59,9 @@ Drag $A$, $B$ or $C$ above. The point $D$ stays two-thirds of the way from $A$ t
 
 Copy the preamble from the code panel before pasting the figure into your document. Load `xcolor` with its `dvipsnames` option before TikZ. Studio adds the TikZ libraries used by the current figure, such as `angles` and `calc`. The examples above include the code for inspection.
 
-For an AoPS diagram, [open the Asymptote converter](../index.html?lang=en#asymptote) and paste the `[asy]` block. After conversion, edit **TikZ code** to change a line colour or label, then choose **Copy TikZ**. **Conversion preview** shows the original result. Compile your LaTeX document to see your edits.
+For an AoPS diagram, open **Paste Asymptote**, paste the `[asy]` block and choose **Convert to TikZ**. For a diagram Studio can read directly, choose **Open in new sheet**. Use **Select / move** to drag the endpoint of a segment. The code panel updates as the endpoint moves, so you can copy the TikZ as soon as the segment looks right. Your other sheets stay open. [Open the Asymptote converter](../index.html?lang=en#asymptote).
+
+The original Asymptote stays in the converter. To change the number of squares in **Nested squares**, for example, change `n = 25` to `n = 5` and convert again. In the Studio sheet you can drag points in the drawing the loop produced.
 
 The converter supports constructions such as line–circle intersections, helper functions, opacity and clipping.
 
@@ -78,7 +80,7 @@ For a diagram using a custom module or a 3D projection, open **Convert an SVG re
 - **Learn the TikZ while drawing.** When I select a segment, Studio highlights the command that draws it. I can copy the complete figure in the style I use for handouts, or take just the coordinates and write my own lines and labels.
 - **Explore different positions in one construction.** Drag a triangle vertex and watch its incircle, angle bisector or inverse image move. The tool animations show where to click, and the interactive examples let readers move the points themselves.
 - **Prepare the diagram for print.** I can reposition LaTeX labels, use translucent fills and choose angle marks. Changing the TikZ scale keeps the printed point radius at $1.5\,\mathrm{pt}$.
-- **Reuse an AoPS diagram.** After a successful Asymptote conversion, I can edit a colour, line width or label in the **TikZ code** field and copy the result. The preview shows the original conversion. I compile the LaTeX document to see my edits.
+- **Reuse an AoPS diagram.** When Studio can open an Asymptote diagram on the canvas, I can reposition its points and copy TikZ that follows the drawing automatically. If I only need to change one command, I can also edit **TikZ code** directly in the converter.
 - **Keep several drawings open, including offline.** I can name a tab for each problem and switch between them during class. The downloaded HTML includes the drawing tools, interactive examples and guide animations.
 
 ### Limitations

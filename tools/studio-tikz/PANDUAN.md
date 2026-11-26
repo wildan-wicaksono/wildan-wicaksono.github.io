@@ -173,9 +173,13 @@ Kanvas dan **Gambar lengkap** di TikZ menampilkan bagian yang sama, termasuk pot
 
 ## Menyalin diagram Asymptote dari AoPS
 
-1. [Buka konverter Asymptote](./index.html#asymptote) atau klik **Tempel Asymptote** di bilah atas editor. Tempel satu diagram, termasuk tag `[asy]` dan `[/asy]` jika ada, ke kolom **Kode Asymptote**. Kamu juga bisa memilih salah satu **Contoh AoPS**.
-2. Klik **Konversi ke TikZ**. **Pratinjau hasil konversi** menunjukkan gambar dari sumber. Untuk mengubah gambar di pratinjau, sunting koordinat atau perintah Asymptote lalu konversi lagi. Untuk membuat konstruksi yang titiknya bisa diseret di kanvas, gunakan alat gambar Studio.
-3. Di kolom **Kode TikZ**, sunting hasilnya langsung jika perlu, misalnya warna atau isi label. **Salin TikZ** menyalin teks yang sedang terlihat, termasuk suntinganmu. Tempel di badan dokumen dan kompilasi untuk melihat perubahan. Gunakan **Paket LaTeX → Salin preamble** untuk menyalin paket konversi ke bagian sebelum `\begin{document}`.
+1. [Buka konverter Asymptote](./index.html#asymptote) atau klik **Tempel Asymptote** di bilah atas editor. Tempel satu diagram ke kolom **Kode Asymptote**, dengan atau tanpa tag `[asy]` dan `[/asy]`. Untuk mencoba contoh siap pakai, pilih **Proyeksi dan pencerminan** dari **Contoh AoPS**.
+2. Klik **Konversi ke TikZ**, lalu **Buka di lembar baru** untuk membawa gambar yang didukung ke kanvas. Studio membuka tab pribadi baru di samping lembar yang sudah ada.
+3. Dengan **Pilih / geser**, seret bulatan titik $P$ pada contoh tersebut. Perhatikan ruas yang terhubung ke $P$ dan koordinat yang ikut berubah di panel **Kode TikZ**. Klik **Salin TikZ** untuk mengambil gambar, lalu **Salin preamble** untuk memperoleh paket yang diperlukan. **Simpan lembar** mengunduh salinan yang bisa dibuka kembali.
+
+Pada contoh ini, $H$ tetap menjadi kaki tegak lurus dari $P$ ke garis $AB$, dan $Q$ ikut bergerak sebagai bayangan $P$ terhadap $AB$. Studio mengenali hubungan itu dari perintah `foot(P,A,B)` dan `reflect(A,B)*P`. Sebagian rumus lain hanya menghasilkan koordinat saat diimpor. Begitu pula pada **Persegi bersarang**, perulangan menentukan jumlah persegi saat konversi. Untuk mengubah jumlahnya, buka kembali **Tempel Asymptote**, sunting sumber yang masih ada di sana lalu konversi lagi.
+
+Kamu juga bisa tetap di konverter dan menyunting kolom **Kode TikZ** langsung. **Salin TikZ** di sana menyalin teks yang sudah disunting. Tempel di badan dokumen dan kompilasi untuk melihat perubahannya. **Pratinjau hasil konversi** dan **Buka di lembar baru** menggunakan gambar dari sumber Asymptote. Jalur SVG, PDF, dan TikZ yang dibungkus dalam label menyediakan kode untuk disalin.
 
 Pilih **Pulihkan hasil konversi** untuk mengembalikan kode sebelum disunting. Suntingan tetap tersedia saat sumber diubah, contoh lain dipilih, atau konversi gagal. Jika hasil konversi berikutnya berbeda, pilih **Ganti dengan hasil baru** untuk memakainya atau **Pertahankan suntingan** untuk melanjutkan kode sebelumnya. Kolom yang sama juga bisa disunting saat kamu membuka SVG, mengambil kembali TikZ dari label Asymptote, atau membuat kode penyisipan PDF.
 
@@ -184,7 +188,7 @@ Pilih **Pulihkan hasil konversi** untuk mengembalikan kode sebelum disunting. Su
 | Setengah lingkaran dan tali busur | Ganti `palered` dengan `white` pada isian pertama. Perhatikan bagian yang berubah dan posisi label $16$ di atas tali busur. |
 | Persegi bersarang | Ganti `n = 25` menjadi `n = 5`. Perulangan menggambar dan mewarnai lima persegi bergantian. Perintah terakhir menambahkan satu persegi kecil lagi sebagai garis tepi. |
 | Empat lingkaran | Baris `draw(circle(O, 6/23));` menggambar lingkaran keempat. Ganti jari-jarinya menjadi `1` untuk membandingkannya dengan lingkaran berpusat di $A$. |
-| Proyeksi dan pencerminan | Ubah titik asal, lalu amati kaki proyeksi dan bayangannya terhadap garis yang sama. |
+| Proyeksi dan pencerminan | Perhatikan koordinat titik $P$ di panel kode saat menggesernya di kanvas. Untuk mengganti koordinat awal bagi konversi berikutnya, sunting $P$ di kode Asymptote. |
 
 Konverter langsung membaca bagian Asymptote 2D yang banyak dipakai pada diagram olimpiade, termasuk fungsi bantu, array titik, perulangan, isian transparan, dan beberapa perintah modul `olympiad` dan `cse5`. Misalnya, `foot` membuat kaki tegak lurus dan `clip(path)` atau `clip(currentpicture,path)` membatasi gambar yang sudah dibuat hingga baris itu. Objek yang digambar sesudah perintah tersebut tetap dapat muncul di luar batas.
 
@@ -196,7 +200,7 @@ Coba salah satu soal berikut dari **AoPS Contests**. Buka tautannya, lalu klik d
 
 Ketiga blok lengkap dari postingan ini sudah dicoba di Studio. Hasil TikZ masing-masing berhasil dikompilasi dengan pdfLaTeX.
 
-**Jika sebuah perintah belum terbaca**, Studio menunjukkan baris dan kolomnya. Untuk mempertahankan hasil dari spline, modul khusus, atau proyeksi 3D, gunakan **Konversi dari SVG hasil Asymptote**.
+**Jika konversi gagal**, periksa apakah seluruh diagram sudah tersalin. Bila Studio menampilkan baris dan kolom, klik **Ke baris ini** untuk memeriksa sumbernya. Untuk mempertahankan hasil dari spline, modul khusus, atau proyeksi 3D, gunakan **Konversi dari SVG hasil Asymptote**.
 
 1. Klik **Unduh diagram.asy**. Siapkan Asymptote beserta modul yang dipakai di komputermu, lalu jalankan `asy -f svg diagram.asy` di folder berkas itu.
 2. Klik **Buka hasil SVG** dan pilih `diagram.svg`. Periksa pratinjau, lalu salin TikZ dan preamble. Hasilnya berupa lintasan gambar statis. Huruf yang dirender sebagai kontur ikut menjadi lintasan. Untuk mengubah rumus atau menggeser titik acuan, sunting sumber Asymptote lalu render kembali.

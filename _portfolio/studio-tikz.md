@@ -125,7 +125,9 @@ Di beberapa diagram lama saya, label memakai `\contour{white}{...}` untuk member
 
 ## Diagram Asymptote dari AoPS
 
-Kalau soal di AoPS menyertakan diagram dalam blok `[asy]`, salin bloknya, <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#asymptote">buka konverter Asymptote</a>, tempel kodenya, lalu pilih **Konversi ke TikZ**. Di editor, konverter ini juga bisa dibuka lewat **Tempel Asymptote** di sebelah **Buka file**. Misalnya, pada contoh **Persegi bersarang**, ubah `n = 25` menjadi `n = 5` dan konversi lagi untuk melihat pengaruh jumlah persegi. Kamu bisa langsung menyunting **Kode TikZ**, misalnya mengganti warna garis, lalu klik **Salin TikZ**. **Pratinjau hasil konversi** menampilkan gambar dari konversi semula. Kompilasi dokumen LaTeX untuk melihat hasil suntingan.
+Kalau soal di AoPS menyertakan diagram dalam blok `[asy]`, buka **Tempel Asymptote**, tempel bloknya, lalu pilih **Konversi ke TikZ**. Untuk diagram yang bisa dibaca langsung oleh Studio, klik **Buka di lembar baru**. Gunakan **Pilih / geser** untuk menyeret titik ujung sebuah ruas. Kamu bisa langsung menyalin TikZ dari panel kode begitu posisi ruas sesuai keinginanmu. Lembar lain tetap terbuka. [Buka konverter Asymptote]({{ '/tools/studio-tikz/index.html' | relative_url }}#asymptote).
+
+Kode Asymptote asli tetap tersedia di konverter. Untuk mengubah jumlah persegi pada contoh **Persegi bersarang**, misalnya, ubah `n = 25` menjadi `n = 5` lalu konversi lagi. Di lembar Studio, yang bisa digeser adalah titik-titik pada gambar yang sudah dihasilkan.
 
 Konverter dapat membaca konstruksi seperti perpotongan garis dan lingkaran, fungsi bantu, isian transparan, dan pemotongan dengan `clip`.
 
@@ -144,7 +146,7 @@ Untuk membawa diagram ke forum AoPS, buka opsi **Format AoPS** pada panel kode. 
 - **Gambar dan kode bisa dipelajari bersama.** Saat menyusun modul, saya bisa memilih satu ruas dan melihat perintah TikZ yang menggambarnya. Saya bisa menyalin gambar lengkap dengan gaya yang biasa saya pakai, atau mengambil koordinat saja dan menulis sendiri garis serta labelnya.
 - **Satu konstruksi bisa dicoba dalam beberapa posisi.** Geser titik sudut segitiga, lalu amati lingkaran dalam, garis bagi, atau bayangan inversinya. Animasi alat menunjukkan urutan klik. Di contoh interaktif, pembaca bisa menggeser titik dan melihat akibatnya.
 - **Diagram bisa disesuaikan untuk dicetak.** Label LaTeX bisa digeser, daerah dapat diisi warna transparan, dan penanda sudut bisa diatur. Saat skala TikZ diubah, radius cetak titik tetap $1{,}5\,\mathrm{pt}$.
-- **Kode dari diagram AoPS bisa dipakai lagi.** Untuk blok Asymptote yang berhasil dikonversi, saya bisa menyunting warna, ketebalan garis, atau label di kolom **Kode TikZ**, lalu menyalin hasilnya. Pratinjau menunjukkan hasil konversi awal. Saya mengompilasi dokumen LaTeX untuk melihat suntingannya.
+- **Kode dari diagram AoPS bisa dipakai lagi.** Saat Studio bisa membuka diagram Asymptote di kanvas, saya bisa memindahkan titik dan mengambil TikZ yang otomatis mengikuti gambarnya. Kalau hanya ingin mengganti satu perintah, saya juga bisa menyunting **Kode TikZ** langsung di konverter.
 - **Beberapa gambar bisa dibuka dalam satu editor, juga saat offline.** Saya bisa memberi nama satu tab untuk tiap soal dan berpindah gambar selama kelas. Alat gambar, contoh interaktif, dan animasi panduan sudah tersedia dalam HTML yang diunduh.
 
 ## Keterbatasan
