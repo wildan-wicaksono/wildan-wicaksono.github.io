@@ -11,19 +11,21 @@ comments: false
 
 ## Draw a first diagram
 
-1. Open a new sheet. Choose the triangle tool and click three non-collinear positions to make $A$, $B$ and $C$.
-2. In the points and lines menu, select the vector formula tool, enter `D = (A + 2B)/3` and create the point. Now $D$ sits on $AB$ with $AD:DB=2:1$.
+1. Open a new sheet. Choose **Polygon** on the toolbar or in the **Regions** menu. Click three non-collinear positions for $A$, $B$ and $C$, then click $A$ again or press **Enter** to close the triangle.
+2. In the **Points** menu, select the vector formula tool, enter `D = (A + 2B)/3` and create the point. Now $D$ sits on $AB$ with $AD:DB=2:1$.
 3. Draw a segment by clicking $C$ and $D$. Select a dashed line style for $CD$. To add another segment, click its two endpoints while the tool is active.
-4. Select the angle tool and click $A,C,B$ in that order. Choose an automatic angle label to show $\angle ACB$ in degrees. A custom label accepts LaTeX.
+4. Select **Angle** and click $A,C,B$ in that order to mark the angle at $C$. Choose an automatic angle label to show $\angle ACB$ in degrees. A custom label accepts LaTeX.
 5. Switch to the move tool and drag $B$, then drag its letter to give it room. $D$ follows the segment, and the displayed angle updates. You can also [drag points in the interactive example](../contoh-vektor.html?lang=en).
 
 ## Geometry that follows its inputs
 
-Click a segment or a circumference with the point tool to attach a point to it. That point can slide along the object. Click blank space for a free point. When drawing a three-point circle, click two points and move the pointer to preview the circle through the third position. A circle appears as soon as the three positions are non-collinear.
+With **Point**, click blank space for a free point. This also works inside a filled shape, away from any boundaries or lines. Click a segment, arc or circle outline to attach a point to it. Switch to **Select / move** and drag the point along that object. To mark where two objects meet, click when the cross appears. The point follows both objects as the drawing changes. At a crossing, hold **Shift** and click the stroke you want to follow to make a point that can slide along that object. Clicking an existing dot selects that point.
 
-Select the **perpendicular bisector** tool and click a segment or both endpoints. Try moving one endpoint to see the bisector remain perpendicular and pass through the midpoint. For an **antiparallel**, choose $BC$ in triangle $ABC$ and a point $D$ on $AB$. Let the new line cut $AC$ at $E$. In a non-degenerate configuration, $B,C,E,D$ lie on a circle. [Explore the interactive diagram](../latihan-antiparalel.html?lang=en).
+When drawing a three-point circle, click two points and move the pointer to preview the circle through the third position. A circle appears as soon as the three positions are non-collinear.
 
-The triangle menu produces the circumcentre $O$, the intersection of the altitudes $H$, the incentre $I$ or the corresponding circles. Click the interior of a triangle, or choose its three vertices. For an excircle, click the vertex opposite the required circle after choosing the triangle. If you enter three separate points, start with the opposite vertex. Thus $I_A$ labels the centre of the excircle opposite $A$. The internal and external angle-bisector tools take three points with the vertex second.
+In **Lines**, select the **perpendicular bisector** tool and click a segment or both endpoints. Try moving one endpoint to see the bisector remain perpendicular and pass through the midpoint. For an **antiparallel**, choose $BC$ in triangle $ABC$ and a point $D$ on $AB$. Let the new line cut $AC$ at $E$. In a non-degenerate configuration, $B,C,E,D$ lie on a circle. [Explore the interactive diagram](../latihan-antiparalel.html?lang=en).
+
+The triangle menu produces the circumcentre $O$, the intersection of the altitudes $H$, the incentre $I$ or the corresponding circles. Click inside a closed three-vertex polygon, or select its three vertices individually. For an excircle, click the vertex opposite the required circle after choosing the triangle. If you enter three separate points, start with the opposite vertex. Thus $I_A$ labels the centre of the excircle opposite $A$. The internal and external angle-bisector tools take three points with the vertex second.
 
 ### Choosing the source for a transformation
 
@@ -41,12 +43,12 @@ Select an image as the source of the next transformation to compose them. For ex
 
 ### Inverting edges, regions and annotations
 
-In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Follow the arc through $A'$, $M'$ and $B'$.
+In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$ and $B$ start on the reference circle and $M$ is the midpoint of $AB$. Play the animation, then expand the interactive example and drag $C$ or $O$. Follow the images of $A$, $M$ and $B$ on the same arc.
 
 | Source object | Image under inversion with centre $O$ |
 | --- | --- |
-| Point $P$ | Its image $P'$ lies on ray $OP$ and satisfies $OP\cdot OP'=r^2$. The centre $O$ has no finite image. |
-| Segment $AB$ on a line that misses $O$ | The arc from $A'$ to $B'$ that avoids $O$. To invert the entire supporting line, first draw **Line through two points**. |
+| Point $P$ | Its image $P^{*}$ lies on ray $OP$ and satisfies $OP\cdot OP^{*}=r^2$. The centre $O$ has no finite image. |
+| Segment $AB$ on a line that misses $O$ | The arc from $A^{*}$ to $B^{*}$ that avoids $O$. To invert the entire supporting line, first draw **Line through two points**. |
 | Segment collinear with $O$ | A segment when $O$ is outside the source segment. If $O$ is an endpoint, the rest maps to a ray. If $O$ is between the endpoints, the image consists of two rays. |
 | Ray, arc or sector | The image follows the selected part of the curve. A sector boundary includes its two radii and its arc. |
 | Polygon | Every edge maps individually. A triangle generally produces three arcs and a pentagon five. Move the centre into the polygon to make the fill extend outside the curved boundary. With the centre on an edge, the unbounded parts continue to the edge of the drawing. |
@@ -54,14 +56,15 @@ In the [interactive inversion lesson](../index.html?lang=en#panduan/invert), $A$
 
 Existing files retain their saved constructions. If a file uses the older inverse of the **supporting line**, create a new inversion of the segment to obtain just its image arc.
 
-For an inversion with power $k=OA\cdot OB$, enter `OA * OB` after drawing both segments. Then $OP\cdot OP'=k$. You can also define the radius of a circle with a segment-length expression such as `(AB + CD)/2`.
+For an inversion with power $k=OA\cdot OB$, enter `OA * OB` after drawing both segments. Then $OP\cdot OP^{*}=k$. You can also define the radius of a circle with a segment-length expression such as `(AB + CD)/2`.
 
 ## Selecting objects and styling labels
 
 - Use the move tool and **Ctrl+click** or **⌘+click** to select several objects. Change their colour or opacity together, or hide them. Name and save the group to recall its members from the saved group list after reopening the project. To bring hidden objects back, show hidden objects in the list, select them and make them visible.
 - To select a triangle inside a circle, click inside the triangle. Click the circumference to select the circle. You can also pick an object directly from the object list. Regular polygons appear with their shape and vertex names.
+- To name a point $A^{*}$, click its dot and enter `A*` in **Name**. The forms `A^*` and `A^{*}` also work. Both the canvas and the TikZ label show the superscript star. Enter `A_1*` for $A_1^{*}$. A new inversion of $A$ automatically uses $A^{*}$, while older projects keep their saved names.
 - Filled shapes share the outline palette. Change the fill opacity to see the lines underneath. To soften just the area behind a point label, an angle label or a free label, enable the translucent label background and adjust its opacity. The TikZ export preserves the treatment.
-- Right-angle marks have an adjustable size. Select the mark and adjust its size until both short sides fit comfortably between the adjacent segments.
+- An angle arc becomes a square when its arms are perpendicular and returns to an arc if you move a point so the angle changes. Right-angle marks have an adjustable size. Select the mark and adjust its size until both short sides fit comfortably between the adjacent segments.
 - The canvas grid and grid snapping are separate settings. Clear the grid visibility checkbox under the canvas to remove background dots. Focus the canvas to zoom with **+** and **−**, or select a zoom percentage. Canvas zoom is independent of the print scale.
 - Choose the layout beside the sheet menu. Side by side places the code on the right, stacked places it below, and automatic follows the screen width. Your browser also remembers the selected interface language.
 
@@ -90,7 +93,13 @@ Set the TikZ scale to $2$ to double printed segment lengths. The generated point
 
 Save each drawing as a separate `.stikz.json` file. Reopen it to keep construction dependencies, labels and styles. The browser remembers one current sheet, so save any work you want to keep before loading another example or starting a new sheet. Download the editor HTML for offline use. To update it, download a fresh copy and reopen your project file.
 
-Open a `.ggb` file or drop it onto the canvas to import supported GeoGebra objects. Check the object list and the import message afterwards. Some points retain their saved positions without their original constraints. To keep a point on an object while editing, create a constrained point in Studio.
+Open a `.ggb` file or drop it onto the canvas to import supported GeoGebra objects. Check the object list and the import message afterwards. Some points retain their saved positions without their original constraints. To attach a point to an imported line or circle, choose **Point** and click its stroke.
+
+### Crop the canvas and TikZ drawing
+
+Next to the zoom controls, choose **Clip drawing → Rectangle**, then click two diagonally opposite corners. For a boundary that follows the geometry, choose **Existing shape** and pick a full circle, sector or polygon on the canvas or from the list. The boundary follows that object as it changes.
+
+The canvas and the complete TikZ export show the same clipped drawing, including labels. The project stores the boundary and the original objects. Choose **Edit clip** to change the boundary or **Remove clip** to see the whole drawing. [Open the clipping animation](../index.html?lang=en#panduan/editor-clip).
 
 ## Convert AoPS diagrams
 
@@ -98,9 +107,18 @@ Open a `.ggb` file or drop it onto the canvas to import supported GeoGebra objec
 
 In the nested-squares example, change `n = 25` to `n = 5` to shorten the loop. In the four-circles example, changing `circle(O, 6/23)` to `circle(O, 1)` alters just the fourth radius.
 
-Try the **Projection and reflection** example to see a point, its perpendicular foot and its image. The converter also recognises point arrays and indices, forms such as `2x` and `dir(60)`, separate paths linked by `^^`, segment or circle intersections, and transformations such as `rotate` and `reflect`. In a check of 78 distinct blocks from archived AMC/AIME problems and solutions spanning 1983–2024, 65 produced TikZ that compiled with pdfLaTeX. The other 13 contained features outside the supported subset, including 3D diagrams, splines, user-defined functions, clipping or shading. [AIME archive](https://huggingface.co/datasets/gneubig/aime-1983-2024/blob/8d5c803ed4bc31a551565a90d235d7e214bae43e/AIME_Dataset_with_images.csv) · [AMC sample archive](https://amcclub.org.cn/news/1830/)
+The source converter recognises point arrays, helper functions, loops, transparent fills and selected `olympiad` and `cse5` constructions. Try **Projection and reflection** to see a point and its perpendicular foot. Both `clip(path)` and `clip(currentpicture,path)` clip what has already been drawn. A subsequent drawing command can place an object outside that boundary.
 
-To post a TikZ picture to AoPS, open the AoPS format dialog. Load the picture from the canvas or paste your own `tikzpicture`. Add definitions or libraries in the extra preamble field if needed, then copy the complete `[asy]` block. The resulting Asymptote block loads TikZ and places the picture in a LaTeX label. Copy the entire block, including the tags. Custom LaTeX macros in a label must also be available where the block is rendered.
+Tests included AMC/AIME statements and solutions, AoPS teaching material, and forum diagrams for olympiads in Indonesia, Canada, Australia and other countries. Forum contributors often supply their own diagrams when discussing a solution. Source examples include the [2019 USA(J)MO Math Jam transcript](https://artofproblemsolving.com/school/mathjams-transcripts?id=491), [WOOT week-five worksheet](https://artofproblemsolving.com/texer/2021WOOTweek5HW) and [Project Numina’s archive of AoPS discussions](https://huggingface.co/datasets/project-numina/aops).
+
+**When a command needs the Asymptote renderer**, open **Convert an SVG rendered by Asymptote**. This route can retain the appearance of splines, projections and geometry drawn by custom modules.
+
+1. Download `diagram.asy`. With Asymptote and the source’s required modules installed, run `asy -f svg diagram.asy` in its folder.
+2. Choose **Open the rendered SVG** and select `diagram.svg`. Inspect the preview and copy the TikZ and preamble. The output consists of static drawing paths. If letters were rendered as outlines, they become paths too. Edit the original source to change a formula or a construction point, then render again.
+3. If the SVG viewport cuts off part of the drawing, run `asy -f pdf diagram.asy` followed by `pdftocairo -svg diagram.pdf diagram.svg` with Poppler installed. Open the resulting SVG as in step 2.
+4. If the SVG contains a bitmap or an unsupported filter, run `asy -f pdf diagram.asy`. Put `diagram.pdf` beside your LaTeX document, add `\usepackage{graphicx}` to the preamble and include the figure with `\includegraphics{diagram.pdf}`.
+
+To post a TikZ picture to AoPS, open the AoPS format dialog. Load the picture from the canvas or paste your own `tikzpicture`. Add definitions or libraries in the extra preamble field if needed, then copy the complete `[asy]` block. The resulting Asymptote block loads TikZ and places the picture in a LaTeX label. Copy the entire block, including the tags. If an Asymptote block solely wraps a TikZ picture in a label, pasting it into the converter recovers the original TikZ. Custom LaTeX macros in a label must also be available where the block is rendered.
 
 ## Shortcuts and troubleshooting
 
@@ -117,13 +135,16 @@ Use **⌘** in place of **Ctrl** on a Mac. Deleting an object also removes const
 
 ## Tool catalogue
 
-Choose a topic to open its illustrated steps and interactive construction directly.
+The top toolbar includes **Label** for a free annotation and **Polygon** for a triangle or a many-sided shape. The **Points**, **Lines**, **Regions**, **Angles** and **Transformations** menus list their tools vertically. The **Circle** and **Triangle** menus group related constructions. Choose a topic below to open its animation.
 
-| Points and lines | What to try |
+| Points | What to try |
 | --- | --- |
-| [Point](../index.html?lang=en#panduan/point) · [Point on object](../index.html?lang=en#panduan/on) | Place a free point, or attach it to a line or circle. |
+| [Point](../index.html?lang=en#panduan/point) | Click blank space for a free point, a stroke to attach the point, or a crossing to mark the intersection. |
 | [Vector formula](../index.html?lang=en#panduan/pointFormula) · [Midpoint](../index.html?lang=en#panduan/mid) | Define $D=(A+2B)/3$ or bisect a segment. |
 | [Intersection](../index.html?lang=en#panduan/cut) · [Perpendicular foot](../index.html?lang=en#panduan/foot) | Find where two objects meet, or project a point onto a line. |
+
+| Lines | What to try |
+| --- | --- |
 | [Segment](../index.html?lang=en#panduan/segment) · [Line](../index.html?lang=en#panduan/line) · [Ray](../index.html?lang=en#panduan/ray) | Choose two defining points and compare the extent of each line. |
 | [Parallel](../index.html?lang=en#panduan/parallel) · [Perpendicular](../index.html?lang=en#panduan/normal) · [Antiparallel](../index.html?lang=en#panduan/antiTriangle) | Place a line using an existing direction or the sides of an angle. |
 | [Perpendicular bisector](../index.html?lang=en#panduan/perpendicularBisector) | Click the segment or both endpoints. |
@@ -137,13 +158,25 @@ Choose a topic to open its illustrated steps and interactive construction direct
 | [Three constraints](../index.html?lang=en#panduan/circleConstraints) · [Fixed-radius tangent circle](../index.html?lang=en#panduan/circleFixedTangency) | Combine point and tangency conditions and inspect the candidate circles. |
 | [Pole of a line](../index.html?lang=en#panduan/pole) · [Polar of a point](../index.html?lang=en#panduan/polar) | Start with a reference circle and observe the point–line correspondence. |
 
-| Triangles and regions | What to try |
+| Triangles | What to try |
 | --- | --- |
 | [Circumcentre](../index.html?lang=en#panduan/circumcenter) · [Intersection of altitudes](../index.html?lang=en#panduan/orthocenter) | Mark $O$ or $H$ and drag a vertex. |
 | [Incentre](../index.html?lang=en#panduan/incenter) · [Incircle](../index.html?lang=en#panduan/incircle) · [Excentre](../index.html?lang=en#panduan/excenter) · [Excircle](../index.html?lang=en#panduan/excircle) | Mark a centre equidistant from the side lines or draw its circle. |
 | [Internal bisector](../index.html?lang=en#panduan/bisectInternal) · [External bisector](../index.html?lang=en#panduan/bisectExternal) | Choose three points with the vertex second. |
-| [Triangle](../index.html?lang=en#panduan/triangle) · [Regular polygon](../index.html?lang=en#panduan/regularPolygon) · [Polygon](../index.html?lang=en#panduan/polygon) | Draw a region and edit its fill or boundary. |
-| [Angle](../index.html?lang=en#panduan/angle) · [Right angle](../index.html?lang=en#panduan/right) · [Label](../index.html?lang=en#panduan/label) | Place an angle arc, square marker or LaTeX annotation. |
+
+| Regions | What to try |
+| --- | --- |
+| [Polygon](../index.html?lang=en#panduan/polygon) | Click three vertices for a triangle, or continue placing vertices for a larger polygon. Click the first vertex or press **Enter** to close the shape. |
+| [Regular polygon](../index.html?lang=en#panduan/regularPolygon) | Choose the number of vertices and one side to create a regular polygon. |
+
+| Angles | What to try |
+| --- | --- |
+| [Angle](../index.html?lang=en#panduan/angle) | Click three points, with the vertex second. At $90^\circ$ the mark becomes a square. |
+| [Internal bisector](../index.html?lang=en#panduan/bisectInternal) · [External bisector](../index.html?lang=en#panduan/bisectExternal) | Choose the angle to bisect. |
+
+| Top toolbar | What to try |
+| --- | --- |
+| [Label](../index.html?lang=en#panduan/label) | Place a text or LaTeX annotation. |
 
 | Transformations | What to try |
 | --- | --- |
@@ -153,7 +186,7 @@ Choose a topic to open its illustrated steps and interactive construction direct
 
 | Editor and export | Illustrated topics |
 | --- | --- |
-| Selection and view | [Select / move](../index.html?lang=en#panduan/move) · [Multiple selection](../index.html?lang=en#panduan/editor-selection) · [Undo and delete](../index.html?lang=en#panduan/editor-undo) · [Pan](../index.html?lang=en#panduan/editor-pan) · [Zoom and snapping](../index.html?lang=en#panduan/editor-view) · [Theme and canvas](../index.html?lang=en#panduan/editor-theme) |
+| Selection and view | [Select / move](../index.html?lang=en#panduan/move) · [Multiple selection](../index.html?lang=en#panduan/editor-selection) · [Undo and delete](../index.html?lang=en#panduan/editor-undo) · [Pan](../index.html?lang=en#panduan/editor-pan) · [Zoom and snapping](../index.html?lang=en#panduan/editor-view) · [Theme and canvas](../index.html?lang=en#panduan/editor-theme) · [Clip drawing](../index.html?lang=en#panduan/editor-clip) |
 | Appearance | [Visibility](../index.html?lang=en#panduan/editor-visibility) · [Colours and opacity](../index.html?lang=en#panduan/editor-color) · [Line styles](../index.html?lang=en#panduan/editor-stroke) · [Fill a region](../index.html?lang=en#panduan/editor-fill) |
 | Edit an object | [Point labels](../index.html?lang=en#panduan/editor-point-label) · [Free labels](../index.html?lang=en#panduan/editor-annotation) · [Angle style](../index.html?lang=en#panduan/editor-angle-style) · [Circle arcs](../index.html?lang=en#panduan/editor-arc) · [Edit formulas](../index.html?lang=en#panduan/editor-formulas) |
 | Files and printing | [New sheets](../index.html?lang=en#panduan/editor-sheets) · [Save and open](../index.html?lang=en#panduan/editor-project) · [Import GeoGebra](../index.html?lang=en#panduan/editor-import) · [Copy TikZ](../index.html?lang=en#panduan/editor-export) · [Print scale](../index.html?lang=en#panduan/editor-scale) |

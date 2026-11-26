@@ -15,17 +15,23 @@ When I prepare an olympiad handout, I usually move points around in GeoGebra unt
 
 I made **Studio TikZ** to see a construction alongside the code that goes into my handout. Draw a segment $AB$, select it and watch the corresponding line of code. Change the line to dashed and compare the two versions. I hope these small experiments make my TikZ style easier to learn.
 
+With **Point**, click a blank spot to create a free point, or click segment $AB$ to place $P$ on it. Switch to **Select / move** and drag $P$ along $AB$. When you move $B$, the point follows the segment. [Try the Point animation](../index.html?lang=en#panduan/point).
+
 Choose the side-by-side layout to inspect the code while drawing, or stack the panels for a wider canvas. The browser remembers the layout and your Indonesian or English language preference. Focus the canvas before pressing **+** or **−** to zoom. The canvas zoom percentage and the printed TikZ scale can be adjusted independently.
 
 {% include studio-tikz-contoh.html language="en" %}
 
 ## Construction and presentation
 
-To bisect $AB$ perpendicularly, select **Perpendicular bisector**, then click the segment or its two endpoints. Drag $A$ and check that the line still passes through the midpoint. For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For inversion, click the reference circle. A pentagon maps edge by edge. You can then select its image for another transformation.
+Choose **Polygon** and click the vertices in order. For triangle $ABC$, click $A$, $B$ and $C$, then click $A$ again or press **Enter** to close it. For a quadrilateral, add $D$ before closing. Click inside the finished shape to select or fill it. [Try the Polygon animation](../index.html?lang=en#panduan/polygon).
 
-Open the [shape transformation example](../index.html?lang=en#contoh/transformasi-bangun) in the **Sheet** menu and move a vertex or the inversion centre. The [interactive inversion lesson](../index.html?lang=en#panduan/invert) follows one triangle closely. Its vertices $A$ and $B$ initially lie on the reference circle. Segment $AB$ maps to the semicircle through $A$, $M'$ and $B$, where $M'$ is the image of its midpoint $M$.
+In the **Lines** menu, select **Perpendicular bisector**, then click the segment or its two endpoints. Drag $A$ and check that the line still passes through the midpoint. For translation, rotation, reflection, dilation or inversion of an entire shape, select the tool and click inside the shape. The source-object list helps when objects overlap. For reflection, click the mirror point or line next. For inversion, click the reference circle. A pentagon maps edge by edge. You can then select its image for another transformation.
 
-In a crowded diagram, select a point label, angle label or free label and switch on its translucent background. Lower the background opacity if a nearby line needs to remain prominent. A right-angle mark has its own size control. Select several objects using **Ctrl+click** (or **⌘+click**) to change their colour or hide them together. Name and save the group to select the same objects again later. The same palette is available for outlines and fills.
+Open the [shape transformation example](../index.html?lang=en#contoh/transformasi-bangun) in the **Sheet** menu and move a vertex or the inversion centre. The [interactive inversion lesson](../index.html?lang=en#panduan/invert) follows one triangle closely. Its vertices $A$ and $B$ initially lie on the reference circle. Segment $AB$ maps to the semicircle through $A$, $B$ and the image of its midpoint $M$. A new inversion names the image $M^{*}$. You can also enter a name such as `A*` in the **Name** field to label a point $A^{*}$.
+
+Use **Label** on the top toolbar to add a free annotation. In a crowded diagram, select a point label, angle label or free label and switch on its translucent background. Lower the background opacity if a nearby line needs to remain prominent. Choose **Angle** and click $A$, $B$ and $C$ to mark the angle at $B$. At $90^\circ$ the arc becomes a square mark. Move a point so the angle changes and the arc returns. The square has its own size control. Select several objects using **Ctrl+click** (or **⌘+click**) to change their colour or hide them together. Name and save the group to select the same objects again later. The same palette is available for outlines and fills.
+
+Choose **Clip drawing** by the zoom controls to keep part of a diagram for a handout. Click opposite corners for a rectangle, or select a circle, sector or polygon as the boundary. The crop applies to the canvas and to the complete TikZ drawing, including its labels. [Try the clipping guide](../index.html?lang=en#panduan/editor-clip).
 
 ## Try a construction
 
@@ -47,7 +53,9 @@ Drag $A$, $B$ or $C$ above. The point $D$ stays two-thirds of the way from $A$ t
 
 Copy the preamble from the code panel before pasting the figure into your document. Load `xcolor` with its `dvipsnames` option before TikZ. Studio adds the TikZ libraries used by the current figure, such as `angles` and `calc`. The examples above include the code for inspection.
 
-For an AoPS source diagram, [open the Asymptote converter](../index.html?lang=en#asymptote), paste the `[asy]` block and inspect the preview before copying the TikZ. The projection-and-reflection example demonstrates how the converter handles a common olympiad construction. In the other direction, the AoPS export wraps a TikZ picture in an Asymptote label. You can still change the geometry or labels by editing the TikZ in that block.
+For an AoPS diagram, [open the Asymptote converter](../index.html?lang=en#asymptote) and paste the `[asy]` block. The source converter understands constructions such as line–circle intersections, helper functions, opacity and clipping. Testing included AMC/AIME, AoPS teaching material and national olympiad discussions. Examples can be found in the [2019 USA(J)MO Math Jam transcript](https://artofproblemsolving.com/school/mathjams-transcripts?id=491), [WOOT week-five worksheet](https://artofproblemsolving.com/texer/2021WOOTweek5HW) and [Project Numina’s archive of AoPS discussions](https://huggingface.co/datasets/project-numina/aops).
+
+For a diagram using a custom module or a 3D projection, open **Convert an SVG rendered by Asymptote** to bring the locally rendered paths into TikZ. In the other direction, the AoPS export wraps TikZ in a single Asymptote label. Pasting that wrapper into the converter recovers its original TikZ. [Read the conversion steps](guide.html#convert-aops-diagrams).
 
 ## Strengths and limits
 

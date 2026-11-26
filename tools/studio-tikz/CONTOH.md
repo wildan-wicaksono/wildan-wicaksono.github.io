@@ -75,10 +75,10 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
 
 **Cara menggambar di Studio**
 
-1. Pilih dua titik bebas $A$ dan $B$. Pilih **Busur dengan sudut**, masukkan $56^\circ$ dan pilih arah berlawanan jarum jam. Klik $B$ sebagai pusat, lalu $A$ sebagai titik awal. Dengan **Titik pada objek**, tempatkan $T$ di ujung lain busur dan $M$ di bagian dalamnya.
-2. Buat titik tengah $H$ dari $MT$. Tarik garis $BH$ dan $AM$, lalu beri nama titik potongnya $C$. Buat **Segitiga** $ABC$. Karena $BM=BT$, garis $BC$ adalah sumbu tegak lurus $MT$.
+1. Pilih **Titik**, lalu klik dua tempat kosong untuk membuat $A$ dan $B$. Pilih **Busur dengan sudut**, masukkan $56^\circ$ dan pilih arah berlawanan jarum jam. Klik $B$ sebagai pusat, lalu $A$ sebagai titik awal. Pilih **Titik** lagi. Klik ujung busur yang lain untuk membuat $T$, lalu klik busur di antara $A$ dan $T$ untuk menempatkan $M$.
+2. Buat titik tengah $H$ dari $MT$. Tarik garis $BH$ dan $AM$, lalu beri nama titik potongnya $C$. Dengan **Poligon**, klik $A$, $B$, dan $C$, lalu tekan **Enter** untuk menutup segitiga. Karena $BM=BT$, garis $BC$ adalah sumbu tegak lurus $MT$.
 3. Pilih **Transformasi → Refleksi**, klik $M$, lalu garis $BC$. Namai bayangannya $N$ (posisinya berimpit dengan $T$). Potong $AN$ dengan sisi $BC$ untuk mendapatkan $O$. Buat lingkaran melalui $A,B,M$ dengan warna `PineGreen`. Untuk lingkaran melalui $A,B,C$, pilih `MidnightBlue` dengan garis bertitik.
-4. Hubungkan $B$ ke $M$ dan $N$, lalu $N$ ke $C$. Buat $MN$ putus-putus dengan warna `BrickRed` dan tebalkan $MO$. Dengan **Busur sudut**, klik $A,B,N$ lalu pilih **Besar sudut otomatis**. Untuk sudut yang ditanyakan, klik $C,M,N$ dan beri warna `BrickRed` pada busurnya. Sembunyikan objek bantu $T$, $H$, garis, dan busur awal.
+4. Hubungkan $B$ ke $M$ dan $N$, lalu $N$ ke $C$. Buat $MN$ putus-putus dengan warna `BrickRed` dan tebalkan $MO$. Dengan **Sudut**, klik $A,B,N$ lalu pilih **Besar sudut otomatis**. Untuk sudut yang ditanyakan, klik $C,M,N$ dan beri warna `BrickRed` pada busurnya. Sembunyikan objek bantu $T$, $H$, garis, dan busur awal.
 
 Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$, dan kedua lingkaran mengikuti konstruksi, sedangkan label sudut di $B$ tetap menunjukkan $56^\circ$.
 
@@ -146,7 +146,7 @@ Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$
 
 **Cara menggambar di Studio**
 
-1. Buat **Segitiga** $ABC$. Gunakan **Titik tengah** pada $BC$, $CA$, dan $AB$ untuk memperoleh $D$, $E$, dan $F$. Buat ruas $AD$, $BE$, dan $CF$. Dengan **Titik potong**, klik $AD$ dan $BE$ untuk membuat $G$.
+1. Dengan **Poligon**, klik $A$, $B$, dan $C$, lalu tekan **Enter** untuk menutup segitiga. Gunakan **Titik tengah** pada $BC$, $CA$, dan $AB$ untuk memperoleh $D$, $E$, dan $F$. Buat ruas $AD$, $BE$, dan $CF$. Dengan **Titik potong**, klik $AD$ dan $BE$ untuk membuat $G$.
 2. Gunakan **Titik tengah** sekali lagi pada $AG$, $BG$, dan $CG$. Namai hasilnya $D_1$, $E_1$, dan $F_1$. Dengan **Lingkaran lewat 3 titik**, pilih berturut-turut $(D_1,E,F)$, $(D,E_1,F)$, dan $(D,E,F_1)$.
 3. Pada gambar awal, klik dua lingkaran pertama dengan **Titik potong**, lalu pilih perpotongan selain $F$ untuk memperoleh $H$. Dalam proyek yang dapat diunduh, $H$ dikonstruksi sebagai bayangan $F$ terhadap garis penghubung kedua pusat lingkaran. Cara ini menjaga pilihan $H$ saat bentuk segitiga berubah. Kedua pusat dan sumbu cerminnya disembunyikan.
 4. Tambahkan ruas $DE$, $EH$, $HD$, $D_1H$, dan $HF$ sesuai gambar. Pilih **Pilih / geser**, lalu seret huruf yang berdekatan dengan titik potong agar ada ruang antara label dan garis.
@@ -225,10 +225,10 @@ Coba geser $C$ untuk mengubah bentuk segitiga. Perhatikan perpotongan selain $F$
 
 **Cara menggambar di Studio**
 
-1. Buat **Segitiga** $ABC$. Dengan **Pilih / geser**, klik bagian dalam segitiga, pilih `MidnightBlue` pada **Warna isian**, lalu atur **Opasitas isian** ke **14%**. Buat lingkaran luar biru melalui ketiga titik sudutnya. Buat titik tengah $D$ pada $BC$ serta $E$ pada $CA$. Tarik garis $AD$ dan $BE$.
+1. Dengan **Poligon**, klik $A$, $B$, dan $C$, lalu tekan **Enter** untuk menutup segitiga. Dengan **Pilih / geser**, klik bagian dalam segitiga, pilih `MidnightBlue` pada **Warna isian**, lalu atur **Opasitas isian** ke **14%**. Buat lingkaran luar biru melalui ketiga titik sudutnya. Buat titik tengah $D$ pada $BC$ serta $E$ pada $CA$. Tarik garis $AD$ dan $BE$.
 2. Pilih **Garis singgung dari titik**, klik titik $C$, lalu klik lingkaran luar. Dengan **Titik potong**, buat $A_1=AD\cap\ell$, $B_1=BE\cap\ell$, dan $T=DE\cap\ell$. Untuk perpotongan di luar segitiga, gunakan garis penuh. Hubungkan $B_1$ ke $T$ dengan ruas `BrickRed` untuk menampilkan bagian garis singgung seperti pada gambar.
 3. Tarik $AB_1$ dan $BA_1$. Potong kembali keduanya dengan lingkaran luar untuk mendapatkan $X$ dan $Y$. Lakukan hal serupa pada $AD$ dan $BE$ untuk mendapatkan $P$ selain $A$ dan $Q$ selain $B$.
-4. Pilih `PineGreen` untuk kedua lingkaran bantu. Buat lingkaran melalui $D,E,P$ dengan garis bertitik, dan lingkaran kecil melalui $C,D,E$ dengan garis penuh. Gambar $XT$ dan $TQ$ putus-putus. Tarik $QP$ tipis, lalu gunakan satu busur `RoyalPurple` untuk masing-masing sudut $\angle EQP$, $\angle EDA$, dan $\angle BAD$.
+4. Pilih `PineGreen` untuk kedua lingkaran bantu. Buat lingkaran melalui $D,E,P$ dengan garis bertitik, dan lingkaran kecil melalui $C,D,E$ dengan garis penuh. Gambar $XT$ dan $TQ$ putus-putus. Tarik $QP$ tipis, lalu gunakan **Sudut** untuk menandai dengan busur `RoyalPurple` masing-masing sudut $\angle EQP$, $\angle EDA$, dan $\angle BAD$.
 
 Coba ubah **Opasitas isian** segitiga. Di panel **Kode TikZ**, nilai `fill opacity=0.14` mengikuti persentase yang kamu pilih. Garis dan huruf tetap terbaca saat isian dibuat lebih pucat.
 
