@@ -14,28 +14,75 @@
   .row,.arrows {display:flex;align-items:center;gap:8px} .row{margin-top:5px;min-height:30px}.arrows{gap:3px}.point-select {font-size:14px;color:var(--muted)} button {font:inherit;font-size:14px;background:var(--panel);border:1px solid var(--rule);color:var(--ink);border-radius:5px;min-height:30px;cursor:pointer;padding:3px 9px} .arrows button {min-width:29px;padding:2px 6px} button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--panel)} button:hover {border-color:var(--base)} :focus-visible {outline:2px solid var(--accent);outline-offset:2px}
   .range label {font-weight:600;white-space:nowrap} input {accent-color:var(--base)} input[type=range] {min-width:45px;min-height:26px;flex:1;margin:0} output {font-variant-numeric:tabular-nums;min-width:4ch;text-align:right;color:var(--muted)} .actions{justify-content:space-between;flex-wrap:wrap}.check {display:flex;align-items:center;gap:6px;cursor:pointer} .check input {height:17px;width:17px;margin:0}.visually-hidden {position:absolute;clip-path:inset(50%);height:1px;width:1px;overflow:hidden;white-space:nowrap}
   @media(max-width:350px){main{padding:8px 10px}.point-select{font-size:13px}.row{gap:6px}h1{font-size:21px}}
+  #lesson-language {background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:5px;font:inherit;font-size:14px;padding:4px;cursor:pointer;min-height:30px}
+  math {font-family:math,"Cambria Math",serif;font-weight:normal}
+.lesson-header {display:flex;align-items:center;justify-content:space-between;gap:8px}
 </style>
 </head>
 <body><main>
-  <h1>Geser garis antiparalel</h1>
-  <p>Geser A, B, atau C untuk mengubah segitiga. Geser D atau ruas DE dan amati letak E pada AC.</p>
+  <header class="lesson-header"><h1 data-copy="titleVisible">Geser garis antiparalel</h1><select id="lesson-language" aria-label="Bahasa"><option value="id" lang="id">ID</option><option value="en" lang="en">EN</option></select></header>
+  <p data-copy="hint">Geser A, B, atau C untuk mengubah segitiga. Geser D atau ruas DE dan amati letak E pada AC.</p>
   <svg id="diagram" viewBox="34 -8 322 276" role="img" aria-labelledby="diagram-title diagram-desc">
-    <title id="diagram-title">DE antiparalel terhadap BC dalam sudut BAC</title>
-    <desc id="diagram-desc">D berada pada AB dan E berada pada AC. Lingkaran bantu melalui B, C, D, dan E.</desc>
+    <title id="diagram-title" data-copy="diagram">DE antiparalel terhadap BC dalam sudut BAC</title>
+    <desc id="diagram-desc" data-copy="desc">D berada pada AB dan E berada pada AC. Lingkaran bantu melalui B, C, D, dan E.</desc>
     <circle id="circle" fill="none" stroke="var(--circle)" stroke-width="1.6" stroke-dasharray="5 5"/>
     <path id="sides" stroke="var(--ink)" stroke-width="1.5"/><path id="angle" stroke="var(--muted)" stroke-width="1.3"/>
     <line id="base" stroke="var(--base)" stroke-width="2.8"/><line id="de" stroke="var(--accent)" stroke-width="3.1"/>
     <line id="line-grip" data-grip="DE" stroke="transparent" stroke-width="19" pointer-events="stroke"/>
     <g id="points"></g>
   </svg>
-  <div class="row"><span class="point-select" id="key-hint">Pilih titik, lalu tekan panah</span><div class="arrows" id="point-keys" role="group" aria-labelledby="key-hint"><button type="button" data-key="A">A</button><button type="button" data-key="B">B</button><button type="button" data-key="C">C</button><button type="button" data-key="D">D</button></div></div>
-  <div class="row range"><label for="position">Posisi D pada AB</label><input id="position" type="range" min="20" max="88" step="1" value="60"><output for="position" id="percent" aria-hidden="true">60%</output></div>
-  <div class="row actions"><label class="check"><input id="show-circle" type="checkbox" checked>Lingkaran bantu</label><button id="reset" type="button">Kembali ke awal</button></div>
+  <div class="row"><span class="point-select" id="key-hint" data-copy="keys">Pilih titik, lalu tekan panah</span><div class="arrows" id="point-keys" role="group" aria-labelledby="key-hint"><button type="button" data-key="A">A</button><button type="button" data-key="B">B</button><button type="button" data-key="C">C</button><button type="button" data-key="D">D</button></div></div>
+  <div class="row range"><label for="position" data-copy="slider">Posisi D pada AB</label><input id="position" type="range" min="20" max="88" step="1" value="60"><output for="position" id="percent" aria-hidden="true">60%</output></div>
+  <div class="row actions"><label class="check"><input id="show-circle" type="checkbox" checked><span data-copy="circle">Lingkaran bantu</span></label><button id="reset" type="button" data-copy="reset">Kembali ke awal</button></div>
   <span class="visually-hidden" id="coordinates" aria-live="polite"></span>
 </main>
 <script>
 (() => {
   'use strict';
+
+  const localeKey = 'studio-tikz-language';
+  function preferredLanguage() {
+    try {
+      const query = new URLSearchParams(location.search).get('lang');
+      if (query === 'en' || query === 'id') return query;
+      return localStorage.getItem(localeKey) === 'en' ? 'en' : 'id';
+    } catch { return 'id'; }
+  }
+  let language = preferredLanguage();
+  const pick = (id, en) => language === 'en' ? en : id;
+  const copy = {"title": ["Eksplorasi garis antiparalel · Studio TikZ", "Explore antiparallel lines · Studio TikZ"], "titleVisible": ["Geser garis antiparalel", "Drag the antiparallel line"], "hint": ["Geser A, B, atau C untuk mengubah segitiga. Geser D atau ruas DE dan amati letak E pada AC.", "Drag A, B or C to change the triangle. Drag D or segment DE and watch E move along AC."], "diagram": ["DE antiparalel terhadap BC dalam sudut BAC", "DE is antiparallel to BC with respect to angle BAC"], "desc": ["D berada pada AB dan E berada pada AC. Lingkaran bantu melalui B, C, D, dan E.", "D lies on AB and E on AC. The auxiliary circle passes through B, C, D and E."], "keys": ["Pilih titik, lalu tekan panah", "Choose a point, then use the arrow keys"], "slider": ["Posisi D pada AB", "Position of D on AB"], "circle": ["Lingkaran bantu", "Auxiliary circle"], "reset": ["Kembali ke awal", "Reset"]};
+  function updateLanguage(next) {
+    if (next !== 'en' && next !== 'id') return;
+    language = next;
+    document.documentElement.lang = next;
+    document.title = copy.title[Number(next === 'en')];
+    for (const node of document.querySelectorAll('[data-copy]')) {
+      const value = copy[node.dataset.copy][Number(next === 'en')];
+      if (node.dataset.attr) node.setAttribute(node.dataset.attr, value);
+      else node.textContent = value;
+    }
+    const selector = document.getElementById('lesson-language');
+    selector.value = next;
+    selector.setAttribute('aria-label',pick('Bahasa','Language'));
+    redraw();
+  }
+  function bindLanguage(redrawLesson) {
+    redraw = redrawLesson;
+    const selector = document.getElementById('lesson-language');
+    selector.addEventListener('change', () => {
+      const next = selector.value;
+      try { localStorage.setItem(localeKey,next); } catch {}
+      updateLanguage(next);
+      if (window.parent !== window) window.parent.postMessage({type:localeKey,language:next},'*');
+    });
+    window.addEventListener('message', event => {
+      if (event.source === window.parent && event.data?.type === localeKey) updateLanguage(event.data.language);
+    });
+    window.addEventListener('storage', event => { if (event.key === localeKey) updateLanguage(event.newValue); });
+    updateLanguage(language);
+  }
+  let redraw = () => {};
+
   const get = id => document.getElementById(id);
   const svg = get('diagram'), range = get('position'), toggle = get('show-circle');
   const names = ['A','B','C','D','E'], controls = Array.from(get('point-keys').querySelectorAll('button'));
@@ -116,7 +163,7 @@
       label.setAttribute('x',direction.x*15);label.setAttribute('y',direction.y*15);
     }
     range.min=domain.min;range.max=domain.max;range.value=fraction;
-    range.setAttribute('aria-valuetext',`${fraction} persen dari A menuju B`);get('percent').value=fraction+'%';
+    range.setAttribute('aria-valuetext',`${fraction} ${pick('persen dari A menuju B','percent of the way from A to B')}`);get('percent').value=fraction+'%';
   }
   function moveVertex(name,target) {
     const from=triangle[name];
@@ -171,12 +218,12 @@
       event.preventDefault();const [dx,dy]=arrows[event.key],step=event.shiftKey?6:2;
       if(name==='D') {fraction+=(dx+dy)*step/2;draw();}
       else moveVertex(name,plus(triangle[name],{x:dx,y:dy},step));
-      get('coordinates').textContent=name==='D'?`D berada pada ${fraction} persen dari A menuju B.`:`Posisi ${name} pada gambar ${Math.round(state[name].x)}, ${Math.round(state[name].y)}.`;
+      get('coordinates').textContent=language==='en'?(name==='D'?`D is ${fraction} percent of the way from A to B.`:`Position of ${name} in the diagram: ${Math.round(state[name].x)}, ${Math.round(state[name].y)}.`):name==='D'?`D berada pada ${fraction} persen dari A menuju B.`:`Posisi ${name} pada gambar ${Math.round(state[name].x)}, ${Math.round(state[name].y)}.`;
     });
   }
   range.addEventListener('input',()=>{select('D');fraction=Number(range.value);draw();});
   toggle.addEventListener('change',()=>draw());
-  get('reset').addEventListener('click',()=>{triangle=initial();fraction=60;toggle.checked=true;get('coordinates').textContent='Posisi awal dipulihkan.';select('D');draw();});
-  select('D');draw();
+  get('reset').addEventListener('click',()=>{triangle=initial();fraction=60;toggle.checked=true;get('coordinates').textContent=pick('Posisi awal dipulihkan.','Starting positions restored.');select('D');draw();});
+  select('D');bindLanguage(()=>draw());
 })();
 </script></body></html>

@@ -1,0 +1,6 @@
+<nav class="studio-reading-language" aria-label="Bahasa / Language" data-studio-lang="{{ include.language }}">
+  <a href="{{ include.id | relative_url }}" data-set-studio-lang="id" lang="id" hreflang="id"{% if include.language == 'id' %} aria-current="page" style="font-weight:700;text-decoration:none;color:inherit"{% endif %}>Indonesia</a>
+  <span aria-hidden="true"> · </span>
+  <a href="{{ include.en | relative_url }}" data-set-studio-lang="en" lang="en" hreflang="en"{% if include.language == 'en' %} aria-current="page" style="font-weight:700;text-decoration:none;color:inherit"{% endif %}>English</a>
+</nav>
+<script defer src="{{ '/assets/js/studio-tikz-language.js' | relative_url }}"></script>

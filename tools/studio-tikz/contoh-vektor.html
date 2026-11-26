@@ -43,33 +43,36 @@
   #angle-value {color:var(--brick)}
   .sr {position:absolute;width:1px;height:1px;padding:0;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap;border:0}
   @media(max-width:385px) {main{padding:9px 10px}h1{font-size:22px}.readouts{font-size:14px}}
+  #lesson-language {background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:5px;font:inherit;font-size:14px;padding:4px;cursor:pointer;min-height:30px}
+  math {font-family:math,"Cambria Math",serif;font-weight:normal}
+.lesson-actions {display:flex;gap:6px;align-items:center}
 </style>
 </head>
 <body>
 <main>
   <header>
-    <h1 aria-label="Titik D sama dengan A tambah dua B, dibagi tiga"><i>D</i> = (<i>A</i> + 2<i>B</i>) / 3</h1>
-    <button type="button" id="reset">Atur ulang</button>
+    <h1 data-copy="heading" data-attr="aria-label" aria-label="Titik D sama dengan A tambah dua B, dibagi tiga"><math display="inline"><mi>D</mi><mo>=</mo><mfrac><mrow><mi>A</mi><mo>+</mo><mn>2</mn><mi>B</mi></mrow><mn>3</mn></mfrac></math></h1>
+    <div class="lesson-actions"><select id="lesson-language" aria-label="Bahasa"><option value="id" lang="id">ID</option><option value="en" lang="en">EN</option></select><button type="button" id="reset" data-copy="reset">Atur ulang</button></div>
   </header>
-  <p id="hint">Geser A, B, atau C. Dengan papan ketik, gunakan Tab lalu tombol panah.</p>
+  <p id="hint" data-copy="hint">Geser A, B, atau C. Dengan papan ketik, gunakan Tab lalu tombol panah.</p>
   <svg id="diagram" viewBox="0 0 480 220" role="group" aria-labelledby="diagram-title diagram-desc">
-    <title id="diagram-title">Segitiga ABC dengan D pada ruas AB</title>
-    <desc id="diagram-desc">Titik D berada dua pertiga perjalanan dari A ke B. Ruas CD digambar putus-putus dan busur kecil di C menandai sudut ACB.</desc>
+    <title id="diagram-title" data-copy="diagram">Segitiga ABC dengan D pada ruas AB</title>
+    <desc id="diagram-desc" data-copy="desc">Titik D berada dua pertiga perjalanan dari A ke B. Ruas CD digambar putus-putus dan busur kecil di C menandai sudut ACB.</desc>
     <path id="triangle"/>
     <line id="cd"/>
     <path id="angle"/>
     <g id="point-D"><circle r="3.4"/><text>D</text></g>
-    <g id="point-A" class="handle" tabindex="0" role="application" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
+    <g id="point-A" class="handle" tabindex="0" role="application" data-copy="handle" data-attr="aria-roledescription" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
       <circle class="target" r="20"/><circle class="ring" r="7.5"/><circle class="dot" r="3.6"/><text>A</text>
     </g>
-    <g id="point-B" class="handle" tabindex="0" role="application" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
+    <g id="point-B" class="handle" tabindex="0" role="application" data-copy="handle" data-attr="aria-roledescription" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
       <circle class="target" r="20"/><circle class="ring" r="7.5"/><circle class="dot" r="3.6"/><text>B</text>
     </g>
-    <g id="point-C" class="handle" tabindex="0" role="application" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
+    <g id="point-C" class="handle" tabindex="0" role="application" data-copy="handle" data-attr="aria-roledescription" aria-roledescription="titik yang dapat digeser" aria-describedby="hint">
       <circle class="target" r="20"/><circle class="ring" r="7.5"/><circle class="dot" r="3.6"/><text>C</text>
     </g>
   </svg>
-  <div class="readouts"><span id="d-value"></span><span class="formula"><i>AD</i> = 2<i>DB</i></span><span id="angle-value"></span></div>
+  <div class="readouts"><span id="d-value"></span><span class="formula"><math><mi>AD</mi><mo>=</mo><mn>2</mn><mi>DB</mi></math></span><span id="angle-value"></span></div>
   <span class="sr" id="announcement" role="status"></span>
 </main>
 <script>
@@ -81,9 +84,53 @@
   const points = {};
   const names = Object.keys(initial);
   const handles = Object.fromEntries(names.map(name => [name,el('point-'+name)]));
-  const formatter = new Intl.NumberFormat('id-ID',{maximumFractionDigits:2});
-  const format = value => formatter.format(Math.abs(value)<0.005 ? 0 : value);
-  const coord = p => '('+format(p.x)+'; '+format(p.y)+')';
+
+  const localeKey = 'studio-tikz-language';
+  function preferredLanguage() {
+    try {
+      const query = new URLSearchParams(location.search).get('lang');
+      if (query === 'en' || query === 'id') return query;
+      return localStorage.getItem(localeKey) === 'en' ? 'en' : 'id';
+    } catch { return 'id'; }
+  }
+  let language = preferredLanguage();
+  const pick = (id, en) => language === 'en' ? en : id;
+  const copy = {"title": ["Titik D pada ruas AB · Studio TikZ", "Point D on segment AB · Studio TikZ"], "heading": ["Titik D sama dengan A tambah dua B, dibagi tiga", "D equals the sum of A and twice B, divided by three"], "handle": ["titik yang dapat digeser", "draggable point"], "reset": ["Atur ulang", "Reset"], "hint": ["Geser A, B, atau C. Dengan papan ketik, gunakan Tab lalu tombol panah.", "Drag A, B or C. With a keyboard, press Tab to select a point, then use the arrow keys."], "diagram": ["Segitiga ABC dengan D pada ruas AB", "Triangle ABC with D on segment AB"], "desc": ["Titik D berada dua pertiga perjalanan dari A ke B. Ruas CD digambar putus-putus dan busur kecil di C menandai sudut ACB.", "Point D lies two-thirds of the way from A to B. Segment CD is dashed, and a small arc at C marks angle ACB."]};
+  function updateLanguage(next) {
+    if (next !== 'en' && next !== 'id') return;
+    language = next;
+    document.documentElement.lang = next;
+    document.title = copy.title[Number(next === 'en')];
+    for (const node of document.querySelectorAll('[data-copy]')) {
+      const value = copy[node.dataset.copy][Number(next === 'en')];
+      if (node.dataset.attr) node.setAttribute(node.dataset.attr, value);
+      else node.textContent = value;
+    }
+    const selector = document.getElementById('lesson-language');
+    selector.value = next;
+    selector.setAttribute('aria-label',pick('Bahasa','Language'));
+    redraw();
+  }
+  function bindLanguage(redrawLesson) {
+    redraw = redrawLesson;
+    const selector = document.getElementById('lesson-language');
+    selector.addEventListener('change', () => {
+      const next = selector.value;
+      try { localStorage.setItem(localeKey,next); } catch {}
+      updateLanguage(next);
+      if (window.parent !== window) window.parent.postMessage({type:localeKey,language:next},'*');
+    });
+    window.addEventListener('message', event => {
+      if (event.source === window.parent && event.data?.type === localeKey) updateLanguage(event.data.language);
+    });
+    window.addEventListener('storage', event => { if (event.key === localeKey) updateLanguage(event.newValue); });
+    updateLanguage(language);
+  }
+  let redraw = () => {};
+
+  const formatters = {id:new Intl.NumberFormat('id-ID',{maximumFractionDigits:2}),en:new Intl.NumberFormat('en-US',{maximumFractionDigits:2})};
+  const format = value => formatters[language].format(Math.abs(value)<0.005 ? 0 : value);
+  const coord = p => '('+format(p.x)+pick('; ', ', ')+format(p.y)+')';
   let view, drag = null;
 
   function resetPoints() {
@@ -123,7 +170,7 @@
     for (const [key,value] of Object.entries({x1:c.x,y1:c.y,x2:d.x,y2:d.y})) el('cd').setAttribute(key,value);
     for (const name of names) {
       placeLabel(handles[name],screen(points[name]),center);
-      handles[name].setAttribute('aria-label','Titik '+name+' '+coord(points[name]));
+      handles[name].setAttribute('aria-label',pick('Titik ','Point ')+name+' '+coord(points[name]));
     }
     // Put the label on the side of AB opposite C.
     let nx = b.y-a.y, ny = a.x-b.x;
@@ -133,7 +180,7 @@
 
     const ax=a.x-c.x, ay=a.y-c.y, bx=b.x-c.x, by=b.y-c.y;
     const ca=Math.hypot(ax,ay), cb=Math.hypot(bx,by);
-    let arc='', measure='tak terdefinisi';
+    let arc='', measure=pick('tak terdefinisi','undefined');
     if (ca>1e-8 && cb>1e-8) {
       const turn=Math.atan2(ax*by-ay*bx,ax*bx+ay*by);
       measure=format(Math.abs(turn)*180/Math.PI)+'°';
@@ -198,9 +245,10 @@
   el('reset').addEventListener('click',()=>{
     if (drag) endDrag({pointerId:drag.id});
     resetPoints();resize();
-    el('announcement').textContent='Posisi awal dipulihkan. '+el('d-value').textContent+'. '+el('angle-value').textContent+'.';
+    el('announcement').textContent=pick('Posisi awal dipulihkan. ','Starting positions restored. ')+el('d-value').textContent+'. '+el('angle-value').textContent+'.';
   });
   resetPoints();resize();
+  bindLanguage(()=>{if(view) draw();});
   new ResizeObserver(resize).observe(svg);
 })();
 </script>

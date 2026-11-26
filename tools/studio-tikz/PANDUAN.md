@@ -5,11 +5,15 @@ permalink: /tools/studio-tikz/panduan.html
 comments: false
 ---
 
+{% include studio-tikz-language.html language="id" id="/tools/studio-tikz/panduan.html" en="/tools/studio-tikz/en/guide.html" %}
+
 Studio TikZ membantu kamu menggambar konstruksi geometri dan menyalinnya ke modul LaTeX. Kamu bisa mengambil gambar lengkap atau memakai koordinatnya saja jika sudah punya gaya TikZ sendiri. [Buka editor](./index.html) · [Pilih animasi dari katalog](#katalog-animasi).
 
 Di sebelah **Lembar**, pilih **Tata letak → Berdampingan** untuk melihat kanvas di kiri dan kode di kanan, atau **Bertumpuk** untuk menempatkan kode di bawah kanvas. **Otomatis** mengikuti lebar layar. Pilihan tersimpan di browser dan berlaku saat kamu membuka gambar lain.
 
 Untuk menyembunyikan titik-titik latar, hilangkan centang **Tampilkan kisi** di bawah kanvas, di sebelah **Latar**. Browser mengingat pilihan ini. **Lekat ke kisi 0,5** mengatur pelekatan titik secara terpisah.
+
+Pilihan **Indonesia / English** berlaku juga untuk panduan alat. Untuk memperbesar kanvas, fokuskan gambar, lalu tekan **+** atau **−**. Pilih persentase pembesaran untuk kembali ke tampilan tertentu. **Skala TikZ** di panel kode mengatur ukuran saat dicetak.
 
 ## Gambar pertama dalam lima langkah
 
@@ -30,10 +34,13 @@ Untuk mengikuti satu soal dari awal sampai menjadi diagram modul, buka [tiga con
 | Yang ingin digambar | Urutan tindakan |
 | --- | --- |
 | Titik $P$ yang mengikuti lingkaran | Pilih **Titik** lalu klik keliling. Gunakan **Pilih / geser** untuk menggeser $P$ sepanjang lingkaran. Klik ruang kosong dengan alat Titik untuk membuat titik bebas. |
+| Garis sumbu ruas $AB$ | Pilih **Titik dan garis → Garis sumbu**. Klik ruasnya, atau pilih $A$ lalu $B$. Geser $A$ untuk memeriksa bahwa garis tetap tegak lurus dan melalui titik tengah. |
 | Garis antiparalel | Dalam segitiga $ABC$, pilih **Titik dan garis → Garis antiparalel**, klik $BC$, lalu klik sebuah titik $D$ pada $AB$. Perpotongan garis baru dengan $AC$ adalah $E$. Jika titiknya berbeda, $B$, $C$, $E$, dan $D$ terletak pada satu lingkaran. |
 | Lingkaran lewat tiga titik | Pilih **Lingkaran → Lingkaran lewat 3 titik**, klik $A$ dan $B$, lalu gerakkan kursor. Pratinjau muncul selama posisi kursor dan kedua titik tidak segaris. Klik titik $C$ atau tempat kosong untuk menetapkan titik ketiga. |
 | Lingkaran dengan radius dari ruas | Buat ruas yang diperlukan. Pilih **Lingkaran → Lingkaran dengan rumus jari-jari**. Pilih **Jari-jari r**, masukkan misalnya `(AB + CD)/2`, lalu klik pusatnya. **Sisipkan panjang ruas** membantu memilih nama ruas yang benar. |
-| Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Transformasi → Inversi dengan jari-jari atau kuasa**. Pilih **Kuasa k = r²**, isi `OA * OB`, klik pusat $O$, lalu $P$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
+| Inversi titik $P$ dengan kuasa $OA\cdot OB$ | Buat ruas $OA$ dan $OB$. Pilih **Transformasi → Inversi**, gunakan **Jari-jari atau kuasa**, pilih kuasa $k=r^2$, lalu isi `OA * OB`. Klik $P$, kemudian pusat $O$. Bayangan $P'$ memenuhi $OP\cdot OP'=OA\cdot OB$. |
+
+Untuk inversi dengan lingkaran yang sudah ada, klik objek asal (titik, garis, atau lingkaran) lalu klik keliling lingkaran acuan. Pada **Transformasi → Refleksi**, klik objek asal, lalu titik atau garis cerminnya. Jika memilih sebuah ruas sebagai cermin, Studio menggunakan garis yang memuat ruas itu. Kamu dapat langsung mencerminkan objek berikutnya dengan alat yang sama. Pada alat yang biasa dipakai berulang, misalnya **Ruas**, kamu bisa langsung memilih pasangan titik berikutnya. Tekan **Esc** atau pilih **Pilih / geser** untuk kembali menyunting objek.
 
 Pada [diagram antiparalel interaktif](./latihan-antiparalel.html), geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Kamu juga bisa menggeser $D$ sepanjang $AB$ atau menyeret ruas $DE$. Saat segitiga berubah, $E$ mengikuti perpotongan garis antiparalel dengan $AC$. Perhatikan keempat titik $B$, $C$, $D$, dan $E$ pada satu lingkaran.
 
@@ -56,7 +63,7 @@ Untuk membagi $\angle BAC$, pilih **Garis bagi sudut dalam** atau **Garis bagi s
 
 Buka **Panduan alat** di atas kanvas, lalu cari istilah seperti *singgung* atau *inversi*. Jika alatnya sudah dipilih, klik **?** di sebelah namanya. Tekan **Putar animasi** untuk melihat urutan pemilihan objek. Tekan **Jeda** untuk berhenti, gunakan tombol langkah sebelumnya atau berikutnya untuk mengikuti satu langkah, atau **Ulangi** untuk kembali ke awal. Setelah animasi alat gambar, pilih **Utak-atik contoh**. Seret titik acuan untuk melihat perubahan pada konstruksi. Contoh memakai kanvas tersendiri sehingga kamu bisa kembali ke gambar yang sedang dikerjakan.
 
-Misalnya, lihat [sisi acuan untuk antiparalel](./index.html#panduan/antiTriangle) atau [pemilihan objek untuk lingkaran dari tiga syarat](./index.html#panduan/circleConstraints). Semua 52 alat dan 19 topik editor memiliki animasi yang tersimpan dalam HTML. Versi luring dapat memutarnya tanpa koneksi internet.
+Misalnya, lihat [sisi acuan untuk antiparalel](./index.html#panduan/antiTriangle) atau [pemilihan objek untuk lingkaran dari tiga syarat](./index.html#panduan/circleConstraints). Animasi alat konstruksi dan topik editor tersimpan dalam HTML. Versi luring dapat memutarnya tanpa koneksi internet.
 
 ## Menempelkan hasil ke LaTeX
 
@@ -89,7 +96,13 @@ Studio menampilkan pustaka TikZ yang dipakai konstruksi pada **Paket LaTeX** dan
 
 **Skala TikZ** mengatur ukuran gambar saat dicetak. Pada skala $2$, panjang ruas tercetak dua kali lebih besar. Kode menyesuaikan radius bulatan titik agar radius cetaknya tetap $1{,}5\,\mathrm{pt}$. Tombol **+** dan **−** di kanvas mengatur pembesaran tampilan kerja.
 
-Klik ruas untuk mengatur **Warna** atau **Opasitas**. Klik bagian dalam segitiga untuk mengatur **Warna isian**.
+### Gaya beberapa objek dan label yang bertumpuk
+
+Dalam **Pilih / geser**, tahan **Ctrl** atau **⌘** sambil mengeklik beberapa objek. Ubah warna atau opasitas pilihan di panel **Objek**, atau klik **Sembunyikan**. Beri **Nama grup**, lalu klik **Simpan grup**. Kamu bisa memilih grup itu lagi dari **Kelompok tersimpan**, termasuk setelah membuka kembali file proyek. Untuk menampilkan kembali, aktifkan **Lihat objek tersembunyi**, pilih objeknya, lalu klik **Tampilkan**. Palet **Warna isian** untuk bangun menawarkan warna yang sama seperti palet garis. **Opasitas isian** mengatur seberapa jelas objek di balik bangun terlihat.
+
+Saat memilih segitiga di dalam lingkaran, klik ruang di tengah segitiga. Untuk memilih lingkaran, klik kelilingnya. Daftar **Objek** juga dapat dipakai untuk memilih bangun secara langsung. Poligon beraturan ditampilkan dengan jenis bangun dan nama titik sudutnya.
+
+Kalau ada banyak garis di dekat $I_A$, geser hurufnya atau pilih titiknya dan aktifkan **Latar label transparan**. Atur opasitas latar sambil melihat garis di bawah teks. Pengaturan ini juga berlaku untuk label bebas dan label sudut dan ikut dibawa ke TikZ. Untuk penanda siku-siku, klik tandanya kemudian atur **Ukuran siku-siku** agar muat di antara kedua kaki sudut. Ukuran tanda tidak mengubah sudut geometrinya.
 
 ## Menyimpan beberapa diagram dan memakai Studio secara luring
 
@@ -107,7 +120,7 @@ Periksa pesan impor serta daftar **Objek**. Jika sebuah titik perlu terus mengik
 
 ## Menyalin diagram Asymptote dari AoPS
 
-1. [Buka konverter Asymptote](./index.html#asymptote) atau klik **Tempel Asymptote** di bilah atas editor. Tempel satu diagram, termasuk tag `[asy]` dan `[/asy]` jika ada, ke kolom **Kode Asymptote**. Kamu juga bisa memilih salah satu dari tiga **Contoh AoPS**.
+1. [Buka konverter Asymptote](./index.html#asymptote) atau klik **Tempel Asymptote** di bilah atas editor. Tempel satu diagram, termasuk tag `[asy]` dan `[/asy]` jika ada, ke kolom **Kode Asymptote**. Kamu juga bisa memilih salah satu dari empat **Contoh AoPS**.
 2. Klik **Konversi ke TikZ**, lalu periksa **Pratinjau**. Untuk menggeser titik pada gambar hasil konversi, ubah koordinatnya di sumber lalu konversi lagi. Alur ini menghasilkan potongan TikZ tersendiri. Konstruksi yang bisa diseret di kanvas dibuat dengan alat gambar Studio.
 3. Di bagian **Paket LaTeX**, pilih **Salin preamble** dan tempel paket yang diperlukan sebelum `\begin{document}`. Klik **Salin TikZ**, lalu tempel gambarnya di badan dokumen, misalnya setelah teks soal.
 
@@ -116,8 +129,15 @@ Periksa pesan impor serta daftar **Objek**. Jika sebuah titik perlu terus mengik
 | Setengah lingkaran dan tali busur | Ganti `palered` dengan `white` pada isian pertama. Perhatikan bagian yang berubah dan posisi label $16$ di atas tali busur. |
 | Persegi bersarang | Ganti `n = 25` menjadi `n = 5`. Perulangan menggambar dan mewarnai lima persegi bergantian. Perintah terakhir menambahkan satu persegi kecil lagi sebagai garis tepi. |
 | Empat lingkaran | Baris `draw(circle(O, 6/23));` menggambar lingkaran keempat. Ganti jari-jarinya menjadi `1` untuk membandingkannya dengan lingkaran berpusat di $A$. |
+| Proyeksi dan pencerminan | Ubah titik asal, lalu amati kaki proyeksi dan bayangannya terhadap garis yang sama. |
 
 Konverter menangani bentuk 2D seperti ruas, busur, lingkaran dan persegi panjang, beserta isian, titik, label, serta perhitungan pada contoh di atas. Variabel, perulangan `for` terbatas dan percabangan `if/else` bisa digunakan seperti pada contoh persegi. Jika kode memakai perintah di luar cakupan, misalnya `import three;` untuk gambar 3D, Studio menunjukkan baris dan kolomnya. Perbaiki bagian itu, lalu jalankan konversi lagi untuk mendapatkan gambar lengkap.
+
+Konverter juga membaca array titik dan indeks, notasi seperti `2x` dan `dir(60)`, lintasan terpisah dengan `^^`, proyeksi `foot`, perpotongan antara ruas atau lingkaran, serta transformasi seperti `reflect` dan `rotate`. Dari 78 potongan Asymptote berbeda pada arsip soal dan pembahasan AMC/AIME tahun 1983–2024 yang diuji, 65 menghasilkan TikZ yang berhasil dikompilasi dengan pdfLaTeX. Tiga belas sisanya memakai fitur di luar cakupan, antara lain gambar 3D, spline, fungsi buatan pengguna, atau pemotongan dan gradasi daerah. [Arsip AIME](https://huggingface.co/datasets/gneubig/aime-1983-2024/blob/8d5c803ed4bc31a551565a90d235d7e214bae43e/AIME_Dataset_with_images.csv) · [Arsip contoh AMC](https://amcclub.org.cn/news/1830/)
+
+### Membawa TikZ ke AoPS
+
+Klik **Format AoPS** pada panel kode. Pilih **Ambil dari kanvas** atau tempel `tikzpicture` milikmu. Klik **Salin [asy]** untuk membungkus gambar sebagai blok `[asy]`. Di dalam blok itu, `usepackage("tikz")` memuat TikZ dan `label(...)` menempatkan lingkungan `tikzpicture`. Gunakan hasil salinan lengkap saat menempelkan gambar ke forum. Jika label memakai makro modulmu, tambahkan definisi atau paket yang diperlukan di **Preamble tambahan** dan periksa bahwa lingkungan LaTeX AoPS mendukungnya.
 
 ## Pintasan dan kendala umum
 
@@ -130,6 +150,7 @@ Klik kanvas sebelum memakai pintasan. Di Mac, gunakan **⌘** untuk kombinasi **
 | Tambah atau keluarkan objek dari pilihan | **Ctrl+klik** dalam **Pilih / geser** |
 | Pilih semua / hapus pilihan | **Ctrl+A** / **Delete**. Menghapus objek acuan juga menghapus konstruksi yang bergantung padanya. |
 | Geser tampilan / perbesar di sekitar kursor | Seret area kosong dengan **Pilih / geser**, atau gulir / **Ctrl+gulir** |
+| Perbesar atau perkecil kanvas | **+** / **−** saat fokus berada di kanvas. |
 | Tampilkan seluruh diagram | **Home** atau **Pas ke gambar** |
 
 - **Titik lepas saat lingkaran digeser.** Pilih titiknya dan periksa keterangan ikatan di bawah kanvas. Gunakan **Titik pada objek** dan klik keliling untuk membuat titik yang dapat meluncur di sana.
@@ -156,6 +177,7 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | [Sinar](./index.html#panduan/ray) | Membuat sinar dari pangkal melalui titik penentu arah. |
 | [Garis sejajar](./index.html#panduan/parallel) | Menggeser pratinjau garis sejajar hingga melalui titik pilihan. |
 | [Garis tegak lurus](./index.html#panduan/normal) | Menarik garis tegak lurus acuan melalui titik pilihan. |
+| [Garis sumbu](./index.html#panduan/perpendicularBisector) | Membagi ruas menjadi dua bagian sama panjang dan tegak lurus. |
 | [Garis antiparalel](./index.html#panduan/antiTriangle) | Membuat $DE$ antiparalel terhadap $BC$ dalam $\angle BAC$. |
 
 ### Lingkaran
@@ -214,11 +236,12 @@ Klik nama alat untuk membuka panduannya langsung di Studio. Saat memakai HTML lu
 | --- | --- |
 | [Translasi](./index.html#panduan/translate) | Menggeser objek mengikuti vektor dari satu titik ke titik lain. |
 | [Rotasi](./index.html#panduan/rotate) | Memutar objek terhadap pusat dengan sudut tertentu. |
+| [Refleksi](./index.html#panduan/reflect) | Klik objek asal lalu klik titik atau garis cermin. |
 | [Refleksi terhadap garis](./index.html#panduan/reflectLine) | Mencerminkan objek terhadap sebuah garis. |
 | [Refleksi terhadap titik](./index.html#panduan/reflectPoint) | Mencerminkan objek terhadap sebuah titik pusat. |
 | [Dilatasi](./index.html#panduan/dilate) | Menskalakan objek terhadap titik pusat dengan faktor tertentu. |
 | [Inversi dengan jari-jari atau kuasa](./index.html#panduan/invertFormula) | Menginversi dengan pusat dan nilai jari-jari atau kuasa pilihan. |
-| [Inversi titik pada lingkaran](./index.html#panduan/invert) | Menemukan bayangan titik terhadap lingkaran inversi. |
+| [Inversi dengan lingkaran acuan](./index.html#panduan/invert) | Memilih objek asal lalu lingkaran acuan. Contoh ini menggunakan titik. |
 | [Inversi garis](./index.html#panduan/invertLine) | Menemukan bayangan garis terhadap lingkaran inversi. |
 | [Inversi lingkaran](./index.html#panduan/invertCircle) | Menemukan bayangan lingkaran terhadap lingkaran inversi. |
 

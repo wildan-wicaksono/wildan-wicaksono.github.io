@@ -10,15 +10,27 @@ header:
   teaser_alt: "Contoh diagram geometri yang dibuat di Studio TikZ"
 ---
 
+{% include studio-tikz-language.html language="id" id="/portfolio/studio-tikz/" en="/tools/studio-tikz/en/project.html" %}
+
 <p><a class="btn btn--primary" href="{{ '/tools/studio-tikz/index.html' | relative_url }}">Buka Studio TikZ</a> <a class="btn" href="#contoh-studio-tikz">Contoh dan kode LaTeX</a> <a class="btn" href="{{ '/tools/studio-tikz/index.html' | relative_url }}" download="Studio-TikZ.html">Unduh versi offline</a></p>
+
+Oleh **Wildan Bagus Wicaksono** · [Homepage](https://wildan-wicaksono.github.io/)
 
 Kalau sedang menyiapkan diagram untuk modul olimpiade, saya biasanya membuka GeoGebra, mencoba beberapa posisi titik sampai gambarnya enak dibaca, lalu melihat koordinatnya. Setelah itu saya pindah ke dokumen LaTeX dan mengetik TikZ secara manual. GeoGebra sebenarnya sudah menyediakan ekspor TikZ. Saya tetap sering menulis ulang kodenya karena punya kebiasaan sendiri dalam memberi nama titik, menempatkan label, memilih warna, dan menandai sudut.
 
 Saya membuat **Studio TikZ** supaya bisa menggambar dan melihat kode yang akan masuk ke modul di layar yang sama. Saya juga ingin orang yang sedang belajar TikZ bisa mengenal gaya penulisan saya. Coba buat satu ruas $AB$, klik ruasnya, lalu perhatikan baris kode yang disorot. Ubah garisnya menjadi putus-putus dan lihat apa yang berubah. Menurut saya, percobaan kecil seperti ini lebih mudah diikuti daripada membaca seluruh kode sebuah diagram sekaligus.
 
-Di sebelah **Lembar**, menu **Tata letak** mengatur letak kanvas dan kode. Saya memilih **Berdampingan** saat ingin melihat kode di kanan sambil menggambar. Untuk diagram yang lebar, **Bertumpuk** memberi kanvas selebar halaman dan meletakkan kode di bawahnya. **Otomatis** mengikuti lebar layar. Browser mengingat pilihan ini saat Studio dibuka lagi.
+Di sebelah **Lembar**, menu **Tata letak** mengatur letak kanvas dan kode. Saya memilih **Berdampingan** saat ingin melihat kode di kanan sambil menggambar. Untuk diagram yang lebar, **Bertumpuk** memberi kanvas selebar halaman dan meletakkan kode di bawahnya. **Otomatis** mengikuti lebar layar. Browser mengingat tata letak dan pilihan bahasa Indonesia atau Inggris. Untuk memeriksa bagian kecil diagram, fokuskan kanvas lalu tekan **+** atau **−**, atau pilih persentase pembesaran. **Skala TikZ** mengatur ukuran gambar yang dicetak.
 
 {% include studio-tikz-contoh.html %}
+
+## Merapikan diagram yang padat
+
+Saat garis memotong huruf $P$, geser dulu hurufnya. Jika ruangnya sempit, pilih titik $P$ lalu aktifkan **Latar label transparan**. Garis di bawah huruf masih terlihat dan warna teks tetap terbaca. Opsi ini juga tersedia untuk label bebas dan label sudut.
+
+Untuk mewarnai beberapa ruas sekaligus, aktifkan **Pilih / geser**, tahan **Ctrl** atau **⌘**, lalu klik ruas yang diinginkan. Panel **Objek** dapat mengatur warna dan menyembunyikan pilihan bersama. Isikan **Nama grup** lalu klik **Simpan grup** untuk memilih kembali kumpulan yang sama. Palet isian bangun memuat warna yang sama dengan palet garis tepinya. Ukuran penanda siku-siku bisa diatur tersendiri.
+
+Di menu **Titik dan garis**, pilih **Garis sumbu**, lalu klik ruas $AB$ atau kedua ujungnya. Garis yang muncul tegak lurus $AB$ tepat di tengahnya. Untuk membalik sebuah objek terhadap lingkaran, pilih **Transformasi → Inversi**, klik titik, garis, atau lingkaran yang akan dibalik, lalu lingkaran acuannya. **Transformasi → Refleksi** memakai urutan serupa. Klik objek asal, lalu titik pusat pencerminan atau garis cermin.
 
 ## Pusat segitiga dan garis bagi sudut
 
@@ -74,7 +86,7 @@ GIF di atas memperlihatkan satu diagram dari awal. Di dalam Studio, setiap alat 
   <figcaption>Geser $A$, $B$, atau $C$ untuk mengubah bentuk segitiga. Geser $D$ sepanjang $AB$ atau seret langsung ruas $DE$. Amati letak $E$ pada $AC$ ketika $DE$ tetap antiparalel terhadap $BC$. <a href="{{ '/tools/studio-tikz/latihan-antiparalel.html' | relative_url }}">Buka diagram antiparalel di halaman tersendiri.</a></figcaption>
 </figure>
 
-Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu mengamati satu klik, dan **Ulangi** mengembalikan animasi ke awal. Di bawah setiap animasi alat gambar, buka **Utak-atik contoh** untuk menggeser titik pada konstruksi yang baru diperagakan. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Seluruh 52 animasi alat dan 19 animasi editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
+Di kanvas, klik **?** di sebelah nama alat yang sedang dipakai, lalu **Putar animasi**. Klik **Jeda** jika ingin melihat letak kursor lebih lama. Tombol langkah sebelumnya dan berikutnya membantumu mengamati satu klik, dan **Ulangi** mengembalikan animasi ke awal. Di bawah setiap animasi alat gambar, buka **Utak-atik contoh** untuk menggeser titik pada konstruksi yang baru diperagakan. Lewat **Panduan alat**, kamu juga bisa mencari 19 topik editor, misalnya <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#panduan/editor-export">menyalin koordinat ke LaTeX</a>. Animasi alat dan panduan editor tersimpan di dalam HTML, jadi semuanya bisa diputar saat mengajar tanpa internet.
 
 <p><a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#katalog-animasi">Lihat katalog semua animasi</a> · <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}">Baca panduan pengguna</a></p>
 
@@ -103,7 +115,9 @@ Di beberapa diagram lama saya, label memakai `\contour{white}{...}` untuk member
 
 Kalau soal di AoPS menyertakan diagram dalam blok `[asy]`, salin bloknya, <a href="{{ '/tools/studio-tikz/index.html' | relative_url }}#asymptote">buka konverter Asymptote</a>, tempel kodenya, lalu pilih **Konversi ke TikZ**. Di editor, konverter ini juga bisa dibuka lewat **Tempel Asymptote** di sebelah **Buka file**. Misalnya, pada contoh **Persegi bersarang**, ubah `n = 25` menjadi `n = 5` dan konversi lagi untuk melihat pengaruh jumlah persegi. Periksa pratinjau, lalu salin TikZ dan preamble ke dokumenmu.
 
-Konverter membaca sebagian Asymptote 2D. Hasilnya berupa kode TikZ yang bisa disunting di dokumen LaTeX. Jika ada perintah yang belum didukung, Studio menunjukkan letaknya agar kamu bisa memperbaiki sumber sebelum menyalin gambar. <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops">Lihat contoh dan langkah konversi.</a>
+Konverter membaca sebagian Asymptote 2D, termasuk koordinat dalam daftar titik, proyeksi, perpotongan, dan beberapa transformasi. Contoh **Proyeksi dan pencerminan** bisa dicoba sebelum menempel kode soalmu sendiri. Hasilnya berupa kode TikZ yang bisa disunting di dokumen LaTeX. Jika ada perintah yang belum didukung, Studio menunjukkan letaknya agar kamu bisa memperbaiki sumber sebelum menyalin gambar. <a href="{{ '/tools/studio-tikz/panduan.html' | relative_url }}#menyalin-diagram-asymptote-dari-aops">Lihat contoh dan langkah konversi.</a>
+
+Untuk membawa diagram ke forum AoPS, buka opsi **Format AoPS** pada panel kode. Salin blok `[asy]…[/asy]` yang membungkus `tikzpicture` melalui `label(...)`. Teks di dalamnya tetap TikZ sehingga kamu bisa menyunting nama, posisi label, atau garis dengan cara yang sama.
 
 ## Kelebihan
 

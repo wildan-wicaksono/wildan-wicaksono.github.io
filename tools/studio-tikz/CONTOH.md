@@ -5,7 +5,9 @@ permalink: /tools/studio-tikz/contoh-penggunaan.html
 comments: false
 ---
 
-Contoh penggunaan dari **Wildan Bagus Wicaksono**. Berikut tiga diagram dari soal geometri yang saya gunakan. Di bawah setiap gambar, pilih **Buka di Studio** untuk menggeser titik dan melihat kodenya ikut berubah. Pilih **Unduh TikZ** untuk memakai gambar awal di modul.
+{% include studio-tikz-language.html language="id" id="/tools/studio-tikz/contoh-penggunaan.html" en="/tools/studio-tikz/en/examples.html" %}
+
+Contoh penggunaan dari **Wildan Bagus Wicaksono** · [Homepage](https://wildan-wicaksono.github.io/). Berikut tiga diagram dari soal geometri yang saya gunakan. Di bawah setiap gambar, pilih **Buka di Studio** untuk menggeser titik dan melihat kodenya ikut berubah. Pilih **Unduh TikZ** untuk memakai gambar awal di modul.
 
 ## Paket LaTeX
 
@@ -16,7 +18,7 @@ Untuk memakai palet warna yang sama di seluruh modul, taruh dua baris ini di pre
 \usepackage{tikz}
 ```
 
-Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar busur sudut. Baris itu sudah ada di awal potongan TikZ masing-masing dan boleh dipindahkan ke preamble. Contoh kedua memakai warna `MidnightBlue`, `PineGreen`, dan `BrickRed`. Ketiga contoh memakai satu label per titik. Jika kamu ingin menambahkan kembali efek kontur putih dengan perintah `\contour` seperti pada kode asli saya, sertakan juga `\usepackage{contour}`.
+Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar busur sudut. Baris itu sudah ada di awal potongan TikZ masing-masing dan boleh dipindahkan ke preamble. Contoh kedua memakai warna `MidnightBlue`, `PineGreen`, dan `BrickRed`. Ketiga contoh memakai satu label per titik. Jika suatu huruf berimpit dengan garis setelah titik digeser, aktifkan **Latar label transparan** pada label itu. Opsi ini memakai TikZ dan tidak memerlukan paket tambahan. Jika kamu ingin menambahkan kembali efek kontur putih dengan perintah `\contour` seperti pada kode asli saya, sertakan juga `\usepackage{contour}`.
 
 ## 1. Refleksi dan dua segiempat siklis
 
@@ -75,7 +77,7 @@ Contoh pertama dan ketiga memakai `\usetikzlibrary{angles}` untuk menggambar bus
 
 1. Pilih dua titik bebas $A$ dan $B$. Pilih **Busur dengan sudut**, masukkan $56^\circ$ dan pilih arah berlawanan jarum jam. Klik $B$ sebagai pusat, lalu $A$ sebagai titik awal. Dengan **Titik pada objek**, tempatkan $T$ di ujung lain busur dan $M$ di bagian dalamnya.
 2. Buat titik tengah $H$ dari $MT$. Tarik garis $BH$ dan $AM$, lalu beri nama titik potongnya $C$. Buat **Segitiga** $ABC$. Karena $BM=BT$, garis $BC$ adalah sumbu tegak lurus $MT$.
-3. Pakai **Refleksi terhadap garis** untuk mencerminkan $M$ terhadap $BC$. Namai bayangannya $N$ (posisinya berimpit dengan $T$). Potong $AN$ dengan sisi $BC$ untuk mendapatkan $O$. Buat lingkaran melalui $A,B,M$ dengan warna `PineGreen`. Untuk lingkaran melalui $A,B,C$, pilih `MidnightBlue` dengan garis bertitik.
+3. Pilih **Transformasi → Refleksi**, klik $M$, lalu garis $BC$. Namai bayangannya $N$ (posisinya berimpit dengan $T$). Potong $AN$ dengan sisi $BC$ untuk mendapatkan $O$. Buat lingkaran melalui $A,B,M$ dengan warna `PineGreen`. Untuk lingkaran melalui $A,B,C$, pilih `MidnightBlue` dengan garis bertitik.
 4. Hubungkan $B$ ke $M$ dan $N$, lalu $N$ ke $C$. Buat $MN$ putus-putus dengan warna `BrickRed` dan tebalkan $MO$. Dengan **Busur sudut**, klik $A,B,N$ lalu pilih **Besar sudut otomatis**. Untuk sudut yang ditanyakan, klik $C,M,N$ dan beri warna `BrickRed` pada busurnya. Sembunyikan objek bantu $T$, $H$, garis, dan busur awal.
 
 Coba geser $M$ di sepanjang bagian dalam busur bantunya. Bayangan $N$, titik $C$, dan kedua lingkaran mengikuti konstruksi, sedangkan label sudut di $B$ tetap menunjukkan $56^\circ$.
