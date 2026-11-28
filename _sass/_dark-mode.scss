@@ -19,19 +19,59 @@ $theme-dark-link-visited: #7ed4e8;
 /* Theme toggle ----------------------------------------------------------- */
 
 .masthead__menu {
-  position: relative;
-  padding-right: 2.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .masthead__menu > .greedy-nav {
+  flex: 1 1 auto;
   min-width: 0;
 }
 
+.language-switch {
+  display: flex;
+  align-items: center;
+  flex: none;
+  font-size: 0.82rem;
+  color: $masthead-link-color;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0 0.32rem;
+    color: inherit;
+  }
+
+  a[aria-current] {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  a:focus-visible {
+    outline: 2px solid currentColor;
+  }
+}
+
+html[data-theme="dark"] .language-switch {
+  color: $theme-dark-text;
+}
+
+@media (max-width: 36em) {
+  .masthead__menu-item--lg { padding-right: 0; }
+  .greedy-nav .visible-links .masthead__menu-item--lg a {
+    margin-right: 0;
+    max-width: calc(100vw - 12.5rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 .theme-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 30;
+  flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;

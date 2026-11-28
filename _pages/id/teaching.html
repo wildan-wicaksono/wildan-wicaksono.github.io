@@ -1,0 +1,13 @@
+---
+layout: archive
+title: "Pengajaran"
+permalink: /id/teaching/
+lang: id
+author_profile: true
+---
+
+{% for original in site.teaching reversed %}
+  {% assign localized_url = original.url | prepend: '/id' %}
+  {% assign post = site.pages | where: 'permalink', localized_url | first | default: original %}
+  {% include archive-single.html %}
+{% endfor %}

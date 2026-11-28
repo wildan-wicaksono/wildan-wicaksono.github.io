@@ -4,27 +4,36 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <button type="button" aria-label="Buka menu navigasi"><div class="navicon"></div></button>
+        <button type="button" aria-label="{{ ui.open_menu }}"><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}{% if language == 'id' %}/id{% endif %}/">{% if language == 'id' %}Beranda Wildan{% else %}{{ site.title }}{% endif %}</a></li>
           {% for link in site.data.navigation.main %}
-            {% if link.url contains 'http' %}
-              {% assign domain = '' %}
+            <li class="masthead__menu-item">
+              {% if language == 'id' %}
+                <a href="{{ link.url | prepend: '/id' | relative_url }}">{{ link.title_id }}</a>
               {% else %}
-              {% assign domain = base_path %}
-            {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+                <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
+              {% endif %}
+            </li>
           {% endfor %}
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>
 
+      {% if en_url and id_url %}
+        <nav class="language-switch" aria-label="Language / Bahasa">
+          <a href="{{ en_url | relative_url }}" hreflang="en" lang="en" aria-label="English"{% if language == 'en' %} aria-current="page"{% endif %}>EN</a>
+          <span aria-hidden="true">/</span>
+          <a href="{{ id_url | relative_url }}" hreflang="id" lang="id" aria-label="Bahasa Indonesia"{% if language == 'id' %} aria-current="page"{% endif %}>ID</a>
+        </nav>
+      {% endif %}
       <button id="theme-toggle"
               class="theme-toggle"
               type="button"
-              aria-label="Aktifkan mode gelap"
+              data-dark-label="{{ ui.dark_mode }}" data-light-label="{{ ui.light_mode }}"
+              aria-label="{{ ui.dark_mode }}"
               aria-pressed="false"
-              title="Aktifkan mode gelap">
+              title="{{ ui.dark_mode }}">
         <i class="fa-solid fa-sun theme-toggle__sun" aria-hidden="true"></i>
         <i class="fa-solid fa-moon theme-toggle__moon" aria-hidden="true"></i>
       </button>

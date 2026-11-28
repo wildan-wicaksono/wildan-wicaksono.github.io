@@ -7,12 +7,12 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "Indonesia"
+locale                   : "en-US"
 title                    : "Wildan's Homepage"
 title_separator          : "-"
 name                     : &name "Wildan Bagus Wicaksono"
 description              : &description "Mathematics graduate interested in number theory, olympiad instructor for elementary through senior high school students, and author."
-URL                      : "https://wildan-wicaksono.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://wildan-wicaksono.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "wildan-wicaksono.github.io"
 
@@ -25,7 +25,9 @@ author:
   name             : "Wildan Bagus Wicaksono"
   pronouns         : # example: "she/her"  
   bio              : "Mathematics graduate, olympiad instructor, and author."
+  bio_id           : "Lulusan matematika, pengajar olimpiade, dan penulis."
   location         : "East Java, Indonesia"
+  location_id      : "Jawa Timur, Indonesia"
   employer         : "Universitas Brawijaya"
   uri              : # URL
   email            : "wildan.b.wicaksono@gmail.com" 
@@ -222,6 +224,10 @@ collections:
 
 # Defaults
 defaults:
+  - scope:
+      path: ""
+    values:
+      lang: en
   # _posts
   - scope:
       path: ""

@@ -1,5 +1,6 @@
 ---
 layout: single
+lang: id
 title: "Tiga contoh penggunaan Studio TikZ"
 permalink: /tools/studio-tikz/contoh-penggunaan.html
 comments: false

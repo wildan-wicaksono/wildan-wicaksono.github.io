@@ -1,0 +1,70 @@
+{% assign copy_key = 'exams_' | append: page.lang %}
+{% assign copy = site.data.project_text[copy_key] %}
+<link rel="stylesheet" href="/assets/css/resource-pages.css">
+
+{% assign exam_groups = site.data.exam_ub %}
+{% assign title_key = 'title_' | append: page.lang %}
+{% assign kicker_key = 'kicker_' | append: page.lang %}
+{% assign description_key = 'description_' | append: page.lang %}
+
+<div class="resource-page">
+  <section class="rp-hero">
+    <span class="rp-eyebrow">{{ copy.hero_label }}</span>
+    <h1>{{ copy.title }}</h1>
+    <p class="rp-hero-copy">{{ copy.intro }}</p>
+    <div class="rp-stats" aria-label="{{ copy.summary }}">
+      <span>{{ copy.pdfs }}</span>
+      <span>{{ copy.courses }}</span>
+      <span>2017–2025</span>
+      <span>Bahasa Indonesia</span>
+    </div>
+    <nav class="rp-jumps" aria-label="{{ copy.jump }}">
+      {% for group in exam_groups %}
+        <a href="#{{ group.id }}">{{ group[title_key] | default: group.title }}</a>
+      {% endfor %}
+    </nav>
+  </section>
+
+  <aside class="rp-notice">
+    <strong>PDF</strong>
+    <div>{{ copy.notice }}</div>
+  </aside>
+
+  {% for group in exam_groups %}
+    <section class="rp-section" id="{{ group.id }}">
+      <div class="rp-section-head">
+        <div>
+          <span class="rp-section-kicker">{{ group[kicker_key] | default: group.kicker }}</span>
+          <h2>{{ group[title_key] | default: group.title }}</h2>
+          <p>{{ group[description_key] | default: group.description }}</p>
+        </div>
+        <span class="rp-count">{{ group.count }} {{ copy.files }}</span>
+      </div>
+
+      <div class="rp-grid">
+        {% for course in group.courses %}
+          <article class="rp-card">
+            <div class="rp-card-top">
+              <div>
+                <h3>{{ course.title }}</h3>
+                {% if page.lang == 'en' %}<p class="rp-card-subtitle">{{ course.subtitle }}</p>{% elsif course.note_id %}<p class="rp-card-subtitle">{{ course.note_id }}</p>{% endif %}
+              </div>
+              <span class="rp-badge">{{ course.count }} PDF{% if page.lang == 'en' and course.count != 1 %}s{% endif %}</span>
+            </div>
+
+            {% for exam in course.exams %}
+              <div class="rp-row">
+                <span class="rp-row-label">{{ copy[exam.type] | default: exam.type }}</span>
+                <div class="rp-files">
+                  {% for file in exam.files %}
+                    <a class="rp-file" href="{{ file.path | relative_url }}" target="_blank" rel="noopener noreferrer">{{ file.year }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>

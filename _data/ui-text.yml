@@ -3,6 +3,21 @@
 # English (default)
 # -----------------
 en: &DEFAULT_EN
+  open_menu                  : "Open navigation menu"
+  dark_mode                  : "Switch to dark mode"
+  light_mode                 : "Switch to light mode"
+  follow_button              : "Follow"
+  sitemap                    : "Sitemap"
+  fork_of                    : "a fork of"
+  book                       : "Book"
+  thesis                     : "Undergraduate thesis"
+  published_in               : "Published in"
+  preprint_on                 : "Preprint on"
+  download_paper             : "Download paper"
+  download_thesis            : "Download thesis (PDF)"
+  download_slides            : "Download slides"
+  read_more                  : "Read more"
+  recommended_citation       : "Recommended citation:"
   page                       : "Page"
   pagination_previous        : "Previous"
   pagination_next            : "Next"
@@ -47,6 +62,44 @@ en-GB:
   <<: *DEFAULT_EN
 en-AU:
   <<: *DEFAULT_EN
+
+# Indonesian
+id:
+  <<: *DEFAULT_EN
+  open_menu                  : "Buka menu navigasi"
+  dark_mode                  : "Aktifkan mode gelap"
+  light_mode                 : "Aktifkan mode terang"
+  follow_button              : "Ikuti"
+  sitemap                    : "Peta situs"
+  fork_of                    : "yang dikembangkan dari"
+  page                       : "Halaman"
+  pagination_previous        : "Sebelumnya"
+  pagination_next            : "Berikutnya"
+  breadcrumb_home_label      : "Beranda"
+  ext_link_label             : "Tautan langsung"
+  less_than                  : "kurang dari"
+  minute_read                : "menit baca"
+  share_on_label             : "Bagikan di"
+  tags_label                 : "Tag:"
+  categories_label           : "Kategori:"
+  date_label                 : "Terbit pada"
+  comments_label             : "Tulis komentar"
+  comments_title             : "Komentar"
+  related_label              : "Tulisan terkait"
+  follow_label               : "Ikuti:"
+  feed_label                 : "Umpan RSS"
+  powered_by                 : "Dibuat dengan"
+  website_label              : "Situs web"
+  email_label                : "Surel"
+  book                       : "Buku"
+  thesis                     : "Skripsi"
+  published_in               : "Terbit di"
+  preprint_on                 : "Prapublikasi di"
+  download_paper             : "Unduh makalah"
+  download_thesis            : "Unduh skripsi (PDF)"
+  download_slides            : "Unduh salindia"
+  read_more                  : "Baca selengkapnya"
+  recommended_citation       : "Saran sitasi:"
 
 # Spanish
 # --------------
@@ -95,6 +148,21 @@ es-CO:
 # French
 # -----------------
 fr: &DEFAULT_FR
+  open_menu                  : "Open navigation menu"
+  dark_mode                  : "Switch to dark mode"
+  light_mode                 : "Switch to light mode"
+  follow_button              : "Follow"
+  sitemap                    : "Sitemap"
+  fork_of                    : "a fork of"
+  book                       : "Book"
+  thesis                     : "Undergraduate thesis"
+  published_in               : "Published in"
+  preprint_on                 : "Preprint on"
+  download_paper             : "Download paper"
+  download_thesis            : "Download thesis (PDF)"
+  download_slides            : "Download slides"
+  read_more                  : "Read more"
+  recommended_citation       : "Recommended citation:"
   page                       : "Page"
   pagination_previous        : "Précédent"
   pagination_next            : "Suivant"

@@ -69,7 +69,7 @@
     if (!toggle) return;
 
     var isDark = theme === DARK;
-    var label = isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap";
+    var label = isDark ? toggle.dataset.lightLabel : toggle.dataset.darkLabel;
     toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
     toggle.setAttribute("aria-label", label);
     toggle.setAttribute("title", label);

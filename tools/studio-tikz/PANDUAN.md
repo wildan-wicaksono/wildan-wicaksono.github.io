@@ -1,5 +1,6 @@
 ---
 layout: single
+lang: id
 title: "Panduan Studio TikZ"
 permalink: /tools/studio-tikz/panduan.html
 comments: false

@@ -6,6 +6,7 @@
 - published: true
   anonymous: true
   reading_note: "Telah membaca seluruh buku"
+  reading_note_en: "Read the entire book"
   paragraphs:
     - "Sangat baik, **penjelasan yang jelas**, disertai dengan bukti rumus yang baik dan **soal-soal banyak dan bervariasi**."
     - "Mungkin untuk ke depannya bisa diterbitkan buku AOG baru, namun untuk level OSN Nasional–IMO."

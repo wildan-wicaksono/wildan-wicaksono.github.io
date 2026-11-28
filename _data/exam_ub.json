@@ -4,6 +4,9 @@
     "kicker": "Core structures",
     "title": "Algebra and discrete mathematics",
     "description": "Linear algebra, algebraic structures, number theory, and discrete mathematics.",
+    "kicker_id": "Struktur dasar",
+    "title_id": "Aljabar dan matematika diskret",
+    "description_id": "Aljabar linier, struktur aljabar, teori bilangan, dan matematika diskret.",
     "count": 16,
     "courses": [
       {
@@ -205,6 +208,9 @@
     "kicker": "Analysis",
     "title": "Analysis and differential equations",
     "description": "Real and complex analysis, special functions, differential equations, and measure theory.",
+    "kicker_id": "Analisis",
+    "title_id": "Analisis dan persamaan diferensial",
+    "description_id": "Analisis real dan kompleks, fungsi khusus, persamaan diferensial, dan teori ukuran.",
     "count": 25,
     "courses": [
       {
@@ -457,6 +463,9 @@
     "kicker": "Foundations",
     "title": "Calculus and geometry",
     "description": "Calculus sequences, foundational mathematics, and analytic geometry.",
+    "kicker_id": "Dasar-dasar matematika",
+    "title_id": "Kalkulus dan geometri",
+    "description_id": "Rangkaian mata kuliah kalkulus, matematika dasar, dan geometri analitik.",
     "count": 16,
     "courses": [
       {
@@ -582,6 +591,7 @@
       {
         "title": "Matematika Dasar I",
         "subtitle": "Calculus I for actuarial students",
+        "note_id": "Kalkulus I untuk mahasiswa aktuaria",
         "count": 1,
         "exams": [
           {
@@ -598,6 +608,7 @@
       {
         "title": "Matematika Dasar II",
         "subtitle": "Calculus II for actuarial students",
+        "note_id": "Kalkulus II untuk mahasiswa aktuaria",
         "count": 2,
         "exams": [
           {
@@ -627,6 +638,9 @@
     "kicker": "Probability",
     "title": "Probability and statistics",
     "description": "Introductory probability and mathematical statistics.",
+    "kicker_id": "Peluang",
+    "title_id": "Peluang dan statistika",
+    "description_id": "Pengantar peluang dan statistika matematika.",
     "count": 4,
     "courses": [
       {

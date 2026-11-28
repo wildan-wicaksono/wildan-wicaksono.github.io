@@ -4,8 +4,31 @@ layout: compress
 
 {% include base_path %}
 
+{% assign language = page.lang | default: 'en' %}
+{% assign ui = site.data.ui-text[language] %}
+{% if page.collection == 'posts' %}
+  {% if page.translation_key %}
+    {% assign editions = site.posts | where: "translation_key", page.translation_key %}
+    {% assign english = editions | where: "lang", "en" | first %}
+    {% assign indonesian = editions | where: "lang", "id" | first %}
+    {% assign en_url = english.url %}
+    {% assign id_url = indonesian.url %}
+  {% endif %}
+{% else %}
+  {% assign prefix = page.url | slice: 0, 4 %}
+  {% if language == 'id' and prefix == '/id/' %}
+    {% assign id_url = page.url %}
+    {% assign en_url = page.url | remove_first: '/id' %}
+  {% elsif language == 'en' %}
+    {% assign candidate = page.url | prepend: '/id' %}
+    {% assign counterpart = site.pages | where: 'permalink', candidate | first %}
+    {% assign en_url = page.url %}
+    {% assign id_url = counterpart.permalink %}
+  {% endif %}
+{% endif %}
+
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<html lang="{{ language }}" class="no-js">
   <head>
     {% include head.html %}
     {% include head/custom.html %}

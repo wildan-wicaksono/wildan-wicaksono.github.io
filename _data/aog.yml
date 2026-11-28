@@ -1,0 +1,8 @@
+# Tautan formulir untuk akses Bab 1 dan Bab 6.
+free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
+# Tautan pemesanan buku melalui NEC.
+order_url: "https://bit.ly/pesanbukuNEC"
+# Tautan formulir penilaian pembaca.
+rating_form_url: "https://docs.google.com/forms/d/e/1FAIpQLScFbnVA2ggSBfE6rx8Gs6uMcuDyvpYzDyaaAtsK9aA59U3lZA/viewform?usp=publish-editor"
+# Endpoint publik yang hanya mengembalikan rata-rata dan jumlah penilaian.
+rating_api_url: "https://script.google.com/macros/s/AKfycbxh_N2aBYahJVDlaH1irqZaOU0_M2MJXnCH-xlb0_LmtSnu0--IRF528c3lMVAOJDWa/exec"

@@ -1,0 +1,7 @@
+{% include group-by-array collection=site.posts field=include.field %}
+
+{% for name in group_names %}
+  {% assign tagged_posts = group_items[forloop.index0] %}
+  <h2 id="{{ name | slugify }}" class="archive__subtitle">{{ name }}</h2>
+  {% include blog-post-list.html posts=tagged_posts %}
+{% endfor %}

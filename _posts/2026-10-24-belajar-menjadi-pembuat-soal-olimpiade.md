@@ -1,4 +1,5 @@
 ---
+lang: id
 layout: single
 title: "Membuat Soal: Sebuah Latihan Panjang"
 date: 2026-10-24 00:00:00 +0700

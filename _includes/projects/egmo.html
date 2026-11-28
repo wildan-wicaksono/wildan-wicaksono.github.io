@@ -1,0 +1,61 @@
+{% assign copy_key = 'egmo_' | append: page.lang %}
+{% assign copy = site.data.project_text[copy_key] %}
+<link rel="stylesheet" href="/assets/css/resource-pages.css">
+
+<div class="resource-page">
+  <section class="rp-hero">
+    <span class="rp-eyebrow">{{ copy.hero_label }}</span>
+    <h1>Euclidean Geometry in Mathematical Olympiads</h1>
+    <p class="rp-hero-copy">{{ copy.intro }}</p>
+    <div class="rp-stats" aria-label="{{ copy.summary }}">
+      <span>{{ copy.chapters }}</span>
+      <span>{{ copy.contents }}</span>
+      <span>Bahasa Indonesia</span>
+    </div>
+  </section>
+
+  <aside class="rp-notice">
+    <strong>PDF</strong>
+    <div>{{ copy.notice }}</div>
+  </aside>
+
+  <section class="rp-section" id="chapter-handouts">
+    <div class="rp-section-head">
+      <div>
+        <span class="rp-section-kicker">{{ copy.label }}</span>
+        <h2>{{ copy.heading }}</h2>
+        <p>{{ copy.lead }}</p>
+      </div>
+      <span class="rp-count">{{ copy.count }}</span>
+    </div>
+
+    <div class="rp-grid rp-grid--three">
+      <article class="rp-card rp-chapter-card">
+        <span class="rp-number">01</span>
+        <h3>{{ copy.angles }}</h3>
+        <p class="rp-updated">{{ copy.updated }}<time datetime="2022-05-18">{{ copy.may }}</time></p>
+        <div class="rp-files">
+          <a class="rp-file rp-file--primary" href="/files/EGMO_Chap1.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open }} 1</a>
+        </div>
+      </article>
+
+      <article class="rp-card rp-chapter-card">
+        <span class="rp-number">02</span>
+        <h3>{{ copy.circles }}</h3>
+        <p class="rp-updated">{{ copy.updated }}<time datetime="2022-05-18">{{ copy.may }}</time></p>
+        <div class="rp-files">
+          <a class="rp-file rp-file--primary" href="/files/EGMO_Chap2.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open }} 2</a>
+        </div>
+      </article>
+
+      <article class="rp-card rp-chapter-card">
+        <span class="rp-number">03</span>
+        <h3>{{ copy.ratios }}</h3>
+        <p class="rp-updated">{{ copy.updated }}<time datetime="2022-07-12">{{ copy.july }}</time></p>
+        <div class="rp-files">
+          <a class="rp-file rp-file--primary" href="/files/EGMO_Chap3.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open }} 3</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

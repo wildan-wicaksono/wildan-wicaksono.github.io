@@ -1,17 +1,10 @@
 ---
+lang: en
 title: "The Art of Olympiad Geometry"
-excerpt: "Buku geometri olimpiade berbahasa Indonesia yang disusun bertahap dari konsep dasar menuju pemecahan masalah."
+excerpt: "An Indonesian-language introduction to olympiad geometry, with proofs, worked examples and problems for middle and high school students."
 collection: portfolio
 permalink: /portfolio/the-art-of-olympiad-geometry/
 date: 2026-08-17 00:00:00 +0700
-# Tautan formulir untuk akses Bab 1 dan Bab 6.
-free_chapter_form_url: "https://forms.gle/VKCMBHfYQ3FP1FhC8"
-# Tautan pemesanan buku melalui NEC.
-order_url: "https://bit.ly/pesanbukuNEC"
-# Tautan formulir penilaian pembaca.
-rating_form_url: "https://docs.google.com/forms/d/e/1FAIpQLScFbnVA2ggSBfE6rx8Gs6uMcuDyvpYzDyaaAtsK9aA59U3lZA/viewform?usp=publish-editor"
-# Endpoint publik yang hanya mengembalikan rata-rata dan jumlah penilaian.
-rating_api_url: "https://script.google.com/macros/s/AKfycbxh_N2aBYahJVDlaH1irqZaOU0_M2MJXnCH-xlb0_LmtSnu0--IRF528c3lMVAOJDWa/exec"
 published: true
 author_profile: true
 share: false
@@ -20,902 +13,155 @@ header:
   teaser: /images/the-art-of-olympiad-geometry-cover.png
 ---
 
-<style>
-  .page {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-width: 0;
-  }
-
-  @media (min-width: 925px) {
-    #main {
-      display: grid;
-      grid-template-columns: minmax(185px, 225px) minmax(0, 1fr);
-      column-gap: clamp(1.5rem, 3vw, 2.5rem);
-      align-items: start;
-    }
-
-    #main > .sidebar {
-      position: sticky !important;
-      top: 70px;
-      float: none !important;
-      grid-column: 1;
-      width: 100% !important;
-      max-width: 225px;
-      height: calc(100vh - 70px);
-      margin: 0;
-      padding-top: 1rem !important;
-      overflow-y: auto;
-    }
-
-    #main > .page {
-      grid-column: 2;
-      min-width: 0;
-    }
-  }
-
-  .page__inner-wrap > header { display: none; }
-
-  .book-page {
-    --book-navy: #0b1a29;
-    --book-navy-soft: #14283b;
-    --book-cyan: #1edff2;
-    --book-cyan-soft: #dffbff;
-    --book-ink: #243342;
-    --book-muted: #647586;
-    --book-line: #dbe5eb;
-    color: var(--book-ink);
-  }
-
-  .book-page * { box-sizing: border-box; }
-
-  .book-page a { text-decoration: none; }
-  .book-page h2 { padding-bottom: 0; border-bottom: 0; }
-
-  .book-hero {
-    display: grid;
-    grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1.45fr);
-    gap: clamp(2rem, 6vw, 4.5rem);
-    align-items: center;
-    margin: 0.5rem 0 3.5rem;
-    padding: clamp(1.4rem, 4vw, 3rem);
-    color: #fff;
-    background:
-      radial-gradient(circle at 87% 12%, rgba(30, 223, 242, 0.22), transparent 26%),
-      linear-gradient(145deg, var(--book-navy), var(--book-navy-soft));
-    border-radius: 18px;
-    overflow: hidden;
-  }
-
-  .book-cover {
-    display: block;
-    width: 100%;
-    max-width: 310px;
-    margin: 0 auto;
-    border-radius: 5px;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.42);
-  }
-
-  .book-kicker {
-    margin: 0 0 0.7rem;
-    color: var(--book-cyan);
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-  }
-
-  .book-hero h2 {
-    margin: 0 0 1rem;
-    color: #fff;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.04;
-  }
-
-  .book-subtitle {
-    margin: 0 0 1.35rem;
-    color: #d5e8f1;
-    font-size: clamp(1rem, 2vw, 1.18rem);
-    line-height: 1.7;
-  }
-
-  .book-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .book-badge {
-    padding: 0.4rem 0.7rem;
-    color: #eafcff;
-    background: rgba(255, 255, 255, 0.09);
-    border: 1px solid rgba(255, 255, 255, 0.17);
-    border-radius: 999px;
-    font-size: 0.76rem;
-    font-weight: 700;
-  }
-
-  .book-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .book-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0.72rem 1rem;
-    color: var(--book-navy) !important;
-    background: var(--book-cyan);
-    border: 1px solid var(--book-cyan);
-    border-radius: 8px;
-    font-size: 0.86rem;
-    font-weight: 800;
-    transition: transform 0.18s ease, background 0.18s ease;
-  }
-
-  .book-button:hover {
-    color: var(--book-navy) !important;
-    background: #8df4ff;
-    transform: translateY(-1px);
-  }
-
-  .book-button--secondary {
-    color: #fff !important;
-    background: transparent;
-    border-color: rgba(255, 255, 255, 0.35);
-  }
-
-  .book-button--secondary:hover {
-    color: #fff !important;
-    background: rgba(255, 255, 255, 0.09);
-  }
-
-  .book-section { margin: 3.5rem 0; }
-
-  .book-section-label {
-    display: block;
-    margin-bottom: 0.45rem;
-    color: #008da0;
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .book-section h2 {
-    margin: 0 0 1rem;
-    color: var(--book-navy);
-    font-size: clamp(1.55rem, 3vw, 2.1rem);
-  }
-
-  .book-lead {
-    max-width: none;
-    color: #435668;
-    font-size: 1.02rem;
-    line-height: 1.8;
-  }
-
-  .book-stats {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.8rem;
-    margin: 2rem 0 0;
-  }
-
-  .book-stat {
-    padding: 1.1rem;
-    background: #f5fafc;
-    border: 1px solid var(--book-line);
-    border-radius: 10px;
-  }
-
-  .book-stat strong {
-    display: block;
-    margin-bottom: 0.2rem;
-    color: var(--book-navy);
-    font-size: 1.35rem;
-  }
-
-  .book-stat span {
-    color: var(--book-muted);
-    font-size: 0.8rem;
-  }
-
-  .book-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  .book-card {
-    padding: 1.35rem;
-    background: #fff;
-    border: 1px solid var(--book-line);
-    border-radius: 12px;
-  }
-
-  .book-card h3 {
-    margin: 0 0 0.75rem;
-    color: var(--book-navy);
-    font-size: 1rem;
-  }
-
-  .book-card p,
-  .book-card li {
-    color: #536576;
-    font-size: 0.88rem;
-    line-height: 1.65;
-  }
-
-  .book-card ol,
-  .book-card ul {
-    margin: 0;
-    padding-left: 1.2rem;
-  }
-
-  .book-card li + li { margin-top: 0.35rem; }
-
-  .book-chapter-stats-heading {
-    margin: 1.75rem 0 0.85rem;
-    color: var(--book-navy);
-    font-size: 1rem;
-  }
-
-  .book-chapter-stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.65rem;
-  }
-
-  .book-chapter-stat {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.25rem 0.75rem;
-    align-items: baseline;
-    padding: 0.85rem 1rem;
-    background: #f5fafc;
-    border: 1px solid var(--book-line);
-    border-radius: 9px;
-  }
-
-  .book-chapter-stat strong {
-    color: var(--book-navy);
-    font-size: 0.86rem;
-  }
-
-  .book-chapter-stat span {
-    color: #008da0;
-    font-size: 0.82rem;
-    font-weight: 800;
-    white-space: nowrap;
-  }
-
-  .book-chapter-stat small {
-    grid-column: 1 / -1;
-    color: var(--book-muted);
-    font-size: 0.72rem;
-  }
-
-  .book-chapter-stats-note {
-    margin: 0.75rem 0 0 !important;
-    color: var(--book-muted);
-    font-size: 0.76rem;
-  }
-
-  .book-toc-disclosure {
-    margin-top: 1rem;
-    background: #f5fafc;
-    border: 1px solid var(--book-line);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .book-toc-disclosure > summary {
-    position: relative;
-    padding: 1rem 3rem 1rem 1.2rem;
-    color: var(--book-navy);
-    cursor: pointer;
-    font-weight: 800;
-    list-style: none;
-  }
-
-  .book-toc-disclosure > summary::-webkit-details-marker,
-  .book-chapter > summary::-webkit-details-marker { display: none; }
-
-  .book-toc-disclosure > summary::after,
-  .book-chapter > summary::after {
-    content: "+";
-    position: absolute;
-    right: 1.1rem;
-    color: #008da0;
-    font-size: 1.15rem;
-    line-height: 1;
-  }
-
-  .book-toc-disclosure[open] > summary::after,
-  .book-chapter[open] > summary::after { content: "\2212"; }
-
-  .book-toc-content {
-    padding: 1.25rem 1.2rem 1.2rem;
-    border-top: 1px solid var(--book-line);
-  }
-
-  .book-toc-note {
-    margin: 0 0 1.25rem !important;
-    color: var(--book-muted);
-    font-size: 0.82rem;
-  }
-
-  .book-chapter-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.65rem;
-    align-items: start;
-  }
-
-  .book-chapter-column {
-    display: grid;
-    gap: 0.65rem;
-    align-content: start;
-  }
-
-  .book-chapter {
-    background: #fff;
-    border: 1px solid var(--book-line);
-    border-radius: 8px;
-  }
-
-  .book-chapter > summary {
-    position: relative;
-    padding: 0.85rem 2.6rem 0.85rem 1rem;
-    color: var(--book-navy);
-    cursor: pointer;
-    font-size: 0.86rem;
-    font-weight: 800;
-    line-height: 1.45;
-    list-style: none;
-  }
-
-  .book-chapter > summary::after {
-    right: 0.9rem;
-    top: 1rem;
-  }
-
-  .book-chapter ol {
-    margin: 0;
-    padding: 0 1rem 1rem 2.25rem;
-  }
-
-  .book-chapter li {
-    color: #536576;
-    font-size: 0.8rem;
-    line-height: 1.55;
-  }
-
-  .book-chapter li + li { margin-top: 0.28rem; }
-
-  .book-chapter ul {
-    margin: 0.3rem 0 0;
-    padding-left: 1.05rem;
-  }
-
-  .book-features {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.85rem 1.4rem;
-    margin-top: 1.5rem;
-  }
-
-  .book-feature {
-    position: relative;
-    margin: 0;
-    padding: 0.95rem 1rem 0.95rem 2.7rem;
-    color: #435668;
-    background: var(--book-cyan-soft);
-    border-radius: 9px;
-    line-height: 1.55;
-  }
-
-  .book-feature::before {
-    content: "\2713";
-    position: absolute;
-    left: 1rem;
-    color: #007e8e;
-    font-weight: 900;
-  }
-
-  .book-problems {
-    padding: clamp(1.3rem, 4vw, 2.2rem);
-    background: #fff;
-    border: 1px solid var(--book-line);
-    border-radius: 14px;
-  }
-
-  .book-problem-list {
-    display: grid;
-    gap: 0.7rem;
-    margin-top: 1.4rem;
-  }
-
-  .book-problem {
-    background: #f5fafc;
-    border: 1px solid var(--book-line);
-    border-radius: 9px;
-    overflow: hidden;
-  }
-
-  .book-problem > summary {
-    position: relative;
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    padding: 0.9rem 3rem 0.9rem 1rem;
-    color: var(--book-navy);
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 800;
-    line-height: 1.45;
-    list-style: none;
-  }
-
-  .book-problem > summary::-webkit-details-marker { display: none; }
-
-  .book-problem > summary::after {
-    content: "+";
-    position: absolute;
-    right: 1rem;
-    color: #008da0;
-    font-size: 1.15rem;
-    line-height: 1;
-  }
-
-  .book-problem[open] > summary::after { content: "\2212"; }
-
-  .book-problem-number {
-    display: inline-grid;
-    flex: 0 0 1.75rem;
-    width: 1.75rem;
-    height: 1.75rem;
-    place-items: center;
-    color: var(--book-navy);
-    background: var(--book-cyan);
-    border-radius: 50%;
-    font-size: 0.78rem;
-  }
-
-  .book-problem-body {
-    padding: 1rem 1.15rem 1.15rem;
-    border-top: 1px solid var(--book-line);
-  }
-
-  .book-problem-body p {
-    margin: 0;
-    color: #435668;
-    line-height: 1.75;
-  }
-
-  .book-problem-body p + p { margin-top: 0.8rem; }
-
-  .book-problem-equation {
-    overflow-x: auto;
-    padding: 0.2rem 0;
-    color: var(--book-navy);
-    text-align: center;
-  }
-
-  .book-samples {
-    padding: clamp(1.3rem, 4vw, 2.2rem);
-    background: #f5fafc;
-    border: 1px solid var(--book-line);
-    border-radius: 14px;
-  }
-
-  .book-sample-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.85rem;
-    margin-top: 1.2rem;
-  }
-
-  .book-sample {
-    display: block;
-    padding: 1rem;
-    color: #536576;
-    background: #fff;
-    border: 1px solid #b9c8d1;
-    border-radius: 9px;
-  }
-
-  .book-sample strong {
-    display: block;
-    margin-bottom: 0.2rem;
-    color: var(--book-navy);
-  }
-
-  .book-note {
-    margin: 1rem 0 0;
-    color: var(--book-muted);
-    font-size: 0.78rem;
-  }
-
-  .book-usage {
-    margin: 1rem 0 0;
-    padding: 0.85rem 1rem;
-    color: #435668;
-    background: var(--book-cyan-soft);
-    border-left: 4px solid #008da0;
-    border-radius: 7px;
-    font-size: 0.86rem;
-    line-height: 1.6;
-  }
-
-  .book-usage strong { color: var(--book-navy); }
-
-  .book-form-action {
-    margin-top: 1.15rem;
-  }
-
-  .book-form-note {
-    margin: 1.25rem 0 0 !important;
-    color: var(--book-muted);
-    font-size: 0.78rem;
-    line-height: 1.55;
-  }
-
-  .book-button--disabled {
-    color: #657785 !important;
-    background: #dce8ed;
-    border-color: #dce8ed;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  .book-errata {
-    padding: clamp(1.3rem, 4vw, 2.2rem);
-    background: #fff;
-    border: 1px solid var(--book-line);
-    border-radius: 14px;
-  }
-
-  .book-errata-format {
-    margin: 1.25rem 0;
-    padding: 1rem 1.2rem;
-    color: #536576;
-    background: #f5fafc;
-    border-radius: 9px;
-  }
-
-  .book-errata-format p { margin: 0 0 0.65rem; }
-  .book-errata-format ul { margin: 0; }
-  .book-errata-format code { color: var(--book-navy); }
-
-  .book-errata .book-actions + .book-note {
-    margin-top: 1.25rem !important;
-  }
-
-  .book-order {
-    padding: clamp(1.3rem, 4vw, 2.2rem);
-    background: #fff;
-    border: 1px solid var(--book-line);
-    border-radius: 14px;
-  }
-
-  .book-order-steps {
-    display: grid;
-    gap: 0.8rem;
-    margin: 1.4rem 0 0;
-    padding: 0;
-    list-style: none;
-    counter-reset: order-step;
-  }
-
-  .book-price-card {
-    display: flex;
-    align-items: center;
-    margin: 1.4rem 0 0;
-    padding: clamp(1.1rem, 3vw, 1.5rem);
-    color: #fff;
-    background:
-      radial-gradient(circle at 90% 10%, rgba(30, 223, 242, 0.18), transparent 38%),
-      var(--book-navy);
-    border-radius: 12px;
-  }
-
-  .book-price-label {
-    display: block;
-    margin-bottom: 0.35rem;
-    color: var(--book-cyan);
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-  }
-
-  .book-price-card .book-price-current {
-    margin: 0;
-    color: #fff;
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
-    font-weight: 900;
-    line-height: 1.1;
-  }
-
-  .book-order-steps li {
-    position: relative;
-    min-height: 3.1rem;
-    padding: 0.85rem 1rem 0.85rem 3.75rem;
-    color: #435668;
-    background: #f5fafc;
-    border-radius: 9px;
-    line-height: 1.65;
-    counter-increment: order-step;
-  }
-
-  .book-order-steps li::before {
-    content: counter(order-step);
-    position: absolute;
-    top: 0.78rem;
-    left: 1rem;
-    display: grid;
-    width: 2rem;
-    height: 2rem;
-    place-items: center;
-    color: var(--book-navy);
-    background: var(--book-cyan);
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: 800;
-  }
-
-  .book-order-contact {
-    margin: 1.25rem 0 0;
-    padding: 0.9rem 1rem;
-    color: #435668;
-    background: var(--book-cyan-soft);
-    border-left: 4px solid #008da0;
-    border-radius: 7px;
-    line-height: 1.65;
-  }
-
-  .book-order .book-actions { margin-top: 1.25rem; }
-
-  .book-info {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-    margin: 1.5rem 0 0;
-    border: 1px solid var(--book-line);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .book-info div {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid var(--book-line);
-  }
-
-  .book-info div:nth-child(odd) { border-right: 1px solid var(--book-line); }
-  .book-info div:nth-last-child(-n + 2) { border-bottom: 0; }
-
-  .book-info dt {
-    margin-bottom: 0.2rem;
-    color: var(--book-muted);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .book-info dd {
-    margin: 0;
-    color: var(--book-navy);
-    font-size: 0.9rem;
-    font-weight: 700;
-  }
-
-  .book-closing {
-    margin-top: 3.5rem;
-    padding: clamp(1.4rem, 4vw, 2.4rem);
-    color: #fff;
-    text-align: center;
-    background: var(--book-navy);
-    border-radius: 14px;
-  }
-
-  .book-closing h2 {
-    margin: 0 0 0.7rem;
-    color: #fff;
-  }
-
-  .book-closing p {
-    max-width: 620px;
-    margin: 0 auto;
-    color: #c9dbe4;
-    line-height: 1.7;
-  }
-
-  .book-closing .book-actions {
-    justify-content: center;
-    margin-top: 1.15rem;
-  }
-
-  @media (max-width: 760px) {
-    .book-hero { grid-template-columns: 1fr; }
-    .book-cover { max-width: 250px; }
-    .book-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .book-grid { grid-template-columns: 1fr; }
-    .book-chapter-stats { grid-template-columns: 1fr; }
-    .book-chapter-list { grid-template-columns: 1fr; }
-    .book-features { grid-template-columns: 1fr; }
-    .book-sample-list { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 460px) {
-    .book-actions { flex-direction: column; }
-    .book-button { width: 100%; }
-    .book-info { grid-template-columns: 1fr; }
-    .book-info div,
-    .book-info div:nth-child(odd),
-    .book-info div:nth-last-child(-n + 2) {
-      border-right: 0;
-      border-bottom: 1px solid var(--book-line);
-    }
-    .book-info div:last-child { border-bottom: 0; }
-  }
-</style>
+<link rel="stylesheet" href="{{ '/assets/css/aog.css' | relative_url }}">
 
 <div class="book-page">
   <section class="book-hero" aria-labelledby="book-heading">
     <div>
-      <img class="book-cover" src="{{ '/images/the-art-of-olympiad-geometry-cover.png' | relative_url }}" alt="Sampul buku The Art of Olympiad Geometry: Basic Level karya Wildan Bagus Wicaksono">
+      <img class="book-cover" src="{{ '/images/the-art-of-olympiad-geometry-cover.png' | relative_url }}" alt="Cover of The Art of Olympiad Geometry: Basic Level by Wildan Bagus Wicaksono">
     </div>
     <div>
-      <p class="book-kicker">Buku geometri olimpiade berbahasa Indonesia</p>
+      <p class="book-kicker">An olympiad geometry book in Indonesian</p>
       <h2 id="book-heading">The Art of Olympiad Geometry</h2>
-      <p class="book-subtitle">Panduan tingkat dasar yang mengajak pembaca memahami konsep, pembuktian, dan cara berpikir di balik penyelesaian soal geometri olimpiade.</p>
-      <div class="book-badges" aria-label="Informasi singkat buku">
-        <span class="book-badge">Tingkat dasar</span>
-        <span class="book-badge">Pemesanan dibuka</span>
-        <span class="book-badge">Harga Rp250.000</span>
-        <span class="book-badge">Edisi pertama, 2026</span>
-        <span class="book-badge">Bahasa Indonesia</span>
+      <p class="book-subtitle">A first course in olympiad geometry. Work through the concepts, proofs and ideas that lead to a solution.</p>
+      <div class="book-badges" aria-label="Book at a glance">
+        <span class="book-badge">Basic level</span>
+        <span class="book-badge">Available to order</span>
+        <span class="book-badge">Rp250,000</span>
+        <span class="book-badge">First edition, 2026</span>
+        <span class="book-badge">Written in Indonesian</span>
       </div>
       <div class="book-actions">
-        <a class="book-button" href="#pemesanan">Pesan buku</a>
-        <a class="book-button book-button--secondary" href="#cakupan-materi">Lihat cakupan materi</a>
-        <a class="book-button book-button--secondary" href="#bab-gratis">Bab gratis</a>
+        <a class="book-button" href="#pemesanan">Order the book</a>
+        <a class="book-button book-button--secondary" href="#cakupan-materi">Browse the contents</a>
+        <a class="book-button book-button--secondary" href="#bab-gratis">Free chapters</a>
       </div>
     </div>
   </section>
 
   <section class="book-section" id="tentang-buku">
-    <span class="book-section-label">Tentang buku</span>
-    <h2>Belajar geometri dengan memahami idenya</h2>
-    <p class="book-lead">Buku ini disusun untuk pembaca yang ingin mulai mempelajari geometri olimpiade secara terarah. Materi bergerak dari fakta-fakta dasar menuju teknik pemecahan masalah, dengan perhatian khusus pada alasan di balik setiap langkah, bukan hanya pada jawaban akhir.</p>
+    <span class="book-section-label">About the book</span>
+    <h2>How do you find your way to a proof?</h2>
+    <p class="book-lead">The book starts with familiar facts about triangles, polygons and circles, then shows how to use them to solve olympiad problems. Each solution explains what motivates the next step.</p>
 
-    <div class="book-stats" aria-label="Ringkasan isi buku">
-      <div class="book-stat"><strong>477</strong><span>halaman</span></div>
-      <div class="book-stat"><strong>9</strong><span>bab utama</span></div>
-      <div class="book-stat"><strong>2</strong><span>bagian materi</span></div>
-      <div class="book-stat"><strong>3</strong><span>apendiks</span></div>
+    <div class="book-stats" aria-label="Book contents in numbers">
+      <div class="book-stat"><strong>477</strong><span>pages</span></div>
+      <div class="book-stat"><strong>9</strong><span>chapters</span></div>
+      <div class="book-stat"><strong>2</strong><span>main parts</span></div>
+      <div class="book-stat"><strong>3</strong><span>appendices</span></div>
     </div>
 
     <div class="book-features">
-      <p class="book-feature">Penjelasan konsep dan pembuktian yang disusun bertahap.</p>
-      <p class="book-feature">Contoh soal yang menekankan proses menemukan ide.</p>
-      <p class="book-feature">Latihan dan soal dengan tingkat kesulitan bervariasi.</p>
-      <p class="book-feature">Diagram, petunjuk, serta solusi terpilih untuk belajar mandiri.</p>
+      <p class="book-feature">Concepts and proofs build on one another.</p>
+      <p class="book-feature">Worked examples show how to find a promising idea.</p>
+      <p class="book-feature">Exercises range from introductory to more demanding problems.</p>
+      <p class="book-feature">Diagrams, hints and selected solutions support independent study.</p>
     </div>
   </section>
 
   <section class="book-section" id="cakupan-materi">
-    <span class="book-section-label">Daftar isi ringkas</span>
-    <h2>Cakupan materi</h2>
+    <span class="book-section-label">Contents at a glance</span>
+    <h2>What the book covers</h2>
     <div class="book-grid">
       <article class="book-card">
-        <h3>Bagian I - Euclidean Geometry</h3>
+        <h3>Part I – Euclidean Geometry</h3>
         <ol>
-          <li>Sudut di Poligon</li>
-          <li>Panjang dan Luas di Poligon</li>
-          <li>Sudut di Lingkaran</li>
-          <li>Panjang dan Luas di Lingkaran</li>
-          <li>Teorema Lanjutan di Lingkaran</li>
+          <li>Angles in Polygons</li>
+          <li>Length and Area in Polygons</li>
+          <li>Angles in Circles</li>
+          <li>Length and Area in Circles</li>
+          <li>Further Circle Theorems</li>
         </ol>
       </article>
       <article class="book-card">
-        <h3>Bagian II - Computational Geometry</h3>
+        <h3>Part II – Computational Geometry</h3>
         <ol start="6">
-          <li>Aturan Sinus dan Aturan Cosinus</li>
-          <li>Masalah Rasio</li>
-          <li>Teknik Analitik</li>
-          <li>Trigonometri Lanjutan</li>
+          <li>The Sine and Cosine Rules</li>
+          <li>Ratio Problems</li>
+          <li>Analytic Methods</li>
+          <li>Further Trigonometry</li>
         </ol>
       </article>
       <article class="book-card">
-        <h3>Bagian III - Apendiks</h3>
+        <h3>Part III – Appendices</h3>
         <ul>
-          <li>Kunci dan Petunjuk</li>
-          <li>Solusi Terpilih</li>
-          <li>Daftar Kompetisi</li>
-          <li>Daftar Pustaka dan Indeks</li>
+          <li>Answers and Hints</li>
+          <li>Selected Solutions</li>
+          <li>List of Competitions</li>
+          <li>Bibliography and Index</li>
         </ul>
       </article>
     </div>
 
-    <h3 class="book-chapter-stats-heading">Jumlah halaman tiap bab</h3>
-    <div class="book-chapter-stats" aria-label="Jumlah halaman tiap bab">
-      <div class="book-chapter-stat"><strong>Bab 1</strong><span>26 halaman</span><small>Halaman 3-28</small></div>
-      <div class="book-chapter-stat"><strong>Bab 2</strong><span>38 halaman</span><small>Halaman 29-66</small></div>
-      <div class="book-chapter-stat"><strong>Bab 3</strong><span>30 halaman</span><small>Halaman 67-96</small></div>
-      <div class="book-chapter-stat"><strong>Bab 4</strong><span>36 halaman</span><small>Halaman 97-132</small></div>
-      <div class="book-chapter-stat"><strong>Bab 5</strong><span>42 halaman</span><small>Halaman 133-174</small></div>
-      <div class="book-chapter-stat"><strong>Bab 6</strong><span>34 halaman</span><small>Halaman 177-210</small></div>
-      <div class="book-chapter-stat"><strong>Bab 7</strong><span>42 halaman</span><small>Halaman 211-252</small></div>
-      <div class="book-chapter-stat"><strong>Bab 8</strong><span>48 halaman</span><small>Halaman 253-300</small></div>
-      <div class="book-chapter-stat"><strong>Bab 9</strong><span>48 halaman</span><small>Halaman 301-348</small></div>
+    <h3 class="book-chapter-stats-heading">Chapter lengths</h3>
+    <div class="book-chapter-stats" aria-label="Chapter lengths">
+      <div class="book-chapter-stat"><strong>Chapter 1</strong><span>26 pages</span><small>Pages 3–28</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 2</strong><span>38 pages</span><small>Pages 29–66</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 3</strong><span>30 pages</span><small>Pages 67–96</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 4</strong><span>36 pages</span><small>Pages 97–132</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 5</strong><span>42 pages</span><small>Pages 133–174</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 6</strong><span>34 pages</span><small>Pages 177–210</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 7</strong><span>42 pages</span><small>Pages 211–252</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 8</strong><span>48 pages</span><small>Pages 253–300</small></div>
+      <div class="book-chapter-stat"><strong>Chapter 9</strong><span>48 pages</span><small>Pages 301–348</small></div>
     </div>
-    <p class="book-chapter-stats-note">Rentang mengikuti penomoran halaman pada edisi pertama. Halaman pembuka bagian tidak dihitung sebagai halaman bab.</p>
+    <p class="book-chapter-stats-note">Page ranges follow the first edition. Part-opening pages are excluded from the chapter counts.</p>
 
     <details class="book-toc-disclosure">
-      <summary>Lihat daftar subbab lengkap</summary>
+      <summary>Browse the full table of contents</summary>
       <div class="book-toc-content">
-        <p class="book-toc-note">Setiap bab juga dilengkapi latihan, contoh soal, dan soal akhir bab.</p>
+        <p class="book-toc-note">Each chapter includes exercises, worked examples and a final problem set.</p>
         <div class="book-chapter-list">
           <div class="book-chapter-column">
           <details class="book-chapter">
-            <summary>Bab 1 - Sudut di Poligon</summary>
+            <summary>Chapter 1 – Angles in Polygons</summary>
             <ol>
-              <li>Objek Dasar Geometri</li>
-              <li>Bangun Datar Segitiga</li>
-              <li>Segi Banyak (Poligon)</li>
+              <li>Basic Geometric Objects</li>
+              <li>Triangles</li>
+              <li>Polygons</li>
             </ol>
           </details>
           <details class="book-chapter">
-            <summary>Bab 2 - Panjang dan Luas di Poligon</summary>
+            <summary>Chapter 2 – Length and Area in Polygons</summary>
             <ol>
-              <li>Keliling dan Luas Poligon</li>
-              <li>Teorema Pythagoras</li>
-              <li>Kesebangunan Dua Segitiga</li>
-              <li>Garis Bagi Dalam dan Garis Bagi Luar</li>
-              <li>Kekongruenan Dua Segitiga</li>
-              <li>Mengonstruksikan Titik Bantu</li>
-              <li>Korespondensi pada Kesebangunan-Kekongruenan</li>
+              <li>Perimeter and Area of Polygons</li>
+              <li>The Pythagorean Theorem</li>
+              <li>Similar Triangles</li>
+              <li>Internal and External Angle Bisectors</li>
+              <li>Congruent Triangles</li>
+              <li>Constructing Auxiliary Points</li>
+              <li>Matching Corresponding Parts in Similar and Congruent Triangles</li>
             </ol>
           </details>
           <details class="book-chapter">
-            <summary>Bab 3 - Sudut di Lingkaran</summary>
+            <summary>Chapter 3 – Angles in Circles</summary>
             <ol>
-              <li>Unsur-Unsur Lingkaran</li>
-              <li>Hubungan antara Lingkaran dan Garis</li>
-              <li>Sudut Pusat dan Sudut Keliling</li>
-              <li>Segiempat Tali Busur</li>
+              <li>Elements of a Circle</li>
+              <li>Circles and Lines</li>
+              <li>Central and Inscribed Angles</li>
+              <li>Cyclic Quadrilaterals</li>
             </ol>
           </details>
           <details class="book-chapter">
-            <summary>Bab 4 - Panjang dan Luas di Lingkaran</summary>
+            <summary>Chapter 4 – Length and Area in Circles</summary>
             <ol>
-              <li>Panjang Busur dan Luas</li>
-              <li>Garis Singgung Persekutuan</li>
-              <li>Lingkaran Bersinggungan</li>
-              <li>Lingkaran Dalam dan Lingkaran Luar Segitiga</li>
+              <li>Arc Length and Area</li>
+              <li>Common Tangents</li>
+              <li>Tangent Circles</li>
+              <li>The Incircle and Circumcircle of a Triangle</li>
             </ol>
           </details>
           <details class="book-chapter">
-            <summary>Bab 5 - Teorema Lanjutan di Lingkaran</summary>
+            <summary>Chapter 5 – Further Circle Theorems</summary>
             <ol>
-              <li>Power of Point</li>
-              <li>Teorema Ptolemy</li>
-              <li>Lingkaran Singgung Luar Segitiga</li>
-              <li>Lingkaran Apollonius</li>
-              <li>Konvers Segiempat Tali Busur
+              <li>Power of a Point</li>
+              <li>Ptolemy’s Theorem</li>
+              <li>The Excircles of a Triangle</li>
+              <li>The Circle of Apollonius</li>
+              <li>Recognizing Cyclic Quadrilaterals
                 <ul>
-                  <li>Penerapan Sederhana</li>
-                  <li>Segitiga dan Garis Tinggi</li>
+                  <li>Basic Applications</li>
+                  <li>Triangles and Altitudes</li>
                 </ul>
               </li>
             </ol>
@@ -923,52 +169,52 @@ header:
           </div>
           <div class="book-chapter-column">
           <details class="book-chapter">
-            <summary>Bab 6 - Aturan Sinus dan Aturan Cosinus</summary>
+            <summary>Chapter 6 – The Sine and Cosine Rules</summary>
             <ol>
-              <li>Fungsi Trigonometri</li>
-              <li>Jumlahan Sudut pada Fungsi Trigonometri</li>
-              <li>Kuadran dan Kesamaan Fungsi Trigonometri</li>
-              <li>Penurunan Sifat Fungsi Trigonometri</li>
-              <li>Luas Segitiga dengan Trigonometri</li>
-              <li>Aturan Sinus dan Cosinus Segitiga</li>
-              <li>Teorema Stewart</li>
+              <li>Trigonometric Functions</li>
+              <li>Angle Addition Formulas</li>
+              <li>Quadrants and Equality of Trigonometric Values</li>
+              <li>Deriving Trigonometric Properties</li>
+              <li>Finding the Area of a Triangle Using Trigonometry</li>
+              <li>The Sine and Cosine Rules in a Triangle</li>
+              <li>Stewart’s Theorem</li>
             </ol>
           </details>
           <details class="book-chapter">
-            <summary>Bab 7 - Masalah Rasio</summary>
+            <summary>Chapter 7 – Ratio Problems</summary>
             <ol>
-              <li>Perbandingan Luas</li>
-              <li>Teorema Ceva</li>
-              <li>Teorema Menelaus</li>
-              <li>Mass Point Method</li>
+              <li>Area Ratios</li>
+              <li>Ceva’s Theorem</li>
+              <li>Menelaus’s Theorem</li>
+              <li>The Mass Points Method</li>
             </ol>
           </details>
           <details class="book-chapter">
-            <summary>Bab 8 - Teknik Analitik</summary>
+            <summary>Chapter 8 – Analytic Methods</summary>
             <ol>
-              <li>Koordinat Cartesius</li>
-              <li>Persamaan Garis</li>
-              <li>Jarak dan Luas</li>
-              <li>Lingkaran di Koordinat Cartesius</li>
-              <li>Transformasi Geometri
+              <li>Cartesian Coordinates</li>
+              <li>Equations of Lines</li>
+              <li>Distance and Area</li>
+              <li>Circles in Cartesian Coordinates</li>
+              <li>Geometric Transformations
                 <ul>
-                  <li>Translasi</li>
-                  <li>Refleksi</li>
-                  <li>Dilatasi</li>
-                  <li>Rotasi</li>
+                  <li>Translation</li>
+                  <li>Reflection</li>
+                  <li>Dilation</li>
+                  <li>Rotation</li>
                 </ul>
               </li>
-              <li>Saran Saat Menggunakan Analitik</li>
+              <li>Choosing an Analytic Approach</li>
             </ol>
           </details>
           <details class="book-chapter">
-            <summary>Bab 9 - Trigonometri Lanjutan</summary>
+            <summary>Chapter 9 – Further Trigonometry</summary>
             <ol>
-              <li>Titik Tinggi dan Titik Pusat Lingkaran Luar Segitiga</li>
-              <li>Titik Bagi Segitiga</li>
-              <li>Formula Brahmagupta dan Parameshvara</li>
-              <li>Identitas Trigonometri pada Sudut Segitiga</li>
-              <li>Descartes' Circle Theorem</li>
+              <li>The Orthocenter and Circumcenter</li>
+              <li>The Incenter of a Triangle</li>
+              <li>Brahmagupta’s and Parameshvara’s Formulas</li>
+              <li>Trigonometric Identities for Triangle Angles</li>
+              <li>Descartes’ Circle Theorem</li>
             </ol>
           </details>
           </div>
@@ -978,170 +224,170 @@ header:
   </section>
 
   <section class="book-section">
-    <span class="book-section-label">Untuk pembaca</span>
-    <h2>Siapa yang dapat menggunakan buku ini?</h2>
-    <p class="book-lead">Buku ini ditujukan bagi siswa yang ingin mempelajari cara menghadapi soal-soal isian singkat pada level OSK SMP hingga OSP SMA.</p>
+    <span class="book-section-label">For readers</span>
+    <h2>Who is the book for?</h2>
+    <p class="book-lead">The book focuses on short-answer problems. The difficulty ranges from Indonesia’s district-level junior high school olympiad (OSK SMP) to its provincial senior high school olympiad (OSP SMA).</p>
     <div class="book-grid">
       <article class="book-card">
-        <h3>Pelajar SMP dan SMA</h3>
-        <p>Pembaca yang baru mengenal geometri olimpiade dan membutuhkan jalur belajar yang runtut.</p>
+        <h3>Middle and high school students</h3>
+        <p>Students beginning olympiad geometry who want a sequence of topics to work through.</p>
       </article>
       <article class="book-card">
-        <h3>Peserta olimpiade</h3>
-        <p>Peserta yang ingin memperkuat dasar sebelum beralih ke teknik geometri yang lebih lanjut.</p>
+        <h3>Olympiad contestants</h3>
+        <p>Contestants who want to strengthen their foundations before moving on to more advanced techniques.</p>
       </article>
       <article class="book-card">
-        <h3>Guru dan pembina</h3>
-        <p>Pendamping belajar yang mencari bahan penjelasan, contoh, latihan, dan soal untuk pembinaan.</p>
+        <h3>Teachers and coaches</h3>
+        <p>Instructors looking for explanations, worked examples and problems for their students.</p>
       </article>
     </div>
   </section>
 
   <section class="book-section book-problems" id="sampel-soal">
-    <span class="book-section-label">Coba kemampuanmu</span>
-    <h2>Sampel soal di luar bab gratis</h2>
-    <p class="book-lead">Ketujuh soal berikut diambil dari bagian buku di luar Bab 1 dan Bab 6 yang tersedia sebagai bab gratis. Soal-soal tersebut berasal dari berbagai kompetisi, sedangkan beberapa lainnya merupakan kreasi penulis. Sampel ini memberikan gambaran tentang variasi soal isian singkat dan pendekatan yang dibahas dalam buku.</p>
+    <span class="book-section-label">Try a problem</span>
+    <h2>Sample problems from the rest of the book</h2>
+    <p class="book-lead">These seven problems come from chapters other than the two free ones (Chapters 1 and 6). Some are drawn from competitions, and others were written for the book. They illustrate the range of short-answer problems throughout the text.</p>
     <div class="book-problem-list">
       <details class="book-problem">
-        <summary><span class="book-problem-number">1</span><span>Segitiga dan lingkaran dalam</span></summary>
+        <summary><span class="book-problem-number">1</span><span>A triangle and its incircles</span></summary>
         <div class="book-problem-body">
-          <p>Diberikan \(\triangle ABC\) dengan \(AB=99\), \(BC=100\), dan \(CA=101\). \(D\) adalah titik pada \(\overline{BC}\). Jika lingkaran dalam \(\triangle ABD\) dan \(\triangle ACD\) menyinggung \(AD\) di satu titik \(E\), tentukan \(AE-ED\).</p>
+          <p>In \(\triangle ABC\), let \(AB=99\), \(BC=100\), and \(CA=101\). A point \(D\) lies on \(\overline{BC}\). The incircles of \(\triangle ABD\) and \(\triangle ACD\) touch \(AD\) at the same point \(E\). Find \(AE-ED\).</p>
         </div>
       </details>
       <details class="book-problem">
         <summary><span class="book-problem-number">2</span><span>India PRMO 2018</span></summary>
         <div class="book-problem-body">
-          <p>Diberikan segitiga \(ABC\) dan \(DEF\) yang memenuhi</p>
+          <p>Triangles \(ABC\) and \(DEF\) satisfy</p>
           <div class="book-problem-equation">\[\angle A=\angle D,\quad AB=DE=17,\quad BC=EF=10,\quad AC-DF=12.\]</div>
-          <p>Tentukan \(AC+DF\).</p>
+          <p>Find \(AC+DF\).</p>
         </div>
       </details>
       <details class="book-problem">
-        <summary><span class="book-problem-number">3</span><span>Setengah lingkaran dan rasio panjang</span></summary>
+        <summary><span class="book-problem-number">3</span><span>A ratio in a semicircle</span></summary>
         <div class="book-problem-body">
-          <p>Diberikan setengah lingkaran berdiameter \(\overline{AP}\). Titik \(B\) dan \(C\) terletak pada busur \(AP\) dalam urutan \(A\), \(B\), \(C\), \(P\), sedangkan \(M\) terletak pada \(\overline{AP}\) dan memenuhi \(CM\perp AP\) serta \(\angle MCB=\angle CBA=2\angle BAM\). Tentukan rasio \(\frac{AB}{CM}\).</p>
+          <p>A semicircle has diameter \(\overline{AP}\). Points \(B\) and \(C\) lie on arc \(AP\) in the order \(A\), \(B\), \(C\), \(P\). Point \(M\) lies on \(\overline{AP}\) with \(CM\perp AP\), and \(\angle MCB=\angle CBA=2\angle BAM\). Find \(\frac{AB}{CM}\).</p>
         </div>
       </details>
       <details class="book-problem">
         <summary><span class="book-problem-number">4</span><span>PEMNAS SMA 2024</span></summary>
         <div class="book-problem-body">
-          <p>Diberikan segitiga \(ABC\) dan titik \(M\) terletak pada \(\overline{AC}\). Titik \(N\) merupakan bayangan pencerminan titik \(M\) terhadap garis \(BC\), dan \(AN\) memotong \(\overline{BC}\) di \(O\). Selain itu, \(A\), \(B\), \(M\), dan \(O\) terletak pada lingkaran yang sama. Jika \(\angle ABN=56^\circ\), tentukan besar \(\angle CMN\).</p>
+          <p>In triangle \(ABC\), point \(M\) lies on \(\overline{AC}\). Reflect \(M\) across line \(BC\) to obtain \(N\). Line \(AN\) meets \(\overline{BC}\) at \(O\), and \(A\), \(B\), \(M\), and \(O\) are concyclic. If \(\angle ABN=56^\circ\), find \(\angle CMN\).</p>
         </div>
       </details>
       <details class="book-problem">
         <summary><span class="book-problem-number">5</span><span>Turkey 2012</span></summary>
         <div class="book-problem-body">
-          <p>Titik \(D\) terletak di dalam segitiga \(ABC\) dan memenuhi</p>
+          <p>A point \(D\) inside triangle \(ABC\) satisfies</p>
           <div class="book-problem-equation">\[\angle BAD=20^\circ,\quad \angle DAC=80^\circ,\quad \angle ACD=20^\circ,\quad \angle DCB=20^\circ.\]</div>
-          <p>Tentukan besar \(\angle ABD\).</p>
+          <p>Find \(\angle ABD\).</p>
         </div>
       </details>
       <details class="book-problem">
         <summary><span class="book-problem-number">6</span><span>AMC 12 2020</span></summary>
         <div class="book-problem-body">
-          <p>Segiempat \(ABCD\) memenuhi \(\angle ABC=\angle ACD=90^\circ\). Diagonal \(\overline{AC}\) dan \(\overline{BD}\) berpotongan di \(E\). Jika \(AC=20\), \(CD=30\), dan \(AE=5\), tentukan luas segiempat \(ABCD\).</p>
+          <p>In quadrilateral \(ABCD\), \(\angle ABC=\angle ACD=90^\circ\). Diagonals \(\overline{AC}\) and \(\overline{BD}\) meet at \(E\). Given \(AC=20\), \(CD=30\), and \(AE=5\), find the area of \(ABCD\).</p>
         </div>
       </details>
       <details class="book-problem">
-        <summary><span class="book-problem-number">7</span><span>Titik tinggi segitiga lancip</span></summary>
+        <summary><span class="book-problem-number">7</span><span>The orthocenter of an acute triangle</span></summary>
         <div class="book-problem-body">
-          <p>Misalkan \(H\) titik tinggi dari suatu segitiga lancip \(ABC\). Jika \(AH=2\), \(BH=12\), dan \(CH=9\), tentukan luas segitiga \(ABC\).</p>
+          <p>Let \(H\) be the orthocenter of acute triangle \(ABC\). Given \(AH=2\), \(BH=12\), and \(CH=9\), find the area of \(ABC\).</p>
         </div>
       </details>
     </div>
-    <p class="book-note">Sampel ditampilkan tanpa petunjuk dan solusi.</p>
+    <p class="book-note">Hints and solutions are omitted from this sample.</p>
   </section>
 
   <section class="book-section book-samples" id="bab-gratis">
-    <span class="book-section-label">Baca sebelum memilih</span>
-    <h2>Bab gratis</h2>
-    <p class="book-lead">Isi formulir singkat untuk memperoleh akses ke dua bab gratis mulai 14 Agustus 2026. Sampel ini membantu pembaca mengenal gaya penulisan dan penyajian buku sebelum melakukan pemesanan.</p>
+    <span class="book-section-label">Read a sample</span>
+    <h2>Free chapters</h2>
+    <p class="book-lead">Complete the short form to read two free chapters in Indonesian, available since 14 August 2026. They give a sense of how the book introduces concepts and works through problems.</p>
     <div class="book-sample-list">
       <div class="book-sample">
-        <strong>Bab 1 - Sudut di Poligon</strong>
-        Termasuk dalam akses gratis.
+        <strong>Chapter 1 – Angles in Polygons</strong>
+        Included in the free sample.
       </div>
       <div class="book-sample">
-        <strong>Bab 6 - Aturan Sinus dan Aturan Cosinus</strong>
-        Termasuk dalam akses gratis.
+        <strong>Chapter 6 – The Sine and Cosine Rules</strong>
+        Included in the free sample.
       </div>
     </div>
     <div class="book-form-action">
-      {% if page.free_chapter_form_url and page.free_chapter_form_url != "" %}
-        <a class="book-button" href="{{ page.free_chapter_form_url }}" target="_blank" rel="noopener noreferrer">Isi formulir dan dapatkan bab gratis</a>
+      {% if site.data.aog.free_chapter_form_url and site.data.aog.free_chapter_form_url != "" %}
+        <a class="book-button" href="{{ site.data.aog.free_chapter_form_url }}" target="_blank" rel="noopener noreferrer">Request the free chapters</a>
       {% else %}
-        <span class="book-button book-button--disabled" aria-disabled="true">Formulir segera tersedia</span>
+        <span class="book-button book-button--disabled" aria-disabled="true">The form will be available soon</span>
       {% endif %}
     </div>
-    <p class="book-note">Sampel bab dapat memiliki perbedaan kecil dengan edisi cetak final.</p>
-    <p class="book-usage"><strong>Ketentuan penggunaan.</strong> Buku dapat digunakan sebagai bahan mengajar dan boleh diperbanyak, namun dilarang untuk diperjualbelikan.</p>
+    <p class="book-note">The sample chapters may differ slightly from the final print edition.</p>
+    <p class="book-usage"><strong>Terms of use.</strong> You may use and reproduce the book for teaching. Resale is prohibited.</p>
   </section>
 
   <section class="book-section book-order" id="pemesanan">
-    <span class="book-section-label">Pemesanan telah dibuka</span>
-    <h2>Alur Pemesanan Buku NEC</h2>
-    <p class="book-lead">Ikuti langkah berikut untuk memesan <em>The Art of Olympiad Geometry</em>.</p>
+    <span class="book-section-label">Orders are open</span>
+    <h2>How to order through NEC</h2>
+    <p class="book-lead">Follow these steps to order <em>The Art of Olympiad Geometry</em>.</p>
     <div class="book-price-card">
       <div>
-        <span class="book-price-label">Harga buku</span>
-        <p class="book-price-current">Rp250.000,00</p>
+        <span class="book-price-label">Book price</span>
+        <p class="book-price-current">Rp250,000</p>
       </div>
     </div>
     <ol class="book-order-steps">
-      <li>Lengkapi data pemesanan melalui <a href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">bit.ly/pesanbukuNEC</a>.</li>
-      <li>Admin akan menghubungi Anda melalui WhatsApp untuk mengirimkan invoice (tagihan) dan detail rekening pembayaran.</li>
-      <li>Lakukan pembayaran dan kirimkan bukti transfer kepada admin.</li>
-      <li>Buku Anda akan diproses dan dikirim. Resi pengiriman akan diberikan maksimal H+2 setelah pembayaran.</li>
+      <li>Enter your order details at <a href="{{ site.data.aog.order_url }}" target="_blank" rel="noopener noreferrer">bit.ly/pesanbukuNEC</a>.</li>
+      <li>NEC will send the invoice and bank transfer details via WhatsApp.</li>
+      <li>Make the payment and send proof of transfer to NEC.</li>
+      <li>NEC will process and ship your order. You will receive the tracking number within two days of payment.</li>
     </ol>
-    <p class="book-order-contact"><strong>Informasi lebih lanjut:</strong> <a href="https://wa.me/6289682017731" target="_blank" rel="noopener noreferrer">Admin NEC - 089682017731 (Aulia)</a></p>
+    <p class="book-order-contact"><strong>Contact</strong> <a href="https://wa.me/6289682017731" target="_blank" rel="noopener noreferrer">Aulia at NEC (089682017731)</a></p>
     <div class="book-actions">
-      <a class="book-button" href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">Pesan buku melalui NEC</a>
+      <a class="book-button" href="{{ site.data.aog.order_url }}" target="_blank" rel="noopener noreferrer">Order through NEC</a>
     </div>
   </section>
 
   <section class="book-section" id="informasi-buku">
-    <span class="book-section-label">Informasi penerbitan</span>
-    <h2>Informasi buku</h2>
+    <span class="book-section-label">Publication details</span>
+    <h2>Book information</h2>
     <dl class="book-info">
-      <div><dt>Judul</dt><dd>The Art of Olympiad Geometry</dd></div>
-      <div><dt>Subjudul</dt><dd>Basic Level</dd></div>
-      <div><dt>Penulis</dt><dd>Wildan Bagus Wicaksono</dd></div>
-      <div><dt>Edisi</dt><dd>Pertama, 2026</dd></div>
-      <div><dt>Penyunting akhir</dt><dd>Abdul Mu&rsquo;in, S.Pd., M.Si.</dd></div>
-      <div><dt>Desain sampul</dt><dd>Hendra Ahmad Hardiyana, S.Pd.</dd></div>
-      <div><dt>Bahasa</dt><dd>Indonesia</dd></div>
-      <div><dt>Status</dt><dd>Siap cetak</dd></div>
+      <div><dt>Title</dt><dd>The Art of Olympiad Geometry</dd></div>
+      <div><dt>Subtitle</dt><dd>Basic Level</dd></div>
+      <div><dt>Author</dt><dd>Wildan Bagus Wicaksono</dd></div>
+      <div><dt>Edition</dt><dd>First, 2026</dd></div>
+      <div><dt>Final editor</dt><dd>Abdul Mu&rsquo;in, S.Pd., M.Si.</dd></div>
+      <div><dt>Cover design</dt><dd>Hendra Ahmad Hardiyana, S.Pd.</dd></div>
+      <div><dt>Language</dt><dd>Indonesian</dd></div>
+      <div><dt>Status</dt><dd>Ready for printing</dd></div>
     </dl>
   </section>
 
   {% include aog-reader-reviews.html %}
 
   <section class="book-section book-errata" id="errata">
-    <span class="book-section-label">Koreksi pembaca</span>
-    <h2>Koreksi dan Errata</h2>
-    <p class="book-lead">Walaupun buku ini telah melalui proses pemeriksaan, kekeliruan mungkin masih ditemukan. Jika menemukan kesalahan ketik, diagram, pernyataan, petunjuk, atau solusi, pembaca dapat mengirimkan laporan ke <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA%20AOG%5D%20Bab%20...%20-%20Halaman%20...&amp;body=Jenis%20koreksi%3A%0ABab%3A%0AHalaman%3A%0ATeks%20atau%20bagian%20yang%20perlu%20dikoreksi%3A%0AUsulan%20perbaikan%3A%0APenjelasan%3A" target="_blank" rel="noopener noreferrer">wildan.b.wicaksono@gmail.com</a>.</p>
+    <span class="book-section-label">Reader corrections</span>
+    <h2>Corrections and errata</h2>
+    <p class="book-lead">If you spot a typo or an error in a diagram, statement, hint or solution, please email <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA+AOG%5D+Chapter+...+-+Page+...&amp;body=Type+of+correction%3A%0AChapter%3A%0APage%3A%0APassage+or+diagram+to+correct%3A%0ASuggested+correction%3A%0AExplanation%3A" target="_blank" rel="noopener noreferrer">wildan.b.wicaksono@gmail.com</a>.</p>
     <div class="book-errata-format">
-      <p><strong>Subjek email:</strong> <code>[ERRATA AOG] Bab ... - Halaman ...</code></p>
-      <p><strong>Mohon sertakan:</strong></p>
+      <p><strong>Email subject</strong> <code>[ERRATA AOG] Chapter ... - Page ...</code></p>
+      <p><strong>What to include</strong></p>
       <ul>
-        <li>Jenis koreksi</li>
-        <li>Bab dan halaman</li>
-        <li>Teks atau bagian yang perlu dikoreksi</li>
-        <li>Usulan perbaikan</li>
-        <li>Penjelasan atau tangkapan layar, jika diperlukan</li>
+        <li>Type of correction</li>
+        <li>Chapter and page number</li>
+        <li>The passage or diagram to correct</li>
+        <li>Your suggested correction</li>
+        <li>An explanation or screenshot, if helpful</li>
       </ul>
     </div>
     <div class="book-actions">
-      <a class="book-button" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA%20AOG%5D%20Bab%20...%20-%20Halaman%20...&amp;body=Jenis%20koreksi%3A%0ABab%3A%0AHalaman%3A%0ATeks%20atau%20bagian%20yang%20perlu%20dikoreksi%3A%0AUsulan%20perbaikan%3A%0APenjelasan%3A" target="_blank" rel="noopener noreferrer">Laporkan koreksi melalui Gmail</a>
+      <a class="book-button" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wildan.b.wicaksono%40gmail.com&amp;su=%5BERRATA+AOG%5D+Chapter+...+-+Page+...&amp;body=Type+of+correction%3A%0AChapter%3A%0APage%3A%0APassage+or+diagram+to+correct%3A%0ASuggested+correction%3A%0AExplanation%3A" target="_blank" rel="noopener noreferrer">Report a correction via Gmail</a>
     </div>
-    <p class="book-note">Setiap laporan akan diperiksa dan koreksi yang telah dikonfirmasi akan dicantumkan pada halaman ini.</p>
+    <p class="book-note">Each report will be reviewed. Confirmed corrections will appear on this page.</p>
   </section>
 
   <section class="book-closing">
-    <h2>Pemesanan AOG telah dibuka</h2>
-    <p>Lengkapi formulir pemesanan melalui NEC. Admin akan menghubungi Anda melalui WhatsApp untuk proses pembayaran dan pengiriman.</p>
+    <h2>Order a copy of AOG</h2>
+    <p>Complete NEC’s order form. Their team will contact you via WhatsApp to arrange payment and shipping.</p>
     <div class="book-actions">
-      <a class="book-button" href="{{ page.order_url }}" target="_blank" rel="noopener noreferrer">Pesan buku sekarang</a>
+      <a class="book-button" href="{{ site.data.aog.order_url }}" target="_blank" rel="noopener noreferrer">Order now</a>
     </div>
   </section>
 </div>

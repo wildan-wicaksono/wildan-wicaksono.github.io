@@ -1,0 +1,137 @@
+{% assign language = page.lang | default: 'en' %}
+{% assign home = site.data.homepage[language] %}
+{% assign prefix = '' %}
+{% if language == 'id' %}{% assign prefix = '/id' %}{% endif %}
+
+<link rel="stylesheet" href="{{ '/assets/css/homepage.css' | relative_url }}">
+
+<div class="home-page">
+  <section class="home-hero" aria-labelledby="home-heading">
+    <span class="home-eyebrow">{{ home.hero_label }}</span>
+    <h1 id="home-heading">Wildan Bagus Wicaksono</h1>
+    <p class="home-role">{{ home.hero_role }}</p>
+    <p class="home-intro">{{ home.hero_intro }}</p>
+    <div class="home-actions" aria-label="{{ home.explore_label }}">
+      <a class="home-button" href="{{ '/publications/' | prepend: prefix | relative_url }}">{{ home.publications_link }}</a>
+      <a class="home-button home-button--secondary" href="{{ '/teaching/' | prepend: prefix | relative_url }}">{{ home.teaching_link }}</a>
+      <a class="home-button home-button--secondary" href="{{ '/projects/' | prepend: prefix | relative_url }}">{{ home.projects_link }}</a>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="selected-work-heading">
+    <div class="home-section-heading">
+      <span class="home-section-label">{{ home.work_label }}</span>
+      <h2 id="selected-work-heading">{{ home.work_title }}</h2>
+      <p>{{ home.work_intro }}</p>
+    </div>
+
+    <article class="home-book-card" aria-labelledby="home-research-heading">
+      <div class="home-book-copy" style="grid-column: 1 / -1;">
+        <span class="home-card-label">{{ home.preprint_label }}</span>
+        <h3 id="home-research-heading">Statistics of centralizers of integer matrices</h3>
+        <p>{{ home.preprint_summary }}</p>
+        <a class="home-text-link" href="https://arxiv.org/abs/2611.11287" target="_blank" rel="noopener noreferrer">{{ home.preprint_link }} <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <article class="home-book-card">
+      <div class="home-book-visual">
+        <img src="{{ '/images/the-art-of-olympiad-geometry-cover.png' | relative_url }}" alt="{{ home.book_cover }}">
+      </div>
+      <div class="home-book-copy">
+        <span class="home-card-label">{{ home.book_label }}</span>
+        <h3>The Art of Olympiad Geometry</h3>
+        <p>{{ home.book_summary }}</p>
+        <a class="home-text-link" href="{{ '/portfolio/the-art-of-olympiad-geometry/' | prepend: prefix | relative_url }}">{{ home.book_link }} <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <div class="home-work-grid">
+      <article class="home-card">
+        <span class="home-card-label">{{ home.coaching_label }}</span>
+        <h3>{{ home.coaching_title }}</h3>
+        <p>{{ home.coaching_summary }}</p>
+        <a class="home-text-link" href="{{ '/teaching/' | prepend: prefix | relative_url }}">{{ home.coaching_link }} <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="home-card">
+        <span class="home-card-label">{{ home.resources_label }}</span>
+        <h3>{{ home.resources_title }}</h3>
+        <p>{{ home.resources_summary }}</p>
+        <a class="home-text-link" href="{{ '/projects/' | prepend: prefix | relative_url }}">{{ home.resources_link }} <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="focus-heading">
+    <div class="home-section-heading">
+      <span class="home-section-label">{{ home.interests_label }}</span>
+      <h2 id="focus-heading">{{ home.interests_title }}</h2>
+    </div>
+
+    <div class="home-focus-grid">
+      <article class="home-focus-card">
+        <span class="home-focus-number">01</span>
+        <h3>{{ home.counting_title }}</h3>
+        <p>{{ home.counting_summary }}</p>
+      </article>
+
+      <article class="home-focus-card">
+        <span class="home-focus-number">02</span>
+        <h3>{{ home.teaching_title }}</h3>
+        <p>{{ home.teaching_summary }}</p>
+      </article>
+
+      <article class="home-focus-card">
+        <span class="home-focus-number">03</span>
+        <h3>{{ home.writing_title }}</h3>
+        <p>{{ home.writing_summary }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="highlights-heading">
+    <div class="home-section-heading">
+      <span class="home-section-label">{{ home.highlights_label }}</span>
+      <h2 id="highlights-heading">{{ home.highlights_title }}</h2>
+    </div>
+
+    <div class="home-highlights">
+      <div class="home-highlight">
+        <strong>{{ home.medal_title }}</strong>
+        <span>ONMIPA-PT · 2023</span>
+      </div>
+      <div class="home-highlight">
+        <strong>{{ home.imo_title }}</strong>
+        <span>{{ home.imo_program }}</span>
+      </div>
+      <div class="home-highlight">
+        <strong>{{ home.problems_title }}</strong>
+        <span>{{ home.problems_context }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-story" aria-labelledby="story-heading">
+    <div class="home-story-copy">
+      <span class="home-section-label">{{ home.story_label }}</span>
+      <h2 id="story-heading">{{ home.story_title }}</h2>
+      <p>{{ home.story_origin }}</p>
+      <p>{{ home.story_today }}</p>
+    </div>
+    <figure class="home-story-figure">
+      <img src="{{ '/images/IMG_2165.JPG' | relative_url }}" alt="{{ home.story_photo }}" loading="lazy">
+      <figcaption>OSN 2023 · Bogor, Indonesia</figcaption>
+    </figure>
+  </section>
+
+  <section class="home-closing" aria-labelledby="contact-heading">
+    <span class="home-eyebrow">{{ home.contact_label }}</span>
+    <h2 id="contact-heading">{{ home.contact_title }}</h2>
+    <p>{{ home.contact_intro }}</p>
+    <div class="home-actions home-actions--centered">
+      <a class="home-button" href="mailto:wildan.b.wicaksono@gmail.com">{{ home.contact_email }}</a>
+      <a class="home-button home-button--secondary" href="{{ '/cv/' | prepend: prefix | relative_url }}">{{ home.contact_cv }}</a>
+    </div>
+  </section>
+</div>

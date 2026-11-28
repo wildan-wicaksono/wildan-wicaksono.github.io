@@ -85,5 +85,8 @@
     apply(preference, true);
   }
   if (isPreview) window.addEventListener('hashchange', refresh);
+  // A project URL represents the language selected in the site's navigation.
+  const pageNav = navHere();
+  if (pageNav?.hasAttribute('data-explicit-language')) choose(pageNav.dataset.studioLang);
   refresh();
 })();

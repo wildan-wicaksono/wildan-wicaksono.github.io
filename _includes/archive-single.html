@@ -16,6 +16,8 @@
   {% assign title = post.title %}
 {% endif %}
 
+{% assign reader_lang = page.lang | default: "en" %}
+{% assign archive_ui = site.data.ui-text[reader_lang] %}
 {% assign archive_type = include.type | default: "list" %}
 {% assign show_list_teaser = false %}
 {% if archive_type == "list" and post.header.teaser %}
@@ -38,7 +40,18 @@
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink"{% if post.collection == "posts" %} lang="{{ post.lang | default: 'en' }}" hreflang="{{ post.lang | default: 'en' }}"{% endif %}>{{ title }}</a>
+      {% endif %}
+      {% if post.collection == "posts" %}
+        <span class="post-languages">
+          {%- if include.versions.size > 1 -%}
+            {%- for version in include.versions -%}
+              <a href="{{ version.url | relative_url }}" lang="{{ version.lang }}" hreflang="{{ version.lang }}" aria-label="{% if version.lang == 'id' %}Baca dalam bahasa Indonesia{% else %}Read in English{% endif %}: {{ version.title | strip_html | escape }}">[{{ version.lang | upcase }}]</a>
+            {%- endfor -%}
+          {%- else -%}
+            {% assign post_lang = post.lang | default: "en" %}<abbr title="{% if post_lang == 'id' %}Bahasa Indonesia{% else %}English{% endif %}">[{{ post_lang | upcase }}]</abbr>
+          {%- endif -%}
+        </span>
       {% endif %}
     </h2>
     
@@ -50,16 +63,16 @@
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' %}
           {% if post.publication_type == 'book' %}
-            <p>Book{% if post.edition %}, <i>{{ post.edition }}</i>{% endif %}, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+            <p>{{ archive_ui.book }}{% if post.edition %}, <i>{{ post.edition }}</i>{% endif %}, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% elsif post.publication_type == 'thesis' %}
-            <p>Undergraduate thesis, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+            <p>{{ archive_ui.thesis }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% elsif post.publication_status == 'preprint' %}
-            <p>Preprint on <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+            <p>{{ archive_ui.preprint_on }} <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% else %}
-            <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+            <p>{{ archive_ui.published_in }} <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% endif %}
         {% elsif post.date %}
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[reader_lang].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{% include display-date.html date=post.date %}</time></p>
         {% endif %}
 
     {% if show_list_teaser %}
@@ -90,26 +103,26 @@
     {% if post.excerpt and site.read_more != 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
     {% elsif post.excerpt and site.read_more == 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
+    <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> {% if reader_lang == "id" %}Baca selengkapnya{% else %}Read more{% endif %}</a></strong></p></p>
     {% endif %}
 
-    {% assign download_label = "Download Paper" %}
+    {% assign download_label = archive_ui.download_paper %}
     {% if post.publication_type == 'thesis' %}
-      {% assign download_label = "Download thesis (PDF)" %}
+      {% assign download_label = archive_ui.download_thesis %}
     {% endif %}
     
     {% if post.citation and post.paperurl and post.slidesurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">{{ download_label }}</a> | <a href="{{ post.slidesurl }}">Download Slides</a></p>
+      <p>{{ archive_ui.recommended_citation }} {{ post.citation }}<br /><a href="{{ post.paperurl }}">{{ download_label }}</a> | <a href="{{ post.slidesurl }}">{{ archive_ui.download_slides }}</a></p>
     {% elsif post.citation and post.paperurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">{{ download_label }}</a></p>
+      <p>{{ archive_ui.recommended_citation }} {{ post.citation }}<br /><a href="{{ post.paperurl }}">{{ download_label }}</a></p>
     {% elsif post.citation and post.slidesurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Download Slides</a></p>
+      <p>{{ archive_ui.recommended_citation }} {{ post.citation }}<br /><a href="{{ post.slidesurl }}">{{ archive_ui.download_slides }}</a></p>
     {% elsif post.citation %}
-      <p>Recommended citation: {{ post.citation }}</p>
+      <p>{{ archive_ui.recommended_citation }} {{ post.citation }}</p>
     {% elsif post.paperurl %}
-      <p><a href=" {{ post.paperurl }} ">{{ download_label }}</a></p>
+      <p><a href="{{ post.paperurl }}">{{ download_label }}</a></p>
     {% elsif post.slidesurl %}
-      <p>Download <a href="{{ post.slidesurl }}">Download Slides</a></p></p>
+      <p><a href="{{ post.slidesurl }}">{{ archive_ui.download_slides }}</a></p>
     {% endif %}
 
     {% if show_list_teaser %}</div>{% endif %}

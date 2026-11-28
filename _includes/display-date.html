@@ -1,0 +1,7 @@
+{%- if page.lang == "id" -%}
+  {%- assign months = "Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember" | split: " " -%}
+  {%- assign month = include.date | date: "%m" | minus: 1 -%}
+  {{ include.date | date: "%-d" }} {{ months[month] }} {{ include.date | date: "%Y" }}
+{%- else -%}
+  {{ include.date | date: "%B %d, %Y" }}
+{%- endif -%}

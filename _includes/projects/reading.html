@@ -1,0 +1,145 @@
+{% assign copy_key = 'reading_' | append: page.lang %}
+{% assign copy = site.data.project_text[copy_key] %}
+<link rel="stylesheet" href="/assets/css/resource-pages.css">
+
+<div class="resource-page">
+  <section class="rp-hero">
+    <span class="rp-eyebrow">{{ copy.hero_label }}</span>
+    <h1>{{ copy.title }}</h1>
+    <p class="rp-hero-copy">{{ copy.intro }}</p>
+    <div class="rp-stats" aria-label="{{ copy.summary }}">
+      <span>{{ copy.pdfs }}</span>
+      <span>{{ copy.handout_count }}</span>
+      <span>{{ copy.book_count }}</span>
+    </div>
+    <nav class="rp-jumps" aria-label="{{ copy.jump }}">
+      <a href="#my-handouts">{{ copy.handouts }}</a>
+      <a href="#reference-books">{{ copy.books }}</a>
+    </nav>
+  </section>
+
+  <aside class="rp-notice">
+    <strong>PDF</strong>
+    <div>{{ copy.notice }}</div>
+  </aside>
+
+  <section class="rp-section" id="my-handouts">
+    <div class="rp-section-head">
+      <div>
+        <span class="rp-section-kicker">{{ copy.author }}</span>
+        <h2>{{ copy.handouts }}</h2>
+        <p>{{ copy.handout_lead }}</p>
+      </div>
+      <span class="rp-count">{{ copy.handout_files }}</span>
+    </div>
+
+    <div class="rp-grid rp-grid--three">
+      <article class="rp-card">
+        <div class="rp-card-top">
+          <div>
+            <h3>Homothety</h3>
+            <p class="rp-card-subtitle">{{ copy.geometry }}</p>
+          </div>
+          <span class="rp-badge">{{ copy.handout }}</span>
+        </div>
+        <p class="rp-updated">{{ copy.updated }}<time datetime="2024-01-10">{{ copy.jan }}</time></p>
+        <div class="rp-files">
+          <a class="rp-file rp-file--primary" href="/files/Homothety.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open_pdf }}</a>
+        </div>
+      </article>
+
+      <article class="rp-card">
+        <div class="rp-card-top">
+          <div>
+            <h3>Ketaksamaan Dasar</h3>
+            <p class="rp-card-subtitle">{{ copy.inequalities }}</p>
+          </div>
+          <span class="rp-badge">{{ copy.handout }}</span>
+        </div>
+        <p class="rp-updated">{{ copy.updated }}<time datetime="2022-08-22">{{ copy.aug }}</time></p>
+        <div class="rp-files">
+          <a class="rp-file rp-file--primary" href="/files/Ketaksamaan%20Dasar.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open_pdf }}</a>
+        </div>
+      </article>
+
+      <article class="rp-card">
+        <div class="rp-card-top">
+          <div>
+            <h3>Order dari Sebuah Elemen</h3>
+            <p class="rp-card-subtitle">{{ copy.algebra }}</p>
+          </div>
+          <span class="rp-badge">{{ copy.handout }}</span>
+        </div>
+        <p class="rp-updated">{{ copy.updated }}<time datetime="2022-05-18">{{ copy.may }}</time></p>
+        <div class="rp-files">
+          <a class="rp-file rp-file--primary" href="/files/Order%20dari%20sebuah%20Elemen.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open_pdf }}</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="rp-section" id="reference-books">
+    <div class="rp-section-head">
+      <div>
+        <span class="rp-section-kicker">{{ copy.others }}</span>
+        <h2>{{ copy.books }}</h2>
+        <p>{{ copy.book_lead }}</p>
+      </div>
+      <span class="rp-count">{{ copy.book_files }}</span>
+    </div>
+
+    <div class="rp-grid">
+      <article class="rp-card">
+        <div class="rp-card-top">
+          <div>
+            <h3>9 Tahun OSN</h3>
+            <p class="rp-card-subtitle">Eddy Hermanto</p>
+          </div>
+          <span class="rp-badge">{{ copy.reference }}</span>
+        </div>
+        <div class="rp-files">
+          <a class="rp-file" href="/files/Olympiad/9tahunOSN_Eddy.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open_book }}</a>
+        </div>
+      </article>
+
+      <article class="rp-card">
+        <div class="rp-card-top">
+          <div>
+            <h3>Diktat Eddy Hermanto</h3>
+            <p class="rp-card-subtitle">Eddy Hermanto</p>
+          </div>
+          <span class="rp-badge">{{ copy.reference }}</span>
+        </div>
+        <div class="rp-files">
+          <a class="rp-file" href="/files/Olympiad/Diktat_Eddy.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open_book }}</a>
+        </div>
+      </article>
+
+      <article class="rp-card">
+        <div class="rp-card-top">
+          <div>
+            <h3>Modern Olympiad Number Theory</h3>
+            <p class="rp-card-subtitle">Aditya Khurmi</p>
+          </div>
+          <span class="rp-badge">{{ copy.reference }}</span>
+        </div>
+        <div class="rp-files">
+          <a class="rp-file" href="/files/Olympiad/MONT_AdityaKhurmi.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open_book }}</a>
+        </div>
+      </article>
+
+      <article class="rp-card">
+        <div class="rp-card-top">
+          <div>
+            <h3>Functional Equations</h3>
+            <p class="rp-card-subtitle">Fajar Yuliawan</p>
+          </div>
+          <span class="rp-badge">{{ copy.reference }}</span>
+        </div>
+        <div class="rp-files">
+          <a class="rp-file" href="/files/Olympiad/FE.pdf" target="_blank" rel="noopener noreferrer">{{ copy.open_book }}</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

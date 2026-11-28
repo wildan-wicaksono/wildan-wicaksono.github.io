@@ -3,6 +3,7 @@ layout: default
 ---
 
 {% include base_path %}
+{% assign ui = site.data.ui-text[page.lang] %}
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
   {% include page__hero.html %}
@@ -31,17 +32,19 @@ layout: default
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
         {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ ui.date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{% include display-date.html date=page.modified %}</time></p>
         {% endif %}
         
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.collection == 'publications' and page.publication_type == 'thesis' %}
-          <p>Undergraduate thesis, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }}</p>
+          <p>{{ ui.thesis }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }}</p>
+        {% elsif page.collection == 'publications' and page.publication_status == 'preprint' %}
+          <p>{{ ui.preprint_on }} <i>{{ page.venue }}</i>, {{ page.date | date: "%Y" }}</p>
         {% elsif page.venue and page.date %}
-          <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>{{ ui.published_in }} <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ ui.date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{% include display-date.html date=page.date %}</time></p>
         {% endif %}    
         </header>
       {% endunless %}
@@ -49,29 +52,29 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
-        {% assign download_label = "Download Paper" %}
+        {% assign download_label = ui.download_paper %}
         {% if page.publication_type == 'thesis' %}
-          {% assign download_label = "Download thesis (PDF)" %}
+          {% assign download_label = ui.download_thesis %}
         {% endif %}
 
         {% if page.citation and page.paperurl and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">{{ download_label }}</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
+          <p style="font-size: smaller">{{ ui.recommended_citation }} {{ page.citation }}<br /><a href="{{ page.paperurl }}">{{ download_label }}</a> | <a href="{{ page.slidesurl }}">{{ ui.download_slides }}</a></p>
         {% elsif page.citation and page.paperurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">{{ download_label }}</a></p>
+          <p style="font-size: smaller">{{ ui.recommended_citation }} {{ page.citation }}<br /><a href="{{ page.paperurl }}">{{ download_label }}</a></p>
         {% elsif page.citation and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a></p>
+          <p style="font-size: smaller">{{ ui.recommended_citation }} {{ page.citation }}<br /><a href="{{ page.slidesurl }}">{{ ui.download_slides }}</a></p>
         {% elsif page.citation %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}</p>
+          <p style="font-size: smaller">{{ ui.recommended_citation }} {{ page.citation }}</p>
         {% elsif page.slidesurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
+          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">{{ ui.download_slides }}</a></p>
         {% endif %}
 
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ ui.ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
       <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+        {% if ui.meta_label %}
+          <h4 class="page__meta-title">{{ ui.meta_label }}</h4>
         {% endif %}
         {% include page__taxonomy.html %}
       </footer>
@@ -89,13 +92,11 @@ layout: default
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
   {% if page.id and page.related and site.related_posts.size > 0 %}
     <div class="page__related">
-      {% if site.data.ui-text[site.locale].related_label %}
-        <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+      {% if ui.related_label %}
+        <h4 class="page__related-title">{{ ui.related_label | default: "You May Also Enjoy" }}</h4>
       {% endif %}
       <div class="grid__wrapper">
-        {% for post in site.related_posts limit:4 %}
-          {% include archive-single.html type="grid" %}
-        {% endfor %}
+        {% include blog-post-list.html posts=site.related_posts type="grid" limit=4 %}
       </div>
     </div>
   {% endif %}

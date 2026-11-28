@@ -1,4 +1,5 @@
 ---
+lang: id
 layout: single
 title: "Menjalani Bagianku, Melepaskan Sisanya"
 date: 2026-10-06 00:00:00 +0700

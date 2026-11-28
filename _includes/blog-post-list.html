@@ -1,0 +1,29 @@
+{% comment %}
+Group published versions by translation_key. Posts without one are standalone.
+Use the reader's language for the title and excerpt when available.
+{% endcomment %}
+{% assign groups = include.posts | group_by_exp: "article", "article.translation_key | default: article.id" %}
+{% assign reader_lang = page.lang | default: "en" %}
+{% assign shown = 0 %}
+{% assign previous_year = "" %}
+{% for group in groups %}
+  {% assign post = group.items | first %}
+  {% if post.translation_key %}
+    {% if page.collection == "posts" and post.translation_key == page.translation_key %}{% continue %}{% endif %}
+    {% assign versions = site.posts | where: "translation_key", post.translation_key | sort: "lang" %}
+    {% assign preferred = versions | where: "lang", reader_lang | first %}
+    {% assign post = preferred | default: post %}
+  {% else %}
+    {% assign versions = group.items %}
+  {% endif %}
+  {% if include.years %}
+    {% assign year = group.items.first.date | date: "%Y" %}
+    {% if year != previous_year %}
+      <h2 id="{{ year }}" class="archive__subtitle">{{ year }}</h2>
+      {% assign previous_year = year %}
+    {% endif %}
+  {% endif %}
+  {% include archive-single.html type=include.type versions=versions %}
+  {% assign shown = shown | plus: 1 %}
+  {% if include.limit and shown >= include.limit %}{% break %}{% endif %}
+{% endfor %}

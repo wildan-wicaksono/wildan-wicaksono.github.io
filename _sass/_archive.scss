@@ -48,6 +48,25 @@
   }
 }
 
+.post-languages {
+  display: inline-flex;
+  gap: 0.45em;
+  align-items: baseline;
+  margin-inline-start: 0.2em;
+  font-size: 0.68em;
+  font-weight: 500;
+  white-space: nowrap;
+
+  abbr {
+    border: 0;
+    text-decoration: none;
+  }
+
+  a + a {
+    opacity: 1;
+  }
+}
+
 /* remove border*/
 .page__content {
 
